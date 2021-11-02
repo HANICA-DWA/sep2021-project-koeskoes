@@ -1,9 +1,26 @@
 # Product Backlog
 
-> _Maak deze lijst ter voorbereiding van het eerste gesprek met de product owner en pas het daarna aan_
-
-> Maak hier een geordende lijst van globaal beschrijven features. De lijst is geordend op prioriteit. De items worden later uitgewerkt tot user stories, maar dat hoef je nu nog niet te doen.
-
-> Geef ook aan welke backlog items je verwacht in welke sprint te plannen. Het is niet de bedoeling dat je nu al gedetailleerd vast gaat leggen wat je in elke sprint gaat doen, want dat verandert waarschijnlijk toch wel. Het is echter wel goed om alvast een globaal idee te hebben van prioriteiten per sprint.
-
-> Geef ook aan welke vragen, onduidelijkheden en moeilijkheden je verwacht bij de verschillende items. 
+| Feature                                                                                    | Prioriteit | Sprint | Verwachte tijd | Gespendeerde tijd |
+|--------------------------------------------------------------------------------------------|------------|--------|----------------|-------------------|
+| Plug and Play                                                                              |            |        |                |                   |
+| Makkelijk aanpasbare stijl                                                                 |            |        |                |                   |
+| Makkelijk aanpasbare instellingen                                                          |            |        |                |                   |
+| Betrouwbare uitstraling                                                                    |            |        |                |                   |
+| Landingspagina                                                                             |            |        |                |                   |
+| Makkelijk een video uploaden/opnemen en bekijken                                           |            |        |                |                   |
+| De naam en het telefoonnummer van de ontvanger aan een video koppelen                      |            |        |                |                   |
+| Makkelijk een video bekijken                                                               |            |        |                |                   |
+| Makkelijke integratie met webshops                                                         |            |        |                |                   |
+| Mogelijkheid op het genereren en scannen van een QR code                                   |            |        |                |                   |
+| Mogelijkheid op het genereren en invullen van een code voor het ontgrendelen van een video |            |        |                |                   |
+| Mogelijkheid op cross-selling                                                              |            |        |                |                   |
+| Backend omgeving voor het beheren van video's                                              |            |        |                |                   |
+| Mails versturen naar de verzender en ontvanger                                             |            |        |                |                   |
+| Mogelijkheid op het verwijderen en aanpassen van de video                                  |            |        |                |                   |
+| Ontvanger moet eenvoudig de video kunnen delen via social media                            |            |        |                |                   |
+| Reminder via de mail versturen wanneer een video niet is geüpload                          |            |        |                |                   |
+| Mail sturen naar de verzender wanneer de video is geopend                                  |            |        |                |                   |
+| Mail te bevestiging van een bestelling                                                     |            |        |                |                   |
+| Mail om het uploaden van een video te bevestigen                                           |            |        |                |                   |
+| Mail om aan te geven dat een video is ontvangen                                            |            |        |                |                   |
+| Mail met een video of tekst reactie van de ontvanger                                       |            |        |                |                   |
