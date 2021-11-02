@@ -39,3 +39,15 @@
 * Wat zijn de twee stappen voor de ontvanger?
 
 
+## Procedures
+
+### Waar?
+Op school
+### Lengte?
+3x 30 min
+### Hulpmidddelen?
+Laptop
+### Hoe?
+Mogelijk in een ronding, anders hoe de opstelling al staat
+### Hoe zitten?
+Iedereen moet de product owner aan kunnen kijken (actieve houding)
