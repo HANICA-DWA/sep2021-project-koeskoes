@@ -37,6 +37,7 @@
   * Zoja, mobile of desktop first?
 * Het idee is dat een schenker in maximaal 3 stappen een video kan uploaden. Hoe worden deze stappen gezien (Video uploaden, info invullen en verzenden)?
 * Wat zijn de twee stappen voor de ontvanger?
+* De ontavnger moet een video kunnen delen op social media, moet dit een link naar het filmpje worden (code al ingevuld)?
 
 
 ## Procedures
