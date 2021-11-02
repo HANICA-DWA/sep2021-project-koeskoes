@@ -35,5 +35,7 @@
 * Wat moet de huisstijl zijn? (Styling van Magento of een eigen huisstijl)     
 * Moet de web applicatie responsive zijn?
   * Zoja, mobile of desktop first?
+* Het idee is dat een schenker in maximaal 3 stappen een video kan uploaden. Hoe worden deze stappen gezien (Video uploaden, info invullen en verzenden)?
+* Wat zijn de twee stappen voor de ontvanger?
 
 
