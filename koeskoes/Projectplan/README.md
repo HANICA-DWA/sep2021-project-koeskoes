@@ -5,7 +5,7 @@
 [Dagplanning](Dagplanning.md)
 
 ### Definition of done
-[DefinitionOfDone](Definition of Done.md)
+[Definition of done](Definition-of-Done.md)
 
 ### Opdracht
 [Opdracht](Opdracht.md)
@@ -17,4 +17,4 @@
 [Procesbeschrijving](Procesbeschrijving.md)
 
 ### Product backlog
-[ProductBacklog](Product Backlog.md)
+[Product Backlog](Product-Backlog.md)
