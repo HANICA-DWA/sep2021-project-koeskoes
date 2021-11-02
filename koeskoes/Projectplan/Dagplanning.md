@@ -1,11 +1,16 @@
 # Dagplanning
 
-> Een indeling van de elke werkdag inclusief de tijden. Zorg ervoor dat je in de dagindeling in ieder geval vermeldt:
+# Starttijd
+> Starttijd om 9 uur 's morgens.
 
-> - starttijd
-> - daily stand-up
-> - tijd(en) waarop je pauze houdt
-> - dagelijkse afsluiting
-> - eindtijd
+# Daily Stand-Up
+> De daily stand-up begint meteen om 9 uur.
 
-> In principe is het idee dat iedereen dezelfde tijden hanteert. Als er goede redenen zijn om hiervan af te wijken, dan is dat natuurlijk bespreekbaar.
+# Pauzes
+> Verschilt per persoon, pauze moment van 30 minuten.
+
+# Dagelijkse afsluiting
+> Geen officiele afsluiting aan het einde van de dag.
+
+# Eindtijd
+> Wanneer we beginnen om 9 uur, eindigen wij om 5 uur.
