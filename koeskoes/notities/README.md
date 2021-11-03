@@ -6,6 +6,7 @@
 * Hoe ziet de product owner het proces voor zich ziet
 * Vragen
 * Backlog
+* Prioritering
 * Volgende meeting plannen (bevestigingsmail)
 
 
