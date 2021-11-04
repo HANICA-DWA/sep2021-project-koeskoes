@@ -36,7 +36,7 @@ Begrip van opdracht is goed, maar goed opletten op de back-end die gemaakt moet 
   <li>Wijs in het PvA alvast de user stories aan die in sprint 1 gedaan zouden kunnen worden, samen met de acceptatiecriteria hierbij. Meestal zijn dit de user stories die:
     <ul>
       <li>de infrastructuur opbouwen;</li>
-      <li>de belangrijke technische risico's adresseren (dingen waarover we onzeker zijn en die veel tijd zouden gaan kunnen kosten, zoals mails versturen)).</li>
+      <li>de belangrijke technische risico's adresseren (dingen waarover we onzeker zijn en die veel tijd zouden gaan kunnen kosten, zoals mails versturen).</li>
     </ul>
   </li>
   <li>Integrering met webshop kan tricky worden: komende week al onderzoek naar doen (Magento, Shopify & WooCommerce). Als de integratie echt te lastig is, dan gaan we dit faken.</li>
