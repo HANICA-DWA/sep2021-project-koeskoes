@@ -39,4 +39,5 @@ Begrip van opdracht is goed, maar goed opletten op de back-end die gemaakt moet 
       <li>de belangrijke technische risico's adresseren (dingen waarover we onzeker zijn en die veel tijd zouden gaan kunnen kosten, zoals mails versturen)).</li>
     </ul>
   </li>
+  <li>Integrering met webshop kan tricky worden: komende week al onderzoek naar doen. Magento, Shopify & WooCommerce</li>
 </ul>
