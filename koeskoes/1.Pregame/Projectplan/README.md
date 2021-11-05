@@ -1,20 +1,7 @@
 # Project Koeskoes Projectplan
-
-
-### Dagplanning
-[Dagplanning](Dagplanning.md)
-
-### Definition of done
-[Definition of done](Definition-of-Done.md)
-
-### Opdracht
-[Opdracht](Opdracht.md)
-
-### Periodeplanning
-[Periodeplanning](Periodeplanning.md)
-
-### Procesbeschrijving
-[Procesbeschrijving](Procesbeschrijving.md)
-
-### Product backlog
-[Product Backlog](Product-Backlog.md)
+* [Dagplanning](Dagplanning.md)
+* [Definition of done](Definition-of-Done.md)
+* [Opdracht](Opdracht.md)
+* [Periodeplanning](Periodeplanning.md)
+* [Procesbeschrijving](Procesbeschrijving.md)
+* [Product Backlog](Product-Backlog.md)
