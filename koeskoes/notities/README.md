@@ -74,7 +74,7 @@
   <ul>
    <li>QR-code</li>
    <li>Of met code, moet deze code cijfers en/of letters bevatten en welke ontangmethode(bijvoorbeeld bestelnummer of het mobiele telefoonnummer v/d ontvanger)?</li>
- </li>
+ </ul>
  <li>De ontvanger moet een video kunnen delen op social media, moet dit een link naar het filmpje worden (code al ingevuld)?</li>
  <li>De reactie kan een video of een tekstbericht zijn, is hier een voorkeur voor?</li>
  <li>Moet het eerste bericht ook een tekstbericht kunnen zijn?</li>
