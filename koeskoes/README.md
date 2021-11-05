@@ -1,10 +1,3 @@
-# Project Koeskoes documentatie
-
-
-## Gesprek met Product Owner (Robert Holwerda)
-
+# Project Koeskoes
+## Pregame
 [Pregame](1.Pregame/README.md)
-
-## Projectplan
-
-[Projectplan Koeskoes](Projectplan/README.md)
