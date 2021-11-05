@@ -1,6 +1,6 @@
 # Procesbeschrijving
 
-> Maak dit na de workshop over user stories
+> _Maak dit na de workshop over user stories_
 
 Een tekst waarin je uitleg geeft hoe je als groep alle taken managet en hoe je de voortgang bewaakt. De bedoeling is dat je zo concreet mogelijk beschrijft op welk moment(en) en met welke activiteit(en) je probeert controle te houden op het werkproces. De sprint planning en sprint review zelf hoef je niet te beschrijven omdat die al voorgescrheven staan. Beantwoord met de tekst in ieder geval de onderstaande vragen.
 
