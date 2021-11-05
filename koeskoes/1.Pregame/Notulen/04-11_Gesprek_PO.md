@@ -1,15 +1,15 @@
 # Gesprek Product Owner
 ## DROP
-### Doelen:
+### Doelen
 * Product backlog opstellen
 * Priotering in backlog
 
-## Rollen:
-### Notulen:
+## Rollen
+### Notulen
 * Sven
 * Ilse
 
-##Agenda
+## Agenda
 <ul>
  <li>Kleine samenvatting opdracht</li>
  <li>Hoe ziet de product owner het proces voor zich ziet</li>
