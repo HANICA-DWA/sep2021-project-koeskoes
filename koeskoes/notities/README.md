@@ -1,13 +1,14 @@
 # Notities Gesprek PO
 ## Agenda
 ### Onderwerpen
-* Kleine samenvatting opdracht
-* Hoe ziet de product owner het proces voor zich ziet
-* Vragen
-* Backlog
-* Prioritering
-* Volgende meeting plannen (bevestigingsmail)
-
+<ul>
+ <li>Kleine samenvatting opdracht</li>
+ <li>Hoe ziet de product owner het proces voor zich ziet</li>
+ <li>Vragen</li>
+ <li>Backlog</li>
+ <li>Prioritering</li>
+ <li>Volgende meeting plannen (bevestigingsmail)</li>
+</ul>
 
 ## Product Backlog
 | Feature                                                                                    | Prioriteit | Sprint |
