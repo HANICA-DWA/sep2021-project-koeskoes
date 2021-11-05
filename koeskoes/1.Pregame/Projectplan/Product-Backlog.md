@@ -1,6 +1,7 @@
 # Product Backlog
 
-> De features worden User-Stories na de workshop over User-Stories
+> De features worden verder uitgewerkt in User-Stories na de workshop over User-Stories
+> Prioriteit mag van de PO pas per sprint
 
 | Feature                                                                                    | Prioriteit | Sprint | Verwachte tijd | Gespendeerde tijd |
 |--------------------------------------------------------------------------------------------|------------|--------|----------------|-------------------|
