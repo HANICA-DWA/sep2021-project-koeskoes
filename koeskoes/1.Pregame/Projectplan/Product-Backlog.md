@@ -1,5 +1,7 @@
 # Product Backlog
 
+> De features worden User-Stories na de workshop over User-Stories
+
 | Feature                                                                                    | Prioriteit | Sprint | Verwachte tijd | Gespendeerde tijd |
 |--------------------------------------------------------------------------------------------|------------|--------|----------------|-------------------|
 | Plug and Play                                                                              |            |        |                |                   |
