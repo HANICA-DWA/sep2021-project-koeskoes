@@ -4,10 +4,65 @@
 * Product backlog opstellen
 * Priotering in backlog
 
-## Rollen
-### Notulen
-* Sven
-* Ilse
+### Rollen
+* Sven: notulist
+* Ilse: notulist
+
+### Onderwerpen
+#### Algemeen
+<ul>
+ <li>In de documentatie staat "De oplossing moet eenvoudig aan gangbare types webshop gekoppeld kunnen worden". Wat wordt er precies met gangbare types bedoeld?</li>
+ <li>Uploaden met QR-code of URL. Wat is hier de voorkeur?</li>
+ <li>Moet de web applicatie responsive zijn?
+  <ul>
+   <li>Zoja, mobile of desktop first?</li>
+  </ul>
+ </li>
+ <li>Wat moet de huisstijl zijn? (Styling van Magento of een eigen huisstijl)</li>
+ <li>Wat wordt er bedoeld met een luchtige en betrouwbare uitstraling?</li>
+ <li>Welke videoformats moet de site ondersteunen(mp4, mov, mkv)?</li>
+ <li>Wat is de back-end omgeving waarin de filmpjes veilig en betrouwbaar gehost kunnen worden en de instellingen zoals de duur aangepast kunnen worden?</li>
+ <li>QR Products wil een ‘plug and play’ oplossing ontwikkelen voor webshops en retailers. Wat wordt er precies met "plug and play" bedoeld?</li>
+</ul>
+
+#### Verzender
+<ul>
+ <li>Hoe ziet de product owner het uploaden voor zich?</li>
+ <li>Het idee is dat een schenker in maximaal 3 stappen een video kan uploaden. Hoe worden deze stappen gezien (Video uploaden, info invullen en verzenden)?</li>
+ <li>Moet de gebruiker de videoboodschap alleen kunnen uploaden of ook in de website opnemen?</li>
+ <li>Moet de mogelijkheid er zijn om de video terug te kijken voor opsturen?</li>
+</ul>
+
+#### Ontvanger
+<ul>
+ <li>Wat zijn de twee stappen voor de ontvanger?</li>
+ <li>Openen video op 2 manieren en welke heeft hogere prioritering?
+  <ul>
+   <li>QR-code</li>
+   <li>Of met code, moet deze code cijfers en/of letters bevatten en welke ontangmethode(bijvoorbeeld bestelnummer of het mobiele telefoonnummer v/d ontvanger)?</li>
+ </ul>
+ <li>De ontvanger moet een video kunnen delen op social media, moet dit een link naar het filmpje worden (code al ingevuld)?</li>
+ <li>De reactie kan een video of een tekstbericht zijn, is hier een voorkeur voor?</li>
+ <li>Moet het eerste bericht ook een tekstbericht kunnen zijn?</li>
+</ul>
+
+#### Mails
+<ul>
+ <li>Krijgen wij een mailprovider aangereikt voor het versturen van de verschillende mails.</li>
+ <li>Moeten wij een eigen styling maken voor de mails?</li>
+</ul>
+
+### Procedures
+#### Waar?
+Op school
+#### Lengte?
+3x 30 min
+#### Hulpmidddelen?
+Laptop
+#### Hoe?
+Mogelijk in een ronding, anders hoe de opstelling al staat
+#### Hoe zitten?
+Iedereen moet de product owner aan kunnen kijken (actieve houding)
 
 ## Agenda
 <ul>
@@ -44,62 +99,6 @@
 | Mail om het uploaden van een video te bevestigen                                           |            |        |
 | Mail om aan te geven dat een video is ontvangen                                            |            |        |
 | Mail met een video of tekst reactie van de ontvanger                                       |            |        |
-
-## Vragen
-### Algemeen
-<ul>
- <li>In de documentatie staat "De oplossing moet eenvoudig aan gangbare types webshop gekoppeld kunnen worden". Wat wordt er precies met gangbare types bedoeld?</li>
- <li>Uploaden met QR-code of URL. Wat is hier de voorkeur?</li>
- <li>Moet de web applicatie responsive zijn?
-  <ul>
-   <li>Zoja, mobile of desktop first?</li>
-  </ul>
- </li>
- <li>Wat moet de huisstijl zijn? (Styling van Magento of een eigen huisstijl)</li>
- <li>Wat wordt er bedoeld met een luchtige en betrouwbare uitstraling?</li>
- <li>Welke videoformats moet de site ondersteunen(mp4, mov, mkv)?</li>
- <li>Wat is de back-end omgeving waarin de filmpjes veilig en betrouwbaar gehost kunnen worden en de instellingen zoals de duur aangepast kunnen worden?</li>
- <li>QR Products wil een ‘plug and play’ oplossing ontwikkelen voor webshops en retailers. Wat wordt er precies met "plug and play" bedoeld?</li>
-</ul>
-
-### Verzender
-<ul>
- <li>Hoe ziet de product owner het uploaden voor zich?</li>
- <li>Het idee is dat een schenker in maximaal 3 stappen een video kan uploaden. Hoe worden deze stappen gezien (Video uploaden, info invullen en verzenden)?</li>
- <li>Moet de gebruiker de videoboodschap alleen kunnen uploaden of ook in de website opnemen?</li>
- <li>Moet de mogelijkheid er zijn om de video terug te kijken voor opsturen?</li>
-</ul>
-
-### Ontvanger
-<ul>
- <li>Wat zijn de twee stappen voor de ontvanger?</li>
- <li>Openen video op 2 manieren en welke heeft hogere prioritering?
-  <ul>
-   <li>QR-code</li>
-   <li>Of met code, moet deze code cijfers en/of letters bevatten en welke ontangmethode(bijvoorbeeld bestelnummer of het mobiele telefoonnummer v/d ontvanger)?</li>
- </ul>
- <li>De ontvanger moet een video kunnen delen op social media, moet dit een link naar het filmpje worden (code al ingevuld)?</li>
- <li>De reactie kan een video of een tekstbericht zijn, is hier een voorkeur voor?</li>
- <li>Moet het eerste bericht ook een tekstbericht kunnen zijn?</li>
-</ul>
-
-### Mails
-<ul>
- <li>Krijgen wij een mailprovider aangereikt voor het versturen van de verschillende mails.</li>
- <li>Moeten wij een eigen styling maken voor de mails?</li>
-</ul>
-
-## Procedures
-### Waar?
-Op school
-### Lengte?
-3x 30 min
-### Hulpmidddelen?
-Laptop
-### Hoe?
-Mogelijk in een ronding, anders hoe de opstelling al staat
-### Hoe zitten?
-Iedereen moet de product owner aan kunnen kijken (actieve houding)
 
 ## Notulen Ilse
 Begrip van opdracht is goed, maar goed opletten op de back-end die gemaakt moet worden, deze is het belangrijkste. Webshop owner moet alle statistieken daarin makkelijk kunnen zien.
