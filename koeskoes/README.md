@@ -1,3 +1,3 @@
 # Project Koeskoes
 ## Pregame
-[Pregame](1.Pregame/README.md)
+[Pregame](https://github.com/HANICA-DWA/sep2021-project-koeskoes/tree/main/koeskoes/1.Pregame)
