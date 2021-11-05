@@ -1,4 +1,4 @@
-# Defintion of Done
+# Definition of Done
 
 > _Maak dit gedeelte na de workshop over user stories_
 
