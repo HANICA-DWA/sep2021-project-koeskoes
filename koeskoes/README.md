@@ -3,7 +3,7 @@
 
 ## Gesprek met Product Owner (Robert Holwerda)
 
-[Gesprek met PO](gesprek-met-po.md)
+[Pregame](1. Pregame)
 
 ## Projectplan
 
