@@ -4,6 +4,8 @@
 
 Een tekst waarin je uitleg geeft hoe je als groep alle taken managet en hoe je de voortgang bewaakt. De bedoeling is dat je zo concreet mogelijk beschrijft op welk moment(en) en met welke activiteit(en) je probeert controle te houden op het werkproces. De sprint planning en sprint review zelf hoef je niet te beschrijven omdat die al voorgescrheven staan. Beantwoord met de tekst in ieder geval de onderstaande vragen.
 
+Wij als groep managen onze user stories en taken via de "project board". Hierin bewaken wij ook de voortgang.....
+
 <ul>
   <li>Op welke momenten bepaal je de taken</li>
   <li>Hoe laat je de status van een taak zien?</li>
