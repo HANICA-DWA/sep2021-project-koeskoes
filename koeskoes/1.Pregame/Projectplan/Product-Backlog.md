@@ -1,7 +1,6 @@
 # Product Backlog
 
-## User Stories
-Prioriteit hoog -> laag
+## User Stories (Prioriteit hoog van laag)
 
 * Als webshop beheerder wil ik eenvoudig de plug-in aan een webshop kunnen toevoegen, zodat de klanten makkelijk gebruik kunnen maken van de plug-in.
 * Als webshop beheerder wil ik verschillende instellingen in de backendomgeving aan kunnen passen, zodat ik de instellingen van de plug-in kan configureren.
