@@ -27,3 +27,17 @@
 | Mail om het uploaden van een video te bevestigen                                           |            |        |                |                   |
 | Mail om aan te geven dat een video is ontvangen                                            |            |        |                |                   |
 | Mail met een video of tekst reactie van de ontvanger                                       |            |        |                |                   |
+
+
+* Als websitebeheerder wil ik eenvoudig de plug-in aan een webshop kunnen toevoegen, zodat de klanten makkelijk gebruik kunnen maken van de plug-in.
+* Als webshop beheerder wil ik de stijl van de plug-in aan kunnen passen, zodat mijn webiste een uniforme stijl heeft.
+* Als webshop beheerder wil ik verschillende instellingen in de backendomgeving aan kunnen passen, zodat ik de instellingen van de plug-in kan configureren.
+* Als gebruiker van de plugin wil ik op een landingspagina terecht komen, zodat ik kan kiezen tussen het uploaden of bekijken van een bericht.
+* Als verzender wil ik een video kunnen uploaden, zodat ik deze met mijn cadeau kan meesturen.
+* Als verzender wil ik een video kunnen opnemen, zoadt ik deze kan uploaden
+* Als verzender wil ik een video kunnen verwijderen, zodat ik een andere video kan uploaden.
+* Als verzender wil ik een video kunnen terugkijken, zodat ik kan beslissen of ik de video wil opsturen.
+* Als ontvanger wil ik een video kunnnen bekijken, zodat ik kan zien wat de verzender heeft vertuurd
+* Als ontvanger wil ik een reactie kunnen sturen naar de verzender, zodat ik de verzender kan bedanken
+* Als verzender wil ik de naam en het tel. nummer van de ontvanger aan de video kunnen toevoegen, zodat de ontavnger weet dat het bericht voor hem bestemt is.
+* 
