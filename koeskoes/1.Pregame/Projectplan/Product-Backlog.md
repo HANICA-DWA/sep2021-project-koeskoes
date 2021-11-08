@@ -32,7 +32,7 @@
 * Als websitebeheerder wil ik eenvoudig de plug-in aan een webshop kunnen toevoegen, zodat de klanten makkelijk gebruik kunnen maken van de plug-in.
 * Als webshop beheerder wil ik de stijl van de plug-in aan kunnen passen, zodat mijn webiste een uniforme stijl heeft.
 * Als webshop beheerder wil ik verschillende instellingen in de backendomgeving aan kunnen passen, zodat ik de instellingen van de plug-in kan configureren.
-* Als gebruiker van de plugin wil ik op een landingspagina terecht komen, zodat ik kan kiezen tussen het uploaden of bekijken van een bericht.
+* Als klant van de plugin wil ik op een landingspagina terecht komen, zodat ik kan kiezen tussen het uploaden of bekijken van een bericht.
 * Als verzender wil ik een video kunnen uploaden, zodat ik deze met mijn cadeau kan meesturen.
 * Als verzender wil ik een video kunnen opnemen, zoadt ik deze kan uploaden
 * Als verzender wil ik een video kunnen verwijderen, zodat ik een andere video kan uploaden.
