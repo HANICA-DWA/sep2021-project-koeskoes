@@ -1,7 +1,5 @@
 # Opdracht
 
-Dit kan simpelweg de tekst zijn die je van de Product Owner hebt gekregen. Noteer hier wel de wijzigingen die eventueel naar boven zijn gekomen binnen 
-
 QR Products heeft als doel om het delen van een persoonlijk videoberichtje bij het geven van een cadeau, relatiegeschenk of andersoortige attentie voor iedereen zo eenvoudig mogelijk te maken. QR Products richt zich met name op de E-commerce markt en meer specifiek de markt voor ‘online gift giving’.
 
 Om het delen van een persoonlijk videoberichtje bij het geven van een cadeau zo makkelijk mogelijk te maken wil QR Products een ‘plug and play’ oplossing ontwikkelen voor webshops en retailers. De oplossing moet eenvoudig aan gangbare type webshops gekoppeld kunnen worden met een landingspagina die zodanig ingericht kan worden dat deze in lijn is met de huisstijl en uitstraling van de webshop.
