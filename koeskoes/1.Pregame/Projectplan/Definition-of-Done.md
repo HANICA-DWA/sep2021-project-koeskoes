@@ -2,6 +2,8 @@
 
 - Alles moet gedocumenteerd zijn
   - Het software guidebook moet bijgewerkt zijn
+  - Bij onderzoeken een goed opgesteld onderzoeksplan 
+  - Wireframes voor schermontwerpen
 - Alles moet gebruiksvriendelijk zijn
   - De pagina's moeten duidelijk aangeven bij welke stap de gebruiker is en waar hij naartoe kan navigeren.
   - Componenten die bij elkaar horen moeten duidelijk gegroepeerd zijn.
