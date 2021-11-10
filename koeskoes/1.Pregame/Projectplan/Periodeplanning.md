@@ -1,5 +1,7 @@
 # Periodeplanning
 
+>De dag van de Retrospectives moet nog ingepland gaan worden (dit wordt aan het einde van de sprint).
+
 | Datum                    	|                    	| Maandag               	| Dinsdag               	| Woensdag    	| Donderdag                   	| Vrijdag 	|
 |--------------------------	|:------------------:	|-----------------------	|-----------------------	|-------------	|-----------------------------	|---------	|
 | 2021-11-08<br>2021-11-14 	| 2-1<br>Pre-game    	| Workshop User Stories<br><br>Voor 5 uur projectplan (per mail). 	| Workshop Unit Testing<br><br>Assessment projectplan 	| Workshop Software Guidebook 	| Workshop C4 	| Definitieve versie van het projectplan. Voor 16.00 uur in ISAS (Individuele projectvoorbereiding)<br><br>Sprintplanning om (00:00 uur)       	|
