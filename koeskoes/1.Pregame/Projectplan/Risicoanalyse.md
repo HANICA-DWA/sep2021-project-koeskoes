@@ -5,7 +5,7 @@ is dat het risico werkelijkheid wordt en welke consequenties dat zou hebben voor
 
 Onze doelstelling ligt in contrast met de risicoanalyse. Op deze beheersaspecten willen wij aansturen:
 * Tijd besparen
-* Een deadline halen
+* Deadlines halen
 * Kwaliteit verbeteren
 * Informatie vergaren
 * Communicatie verbeteren

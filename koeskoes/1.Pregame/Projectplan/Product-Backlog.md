@@ -10,7 +10,6 @@
 * Als verzender wil ik een video kunnen verwijderen, zodat ik een andere video kan uploaden.
 * Als verzender wil ik een video kunnen terugkijken, zodat ik kan beslissen of ik de video wil opsturen.
 * Als ontvanger wil ik een video kunnnen bekijken, zodat ik kan zien wat de verzender heeft verstuurd.
-* Als ontvanger wil ik een reactie kunnen sturen naar de verzender, zodat ik de verzender kan bedanken.
 * Als ontvanger wil ik een QR-code kunnen scannen, zodat ik de videoboodschap kan openen.
 * Als verzender wil ik een QR-code kunnen aanmaken, zodat de ontvanger deze kan scannen.
 * Als ontvanger wil ik een code kunnen ontvangen, zodat ik de video kan openen.
@@ -21,5 +20,5 @@
 * Als verzender wil ik op de hoogte gehouden worden via de mail wanneer de ontvanger de video heeft geopend, zodat de verzender weet dat het cadeau bij de ontvanger is aangekomen.
 * Als verzender wil ik op de hoogte gehouden worden via de mail over de bestelling, zodat de verzender weet hoe het met de bestelling gaat (bevestiging bestelling).
 * Als verzender wil ik op de hoogte gehouden worden via de mail over bijvoorbeeld een reminder, zodat de verzender bijvoorbeeld weet dat er nog een video geupload moet worden om de bestelling te voltooien.
-* Als ontvanger wil ik de mogelijkheid hebben om te reageren met een video- of tekstreactie, zodat ik de verzender kan bedanken.
+* Als ontvanger wil ik een reactie kunnen sturen naar de verzender, zodat ik de verzender kan bedanken.
 * Als ontvanger wil ik eenvoudig de video kunnen delen via social media, zodat ik de video aan anderen kan laten zien.
