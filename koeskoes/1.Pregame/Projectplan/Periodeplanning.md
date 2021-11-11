@@ -1,6 +1,6 @@
 # Periodeplanning
 
->De dag van de Retrospectives moet nog ingepland gaan worden (dit wordt aan het einde van de sprint).
+>De dag van de Retrospectives moet nog ingepland gaan worden (dit gebeurd aan het einde van de sprint).
 
 | Datum                    	|                    	| Maandag               	| Dinsdag               	| Woensdag    	| Donderdag                   	| Vrijdag 	|
 |--------------------------	|:------------------:	|-----------------------	|-----------------------	|-------------	|-----------------------------	|---------	|
