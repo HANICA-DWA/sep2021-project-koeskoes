@@ -17,7 +17,7 @@
   - De code syntax is in het Engels geschreven
   - Code comments zijn in het Engels
   - Code comments zijn volgens de Javadoc standaard geschreven
-  - Code is geformateerd met de extension Prettier
+  - Code is geformateerd met de extension Prettier - Code formatter
   - Indent using Spaces moet op 2 staan
 - Alle features moeten getest zijn
   - Deze testen moeten uitgevoerd zijn met jest volgens de happy flow & minimaal een (1) alternatieve flow. Ook mogen er geen fouten uit de testen komen.
