@@ -4,7 +4,7 @@ Tijdens het project wordt er gebruik gemaakt van de SCRUM werkmethode. Wij als g
 
 Na de sprintplanning (elke vrijdag voor de volgende sprint) kijken wij naar de user stories van de bijbehorende sprint en verdelen wij dit in kleinere taken. Dit wordt direct in het "project board" neergezet. Elke taak wordt gekoppeld aan de bijbehorende user story, zodat het duidelijk is welke taak bij de juiste user story hoort. Elk user story heeftt een of meerdere acceptatie criteria('s), waarbij er gekeken wordt of de user story daadwerkelijk is afgerond.
 
-Op het moment dat een taak af is, wordt deze als gemarkeerd als "ready for review" in het "project board". Aan elke taak worden één of meerdere personen toegewezen. Op het moment dat de taak gemarkeerd staat als "ready for review", kijkt iemand anders het ingeleverde werk na, checkt of dit voldoet aan de DoD en geeft hij/zij hier feedback op. Dit zorgt voor een hogere kwaliteit en een goede samenwerking. 
+Op het moment dat een taak af is, wordt deze als gemarkeerd als "ready for review" in het "project board". Aan elke taak worden één of meerdere personen toegewezen. Op het moment dat de taak gemarkeerd staat als "ready for review", kijkt iemand anders het ingeleverde werk na, checkt of dit voldoet aan de DoD en geeft hij/zij hier feedback op. Dit zorgt voor een hogere kwaliteit en een goede samenwerking. Wanneer de taak is gereviewed en voldoet aan de acceptatie criteria & de DoD, kan deze gemarkeerd worden als "done"
  
 Op het moment dat er vertraging is, wordt dit uiterst tijdens de daily stand-up aangegeven. Hierdoor kan er op tijd ingegrepen worden door de teamleden en een nieuwe aanpak gemaakt worden, om de vertraging te "tackelen".
 
