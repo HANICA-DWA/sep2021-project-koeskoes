@@ -37,7 +37,7 @@
 * Als verzender wil ik op de hoogte gehouden worden via de mail over de bestelling, zodat de verzender weet hoe het met de bestelling gaat (bevestiging bestelling).
 * Als verzender wil ik op de hoogte gehouden worden via de mail over bijvoorbeeld een reminder, zodat de verzender bijvoorbeeld weet dat er nog een video geupload moet worden om de bestelling te voltooien.
 
-### Sprint 1 backlog
+### Sprint 1 backlog (advies)
 * Als webshop beheerder wil ik eenvoudig de plug-in aan een webshop kunnen toevoegen, zodat de klanten makkelijk gebruik kunnen maken van de plug-in.
 * Als klant van de plugin wil ik op een landingspagina terecht komen, zodat ik kan kiezen tussen het uploaden of bekijken van een bericht.
 * Als verzender wil ik een QR-code kunnen aanmaken, zodat de ontvanger deze kan scannen.
