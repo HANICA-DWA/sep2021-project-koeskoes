@@ -6,7 +6,7 @@ function UploadVideo() {
 
   const convertVideo = async () => {
     let sourceVideoFile = video.files[0];
-    let targetVideoFormat = "avi";
+    let targetVideoFormat = "mp4";
     let convertedVideoDataObj = await VideoConverter.convert(
       sourceVideoFile,
       targetVideoFormat
