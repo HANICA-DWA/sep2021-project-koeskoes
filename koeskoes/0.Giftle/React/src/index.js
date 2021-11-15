@@ -1,18 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-
-import './styles/index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import App from './components/App';
 import React from "react";
 import ReactDOM from "react-dom";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./styles/index.css";
+
 import * as Redux from "redux";
 import { mainReducer } from "./redux/reducers/mainReducer";
 import thunkMiddleware from "redux-thunk";
-import App from "./components/App";
 
 const logger = (store) => (next) => (action) => {
   let result = next(action);
