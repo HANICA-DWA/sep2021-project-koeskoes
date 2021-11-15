@@ -21,8 +21,10 @@ app.use(sessionParser);
 
 /*---------------ROUTERS---------------*/
 
-// const blaRouter = require('./path/to/router');
-// app.use('/bla', blaRouter);
+const fileUpload = require('./routes/fileUpload');
+app.use('/fileUpload', fileUpload);
+
+/*-----------END OF ROUTERS------------*/
 
 const httpServer = http.createServer(app);
 
