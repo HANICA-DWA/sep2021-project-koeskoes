@@ -6,7 +6,7 @@ function UploadVideo() {
         <h1>Video uploaden!</h1>
         <p>Voor het uploaden van een video moet je hieronder een video selecteren die je wilt meesturen met je cadeau.</p>
         <input type="file" name="uploadedVideo" accept="video/*" /><br /><br />
-        <button className="btn btn-primary">Create room</button>
+        <button className="btn btn-primary">Upload video</button>
       </div>
     </div>
   );
