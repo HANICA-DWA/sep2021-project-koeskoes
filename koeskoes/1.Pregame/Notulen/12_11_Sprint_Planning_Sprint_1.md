@@ -75,7 +75,7 @@ Wat is lengte limiet, meerdere mogelijkheden dan is dit een ding
 > Mail moet Sprint 1
 > Reactie terugsturen Sprint 1
 
-> Code naar tesktcode\
+> Code naar tekstcode\
 > Doe iets dat simpel is zoals postcode
 
 > (Tweede User Story) Instellingen moet eruit en kleinere user stories
