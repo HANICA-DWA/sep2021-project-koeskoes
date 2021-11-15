@@ -67,8 +67,8 @@ Wat is lengte limiet, meerdere mogelijkheden dan is dit een ding
 > Demo gaat vanaf de laptop
 > Productieserver kan wel voor QR-code scannen vanaf telefoon (Vragen aan Deny)
 > Goh zou je ons beschikking kunnen geven van een VM?
-> 50GB storage en 1GB RAM
-> Zometeen struren
+> 50GB storage en 1GB RAM\
+> Zometeen struren\
 > Domeinnaam (niet perse)
 
 
