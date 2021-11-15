@@ -13,6 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/seller" element={<HomeSeller />} />
+          <Route path="/upload" element={<UploadVideo />} />
           <Route path="/receiver" element={<HomeReceiver />} />
           <Route path="/QRcode" element={<QRcodePage />} />
           <Route path="/Textcode" element={<TextcodePage />} />
