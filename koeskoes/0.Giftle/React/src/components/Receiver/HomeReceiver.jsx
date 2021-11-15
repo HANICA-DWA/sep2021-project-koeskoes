@@ -6,11 +6,11 @@ function HomeReceiver() {
   const [toTextcode, setToTextcode] = React.useState(false);
 
   if (toQRcode === true) {
-    return <Navigate to='/QRcode'/>
+    return <Navigate to='/QRcode' />
   }
 
   if (toTextcode === true) {
-    return <Navigate to='/Textcode'/>
+    return <Navigate to='/Textcode' />
   }
 
   return (
@@ -24,8 +24,8 @@ function HomeReceiver() {
           <br />
           Ik heb een...
         </p>
-        <button className="btn btn-primary mx-2">QR-code</button>
-        <button className="btn btn-primary mx-2">Tekstcode</button>
+        <button className="btn btn-primary mx-2" onClick={() => setToQRcode(true)}>QR-code</button>
+        <button className="btn btn-primary mx-2" onClick={() => setToTextcode(true)}>Tekstcode</button>
       </div>
     </div>
   );
