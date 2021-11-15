@@ -2,8 +2,12 @@ import React from "react";
 
 function HomeReceiver() {
   return (
-    <div>
-      <h1>HOME - Receiver</h1>
+    <div className="vertical-center colored-background">
+      <div className="container text-center rounded p-3 bg-light">
+        <h1>Welkom op Giftle!</h1>
+        <p>Wat leuk dat je een Giftle hebt ontvangen! Je kunt hem bekijken door de QR-code te scannen of door de tekstcode in te vullen.<br /><br />Ik heb een...</p>
+        <button className="btn btn-primary">Create room</button>
+      </div>
     </div>
   );
 }
