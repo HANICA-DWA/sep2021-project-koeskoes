@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const uploadSchema = new mongoose.Schema({
-  _id: {
-    type: Number,
-    required: true
-  },
   emailGifter: {
     type: String,
     required: true
@@ -39,4 +35,4 @@ const uploadSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('UploadSchema', uploadSchema);
+const uploads = mongoose.model('UploadSchema', uploadSchema);

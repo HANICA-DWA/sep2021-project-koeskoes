@@ -4,9 +4,10 @@ const http = require('http');
 var ws = require('ws');
 var cors = require('cors');
 const mongoose = require('mongoose');
+require('./model/uploadModel');
 
 const app = express();
-const uploadModel = mongoose.model("UploadSchema");
+const uploads = mongoose.model("UploadSchema");
 
 app.use(cors({ origin: true, credentials: true }));
 app.options("*", cors({ origin: true, credentials: true }));
@@ -61,7 +62,7 @@ websocketServer.on('connection', (socket, req) => {
 
 const port = process.env.PORT || 4000;
 httpServer.listen(port, () => {
-  mongoose.connect(`mongodb://localhost:27017/quizzy`,  {useNewUrlParser: true }, () => {
+  mongoose.connect(`mongodb://localhost:27017/giftle`,  {useNewUrlParser: true }, () => {
     console.log(`game server started on port ${port}`);
   });
 });
