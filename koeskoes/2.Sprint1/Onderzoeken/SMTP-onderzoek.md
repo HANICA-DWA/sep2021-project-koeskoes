@@ -443,4 +443,4 @@ Dit zijn de gratis SMTP servers waar wij keuze uit hebben:
 
 ## Conclusie
 
-De SMTP servers hebben allemaal een maximaal hoeveelheid e-mails per dag/maand. Wij denken het maximale hoeveelheid e-mails nodig te hebben, waarbij we uitkomen op SendPulse. Dit is tevens alleen voor de prototype ter sprake. Voor deployment adviseren wij te kijken voor een subscriptie.
+De SMTP servers hebben allemaal een maximaal hoeveelheid e-mails per dag/maand. Wij denken het maximale hoeveelheid e-mails nodig te hebben, waarbij we uitkomen op SendPulse. Dit is tevens alleen voor het prototype ter sprake. Voor deployment adviseren wij te kijken voor uiteindelijk een subscriptie.
