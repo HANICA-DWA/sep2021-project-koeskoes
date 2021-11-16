@@ -435,16 +435,16 @@ Bron: https://sendgrid.com/pricing
 
 Dit zijn de gratis SMTP servers waar wij keuze uit hebben:
 
-| SMTP server  | E-mails per hoeveelheid                                          |
-| ------------ | ---------------------------------------------------------------- |
-| Sendinblue   | 300 e-mails per dag                                              |
-| MailerSend   | 12,000 e-mails per maand (extra is $1,00/1000 e-mails)           |
-| MailGun      | 5,000 e-mails per maand voor 3 maanden (daarna betalen per mail) |
-| SMTPProvider | 100 e-mails voor 7 dagen                                         |
-| SendPulse    | 15,000 e-mails per maand                                         |
-| MailChimp    | 10,000 e-mails per maand (maximaal 2,000 e-mails per dag)        |
-| TurboSMTP    | 6,000 e-mails per maand (maximaal 200 e-mails per dag)           |
+| SMTP server  | E-mails hoeveelheid per dag/maand                                  |
+| ------------ | ------------------------------------------------------------------ |
+| Sendinblue   | 300 e-mails per dag                                                |
+| MailerSend   | 12,000 e-mails per maand (extra is $1,00/1000 e-mails)             |
+| MailGun      | 5,000 e-mails per maand voor 3 maanden (daarna betalen per e-mail) |
+| SMTPProvider | 100 e-mails voor 7 dagen                                           |
+| SendPulse    | 15,000 e-mails per maand                                           |
+| MailChimp    | 10,000 e-mails per maand (maximaal 2,000 e-mails per dag)          |
+| TurboSMTP    | 6,000 e-mails per maand (maximaal 200 e-mails per dag)             |
 
 ## Conclusie
 
-> Conclusie moet nog geschreven worden<<
+De SMTP servers hebben allemaal een maximaal hoeveelheid e-mails per dag/maand. Wij denken het maximale hoeveelheid e-mails nodig te hebben, waarbij we uitkomen op SendPulse.
