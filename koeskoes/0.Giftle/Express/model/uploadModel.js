@@ -9,6 +9,14 @@ const uploadSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  firstnameReceiver: {
+    type: String,
+    required: true
+  },
+  lastnameReceiver: {
+    type: String,
+    required: true
+  },
   emailReceiver: {
     type: String,
     required: true
@@ -17,11 +25,11 @@ const uploadSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  vidName: {
+  videoName: {
     type: String,
     required: true
   },
-  vidLocation: {
+  videoLocation: {
     type: String,
     required: true
   },
