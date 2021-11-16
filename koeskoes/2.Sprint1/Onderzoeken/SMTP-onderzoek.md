@@ -2,11 +2,7 @@
 
 ## Wat is SMTP precies?
 
-Simple Mail Transfer Protocol (SMTP) is de-facto-standaard voor het versturen van een e-mail over het internet. SMTP is een relatief simpel, tekstgebaseerd protocol:
-
-- Eerst wordt de afzender van het bericht gespecificeerd
-- Daarna een of meerdere ontvangers
-- Vervolgens de verzendgegevens en inhoud van het bericht.
+Simple Mail Transfer Protocol (SMTP) is de facto-standaard voor het versturen van een e-mail over het internet. SMTP is een relatief simpel, tekstgebaseerd protocol: eerst wordt de afzender van het bericht gespecificeerd, daarna een of meerdere ontvangers, vervolgens de verzendgegevens en inhoud van het bericht.
 
 Bron: https://nl.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
 
@@ -20,7 +16,7 @@ Bron: https://nl.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
 
 ## Welke (beste) opties zijn er?
 
-Wij gaan kijken naar welke SMTP gratis of niet duur is, met features die wij eventueel moeten en/of kunnen gebruiken. Mochten wij keuze hebben uit SMTP, dan proberen wij de beste SMTP te kiezen met de meeste features die wij dus nodig gaan hebben.
+Wij gaan kijken naar welke SMTP Services gratis is, met features die wij eventueel moeten en/of kunnen gebruiken. Mochten wij keuze hebben uit SMTP, dan proberen wij de beste service te kiezen met de meeste features die wij dus nodig gaan hebben.
 
 Bron: https://www.guru99.com/free-smtp-servers.html
 
@@ -447,4 +443,4 @@ Dit zijn de gratis SMTP servers waar wij keuze uit hebben:
 
 ## Conclusie
 
-De SMTP servers hebben allemaal een maximaal hoeveelheid e-mails per dag/maand. Wij denken het maximale hoeveelheid e-mails nodig te hebben, waarbij we uitkomen op SendPulse.
+De SMTP servers hebben allemaal een maximaal hoeveelheid e-mails per dag/maand. Wij denken het maximale hoeveelheid e-mails nodig te hebben, waarbij we uitkomen op SendPulse. Dit is tevens alleen voor het prototype ter sprake. Voor deployment adviseren wij te kijken voor uiteindelijk een subscriptie.
