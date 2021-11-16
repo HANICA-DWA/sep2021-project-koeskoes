@@ -7,7 +7,7 @@ function HomeSeller() {
   const [isBtnUpload, setIsBtnUpload] = useState(false);
 
   if (isBtnRecord === true) {
-    return <Navigate to="/qr-code" />;
+    return <Navigate to="/record" />;
   }
 
   if (isBtnUpload === true) {
