@@ -1,15 +1,16 @@
 import React from "react";
+import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
 function HomeReceiver() {
-  const [toQRcode, setToQRcode] = React.useState(false);
-  const [toTextcode, setToTextcode] = React.useState(false);
+  const [isBtnQRcode, setIsBtnQRcode] = useState(false);
+  const [isBtnTextcode, setIsBtnTextcode] = useState(false);
 
-  if (toQRcode === true) {
+  if (isBtnQRcode === true) {
     return <Navigate to="/qr-code" />;
   }
 
-  if (toTextcode === true) {
+  if (isBtnTextcode === true) {
     return <Navigate to="/textcode" />;
   }
 
@@ -26,13 +27,13 @@ function HomeReceiver() {
         </p>
         <button
           className="btn btn-primary mx-2"
-          onClick={() => setToQRcode(true)}
+          onClick={() => setIsBtnQRcode(true)}
         >
           QR-code
         </button>
         <button
           className="btn btn-primary mx-2"
-          onClick={() => setToTextcode(true)}
+          onClick={() => setIsBtnTextcode(true)}
         >
           Tekstcode
         </button>
