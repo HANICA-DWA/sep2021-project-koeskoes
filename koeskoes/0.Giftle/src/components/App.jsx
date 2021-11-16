@@ -15,8 +15,8 @@ function App() {
           <Route path="/seller" element={<HomeSeller />} />
           <Route path="/upload" element={<UploadVideo />} />
           <Route path="/receiver" element={<HomeReceiver />} />
-          <Route path="/QRcode" element={<QRcodePage />} />
-          <Route path="/Textcode" element={<TextcodePage />} />
+          <Route path="/qr-code" element={<QRcodePage />} />
+          <Route path="/textcode" element={<TextcodePage />} />
         </Routes>
       </Router>
     </div>
