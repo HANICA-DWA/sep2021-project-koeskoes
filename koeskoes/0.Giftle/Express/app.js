@@ -6,6 +6,7 @@ var cors = require('cors');
 const mongoose = require('mongoose');
 
 const app = express();
+const uploadModel = mongoose.model("UploadSchema");
 
 app.use(cors({ origin: true, credentials: true }));
 app.options("*", cors({ origin: true, credentials: true }));
