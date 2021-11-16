@@ -1,16 +1,16 @@
 import React from "react";
-import { Navigate } from 'react-router-dom'
+import { Navigate } from "react-router-dom";
 
 function HomeReceiver() {
   const [toQRcode, setToQRcode] = React.useState(false);
   const [toTextcode, setToTextcode] = React.useState(false);
 
   if (toQRcode === true) {
-    return <Navigate to='/QRcode' />
+    return <Navigate to="/qr-code" />;
   }
 
   if (toTextcode === true) {
-    return <Navigate to='/Textcode' />
+    return <Navigate to="/textcode" />;
   }
 
   return (
@@ -24,8 +24,18 @@ function HomeReceiver() {
           <br />
           Ik heb een...
         </p>
-        <button className="btn btn-primary mx-2" onClick={() => setToQRcode(true)}>QR-code</button>
-        <button className="btn btn-primary mx-2" onClick={() => setToTextcode(true)}>Tekstcode</button>
+        <button
+          className="btn btn-primary mx-2"
+          onClick={() => setToQRcode(true)}
+        >
+          QR-code
+        </button>
+        <button
+          className="btn btn-primary mx-2"
+          onClick={() => setToTextcode(true)}
+        >
+          Tekstcode
+        </button>
       </div>
     </div>
   );
