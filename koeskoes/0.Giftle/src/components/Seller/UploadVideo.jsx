@@ -3,11 +3,18 @@ import VideoConverter from "convert-video";
 import axios from 'axios';
 
 function UploadVideo() {
+  // Creates the state for uploaded files and errors that can occur.
   const [video, setVideo] = useState(null);
   const [error, setError] = useState(null);
 
+  /**
+  * This function will send the uploaded video file to the server. 
+  * If this file is not a video format it will generate an error.
+  * 
+  * @author Sjoerd de Bruin
+  * 
+  */
   const convertVideo = async () => {
-    console.log(video);
     if (video === null) return setError(
       <div class="alert alert-danger d-flex align-items-center" role="alert">
         <div>
