@@ -32,6 +32,10 @@ const uploadSchema = new mongoose.Schema({
   textCode: {
     type: Number,
     required: true
+  },
+  printed: {
+    type: Boolean,
+    required: true
   }
 });
 

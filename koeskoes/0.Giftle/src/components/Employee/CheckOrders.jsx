@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOrders, setSearch, setPageNumber } from '../../redux/actions/orderActions';
@@ -24,14 +25,22 @@ const CheckOrders = () => {
           for (i = 0,j = orders.length; i < j; i += chunk) {
             temporary.push(orders.slice(i, i + chunk));
           }
-
+          
           if (pageNumbers !== temporary.length) {
             setPageNumbers(temporary.length);
           }
 
           return temporary;
         }
-        else return [orders];
+        else {
+          const newOrders = [orders];
+          
+          if (pageNumbers !== newOrders.length) {
+            setPageNumbers(newOrders.length);
+          }
+
+          return newOrders;
+        };
       }
 
       return mappedOrders()[pageNumber-1].map(order => {
@@ -62,8 +71,12 @@ const CheckOrders = () => {
     </ul>
   }
 
-  const createQRCode = (orderNumber) => {
+  const createQRCode = async (orderNumber) => {
     const qrCode = qrcode('https://www.youtube.com/watch?v=BNflNL40T_M');
+
+    await axios.patch('http://localhost:4000/orders/', {orderNumber});
+
+    dispatch(getOrders());
 
     qrCode.download({ name: orderNumber, extension: "png" });
   }

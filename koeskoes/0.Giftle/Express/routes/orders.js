@@ -11,11 +11,12 @@ router.use(fileUpload());
 
 router.route('/')
 .get(async (req, res) => {
-  const orders = await uploads.find({}, {
+  const orders = await uploads.find({
+    printed: false
+  }, 
+  {
     _id: 1, emailGifter: 1, firstnameReceiver: 1, lastnameReceiver: 1, emailReceiver: 1, mobileReceiver: 1, videoName: 1, videoLocation: 1, textCode: 1,
   }).exec();
-
-  console.log(orders)
 
   res.json(orders);
 })
@@ -43,13 +44,27 @@ router.route('/')
       "mobileReceiver": 1,
       "videoName": finalFileName,
       "videoLocation": finalFileName,
-      "textCode": 929
+      "textCode": 929,
+      "printed": false
     });
 
     await newRecord.save();
 
     return res.send({status: 'success', message: 'File uploaded'});
   });
+})
+.patch(async (req,res) => {
+  const order = await uploads.findOne({
+    _id: req.body.orderNumber
+  }, {
+    _id: 1, emailGifter: 1, firstnameReceiver: 1, lastnameReceiver: 1, emailReceiver: 1, mobileReceiver: 1, videoName: 1, videoLocation: 1, textCode: 1,
+  }).exec();
+
+  order.printed = true;
+
+  await order.save();
+
+  res.json({status:'success', message:'Order change saved'});
 });
 
 module.exports = router;
