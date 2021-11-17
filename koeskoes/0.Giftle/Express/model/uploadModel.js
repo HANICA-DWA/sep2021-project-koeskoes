@@ -19,7 +19,7 @@ const uploadSchema = new mongoose.Schema({
     type: String
   },
   textCode: {
-    type: Number
+    type: String
   },
   printed: {
     type: Boolean,

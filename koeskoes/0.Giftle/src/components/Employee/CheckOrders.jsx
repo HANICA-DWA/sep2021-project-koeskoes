@@ -95,8 +95,8 @@ const CheckOrders = () => {
    */
   const createQRCode = async (orderNumber) => {
     const qrCode = qrcode('https://www.youtube.com/watch?v=BNflNL40T_M');
-
-    await axios.patch('http://localhost:4000/orders/', {orderNumber});
+    const createRandomCode = () => (Math.random() + 1).toString(36).substr(2, 6);
+    await axios.patch('http://localhost:4000/orders/', {orderNumber, randomCode: createRandomCode()});
 
     dispatch(getOrders());
 

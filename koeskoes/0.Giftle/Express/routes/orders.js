@@ -55,6 +55,7 @@ router.route('/')
   }).exec();
 
   order.printed = true;
+  order.textCode = req.body.randomCode;
 
   await order.save();
 
