@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOrders, setSearch, setPageNumber } from '../../redux/actions/orderActions';
+import qrcode from '../Common/CreateQRcode';
 
 const CheckOrders = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const CheckOrders = () => {
           <td>{order.emailGifter}</td>
           <td>{order.firstnameReceiver + ' ' + order.lastnameReceiver}</td>
           <td>{order.emailReceiver}</td>
-          <td>QR-code</td>
+          <td><button className="btn btn-primary" onClick={(e) => createQRCode(order._id)}>Maak QR-code</button></td>
         </tr>;
       });
     }
@@ -59,6 +60,12 @@ const CheckOrders = () => {
       {pages}
       <li key={'gt'} className={"page-item " + (pageNumber >= pageNumbers ? 'disabled' : '')} onClick={(e) => (pageNumber < pageNumbers ? dispatch(setPageNumber(pageNumber+1)) : null)}><span className="page-link">&gt;&gt;</span></li>
     </ul>
+  }
+
+  const createQRCode = (orderNumber) => {
+    const qrCode = qrcode('https://www.youtube.com/watch?v=BNflNL40T_M');
+
+    qrCode.download({ name: orderNumber, extension: "png" });
   }
 
   return (
