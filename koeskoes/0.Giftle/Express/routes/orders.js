@@ -6,7 +6,6 @@ require('../model/uploadModel');
 
 const uploads = mongoose.model('UploadSchema');
 
-// default options
 router.use(fileUpload());
 
 router.route('/')

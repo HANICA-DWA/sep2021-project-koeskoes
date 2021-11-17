@@ -5,18 +5,27 @@ import { getOrders, setSearch, setPageNumber } from '../../redux/actions/orderAc
 import qrcode from '../Common/CreateQRcode';
 
 const CheckOrders = () => {
+  // Local variables
   const dispatch = useDispatch();
   const orders = useSelector((state) => (state.orders.searchParams ? state.orders.filteredOrders : state.orders.orders));
   const pageNumber = useSelector((state) => state.orders.pageNumber);
   const [pageNumbers, setPageNumbers] = useState(null);
   const searchParams = useSelector((state) => state.orders.searchParams);
 
+  // Use effect to update the list of orders.
   useEffect(() => {
     if (orders.length === 0) {
       dispatch(getOrders());
     }
   }, [orders, dispatch]);
 
+  /**
+   * This function will update the list of orders to a usable list of orders.
+   * This list can be used in a table that employees use before sending out orders.
+   *
+   * @author Sjoerd de Bruin
+   *
+   */
   const orderList = () => {
     if (orders.length !== 0) {
       const mappedOrders = () => {
@@ -57,6 +66,12 @@ const CheckOrders = () => {
     return null;
   }
 
+  /**
+   * This function will create the pagination for the table so employees can move through different pages of orders.
+   *
+   * @author Sjoerd de Bruin
+   *
+   */
   const pagination = () => {
     const pages = [];
     
@@ -71,6 +86,13 @@ const CheckOrders = () => {
     </ul>
   }
 
+  /**
+   * This function will create a QR-code with a data string.
+   * This QR-code will be downloaded to the local machine.
+   *
+   * @author Sjoerd de Bruin
+   *
+   */
   const createQRCode = async (orderNumber) => {
     const qrCode = qrcode('https://www.youtube.com/watch?v=BNflNL40T_M');
 
