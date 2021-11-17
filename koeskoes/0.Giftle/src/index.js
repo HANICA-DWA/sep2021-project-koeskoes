@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/index.css";
 
 import * as Redux from "redux";
+import { Provider } from "react-redux";
 import { mainReducer } from "./redux/reducers/mainReducer";
 import thunkMiddleware from "redux-thunk";
 
@@ -22,9 +23,9 @@ export const theStore = Redux.createStore(
 );
 
 const mainComponent = (
-  <React.StrictMode>
+  <Provider store={theStore}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
 
 ReactDOM.render(mainComponent, document.getElementById("root"));

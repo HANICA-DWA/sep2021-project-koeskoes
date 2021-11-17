@@ -9,7 +9,17 @@ const uploads = mongoose.model('UploadSchema');
 // default options
 router.use(fileUpload());
 
-router.post('/', (req, res) => {
+router.route('/')
+.get(async (req, res) => {
+  const orders = await uploads.find({}, {
+    _id: 1, emailGifter: 1, firstnameReceiver: 1, lastnameReceiver: 1, emailReceiver: 1, mobileReceiver: 1, videoName: 1, videoLocation: 1, textCode: 1,
+  }).exec();
+
+  console.log(orders)
+
+  res.json(orders);
+})
+.post((req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.send({status: 'error', message: 'No file has been uploaded'});
   }

@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 require('./model/uploadModel');
 
 const app = express();
-const uploads = mongoose.model("UploadSchema");
+// const uploads = mongoose.model("UploadSchema");
 
 app.use(cors({ origin: true, credentials: true }));
 app.options("*", cors({ origin: true, credentials: true }));
@@ -23,8 +23,8 @@ app.use(sessionParser);
 
 /*---------------ROUTERS---------------*/
 
-const fileUpload = require('./routes/fileUpload');
-app.use('/fileUpload', fileUpload);
+const fileUpload = require('./routes/orders');
+app.use('/orders', fileUpload);
 
 /*-----------END OF ROUTERS------------*/
 
@@ -51,7 +51,7 @@ websocketServer.on('connection', (socket, req) => {
     req.session.reload((err)=>{
       if(err) { throw err };
 
-      const parsedMessage = JSON.parse(message);
+      // const parsedMessage = JSON.parse(message);
 
       // socket acties verwerken.
     
