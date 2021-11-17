@@ -7,7 +7,8 @@ import UploadVideo from "./Seller/UploadVideo";
 
 // Receiver components
 import HomeReceiver from "./Receiver/HomeReceiver";
-import QRcodePage from "./Receiver/QRcodePage";
+import QRPage from "./Receiver/QRPage";
+import ScanQR from "./Receiver/ScanQR";
 import TextcodePage from "./Receiver/TextcodePage";
 
 // Employee components
@@ -25,7 +26,8 @@ function App() {
           <Route path="/seller" element={<HomeSeller />} />
           <Route path="/upload" element={<UploadVideo />} />
           <Route path="/receiver" element={<HomeReceiver />} />
-          <Route path="/qr-code" element={<QRcodePage />} />
+          <Route path="/qr-code" element={<QRPage />} />
+          <Route path="/scan" element={<ScanQR />} />
           <Route path="/textcode" element={<TextcodePage />} />
           <Route path="/checkorders" element={<CheckOrders />} />
           <Route path="/createtextcode" element={<CreateTextcode />} />
