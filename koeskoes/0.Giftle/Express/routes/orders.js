@@ -37,14 +37,9 @@ router.route('/')
       return res.send({status: 'error', message: 'File not uploaded'});
 
     const newRecord = new uploads({
-      "emailGifter":'mail@mail.com' ,
-      "firstnameReceiver": 'firstname',
-      "lastnameReceiver": 'lastname',
-      "emailReceiver": 'mail@mail.com',
-      "mobileReceiver": 1,
+      "nameGifter": 'firstname lastname',
+      "emailGifter":'mail@mail.com',
       "videoName": finalFileName,
-      "videoLocation": finalFileName,
-      "textCode": 929,
       "printed": false
     });
 

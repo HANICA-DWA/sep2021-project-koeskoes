@@ -1,37 +1,25 @@
 const mongoose = require('mongoose');
 
 const uploadSchema = new mongoose.Schema({
+  nameGifter: {
+    type: String,
+    required: true
+  },
   emailGifter: {
     type: String,
     required: true
   },
-  firstnameReceiver: {
-    type: String,
-    required: true
-  },
-  lastnameReceiver: {
-    type: String,
-    required: true
+  nameReceiver: {
+    type: String
   },
   emailReceiver: {
-    type: String,
-    required: true
-  },
-  mobileReceiver: {
-    type: Number,
-    required: true
+    type: String
   },
   videoName: {
-    type: String,
-    required: true
-  },
-  videoLocation: {
-    type: String,
-    required: true
+    type: String
   },
   textCode: {
-    type: Number,
-    required: true
+    type: Number
   },
   printed: {
     type: Boolean,
