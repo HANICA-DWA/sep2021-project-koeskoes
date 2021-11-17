@@ -5,7 +5,7 @@ Voor het uploaden van video's moeten de video's in een bepaald bestand format st
 
 Volgens Adobe (Adobe, z.d.), Anderson (Anderson, 2020) en meerdere andere websites is .MP4 het meeste gebruikte format.
 
-Om deze reden gaan wij .MP$ als bestand format gebruiken.
+Om deze reden gaan wij .MP4 als bestand format gebruiken.
 
 ## Bronnen
 
