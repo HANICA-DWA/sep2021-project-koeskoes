@@ -14,7 +14,6 @@ import TextcodePage from "./Receiver/TextcodePage";
 
 // Employee components
 import CheckOrders from "./Employee/CheckOrders";
-import CreateTextcode from "./Employee/CreateTextcode";
 
 // Styling
 import "../styles/App.css";
@@ -32,7 +31,6 @@ function App() {
           <Route path="/scan" element={<ScanQR />} />
           <Route path="/textcode" element={<TextcodePage />} />
           <Route path="/checkorders" element={<CheckOrders />} />
-          <Route path="/createtextcode" element={<CreateTextcode />} />
         </Routes>
       </Router>
     </div>

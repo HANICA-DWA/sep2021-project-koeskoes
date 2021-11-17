@@ -1,11 +1,22 @@
 import React, { useState } from "react";
-// import VideoConverter from "convert-video";
+import { Navigate } from "react-router";
 import axios from "axios";
+import ErrorMessage from "../Common/CreateErrorMessage";
 
 function UploadVideo() {
   // Creates the state for uploaded files and errors that can occur.
   const [video, setVideo] = useState(null);
+  const [isGoBackSellerMain, setIsGoBackSellerMain] = useState(false);
+  const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(false);
   const [error, setError] = useState(null);
+
+  if (isGoBackSellerMain === true) {
+    return <Navigate to="/seller" />;
+  }
+
+  if (isGoToWatchVideo === true) {
+    return <Navigate to="/watchVideo" />;
+  }
 
   /**
    * This function will send the uploaded video file to the server.
@@ -15,20 +26,15 @@ function UploadVideo() {
    *
    */
   const convertVideo = async () => {
-    if (video === null)
-      return setError(
-        <div class="alert alert-danger d-flex align-items-center" role="alert">
-          <div>Kies een bestand!</div>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-            onClick={() => setError(null)}
-          ></button>
-        </div>
-      );
+    if (video === null){
+      return setError(ErrorMessage('Kies een bestand!', () => setError(null)));
+    }
     const sourceVideoFile = video.files[0];
+
+    if (sourceVideoFile.size > 10485760) {
+      return setError(ErrorMessage('Kies een kleiner bestand!', () => setError(null)));
+    }
+
     if (sourceVideoFile.type.split("/")[0] === "video") {
       const formData = new FormData();
 
@@ -42,41 +48,20 @@ function UploadVideo() {
       );
 
       if (uploadResponse.status === "error") {
-        setError(
-          <div
-            class="alert alert-danger d-flex align-items-center"
-            role="alert"
-          >
-            <div>{uploadResponse.message}</div>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="alert"
-              aria-label="Close"
-              onClick={() => setError(null)}
-            ></button>
-          </div>
-        );
+        return setError(ErrorMessage(uploadResponse.message, () => setError(null)));
+      }
+      else {
+        return setIsGoToWatchVideo(true);
       }
     } else {
-      setError(
-        <div class="alert alert-danger d-flex align-items-center" role="alert">
-          <div>Kies een geldig video bestand!</div>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-            onClick={() => setError(null)}
-          ></button>
-        </div>
-      );
+      return setError(ErrorMessage('Kies een geldig video bestand!', () => setError(null)));
     }
   };
   return (
     <div className="vertical-center colored-background">
       {error}
       <div className="container text-center rounded p-3 bg-light">
+        <button className="btn btn-primary float-start" onClick={() => setIsGoBackSellerMain(true)}>Terug</button>
         <h1>Video uploaden!</h1>
         <p>
           Voor het uploaden van een video moet je hieronder een video selecteren

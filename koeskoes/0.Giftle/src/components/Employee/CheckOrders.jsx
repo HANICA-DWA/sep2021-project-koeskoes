@@ -55,9 +55,9 @@ const CheckOrders = () => {
       return mappedOrders()[pageNumber-1].map(order => {
         return <tr key={order._id}>
           <th scope="row">{order._id}</th>
+          <td>{order.nameGifter}</td>
           <td>{order.emailGifter}</td>
-          <td>{order.emailGifter}</td>
-          <td>{order.firstnameReceiver + ' ' + order.lastnameReceiver}</td>
+          <td>{order.nameReceiver}</td>
           <td>{order.emailReceiver}</td>
           <td><button className="btn btn-primary" onClick={(e) => createQRCode(order._id)}>Maak QR-code</button></td>
         </tr>;
@@ -95,8 +95,8 @@ const CheckOrders = () => {
    */
   const createQRCode = async (orderNumber) => {
     const qrCode = qrcode('https://www.youtube.com/watch?v=BNflNL40T_M');
-    const createRandomCode = () => (Math.random() + 1).toString(36).substr(2, 6);
-    await axios.patch('http://localhost:4000/orders/', {orderNumber, randomCode: createRandomCode()});
+
+    await axios.patch('http://localhost:4000/orders/', {orderNumber});
 
     dispatch(getOrders());
 

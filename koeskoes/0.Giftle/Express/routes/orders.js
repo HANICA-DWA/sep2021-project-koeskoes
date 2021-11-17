@@ -8,13 +8,29 @@ const uploads = mongoose.model('UploadSchema');
 
 router.use(fileUpload());
 
+const generateRandomCode = async () => {
+  while (true) {
+    const createRandomCode = () => (Math.random() + 1).toString(36).substr(2, 6);
+
+    const randomCode = await uploads.findOne({
+      textCode: createRandomCode()
+    }, {
+      textCode: 1,
+    }).exec();
+
+    if (randomCode === null) {
+      return createRandomCode();
+    } 
+  }
+}
+
 router.route('/')
 .get(async (req, res) => {
   const orders = await uploads.find({
     printed: false
   }, 
   {
-    _id: 1, emailGifter: 1, firstnameReceiver: 1, lastnameReceiver: 1, emailReceiver: 1, mobileReceiver: 1, videoName: 1, videoLocation: 1, textCode: 1,
+    _id: 1, nameGifter: 1, emailGifter: 1, nameReceiver: 1, emailReceiver: 1, videoName: 1, textCode: 1, printed: 1,
   }).exec();
 
   res.json(orders);
@@ -48,6 +64,8 @@ router.route('/')
   });
 })
 .patch(async (req,res) => {
+  const randomCode = await generateRandomCode();
+
   const order = await uploads.findOne({
     _id: req.body.orderNumber
   }, {
@@ -55,7 +73,7 @@ router.route('/')
   }).exec();
 
   order.printed = true;
-  order.textCode = req.body.randomCode;
+  order.textCode = randomCode;
 
   await order.save();
 
