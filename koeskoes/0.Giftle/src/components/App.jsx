@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Seller components
 import HomeSeller from "./Seller/HomeSeller";
 import UploadVideo from "./Seller/UploadVideo";
+import RecordVideo from "./Seller/RecordVideo";
 
 // Receiver components
 import HomeReceiver from "./Receiver/HomeReceiver";
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/seller" element={<HomeSeller />} />
           <Route path="/upload" element={<UploadVideo />} />
+          <Route path="/record" element={<RecordVideo />} />
           <Route path="/receiver" element={<HomeReceiver />} />
           <Route path="/qr-code" element={<QRPage />} />
           <Route path="/scan" element={<ScanQR />} />
