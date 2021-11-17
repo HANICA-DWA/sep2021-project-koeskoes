@@ -1,0 +1,10 @@
+.scanContainer{
+    margin-top: 5em;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.mainBox{
+    height: 35em;
+}
