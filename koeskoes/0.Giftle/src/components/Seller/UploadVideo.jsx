@@ -37,7 +37,7 @@ function UploadVideo() {
       formData.append("video", blob, sourceVideoFile.name);
 
       const uploadResponse = await axios.post(
-        `http://localhost:4000/fileUpload/`,
+        `http://localhost:4000/orders/`,
         formData
       );
 

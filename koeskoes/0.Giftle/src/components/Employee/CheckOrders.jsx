@@ -71,7 +71,7 @@ const CheckOrders = () => {
   return (
     <div className="vertical-center colored-background">
       <div className="container-flex text-center rounded p-3 bg-light">
-        <label for="searchParams">Zoeken: </label> <input type="text" name="searchParams" id="searchParams" onChange={(e) => dispatch(setSearch(e.target.value))} value={searchParams} />
+        <label htmlFor="searchParams">Zoeken: </label> <input type="text" name="searchParams" id="searchParams" onChange={(e) => dispatch(setSearch(e.target.value))} value={searchParams} />
         <table className="table">
           <thead>
             <tr>
