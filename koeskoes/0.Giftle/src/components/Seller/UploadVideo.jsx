@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import VideoConverter from "convert-video";
-import axios from 'axios';
+import axios from "axios";
 
 function UploadVideo() {
   // Creates the state for uploaded files and errors that can occur.
@@ -8,53 +8,67 @@ function UploadVideo() {
   const [error, setError] = useState(null);
 
   /**
-  * This function will send the uploaded video file to the server. 
-  * If this file is not a video format it will generate an error.
-  * 
-  * @author Sjoerd de Bruin
-  * 
-  */
+   * This function will send the uploaded video file to the server.
+   * If this file is not a video format it will generate an error.
+   *
+   * @author Sjoerd de Bruin
+   *
+   */
   const convertVideo = async () => {
-    if (video === null) return setError(
-      <div class="alert alert-danger d-flex align-items-center" role="alert">
-        <div>
-          Kies een bestand!
+    if (video === null)
+      return setError(
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <div>Kies een bestand!</div>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+            onClick={() => setError(null)}
+          ></button>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => setError(null)}></button>
-      </div>
-    );
-    const sourceVideoFile = video.files[0];
-    if (sourceVideoFile.type.split("/")[0] === 'video') {
-      const formData = new FormData();
-    
-      const blob = new Blob([sourceVideoFile], {type: 'video/mp4'});
-
-      formData.append(
-        "video",
-        blob,
-        sourceVideoFile.name
       );
-    
-      const uploadResponse = await axios.post(`http://localhost:4000/fileUpload/`, formData);
+    const sourceVideoFile = video.files[0];
+    if (sourceVideoFile.type.split("/")[0] === "video") {
+      const formData = new FormData();
 
-      if (uploadResponse.status === 'error') {
+      const blob = new Blob([sourceVideoFile], { type: "video/mp4" });
+
+      formData.append("video", blob, sourceVideoFile.name);
+
+      const uploadResponse = await axios.post(
+        `http://localhost:4000/fileUpload/`,
+        formData
+      );
+
+      if (uploadResponse.status === "error") {
         setError(
-          <div class="alert alert-danger d-flex align-items-center" role="alert">
-            <div>
-              {uploadResponse.message}
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => setError(null)}></button>
+          <div
+            class="alert alert-danger d-flex align-items-center"
+            role="alert"
+          >
+            <div>{uploadResponse.message}</div>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+              onClick={() => setError(null)}
+            ></button>
           </div>
         );
       }
-    }
-    else {
+    } else {
       setError(
         <div class="alert alert-danger d-flex align-items-center" role="alert">
-          <div>
-            Kies een geldig video bestand!
-          </div>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onClick={() => setError(null)}></button>
+          <div>Kies een geldig video bestand!</div>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+            onClick={() => setError(null)}
+          ></button>
         </div>
       );
     }
