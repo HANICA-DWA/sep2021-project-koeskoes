@@ -63,6 +63,6 @@ websocketServer.on('connection', (socket, req) => {
 const port = process.env.PORT || 4000;
 httpServer.listen(port, () => {
   mongoose.connect(`mongodb://localhost:27017/giftle`,  {useNewUrlParser: true }, () => {
-    console.log(`game server started on port ${port}`);
+    console.log(`Server started on port ${port}`);
   });
 });
