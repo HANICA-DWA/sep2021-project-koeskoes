@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router";
+import BackArrow from "../Common/BackArrowIcon";
 import QrReader from "react-qr-reader";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import "../../styles/receiver/scanQR.css";
@@ -94,6 +95,7 @@ function ScanQR() {
             className="btn btn-primary my-3 mx-4"
             onClick={() => setIsGoBackSellerMain(true)}
           >
+            {<BackArrow />}
             Terug
           </button>
         </div>

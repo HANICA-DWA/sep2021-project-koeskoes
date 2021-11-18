@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navigate } from "react-router";
 import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
+import BackArrow from "../Common/BackArrowIcon";
 
 function UploadVideo() {
   // Creates the state for uploaded files and errors that can occur.
@@ -69,6 +70,7 @@ function UploadVideo() {
           className="btn btn-primary float-start"
           onClick={() => setIsGoBackSellerMain(true)}
         >
+          {<BackArrow/>}
           Terug
         </button>
         <h1>Video uploaden!</h1>

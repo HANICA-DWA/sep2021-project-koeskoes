@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router";
 import { useState } from "react";
+import BackArrow from "../Common/BackArrowIcon";
 
 /**
  * Functional component for letting the user know that they are about to scan a QR-code
@@ -34,6 +35,7 @@ function QRPage() {
           className="btn btn-primary my-3 mx-4"
           onClick={() => setIsGoBackSellerMain(true)}
         >
+          {<BackArrow/>}
           Terug
         </button>
         <button

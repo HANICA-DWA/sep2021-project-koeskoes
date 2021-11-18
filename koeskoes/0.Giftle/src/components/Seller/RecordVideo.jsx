@@ -3,6 +3,7 @@ import { Navigate } from "react-router";
 import Webcam from "react-webcam";
 import axios from "axios";
 import ErrorMessage from '../Common/CreateErrorMessage';
+import BackArrow from "../Common/BackArrowIcon";
 
 /**
  *
@@ -171,6 +172,7 @@ function RecordVideo() {
           className="btn btn-primary float-start"
           onClick={() => setIsGoBackSellerMain(true)}
         >
+          {<BackArrow/>}
           Terug
         </button>
         <h1>Uw video opnemen</h1>
