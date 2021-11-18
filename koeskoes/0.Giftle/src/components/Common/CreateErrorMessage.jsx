@@ -3,7 +3,7 @@ const ErrorMessage = (message, cb) => {
     <div>{message}</div>
     <button
       type="button"
-      className="btn-close float-end"
+      className="btn-close"
       data-bs-dismiss="alert"
       aria-label="Close"
       onClick={() => cb()}
