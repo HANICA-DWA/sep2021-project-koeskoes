@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NotFound from "./NotFound";
 
 // Seller components
 import HomeSeller from "./Seller/HomeSeller";
@@ -23,14 +24,15 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/seller" element={<HomeSeller />} />
-          <Route path="/upload" element={<UploadVideo />} />
-          <Route path="/record" element={<RecordVideo />} />
-          <Route path="/receiver" element={<HomeReceiver />} />
-          <Route path="/qr-code" element={<QRPage />} />
-          <Route path="/scan" element={<ScanQR />} />
-          <Route path="/textcode" element={<TextcodePage />} />
-          <Route path="/checkorders" element={<CheckOrders />} />
+          <Route path="/seller" exact element={<HomeSeller />} />
+          <Route path="/upload" exact element={<UploadVideo />} />
+          <Route path="/record" exact element={<RecordVideo />} />
+          <Route path="/receiver" exact element={<HomeReceiver />} />
+          <Route path="/qr-code" exact element={<QRPage />} />
+          <Route path="/scan" exact element={<ScanQR />} />
+          <Route path="/textcode" exact element={<TextcodePage />} />
+          <Route path="/checkorders" exact element={<CheckOrders />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Router>
     </div>
