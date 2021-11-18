@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router";
 import QrReader from "react-qr-reader";
 import ErrorMessage from "../Common/CreateErrorMessage";
@@ -16,10 +16,36 @@ function ScanQR() {
 
   const [delay] = useState(100);
   const [previewStyle] = useState({ height: "17em", width: "17em" });
+  const [isDevicesChecked, setIsDevicesChecked] = useState(false);
   const [isGoBackSellerMain, setIsGoBackSellerMain] = useState(false);
   const [error, setError] = useState(null);
 
-  
+  /**
+   *
+   * UseEffect to check if  video is available for the webcam module.
+   *
+   */
+  useEffect(() => {
+    const checkVideoAndAudio = async () => {
+      try {
+        const videoAccess = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+        if (videoAccess.getVideoTracks().length > 0) {
+          console.log("Camera is aanwezig!");
+        } else {
+          setError(ErrorMessage("Geen webcam gevonden", () => setError(null)));
+        }
+      } catch (e) {
+        setError(ErrorMessage("Geen webcam gevonden", () => setError(null)));
+      }
+      setIsDevicesChecked(true);
+    };
+    if (isDevicesChecked !== true) {
+      checkVideoAndAudio();
+    }
+  });
+
   if (isGoBackSellerMain === true) {
     return <Navigate to="/qr-code" />;
   }
