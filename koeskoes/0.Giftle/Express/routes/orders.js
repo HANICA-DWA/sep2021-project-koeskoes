@@ -27,6 +27,7 @@ const generateRandomCode = async () => {
 router.route('/')
 .get(async (req, res) => {
   const orders = await uploads.find({
+    videoName: {$ne: ''},
     printed: false
   }, 
   {
@@ -41,9 +42,8 @@ router.route('/')
   }
 
   const video = req.files.video;
-  const splitFileName = video.name.split('.');
-  splitFileName.pop();
-  const fileNameWithoutExtension = splitFileName.join('.');
+
+  const fileNameWithoutExtension = video.name.replace(/\.[^/.]+$/, "")
   const finalFileName = fileNameWithoutExtension + Date.now() + '.mp4';
   const uploadPath = '../src/videos/' + finalFileName;
 

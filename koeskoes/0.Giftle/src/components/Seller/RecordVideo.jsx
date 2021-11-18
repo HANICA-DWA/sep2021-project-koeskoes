@@ -1,68 +1,217 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { Navigate } from "react-router";
+import Webcam from "react-webcam";
+import axios from "axios";
+import ErrorMessage from '../Common/CreateErrorMessage';
+import BackArrow from "../Common/BackArrowIcon";
 
+/**
+ *
+ * React component to record video's from the webcam.
+ *
+ */
 function RecordVideo() {
   const [error, setError] = useState(null);
-  let [recording, setRecording] = useState("START_RECORDING");
+  const [isGoBackSellerMain, setIsGoBackSellerMain] = useState(false);
+  const [resolution, setResolution] = useState('720');
+  const [isDevicesChecked, setIsDevicesChecked] = useState(false);
+  const [isAudioAvailable, setIsAudioAvailable] = useState(false);
+  const [isWebcamAvailable, setIsWebcamAvailable] = useState(false);
+  const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(null);
+  const webcamRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
+  const [capturing, setCapturing] = useState(false);
+  const [recordedChunks, setRecordedChunks] = useState([]);
 
-  const nextStep = () => {
-    if (recording === "STOP_RECORDING") {
-      return (
-        <button
-          className="btn btn-primary ms-3"
-          onClick={() => {
-            setRecording("NEXT_STEP");
-          }}
-        >
-          Volgende stap
-        </button>
-      );
-    } else {
-      return null;
+  /**
+   *
+   * UseEffect to check if audio and video is available for the webcam module.
+   *
+   */
+  useEffect(() => {
+    const checkVideoAndAudio = async () => {
+      try {
+        const audioAccess = await navigator.mediaDevices.getUserMedia({audio: true});
+
+        if (audioAccess.getAudioTracks().length > 0){
+          setIsAudioAvailable(true);
+        } else {
+          setIsAudioAvailable(false);
+          setError(ErrorMessage('Geen microfoon gevonden', () => setError(null)));
+        }
+      }
+      catch (e) {
+        setIsAudioAvailable(false);
+        setError(ErrorMessage('Geen microfoon gevonden', () => setError(null)));
+      }
+
+      try {
+        const videoAccess = await navigator.mediaDevices.getUserMedia({video: true});
+
+        if (videoAccess.getVideoTracks().length > 0){
+          setIsWebcamAvailable(true);
+        } else {
+          setIsWebcamAvailable(false);
+          setError(ErrorMessage('Geen webcam gevonden', () => setError(null)));
+        }
+      }
+      catch (e) {
+        setIsWebcamAvailable(false);
+        setError(ErrorMessage('Geen webcam gevonden', () => setError(null)));
+      }
+
+      
+      setIsDevicesChecked(true);
     }
-  };
 
-  const renderHTML = (text, action) => {
-    return (
-      <div className="vertical-center colored-background">
-        {error}
-        <div className="container text-center rounded p-3 bg-light">
-          <h1>Uw video opnemen</h1>
-          <br />
-          <p>Hier komt het opnemen van een video...</p>
-          <p>Resolutie: 720p</p>
-          <p>
-            Door een video op te nemen gaat u akkoord met de{" "}
-            <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
-          </p>
-          <br />
-          <button
-            className="btn btn-primary me-3"
-            onClick={() => {
-              setRecording(action);
-            }}
-          >
-            {text}
-          </button>
-          {nextStep()}
-        </div>
-      </div>
+    if (isDevicesChecked !== true) {
+      checkVideoAndAudio();
+    }
+    
+  });
+
+  /**
+   *
+   * Adds new data chunks to previously recorded chunks.
+   *
+   */
+  const handleDataAvailable = useCallback(
+    ({ data }) => {
+      if (data.size > 0) {
+        setRecordedChunks((prev) => prev.concat(data));
+      }
+    },
+    [setRecordedChunks]
+  );
+
+  /**
+   *
+   * Handles the on click event to start recording.
+   *
+   */
+  const handleStartCaptureClick = useCallback(() => {
+    setCapturing(true);
+    mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
+      mimeType: "video/webm"
+    });
+    mediaRecorderRef.current.addEventListener(
+      "dataavailable",
+      handleDataAvailable
     );
-  };
+    mediaRecorderRef.current.start();
+  }, [webcamRef, setCapturing, mediaRecorderRef, handleDataAvailable]);
 
-  const recordVideoSteps = () => {
-    switch (recording) {
-      case "START_RECORDING":
-        return renderHTML("Opnemen starten", "RECORDING");
-      case "RECORDING":
-        return renderHTML("Opnemen stoppen", "STOP_RECORDING");
-      case "STOP_RECORDING":
-        return renderHTML("Opnieuw opnemen", "START_RECORDING");
-      case "NEXT_STEP":
-        return "Feature voor andere use case.";
+  /**
+   *
+   * Handles the on click event to stop recording.
+   *
+   */
+  const handleStopCaptureClick = useCallback(() => {
+    mediaRecorderRef.current.stop();
+    setCapturing(false);
+  }, [mediaRecorderRef, setCapturing]);
+
+  /**
+   *
+   * Handles the video upload to the server.
+   *
+   */
+  const handleDownload = useCallback(async () => {
+    if (recordedChunks.length) {
+      const blob = new Blob(recordedChunks, {
+        type: "video/webm"
+      });
+      
+      const formData = new FormData();
+
+      formData.append("video", blob, 'recordedVideo');
+
+      const uploadResponse = await axios.post(
+        `http://localhost:4000/orders/`,
+        formData
+      );
+
+      setRecordedChunks([]);
+
+      if (uploadResponse.status === "error") {
+        return setError(ErrorMessage(uploadResponse.message, () => setError(null)));
+      }
+      else {
+        return setIsGoToWatchVideo(true);
+      }
     }
-  };
+  }, [recordedChunks]);
 
-  return recordVideoSteps();
+  /**
+   *
+   * Handles the reset event to start over.
+   *
+   */
+  const handleResetRecording = () => {
+    setRecordedChunks([]);
+  }
+
+  /**
+   *
+   * Events to navigate to different pages.
+   *
+   */
+  if (isGoBackSellerMain === true) {
+    return <Navigate to="/seller" />;
+  }
+  
+  if (isGoToWatchVideo === true) {
+    return <Navigate to="/watchVideo" />;
+  }
+
+  return (
+    <div className="vertical-center colored-background">
+      {error}
+      <div className="container text-center rounded p-3 bg-light">
+        <button
+          className="btn btn-primary float-start"
+          onClick={() => setIsGoBackSellerMain(true)}
+        >
+          {<BackArrow/>}
+          Terug
+        </button>
+        <h1>Uw video opnemen</h1>
+        <br />
+        <Webcam 
+          audio={true} 
+          ref={webcamRef} 
+          forceScreenshotSourceSize
+          videoConstraints={{
+            height: resolution,
+            width: (resolution / 9 * 16)
+          }}
+          width={"100%"}
+        />
+        <p>Resolutie: </p>
+        <select class="form-select" onChange={(e) => setResolution(e.target.value)}>
+          <option value="480">480p</option>
+          <option selected value="720">720p</option>
+          <option value="1080">1080p</option>
+        </select>
+        <p>
+          Door een video op te nemen gaat u akkoord met de{" "}
+          <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
+        </p>
+        <br />
+        {(isWebcamAvailable && isAudioAvailable ? capturing ? (
+          <button className="btn btn-primary me-3" onClick={handleStopCaptureClick}>Opnemen stoppen</button>
+        ) : ( recordedChunks.length > 0 ? (
+            <>
+              <button className="btn btn-primary me-3" onClick={handleResetRecording}>Opnieuw opnemen</button>
+              <button className="btn btn-primary me-3" onClick={handleDownload}>Volgende stap</button>
+            </>
+          ) : (
+            <button className="btn btn-primary me-3" onClick={handleStartCaptureClick}>Opnemen starten</button>
+          )
+        ) : <p>Er is geen toegang tot de camera of microfoon</p>)}
+      </div>
+    </div>
+  );
 }
 
 export default RecordVideo;
