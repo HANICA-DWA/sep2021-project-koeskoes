@@ -2,12 +2,27 @@ import React from "react";
 import { Navigate } from "react-router";
 import { useState } from "react";
 
+/**
+ * Functional component for letting the user know that they are about to scan a QR-code
+ *
+ * @return the front-end for the QR page
+ */
+
 function QRPage() {
+  // Creates the state for checking if the button is clicked.
+  // Flips to true if clicked and then navigates to the corresponding url/ component
+
   const [isBtnClicked, setIsBtnClicked] = useState(false);
+  const [isGoBackSellerMain, setIsGoBackSellerMain] = useState(false);
 
   if (isBtnClicked === true) {
     return <Navigate to="/scan" />;
   }
+  
+  if (isGoBackSellerMain === true) {
+    return <Navigate to="/receiver" />;
+  }
+
   return (
     <div className="vertical-center colored-background">
       <div className="container text-center rounded p-3 bg-light">
@@ -16,7 +31,13 @@ function QRPage() {
           U kunt de QR-code scannen door op de knop hieronder te klikken.
         </p>
         <button
-          className="btn btn-primary my-3"
+          className="btn btn-primary my-3 mx-4"
+          onClick={() => setIsGoBackSellerMain(true)}
+        >
+          Terug
+        </button>
+        <button
+          className="btn btn-primary my-3 mx-4"
           onClick={() => setIsBtnClicked(true)}
         >
           Scan QR-code

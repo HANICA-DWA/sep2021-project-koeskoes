@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 
 function HomeSeller() {
   // Creates the state for checking if the corresponding button has been clicked
-  // Goes to true if clicked and then navigates to the corresponding url/ component
+  // Flips to true if clicked and then navigates to the corresponding url/ component
 
   const [isBtnRecord, setIsBtnRecord] = useState(false);
   const [isBtnUpload, setIsBtnUpload] = useState(false);
