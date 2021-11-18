@@ -8,6 +8,8 @@ import BackArrow from "../Common/BackArrowIcon";
 /**
  *
  * React component to record video's from the webcam.
+ * 
+ * @return the front-end for the recording page
  *
  */
 function RecordVideo() {
@@ -114,6 +116,9 @@ function RecordVideo() {
   /**
    *
    * Handles the video upload to the server.
+   * 
+   * @return Error if there is a error
+   * @return setIsGoToWatchVideo to true if no erro
    *
    */
   const handleDownload = useCallback(async () => {
