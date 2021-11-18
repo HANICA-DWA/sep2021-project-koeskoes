@@ -7,6 +7,7 @@ import {
   setPageNumber,
 } from "../../redux/actions/orderActions";
 import qrcode from "../Common/CreateQRcode";
+import ErrorMessage from "../Common/CreateErrorMessage";
 
 /**
  * CheckOrders component has a list of orders within a table, for the employee to work with.
@@ -27,6 +28,7 @@ const CheckOrders = () => {
   const pageNumber = useSelector((state) => state.orders.pageNumber);
   const [pageNumbers, setPageNumbers] = useState(null);
   const searchParams = useSelector((state) => state.orders.searchParams);
+  const [error, setError] = useState(null);
 
   // Use effect to update the list of orders.
   useEffect(() => {
@@ -151,17 +153,24 @@ const CheckOrders = () => {
    *
    */
   const createQRCode = async (orderNumber) => {
-    const qrCode = qrcode("https://www.youtube.com/watch?v=BNflNL40T_M");
+    try {
+      const qrCode = qrcode("https://www.youtube.com/watch?v=BNflNL40T_M");
 
-    await axios.patch("http://localhost:4000/orders/", { orderNumber });
+      await axios.patch("http://localhost:4000/orders/", { orderNumber });
+  
+      dispatch(getOrders());
+  
+      qrCode.download({ name: orderNumber, extension: "png" });
+    }
+    catch (e) {
+      setError(ErrorMessage('Er is een fout opgetreden bij het maken van de QR-code.', () => setError(null)));
+    }
 
-    dispatch(getOrders());
-
-    qrCode.download({ name: orderNumber, extension: "png" });
   };
 
   return (
     <div className="vertical-center colored-background">
+      {error}
       <div className="container-flex text-center rounded p-3 bg-light">
         <label htmlFor="searchParams">Zoeken: </label>{" "}
         <input

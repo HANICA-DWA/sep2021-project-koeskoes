@@ -27,6 +27,7 @@ const generateRandomCode = async () => {
 router.route('/')
 .get(async (req, res) => {
   const orders = await uploads.find({
+    videoName: {$ne: ''},
     printed: false
   }, 
   {
