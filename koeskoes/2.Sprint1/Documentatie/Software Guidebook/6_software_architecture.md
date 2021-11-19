@@ -1,5 +1,20 @@
 # Software Architecture
 
+## Hoe ziet het "grote plaatje" eruit?
+
+Het volgende qua software architecture is te vinden:
+
+- React-Redux
+- Express server
+- MongoDB database
+- SMTP service SendPulse
+
+![Data](assets/data/data.png "Data")
+
+## Is er een duidelijke structuur?
+
+Er is een duidelijke structuur. Zoals de afbeelding hierboven weergeven, is duidelijk te zien wat er gebeurd.
+
 <!--
 Intent
 
