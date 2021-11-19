@@ -1,19 +1,30 @@
 # Software Architecture
 
-## Hoe ziet het "grote plaatje" eruit?
+Er is een duidelijke structuur tussen de software architectuur. Zoals de afbeelding(en) hieronder weergeven, is duidelijk te zien wat er gebeurd en hoe dit allemaal samenhangt met elkaar.
 
-Het volgende qua software architecture is te vinden:
+---
 
-- React-Redux
-- Express server
-- MongoDB database
-- SMTP service SendPulse
+## Level 1: System Context diagram
 
-![Data](assets/data/data.png "Data")
+![system_context_diagram](assets/software_architecture/system_context_diagram.png "System Context diagram")
 
-## Is er een duidelijke structuur?
+---
 
-Er is een duidelijke structuur. Zoals de afbeelding hierboven weergeven, is duidelijk te zien wat er gebeurd.
+## Level 2: Container diagram
+
+![container_diagram](assets/software_architecture/container_diagram.png "Container diagram")
+
+---
+
+## Level 3: Component diagram
+
+![component_diagram](assets/software_architecture/component_diagram.png "Component diagram")
+
+---
+
+## Level 4: Code diagram
+
+N.V.T. Zie hoofdstuk 8 Code
 
 <!--
 Intent
