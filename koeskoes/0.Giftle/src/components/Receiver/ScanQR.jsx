@@ -81,7 +81,7 @@ function ScanQR() {
               if (data) {
                 if (!data.includes("localhost")) {
                   setError(
-                    ErrorMessage("Fout met het de camera of het scannen!", () =>
+                    ErrorMessage("De QR-code verwijst niet naar deze site!", () =>
                       setError(null)
                     )
                   );
