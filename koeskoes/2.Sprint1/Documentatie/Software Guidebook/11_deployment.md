@@ -1,5 +1,9 @@
 # Deployment
 
+## Deployment diagram
+
+![system_context_diagram](assets/deployment/deployment_diagram.png "System Context diagram")
+
 <!--
 Intent
 
