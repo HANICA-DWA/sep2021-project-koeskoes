@@ -1,14 +1,32 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { getVideo, resetVideo } from "../../redux/actions/videoActions";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
 
-function TextcodePage() {
+const TextcodePage = () => {
+  const dispatch = useDispatch();
+  const video = useSelector((state) => state.videos.video || null);
+
   const [givenTextcode, setGivenTextcode] = useState(null);
   const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(null);
   const [isGoBackReceiverMain, setIsGoBackReceiverMain] = useState(false);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (video) {
+      if (!video._id) {
+        dispatch(resetVideo());
+        return setError(
+          ErrorMessage("Geen geldige tekstcode!", () => setError(null))
+        );
+      }
+
+      setIsGoToWatchVideo(video._id);
+    }
+  }, [video, dispatch]);
 
   /**
    *
@@ -16,13 +34,13 @@ function TextcodePage() {
    * If the textcode isn't recognized or if the textcode field is empty, an error will be displayed.
    *
    */
-  const checkTextcode = async () => {
+  const checkTextcode = () => {
     if (givenTextcode === null || givenTextcode === "") {
       return setError(
         ErrorMessage("Voer een tekstcode in!", () => setError(null))
       );
     } else {
-      setIsGoToWatchVideo(true);
+      dispatch(getVideo(givenTextcode));
     }
   };
 
@@ -31,8 +49,8 @@ function TextcodePage() {
    * Events to navigate to different pages.
    *
    */
-  if (isGoToWatchVideo === true) {
-    return <Navigate to="/watchvideo" />;
+  if (isGoToWatchVideo !== null) {
+    return <Navigate to={"/watchvideo/" + isGoToWatchVideo} />;
   }
 
   if (isGoBackReceiverMain === true) {
@@ -78,6 +96,6 @@ function TextcodePage() {
       </div>
     </div>
   );
-}
+};
 
 export default TextcodePage;

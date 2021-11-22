@@ -23,8 +23,11 @@ app.use(sessionParser);
 
 /*---------------ROUTERS---------------*/
 
-const fileUpload = require("./routes/orders");
-app.use("/orders", fileUpload);
+const fileUpload = require('./routes/orders');
+const videos = require('./routes/videos');
+
+app.use('/orders', fileUpload);
+app.use('/videos', videos);
 
 /*-----------END OF ROUTERS------------*/
 
