@@ -24,7 +24,7 @@ Er is een duidelijke structuur tussen de software architectuur. Zoals de afbeeld
 
 ## Level 4: Code diagram
 
-N.V.T. Zie hoofdstuk 8 Code
+Niet van _toepassing / niet relevante informatie_ op dit _moment / niveau_. Zie hoofdstuk 8 Code
 
 <!--
 Intent

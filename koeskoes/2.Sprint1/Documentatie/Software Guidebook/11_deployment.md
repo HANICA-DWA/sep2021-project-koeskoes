@@ -4,6 +4,18 @@
 
 ![system_context_diagram](assets/deployment/deployment_diagram.png "System Context diagram")
 
+### Software
+
+De software wordt geïnstalleerd door Node.js. Via de command prompt worden er command uitgevoerd, die de afhankelijkheden van een project installeren. Eenmaal klaar is het enige wat nodig is het project uit te voeren. In development wordt dit lokaal gedaan, maar in productie wordt dit uiteraard op de productieserver gedaan.
+
+### Database
+
+De database bevat alle (gevoelige) data. In development heeft het team een database lokaal staan, maar in productie is er een online database waarbij beveiliging hoog in het vaandel staat.
+
+### Mailer
+
+De SMTP Service SendPulse wordt gebruikt voor het versturen/ontvangen van e-mails.
+
 <!--
 Intent
 

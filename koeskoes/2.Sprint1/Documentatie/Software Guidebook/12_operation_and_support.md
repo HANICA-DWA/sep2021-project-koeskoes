@@ -26,11 +26,11 @@ De GUI laag en objecten laag worden door React-Redux gedaan. De database laag wo
 
 ## Waar zijn errors en informatie gelogged?
 
-Errors worden gelogd in de console en zijn te zien in de browser. Informatie wordt niet gelogged, maar wel opgeslagen in de database.
+Errors worden gelogd in de console en zijn te zien in de browser. Informatie/data wordt niet gelogged, maar wel opgeslagen in de database.
 
 ## Moeten configuratiewijzigingen opnieuw worden opgestart?
 
-Intern hoeft dit niet. Extern moet dit naar alle waarschijnllijkheid wel gedaan worden. Dit ligt meer aan de externe software zelf.
+Intern hoeft dit niet. Extern moet dit naar alle waarschijnlijkheid wel gedaan worden. Dit ligt meer aan de externe software zelf.
 
 <!--
 Intent

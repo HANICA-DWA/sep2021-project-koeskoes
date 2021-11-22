@@ -2,9 +2,16 @@
 
 > gebaseerd op _[reader Software Guidebook](reader-software-guidebook.pdf)_. Tijsma, L. (2015). ICA.
 
-<!--
-  note: overleg in het team en met de PO welke onderdelen wat gaan bevatten tijdens een sprint.
--->
+## Team Koeskoes
+
+| Studenten          | E-mail                        | Student nr. |
+| ------------------ | ----------------------------- | ----------- |
+| Sjoerd de Bruin    | swl.debruin@student.han.nl    |             |
+| Ilse van de Peppel | i.vandepeppel1@student.han.nl |             |
+| Sven van Ee        | s.vanee1@student.han.nl       |             |
+| Jordi Obermeier    | CJA.Obermeier@student.han.nl  | 652615      |
+
+## Inhoud
 
 1. [Context](1_context.md)
 1. [Functional Overview](2_functional_overview.md)

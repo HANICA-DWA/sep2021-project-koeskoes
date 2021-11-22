@@ -1,5 +1,74 @@
 # Quality Attributes
 
+## Prestatie (e.g. latency and throughput)
+
+De performence qua latency en throughput moet goed zijn, wat inhoud dat er niet lang gewacht moet worden op data vanuit de database of de API. Tevens moet de website gebruiksvriendelijk zijn en makkelijk te navigeren zijn.
+
+## Schaalbaarheid (e.g. data and traffic volumes)
+
+Voor in development is de schaalbaarheid niet nodig. In de productie is schaalbaarheid waarschijnlijk wel nodig. Dit in verband met hoeveel de plug-in gebruikt wordt in een webshop en de hoeveelheid gebruikers die de plug-in gebruiken.
+
+## Beschikbaarheid (e.g. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
+
+- De plug-in moet 24/7 beschikbaar zijn (tenzij er onderhoud aan de plugin is).
+- Onderhoud moet minimaal 24 uur van te voren aangegeven worden aan de gebruikers.
+
+## Beveiliging (e.g. authentication, authorisation, data confidentiality, etc)
+
+- Maximale bestandgrootte wordt toegestaan, zodat de database niet vol raakt met hele grote video's.
+- QR-codes scannen werkt alleen met codes die naar de plug-in leiden, zodat de gebruiker niet naar random websites wordt gelokt.
+- Gegevens worden niet aan "third-party companies" verkocht.
+
+## Uitbreidbaarheid
+
+Uitbreidbaarheid is mogelijk. De gewenste aanpak is wel om scrum te gebruiken met een "project board" en eventuele "sprints" voor de "user stories" met de daarbijbehorende taken. Op deze manier is dus uitbreiding van het project mogelijk en zo is dit exact gedaan in het begin van het project.
+
+## (Her)bruikbaarheid
+
+- Door gebruik van componenten kunnen delen code opnieuw gebruikt worden zonder teveel herhaling.
+- Door gebruik van functies kunnen delen code hergebruikt worden.
+- Plug-in moet minimaal bij Apple apparaten in de safari browser gebruikt worden.
+- Plug-in moet bij Android apparaten in de Chrome browser gebruikt kunnen worden.
+- Plug-in moet bij Windows apparaten in de Chrome browser gebruikt kunnen worden.
+- Gebruikers moeten op zowel smartphone als computer (met webcam en microfoon) de plug-in kunnen gebruiken.
+- Bij IPhones moet de plug-in minimaal vanaf de IPhone 6 gebruikt kunnen worden.
+- Knoppen op de front-end moeten een functie hebben en dus iets doen.
+
+## Management en toezicht
+
+- De mogelijkheid moet er zijn om het systeem op enkele stukken aan te passen, daarom worden er met meerdere 'react components' gewerkt.
+
+## Betrouwbaarheid
+
+De plug-in is afhankelijk van het volgende:
+
+- Web Server
+- Mail Server
+- Database
+- Internet verbinding
+- Browser
+- Camera
+- Microfoon
+
+## Wettelijke, nalevings- en regelgevende vereisten (e.g. data protection act)
+
+- De gebruiker moet de algemene voorwaarden kunnen lezen en gaat op basis hiervan akkoord.
+- De privacy wetgeving van Europa moet nagevolgd worden. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/wetten/internationale-privacywetgeving).
+- Wettelijke vereisten voor langetermijnarchivering van bedrijfsgegevens. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens).
+- Wettelijke vereisten voor log bestanden. Zie [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf).
+- Wettelijke vereisten voor 'audit trials'. Zie [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
+
+## Internationalisering (i18n) en localisatie (L10n)
+
+- Comments van code is in het Engels geschreven.
+- Code is in het Engels geschreven.
+- Front-end is in het Nederlands geschreven.
+- Ondersteuning voor meerdere talen (voor front-end) is niet aanwezig.
+
+## Toegankelijkheid
+
+Toegankelijkheid is alleen beschikbaar voor het development team en de opdrachtgever.
+
 <!--
 Intent
 
@@ -12,66 +81,3 @@ This section is about summarising the key quality attributes and should answer t
 
 In addition, if any of the quality attributes are deemed as “architecturally significant” and therefore influence the architecture, why not make a note of them so that you can refer back to them later in the document.
 -->
-
-
-## Performance (e.g. latency and throughput)
-
-## Scalability (e.g. data and traffic volumes)
-Welke?
-Vertical: To increase, we add more resources, such as memory, disks, or processors into one system.
-Horizontal: We increase the number of computing units and divide the load.\
-?\
-?\
-?\
-?\
-?
-## Availability (e.g. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
-* De plug-in moet 24/7 beschikbaar zijn (tenzij er onderhoud aan de plugin is)
-* Onderhoud moet minimaal 24 uur van te voren aangegeven worden aan de gebruikers
-## Security (e.g. authentication, authorisation, data confidentiality, etc)
-* Maximale bestandgrootte wordt toegestaan, zodat de database niet vol raakt met video's
-* QR-codes scannen werkt alleen met codes die naar de plug-in leiden, zodat de gebruiker niet naar random websites wordt gelokt
-*  
-## Extensibility
-## Reusability
-* Door gebruik van componenten kunnen delen code opnieuw gebruikt worden zonder teveel herhaling
-* Door gebruik van functies kunnen delen code hergebruikt worden
-## Auditing
-## Monitoring and management
-* De mogelijkheid moet er zijn om het systeem op enkele stukken aan te passen, daarom wordt er met meerdere React componenten gewerkt. 
-* 
-## Reliability
-De plug-in is afhankelijk van het volgende:
-* Web Server
-* Mail Server
-* Database
-* Internet verbinding
-* Browser
-* Camera
-* Microfoon
-## Failover/disaster recovery targets (e.g. manual vs automatic, how long will this take?)
-## Business continuity
-## Interoperability
-## Legal, compliance and regulatory requirements (e.g. data protection act)
-* De gebruiker moet de Algemene voorwaarden kunnen lezen.
-* Er moet duidelijk aangegeven worden, dat er bij gebruik van de plug
-## Internationalisation (i18n) and localisation (L10n)
-* Software code is in het Engels
-* Front-end is in het Nederlands
-* Ondersteuning voor meerdere talen (voor front-end) is niet aanwezig
-## Accessibility
-## Usability
-* Gebruikers moeten op zowel smartphone als computer (met webcam) de plug-in kunnen gebruiken
-* Plug-in moet minimaal bij Apple apparaten in de safari browser gebruikt worden
-* Plug-in moet bij Android apparaten in de Chrome browser gebruikt kunnen worden
-* Plug-in moet bij Windows apparaten in de Chrome browser gebruikt kunnen worden
-* Bij IPhones moet de plug-in minimaal vanaf de IPhone 6 gebruikt kunnen worden
-* Knoppen op de front end moeten een functie hebben en niet niks doen
-*   
-
-List of supported devices, OS versions, screen resolutions, and browsers and their versions.
-Elements that accelerate user interaction, such as “hotkeys,” “lists of suggestions,” and so on.
-The average time a user needs to perform individual actions.
-Support of accessibility for people with disabilities.
-
-
