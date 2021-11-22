@@ -14,13 +14,13 @@ function QRPage() {
   // Flips to true if clicked and then navigates to the corresponding url/ component
 
   const [isBtnClicked, setIsBtnClicked] = useState(false);
-  const [isGoBackSellerMain, setIsGoBackSellerMain] = useState(false);
+  const [isGoBackReceiverMain, setIsGoBackReceiverMain] = useState(false);
 
   if (isBtnClicked === true) {
     return <Navigate to="/scan" />;
   }
-  
-  if (isGoBackSellerMain === true) {
+
+  if (isGoBackReceiverMain === true) {
     return <Navigate to="/receiver" />;
   }
 
@@ -33,9 +33,9 @@ function QRPage() {
         </p>
         <button
           className="btn btn-primary my-3 mx-4"
-          onClick={() => setIsGoBackSellerMain(true)}
+          onClick={() => setIsGoBackReceiverMain(true)}
         >
-          {<BackArrow/>}
+          {<BackArrow />}
           Terug
         </button>
         <button

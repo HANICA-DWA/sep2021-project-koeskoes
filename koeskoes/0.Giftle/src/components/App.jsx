@@ -12,6 +12,7 @@ import HomeReceiver from "./Receiver/HomeReceiver";
 import QRPage from "./Receiver/QRPage";
 import ScanQR from "./Receiver/ScanQR";
 import TextcodePage from "./Receiver/TextcodePage";
+import VideoPage from "./Receiver/VideoPage";
 
 // Employee components
 import CheckOrders from "./Employee/CheckOrders";
@@ -33,7 +34,7 @@ function App() {
           <Route path="/textcode" exact element={<TextcodePage />} />
           <Route path="/watchvideo" exact element={<VideoPage />} />
           <Route path="/checkorders" exact element={<CheckOrders />} />
-          <Route path='*' element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>

@@ -67,6 +67,7 @@ function UploadVideo() {
       );
     }
   };
+
   return (
     <div className="vertical-center colored-background">
       {error}
@@ -89,7 +90,7 @@ function UploadVideo() {
           Voor het uploaden van een video moet je hieronder een video selecteren
           die je wilt meesturen met je cadeau.
         </p>
-        
+
         <input
           type="file"
           name="uploadedVideo"
