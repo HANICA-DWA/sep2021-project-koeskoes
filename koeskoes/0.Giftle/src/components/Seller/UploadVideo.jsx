@@ -39,6 +39,12 @@ function UploadVideo() {
       );
     }
 
+    if (sourceVideoFile.size < 512000) {
+      return setError(
+        ErrorMessage("Kies een groter bestand!", () => setError(null))
+      );
+    }
+
     if (sourceVideoFile.type.split("/")[0] === "video") {
       const formData = new FormData();
 

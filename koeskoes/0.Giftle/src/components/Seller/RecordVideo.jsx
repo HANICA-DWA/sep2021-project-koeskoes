@@ -123,6 +123,19 @@ function RecordVideo() {
    */
   const handleDownload = useCallback(async () => {
     if (recordedChunks.length) {
+      
+      if (recordedChunks[0].size > 10485760) {
+        return setError(
+          ErrorMessage("Maak een kortere video!", () => setError(null))
+        );
+      }
+
+      if (recordedChunks[0].size < 512000) {
+        return setError(
+          ErrorMessage("Maak een langere video!", () => setError(null))
+        );
+      }
+
       const blob = new Blob(recordedChunks, {
         type: "video/webm"
       });

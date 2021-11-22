@@ -4,7 +4,7 @@ require("../model/uploadModel");
 
 const uploads = mongoose.model("UploadSchema");
 
-describe("Player Model Tests", () => {
+describe("Express route tests", () => {
   let order = {
     _id: "619b7c66d79dad758c1e5519",
     nameGifter: "firstname lastname",
