@@ -1,5 +1,6 @@
 const axios = require("axios");
 const mongoose = require("mongoose");
+const generateRandomCode = require('../commonFunctions/generateTextcode');
 require("../model/uploadModel");
 
 const uploads = mongoose.model("UploadSchema");
@@ -86,4 +87,14 @@ describe("Express route tests", () => {
       message: "Order change saved",
     });
   });
+
+  test("generate textcode", async () => {
+    await uploads.deleteMany();
+    order.textCode = "123abc";
+    await uploads.create(order);
+
+    const randomCode = await generateRandomCode();
+
+    expect(randomCode).not.toEqual(order.textCode);
+  })
 });
