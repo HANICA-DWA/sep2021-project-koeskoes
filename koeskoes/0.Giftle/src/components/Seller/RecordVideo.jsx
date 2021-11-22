@@ -166,7 +166,7 @@ function RecordVideo() {
   }
   
   if (isGoToWatchVideo === true) {
-    return <Navigate to="/watchVideo" />;
+    return <Navigate to="/watchvideo" />;
   }
 
   return (
