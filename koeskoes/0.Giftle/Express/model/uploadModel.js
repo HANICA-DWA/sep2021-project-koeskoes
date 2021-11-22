@@ -27,4 +27,4 @@ const uploadSchema = new mongoose.Schema({
   }
 });
 
-const uploads = mongoose.model('UploadSchema', uploadSchema);
+mongoose.model('UploadSchema', uploadSchema);

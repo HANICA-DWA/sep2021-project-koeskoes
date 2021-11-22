@@ -8,6 +8,13 @@ const uploads = mongoose.model('UploadSchema');
 
 router.use(fileUpload());
 
+/**
+ *
+ * This function will generate a random code, if the code exists in the database it will generate another one until it found one that hasn't been used yet.
+ * 
+ * @returns randomCode
+ *
+ */
 const generateRandomCode = async () => {
   while (true) {
     const createRandomCode = () => (Math.random() + 1).toString(36).substr(2, 6);
@@ -37,6 +44,8 @@ router.route('/')
   res.json(orders);
 })
 .post((req, res) => {
+  // console.log(req.body);
+  console.log(req.files);
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.send({status: 'error', message: 'No file has been uploaded'});
   }
@@ -54,6 +63,8 @@ router.route('/')
     const newRecord = new uploads({
       "nameGifter": 'firstname lastname',
       "emailGifter":'mail@mail.com',
+      "nameReceiver": req.body.name,
+      "emailReceiver": req.body.email,
       "videoName": finalFileName,
       "printed": false
     });
