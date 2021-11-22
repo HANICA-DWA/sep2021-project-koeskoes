@@ -157,22 +157,25 @@ const CheckOrders = () => {
       const qrCode = qrcode("https://www.youtube.com/watch?v=BNflNL40T_M");
 
       await axios.patch("http://localhost:4000/orders/", { orderNumber });
-  
-      dispatch(getOrders());
-  
-      qrCode.download({ name: orderNumber, extension: "png" });
-    }
-    catch (e) {
-      setError(ErrorMessage('Er is een fout opgetreden bij het maken van de QR-code.', () => setError(null)));
-    }
 
+      dispatch(getOrders());
+
+      qrCode.download({ name: orderNumber, extension: "png" });
+    } catch (e) {
+      setError(
+        ErrorMessage(
+          "Er is een fout opgetreden bij het maken van de QR-code.",
+          () => setError(null)
+        )
+      );
+    }
   };
 
   return (
     <div className="vertical-center colored-background">
       {error}
       <div className="container-flex text-center rounded p-3 bg-light">
-        <label htmlFor="searchParams">Zoeken: </label>{" "}
+        <label htmlFor="searchParams">Zoeken:</label>{" "}
         <input
           type="text"
           name="searchParams"
