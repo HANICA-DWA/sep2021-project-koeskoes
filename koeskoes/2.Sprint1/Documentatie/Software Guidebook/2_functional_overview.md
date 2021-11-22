@@ -2,11 +2,11 @@
 
 ## Is het duidelijk wat het systeem doet?
 
-Het systeem moet makkelijk gekoppeld kunnen worden aan bestaande webshops, maar ook moeten er vanuit de browser video's geupload en opgenomen kunnen worden, QR-codes die van de plug-in af komen gescanned worden en video's bekeken worden.
+Het systeem moet makkelijk gekoppeld kunnen worden aan bestaande webshops, maar ook moeten er vanuit de browser video's geüpload en opgenomen kunnen worden, QR-codes die van de plug-in af komen gescanned worden en video's bekeken worden.
 
 ## Is het duidelijk welke user stories er belangrijk zijn voor de architectuur?
 
-Voor het ontwikkelen van het prototype is het belangrijk dat er video's, na een order, opgenomen of geupload kunnen worden op de website. Ook is het belangrijk dat deze video's terug gekeken kunnen worden door de ontvanger en dat deze video's geopend kunnen worden d.m.v. een QR-code of tekstcode. Tot slot moeten de magazijnmedewerkers die het cadeau opsturen de mogelijkheid hebben om deze video's te beheren zodat de correcte QR-code bij het correcte pakketje verpakt wordt.
+Voor het ontwikkelen van het prototype is het belangrijk dat er video's, na een order, opgenomen of geüpload kunnen worden op de website. Ook is het belangrijk dat deze video's terug gekeken kunnen worden door de ontvanger en dat deze video's geopend kunnen worden d.m.v. een QR-code of tekstcode. Tot slot moeten de magazijnmedewerkers die het cadeau opsturen de mogelijkheid hebben om deze video's te beheren zodat de correcte QR-code bij het correcte pakketje verpakt wordt.
 
 ## Is het duidelijk wie de belangrijkste gebruikers zijn?
 

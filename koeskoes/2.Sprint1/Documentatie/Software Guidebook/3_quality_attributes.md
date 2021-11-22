@@ -2,7 +2,7 @@
 
 ## Prestatie (e.g. latency and throughput)
 
-De performence qua latency en throughput moet goed zijn, wat inhoud dat er niet lang gewacht moet worden op data vanuit de database of de API. Tevens moet de website gebruiksvriendelijk zijn en makkelijk te navigeren zijn.
+De performance qua latency en throughput moet goed zijn, wat inhoud dat er niet lang gewacht moet worden op data vanuit de database of de API. Tevens moet de website gebruiksvriendelijk zijn en makkelijk te navigeren zijn.
 
 ## Schaalbaarheid (e.g. data and traffic volumes)
 
@@ -10,7 +10,7 @@ Voor in development is de schaalbaarheid niet nodig. In de productie is schaalba
 
 ## Beschikbaarheid (e.g. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
 
-- De plug-in moet 24/7 beschikbaar zijn (tenzij er onderhoud aan de plugin is).
+- De plug-in moet 24/7 beschikbaar zijn (tenzij er onderhoud aan de plug-in is).
 - Onderhoud moet minimaal 24 uur van te voren aangegeven worden aan de gebruikers.
 
 ## Beveiliging (e.g. authentication, authorisation, data confidentiality, etc)

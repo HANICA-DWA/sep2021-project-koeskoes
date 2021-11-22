@@ -14,7 +14,7 @@ De server heeft de volgende eigenschappen:
 
 ## Web server -> database
 
-De connectie tussen de server en de database is ook essentieel voor Giftle. Hierin worden alle bestellingen opgeslagen, samen met hun video's. Als de connectie tussen server en database niet meer zou bestaan, kunnen er geen nieuwe Giftles meer besteld worden en geen video's worden geupload.
+De connectie tussen de server en de database is ook essentieel voor Giftle. Hierin worden alle bestellingen opgeslagen, samen met hun video's. Als de connectie tussen server en database niet meer zou bestaan, kunnen er geen nieuwe Giftles meer besteld worden en geen video's worden geüpload.
 
 ## Web server -> SMTP-server
 

@@ -1,6 +1,6 @@
 # Constraints
 
-Er een aantal aspecten die voor beperkingen hebben gezorgd binnen dit project. In dit hoofdstuk zullen een aantal grote beperkingen aangekaart en toegelicht worden.
+Er zijn een aantal aspecten die voor beperkingen hebben gezorgd binnen dit project. In dit hoofdstuk zullen een aantal grote beperkingen aangekaart en toegelicht worden.
 
 ## Tijd
 

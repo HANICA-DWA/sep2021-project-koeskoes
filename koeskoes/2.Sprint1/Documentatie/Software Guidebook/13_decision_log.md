@@ -10,7 +10,7 @@ Een snelle keuze waarom wij voor Bootstrap hebben gekozen is dat iedereen hierme
 
 Een onderzoek is gestart naar SMTP over welke het beste service bied en of er genoeg e-mails verzonden kunnen worden in verband met de (e-mail) limieten. Al gauw kwamen wij erachter dat er weinig tot niet genoeg e-mails verzonden kunnen worden i.v.m. de limieten. De beste optie voor het genoeg e-mails verzenden is SendPulse. Deze kon het meeste aan met gratis service. Dit is dus voor ons de reden waarom wij SendPulse gekozen hebben.
 
-## Hoe is dit gedaan? Productevaluatie of "Proof of concept"?
+## Hoe is dit gedaan? Productevaluatie of "proof of concept"?
 
 Wij hebben het op de manier van "proof of concept" gedaan. Een "proof of concept" is een realisatie van een bepaalde methode of idee om de haalbaarheid ervan aan te tonen, of een demonstratie in principe met als doel te verifiëren dat een concept of theorie praktisch potentieel heeft.
 
