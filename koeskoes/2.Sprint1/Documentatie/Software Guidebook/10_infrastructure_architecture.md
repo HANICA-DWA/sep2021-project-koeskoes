@@ -1,5 +1,15 @@
 # Infrastructure Architecture
 
+De fysieke architectuur is in de afbeelding hieronder te zien:
+
+![infrastructure_architecture](assets/infrastructure_architecture/infrastructure_architecture.png "Infrastructure Architecture")
+
+Om de kwaliteit van het product goed te bewaren, hebben wij zo min mogelijk redundante data en code die wij willen gebruiken. Dit is te zien in de database MongoDB onder de collecties en documenten. Tevens is dit ook te zien in de code.
+
+De verantwoordelijkheid van het onderhouden en ondersteunen voor de infrastructuur ligt bij team Koeskoes en de komende teams die aan dit project gaan verder werken. De eigenaar van de middelen is de opdrachtgever van Gifle.
+
+De development team hebben genoeg omgevingen voor het developen en testen. Voor het developen is er zowel lokaal als een online omgeving (productieserver etc.). Voor het testen wordt er gebruik gemaakt van een JavaScript "test framework" genaamd '[Jest](https://jestjs.io/)'.
+
 <!--
 Intent
 
