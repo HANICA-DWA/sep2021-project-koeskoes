@@ -1,10 +1,10 @@
-const session = require('express-session');
-const express = require('express');
-const http = require('http');
-var ws = require('ws');
-var cors = require('cors');
-const mongoose = require('mongoose');
-require('./model/uploadModel');
+const session = require("express-session");
+const express = require("express");
+const http = require("http");
+var ws = require("ws");
+var cors = require("cors");
+const mongoose = require("mongoose");
+require("./model/uploadModel");
 
 const app = express();
 // const uploads = mongoose.model("UploadSchema");
@@ -12,19 +12,19 @@ const app = express();
 app.use(cors({ origin: true, credentials: true }));
 app.options("*", cors({ origin: true, credentials: true }));
 
-app.use(express.json())
+app.use(express.json());
 
 const sessionParser = session({
   saveUninitialized: false,
-  secret: 'LAZH3GiUz2WWNr',
-  resave: false
+  secret: "LAZH3GiUz2WWNr",
+  resave: false,
 });
 app.use(sessionParser);
 
 /*---------------ROUTERS---------------*/
 
-const fileUpload = require('./routes/orders');
-app.use('/orders', fileUpload);
+const fileUpload = require("./routes/orders");
+app.use("/orders", fileUpload);
 
 /*-----------END OF ROUTERS------------*/
 
@@ -32,29 +32,31 @@ const httpServer = http.createServer(app);
 
 const websocketServer = new ws.Server({ noServer: true });
 
-httpServer.on('upgrade', (req, networkSocket, head) => {
+httpServer.on("upgrade", (req, networkSocket, head) => {
   sessionParser(req, {}, () => {
     // Extra checks als die nodig zijn...
     // if (req.session.userName === undefined) {
-    //   networkSocket.destroy(); 
+    //   networkSocket.destroy();
     //   return;
     // }
 
-    websocketServer.handleUpgrade(req, networkSocket, head, newWebSocket => {
-      websocketServer.emit('connection', newWebSocket, req);
+    websocketServer.handleUpgrade(req, networkSocket, head, (newWebSocket) => {
+      websocketServer.emit("connection", newWebSocket, req);
     });
   });
 });
 
-websocketServer.on('connection', (socket, req) => {
-  socket.on('message', (message) => {
-    req.session.reload((err)=>{
-      if(err) { throw err };
+websocketServer.on("connection", (socket, req) => {
+  socket.on("message", (message) => {
+    req.session.reload((err) => {
+      if (err) {
+        throw err;
+      }
 
       // const parsedMessage = JSON.parse(message);
 
       // socket acties verwerken.
-    
+
       req.session.save();
     });
   });
@@ -62,7 +64,11 @@ websocketServer.on('connection', (socket, req) => {
 
 const port = process.env.PORT || 4000;
 httpServer.listen(port, () => {
-  mongoose.connect(`mongodb://localhost:27017/giftle`,  {useNewUrlParser: true }, () => {
-    console.log(`Server started on port ${port}`);
-  });
+  mongoose.connect(
+    `mongodb://localhost:27017/giftle`,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    () => {
+      console.log(`Server started on port ${port}`);
+    }
+  );
 });

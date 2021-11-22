@@ -44,8 +44,6 @@ router.route('/')
   res.json(orders);
 })
 .post((req, res) => {
-  // console.log(req.body);
-  console.log(req.files);
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.send({status: 'error', message: 'No file has been uploaded'});
   }
