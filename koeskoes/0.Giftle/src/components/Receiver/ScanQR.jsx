@@ -64,7 +64,6 @@ function ScanQR() {
         setError(null)
       )
     );
-    console.log(err);
   };
 
   return (
@@ -81,8 +80,9 @@ function ScanQR() {
               if (data) {
                 if (!data.includes("localhost")) {
                   setError(
-                    ErrorMessage("De QR-code verwijst niet naar deze site!", () =>
-                      setError(null)
+                    ErrorMessage(
+                      "De QR-code verwijst niet naar deze site!",
+                      () => setError(null)
                     )
                   );
                 } else {

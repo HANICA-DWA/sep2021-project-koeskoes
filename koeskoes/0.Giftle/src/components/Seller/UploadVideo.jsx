@@ -7,6 +7,8 @@ import BackArrow from "../Common/BackArrowIcon";
 function UploadVideo() {
   // Creates the state for uploaded files and errors that can occur.
   const [video, setVideo] = useState(null);
+  const [nameReceiver, setNameReceiver] = useState(null);
+  const [emailReceiver, setEmailReceiver] = useState(null);
   const [isGoBackSellerMain, setIsGoBackSellerMain] = useState(false);
   const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(false);
   const [error, setError] = useState(null);
@@ -44,6 +46,9 @@ function UploadVideo() {
 
       formData.append("video", blob, sourceVideoFile.name);
 
+      formData.append("name", nameReceiver);
+      formData.append("email", emailReceiver);
+
       const uploadResponse = await axios.post(
         `http://localhost:4000/orders/`,
         formData
@@ -66,24 +71,59 @@ function UploadVideo() {
     <div className="vertical-center colored-background">
       {error}
       <div className="container text-center rounded p-3 bg-light">
-        <button
-          className="btn btn-primary float-start"
-          onClick={() => setIsGoBackSellerMain(true)}
-        >
-          {<BackArrow/>}
-          Terug
-        </button>
-        <h1>Video uploaden!</h1>
+        <div className="row">
+          <div className="col-lg-4 col-md-4 col-sm-4">
+            <button
+              className="btn btn-primary float-start"
+              onClick={() => setIsGoBackSellerMain(true)}
+            >
+              {<BackArrow />}
+              Terug
+            </button>
+          </div>
+        </div>
+        <div className="row">
+          <h1>Video uploaden!</h1>
+        </div>
         <p>
           Voor het uploaden van een video moet je hieronder een video selecteren
           die je wilt meesturen met je cadeau.
         </p>
+        
         <input
           type="file"
           name="uploadedVideo"
           accept="video/*"
           onChange={(e) => setVideo(e.target)}
         />
+        <div className="row">
+          <div className="col-lg-2 col-md-2 col-sm-2"></div>
+          <div className="col-lg-8 col-md-8 col-sm-8">
+            <br />
+            <label for="emailReceiver" class="form-label">
+              Naam van de ontvanger
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              id="nameReceiver"
+              name="nameReceiver"
+              onChange={(e) => setNameReceiver(e.target.value)}
+            />
+            <br />
+            <label for="emailReceiver" class="form-label">
+              E-mailadres van de ontvanger
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              id="emailReceiver"
+              name="emailReceiver"
+              onChange={(e) => setEmailReceiver(e.target.value)}
+            />
+          </div>
+          <div className="col-lg-2 col-md-2 col-sm-2"></div>
+        </div>
         <br />
         <br />
         <button className="btn btn-primary" onClick={convertVideo}>
