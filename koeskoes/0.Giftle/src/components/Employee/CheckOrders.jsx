@@ -154,7 +154,7 @@ const CheckOrders = () => {
    */
   const createQRCode = async (orderNumber) => {
     try {
-      const qrCode = qrcode("https://www.youtube.com/watch?v=BNflNL40T_M");
+      const qrCode = qrcode("http://localhost:3000/watchvideo/" + orderNumber);
 
       await axios.patch("http://localhost:4000/orders/", { orderNumber });
 
