@@ -10,7 +10,7 @@ const uploads = mongoose.model('UploadSchema');
  * @returns randomCode
  *
  */
-const generateRandomCode = async () => {
+const generateUniqueCode = async () => {
   while (true) {
     const createRandomCode = () =>
       (Math.random() + 1).toString(36).substr(2, 6);
@@ -32,4 +32,4 @@ const generateRandomCode = async () => {
   }
 };
 
-module.exports = generateRandomCode;
+module.exports = generateUniqueCode;

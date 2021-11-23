@@ -1,6 +1,6 @@
 const axios = require("axios");
 const mongoose = require("mongoose");
-const generateRandomCode = require('../commonFunctions/generateTextcode');
+const generateUniqueCode = require('../commonFunctions/generateTextcode');
 require("../model/uploadModel");
 
 const uploads = mongoose.model("UploadSchema");
@@ -49,33 +49,33 @@ describe("Express route tests", () => {
     });
   });
 
-  // test("create new order with file", async () => {
-  //   const formData = new FormData({writable:true});
+  xtest("create new order with file", async () => {
+    const formData = new FormData({writable:true});
 
-  //   const blob = new File(
-  //     [JSON.stringify({ test: "something to test with" })],
-  //     { type: "video/mp4" }
-  //   );
+    const blob = new File(
+      [JSON.stringify({ test: "something to test with" })],
+      { type: "video/mp4" }
+    );
 
-  //   console.log(blob);
+    console.log(blob);
 
-  //   formData.append("video", blob);
+    formData.append("video", blob);
 
-  //   formData.append("name", "firstname lastname");
-  //   formData.append("email", "firstnamelastname@mail.com");
+    formData.append("name", "firstname lastname");
+    formData.append("email", "firstnamelastname@mail.com");
 
-  //   console.log(formData)
+    console.log(formData)
 
-  //   const orders = await axios.post(
-  //     `http://localhost:4000/orders/`,
-  //     formData
-  //   );
+    const orders = await axios.post(
+      `http://localhost:4000/orders/`,
+      formData
+    );
 
-  //   expect(orders.data).toEqual({
-  //     status: "success",
-  //     message: "File uploaded",
-  //   });
-  // });
+    expect(orders.data).toEqual({
+      status: "success",
+      message: "File uploaded",
+    });
+  });
 
   test("change order", async () => {
     const orderChange = await axios.patch("http://localhost:4000/orders/", {
@@ -93,8 +93,8 @@ describe("Express route tests", () => {
     order.textCode = "123abc";
     await uploads.create(order);
 
-    const randomCode = await generateRandomCode();
+    const randomCode = await generateUniqueCode();
 
     expect(randomCode).not.toEqual(order.textCode);
-  })
+  });
 });
