@@ -6,7 +6,7 @@
 * Label "Risico"
 * Label voor uren
 
-## Rest
+## Overig
 
 
 Klik op US nummer voor overzicht bij DSU \
