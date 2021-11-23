@@ -18,7 +18,7 @@ function ScanQR() {
   const [delay] = useState(100);
   const [previewStyle] = useState({ height: "17em", width: "17em" });
   const [isDevicesChecked, setIsDevicesChecked] = useState(false);
-  const [isGoBackSellerMain, setIsGoBackSellerMain] = useState(false);
+  const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
   const [error, setError] = useState(null);
 
   /**
@@ -47,7 +47,7 @@ function ScanQR() {
     }
   });
 
-  if (isGoBackSellerMain === true) {
+  if (isGoBackBuyerMain === true) {
     return <Navigate to="/qr-code" />;
   }
 
@@ -93,7 +93,7 @@ function ScanQR() {
           />
           <button
             className="btn btn-primary my-3 mx-4"
-            onClick={() => setIsGoBackSellerMain(true)}
+            onClick={() => setIsGoBackBuyerMain(true)}
           >
             {<BackArrow />}
             Terug

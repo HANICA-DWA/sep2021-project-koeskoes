@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
-function HomeSeller() {
+function HomeBuyer() {
   // Creates the state for checking if the corresponding button has been clicked
   // Flips to true if clicked and then navigates to the corresponding url/ component
 
@@ -42,4 +42,4 @@ function HomeSeller() {
   );
 }
 
-export default HomeSeller;
+export default HomeBuyer;

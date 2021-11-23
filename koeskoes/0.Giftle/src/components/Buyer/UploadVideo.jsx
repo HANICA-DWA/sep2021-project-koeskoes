@@ -9,12 +9,12 @@ function UploadVideo() {
   const [video, setVideo] = useState(null);
   const [nameReceiver, setNameReceiver] = useState(null);
   const [emailReceiver, setEmailReceiver] = useState(null);
-  const [isGoBackSellerMain, setIsGoBackSellerMain] = useState(false);
+  const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
   const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(false);
   const [error, setError] = useState(null);
 
-  if (isGoBackSellerMain === true) {
-    return <Navigate to="/seller" />;
+  if (isGoBackBuyerMain === true) {
+    return <Navigate to="/buyer" />;
   }
 
   if (isGoToWatchVideo === true) {
@@ -82,7 +82,7 @@ function UploadVideo() {
           <div className="col-lg-4 col-md-4 col-sm-4">
             <button
               className="btn btn-primary float-start"
-              onClick={() => setIsGoBackSellerMain(true)}
+              onClick={() => setIsGoBackBuyerMain(true)}
             >
               {<BackArrow />}
               Terug

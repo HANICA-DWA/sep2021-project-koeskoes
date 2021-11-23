@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NotFound from "./NotFound";
 
-// Seller components
-import HomeSeller from "./Seller/HomeSeller";
-import UploadVideo from "./Seller/UploadVideo";
-import RecordVideo from "./Seller/RecordVideo";
+// Buyer components
+import HomeBuyer from "./Buyer/HomeBuyer";
+import UploadVideo from "./Buyer/UploadVideo";
+import RecordVideo from "./Buyer/RecordVideo";
 
 // Receiver components
 import HomeReceiver from "./Receiver/HomeReceiver";
@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/seller" exact element={<HomeSeller />} />
+          <Route path="/buyer" exact element={<HomeBuyer />} />
           <Route path="/upload" exact element={<UploadVideo />} />
           <Route path="/record" exact element={<RecordVideo />} />
           <Route path="/rewatchvideo" exact element={<VideoPage />} />
