@@ -1,5 +1,5 @@
 const express = require("express");
-const generateRandomCode = require("../commonFunctions/generateUniqueCode");
+const generateRandomCode = require("../commonFunctions/generateUniqueRandomCode");
 const generateRandomFileName = require("../commonFunctions/generateRandomFileName");
 const fileUpload = require("express-fileupload");
 const router = express.Router();
@@ -81,25 +81,11 @@ router.patch("/:orderNumber/", async (req, res) => {
     .findOne(
       {
         _id: req.params.orderNumber,
-      },
-      {
-        _id: 1,
-        emailGifter: 1,
-        firstnameReceiver: 1,
-        lastnameReceiver: 1,
-        emailReceiver: 1,
-        mobileReceiver: 1,
-        videoName: 1,
-        videoLocation: 1,
-        textCode: 1,
       }
     )
     .exec();
-
-  order.printed = true;
-  order.textCode = randomCode;
-
-  await order.save();
+    
+  await order.setCode(randomCode);
 
   res.json({ status: "success", message: "Order change saved" });
 });

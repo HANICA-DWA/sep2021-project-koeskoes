@@ -23,11 +23,11 @@ app.use(sessionParser);
 
 /*---------------ROUTERS---------------*/
 
-const fileUpload = require('./routes/orders');
-const videos = require('./routes/videos');
+const fileUpload = require("./routes/orders");
+const videos = require("./routes/videos");
 
-app.use('/orders', fileUpload);
-app.use('/videos', videos);
+app.use("/orders", fileUpload);
+app.use("/videos", videos);
 
 /*-----------END OF ROUTERS------------*/
 
@@ -69,7 +69,7 @@ const port = process.env.PORT || 4000;
 httpServer.listen(port, () => {
   mongoose.connect(
     `mongodb://localhost:27017/giftle`,
-    { useNewUrlParser: true, useUnifiedTopology: true },
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
     () => {
       console.log(`Server started on port ${port}`);
     }

@@ -1,30 +1,44 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const uploadSchema = new mongoose.Schema({
   nameGifter: {
     type: String,
-    required: true
+    required: true,
   },
   emailGifter: {
     type: String,
-    required: true
+    required: true,
   },
   nameReceiver: {
-    type: String
+    type: String,
   },
   emailReceiver: {
-    type: String
+    type: String,
   },
   videoName: {
-    type: String
+    type: String,
+    unique: true,
   },
   textCode: {
-    type: String
+    type: String,
+    unique: true,
   },
   printed: {
     type: Boolean,
-    required: true
-  }
+    required: true,
+  },
 });
 
-mongoose.model('UploadSchema', uploadSchema);
+/**
+ *
+ * Don't change this function to an arrow function. Thank you <3
+ *
+ */
+uploadSchema.methods.setCode = async function (randomCode) {
+  this.printed = true;
+  this.textCode = randomCode;
+
+  return await this.save();
+};
+
+mongoose.model("UploadSchema", uploadSchema);

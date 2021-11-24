@@ -1,6 +1,6 @@
 const axios = require("axios");
 const mongoose = require("mongoose");
-const generateUniqueCode = require('../commonFunctions/generateUniqueCode');
+const generateUniqueRandomCode = require("../commonFunctions/generateUniqueRandomCode");
 require("../model/uploadModel");
 
 const uploads = mongoose.model("UploadSchema");
@@ -17,7 +17,8 @@ describe("Express route tests", () => {
   beforeAll(async () => {
     await mongoose.connect("mongodb://localhost:27017/giftle", {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useCreateIndex: true
     });
     await uploads.deleteMany({});
   });
@@ -49,36 +50,10 @@ describe("Express route tests", () => {
     });
   });
 
-  xtest("create new order with file", async () => {
-    const formData = new FormData({writable:true});
-
-    const blob = new File(
-      [JSON.stringify({ test: "something to test with" })],
-      { type: "video/mp4" }
-    );
-
-    console.log(blob);
-
-    formData.append("video", blob);
-
-    formData.append("name", "firstname lastname");
-    formData.append("email", "firstnamelastname@mail.com");
-
-    console.log(formData)
-
-    const orders = await axios.post(
-      `http://localhost:4000/orders/`,
-      formData
-    );
-
-    expect(orders.data).toEqual({
-      status: "success",
-      message: "File uploaded",
-    });
-  });
-
   test("change order", async () => {
-    const orderChange = await axios.patch("http://localhost:4000/orders/" + order._id);
+    const orderChange = await axios.patch(
+      "http://localhost:4000/orders/" + order._id
+    );
 
     expect(orderChange.data).toEqual({
       status: "success",
@@ -91,8 +66,28 @@ describe("Express route tests", () => {
     order.textCode = "123abc";
     await uploads.create(order);
 
-    const randomCode = await generateUniqueCode();
+    const randomCode = await generateUniqueRandomCode();
 
     expect(randomCode).not.toEqual(order.textCode);
   });
+
+  xtest("create new order", async () => {});
+
+  xtest("check if video is mp4", async () => {});
+
+  xtest("check if video is not mp4", async () => {});
+
+  xtest("get order by id", async () => {});
+
+  xtest("get order by gifter", async () => {});
+
+  xtest("get order by receiver", async () => {});
+
+  xtest("get order by text", async () => {});
+
+  xtest("get printed orders", async () => {});
+
+  xtest("get not printed orders", async () => {});
+
+  xtest("generate filename", async () => {});
 });
