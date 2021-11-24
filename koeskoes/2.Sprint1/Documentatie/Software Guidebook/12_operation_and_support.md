@@ -7,7 +7,7 @@ Wij gebruiken software als:
 |-----------------|--------------------------------------------------------------------------------------------------------------------------------|
 | GitHub | Voor user stories en taken te beheren en bewaken met als voordeel dat tijd en informatie hierin goed opgeslagen kunnen worden. |
 | Discord | Communicatie makkelijk te maken met thuiswerken. |
-| Figma/Paint.net | Om makkelijk wireframes te maken en beheren. |
+| Figma/Adobe XD | Om makkelijk wireframes te maken en beheren. |
 | Node.js | Om packages te installeren voor het project om makkelijk en efficient te werk te gaan. |
 
 Dus dit is duidelijk voor ons als team. Uiteraard wordt er wel verwacht dat deze software/ technieken bekend zijn bij de meeste programmeurs.
