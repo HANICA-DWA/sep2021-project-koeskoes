@@ -1,16 +1,10 @@
 # Functional Overview
 
-## Is het duidelijk wat het systeem doet?
+Ten eerste moet het systeem makkelijk gekoppeld kunnen worden aan bestaande webshops. Bovendien moeten er vanuit de browser ook video's geüpload en opgenomen kunnen worden. Ook moeten de QR-codes die van de plug-in afkomen gescand kunnen worden en moeten video's bekeken kunnen worden.
 
-Het systeem moet makkelijk gekoppeld kunnen worden aan bestaande webshops, maar er moeten vanuit de browser ook video's geüpload en opgenomen kunnen worden, QR-codes die van de plug-in af komen gescanned worden en video's bekeken worden.
+Voor het ontwikkelen van het prototype is het belangrijk dat er video's, na een order, opgenomen of geüpload kunnen worden op de website. Ook is het belangrijk dat deze video's teruggekeken kunnen worden door de ontvanger en dat deze video's geopend kunnen worden d.m.v. een QR-code of tekstcode. Tot slot moeten de magazijnmedewerkers die het cadeau opsturen de mogelijkheid hebben om deze video's te beheren zodat de correcte QR-code bij het correcte pakketje verpakt wordt.
 
-## Is het duidelijk welke user stories er belangrijk zijn voor de architectuur?
-
-Voor het ontwikkelen van het prototype is het belangrijk dat er video's, na een order, opgenomen of geüpload kunnen worden op de website. Ook is het belangrijk dat deze video's terug gekeken kunnen worden door de ontvanger en dat deze video's geopend kunnen worden d.m.v. een QR-code of tekstcode. Tot slot moeten de magazijnmedewerkers die het cadeau opsturen de mogelijkheid hebben om deze video's te beheren zodat de correcte QR-code bij het correcte pakketje verpakt wordt.
-
-## Is het duidelijk wie de belangrijkste gebruikers zijn?
-
-De belangrijkste gebruikers zijn de koper van het cadeau en de ontvanger die het cadeau krijgen. Wegens corona is het samen komen een stuk lastiger geworden, dit maakt het sturen van een persoonlijke video boodschap het geven van een cadeau een stuk persoonlijker.
+De belangrijkste gebruikers zijn de koper en de ontvanger van het cadeau. Wegens COVID-19 is het samenkomen een stuk lastiger geworden, wat het sturen van een persoonlijke video boodschap en het geven van een cadeau een stuk persoonlijker maakt.
 
 <!--
 Intent
