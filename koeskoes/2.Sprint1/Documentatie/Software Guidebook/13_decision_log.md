@@ -1,6 +1,6 @@
 # Decision Log
 
-Bij het kiezen van frameworks hebben we enkele belangrijke overwegingen moeten maken. Wij waren compleet vrij in het maken van deze keuzes en hebben daarom uitgebreid onderzoek gedaan. De keuzes hebben wij op de manier van "proof of concept" gemaakt. Een "proof of concept" is een realisatie van een bepaalde methode of idee om de haalbaarheid ervan aan te tonen, of een demonstratie in principe met als doel te verifiëren dat een concept of theorie praktisch potentieel heeft.
+Bij het kiezen van frameworks hebben we enkele belangrijke overwegingen moeten maken. Wij waren compleet vrij in het maken van deze keuzes en hebben daarom uitgebreid onderzoek gedaan. De keuzes hebben wij op de manier van "proof of concept" gemaakt. Een "proof of concept" is een realisatie van een bepaalde methode of een idee om de haalbaarheid ervan aan te tonen, of een demonstratie met als doel te verifiëren dat een concept of theorie praktisch potentieel heeft.
 
 Hieronder volgen de belangrijkste keuzes die wij hebben moeten maken, inclusief de beargumentatie van elke beslissing.
 
