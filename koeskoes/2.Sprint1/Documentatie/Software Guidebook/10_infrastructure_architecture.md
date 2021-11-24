@@ -8,7 +8,7 @@ Om de kwaliteit van het product goed te bewaren, hebben wij zo min mogelijk redu
 
 De verantwoordelijkheid van het onderhouden en ondersteunen voor de infrastructuur ligt bij team Koeskoes en de komende teams die aan dit project gaan verder werken. De eigenaar van de middelen is de opdrachtgever van Giftle.
 
-Het development team heeft genoeg omgevingen voor de development en het testen. Voor de development is er zowel een lokale als een online omgeving (productieserver etc.). Voor het testen wordt er gebruikgemaakt van een JavaScript "test framework" genaamd '[Jest](https://jestjs.io/)'.
+Het development team heeft genoeg omgevingen voor de development en het testen. Voor de development is er zowel een lokale als een online omgeving (productieserver etc.). Voor het testen wordt er gebruikgemaakt van een JavaScript test framework genaamd '[Jest](https://jestjs.io/)'.
 
 <!--
 Intent
