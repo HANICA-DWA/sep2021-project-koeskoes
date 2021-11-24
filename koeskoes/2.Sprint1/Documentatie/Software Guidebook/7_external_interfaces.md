@@ -9,8 +9,8 @@ Ten eerste is het belangrijkste deel de server die de externe opdrachtgever voor
 De server heeft de volgende eigenschappen:
 
 - Domeinnaam: ...
-- Opslag: ...
-- Werkgeheugen: ...
+- Opslag: 50GB
+- Werkgeheugen: 1GB
 
 ## Web server -> database
 
