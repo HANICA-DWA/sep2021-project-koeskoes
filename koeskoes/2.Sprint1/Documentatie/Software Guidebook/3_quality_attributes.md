@@ -1,71 +1,61 @@
 # Quality Attributes
 
-## Prestatie (e.g. latency and throughput)
+### Prestatie (e.g. latency and throughput)
 
-De performance qua latency en throughput moet goed zijn, wat inhoud dat er niet lang gewacht moet worden op data vanuit de database of de API. Tevens moet de website gebruiksvriendelijk en makkelijk te navigeren zijn.
+De performance qua latency en throughput moet goed zijn, wat inhoudt dat er niet te lang gewacht moet worden op data vanuit de database of de API. Tevens moet de website gebruiksvriendelijk en makkelijk te navigeren zijn.
 
-## Schaalbaarheid (e.g. data and traffic volumes)
+### Schaalbaarheid (e.g. data and traffic volumes)
 
-Voor de development is schaalbaarheid niet nodig. In de productie is dit waarschijnlijk wel nodig. Dit in verband met hoeveel de plug-in gebruikt wordt in een webshop en de hoeveelheid gebruikers die de plug-in gebruiken.
+Voor de development is schaalbaarheid niet nodig, maar in de productie waarschijnlijk wel. Dit in verband met hoeveel de plug-in gebruikt wordt in een webshop en de hoeveelheid gebruikers die de plug-in gebruiken.
 
-## Beschikbaarheid (e.g. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
+### Beschikbaarheid (e.g. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
 
-- De plug-in moet 24/7 beschikbaar zijn (tenzij er onderhoud aan de plug-in is).
-- Onderhoud moet minimaal 24 uur van te voren aangegeven worden aan de gebruikers.
+De plug-in moet 24/7 beschikbaar zijn, tenzij er onderhoud aan de plug-in is. Als dit zo is, zal het onderhoud minimaal 24 uur van te voren aangegeven moeten worden aan de gebruikers.
 
-## Beveiliging (e.g. authentication, authorisation, data confidentiality, etc)
+### Beveiliging (e.g. authentication, authorisation, data confidentiality, etc)
 
-- Een maximale bestandgrootte kan ingesteld worden, zodat de server video's kan opslaan.
-- QR-codes scannen werkt alleen met codes die naar de plug-in leiden, zodat de gebruiker niet naar random websites wordt gelokt.
-- Gegevens worden niet aan "third-party companies" verkocht.
+Er kan een maximale bestandgrootte ingesteld worden, zodat de server video's kan opslaan. Bovendien kunnen QR-codes die niet naar een andere pagina binnen de plug-in leiden, niet gescand worden via de ingebouwde QR-scanner van Giftle. Dit zorgt ervoor dat de gebruiker niet naar onbekende/externe websites wordt gelokt. Ten slotte worden gegevens niet aan "third-party companies" verkocht.
 
-## Uitbreidbaarheid
+### Uitbreidbaarheid
 
-Uitbreidbaarheid is mogelijk. De gewenste aanpak is wel om scrum te gebruiken met een "project board" en eventuele "sprints" voor de "user stories" met de daarbijbehorende taken. Op deze manier is dus uitbreiding van het project mogelijk en zo is dit exact gedaan in het begin van het project.
+Uitbreidbaarheid is mogelijk. De gewenste aanpak is wel om de scrum methode te gebruiken met een "project board" en eventuele "sprints" voor de "user stories" met de daarbijbehorende taken. Op deze manier is uitbreiding van het project op een efficiënte manier mogelijk en zo is dit exact gedaan in het begin van het project.
 
-## (Her)bruikbaarheid
+### (Her)bruikbaarheid
 
-- Door gebruik van componenten kunnen delen code opnieuw gebruikt worden zonder teveel herhaling.
-- Door gebruik van functies kunnen delen code hergebruikt worden.
-- Plug-in moet minimaal bij Apple apparaten in de safari browser gebruikt worden.
-- Plug-in moet bij Android apparaten in de Chrome browser gebruikt kunnen worden.
-- Plug-in moet bij Windows apparaten in de Chrome browser gebruikt kunnen worden.
-- Gebruikers moeten op zowel smartphone als computer (met webcam en microfoon) de plug-in kunnen gebruiken.
-- Bij IPhones moet de plug-in minimaal vanaf de IPhone 6 gebruikt kunnen worden.
-- Knoppen op de front-end moeten een functie hebben en dus iets doen.
+Ten eerste kunnen door het gebruik van componenten en functies delen van de code opnieuw gebruikt worden zonder teveel herhaling. Ook moet de plug-in gebruikt kunnen worden in de browser Safari op alle Apple-devices en in de browser Chrome op Windows- en Android-devices. Gebruikers moeten op zowel smartphone als computer (met webcam en microfoon) de plug-in kunnen gebruiken. Voor iPhones moet de plug-in vanaf de iPhone 6 gebruikt kunnen worden. Ten slotte hebben knoppen op de frontend de voorwaarde dat ze een functie hebben.
 
-## Management en toezicht
+### Management en toezicht
 
-- De mogelijkheid moet er zijn om het systeem op enkele stukken aan te passen, daarom worden er met meerdere 'react components' gewerkt.
+De mogelijkheid moet er zijn om het systeem op enkele stukken aan te passen, daarom worden er met meerdere 'react components' gewerkt.
 
-## Betrouwbaarheid
+### Betrouwbaarheid
 
 De plug-in is afhankelijk van het volgende:
+* Webserver
+* Mailserver
+* Database
+* Internetverbinding
+* Browser
+* Camera
+* Microfoon
 
-- Web Server
-- Mail Server
-- Database
-- Internet verbinding
-- Browser
-- Camera
-- Microfoon
+### Wettelijke, nalevings- en regelgevende vereisten (e.g. data protection act)
 
-## Wettelijke, nalevings- en regelgevende vereisten (e.g. data protection act)
+Om Giftle aan deze vereisten te laten voldoen, moet er rekening gehouden worden met het volgende:
+* De gebruiker moet de algemene voorwaarden kunnen lezen en op basis hiervan akkoord gaan.
+* De privacy wetgeving van Europa moet nagevolgd worden. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/wetten/internationale-privacywetgeving).
+* Wettelijke vereisten voor langetermijnarchivering van bedrijfsgegevens. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens).
+* Wettelijke vereisten voor log bestanden. Zie [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf).
+* Wettelijke vereisten voor 'audit trails'. Zie [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
 
-- De gebruiker moet de algemene voorwaarden kunnen lezen en gaat op basis hiervan akkoord.
-- De privacy wetgeving van Europa moet nagevolgd worden. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/wetten/internationale-privacywetgeving).
-- Wettelijke vereisten voor langetermijnarchivering van bedrijfsgegevens. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens).
-- Wettelijke vereisten voor log bestanden. Zie [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf).
-- Wettelijke vereisten voor 'audit trails'. Zie [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
+### Internationalisering (i18n) en localisatie (L10n)
 
-## Internationalisering (i18n) en localisatie (L10n)
+* Comments van code is in het Engels geschreven.
+* Code is in het Engels geschreven.
+* Front-end is in het Nederlands geschreven.
+* Ondersteuning voor meerdere talen (voor front-end) is niet aanwezig.
 
-- Comments van code is in het Engels geschreven.
-- Code is in het Engels geschreven.
-- Front-end is in het Nederlands geschreven.
-- Ondersteuning voor meerdere talen (voor front-end) is niet aanwezig.
-
-## Toegankelijkheid
+### Toegankelijkheid
 
 Toegankelijkheid is alleen beschikbaar voor het development team en de opdrachtgever.
 
