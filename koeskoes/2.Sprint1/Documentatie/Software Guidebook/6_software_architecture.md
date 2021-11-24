@@ -2,19 +2,19 @@
 
 Er is een duidelijke structuur binnen de software architectuur. Zoals de afbeelding(en) hieronder weergeven, is duidelijk te zien wat er gebeurt en hoe dit allemaal samenhangt met elkaar.
 
-### Level 1: System Context diagram
+## Level 1: System Context diagram
 
 ![system_context_diagram](assets/software_architecture/system_context_diagram.png "System Context diagram")
 
-### Level 2: Container diagram
+## Level 2: Container diagram
 
 ![container_diagram](assets/software_architecture/container_diagram.png "Container diagram")
 
-### Level 3: Component diagram
+## Level 3: Component diagram
 
 ![component_diagram](assets/software_architecture/component_diagram.png "Component diagram")
 
-### Level 4: Code diagram
+## Level 4: Code diagram
 
 Niet van _toepassing / niet relevante informatie_ op dit _moment / niveau_. Zie hoofdstuk 8 Code
 
