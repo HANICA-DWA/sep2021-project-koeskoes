@@ -2,7 +2,7 @@
 
 ## Is het duidelijk wat het systeem doet?
 
-Het systeem moet makkelijk gekoppeld kunnen worden aan bestaande webshops, maar ook moeten er vanuit de browser video's geüpload en opgenomen kunnen worden, QR-codes die van de plug-in af komen gescanned worden en video's bekeken worden.
+Het systeem moet makkelijk gekoppeld kunnen worden aan bestaande webshops, maar er moeten vanuit de browser ook video's geüpload en opgenomen kunnen worden, QR-codes die van de plug-in af komen gescanned worden en video's bekeken worden.
 
 ## Is het duidelijk welke user stories er belangrijk zijn voor de architectuur?
 
