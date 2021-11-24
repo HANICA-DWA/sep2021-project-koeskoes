@@ -12,14 +12,14 @@ Deze bovenstaande software zorgt ervoor dat het systeem goed te bewaken en te be
 
 Dit bewaken en beheren wordt doorgevoerd in alle lagen van de architectuur. Er zijn drie architectuur lagen, namelijk:
 1. De GUI laag. Dit is wat de gebruiker te zien krijgt (React-Redux).
-2. De Objecten laag. Dit is het "hart" van het systeem, de verbindende schakel tussen de andere lagen. In de objecten laag zit kennis vast, op twee manieren:
+2. De Objecten laag. Dit is het "hart" van het systeem, de verbindende schakel tussen de andere lagen. In de objecten laag zit kennis opgeslagen, op twee manieren:
    - Runtime waarden (bijvoorbeeld videonaam of een e-mailadres)
    - Structurele kennis, qua data en processing
 3. Database Laag (MongoDB).
 
 Errors worden gelogd in de console en zijn te zien in de browser. Informatie/data wordt niet gelogged, maar wel opgeslagen in de database.
 
-Ten slotte hoeven configuratiewijzigingen intern niet opnieuw worden opgestart. Extern moet dit naar alle waarschijnlijkheid wel gedaan worden. Dit ligt meer aan de externe software zelf.
+Ten slotte hoeven configuratiewijzigingen intern niet opnieuw worden opgestart. Extern moet dit, naar alle waarschijnlijkheid, wel gedaan worden. Dit ligt meer aan de externe software zelf.
 
 <!--
 Intent
