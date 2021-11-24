@@ -4,7 +4,7 @@ Er zijn een aantal aspecten die voor beperkingen hebben gezorgd binnen dit proje
 
 ## Tijd
 
-Het project bestaat uit een pregame van een week, drie sprints van ieder twee weken en een postgame van een week. In deze tijd zullen hoogstwaarschijnlijk niet alle gewenste functionaliteiten (perfect) uitgewerkt kunnen worden.
+Het project bestaat uit een pregame van één week, drie sprints van ieder twee weken en een postgame van één week. In deze tijd zullen hoogstwaarschijnlijk niet alle gewenste functionaliteiten (perfect) uitgewerkt kunnen worden.
 
 ## Budget
 
@@ -12,7 +12,7 @@ Om Giftle daadwerkelijk in gebruik te kunnen nemen, zal er een betaalde SMTP-ser
 
 ## Kennis
 
-Over veel van de functionaliteiten die we hebben moeten implementeren hadden we van tevoren nog geen kennis. Hierdoor hebben we veel onderzoek moeten doen en is er kostbare tijd verloren gegaan.
+Over veel van de functionaliteiten die we hebben moeten implementeren hadden wij van tevoren nog geen kennis. Hierdoor hebben wij veel onderzoek moeten doen en is er kostbare tijd verloren gegaan.
 
 <!--
 Intent
