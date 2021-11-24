@@ -1,7 +1,5 @@
 # Operation and Support
 
-## Is het duidelijk hoe de software de operationele/ondersteuningsteams in staat stelt om het systeem te bewaken en te beheren?
-
 Wij gebruiken software als:
 | Software | Waarvoor gebruikt? |
 |-----------------|--------------------------------------------------------------------------------------------------------------------------------|
@@ -10,27 +8,18 @@ Wij gebruiken software als:
 | Figma/Adobe XD | Om makkelijk wireframes te maken en beheren. |
 | Node.js | Om packages te installeren voor het project om makkelijk en efficient te werk te gaan. |
 
-Dus dit is duidelijk voor ons als team. Uiteraard wordt er wel verwacht dat deze software/ technieken bekend zijn bij de meeste programmeurs.
+Deze bovenstaande software zorgt ervoor dat het systeem goed te bewaken en te beheren is. Uiteraard wordt er wel verwacht dat deze software/technieken bekend zijn bij de meeste programmeurs.
 
-## Hoe wordt dit bereikt in alle lagen van de architectuur?
-
-Er zijn drie architectuur lagen, namelijk:
-
-1. De GUI laag. Dit is wat de gebruiker te zien krijgt.
+Dit bewaken en beheren wordt doorgevoerd in alle lagen van de architectuur. Er zijn drie architectuur lagen, namelijk:
+1. De GUI laag. Dit is wat de gebruiker te zien krijgt (React-Redux).
 2. De Objecten laag. Dit is het "hart" van het systeem, de verbindende schakel tussen de andere lagen. In de objecten laag zit kennis vast, op twee manieren:
    - Runtime waarden (bijvoorbeeld videonaam of een e-mailadres)
    - Structurele kennis, qua data en processing
-3. Database Laag.
-
-De GUI laag en objecten laag worden door React-Redux gedaan. De database laag wordt door MongoDB gedaan.
-
-## Waar zijn errors en informatie gelogged?
+3. Database Laag (MongoDB).
 
 Errors worden gelogd in de console en zijn te zien in de browser. Informatie/data wordt niet gelogged, maar wel opgeslagen in de database.
 
-## Moeten configuratiewijzigingen opnieuw worden opgestart?
-
-Intern hoeft dit niet. Extern moet dit naar alle waarschijnlijkheid wel gedaan worden. Dit ligt meer aan de externe software zelf.
+Ten slotte hoeven configuratiewijzigingen intern niet opnieuw worden opgestart. Extern moet dit naar alle waarschijnlijkheid wel gedaan worden. Dit ligt meer aan de externe software zelf.
 
 <!--
 Intent
