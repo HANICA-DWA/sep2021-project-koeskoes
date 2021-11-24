@@ -9,7 +9,7 @@ De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op h
 
 De archieven van Giftle worden bewaard in het (GitHub) project van team Koeskoes. Zo kan het development team makkelijk en snel bij de documenten.
 
-Binnen dit project zal het huidige development team geen gebruikmaken van "Flat files", ookwel platte databases (datamodellen voor databases).
+Binnen dit project zal het huidige development team geen gebruikmaken van "flat files", ookwel platte databases (datamodellen voor databases).
 
 ## Wettelijke vereisten
 
