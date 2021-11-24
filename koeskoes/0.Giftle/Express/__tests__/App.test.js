@@ -35,13 +35,13 @@ describe("Express route tests", () => {
   });
 
   test("get orders from mongoose", async () => {
-    const orders = await axios.get("http://localhost:4000/orders/");
+    const orders = await axios.get("http://localhost:4000/orders/all/");
 
     expect(orders.data).toEqual([order]);
   });
 
   test("create new order without file", async () => {
-    const orders = await axios.post("http://localhost:4000/orders/");
+    const orders = await axios.post("http://localhost:4000/orders/new/");
 
     expect(orders.data).toEqual({
       status: "error",
@@ -78,9 +78,7 @@ describe("Express route tests", () => {
   });
 
   test("change order", async () => {
-    const orderChange = await axios.patch("http://localhost:4000/orders/", {
-      orderNumber: order._id,
-    });
+    const orderChange = await axios.patch("http://localhost:4000/orders/" + order._id);
 
     expect(orderChange.data).toEqual({
       status: "success",

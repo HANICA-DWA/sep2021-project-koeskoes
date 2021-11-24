@@ -19,6 +19,11 @@
   - Code comments zijn volgens de Javadoc standaard geschreven
   - Code is geformateerd met de extension Prettier - Code formatter
   - Indent using Spaces moet op 2 staan
+  - Interacties met de database gebeuren met de Mongoose model methode
+  - Functies hebben zo min mogelijk zijeffecten 
+  - Code is duidelijk en in een oogopslag te begrijpen
+  - Geven alle functienamen duidelijke beschrijvingen van de functie. Bijvoorbeeld: generateRandomCode --> generateNonExistingRandomCode, zodat duidelijk wordt dat de code altijd een niet bestaande code is.
+  - Alle API-calls zijn RESTful.
 - Alle features moeten getest zijn
   - Deze testen moeten uitgevoerd zijn met jest volgens de happy flow & minimaal een (1) alternatieve flow. Ook mogen er geen fouten uit de testen komen.
 - Voldoet aan de acceptie criteria per item
