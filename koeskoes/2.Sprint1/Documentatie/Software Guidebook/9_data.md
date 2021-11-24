@@ -13,7 +13,10 @@ Binnen dit project zal het huidige development team geen gebruikmaken van "Flat 
 
 ## Wettelijke vereisten
 
-Er zijn wettelijke vereisten voor de langetermijnarchivering van bedrijfsgegevens waar rekening mee gehouden moet worden. Deze zijn hier te vinden: [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens). Bovendien zijn er wettelijke vereisten voor log bestanden en "audit trails", die via de volgende twee bronnen te vinden zijn: [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf) & [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
+Er zijn verschillende wettelijke vereisten rondom data waar rekening mee gehouden zal moeten worden. Deze luiden als volgt:
+
+* Vereisten voor de langetermijnarchivering van bedrijfsgegevens, die hier te vinden zijn: [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens);
+* Vereisten voor log bestanden en "audit trails", die via de volgende twee bronnen te vinden zijn: [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf) & [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
 
 <!--
 Intent
