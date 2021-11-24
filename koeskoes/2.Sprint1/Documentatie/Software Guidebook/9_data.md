@@ -1,41 +1,19 @@
 # Data
 
-## Hoe ziet het datamodel eruit?
+## Algemene informatie
 
 ![Data](assets/data/data.png "Data")
 *Datamodel*
 
-## Waar wordt de data opgeslagen?
+De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op het moment maar één collectie (table), genaamd 'uploadschemas'. De data is bij het opleveren in bezit van de opdrachtgevers van dit project Giftle. Tijdens de productie is het team Koeskoes van de Hogeschool van Arnhem en Nijmegen (HAN) verantwoordelijk voor de data. Er is minimaal 50GB aan opslagruimte nodig voor alle data in deze database. Voor de productie is dit sowieso voldoende, maar als het project opgeleverd wordt, kan er meer opslagruimte nodig zijn.
 
-De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op het moment maar 1 collectie (table) genaamd 'uploadschemas'.
+De archieven van Giftle worden bewaard in het (GitHub) project van team Koeskoes. Zo kan het development team makkelijk en snel bij de documenten.
 
-## Wie heeft de data in bezit?
+Binnen dit project zal het huidige development team niet gebruikmaken van "Flat files", ookwel platte databases (datamodellen voor databases).
 
-De data is bij het opleveren in bezit van de opdrachtgevers van dit project Giftle. Tijdens de productie is het team Koeskoes van de Hogeschool van Arnhem en Nijmegen (HAN) verantwoordelijk voor de data.
+## Wettelijke vereisten
 
-## Hoeveel opslagruimte is nodig voor de data?
-
-Er is minimaal 50GB aan opslagruimte nodig. Voor de productie is dit goed, maar als het project opgeleverd wordt, dan kan er meer opslagruimte verwacht worden.
-
-## Wat zijn de archieven en back-up strategieën?
-
-De archieven worden bewaard in het (GitHub) project van team Koeskoes. Zo kan het development team makkelijk en snel bij de documenten.
-
-## Zijn er wettelijke vereisten voor de langetermijnarchivering van bedrijfsgegevens?
-
-Deze wettelijke vereisten zijn er zeker. Via de link kunt u de wettelijke vereisten voor de langetermijnarchivering van bedrijfsgegevens vinden: [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens)
-
-## Zijn er wettelijke vereisten voor log bestanden en "audit trails"?
-
-Deze wettelijke vereisten zijn er ook en kunt u via de volgende linkjes bekijken.
-
-[logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf)
-
-[audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail)
-
-## Worden "flat files" gebruikt voor opslag? Zo ja, welk formaat wordt er gebruikt?
-
-"Flat files" zijn platte databases. Een platte database is een datamodel voor een database. Deze "flat files" worden niet door de huidige development team gebruikt.
+Er zijn wettelijke vereisten voor de langetermijnarchivering van bedrijfsgegevens waar rekening mee gehouden moet worden. Deze zijn hier te vinden: [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens). Bovendien zijn er wettelijke vereisten voor log bestanden en "audit trails", die via de volgende twee bronnen te vinden zijn: [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf) & [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
 
 <!--
 Intent
