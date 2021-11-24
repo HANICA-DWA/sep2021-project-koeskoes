@@ -1,12 +1,12 @@
 # Code
 
-In dit product is gebruik gemaakt van React. Voor de state control is gebruik gemaakt van Redux. Voor het maken van asynchrone action creators is er gebruik gemaakt van 'redux-thunk'. Dit maakt samen de front-end van de webapplicatie. Voor de backend is Express gebruikt. Deze twee verschillende applicaties zijn verbonden met de REST API. Voor de database is er gebruik gemaakt van MongoDB. Door middel van Mongoose maakt Express gebruik van deze database.
+In dit product is gebruikgemaakt van React en voor de state control is gebruikgemaakt van Redux. Voor het maken van asynchrone action creators is er gebruikgemaakt van 'redux-thunk'. Deze aspecten maken samen de frontend van de webapplicatie. Voor de backend is Express gebruikt. Deze twee verschillende applicaties zijn verbonden met de REST API. Voor de database is er gebruik gemaakt van MongoDB. Door middel van Mongoose maakt Express gebruik van deze database.
 
 Voor het responsive design en het stylen van de website is er gebruik gemaakt van 'Bootstrap'.
 
-Voor het maken van de QR-codes, maken wij gebruik van de node module 'qr-code-styling'. Om deze QR-codes te scannen gebruiken wij de node module 'react-qr-reader'. Voor het uploaden van bestanden gebruiken wij de node module 'express-fileupload'. Om video's op te nemen op de website is er gebruik gemaakt van de node module 'react-webcam'. Voor het versturen van een request naar de Express server is er gebruik gemaakt van de node module 'Axios'.
+Voor het maken van de QR-codes maken wij gebruik van de node module 'qr-code-styling'. Om deze QR-codes vervolgens te kunnen scannen gebruiken wij de node module 'react-qr-reader'. Voor het uploaden van bestanden gebruiken wij de node module 'express-fileupload'. Om video's op te nemen op de website is er gebruikgemaakt van de node module 'react-webcam'. Voor het versturen van een request naar de Express server is er gebruikgemaakt van de node module 'Axios'.
 
-Voor het unit- & integratie testen van de applicatie is er gebruik gemaakt van 'Jest'.
+Voor het unit- & integratie testen van de applicatie is er gebruikgemaakt van 'Jest'.
 
 <!--
 • Generating/rendering HTML: a short description of an in-house framework that was created for generating HTML, including the major classes and concepts.
