@@ -1,6 +1,6 @@
 # Software Architecture
 
-Er is een duidelijke structuur binnen de software architectuur. Zoals de afbeelding(en) hieronder weergeven, is duidelijk te zien wat er gebeurt en hoe dit allemaal samenhangt met elkaar.
+Er is een duidelijke structuur binnen de software architectuur. Zoals de afbeelding(en) hieronder weergeven, is er duidelijk te zien wat er gebeurt en hoe dit allemaal met elkaar samenhangt.
 
 ## Level 1: System Context diagram
 
