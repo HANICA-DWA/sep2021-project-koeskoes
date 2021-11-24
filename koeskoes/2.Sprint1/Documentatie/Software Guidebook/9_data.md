@@ -3,6 +3,7 @@
 ## Hoe ziet het datamodel eruit?
 
 ![Data](assets/data/data.png "Data")
+*Datamodel*
 
 ## Waar wordt de data opgeslagen?
 
