@@ -9,7 +9,7 @@ export const setOrders = (orders) => {
 
 export const getOrders = () => {
   return async (dispatch) => {
-    const orders = await axios.get('http://localhost:4000/orders');
+    const orders = await axios.get('http://localhost:4000/orders/all/');
 
     return dispatch(setOrders(orders.data));
   }

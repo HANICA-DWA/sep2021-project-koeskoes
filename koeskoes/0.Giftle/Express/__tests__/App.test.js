@@ -1,6 +1,6 @@
 const axios = require("axios");
 const mongoose = require("mongoose");
-const generateUniqueCode = require('../commonFunctions/generateTextcode');
+const generateUniqueCode = require('../commonFunctions/generateUniqueCode');
 require("../model/uploadModel");
 
 const uploads = mongoose.model("UploadSchema");

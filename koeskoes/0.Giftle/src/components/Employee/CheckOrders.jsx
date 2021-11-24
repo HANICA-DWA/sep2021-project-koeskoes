@@ -156,7 +156,7 @@ const CheckOrders = () => {
     try {
       const qrCode = qrcode("http://localhost:3000/watchvideo/" + orderNumber);
 
-      await axios.patch("http://localhost:4000/orders/", { orderNumber });
+      await axios.patch("http://localhost:4000/orders/" + orderNumber);
 
       dispatch(getOrders());
 

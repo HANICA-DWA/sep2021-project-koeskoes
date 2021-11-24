@@ -145,14 +145,14 @@ function RecordVideo() {
       formData.append("video", blob, 'recordedVideo');
 
       const uploadResponse = await axios.post(
-        `http://localhost:4000/orders/`,
+        `http://localhost:4000/orders/new/`,
         formData
       );
 
       setRecordedChunks([]);
 
       if (uploadResponse.status === "error") {
-        return setError(ErrorMessage(uploadResponse.message, () => setError(null)));
+        return setError(ErrorMessage(uploadResponse.data.message, () => setError(null)));
       }
       else {
         return setIsGoToWatchVideo(true);

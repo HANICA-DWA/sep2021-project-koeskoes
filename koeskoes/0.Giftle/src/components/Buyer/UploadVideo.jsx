@@ -18,7 +18,7 @@ function UploadVideo() {
   }
 
   if (isGoToWatchVideo === true) {
-    return <Navigate to="/watchVideo" />;
+    return <Navigate to="/rewatchvideo" />;
   }
 
   /**
@@ -56,13 +56,15 @@ function UploadVideo() {
       formData.append("email", emailReceiver);
 
       const uploadResponse = await axios.post(
-        `http://localhost:4000/orders/`,
+        `http://localhost:4000/orders/new/`,
         formData
       );
 
-      if (uploadResponse.status === "error") {
+      console.log(uploadResponse);
+
+      if (uploadResponse.data.status === "error") {
         return setError(
-          ErrorMessage(uploadResponse.message, () => setError(null))
+          ErrorMessage(uploadResponse.data.message, () => setError(null))
         );
       } else {
         return setIsGoToWatchVideo(true);
