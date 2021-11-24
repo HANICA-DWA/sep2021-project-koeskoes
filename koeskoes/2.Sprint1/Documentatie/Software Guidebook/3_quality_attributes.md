@@ -1,30 +1,30 @@
 # Quality Attributes
 
-### Prestatie (e.g. latency and throughput)
+## Prestatie (e.g. latency and throughput)
 
 De performance qua latency en throughput moet goed zijn, wat inhoudt dat er niet te lang gewacht moet worden op data vanuit de database of de API. Tevens moet de website gebruiksvriendelijk en makkelijk te navigeren zijn.
 
-### Schaalbaarheid (e.g. data and traffic volumes)
+## Schaalbaarheid (e.g. data and traffic volumes)
 
 Voor de development is schaalbaarheid niet nodig, maar in de productie waarschijnlijk wel. Dit in verband met hoeveel de plug-in gebruikt wordt in een webshop en de hoeveelheid gebruikers die de plug-in gebruiken.
 
-### Beschikbaarheid (e.g. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
+## Beschikbaarheid (e.g. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
 
 De plug-in moet 24/7 beschikbaar zijn, tenzij er onderhoud aan de plug-in is. Als dit zo is, zal het onderhoud minimaal 24 uur van te voren aangegeven moeten worden aan de gebruikers.
 
-### Beveiliging (e.g. authentication, authorisation, data confidentiality, etc)
+## Beveiliging (e.g. authentication, authorisation, data confidentiality, etc)
 
 Er kan een maximale bestandgrootte ingesteld worden, zodat de server video's kan opslaan. Bovendien kunnen QR-codes die niet naar een andere pagina binnen de plug-in leiden, niet gescand worden via de ingebouwde QR-scanner van Giftle. Dit zorgt ervoor dat de gebruiker niet naar onbekende/externe websites wordt gelokt. Ten slotte worden gegevens niet aan "third-party companies" verkocht.
 
-### Uitbreidbaarheid
+## Uitbreidbaarheid
 
 Uitbreidbaarheid is mogelijk. De gewenste aanpak is wel om de scrum methode te gebruiken met een "project board" en eventuele "sprints" voor de "user stories" met de daarbijbehorende taken. Op deze manier is uitbreiding van het project op een efficiënte manier mogelijk en zo is dit exact gedaan in het begin van het project.
 
-### (Her)bruikbaarheid
+## (Her)bruikbaarheid
 
 Ten eerste kunnen door het gebruik van componenten en functies delen van de code opnieuw gebruikt worden zonder teveel herhaling. Ook moet de plug-in gebruikt kunnen worden in de browser Safari op alle Apple-devices en in de browser Chrome op Windows- en Android-devices. Gebruikers moeten op zowel smartphone als computer (met webcam en microfoon) de plug-in kunnen gebruiken. Voor iPhones moet de plug-in vanaf de iPhone 6 gebruikt kunnen worden. Ten slotte hebben knoppen op de frontend de voorwaarde dat ze een functie hebben.
 
-### Management en toezicht
+## Management en toezicht
 
 De mogelijkheid moet er zijn om het systeem op enkele stukken aan te passen, daarom worden er met meerdere 'react components' gewerkt.
 
@@ -39,7 +39,7 @@ De plug-in is afhankelijk van het volgende:
 * Camera
 * Microfoon
 
-### Wettelijke, nalevings- en regelgevende vereisten (e.g. data protection act)
+## Wettelijke, nalevings- en regelgevende vereisten (e.g. data protection act)
 
 Om Giftle aan deze vereisten te laten voldoen, moet er rekening gehouden worden met het volgende:
 * De gebruiker moet de algemene voorwaarden kunnen lezen en op basis hiervan akkoord gaan.
@@ -48,14 +48,14 @@ Om Giftle aan deze vereisten te laten voldoen, moet er rekening gehouden worden 
 * Wettelijke vereisten voor log bestanden. Zie [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf).
 * Wettelijke vereisten voor 'audit trails'. Zie [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
 
-### Internationalisering (i18n) en localisatie (L10n)
+## Internationalisering (i18n) en localisatie (L10n)
 
 * Comments van code is in het Engels geschreven.
 * Code is in het Engels geschreven.
 * Front-end is in het Nederlands geschreven.
 * Ondersteuning voor meerdere talen (voor front-end) is niet aanwezig.
 
-### Toegankelijkheid
+## Toegankelijkheid
 
 Toegankelijkheid is alleen beschikbaar voor het development team en de opdrachtgever.
 
