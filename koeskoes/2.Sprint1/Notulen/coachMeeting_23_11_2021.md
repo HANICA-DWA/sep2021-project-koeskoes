@@ -7,12 +7,12 @@
 ## Overig
 
 * Een maniertje vinden om acceptatiecriteria te laten zien tijdens de Sprint Review
-* I.p.v. deze lettergrootte naar schaalbaarheid (b.v. 50% en 200%)
 * Veel routes kunnen in mongoose model methode 
 * Worden er niet stiekem async gebruikt
 * Is alles wel goed RESTful?
 
 ### DoD
+* I.p.v. deze lettergrootte naar schaalbaarheid (b.v. 50% en 200%)
 * Alle interactie met db met Mongoose model methode
 * Zo min mogelijk zijeffecten
 * Duidelijk korte code
@@ -24,13 +24,13 @@
 ### Tests
 * Generate random code
 * Lijstje met skipped tests
-* Request parameter 
+* Request parameter i.p.v. request body
 * Test voor testen of database in de goede toestand is
 * Mongoose model methodes testen
 * Tests moeten voor db zijn
   
 #### Upload Test
-* Maak een aparte functie in een apart file voor 29 tot 34 en test die
+* Maak een aparte functie in een apart file voor line 29 tot 34 en test die
 * Mock date.now output
 * Move code apart testen
 
