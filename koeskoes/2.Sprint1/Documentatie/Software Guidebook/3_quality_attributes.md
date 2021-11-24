@@ -2,11 +2,11 @@
 
 ## Prestatie (e.g. latency and throughput)
 
-De performance qua latency en throughput moet goed zijn, wat inhoud dat er niet lang gewacht moet worden op data vanuit de database of de API. Tevens moet de website gebruiksvriendelijk zijn en makkelijk te navigeren zijn.
+De performance qua latency en throughput moet goed zijn, wat inhoud dat er niet lang gewacht moet worden op data vanuit de database of de API. Tevens moet de website gebruiksvriendelijk en makkelijk te navigeren zijn.
 
 ## Schaalbaarheid (e.g. data and traffic volumes)
 
-Voor in development is de schaalbaarheid niet nodig. In de productie is schaalbaarheid waarschijnlijk wel nodig. Dit in verband met hoeveel de plug-in gebruikt wordt in een webshop en de hoeveelheid gebruikers die de plug-in gebruiken.
+Voor de development is schaalbaarheid niet nodig. In de productie is dit waarschijnlijk wel nodig. Dit in verband met hoeveel de plug-in gebruikt wordt in een webshop en de hoeveelheid gebruikers die de plug-in gebruiken.
 
 ## Beschikbaarheid (e.g. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
 
@@ -15,7 +15,7 @@ Voor in development is de schaalbaarheid niet nodig. In de productie is schaalba
 
 ## Beveiliging (e.g. authentication, authorisation, data confidentiality, etc)
 
-- Maximale bestandgrootte wordt toegestaan, zodat de database niet vol raakt met hele grote video's.
+- Een maximale bestandgrootte kan ingesteld worden, zodat de server video's kan opslaan.
 - QR-codes scannen werkt alleen met codes die naar de plug-in leiden, zodat de gebruiker niet naar random websites wordt gelokt.
 - Gegevens worden niet aan "third-party companies" verkocht.
 
@@ -56,7 +56,7 @@ De plug-in is afhankelijk van het volgende:
 - De privacy wetgeving van Europa moet nagevolgd worden. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/wetten/internationale-privacywetgeving).
 - Wettelijke vereisten voor langetermijnarchivering van bedrijfsgegevens. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens).
 - Wettelijke vereisten voor log bestanden. Zie [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf).
-- Wettelijke vereisten voor 'audit trials'. Zie [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
+- Wettelijke vereisten voor 'audit trails'. Zie [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
 
 ## Internationalisering (i18n) en localisatie (L10n)
 
