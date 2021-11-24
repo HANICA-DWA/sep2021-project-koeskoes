@@ -1,10 +1,10 @@
 # Functional Overview
 
-Ten eerste moet het systeem makkelijk gekoppeld kunnen worden aan bestaande webshops. Bovendien moeten er vanuit de browser ook video's geüpload en opgenomen kunnen worden. Ook moeten de QR-codes die van de plug-in afkomen gescand kunnen worden en moeten video's bekeken kunnen worden.
+Ten eerste moet het systeem makkelijk gekoppeld kunnen worden aan bestaande webshops. Bovendien moeten er vanuit de browser ook video's geüpload en opgenomen kunnen worden. Ook moeten de QR-codes, die van de plug-in afkomen, gescand kunnen worden en moeten video's bekeken kunnen worden.
 
-Voor het ontwikkelen van het prototype is het belangrijk dat er video's, na een order, opgenomen of geüpload kunnen worden op de website. Ook is het belangrijk dat deze video's teruggekeken kunnen worden door de ontvanger en dat deze video's geopend kunnen worden d.m.v. een QR-code of tekstcode. Tot slot moeten de magazijnmedewerkers die het cadeau opsturen de mogelijkheid hebben om deze video's te beheren zodat de correcte QR-code bij het correcte pakketje verpakt wordt.
+Voor het ontwikkelen van het prototype is het belangrijk dat er video's, na een aankoop, opgenomen of geüpload kunnen worden op de website. Ook is het belangrijk dat deze video's teruggekeken kunnen worden door de ontvanger en dat deze video's geopend kunnen worden d.m.v. een QR-code of tekstcode. Tot slot moeten de magazijnmedewerkers, die het cadeau opsturen, de mogelijkheid hebben om deze video's te beheren zodat de correcte QR-code bij het correcte pakketje verpakt wordt.
 
-De belangrijkste gebruikers zijn de koper en de ontvanger van het cadeau. Wegens COVID-19 is het samenkomen een stuk lastiger geworden, wat het sturen van een persoonlijke video boodschap en het geven van een cadeau een stuk persoonlijker maakt.
+De belangrijkste gebruikers zijn de koper en de ontvanger van het cadeau. Wegens COVID-19 is het samenkomen een stuk lastiger geworden, wat het sturen van een videoboodschap en het geven van een cadeau een stuk persoonlijker maakt.
 
 <!--
 Intent
