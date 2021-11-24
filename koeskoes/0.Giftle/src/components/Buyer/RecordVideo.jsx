@@ -2,20 +2,20 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Navigate } from "react-router";
 import Webcam from "react-webcam";
 import axios from "axios";
-import ErrorMessage from '../Common/CreateErrorMessage';
+import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
 
 /**
  *
  * React component to record video's from the webcam.
- * 
+ *
  * @return the front-end for the recording page
  *
  */
 function RecordVideo() {
   const [error, setError] = useState(null);
   const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
-  const [resolution, setResolution] = useState('720');
+  const [resolution, setResolution] = useState("720");
   const [isDevicesChecked, setIsDevicesChecked] = useState(false);
   const [isAudioAvailable, setIsAudioAvailable] = useState(false);
   const [isWebcamAvailable, setIsWebcamAvailable] = useState(false);
@@ -33,43 +33,45 @@ function RecordVideo() {
   useEffect(() => {
     const checkVideoAndAudio = async () => {
       try {
-        const audioAccess = await navigator.mediaDevices.getUserMedia({audio: true});
+        const audioAccess = await navigator.mediaDevices.getUserMedia({
+          audio: true,
+        });
 
-        if (audioAccess.getAudioTracks().length > 0){
+        if (audioAccess.getAudioTracks().length > 0) {
           setIsAudioAvailable(true);
         } else {
           setIsAudioAvailable(false);
-          setError(ErrorMessage('Geen microfoon gevonden', () => setError(null)));
+          setError(
+            ErrorMessage("Geen microfoon gevonden", () => setError(null))
+          );
         }
-      }
-      catch (e) {
+      } catch (e) {
         setIsAudioAvailable(false);
-        setError(ErrorMessage('Geen microfoon gevonden', () => setError(null)));
+        setError(ErrorMessage("Geen microfoon gevonden", () => setError(null)));
       }
 
       try {
-        const videoAccess = await navigator.mediaDevices.getUserMedia({video: true});
+        const videoAccess = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
 
-        if (videoAccess.getVideoTracks().length > 0){
+        if (videoAccess.getVideoTracks().length > 0) {
           setIsWebcamAvailable(true);
         } else {
           setIsWebcamAvailable(false);
-          setError(ErrorMessage('Geen webcam gevonden', () => setError(null)));
+          setError(ErrorMessage("Geen webcam gevonden", () => setError(null)));
         }
-      }
-      catch (e) {
+      } catch (e) {
         setIsWebcamAvailable(false);
-        setError(ErrorMessage('Geen webcam gevonden', () => setError(null)));
+        setError(ErrorMessage("Geen webcam gevonden", () => setError(null)));
       }
 
-      
       setIsDevicesChecked(true);
-    }
+    };
 
     if (isDevicesChecked !== true) {
       checkVideoAndAudio();
     }
-    
   });
 
   /**
@@ -94,7 +96,7 @@ function RecordVideo() {
   const handleStartCaptureClick = useCallback(() => {
     setCapturing(true);
     mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
-      mimeType: "video/webm"
+      mimeType: "video/webm",
     });
     mediaRecorderRef.current.addEventListener(
       "dataavailable",
@@ -116,14 +118,13 @@ function RecordVideo() {
   /**
    *
    * Handles the video upload to the server.
-   * 
+   *
    * @return Error if there is a error
    * @return setIsGoToWatchVideo to true if no erro
    *
    */
   const handleDownload = useCallback(async () => {
     if (recordedChunks.length) {
-      
       if (recordedChunks[0].size > 10485760) {
         return setError(
           ErrorMessage("Maak een kortere video!", () => setError(null))
@@ -137,12 +138,12 @@ function RecordVideo() {
       }
 
       const blob = new Blob(recordedChunks, {
-        type: "video/webm"
+        type: "video/webm",
       });
-      
+
       const formData = new FormData();
 
-      formData.append("video", blob, 'recordedVideo');
+      formData.append("video", blob, "recordedVideo");
 
       const uploadResponse = await axios.post(
         `http://localhost:4000/orders/new/`,
@@ -152,9 +153,10 @@ function RecordVideo() {
       setRecordedChunks([]);
 
       if (uploadResponse.status === "error") {
-        return setError(ErrorMessage(uploadResponse.data.message, () => setError(null)));
-      }
-      else {
+        return setError(
+          ErrorMessage(uploadResponse.data.message, () => setError(null))
+        );
+      } else {
         return setIsGoToWatchVideo(true);
       }
     }
@@ -167,7 +169,7 @@ function RecordVideo() {
    */
   const handleResetRecording = () => {
     setRecordedChunks([]);
-  }
+  };
 
   /**
    *
@@ -177,7 +179,7 @@ function RecordVideo() {
   if (isGoBackBuyerMain === true) {
     return <Navigate to="/buyer" />;
   }
-  
+
   if (isGoToWatchVideo === true) {
     return <Navigate to="/rewatchvideo" />;
   }
@@ -190,25 +192,30 @@ function RecordVideo() {
           className="btn btn-primary float-start"
           onClick={() => setIsGoBackBuyerMain(true)}
         >
-          {<BackArrow/>}
+          {<BackArrow />}
           Terug
         </button>
         <h1>Uw video opnemen</h1>
         <br />
-        <Webcam 
-          audio={true} 
-          ref={webcamRef} 
+        <Webcam
+          audio={true}
+          ref={webcamRef}
           forceScreenshotSourceSize
           videoConstraints={{
             height: resolution,
-            width: (resolution / 9 * 16)
+            width: (resolution / 9) * 16,
           }}
           width={"100%"}
         />
         <p>Resolutie: </p>
-        <select class="form-select" onChange={(e) => setResolution(e.target.value)}>
+        <select
+          class="form-select"
+          onChange={(e) => setResolution(e.target.value)}
+        >
           <option value="480">480p</option>
-          <option selected value="720">720p</option>
+          <option selected value="720">
+            720p
+          </option>
           <option value="1080">1080p</option>
         </select>
         <p>
@@ -216,17 +223,37 @@ function RecordVideo() {
           <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
         </p>
         <br />
-        {(isWebcamAvailable && isAudioAvailable ? capturing ? (
-          <button className="btn btn-primary me-3" onClick={handleStopCaptureClick}>Opnemen stoppen</button>
-        ) : ( recordedChunks.length > 0 ? (
+        {isWebcamAvailable && isAudioAvailable ? (
+          capturing ? (
+            <button
+              className="btn btn-primary me-3"
+              onClick={handleStopCaptureClick}
+            >
+              Opnemen stoppen
+            </button>
+          ) : recordedChunks.length > 0 ? (
             <>
-              <button className="btn btn-primary me-3" onClick={handleResetRecording}>Opnieuw opnemen</button>
-              <button className="btn btn-primary me-3" onClick={handleDownload}>Volgende stap</button>
+              <button
+                className="btn btn-primary me-3"
+                onClick={handleResetRecording}
+              >
+                Opnieuw opnemen
+              </button>
+              <button className="btn btn-primary me-3" onClick={handleDownload}>
+                Volgende stap
+              </button>
             </>
           ) : (
-            <button className="btn btn-primary me-3" onClick={handleStartCaptureClick}>Opnemen starten</button>
+            <button
+              className="btn btn-primary me-3"
+              onClick={handleStartCaptureClick}
+            >
+              Opnemen starten
+            </button>
           )
-        ) : <p>Er is geen toegang tot de camera of microfoon</p>)}
+        ) : (
+          <p>Er is geen toegang tot de camera of microfoon</p>
+        )}
       </div>
     </div>
   );

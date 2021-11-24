@@ -44,7 +44,7 @@ const CheckOrders = () => {
    * @returns List of mapped orders if exists, otherwise returns nothing
    *
    */
-  const orderList = () => {
+  const updateOrderList = () => {
     if (orders.length !== 0) {
       const mappedOrders = () => {
         if (orders.length > 10) {
@@ -194,7 +194,7 @@ const CheckOrders = () => {
               <th scope="col">QR-code</th>
             </tr>
           </thead>
-          <tbody>{orderList()}</tbody>
+          <tbody>{updateOrderList()}</tbody>
         </table>
         {pagination()}
       </div>

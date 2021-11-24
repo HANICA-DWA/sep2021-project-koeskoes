@@ -6,7 +6,7 @@ import { getVideo, resetVideo } from "../../redux/actions/videoActions";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
 
-const TextcodePage = () => {
+const TextCodePage = () => {
   const dispatch = useDispatch();
   const video = useSelector((state) => state.videos.video || null);
 
@@ -98,4 +98,4 @@ const TextcodePage = () => {
   );
 };
 
-export default TextcodePage;
+export default TextCodePage;

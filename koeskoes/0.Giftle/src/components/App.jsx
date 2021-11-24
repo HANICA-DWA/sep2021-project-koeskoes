@@ -11,7 +11,7 @@ import RecordVideo from "./Buyer/RecordVideo";
 import HomeReceiver from "./Receiver/HomeReceiver";
 import QRPage from "./Receiver/QRPage";
 import ScanQR from "./Receiver/ScanQR";
-import TextcodePage from "./Receiver/TextcodePage";
+import TextCodePage from "./Receiver/TextCodePage";
 import VideoPage from "./Receiver/VideoPage";
 
 // Employee components
@@ -32,7 +32,7 @@ function App() {
           <Route path="/receiver" exact element={<HomeReceiver />} />
           <Route path="/qr-code" exact element={<QRPage />} />
           <Route path="/scan" exact element={<ScanQR />} />
-          <Route path="/textcode" exact element={<TextcodePage />} />
+          <Route path="/textcode" exact element={<TextCodePage />} />
           <Route path="/watchvideo/:id" element={<VideoPage />} />
           <Route path="/checkorders" exact element={<CheckOrders />} />
           <Route path="*" element={<NotFound />} />
