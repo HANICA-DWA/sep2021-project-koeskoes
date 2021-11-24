@@ -6,7 +6,7 @@
 
 | Studenten          | E-mail                        | Student nr. |
 | ------------------ | ----------------------------- | ----------- |
-| Sjoerd de Bruin    | swl.debruin@student.han.nl    |             |
+| Sjoerd de Bruin    | swl.debruin@student.han.nl    | 650151      |
 | Ilse van de Peppel | i.vandepeppel1@student.han.nl |             |
 | Sven van Ee        | s.vanee1@student.han.nl       |             |
 | Jordi Obermeier    | CJA.Obermeier@student.han.nl  | 652615      |
