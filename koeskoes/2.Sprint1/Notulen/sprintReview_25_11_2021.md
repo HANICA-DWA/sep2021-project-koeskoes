@@ -1,5 +1,5 @@
 # Sprint review | Sprint 1
-Robert not amused
+
 ## Agenda
 
 ### Rollen
@@ -37,8 +37,6 @@ Altijd goed rekening houden met de faciliteiten
 * Contactgegevens doorzetten
 * Minimum tijd aangeven van videos
 * Criteria te klein bestand
-* 
-* 
   
 ### Demonstratie Robert:
 
@@ -50,8 +48,8 @@ Altijd goed rekening houden met de faciliteiten
 * Vinkje in DoD weghalen als niet nodig of comment erachter zetten
 * Maken met http request met bestand eraan 
 * Fijn als alle URLs de code gebruiken
-* QR-code is stijling testen en onderzoeken
-* 
+* QR-code met stijling testen en onderzoeken
+  
 
 
 ### Backlog extra
@@ -67,9 +65,6 @@ Altijd goed rekening houden met de faciliteiten
 * Denk aan de video workflow groot en deels op elkaar te laten lijken
 *  Meer support magazijn medewerker
 *  Webshop beheerder in sprint 3
-*  .
-*  .
-*  .
 
 
 
