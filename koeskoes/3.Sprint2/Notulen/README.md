@@ -38,3 +38,11 @@
 
 - Als ontvanger wil ik een video kunnen bekijken, zodat ik kan zien wat de verzender heeft verstuurd.
 - Als ontvanger wil ik een reactie kunnen sturen naar de verzender, zodat ik de verzender kan bedanken.
+
+### Gesprek met Deny over de productieserver
+- Plan van aanpak sturen naar Deny
+
+#### Debian
+- Uiteindelijk documentatie leveren voor het overzetten van Ubuntu server en dergelijke
+
+
