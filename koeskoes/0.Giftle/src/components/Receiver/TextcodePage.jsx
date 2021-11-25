@@ -76,7 +76,6 @@ const TextCodePage = () => {
               name="givenTextcode"
               onChange={(e) => setGivenTextcode(e.target.value)}
             />
-            <p>{givenTextcode}</p>
           </div>
         </div>
         <div className="col-lg-2 col-md-2 col-sm-2"></div>
