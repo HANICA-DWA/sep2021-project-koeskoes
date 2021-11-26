@@ -33,7 +33,7 @@
 
 - #12 | Waarom moet de gebruiker via de mail de tekstcode handmatig invullen? Waarom niet automatisch via de URL/knop? Mail zo maken dat er een knop is om te bekijken, nog een extra tekstcode voor als de knop niet werkt. Dit neerzetten bij acceptatie criteria.
 - #17 | Misschien het woord 'cadeau' vervangen door 'videoboodschap'. Nadenken over criterium wanneer de video als bekeken wordt beschouwd.
-- #18 | Doorschuiven naar het moment dat we gaan kijken naar intergratie met de webshops.
+- #18 | Doorschuiven naar het moment dat we gaan kijken naar integratie met de webshops.
 - #19 | User story anders verwoorden, betere zin. Bepalen na hoeveel tijd de reminder wordt verzonden. Hierin zetten dat cadeau niet zonder video verzonden kan worden. Maak van reactiemogelijkheid een aparte user story.
 - #7 | Video verwijderen zodra hij door de nieuwe video wordt overschreven, niet door de terugknop. History meesturen met deze functionaliteit zodat je naar de correcte pagina teruggaat met de terugknop. Wachten met video verwijderen totdat er over de nieuwe video wordt gezegd dat die goed is. Inlogmechanisme door middel van de tekstcode in de URL. Er moet bevestiging worden gevraagd aan de gebruiker bij de audiocheck (geen foutmelding maar als hulp-opmerking). Conformation bij terugknop is niet nodig, verder wel maar wel mooi gestyled (bootstrap modals).
 - #8 | Terugknop op het video bekijken van de ontvanger hoeft niet per se.
