@@ -5,10 +5,10 @@
 ### Aanwezigen
 
 - Robert (Product owner)
-- Sjoerd (ROL)
-- Ilse (ROL)
-- Sven (ROL)
-- Jordi (ROL)
+- Sjoerd (Gesprekspartner)
+- Ilse (Notulist)
+- Sven (Gesprekspartner)
+- Jordi (Scrum master)
 
 ### Agenda punten voor tijdens gesprek
 
