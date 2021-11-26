@@ -16,5 +16,5 @@
 - De rollen per persoon aangeven
 - Scrumbord Sprint 2 laten zien
 - Scrumbord Sprint 2 User Stories bespreken
-- Afsluiten
+- Afsluiten met product owner
 - Als product owner weg is, dan gezamenlijk acceptatie criteria's aanpassen/bedenken
