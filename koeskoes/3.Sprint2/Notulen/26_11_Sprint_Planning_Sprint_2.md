@@ -17,4 +17,4 @@
 - Scrumbord Sprint 2 laten zien (gebasseerd op vorige Sprint en sprint review)
 - Scrumbord Sprint 2 User Stories met acceptatiecriteria bespreken
 - Afsluiten met product owner
-- Als product owner weg is, dan gezamenlijk acceptatie criteria's aanpassen en taken maken
+- Als product owner weg is, dan gezamenlijk acceptatiecriteria aanpassen en taken maken
