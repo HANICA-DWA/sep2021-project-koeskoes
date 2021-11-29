@@ -5,7 +5,7 @@ require("../model/uploadModel");
 
 const uploads = mongoose.model("UploadSchema");
 
-router.route("/:textCode").get(async (req, res) => {
+router.get("/:textCode", async (req, res) => {
   const video = await uploads
     .findOne({
       textCode: req.params.textCode,
