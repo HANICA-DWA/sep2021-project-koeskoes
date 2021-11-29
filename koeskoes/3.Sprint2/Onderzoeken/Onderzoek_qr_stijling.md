@@ -5,7 +5,18 @@ Iedereen kent de QR-codes wel. Zo'n vierkante afbeelding met willekeurige zwarte
 
 ## Aanpassingen
 
-###
+
+### Contrast
+
+### Afbeeldingen
+
+### Vorm en grootte
+
+### Quiet zone en kwaliteit
+
+### Leesbaarheid
+
+### CTA
 
 ## Conclusie
 
