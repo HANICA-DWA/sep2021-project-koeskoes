@@ -118,4 +118,4 @@ Bron: https://ux.stackexchange.com/questions/55529/what-should-the-character-lim
 
 ## 8. Conclusie
 
-Er zijn dus veel "fabelachtige werkelijkheden" die hierboven staan. Toch staan er wel wat punten in deze lijst, die wij wel ter overweging mee kunnen nemen. Zoals bijvoorbeeld dat één persoon meerdere nummers kan hebben. Tevens qua het aantal karakters is het zeer goed om in overweging te nemen dat zowel 'opslag capaciteit' als 'beveiliging' erg belangrijk is en zorgt voor veel kwaliteit van onze product. Dit nemen wij zeker mee voor in de "Definition of done".
+Er zijn dus veel "fabelachtige werkelijkheden" die hierboven staan. Toch staan er wel wat punten in deze lijst, die wij wel ter overweging mee kunnen nemen. Zoals bijvoorbeeld dat één persoon meerdere nummers kan hebben. Tevens qua het aantal karakters is het zeer goed om in overweging te nemen dat zowel 'opslag capaciteit' als 'beveiliging' erg belangrijk is en zorgt voor veel kwaliteit van onze product. Dit nemen wij zeker mee voor in de "[Definition of done](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/1.Pregame/Projectplan/Definition-of-Done.md)".
