@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from 'react-player';
-import video from '../../videos/fh5.mp4';
 // import { useParams } from "react-router-dom";
 
 function VideoPage() {
@@ -42,7 +41,6 @@ function VideoPage() {
       <>
         {progressBar}
         <div>{(minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : (seconds === 60 ? '00' : seconds))}</div>
-        {/* <br /> */}
         <button className="btn btn-primary my-3 mx-4">Vorige stap</button>
         {videoPlayButton(videoState)}
         <button className="btn btn-primary my-3 mx-4">Volgende stap</button>
@@ -54,13 +52,13 @@ function VideoPage() {
     <div className="vertical-center colored-background">
       <div className="container text-center rounded p-3 bg-light">
         <h2>Videoboodschap voor voornaam</h2>
-        <ReactPlayer url={video} controls width="100%" height="100%" playing={(videoState === 2 ? true : false)} progressInterval="100" onReady={() => setIsLoading(false)} onEnded={() => setVideoState(3)} onDuration={(time) => setIsVideoTime(time)} onProgress={({playedSeconds}) => setIsVideoWatchedTime(playedSeconds)} />
+        <ReactPlayer url='http://localhost:4000/videos/watch/fh5.mp4' controls width="100%" height="100%" playing={(videoState === 2 ? true : false)} progressInterval={100} onReady={() => setIsLoading(false)} onEnded={() => setVideoState(3)} onDuration={(time) => setIsVideoTime(time)} onProgress={({playedSeconds}) => setIsVideoWatchedTime(playedSeconds)} />
         {
           (
             isLoading
               ? (
-                  <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                  <div className="spinner-border" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
                 )
               : (
