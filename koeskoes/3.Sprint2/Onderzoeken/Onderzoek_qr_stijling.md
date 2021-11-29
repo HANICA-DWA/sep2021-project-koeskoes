@@ -5,10 +5,14 @@ Iedereen kent de QR-codes wel. Zo'n vierkante afbeelding met willekeurige zwarte
 
 ## Aanpassingen
 
+###
+
 ## Conclusie
 
 
 ## Bronnen
 
 * https://www.qr-code-generator.com/blog/tips-for-creating-qr-codes-with-style/
-  
+* https://pageloot.com/qr-code-marketing/design-guide-qr-codes/
+* https://blog.beaconstac.com/2019/10/custom-qr-codes-how-to-create-them/
+* https://www.qr-code-generator.com/qr-code-marketing/individual-design-of-qr-codes/
