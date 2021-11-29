@@ -7,14 +7,9 @@ const uploads = mongoose.model("UploadSchema");
 
 router.route("/:textCode").get(async (req, res) => {
   const video = await uploads
-    .findOne(
-      {
-        textCode: req.params.textCode,
-      },
-      {
-        _id: 1,
-      }
-    )
+    .findOne({
+      textCode: req.params.textCode,
+    })
     .exec();
 
   if (video !== null) {

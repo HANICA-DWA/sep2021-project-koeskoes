@@ -17,14 +17,14 @@ const TextCodePage = () => {
 
   useEffect(() => {
     if (video) {
-      if (!video._id) {
+      if (!video.textCode) {
         dispatch(resetVideo());
         return setError(
           ErrorMessage("Geen geldige tekstcode!", () => setError(null))
         );
       }
 
-      setIsGoToWatchVideo(video._id);
+      setIsGoToWatchVideo(video.textCode);
     }
   }, [video, dispatch]);
 
