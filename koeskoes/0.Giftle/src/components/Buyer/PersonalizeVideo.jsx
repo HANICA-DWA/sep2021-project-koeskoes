@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router";
+import axios from "axios";
+import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
 
 function PersonalizeVideo() {
@@ -7,10 +9,37 @@ function PersonalizeVideo() {
   const [emailReceiver, setEmailReceiver] = useState(null);
   const [isPreviousPage, setIsPreviousPage] = useState(false);
   const [isNextPage, setIsNextPage] = useState(false);
+  const [error, setError] = useState(null);
 
   if (isPreviousPage === true) {
     return <Navigate to="/rewatchvideo" />;
   }
+
+  if (isNextPage === true) {
+    return <Navigate to="" />;
+  }
+
+  const saveReceiverData = async () => {
+    const formData = new FormData();
+
+    formData.append("name", nameReceiver);
+    formData.append("email", emailReceiver);
+
+    // const uploadResponse = await axios.post(
+    //   `http://localhost:4000/orders/new/`,
+    //   formData
+    // );
+
+    // console.log(uploadResponse);
+
+    // if (uploadResponse.data.status === "error") {
+    //   return setError(
+    //     ErrorMessage(uploadResponse.data.message, () => setError(null))
+    //   );
+    // } else {
+    //   return setIsGoToWatchVideo(true);
+    // }
+  };
 
   return (
     <div className="vertical-center colored-background">
@@ -67,7 +96,7 @@ function PersonalizeVideo() {
         </div>
         <br />
         <br />
-        <button className="btn btn-primary" onClick={""}>
+        <button className="btn btn-primary" onClick={saveReceiverData}>
           Volgende stap
         </button>
       </div>
