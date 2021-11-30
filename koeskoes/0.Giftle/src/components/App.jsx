@@ -6,6 +6,7 @@ import NotFound from "./NotFound";
 import HomeBuyer from "./Buyer/HomeBuyer";
 import UploadVideo from "./Buyer/UploadVideo";
 import RecordVideo from "./Buyer/RecordVideo";
+import RewatchVideo from "./Buyer/RewatchVideo";
 
 // Receiver components
 import HomeReceiver from "./Receiver/HomeReceiver";
@@ -28,7 +29,7 @@ function App() {
           <Route path="/buyer" exact element={<HomeBuyer />} />
           <Route path="/upload" exact element={<UploadVideo />} />
           <Route path="/record" exact element={<RecordVideo />} />
-          <Route path="/rewatchvideo" exact element={<VideoPage />} />
+          <Route path="/rewatchvideo" exact element={<RewatchVideo />} />
           <Route path="/receiver" exact element={<HomeReceiver />} />
           <Route path="/qr-code" exact element={<QRPage />} />
           <Route path="/scan" exact element={<ScanQR />} />
