@@ -105,7 +105,7 @@ function UploadVideo() {
           accept="video/*"
           onChange={(e) => setVideo(e.target)}
         />
-        <div className="row">
+        {/* <div className="row">
           <div className="col-lg-2 col-md-2 col-sm-2"></div>
           <div className="col-lg-8 col-md-8 col-sm-8">
             <br />
@@ -132,7 +132,7 @@ function UploadVideo() {
             />
           </div>
           <div className="col-lg-2 col-md-2 col-sm-2"></div>
-        </div>
+        </div> */}
         <br />
         <br />
         <button className="btn btn-primary" onClick={convertVideo}>
