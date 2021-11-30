@@ -20,8 +20,18 @@ router.get("/:textCode", async (req, res) => {
   }
 });
 
-router.get('/watch/:videoName', (req, res) => {
-  res.sendFile(path.join(__dirname, '../', 'videos/', req.params.videoName));
+router.get('/video/:textCode', async (req, res) => {
+  const video = await uploads
+    .findOne({
+      textCode: req.params.textCode,
+    })
+    .exec();
+
+  if (video !== null) {
+    res.sendFile(path.join(__dirname, '../', 'videos/', video.videoName));
+  } else {
+    res.json({ status: "error", message: "No textcode found" });
+  }
 });
 
 module.exports = router;

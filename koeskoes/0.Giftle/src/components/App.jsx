@@ -33,7 +33,7 @@ function App() {
           <Route path="/qr-code" exact element={<QRPage />} />
           <Route path="/scan" exact element={<ScanQR />} />
           <Route path="/textcode" exact element={<TextCodePage />} />
-          <Route path="/watchvideo/:textcode" element={<VideoPage />} />
+          <Route path="/watchvideo/:textCode" element={<VideoPage />} />
           <Route path="/checkorders" exact element={<CheckOrders />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

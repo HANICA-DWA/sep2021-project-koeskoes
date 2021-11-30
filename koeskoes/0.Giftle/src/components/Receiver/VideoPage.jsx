@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from 'react-player';
-// import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function VideoPage() {
-  // const { textcode } = useParams();
+  const { textCode } = useParams();
+  const [videoData, setVideoData] = useState({});
+  const [videoError, setVideoError] = useState(null);
   const [isVideoTime, setIsVideoTime] = useState(null);
   const [isVideoWatchedTime, setIsVideoWatchedTime] = useState(null);
   const [minutes, setMinutes] = useState(null);
@@ -11,6 +14,24 @@ function VideoPage() {
   const [progressBar, setProgressBar] = useState(null);
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const getVideo = async () => {
+      const videoRequest = await axios.get('http://localhost:4000/videos/' + textCode);
+      
+      if (!videoRequest.data.status) {
+        console.log(videoRequest.data);
+        setVideoData(videoRequest.data);
+        return setVideoError(false);
+      }
+      else {
+        setVideoData(null);
+        return setVideoError(true);
+      }
+    }
+
+    getVideo();
+  }, [textCode]);
 
   useEffect(() => {
     setMinutes(Math.floor(isVideoWatchedTime / 60));
@@ -36,7 +57,7 @@ function VideoPage() {
     }
   }
 
-  const reactPlayer = () => {
+  const videoPlayerSettings = () => {
     return (
       <>
         {progressBar}
@@ -48,30 +69,63 @@ function VideoPage() {
     );
   }
 
+  const loadingPlayer = (loading) => {
+    if (loading) {
+      return (
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      );
+    }
+    else {
+      return (
+        videoPlayerSettings()
+      );
+    }
+  }
+
+  const videoPlayer = () => {
+    console.log('huiawd',videoError)
+    if (videoError === null) {
+      return (
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      );
+    }
+    if (videoError === true) {
+      return (
+        <>
+          <h1>Er is geen video gevonden met deze code.</h1>
+          <button className="btn btn-primary">Terug</button>
+        </>
+      );
+    }
+    if (videoError === false) {
+      return (
+        <>
+          <h2>Videoboodschap voor {videoData.nameReceiver}</h2>
+          <ReactPlayer url={'http://localhost:4000/videos/video/' + textCode} width="100%" height="100%" playing={(videoState === 2 ? true : false)} progressInterval={100} onReady={() => setIsLoading(false)} onEnded={() => setVideoState(3)} onDuration={(time) => setIsVideoTime(time)} onProgress={({playedSeconds}) => setIsVideoWatchedTime(playedSeconds)} />
+          {
+            loadingPlayer(isLoading)
+          }
+          <hr />
+          <div className="text-start">
+            <h3>Afzender:</h3>
+            {videoData.nameGifter ? (<h5>{videoData.nameGifter}</h5>) : null}
+            {videoData.emailGifter ? (<h5>{videoData.emailGifter}</h5>) : null}
+          </div>
+        </>
+      );
+    }
+  }
+
   return (
     <div className="vertical-center colored-background">
       <div className="container text-center rounded p-3 bg-light">
-        <h2>Videoboodschap voor voornaam</h2>
-        <ReactPlayer url='http://localhost:4000/videos/watch/fh5.mp4' controls width="100%" height="100%" playing={(videoState === 2 ? true : false)} progressInterval={100} onReady={() => setIsLoading(false)} onEnded={() => setVideoState(3)} onDuration={(time) => setIsVideoTime(time)} onProgress={({playedSeconds}) => setIsVideoWatchedTime(playedSeconds)} />
-        {
-          (
-            isLoading
-              ? (
-                  <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                )
-              : (
-                  reactPlayer()
-                )
-          )
-        }
-        <hr />
-        <div className="text-start">
-          <h3>Afzender:</h3>
-          <h5>Voornaam Achternaam</h5>
-          <h5>voornaamachternaam@mail.nl</h5>
-        </div>
+        {videoPlayer()}
       </div>
     </div>
   );
