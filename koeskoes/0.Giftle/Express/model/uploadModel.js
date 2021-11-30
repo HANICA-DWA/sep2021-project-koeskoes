@@ -31,14 +31,24 @@ const uploadSchema = new mongoose.Schema({
 
 /**
  *
+ * The generateUniqueRandomCode require has to be BELOW the assignement of
+ * the UploadSchema. This way it won't crash.
+ *
+ */
+mongoose.model("UploadSchema", uploadSchema);
+
+const generateUniqueRandomCode = require("../commonFunctions/generateUniqueRandomCode");
+
+/**
+ *
  * Don't change this function to an arrow function. Thank you <3
  *
  */
-uploadSchema.methods.setCode = async function (randomCode) {
+uploadSchema.methods.setCode = async function () {
+  const randomCode = await generateUniqueRandomCode();
+
   this.printed = true;
   this.textCode = randomCode;
 
   return await this.save();
 };
-
-mongoose.model("UploadSchema", uploadSchema);

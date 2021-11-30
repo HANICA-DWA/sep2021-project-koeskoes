@@ -1,5 +1,4 @@
 const express = require("express");
-const generateRandomCode = require("../commonFunctions/generateUniqueRandomCode");
 const generateRandomFileName = require("../commonFunctions/generateRandomFileName");
 const fileUpload = require("express-fileupload");
 const router = express.Router();
@@ -75,8 +74,6 @@ router.post("/new/", async (req, res) => {
 });
 
 router.patch("/:orderNumber/", async (req, res) => {
-  const randomCode = await generateRandomCode();
-
   const order = await uploads
     .findOne(
       {
@@ -85,7 +82,7 @@ router.patch("/:orderNumber/", async (req, res) => {
     )
     .exec();
     
-  await order.setCode(randomCode);
+  await order.setCode();
 
   res.json({ status: "success", message: "Order change saved" });
 });
