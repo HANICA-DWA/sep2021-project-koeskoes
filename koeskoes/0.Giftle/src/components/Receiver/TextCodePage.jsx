@@ -10,7 +10,7 @@ const TextCodePage = () => {
   const dispatch = useDispatch();
   const video = useSelector((state) => state.videos.video || null);
 
-  const [givenTextcode, setGivenTextcode] = useState(null);
+  const [givenTextCode, setGivenTextCode] = useState(null);
   const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(null);
   const [isGoBackReceiverMain, setIsGoBackReceiverMain] = useState(false);
   const [error, setError] = useState(null);
@@ -35,12 +35,12 @@ const TextCodePage = () => {
    *
    */
   const checkTextcode = () => {
-    if (givenTextcode === null || givenTextcode === "") {
+    if (givenTextCode === null || givenTextCode === "") {
       return setError(
         ErrorMessage("Voer een tekstcode in!", () => setError(null))
       );
     } else {
-      dispatch(getVideo(givenTextcode));
+      dispatch(getVideo(givenTextCode));
     }
   };
 
@@ -74,7 +74,7 @@ const TextCodePage = () => {
               class="form-control"
               id="givenTextcode"
               name="givenTextcode"
-              onChange={(e) => setGivenTextcode(e.target.value)}
+              onChange={(e) => setGivenTextCode(e.target.value)}
             />
           </div>
         </div>

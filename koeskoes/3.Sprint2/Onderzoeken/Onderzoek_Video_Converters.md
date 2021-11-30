@@ -10,7 +10,7 @@ HandBrake is een opensource, multithreaded video converter. HandBrake convert ee
 Aconv is een complete, cross-platform oplossing voor het opnemen, converteren en streamen van audio en video bestanden. Deze tool is gebouwd op [libavcodec](https://en.wikipedia.org/wiki/Libavcodec), de beste audio en video codec bibliotheek.
 
 ## Conclusie
-Omdat FFmpeg enorm bekend is en wij weinig tijd zal voor het prototype van Giftle gebruik gemaakt worden van deze tool. Deze tool kan de nodige video formaten converteren.
+Omdat FFmpeg enorm bekend is en wij weinig tijd hebben zal voor het prototype van Giftle gebruik gemaakt worden van deze tool. Deze tool kan de nodige video formaten converteren.
 
 ## Sources
 [Linux Video Converters](https://www.linuxlinks.com/best-free-linux-video-converters/)\

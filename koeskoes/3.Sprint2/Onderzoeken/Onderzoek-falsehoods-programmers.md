@@ -29,8 +29,8 @@ Bronnen: [Datum en tijd](https://infiniteundo.com/post/25326999628/falsehoods-pr
 - Verschillende leestekens zijn toegestaan
 - "Strings" met aanhalingstekens laten je de regels overtreden
 - Een e-mail is hoofdlettergevoelig
-- Er kan emoji's in e-mails
-- Er kan geïnternationaliseerde domeinnamen gebruikt worden
+- Er kunnen emoji's in e-mails
+- Er kunnen geïnternationaliseerde domeinnamen gebruikt worden
 - U kunt domeinnamen zonder punt hebben
 - Uw "domein" kan een IP-adres zijn
 - 'Van' en 'Naar' kunnen spaties bevatten
@@ -60,7 +60,7 @@ Bronnen: [Multimedia](https://haasn.dev/posts/2016-12-25-falsehoods-programmers-
 - De namen van mensen veranderen niet
 - De namen van mensen hebben een volgorde
 - Mijn systeem heeft nooit te maken met chinese namen
-- Er kan gerust vanuit gaan dat dit woordenboek met slechte woorden, geen namen van mensen bevatten
+- Er kan gerust vanuit gaan dat het woordenboek met slechte woorden, geen namen van mensen bevatten
 - Mensen hebben namen
 - De namen van mensen zijn bijna wereldwijd uniek
 - De namen van mensen veranderen, maar alleen bij een bepaalde opgesomde reeks gebeurtenissen
@@ -96,8 +96,8 @@ Bronnen: [Telefoonnummer](https://github.com/google/libphonenumber/blob/master/F
 - Geen gebouwen zijn genummerd nul
 - Een weg heeft altijd een naam
 - Een enkele postcode zal groter zijn dan een enkel gebouw
-- OK, maar je krijgt niet meerdere postcodes per gebouw
-- Adressen hebben een redelijk aantal tekens - minder dan 100, zeg maar
+- Je krijgt niet meerdere postcodes per gebouw
+- Adressen hebben een redelijk aantal tekens - minder dan 100
 - Een adres begint met, of bevat in ieder geval een gebouwnummer
 - Een straatnaam bevat geen nummer
 - Een enkele postcode is groter dan een enkel gebouw
