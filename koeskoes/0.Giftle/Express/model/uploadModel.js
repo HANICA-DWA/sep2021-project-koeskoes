@@ -31,20 +31,13 @@ const uploadSchema = new mongoose.Schema({
 
 /**
  *
- * The generateUniqueRandomCode require has to be BELOW the assignement of
- * the UploadSchema. This way it won't crash.
- *
- */
-mongoose.model("UploadSchema", uploadSchema);
-
-const generateUniqueRandomCode = require("../commonFunctions/generateUniqueRandomCode");
-
-/**
- *
  * Don't change this function to an arrow function. Thank you <3
  *
  */
 uploadSchema.methods.setCode = async function () {
+  // Because this function uses the database it has to be required INSIDE the method.
+  const generateUniqueRandomCode = require("../commonFunctions/generateUniqueRandomCode");
+
   const randomCode = await generateUniqueRandomCode();
 
   this.printed = true;
@@ -52,3 +45,13 @@ uploadSchema.methods.setCode = async function () {
 
   return await this.save();
 };
+
+// uploadSchema.methods.convertArrayObjectIdToString = function () {
+//   this.forEach(order => {
+//     order._id = this._id.toString();
+//   });
+
+//   return this;
+// }
+
+mongoose.model("UploadSchema", uploadSchema);
