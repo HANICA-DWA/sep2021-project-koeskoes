@@ -75,7 +75,7 @@ router.post("/new/", async (req, res) => {
 });
 
 router.patch("/new/:textCode/", async (req, res) => {
-  if (req.body.name === "null") {
+  if (req.body.name === "null" || req.body.name === "") {
     return res.json({ status: "error", message: "No name entered" });
   }
 
@@ -87,7 +87,7 @@ router.patch("/new/:textCode/", async (req, res) => {
 
   order.nameReceiver = req.body.name;
 
-  if (req.body.email !== "null") {
+  if (req.body.email !== "null" && req.body.email !== "") {
     order.emailReceiver = req.body.email;
   }
 

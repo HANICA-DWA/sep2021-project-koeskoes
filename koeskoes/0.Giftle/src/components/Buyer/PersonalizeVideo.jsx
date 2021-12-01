@@ -5,7 +5,15 @@ import { useParams } from "react-router-dom";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
 
+/**
+ *
+ * React component to rewatch a video.
+ *
+ * @return the front-end for the personalization page
+ *
+ */
 function PersonalizeVideo() {
+  // Creates the state for the order and errors that can occur.
   const { textCode } = useParams();
   const [nameReceiver, setNameReceiver] = useState(null);
   const [emailReceiver, setEmailReceiver] = useState(null);
@@ -21,42 +29,88 @@ function PersonalizeVideo() {
     return <Navigate to="/thankyou" />;
   }
 
+  /**
+   *
+   * This function will send the data of the receiver to the server.
+   *
+   */
   const saveReceiverData = async () => {
-    if (validateEmail()) {
-      const formData = new FormData();
+    const checkedName = checkName();
+    const checkedEmail = checkEmail();
 
-      formData.append("name", nameReceiver);
-      formData.append("email", emailReceiver);
+    if (checkedName.status === "error") {
+      return setError(ErrorMessage(checkedName.message, () => setError(null)));
+    }
 
-      const uploadResponse = await axios.patch(
-        `http://localhost:4000/orders/new/` + textCode,
-        formData
-      );
+    if (checkedEmail.status === "error") {
+      return setError(ErrorMessage(checkedEmail.message, () => setError(null)));
+    }
 
-      if (uploadResponse.data.status === "error") {
-        return setError(
-          ErrorMessage(uploadResponse.data.message, () => setError(null))
-        );
-      } else {
-        return setIsNextPage(true);
-      }
-    } else {
+    const formData = new FormData();
+
+    formData.append("name", nameReceiver.trim());
+    formData.append("email", emailReceiver);
+
+    const uploadResponse = await axios.patch(
+      `http://localhost:4000/orders/new/` + textCode,
+      formData
+    );
+
+    if (uploadResponse.data.status === "error") {
       return setError(
-        ErrorMessage("Vul een geldig e-mailadres in", () => setError(null))
+        ErrorMessage(uploadResponse.data.message, () => setError(null))
       );
+    } else {
+      return setIsNextPage(true);
     }
   };
 
-  const validateEmail = () => {
+  /**
+   *
+   * This function will check if the given name isn't too long and only exists of letters and spaces.
+   *
+   */
+  const checkName = () => {
+    const maxLength = 300;
+    const re = /^[a-zA-Z\s]+$/;
+
+    if (nameReceiver.length > maxLength) {
+      return {
+        status: "error",
+        message:
+          "De naam die je hebt ingevuld is te lang! De naam mag maximaal 300 karakters lang zijn.",
+      };
+    }
+
+    if (!re.test(nameReceiver)) {
+      return {
+        status: "error",
+        message:
+          "De naam die je hebt ingevuld bevat speciale karakters. Gebruik alleen letters (en spaties).",
+      };
+    }
+
+    return true;
+  };
+
+  /**
+   *
+   * This function will check if the given e-mail is of the right e-mail format.
+   *
+   */
+  const checkEmail = () => {
     const re = /\S+@\S+\.\S+/;
 
-    console.log(emailReceiver);
-
     if (emailReceiver !== null && emailReceiver !== "") {
-      return re.test(emailReceiver);
-    } else {
-      return true;
+      if (!re.test(emailReceiver)) {
+        return {
+          status: "error",
+          message: "Vul een geldig e-mailadres in",
+        };
+      }
     }
+
+    return true;
   };
 
   return (
