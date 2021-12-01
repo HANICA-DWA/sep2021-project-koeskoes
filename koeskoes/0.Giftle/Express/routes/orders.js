@@ -60,8 +60,6 @@ router.post("/new/", async (req, res) => {
     const newRecord = new uploads({
       nameGifter: "firstname lastname",
       emailGifter: "mail@mail.com",
-      nameReceiver: req.body.name,
-      emailReceiver: req.body.email,
       videoName: finalFileName,
       printed: false,
     });
@@ -69,12 +67,33 @@ router.post("/new/", async (req, res) => {
     await newRecord.save();
 
     await newRecord.setCode();
-    console.log(newRecord);
 
     return res.json(newRecord);
   } catch (e) {
     return res.json({ status: "error", message: "File not uploaded" });
   }
+});
+
+router.patch("/new/:textCode/", async (req, res) => {
+  if (req.body.name === "null") {
+    return res.json({ status: "error", message: "No name entered" });
+  }
+
+  const order = await uploads
+    .findOne({
+      textCode: req.params.textCode,
+    })
+    .exec();
+
+  order.nameReceiver = req.body.name;
+
+  if (req.body.email !== "null") {
+    order.emailReceiver = req.body.email;
+  }
+
+  await order.save();
+
+  res.json({ status: "success", message: "Receiver data added to order" });
 });
 
 router.patch("/:orderNumber/", async (req, res) => {

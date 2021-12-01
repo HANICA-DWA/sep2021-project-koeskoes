@@ -35,7 +35,11 @@ function App() {
             exact
             element={<RewatchVideo />}
           />
-          <Route path="/personalize" exact element={<PersonalizeVideo />} />
+          <Route
+            path="/personalize/:textCode"
+            exact
+            element={<PersonalizeVideo />}
+          />
           <Route path="/receiver" exact element={<HomeReceiver />} />
           <Route path="/qr-code" exact element={<QRPage />} />
           <Route path="/scan" exact element={<ScanQR />} />
