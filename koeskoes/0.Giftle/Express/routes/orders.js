@@ -86,7 +86,10 @@ router.patch("/new/:textCode/", async (req, res) => {
     .exec();
 
   order.nameReceiver = req.body.name;
-  order.emailReceiver = req.body.email;
+
+  if (req.body.email !== "null") {
+    order.emailReceiver = req.body.email;
+  }
 
   await order.save();
 
