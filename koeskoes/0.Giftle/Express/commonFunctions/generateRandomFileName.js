@@ -3,7 +3,7 @@ const generateRandomFileName = (originalFileName, random) => {
   const finalFileName = fileNameWithoutExtension + random + ".mp4";
   const uploadPath = "videos/" + finalFileName;
 
-  return {finalFileName, uploadPath};
-}
+  return { finalFileName, uploadPath };
+};
 
 module.exports = generateRandomFileName;

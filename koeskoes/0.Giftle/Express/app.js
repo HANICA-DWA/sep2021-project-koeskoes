@@ -25,9 +25,11 @@ app.use(sessionParser);
 
 const fileUpload = require("./routes/orders");
 const videos = require("./routes/videos");
+const mails = require("./routes/mails");
 
 app.use("/orders", fileUpload);
 app.use("/videos", videos);
+app.use("/mails", mails);
 
 /*-----------END OF ROUTERS------------*/
 

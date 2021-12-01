@@ -2,6 +2,7 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const generateUniqueRandomCode = require("../commonFunctions/generateUniqueRandomCode");
 const generateRandomFileName = require("../commonFunctions/generateRandomFileName");
+const mailModule = require("../commonFunctions/sendMails");
 require("../model/uploadModel");
 
 const uploads = mongoose.model("UploadSchema");
@@ -214,8 +215,8 @@ describe("database tests", () => {
         }
       )
       .lean();
-    
-    printedOrders.forEach(printedOrder => {
+
+    printedOrders.forEach((printedOrder) => {
       printedOrder._id = printedOrder._id.toString();
     });
 
@@ -238,8 +239,8 @@ describe("database tests", () => {
         }
       )
       .lean();
-    
-    notPrintedOrders.forEach(notPrintedOrder => {
+
+    notPrintedOrders.forEach((notPrintedOrder) => {
       notPrintedOrder._id = notPrintedOrder._id.toString();
     });
 
@@ -263,6 +264,224 @@ describe("commonFunctions tests", () => {
     expect(files).toEqual({
       finalFileName: "videoname.mp4.mp3randomNumber123.mp4",
       uploadPath: "videos/videoname.mp4.mp3randomNumber123.mp4",
+    });
+  });
+});
+
+describe("mail tests", () => {
+  let mail;
+
+  const convertMailData = (response) => {
+    if (response.status === "success") {
+      return {
+        status: response.status,
+        message: {
+          accepted: response.message.accepted,
+          rejected: response.message.rejected,
+          messageSize: response.message.messageSize,
+          envelope: response.message.envelope,
+        },
+      };
+    } else {
+      return {
+        status: response.status,
+        message: response.message,
+      };
+    }
+  };
+
+  beforeAll(async () => {
+    mail = new mailModule();
+  });
+
+  describe("Send mail with textcode", () => {
+    test("send mail with textcode (happy path)", async () => {
+      const happyMailPath = await mail.sendTextCode(
+        "mail@mail.com",
+        "receiver",
+        "buyer",
+        "123abc"
+      );
+
+      const checkableData = convertMailData(happyMailPath);
+
+      expect(checkableData).toEqual({
+        status: "success",
+        message: {
+          accepted: ["mail@mail.com"],
+          rejected: [],
+          messageSize: 2354,
+          envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
+        },
+      });
+    });
+    test("send mail with textcode (no receiver mail)", async () => {
+      const noReceiverMailPath = await mail.sendTextCode(
+        "",
+        "receiver",
+        "buyer",
+        "123abc"
+      );
+
+      const checkableData = convertMailData(noReceiverMailPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Mail not included",
+      });
+    });
+    test("send mail with textcode (no receiver name)", async () => {
+      const noReceiverMailPath = await mail.sendTextCode(
+        "mail@mail.com",
+        "",
+        "buyer",
+        "123abc"
+      );
+
+      const checkableData = convertMailData(noReceiverMailPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Receiver not included",
+      });
+    });
+    test("send mail with textcode (no buyer name)", async () => {
+      const noReceiverMailPath = await mail.sendTextCode(
+        "mail@mail.com",
+        "receiver",
+        "",
+        "123abc"
+      );
+
+      const checkableData = convertMailData(noReceiverMailPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Buyer not included",
+      });
+    });
+    test("send mail with textcode (no textcode)", async () => {
+      const noReceiverMailPath = await mail.sendTextCode(
+        "mail@mail.com",
+        "receiver",
+        "buyer",
+        ""
+      );
+
+      const checkableData = convertMailData(noReceiverMailPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Textcode not included",
+      });
+    });
+  });
+
+  describe("Send mail with notification that video has been watched by the receiver", () => {
+    test("send mail (happy path)", async () => {
+      const happyMailPath = await mail.sendReminderVideoWatched(
+        "mail@mail.com",
+        "buyer",
+        "receiver"
+      );
+
+      const checkableData = convertMailData(happyMailPath);
+
+      expect(checkableData).toEqual({
+        status: "success",
+        message: {
+          accepted: ["mail@mail.com"],
+          rejected: [],
+          messageSize: 1849,
+          envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
+        },
+      });
+    });
+    test("send mail (no buyer mail)", async () => {
+      const noBuyerMailPath = await mail.sendReminderVideoWatched(
+        "",
+        "buyer",
+        "receiver"
+      );
+
+      const checkableData = convertMailData(noBuyerMailPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Mail not included",
+      });
+    });
+    test("send mail (no buyer name)", async () => {
+      const noBuyerNamePath = await mail.sendReminderVideoWatched(
+        "mail@mail.com",
+        "",
+        "receiver"
+      );
+
+      const checkableData = convertMailData(noBuyerNamePath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Buyer not included",
+      });
+    });
+    test("send mail (no receiver name)", async () => {
+      const noReceiverNamePath = await mail.sendReminderVideoWatched(
+        "mail@mail.com",
+        "buyer",
+        ""
+      );
+
+      const checkableData = convertMailData(noReceiverNamePath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Receiver not included",
+      });
+    });
+  });
+
+  describe("Send mail with notification that no video has been uploaded", () => {
+    test("send mail (happy path)", async () => {
+      const happyMailPath = await mail.sendReminderUploadVideo(
+        "mail@mail.com",
+        "buyer"
+      );
+
+      const checkableData = convertMailData(happyMailPath);
+
+      expect(checkableData).toEqual({
+        status: "success",
+        message: {
+          accepted: ["mail@mail.com"],
+          rejected: [],
+          messageSize: 2422,
+          envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
+        },
+      });
+    });
+    test("send mail (no buyer mail)", async () => {
+      const noBuyerMailPath = await mail.sendReminderUploadVideo("", "buyer");
+
+      const checkableData = convertMailData(noBuyerMailPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Mail not included",
+      });
+    });
+    test("send mail (no buyer name)", async () => {
+      const noBuyerNamePath = await mail.sendReminderUploadVideo(
+        "mail@mail.com",
+        ""
+      );
+
+      const checkableData = convertMailData(noBuyerNamePath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Buyer not included",
+      });
     });
   });
 });

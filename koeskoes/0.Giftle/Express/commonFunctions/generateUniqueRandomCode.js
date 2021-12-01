@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-require('../model/uploadModel');
+const mongoose = require("mongoose");
+require("../model/uploadModel");
 
-const uploads = mongoose.model('UploadSchema');
+const uploads = mongoose.model("UploadSchema");
 
 /**
  *
