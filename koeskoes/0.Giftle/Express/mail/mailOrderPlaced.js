@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {string} buyer 
+ * @returns Mail preset
+ */
 const mailOrderPlaced = (buyer) => {
   return `<html>
     <head>

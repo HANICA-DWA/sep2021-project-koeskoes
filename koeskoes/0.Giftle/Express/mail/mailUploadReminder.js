@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {string} buyer 
+ * @returns Mail preset
+ */
 const mailUploadReminder = (buyer) => {
   return `<html>
     <head>

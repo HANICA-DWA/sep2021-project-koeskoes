@@ -1,3 +1,10 @@
+/**
+ * 
+ * @param {string} receiver 
+ * @param {string} buyer 
+ * @param {string} textCode 
+ * @returns Mail preset
+ */
 const mailTextCode = (receiver, buyer, textCode) => {
   return `<html>
     <head>

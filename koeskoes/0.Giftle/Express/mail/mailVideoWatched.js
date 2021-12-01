@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {string} buyer 
+ * @param {string} receiver 
+ * @returns Mail preset
+ */
 const mailVideoWatched = (buyer, receiver) => {
   return `<html>
     <head>
