@@ -146,7 +146,7 @@ function RewatchVideo() {
     return <Navigate to="/buyer" />;
   }
   if (isNextPage === true) {
-    return <Navigate to="/personalize" />; // Deze moet nog naar volgende stap!
+    return <Navigate to={`/personalize/` + textCode} />; // Deze moet nog naar volgende stap!
   }
 
   const videoPlayer = () => {
