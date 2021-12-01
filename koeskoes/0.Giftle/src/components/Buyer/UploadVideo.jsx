@@ -8,17 +8,15 @@ function UploadVideo() {
   // Creates the state for uploaded files and errors that can occur.
   const [video, setVideo] = useState(null);
   const [textCode, setTextCode] = useState(null);
-  const [nameReceiver, setNameReceiver] = useState(null);
-  const [emailReceiver, setEmailReceiver] = useState(null);
-  const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
-  const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(false);
+  const [isPreviousPage, setIsPreviousPage] = useState(false);
+  const [isNextPage, setIsNextPage] = useState(false);
   const [error, setError] = useState(null);
 
-  if (isGoBackBuyerMain === true) {
+  if (isPreviousPage === true) {
     return <Navigate to="/buyer" />;
   }
 
-  if (isGoToWatchVideo === true) {
+  if (isNextPage === true) {
     if (textCode !== null) {
       return <Navigate to={`/rewatchvideo/` + textCode} />;
     }
@@ -69,7 +67,7 @@ function UploadVideo() {
         );
       } else {
         setTextCode(uploadResponse.data.textCode);
-        return setIsGoToWatchVideo(true);
+        return setIsNextPage(true);
       }
     } else {
       return setError(
@@ -86,7 +84,7 @@ function UploadVideo() {
           <div className="col-lg-4 col-md-4 col-sm-4">
             <button
               className="btn btn-primary float-start"
-              onClick={() => setIsGoBackBuyerMain(true)}
+              onClick={() => setIsPreviousPage(true)}
             >
               {<BackArrow />}
               Terug

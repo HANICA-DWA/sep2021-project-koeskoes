@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
 
 function PersonalizeVideo() {
+  const { textCode } = useParams();
   const [nameReceiver, setNameReceiver] = useState(null);
   const [emailReceiver, setEmailReceiver] = useState(null);
   const [isPreviousPage, setIsPreviousPage] = useState(false);
@@ -12,7 +14,7 @@ function PersonalizeVideo() {
   const [error, setError] = useState(null);
 
   if (isPreviousPage === true) {
-    return <Navigate to="/rewatchvideo" />;
+    return <Navigate to={`/rewatchvideo/` + textCode} />;
   }
 
   if (isNextPage === true) {
@@ -25,24 +27,23 @@ function PersonalizeVideo() {
     formData.append("name", nameReceiver);
     formData.append("email", emailReceiver);
 
-    // const uploadResponse = await axios.post(
-    //   `http://localhost:4000/orders/new/`,
-    //   formData
-    // );
+    const uploadResponse = await axios.patch(
+      `http://localhost:4000/orders/new/` + textCode,
+      formData
+    );
 
-    // console.log(uploadResponse);
-
-    // if (uploadResponse.data.status === "error") {
-    //   return setError(
-    //     ErrorMessage(uploadResponse.data.message, () => setError(null))
-    //   );
-    // } else {
-    //   return setIsGoToWatchVideo(true);
-    // }
+    if (uploadResponse.data.status === "error") {
+      return setError(
+        ErrorMessage(uploadResponse.data.message, () => setError(null))
+      );
+    } else {
+      return setIsNextPage(true);
+    }
   };
 
   return (
     <div className="vertical-center colored-background">
+      {error}
       <div className="container text-center rounded p-3 bg-light">
         <div className="row">
           <div className="col-lg-4 col-md-4 col-sm-4">
@@ -70,11 +71,11 @@ function PersonalizeVideo() {
           <div className="col-lg-2 col-md-2 col-sm-2"></div>
           <div className="col-lg-8 col-md-8 col-sm-8">
             <br />
-            <label for="emailReceiver" class="form-label">
+            <label for="nameReceiver" class="form-label">
               Naam van de ontvanger
             </label>
             <input
-              type="email"
+              type="name"
               class="form-control"
               id="nameReceiver"
               name="nameReceiver"
