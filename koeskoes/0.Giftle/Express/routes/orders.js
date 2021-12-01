@@ -46,14 +46,17 @@ router.post("/new/", async (req, res) => {
 
   const video = req.files.video;
 
-  const {finalFileName, uploadPath} = generateRandomFileName(video.name, Date.now());
+  const { finalFileName, uploadPath } = generateRandomFileName(
+    video.name,
+    Date.now()
+  );
 
   try {
     const uploadStatus = await video.mv(uploadPath);
-  
+
     if (uploadStatus && uploadStatus.err)
       return res.json({ status: "error", message: "File not uploaded" });
-  
+
     const newRecord = new uploads({
       nameGifter: "firstname lastname",
       emailGifter: "mail@mail.com",
@@ -62,27 +65,25 @@ router.post("/new/", async (req, res) => {
       videoName: finalFileName,
       printed: false,
     });
-  
+
     await newRecord.save();
-  
+
+    await newRecord.setCode();
+
     return res.json({ status: "success", message: "File uploaded" });
-  }
-  catch (e) {
+  } catch (e) {
     return res.json({ status: "error", message: "File not uploaded" });
   }
-  
 });
 
 router.patch("/:orderNumber/", async (req, res) => {
   const order = await uploads
-    .findOne(
-      {
-        _id: req.params.orderNumber,
-      }
-    )
+    .findOne({
+      _id: req.params.orderNumber,
+    })
     .exec();
-    
-  await order.setCode();
+
+  await order.setPrinted();
 
   res.json({ status: "success", message: "Order change saved" });
 });

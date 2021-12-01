@@ -40,8 +40,13 @@ uploadSchema.methods.setCode = async function () {
 
   const randomCode = await generateUniqueRandomCode();
 
-  this.printed = true;
   this.textCode = randomCode;
+
+  return await this.save();
+};
+
+uploadSchema.methods.setPrinted = async function () {
+  this.printed = true;
 
   return await this.save();
 };
