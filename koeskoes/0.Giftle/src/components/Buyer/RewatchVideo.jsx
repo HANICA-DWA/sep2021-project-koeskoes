@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { Navigate } from "react-router";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import BackArrow from "../Common/BackArrowIcon";
 import NextArrow from "../Common/NextArrowIcon";
@@ -9,8 +8,6 @@ import { Button, Modal } from "react-bootstrap";
 
 function RewatchVideo() {
   const { textCode } = useParams();
-  const [videoData, setVideoData] = useState({});
-  const [videoError, setVideoError] = useState(null);
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isVideoTime, setIsVideoTime] = useState(null);
@@ -18,30 +15,9 @@ function RewatchVideo() {
   const [minutes, setMinutes] = useState(null);
   const [seconds, setSeconds] = useState(null);
   const [progressBar, setProgressBar] = useState(null);
-  const [isNotificationSubmit, setIsNotificationSubmit] = useState(false);
   const [isPreviousPage, setIsPreviousPage] = useState(false);
   const [isNextPage, setIsNextPage] = useState(false);
-
   const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const getVideo = async () => {
-      const videoRequest = await axios.get(
-        "http://localhost:4000/videos/" + textCode
-      );
-
-      if (!videoRequest.data.status) {
-        console.log(videoRequest.data);
-        setVideoData(videoRequest.data);
-        return setVideoError(false);
-      } else {
-        setVideoData(null);
-        return setVideoError(true);
-      }
-    };
-
-    getVideo();
-  }, [textCode]);
 
   useEffect(() => {
     setMinutes(Math.floor(isVideoWatchedTime / 60));
@@ -150,7 +126,7 @@ function RewatchVideo() {
   }
 
   const videoPlayer = () => {
-    if (videoError === null) {
+    if (textCode === null) {
       return (
         <div className="d-flex justify-content-center">
           <div className="spinner-border" role="status">
@@ -159,7 +135,7 @@ function RewatchVideo() {
         </div>
       );
     }
-    if (videoError === true) {
+    if (textCode === "") {
       return (
         <>
           <h1>Er is geen video gevonden met deze code.</h1>
@@ -167,7 +143,7 @@ function RewatchVideo() {
         </>
       );
     }
-    if (videoError === false) {
+    if (textCode !== "") {
       return (
         <>
           <div class="row">
