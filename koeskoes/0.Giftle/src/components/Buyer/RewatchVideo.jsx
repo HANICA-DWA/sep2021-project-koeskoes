@@ -6,6 +6,13 @@ import BackArrow from "../Common/BackArrowIcon";
 import NextArrow from "../Common/NextArrowIcon";
 import { Button, Modal } from "react-bootstrap";
 
+/**
+ *
+ * React component to rewatch a video.
+ *
+ * @return the front-end for the rewatch page
+ *
+ */
 function RewatchVideo() {
   const { textCode } = useParams();
   const [videoState, setVideoState] = useState(1);
@@ -19,6 +26,11 @@ function RewatchVideo() {
   const [isNextPage, setIsNextPage] = useState(false);
   const [show, setShow] = useState(false);
 
+  /**
+   *
+   * UseEffect to check progressbar and videotime watched.
+   *
+   */
   useEffect(() => {
     setMinutes(Math.floor(isVideoWatchedTime / 60));
     setSeconds(
@@ -40,9 +52,19 @@ function RewatchVideo() {
     );
   }, [isVideoTime, isVideoWatchedTime]);
 
+  /**
+   *
+   * Handlers to show modal.
+   *
+   */
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  /**
+   *
+   * Play button state to check video is playing or is paused.
+   *
+   */
   const videoPlayButton = (state) => {
     switch (state) {
       case 1:
@@ -77,6 +99,11 @@ function RewatchVideo() {
     }
   };
 
+  /**
+   *
+   * Video settings for the video
+   *
+   */
   const videoPlayerSettings = () => {
     return (
       <>
@@ -101,6 +128,11 @@ function RewatchVideo() {
     );
   };
 
+  /**
+   *
+   * Loading icon if video is loading
+   *
+   */
   const loadingPlayer = (loading) => {
     if (loading) {
       return (
@@ -122,9 +154,14 @@ function RewatchVideo() {
     return <Navigate to="/buyer" />;
   }
   if (isNextPage === true) {
-    return <Navigate to={`/personalize/` + textCode} />; // Deze moet nog naar volgende stap!
+    return <Navigate to={`/personalize/` + textCode} />;
   }
 
+  /**
+   *
+   * Full video player.
+   *
+   */
   const videoPlayer = () => {
     if (textCode === null) {
       return (
