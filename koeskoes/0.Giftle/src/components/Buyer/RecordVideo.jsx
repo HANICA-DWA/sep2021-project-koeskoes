@@ -24,6 +24,7 @@ function RecordVideo() {
   const mediaRecorderRef = useRef(null);
   const [capturing, setCapturing] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
+  const [textCode, setTextCode] = useState(null);
 
   /**
    *
@@ -157,6 +158,7 @@ function RecordVideo() {
           ErrorMessage(uploadResponse.data.message, () => setError(null))
         );
       } else {
+        setTextCode(uploadResponse.data.textCode);
         return setIsGoToWatchVideo(true);
       }
     }
@@ -181,7 +183,10 @@ function RecordVideo() {
   }
 
   if (isGoToWatchVideo === true) {
-    return <Navigate to="/rewatchvideo" />;
+    if (textCode !== null) {
+      return <Navigate to={`/rewatchvideo/` + textCode} />;
+    }
+    return null;
   }
 
   return (

@@ -8,8 +8,6 @@ function UploadVideo() {
   // Creates the state for uploaded files and errors that can occur.
   const [video, setVideo] = useState(null);
   const [textCode, setTextCode] = useState(null);
-  const [nameReceiver, setNameReceiver] = useState(null);
-  const [emailReceiver, setEmailReceiver] = useState(null);
   const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
   const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(false);
   const [error, setError] = useState(null);

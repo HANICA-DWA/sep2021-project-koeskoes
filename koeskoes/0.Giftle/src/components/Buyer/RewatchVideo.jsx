@@ -5,6 +5,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import BackArrow from "../Common/BackArrowIcon";
 import NextArrow from "../Common/NextArrowIcon";
+import { Button, Modal } from "react-bootstrap";
 
 function RewatchVideo() {
   const { textCode } = useParams();
@@ -17,8 +18,11 @@ function RewatchVideo() {
   const [minutes, setMinutes] = useState(null);
   const [seconds, setSeconds] = useState(null);
   const [progressBar, setProgressBar] = useState(null);
+  const [isNotificationSubmit, setIsNotificationSubmit] = useState(false);
   const [isPreviousPage, setIsPreviousPage] = useState(false);
   const [isNextPage, setIsNextPage] = useState(false);
+
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const getVideo = async () => {
@@ -59,6 +63,9 @@ function RewatchVideo() {
       </div>
     );
   }, [isVideoTime, isVideoWatchedTime]);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const videoPlayButton = (state) => {
     switch (state) {
@@ -110,13 +117,10 @@ function RewatchVideo() {
           {<BackArrow />}&nbsp;Vorige stap
         </button>
         {videoPlayButton(videoState)}
-        <button
-          className="btn btn-secondary"
-          onClick={() => setIsNextPage(true)}
-        >
+        <Button variant="secondary" onClick={handleShow}>
           Volgende stap&nbsp;
           {<NextArrow />}
-        </button>
+        </Button>
       </>
     );
   };
@@ -198,6 +202,26 @@ function RewatchVideo() {
     <div className="vertical-center colored-background">
       <div className="container text-center rounded p-3 bg-light">
         {videoPlayer()}
+        <>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Weet je zeker dat de video zo goed is?</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Als je op de knop <b>"Video opslaan"</b> klikt, dan wordt de video
+              opgeslagen en gaat u door naar de volgende stap. Als je de video
+              wilt veranderen, dan druk je op de knop <b>"Sluiten"</b>.
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="danger" onClick={handleClose}>
+                Sluiten
+              </Button>
+              <Button variant="primary" onClick={() => setIsNextPage(true)}>
+                Video opslaan
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </>
       </div>
     </div>
   );
