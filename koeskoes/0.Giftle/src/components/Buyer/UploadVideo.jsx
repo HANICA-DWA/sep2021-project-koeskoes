@@ -7,6 +7,7 @@ import BackArrow from "../Common/BackArrowIcon";
 function UploadVideo() {
   // Creates the state for uploaded files and errors that can occur.
   const [video, setVideo] = useState(null);
+  const [textCode, setTextCode] = useState(null);
   const [nameReceiver, setNameReceiver] = useState(null);
   const [emailReceiver, setEmailReceiver] = useState(null);
   const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
@@ -18,7 +19,10 @@ function UploadVideo() {
   }
 
   if (isGoToWatchVideo === true) {
-    return <Navigate to="/rewatchvideo" />;
+    if (textCode !== null) {
+      return <Navigate to={`/rewatchvideo/` + textCode} />;
+    }
+    return null;
   }
 
   /**
@@ -52,9 +56,6 @@ function UploadVideo() {
 
       formData.append("video", blob, sourceVideoFile.name);
 
-      formData.append("name", nameReceiver);
-      formData.append("email", emailReceiver);
-
       const uploadResponse = await axios.post(
         `http://localhost:4000/orders/new/`,
         formData
@@ -67,6 +68,7 @@ function UploadVideo() {
           ErrorMessage(uploadResponse.data.message, () => setError(null))
         );
       } else {
+        setTextCode(uploadResponse.data.textCode);
         return setIsGoToWatchVideo(true);
       }
     } else {

@@ -30,7 +30,11 @@ function App() {
           <Route path="/buyer" exact element={<HomeBuyer />} />
           <Route path="/upload" exact element={<UploadVideo />} />
           <Route path="/record" exact element={<RecordVideo />} />
-          <Route path="/rewatchvideo" exact element={<RewatchVideo />} />
+          <Route
+            path="/rewatchvideo/:textCode"
+            exact
+            element={<RewatchVideo />}
+          />
           <Route path="/personalize" exact element={<PersonalizeVideo />} />
           <Route path="/receiver" exact element={<HomeReceiver />} />
           <Route path="/qr-code" exact element={<QRPage />} />

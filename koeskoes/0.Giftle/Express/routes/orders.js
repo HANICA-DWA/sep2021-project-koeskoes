@@ -69,8 +69,9 @@ router.post("/new/", async (req, res) => {
     await newRecord.save();
 
     await newRecord.setCode();
+    console.log(newRecord);
 
-    return res.json({ status: "success", message: "File uploaded" });
+    return res.json(newRecord);
   } catch (e) {
     return res.json({ status: "error", message: "File not uploaded" });
   }
