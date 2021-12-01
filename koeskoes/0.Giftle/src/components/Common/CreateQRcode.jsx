@@ -1,8 +1,8 @@
 import QRCodeStyling from "qr-code-styling";
-import logo from '../../assets/favicon.png';
+import logo from "../../assets/favicon.png";
 
 /**
- * ErrorMessage function to describe the message and runs a callback function.
+ * Function to create a QR-code. The size, image, dots data and margin are customised.
  *
  * @param {String} data Callback to run a function
  * @return QR-code with the correct URL and styling
@@ -22,6 +22,7 @@ const qrcode = (data) => {
       margin: 10,
     },
     data,
+    margin: 8,
   });
 };
 
