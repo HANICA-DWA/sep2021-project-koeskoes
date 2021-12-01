@@ -8,6 +8,7 @@ import UploadVideo from "./Buyer/UploadVideo";
 import RecordVideo from "./Buyer/RecordVideo";
 import RewatchVideo from "./Buyer/RewatchVideo";
 import PersonalizeVideo from "./Buyer/PersonalizeVideo";
+import FinalPage from "./Buyer/FinalPage";
 
 // Receiver components
 import HomeReceiver from "./Receiver/HomeReceiver";
@@ -40,6 +41,7 @@ function App() {
             exact
             element={<PersonalizeVideo />}
           />
+          <Route path="/thankyou" exact element={<FinalPage />} />
           <Route path="/receiver" exact element={<HomeReceiver />} />
           <Route path="/qr-code" exact element={<QRPage />} />
           <Route path="/scan" exact element={<ScanQR />} />

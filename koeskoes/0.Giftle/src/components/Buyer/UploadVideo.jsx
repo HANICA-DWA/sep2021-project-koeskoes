@@ -59,8 +59,6 @@ function UploadVideo() {
         formData
       );
 
-      console.log(uploadResponse);
-
       if (uploadResponse.data.status === "error") {
         return setError(
           ErrorMessage(uploadResponse.data.message, () => setError(null))
@@ -105,34 +103,6 @@ function UploadVideo() {
           accept="video/*"
           onChange={(e) => setVideo(e.target)}
         />
-        {/* <div className="row">
-          <div className="col-lg-2 col-md-2 col-sm-2"></div>
-          <div className="col-lg-8 col-md-8 col-sm-8">
-            <br />
-            <label for="emailReceiver" class="form-label">
-              Naam van de ontvanger
-            </label>
-            <input
-              type="email"
-              class="form-control"
-              id="nameReceiver"
-              name="nameReceiver"
-              onChange={(e) => setNameReceiver(e.target.value)}
-            />
-            <br />
-            <label for="emailReceiver" class="form-label">
-              E-mailadres van de ontvanger
-            </label>
-            <input
-              type="email"
-              class="form-control"
-              id="emailReceiver"
-              name="emailReceiver"
-              onChange={(e) => setEmailReceiver(e.target.value)}
-            />
-          </div>
-          <div className="col-lg-2 col-md-2 col-sm-2"></div>
-        </div> */}
         <br />
         <br />
         <button className="btn btn-primary" onClick={convertVideo}>

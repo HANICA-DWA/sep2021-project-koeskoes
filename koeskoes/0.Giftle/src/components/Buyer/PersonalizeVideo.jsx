@@ -18,26 +18,44 @@ function PersonalizeVideo() {
   }
 
   if (isNextPage === true) {
-    return <Navigate to="" />;
+    return <Navigate to="/thankyou" />;
   }
 
   const saveReceiverData = async () => {
-    const formData = new FormData();
+    if (validateEmail()) {
+      const formData = new FormData();
 
-    formData.append("name", nameReceiver);
-    formData.append("email", emailReceiver);
+      formData.append("name", nameReceiver);
+      formData.append("email", emailReceiver);
 
-    const uploadResponse = await axios.patch(
-      `http://localhost:4000/orders/new/` + textCode,
-      formData
-    );
-
-    if (uploadResponse.data.status === "error") {
-      return setError(
-        ErrorMessage(uploadResponse.data.message, () => setError(null))
+      const uploadResponse = await axios.patch(
+        `http://localhost:4000/orders/new/` + textCode,
+        formData
       );
+
+      if (uploadResponse.data.status === "error") {
+        return setError(
+          ErrorMessage(uploadResponse.data.message, () => setError(null))
+        );
+      } else {
+        return setIsNextPage(true);
+      }
     } else {
-      return setIsNextPage(true);
+      return setError(
+        ErrorMessage("Vul een geldig e-mailadres in", () => setError(null))
+      );
+    }
+  };
+
+  const validateEmail = () => {
+    const re = /\S+@\S+\.\S+/;
+
+    console.log(emailReceiver);
+
+    if (emailReceiver !== null && emailReceiver !== "") {
+      return re.test(emailReceiver);
+    } else {
+      return true;
     }
   };
 
@@ -71,23 +89,23 @@ function PersonalizeVideo() {
           <div className="col-lg-2 col-md-2 col-sm-2"></div>
           <div className="col-lg-8 col-md-8 col-sm-8">
             <br />
-            <label for="nameReceiver" class="form-label">
+            <label htmlFor="nameReceiver" className="form-label">
               Naam van de ontvanger
             </label>
             <input
               type="name"
-              class="form-control"
+              className="form-control"
               id="nameReceiver"
               name="nameReceiver"
               onChange={(e) => setNameReceiver(e.target.value)}
             />
             <br />
-            <label for="emailReceiver" class="form-label">
+            <label htmlFor="emailReceiver" className="form-label">
               E-mailadres van de ontvanger
             </label>
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="emailReceiver"
               name="emailReceiver"
               onChange={(e) => setEmailReceiver(e.target.value)}

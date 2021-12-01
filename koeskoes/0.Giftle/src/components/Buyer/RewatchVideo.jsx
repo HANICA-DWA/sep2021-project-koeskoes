@@ -183,8 +183,8 @@ function RewatchVideo() {
     if (textCode !== "") {
       return (
         <>
-          <div class="row">
-            <div class="col-12">
+          <div className="row">
+            <div className="col-12">
               <h2>Video terugkijken</h2>
               <p>
                 Hier kan je jouw video terugkijken voordat je deze opstuurt naar

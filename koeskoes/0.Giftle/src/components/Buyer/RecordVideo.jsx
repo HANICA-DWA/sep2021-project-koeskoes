@@ -214,11 +214,12 @@ function RecordVideo() {
         />
         <p>Resolutie: </p>
         <select
-          class="form-select"
+          className="form-select"
+          defaultValue="720"
           onChange={(e) => setResolution(e.target.value)}
         >
           <option value="480">480p</option>
-          <option selected value="720">
+          <option value="720">
             720p
           </option>
           <option value="1080">1080p</option>

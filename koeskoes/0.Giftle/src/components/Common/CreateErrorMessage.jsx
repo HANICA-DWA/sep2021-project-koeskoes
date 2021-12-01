@@ -8,7 +8,7 @@
  */
 const ErrorMessage = (message, cb) => {
   return (
-    <div class="alert alert-danger d-flex align-items-center" role="alert">
+    <div className="alert alert-danger d-flex align-items-center" role="alert">
       <div>{message}</div>
       <button
         type="button"
