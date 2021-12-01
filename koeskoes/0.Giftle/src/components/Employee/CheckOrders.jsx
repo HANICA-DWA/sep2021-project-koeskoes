@@ -34,6 +34,8 @@ const CheckOrders = () => {
   useEffect(() => {
     if (orders.length === 0) {
       dispatch(getOrders());
+    } else if (orders.length >= 0) {
+      dispatch(getOrders());
     }
   }, [orders, dispatch]);
 
