@@ -62,7 +62,7 @@ function PersonalizeVideo() {
         <p>
           Om de video bij de juiste persoon aan te laten komen, hebben we de
           naam van deze persoon nodig! Ook is het mogelijk om per mail een
-          tekstcode de versturen naar de ontvanger. Hiermee kan de video ook
+          tekstcode te versturen naar de ontvanger. Hiermee kan de video ook
           geopend en bekeken worden. Wil je dit? Vul dan ook zijn/haar mail
           hieronder in.
         </p>
