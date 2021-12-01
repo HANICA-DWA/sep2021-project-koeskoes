@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const mailTextCode = require("../mail/mailTextCode");
 const mailVideoWatched = require("../mail/mailVideoWatched");
 const mailUploadReminder = require("../mail/mailUploadReminder");
+const mailOrderPlaced = require("../mail/mailOrderPlaced");
 
 class mailModule {
   constructor() {
@@ -66,6 +67,24 @@ class mailModule {
         to: to,
         subject: "Giftle - Je hebt nog geen videoboodschap geüpload!",
         html: mailUploadReminder(buyer),
+      });
+
+      return { status: "success", message: mailInfo };
+    } catch (e) {
+      return { status: "error", message: e };
+    }
+  };
+
+  sendMailOrderPlaced = async (to, buyer) => {
+    if (!to) return { status: "error", message: "Mail not included" };
+    if (!buyer) return { status: "error", message: "Buyer not included" };
+
+    try {
+      const mailInfo = await this.transport.sendMail({
+        from: '"Giftle.nl" info@giftle.nl',
+        to: to,
+        subject: "Giftle - Bedankt voor je bestelling!",
+        html: mailOrderPlaced(buyer),
       });
 
       return { status: "success", message: mailInfo };

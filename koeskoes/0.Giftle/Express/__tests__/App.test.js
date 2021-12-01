@@ -484,4 +484,48 @@ describe("mail tests", () => {
       });
     });
   });
+
+  describe("Send mail with notification of order", () => {
+    test("send mail (happy path)", async () => {
+      const happyMailPath = await mail.sendMailOrderPlaced(
+        "mail@mail.com",
+        "buyer"
+      );
+
+      const checkableData = convertMailData(happyMailPath);
+
+      expect(checkableData).toEqual({
+        status: "success",
+        message: {
+          accepted: ["mail@mail.com"],
+          rejected: [],
+          messageSize: 2331,
+          envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
+        },
+      });
+    });
+    test("send mail (no buyer mail)", async () => {
+      const noBuyerMailPath = await mail.sendMailOrderPlaced("", "buyer");
+
+      const checkableData = convertMailData(noBuyerMailPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Mail not included",
+      });
+    });
+    test("send mail (no buyer name)", async () => {
+      const noBuyerNamePath = await mail.sendMailOrderPlaced(
+        "mail@mail.com",
+        ""
+      );
+
+      const checkableData = convertMailData(noBuyerNamePath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Buyer not included",
+      });
+    });
+  });
 });
