@@ -17,7 +17,9 @@ const uploadSchema = new mongoose.Schema({
   },
   videoName: {
     type: String,
+    default: undefined,
     unique: true,
+    sparse: true,
   },
   textCode: {
     type: String,

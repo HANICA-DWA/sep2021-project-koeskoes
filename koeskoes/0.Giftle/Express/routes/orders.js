@@ -3,6 +3,8 @@ const generateRandomFileName = require("../commonFunctions/generateRandomFileNam
 const fileUpload = require("express-fileupload");
 const router = express.Router();
 const mongoose = require("mongoose");
+const mailModule = require("../commonFunctions/sendMails");
+const mail = new mailModule();
 require("../model/uploadModel");
 
 const uploads = mongoose.model("UploadSchema");
@@ -39,8 +41,32 @@ router.get("/all/", async (req, res) => {
 
   res.json(orders);
 });
+/**
+ * creating new order in the db from checkoutpage
+ */
+router.post("/newOrder", async (req, res) => {
+  try {
+    const newRecord = new uploads({
+      nameGifter: req.body.nameBuyer,
+      emailGifter: req.body.emailBuyer,
+      prePrinted: false,
+      printed: false,
+    });
 
-router.post("/new/", async (req, res) => {
+    await newRecord.save();
+
+    await newRecord.setCode();
+
+    await mail.sendMailOrderPlaced(req.body.emailBuyer, req.body.nameBuyer);
+
+    return res.json(newRecord);
+  } catch (e) {
+    console.log(e);
+    return res.json({ status: "error", message: "Order not created!" });
+  }
+});
+
+router.post("/new", async (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.json({ status: "error", message: "No file has been uploaded" });
   }

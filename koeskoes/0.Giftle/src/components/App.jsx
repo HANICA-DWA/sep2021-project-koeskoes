@@ -3,6 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NotFound from "./NotFound";
 
 // Buyer components
+// Temp components
+import CheckOutPage from "./Buyer/CheckOutPage"
+import CheckOutPageDone from "./Buyer/CheckOutPageDone";
+
+//Perm components
 import HomeBuyer from "./Buyer/HomeBuyer";
 import UploadVideo from "./Buyer/UploadVideo";
 import RecordVideo from "./Buyer/RecordVideo";
@@ -28,6 +33,10 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          {/* Temp Routes */}
+          <Route path="/checkout" exact element={<CheckOutPage/>}/>
+          <Route path="/checked-out" exact element={<CheckOutPageDone/>}/>
+          {/* Perm Routes */}
           <Route path="/buyer" exact element={<HomeBuyer />} />
           <Route path="/upload" exact element={<UploadVideo />} />
           <Route path="/record" exact element={<RecordVideo />} />
