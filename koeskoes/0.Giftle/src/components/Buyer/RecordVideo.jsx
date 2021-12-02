@@ -25,6 +25,7 @@ function RecordVideo() {
   const [capturing, setCapturing] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
   const [textCode, setTextCode] = useState(null);
+  const [cameraPosition, setCameraPosition] = useState(null);
 
   /**
    *
@@ -212,19 +213,52 @@ function RecordVideo() {
           }}
           width={"100%"}
         />
-        <p>Resolutie: </p>
-        <select
-          className="form-select"
-          defaultValue="720"
-          onChange={(e) => setResolution(e.target.value)}
-        >
-          <option value="480">480p</option>
-          <option value="720">
-            720p
-          </option>
-          <option value="1080">1080p</option>
-        </select>
-        <p>
+        <div className="row">
+          <div className="col-md-8 col-sm-12">
+            <p className="text-start">Resolutie: </p>
+            <select
+              className="form-select"
+              defaultValue="720"
+              onChange={(e) => setResolution(e.target.value)}
+            >
+              <option value="480" disabled>
+                Lage kwaliteit / 4 minuten
+              </option>
+              <option value="720">Standaard kwaliteit / 2 minuten</option>
+              <option value="1080">Hoge kwaliteit / 1 minuut</option>
+            </select>
+          </div>
+          <div className="col-md-4 col-sm-12">
+            <p className="text-start">Camera positie: </p>
+            <button className="btn btn-primary lg-hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-clockwise"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+                />
+                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+              </svg>
+            </button>
+            <select
+              className="form-select md-sm-hidden"
+              onChange={(e) => setCameraPosition(e.target.value)}
+            >
+              <option disabled selected>
+                Kies een camera positie
+              </option>
+              <option value="first_cam">Eerste camera</option>
+              <option value="second_cam">Tweede camera</option>
+            </select>
+          </div>
+        </div>
+        <p className="mt-5">
           Door een video op te nemen gaat u akkoord met de{" "}
           <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
         </p>
