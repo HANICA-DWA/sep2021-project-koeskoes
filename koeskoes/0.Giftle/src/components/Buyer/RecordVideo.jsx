@@ -16,6 +16,8 @@ function RecordVideo() {
   const [error, setError] = useState(null);
   const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
   const [resolution, setResolution] = useState("720");
+  const [progress, setProgress] = useState("0");
+  const [barColor, setBarColor] = useState("bg-info");
   const [isDevicesChecked, setIsDevicesChecked] = useState(false);
   const [isAudioAvailable, setIsAudioAvailable] = useState(false);
   const [isWebcamAvailable, setIsWebcamAvailable] = useState(false);
@@ -26,6 +28,40 @@ function RecordVideo() {
   const [recordedChunks, setRecordedChunks] = useState([]);
   const [textCode, setTextCode] = useState(null);
   const [cameraPosition, setCameraPosition] = useState(null);
+
+  useEffect(() => {
+    console.log(capturing);
+  }, [capturing]);
+
+  const countdownRecording = () => {
+    const totalTime = resolution === "720" ? 140 : 80;
+    let currentTime = 0;
+
+    const interval = () => {
+      setTimeout(function () {
+        currentTime++;
+        console.log(currentTime);
+        console.log(capturing);
+        let timePercentage = (currentTime / totalTime) * 100;
+        setProgress(timePercentage.toString());
+
+        if (
+          (currentTime === 120 && totalTime === 140) ||
+          (currentTime === 60 && totalTime === 80)
+        ) {
+          setBarColor("bg-danger");
+        }
+
+        if (currentTime < totalTime) {
+          interval();
+        }
+      }, 1000);
+    };
+
+    if (currentTime === 0) {
+      interval();
+    }
+  };
 
   /**
    *
@@ -97,6 +133,7 @@ function RecordVideo() {
    */
   const handleStartCaptureClick = useCallback(() => {
     setCapturing(true);
+    countdownRecording();
     mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
       mimeType: "video/webm",
     });
@@ -105,7 +142,13 @@ function RecordVideo() {
       handleDataAvailable
     );
     mediaRecorderRef.current.start();
-  }, [webcamRef, setCapturing, mediaRecorderRef, handleDataAvailable]);
+  }, [
+    webcamRef,
+    setCapturing,
+    mediaRecorderRef,
+    handleDataAvailable,
+    countdownRecording,
+  ]);
 
   /**
    *
@@ -190,6 +233,11 @@ function RecordVideo() {
     return null;
   }
 
+  const startRecordAndBar = () => {
+    handleStartCaptureClick();
+    countdownRecording();
+  };
+
   return (
     <div className="vertical-center colored-background">
       {error}
@@ -213,23 +261,30 @@ function RecordVideo() {
           }}
           width={"100%"}
         />
+        <div className="progress">
+          <div
+            className={`progress-bar ` + barColor}
+            role="progressbar"
+            style={{ width: progress + "%" }}
+            aria-valuenow={progress}
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
         <div className="row">
           <div className="col-md-8 col-sm-12">
-            <p className="text-start">Resolutie: </p>
+            <p className="text-start">Opnameduur en kwaliteit: </p>
             <select
               className="form-select"
               defaultValue="720"
               onChange={(e) => setResolution(e.target.value)}
             >
-              <option value="480" disabled>
-                Lage kwaliteit / 4 minuten
-              </option>
               <option value="720">Standaard kwaliteit / 2 minuten</option>
               <option value="1080">Hoge kwaliteit / 1 minuut</option>
             </select>
           </div>
           <div className="col-md-4 col-sm-12">
-            <p className="text-start">Camera positie: </p>
+            <p className="text-start">Camerapositie: </p>
             <button className="btn btn-primary lg-hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -262,7 +317,6 @@ function RecordVideo() {
           Door een video op te nemen gaat u akkoord met de{" "}
           <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
         </p>
-        <br />
         {isWebcamAvailable && isAudioAvailable ? (
           capturing ? (
             <button
