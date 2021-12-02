@@ -32,6 +32,7 @@ router.get("/all/", async (req, res) => {
         videoName: 1,
         textCode: 1,
         printed: 1,
+        prePrinted: 1,
       }
     )
     .exec();
@@ -61,6 +62,7 @@ router.post("/new/", async (req, res) => {
       nameGifter: "firstname lastname",
       emailGifter: "mail@mail.com",
       videoName: finalFileName,
+      prePrinted: false,
       printed: false,
     });
 
@@ -96,7 +98,7 @@ router.patch("/new/:textCode/", async (req, res) => {
   res.json({ status: "success", message: "Receiver data added to order" });
 });
 
-router.patch("/:orderNumber/", async (req, res) => {
+router.patch("/:orderNumber", async (req, res) => {
   const order = await uploads
     .findOne({
       _id: req.params.orderNumber,
@@ -104,6 +106,22 @@ router.patch("/:orderNumber/", async (req, res) => {
     .exec();
 
   await order.setPrinted();
+
+  res.json({ status: "success", message: "Order change saved" });
+});
+
+/**
+ * Changes value prePrinted to true in db
+ */
+
+router.patch("/:orderNumber/prePrint", async (req, res) => {
+  const order = await uploads
+    .findOne({
+      _id: req.params.orderNumber,
+    })
+    .exec();
+
+  await order.setPrePrinted();
 
   res.json({ status: "success", message: "Order change saved" });
 });

@@ -40,6 +40,41 @@ const CheckOrders = () => {
   }, [orders, dispatch]);
 
   /**
+   * This function makes it that the buttons linked to an order get rendered and updated on click
+   * Employees get an extra check with printing, so that they won't missclick
+   *
+   * @param {Object} order this is the specific order, so that the click interaction and the id go to a specific single order
+   * @returns the button that creates a qrcode and prints it if prePrinted is true
+   *          else it will return the button that makes clear where to click.
+   * 
+   */
+  const buttonUpdate = (order) => {
+    if (order.prePrinted) {
+      return (
+        <button
+          className="btn btn-success"
+          onClick={(e) => createQRCode(order._id)}
+        >
+          Print QR-code
+        </button>
+      );
+    } else {
+      return (
+        <button
+          className="btn btn-primary"
+          onClick={(e) => {
+            console.log(order.prePrinted);
+            axios.patch(`http://localhost:4000/orders/${order._id}/prePrint`);
+            console.log(order.prePrinted);
+          }}
+        >
+          Maak QR-code
+        </button>
+      );
+    }
+  };
+
+  /**
    * This function will update the list of orders to a usable list of orders.
    * This list can be used in a table that employees use before sending out orders.
    *
@@ -82,14 +117,7 @@ const CheckOrders = () => {
             <td>{order.emailGifter}</td>
             <td>{order.nameReceiver}</td>
             <td>{order.emailReceiver}</td>
-            <td>
-              <button
-                className="btn btn-primary"
-                onClick={(e) => createQRCode(order._id)}
-              >
-                Maak QR-code
-              </button>
-            </td>
+            <td>{buttonUpdate(order)}</td>
           </tr>
         );
       });

@@ -23,6 +23,9 @@ const uploadSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+  prePrinted: {
+    type: Boolean,
+  },
   printed: {
     type: Boolean,
     required: true,
@@ -47,6 +50,12 @@ uploadSchema.methods.setCode = async function () {
 
 uploadSchema.methods.setPrinted = async function () {
   this.printed = true;
+
+  return await this.save();
+};
+
+uploadSchema.methods.setPrePrinted = async function () {
+  this.prePrinted = true;
 
   return await this.save();
 };
