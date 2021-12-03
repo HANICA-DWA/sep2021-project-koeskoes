@@ -29,82 +29,10 @@ function RecordVideo() {
   const [textCode, setTextCode] = useState(null);
   const [cameraPosition, setCameraPosition] = useState(null);
 
-  //var pressed = false;
-
-  const [pressed, setPressed] = useState(true);
+  const [pressed, setPressed] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  let timer;
-  //let currentTime = 0;
-
-  const countdownRecording = () => {
-    const totalTime = resolution === "720" ? 140 : 80;
-
-    const interval = (parameter) => {
-      console.log(currentTime);
-      switch (parameter) {
-        case false:
-          console.log("heyeheheyeh");
-          window.clearTimeout(timer);
-          break;
-        case true:
-          timer = window.setTimeout(function () {
-            setCurrentTime(
-              (prevCurrentTime) => (prevCurrentTime = prevCurrentTime + 1)
-            );
-            //currentTime++;
-            let timePercentage = (currentTime / totalTime) * 100;
-            setProgress(timePercentage.toString());
-
-            if (
-              (currentTime === 120 && totalTime === 140) ||
-              (currentTime === 60 && totalTime === 80)
-            ) {
-              setBarColor("bg-danger");
-            }
-
-            if (currentTime < totalTime) {
-              interval(parameter);
-            }
-          }, 1000);
-          break;
-      }
-    };
-
-    if (currentTime === 0) {
-      setPressed((prev) => (prev = !prev));
-      interval(pressed);
-    }
-  };
-
-  // const countdownRecording = () => {
-  //   const totalTime = resolution === "720" ? 140 : 80;
-  //   let currentTime = 0;
-
-  //   const interval = () => {
-  //     setTimeout(function () {
-  //       currentTime++;
-  //       console.log(currentTime);
-  //       console.log(capturing);
-  //       let timePercentage = (currentTime / totalTime) * 100;
-  //       setProgress(timePercentage.toString());
-
-  //       if (
-  //         (currentTime === 120 && totalTime === 140) ||
-  //         (currentTime === 60 && totalTime === 80)
-  //       ) {
-  //         setBarColor("bg-danger");
-  //       }
-
-  //       if (currentTime < totalTime) {
-  //         interval();
-  //       }
-  //     }, 1000);
-  //   };
-
-  //   if (currentTime === 0) {
-  //     interval();
-  //   }
-  // };
+  const [timer, setTimer] = useState(0);
+  const [totalTime, setTotalTime] = useState(120);
 
   /**
    *
@@ -155,6 +83,55 @@ function RecordVideo() {
     }
   });
 
+  useEffect(() => {
+    switch (resolution) {
+      case "720":
+        setTotalTime((prevTotal) => (prevTotal = 140));
+        break;
+      case "1080":
+        setTotalTime((prevTotal) => (prevTotal = 80));
+        break;
+      default:
+        return setTotalTime((prevTotal) => (prevTotal = 140));
+    }
+  }, [resolution]);
+
+  const interval = useCallback(() => {
+    setTimer((prevTimer) => {
+      prevTimer = setTimeout(function () {
+        console.log(Date.now());
+        const tempTime = currentTime + 1;
+        if (
+          (tempTime >= 120 && totalTime === 140) ||
+          (tempTime >= 60 && totalTime === 80)
+        ) {
+          setBarColor("bg-danger");
+        } else {
+          setBarColor("bg-info");
+        }
+        setCurrentTime((prevTime) => (prevTime = tempTime));
+      }, 1000);
+    });
+  }, [currentTime, totalTime]);
+
+  useEffect(() => {
+    if (currentTime < totalTime && pressed) {
+      interval();
+    }
+  }, [currentTime, interval, totalTime, pressed]);
+
+  const countdownRecording = useCallback(() => {
+    setPressed((pressedState) => (pressedState = !pressedState));
+    if (pressed) {
+      if (currentTime === 0) {
+        interval();
+      }
+    } else {
+      setCurrentTime((prevTime) => (prevTime = 0));
+      clearTimeout(timer);
+    }
+  }, [currentTime, interval, pressed, timer]);
+
   /**
    *
    * Adds new data chunks to previously recorded chunks.
@@ -176,7 +153,7 @@ function RecordVideo() {
    */
   const handleStartCaptureClick = useCallback(() => {
     setCapturing(true);
-    // countdownRecording();
+    countdownRecording();
     mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
       mimeType: "video/webm",
     });
@@ -200,8 +177,9 @@ function RecordVideo() {
    */
   const handleStopCaptureClick = useCallback(() => {
     mediaRecorderRef.current.stop();
+    countdownRecording();
     setCapturing(false);
-  }, [mediaRecorderRef, setCapturing]);
+  }, [mediaRecorderRef, setCapturing, countdownRecording]);
 
   /**
    *
@@ -259,6 +237,16 @@ function RecordVideo() {
   const handleResetRecording = () => {
     setRecordedChunks([]);
   };
+  
+  useEffect(() => {
+    setProgress(
+      (prevProgress) => (prevProgress = (currentTime / totalTime) * 100)
+    );
+    if (currentTime >= totalTime) {
+      clearTimeout(timer);
+      handleStopCaptureClick();
+    }
+  }, [currentTime, totalTime, timer, handleStopCaptureClick]);
 
   /**
    *
