@@ -189,6 +189,13 @@ function RecordVideo() {
     setRecordedChunks([]);
   };
 
+  /**
+   * UseEffect activates when resolution changes.
+   * Changes the total recording time to a time in seconds.
+   * 
+   * 720p = 120 seconds + 20 seconds
+   * 1080p = 60 seconds + 20 seconds
+   */
   useEffect(() => {
     switch(resolution) {
       case "720":
@@ -202,6 +209,11 @@ function RecordVideo() {
     }
   }, [resolution]);
 
+  /**
+   * UseEffect activates when currentTime, totalTime, timer or handleStopCaptureClick changes.
+   * Sets the progress of the recording progress bar.
+   * When the currentTime is more than the total recording time it will stop recording.
+   */
   useEffect(() => {
     setProgress(prevProgress => prevProgress = (currentTime / totalTime) * 100);
     if (currentTime >= totalTime) {
@@ -210,6 +222,12 @@ function RecordVideo() {
     }
   }, [currentTime, totalTime, timer, handleStopCaptureClick]);
 
+  /**
+   * interval function activates after it being called out.
+   * Sets a timeout every second.
+   * Every second it adds 1 to the current recording time.
+   * After the total recording time - 20 seconds the recording bar will changes to a red color.
+   */
   const interval = useCallback(() => {
     setTimer(prevTimer => {
       prevTimer = setTimeout(function () {
@@ -228,12 +246,20 @@ function RecordVideo() {
     });
   }, [currentTime, totalTime]);
 
+  /**
+   * Calls the interval function is the state pressed is true and if the current recording time is less than the total recording time.
+   */
   useEffect(() => {
     if (currentTime < totalTime && pressed) {
       interval();
     }
   }, [currentTime, interval, totalTime, pressed]);
 
+  /**
+   * Gets called by the start and stop recording buttons.
+   * If the state pressed is true it will start moving the recording progress bar.
+   * If the state pressed is false it will stop the recording progress bar from moving.
+   */
   const countdownRecording = () => {
     setPressed(pressedState => pressedState = !pressedState);
     if (pressed) {
