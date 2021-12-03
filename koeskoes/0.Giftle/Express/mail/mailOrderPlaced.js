@@ -1,9 +1,9 @@
 /**
- * 
- * @param {string} buyer 
+ *
+ * @param {string} buyer
  * @returns Mail preset
  */
-const mailOrderPlaced = (buyer) => {
+const mailOrderPlaced = (buyer, textCode) => {
   return `<html>
     <head>
       <link 
@@ -41,10 +41,10 @@ const mailOrderPlaced = (buyer) => {
           <p>Als je hieronder op de knop drukt, wordt je doorgeleid naar onze pagina.
           Hier kun je je video uploaden of opnemen. Vervolgens kan je de naam en het e-mail van de ontvanger doorgeven!</p>
         </div>
-        <a href="http://localhost:3000/buyer" class="btn btn-secondary mt-4 mb-4">Ga naar Giftle!</a>
+        <a href="http://localhost:3000/orderControl/${textCode}" class="btn btn-secondary mt-4 mb-4">Ga naar Giftle!</a>
         <div class="row">
           <p>Werkt de knop niet? Dan kunt u onze pagina ook vinden door op deze link te klikken:</p>
-          <a href="http://localhost:3000/buyer">http://localhost:3000/buyer</a>
+          <a href="http://localhost:3000/orderControl/${textCode}">Giftle.nl/orderControl/${textCode}</a>
         </div>
         <div class="row mt-4">
           <p>Met vriendelijke groet,</p>

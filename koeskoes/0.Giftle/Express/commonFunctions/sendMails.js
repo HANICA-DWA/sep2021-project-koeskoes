@@ -22,12 +22,12 @@ class mailModule {
   }
 
   /**
-   * 
+   *
    * @param {string} to
-   * @param {string} receiver 
-   * @param {string} buyer 
-   * @param {string} textCode 
-   * @returns 
+   * @param {string} receiver
+   * @param {string} buyer
+   * @param {string} textCode
+   * @returns
    */
   sendTextCode = async (to, receiver, buyer, textCode) => {
     if (to === "null" || !to)
@@ -51,11 +51,11 @@ class mailModule {
   };
 
   /**
-   * 
+   *
    * @param {string} to
-   * @param {string} buyer 
-   * @param {string} receiver 
-   * @returns 
+   * @param {string} buyer
+   * @param {string} receiver
+   * @returns
    */
   sendReminderVideoWatched = async (to, buyer, receiver) => {
     if (!to) return { status: "error", message: "Mail not included" };
@@ -77,10 +77,10 @@ class mailModule {
   };
 
   /**
-   * 
-   * @param {string} to 
-   * @param {string} buyer 
-   * @returns 
+   *
+   * @param {string} to
+   * @param {string} buyer
+   * @returns
    */
   sendReminderUploadVideo = async (to, buyer) => {
     if (!to) return { status: "error", message: "Mail not included" };
@@ -101,12 +101,12 @@ class mailModule {
   };
 
   /**
-   * 
-   * @param {string} to 
-   * @param {string} buyer 
-   * @returns 
+   *
+   * @param {string} to
+   * @param {string} buyer
+   * @returns
    */
-  sendMailOrderPlaced = async (to, buyer) => {
+  sendMailOrderPlaced = async (to, buyer, textCode) => {
     if (!to) return { status: "error", message: "Mail not included" };
     if (!buyer) return { status: "error", message: "Buyer not included" };
 
@@ -115,7 +115,7 @@ class mailModule {
         from: '"Giftle.nl" info@giftle.nl',
         to: to,
         subject: "Giftle - Bedankt voor je bestelling!",
-        html: mailOrderPlaced(buyer),
+        html: mailOrderPlaced(buyer, textCode),
       });
 
       return { status: "success", message: mailInfo };

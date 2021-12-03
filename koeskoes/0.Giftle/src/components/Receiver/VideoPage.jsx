@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReactPlayer from 'react-player';
+import ReactPlayer from "react-player";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -17,29 +17,40 @@ function VideoPage() {
 
   useEffect(() => {
     const getVideo = async () => {
-      const videoRequest = await axios.get('http://localhost:4000/videos/' + textCode);
-      
+      const videoRequest = await axios.get(
+        "http://localhost:4000/videos/" + textCode
+      );
+
       if (!videoRequest.data.status) {
         console.log(videoRequest.data);
         setVideoData(videoRequest.data);
         return setVideoError(false);
-      }
-      else {
+      } else {
         setVideoData(null);
         return setVideoError(true);
       }
-    }
+    };
 
     getVideo();
   }, [textCode]);
 
   useEffect(() => {
     setMinutes(Math.floor(isVideoWatchedTime / 60));
-    setSeconds(Math.floor(isVideoWatchedTime) - Math.floor(isVideoWatchedTime / 60) * 60);
+    setSeconds(
+      Math.floor(isVideoWatchedTime) - Math.floor(isVideoWatchedTime / 60) * 60
+    );
 
     setProgressBar(
       <div className="progress">
-        <div title='Tijd' className="progress-bar" role="progressbar" aria-valuenow='1' style={{width: (100 / isVideoTime * isVideoWatchedTime) + '%'}} aria-valuemin="0" aria-valuemax="100"></div>
+        <div
+          title="Tijd"
+          className="progress-bar"
+          role="progressbar"
+          aria-valuenow="1"
+          style={{ width: (100 / isVideoTime) * isVideoWatchedTime + "%" }}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
       </div>
     );
   }, [isVideoTime, isVideoWatchedTime]);
@@ -47,27 +58,52 @@ function VideoPage() {
   const videoPlayButton = (state) => {
     switch (state) {
       case 1:
-        return <button className="btn btn-primary my-3 mx-4" onClick={() => setVideoState(2)}>Afspelen</button>;
+        return (
+          <button
+            className="btn btn-primary my-3 mx-4"
+            onClick={() => setVideoState(2)}
+          >
+            Afspelen
+          </button>
+        );
       case 2:
-        return <button className="btn btn-primary my-3 mx-4" onClick={() => setVideoState(1)}>Pauzeren</button>;
+        return (
+          <button
+            className="btn btn-primary my-3 mx-4"
+            onClick={() => setVideoState(1)}
+          >
+            Pauzeren
+          </button>
+        );
       case 3:
-        return <button className="btn btn-primary my-3 mx-4" onClick={() => setVideoState(2)}>Opnieuw afspelen</button>;
+        return (
+          <button
+            className="btn btn-primary my-3 mx-4"
+            onClick={() => setVideoState(2)}
+          >
+            Opnieuw afspelen
+          </button>
+        );
       default:
         return null;
     }
-  }
+  };
 
   const videoPlayerSettings = () => {
     return (
       <>
         {progressBar}
-        <div>{(minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : (seconds === 60 ? '00' : seconds))}</div>
+        <div>
+          {(minutes < 10 ? "0" + minutes : minutes) +
+            ":" +
+            (seconds < 10 ? "0" + seconds : seconds === 60 ? "00" : seconds)}
+        </div>
         <button className="btn btn-primary my-3 mx-4">Vorige stap</button>
         {videoPlayButton(videoState)}
         <button className="btn btn-primary my-3 mx-4">Volgende stap</button>
       </>
     );
-  }
+  };
 
   const loadingPlayer = (loading) => {
     if (loading) {
@@ -76,16 +112,13 @@ function VideoPage() {
           <span className="visually-hidden">Loading...</span>
         </div>
       );
+    } else {
+      return videoPlayerSettings();
     }
-    else {
-      return (
-        videoPlayerSettings()
-      );
-    }
-  }
+  };
 
   const videoPlayer = () => {
-    console.log('huiawd',videoError)
+    console.log("huiawd", videoError);
     if (videoError === null) {
       return (
         <div className="d-flex justify-content-center">
@@ -107,20 +140,30 @@ function VideoPage() {
       return (
         <>
           <h2>Videoboodschap voor {videoData.nameReceiver}</h2>
-          <ReactPlayer url={'http://localhost:4000/videos/video/' + textCode} width="100%" height="100%" playing={(videoState === 2 ? true : false)} progressInterval={100} onReady={() => setIsLoading(false)} onEnded={() => setVideoState(3)} onDuration={(time) => setIsVideoTime(time)} onProgress={({playedSeconds}) => setIsVideoWatchedTime(playedSeconds)} />
-          {
-            loadingPlayer(isLoading)
-          }
+          <ReactPlayer
+            url={"http://localhost:4000/videos/video/" + textCode}
+            width="100%"
+            height="100%"
+            playing={videoState === 2 ? true : false}
+            progressInterval={100}
+            onReady={() => setIsLoading(false)}
+            onEnded={() => setVideoState(3)}
+            onDuration={(time) => setIsVideoTime(time)}
+            onProgress={({ playedSeconds }) =>
+              setIsVideoWatchedTime(playedSeconds)
+            }
+          />
+          {loadingPlayer(isLoading)}
           <hr />
           <div className="text-start">
             <h3>Afzender:</h3>
-            {videoData.nameGifter ? (<h5>{videoData.nameGifter}</h5>) : null}
-            {videoData.emailGifter ? (<h5>{videoData.emailGifter}</h5>) : null}
+            {videoData.nameGifter ? <h5>{videoData.nameGifter}</h5> : null}
+            {videoData.emailGifter ? <h5>{videoData.emailGifter}</h5> : null}
           </div>
         </>
       );
     }
-  }
+  };
 
   return (
     <div className="vertical-center colored-background">

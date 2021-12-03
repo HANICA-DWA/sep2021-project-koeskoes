@@ -41,6 +41,7 @@ router.get("/all/", async (req, res) => {
 
   res.json(orders);
 });
+
 /**
  * creating new order in the db from checkoutpage
  */
@@ -49,6 +50,7 @@ router.post("/newOrder", async (req, res) => {
     const newRecord = new uploads({
       nameGifter: req.body.nameBuyer,
       emailGifter: req.body.emailBuyer,
+      videoName: "",
       prePrinted: false,
       printed: false,
     });
@@ -57,7 +59,11 @@ router.post("/newOrder", async (req, res) => {
 
     await newRecord.setCode();
 
-    await mail.sendMailOrderPlaced(req.body.emailBuyer, req.body.nameBuyer);
+    await mail.sendMailOrderPlaced(
+      req.body.emailBuyer,
+      req.body.nameBuyer,
+      newRecord.textCode
+    );
 
     return res.json(newRecord);
   } catch (e) {
