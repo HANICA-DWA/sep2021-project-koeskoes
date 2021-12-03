@@ -29,39 +29,82 @@ function RecordVideo() {
   const [textCode, setTextCode] = useState(null);
   const [cameraPosition, setCameraPosition] = useState(null);
 
-  useEffect(() => {
-    console.log(capturing);
-  }, [capturing]);
+  //var pressed = false;
+
+  const [pressed, setPressed] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
+  let timer;
+  //let currentTime = 0;
 
   const countdownRecording = () => {
     const totalTime = resolution === "720" ? 140 : 80;
-    let currentTime = 0;
 
-    const interval = () => {
-      setTimeout(function () {
-        currentTime++;
-        console.log(currentTime);
-        console.log(capturing);
-        let timePercentage = (currentTime / totalTime) * 100;
-        setProgress(timePercentage.toString());
+    const interval = (parameter) => {
+      console.log(currentTime);
+      switch (parameter) {
+        case false:
+          console.log("heyeheheyeh");
+          window.clearTimeout(timer);
+          break;
+        case true:
+          timer = window.setTimeout(function () {
+            setCurrentTime(
+              (prevCurrentTime) => (prevCurrentTime = prevCurrentTime + 1)
+            );
+            //currentTime++;
+            let timePercentage = (currentTime / totalTime) * 100;
+            setProgress(timePercentage.toString());
 
-        if (
-          (currentTime === 120 && totalTime === 140) ||
-          (currentTime === 60 && totalTime === 80)
-        ) {
-          setBarColor("bg-danger");
-        }
+            if (
+              (currentTime === 120 && totalTime === 140) ||
+              (currentTime === 60 && totalTime === 80)
+            ) {
+              setBarColor("bg-danger");
+            }
 
-        if (currentTime < totalTime) {
-          interval();
-        }
-      }, 1000);
+            if (currentTime < totalTime) {
+              interval(parameter);
+            }
+          }, 1000);
+          break;
+      }
     };
 
     if (currentTime === 0) {
-      interval();
+      setPressed((prev) => (prev = !prev));
+      interval(pressed);
     }
   };
+
+  // const countdownRecording = () => {
+  //   const totalTime = resolution === "720" ? 140 : 80;
+  //   let currentTime = 0;
+
+  //   const interval = () => {
+  //     setTimeout(function () {
+  //       currentTime++;
+  //       console.log(currentTime);
+  //       console.log(capturing);
+  //       let timePercentage = (currentTime / totalTime) * 100;
+  //       setProgress(timePercentage.toString());
+
+  //       if (
+  //         (currentTime === 120 && totalTime === 140) ||
+  //         (currentTime === 60 && totalTime === 80)
+  //       ) {
+  //         setBarColor("bg-danger");
+  //       }
+
+  //       if (currentTime < totalTime) {
+  //         interval();
+  //       }
+  //     }, 1000);
+  //   };
+
+  //   if (currentTime === 0) {
+  //     interval();
+  //   }
+  // };
 
   /**
    *
@@ -133,7 +176,7 @@ function RecordVideo() {
    */
   const handleStartCaptureClick = useCallback(() => {
     setCapturing(true);
-    countdownRecording();
+    // countdownRecording();
     mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
       mimeType: "video/webm",
     });
@@ -238,6 +281,11 @@ function RecordVideo() {
     countdownRecording();
   };
 
+  const stopRecordAndBar = () => {
+    handleStopCaptureClick();
+    countdownRecording();
+  };
+
   return (
     <div className="vertical-center colored-background">
       {error}
@@ -291,11 +339,11 @@ function RecordVideo() {
                 width="16"
                 height="16"
                 fill="currentColor"
-                class="bi bi-arrow-clockwise"
+                className="bi bi-arrow-clockwise"
                 viewBox="0 0 16 16"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
                 />
                 <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
@@ -303,9 +351,10 @@ function RecordVideo() {
             </button>
             <select
               className="form-select md-sm-hidden"
+              defaultValue="kiezen"
               onChange={(e) => setCameraPosition(e.target.value)}
             >
-              <option disabled selected>
+              <option value="kiezen" disabled>
                 Kies een camera positie
               </option>
               <option value="first_cam">Eerste camera</option>
@@ -319,10 +368,7 @@ function RecordVideo() {
         </p>
         {isWebcamAvailable && isAudioAvailable ? (
           capturing ? (
-            <button
-              className="btn btn-primary me-3"
-              onClick={handleStopCaptureClick}
-            >
+            <button className="btn btn-primary me-3" onClick={stopRecordAndBar}>
               Opnemen stoppen
             </button>
           ) : recordedChunks.length > 0 ? (
@@ -340,7 +386,7 @@ function RecordVideo() {
           ) : (
             <button
               className="btn btn-primary me-3"
-              onClick={handleStartCaptureClick}
+              onClick={startRecordAndBar}
             >
               Opnemen starten
             </button>
