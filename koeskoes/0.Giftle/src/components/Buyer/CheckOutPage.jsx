@@ -3,8 +3,13 @@ import { Navigate } from "react-router";
 import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
 
+/**
+ *  This is a temp page for simulating the checkout page
+ * @returns the front end of the checkout page
+ */
 
 function CheckOutPage() {
+  // Hook variables
   const [nameBuyer, setNameBuyer] = useState(null);
   const [emailBuyer, setEmailBuyer] = useState(null);
   const [isNextPage, setIsNextPage] = useState(false);
@@ -59,6 +64,13 @@ function CheckOutPage() {
     const maxLength = 300;
     const re = /^[a-zA-Z\s]+$/;
 
+    if (nameBuyer === null || nameBuyer === "") {
+      return {
+        status: "error",
+        message: "De naam moet ingevuld worden!",
+      };
+    }
+
     if (nameBuyer.length > maxLength) {
       return {
         status: "error",
@@ -86,13 +98,18 @@ function CheckOutPage() {
   const checkEmail = () => {
     const re = /\S+@\S+\.\S+/;
 
-    if (emailBuyer !== null && emailBuyer !== "") {
-      if (!re.test(emailBuyer)) {
-        return {
-          status: "error",
-          message: "Vul een geldig e-mailadres in",
-        };
-      }
+    if (emailBuyer === null && emailBuyer === "") {
+      return {
+        status: "error",
+        message: "Vul een e-mailadres in",
+      };
+    }
+
+    if (!re.test(emailBuyer)) {
+      return {
+        status: "error",
+        message: "Vul een geldig e-mailadres in",
+      };
     }
 
     return true;
