@@ -1,5 +1,117 @@
 # Operation and Support
 
+### Voor de installatie van deze applicatie gaan wij ervan uit dat je ervaring hebt met Ubuntu en de Linux commandline
+
+<br>
+
+## Installeer Ubuntu 18.04
+
+<br>
+
+## Update en upgrade
+
+    sudo apt-get update
+
+    sudo apt-get upgrade
+
+## Installeer nodejs & npm - Source: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
+
+    curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
+
+    sudo bash nodesource_setup.sh
+
+    sudo apt install nodejs
+
+## Installeer mongodb - Source: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+    wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+
+    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+
+    sudo apt-get update
+
+    sudo apt-get install -y mongodb-org
+
+    sudo systemctl start mongod
+
+    sudo systemctl status mongod
+
+## Creeer "create read update delete" gebruiker
+
+    mongosh
+
+    use admin
+    
+    db.createRole(
+    {
+      role: "crudRole",
+      privileges: [
+        {
+          actions: [ "find", "update", "insert", "remove" ],
+          resource: { db: "giftle", collection: "" }
+        }
+      ],
+      roles: []
+    })
+
+    db.createUser(
+    {
+      user: "crudUser",
+      pwd: "yCC4L4K9ULEjRC",
+      roles: [
+        {
+          role: "crudRole",
+          db:"giftle"
+        }
+      ]
+    })
+
+## Webapplicatie plaatsen op de server
+
+    - Open een FTP applicatie naar keuze (bijv. FileZilla Client).
+  
+    - Verbind met de server.
+  
+    - Navigeer naar de map /var/.
+  
+    - Maak een nieuwe map aan genaamd "www". Dit maakt het makkelijk voor andere om de webapplicatie te vinden.
+  
+    - Plaats de webapplicatie in de "www" map.
+
+## Automatisch opstarten na server restart - Source: https://serverok.in/run-a-script-on-boot-using-systemd-on-ubuntu-18-04
+
+    nano /etc/systemd/system/sok-startup.service
+    - [Unit]
+    - Description=Start up script
+    - ConditionPathExists=/etc/rc.local
+    
+    - [Service]
+    - Type=forking
+    - ExecStart=/etc/rc.local start
+    - TimeoutSec=0
+    - StandardOutput=tty
+    - RemainAfterExit=yes
+    - SysVStartPriority=99
+    
+    - [Install]
+    - WantedBy=multi-user.target
+
+    nano /etc/rc.local
+    - #!/bin/bash
+ 
+    - sudo rm -rf /tmp/mongodb-27017.sock ; sudo service mongod start ; cd /var/www/ ; npm start
+ 
+    - exit 0
+  
+    chmod 755 /etc/rc.local
+
+    systemctl daemon-reload
+
+    systemctl enable sok-startup.service
+
+    sudo reboot
+
+<!--
 Wij gebruiken software als:
 | Software | Waarvoor gebruikt? |
 |-----------------|--------------------------------------------------------------------------------------------------------------------------------|
@@ -20,6 +132,7 @@ Dit bewaken en beheren wordt doorgevoerd in alle lagen van de architectuur. Er z
 Errors worden gelogd in de console en zijn te zien in de browser. Informatie/data wordt niet gelogged, maar wel opgeslagen in de database.
 
 Ten slotte hoeven configuratiewijzigingen intern niet opnieuw worden opgestart. Extern moet dit, naar alle waarschijnlijkheid, wel gedaan worden. Dit ligt meer aan de externe software zelf.
+-->
 
 <!--
 Intent

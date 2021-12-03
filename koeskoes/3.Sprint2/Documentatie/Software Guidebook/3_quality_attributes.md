@@ -2,27 +2,36 @@
 
 ## Prestatie (b.v. latency and throughput)
 
-De performance qua latency en throughput moet goed zijn, wat inhoudt dat er niet te lang gewacht moet worden op data vanuit de database of de API. Tevens moet de website gebruiksvriendelijk en makkelijk te navigeren zijn.
+Hier zijn wij niet mee bezig geweest.
 
 ## Schaalbaarheid (b.v. data and traffic volumes)
 
-Voor de development is schaalbaarheid niet nodig, maar in de productie waarschijnlijk wel. Dit in verband met hoeveel de plug-in gebruikt wordt in een webshop en de hoeveelheid gebruikers die de plug-in gebruiken.
+Hier zijn wij niet mee bezig geweest.
 
 ## Beschikbaarheid (b.v. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
 
-De plug-in moet 24/7 beschikbaar zijn, tenzij er onderhoud aan de plug-in is. Als dit zo is, zal het onderhoud minimaal 24 uur van te voren aangegeven moeten worden aan de gebruikers.
+Hier houden wij ons niet mee bezig.
 
 ## Beveiliging (b.v. authentication, authorisation, data confidentiality, etc)
 
-Er kan een maximale bestandsgrootte ingesteld worden, zodat de server video's kan opslaan. Bovendien kunnen QR-codes die niet naar een andere pagina binnen de plug-in leiden, niet gescand worden via de ingebouwde QR-scanner van Giftle. Dit zorgt ervoor dat de gebruiker niet naar onbekende/externe websites wordt gelokt. Ten slotte worden gegevens niet aan "third-party companies" verkocht.
+Er is een maximale video duur, dit is zodat de server genoeg video's kan opslaan. Bovendien kunnen QR-codes die niet naar een andere pagina binnen de plug-in leiden, niet gescand worden via de ingebouwde QR-scanner van Giftle ["0.giftle/src/components/Receiver/ScanQR.jsx" - Regel 80 t/m 91]. Dit zorgt ervoor dat de gebruiker niet naar onbekende/externe websites wordt gelokt.
 
 ## Uitbreidbaarheid
 
-Uitbreidbaarheid is mogelijk. De gewenste aanpak is wel om de scrum methode te gebruiken met een "project board" en eventuele "sprints" voor de "user stories" met de daarbijbehorende taken. Op deze manier is uitbreiding van het project op een efficiënte manier mogelijk. Dit is vanaf het begin van het project exact op deze manier gedaan .
+Hier houden wij ons niet mee bezig.
 
 ## (Her)bruikbaarheid
 
-Ten eerste kunnen door het gebruik van componenten en functies delen van de code opnieuw gebruikt worden zonder teveel herhaling. Ook moet de plug-in gebruikt kunnen worden in de browser Safari op alle Apple-devices en in de browser Chrome op alle Windows- en Android-devices. Gebruikers moeten op zowel smartphone als computer (met webcam en microfoon) de plug-in kunnen gebruiken. Voor iPhones moet de plug-in vanaf de iPhone 6 gebruikt kunnen worden. Ten slotte hebben knoppen op de frontend de voorwaarde dat ze een functie hebben.
+Op het moment is de applicatie getest op de volgende apparaten/browsers:
+
+### Browsers
+- Chrome
+- Edge
+- Firefox
+
+### Devices
+- PC (1920x1080)
+- Android (OnePlus 9)
 
 ## Management en toezicht
 
@@ -41,6 +50,8 @@ De plug-in is afhankelijk van het volgende:
 
 ## Wettelijke, nalevings- en regelgevende vereisten (b.v. data protection act)
 
+<!-- MOET ERUIT ALS HIER NIKS MEE GEDAAN WORDT -->
+
 Om Giftle aan deze vereisten te laten voldoen, moet er rekening gehouden worden met het volgende:
 * De gebruiker moet de algemene voorwaarden kunnen lezen en op basis hiervan akkoord gaan.
 * De privacy wetgeving van Europa moet nagevolgd worden. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/wetten/internationale-privacywetgeving).
@@ -57,7 +68,7 @@ Om Giftle aan deze vereisten te laten voldoen, moet er rekening gehouden worden 
 
 ## Toegankelijkheid
 
-Toegankelijkheid is alleen beschikbaar voor het development team en de opdrachtgever.
+Hier zijn wij niet mee bezig geweest.
 
 <!--
 Intent

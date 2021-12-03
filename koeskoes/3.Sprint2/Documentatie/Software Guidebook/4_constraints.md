@@ -12,7 +12,15 @@ Om Giftle daadwerkelijk in gebruik te kunnen nemen, zal er een betaalde SMTP-ser
 
 ## Kennis
 
-Over veel van de functionaliteiten die we hebben moeten implementeren hadden wij van tevoren nog geen kennis. Hierdoor hebben wij veel onderzoek moeten doen en is er kostbare tijd verloren gegaan.
+Omdat het team bestaat uit beginnende programmeurs is er vaak onderzoek gedaan naar functionaliteiten.
+
+## React-Redux
+
+Voor dit product moeten wij gebruik maken van react-redux. Hierdoor is onze keuze in libraries en programmeertalen gelimiteerd.
+
+## Jest
+
+Voor dit product moeten wij gebruik maken van Jest. Hierdoor is onze keuze in JavaScript test frameworks gelimiteerd.
 
 <!--
 Intent

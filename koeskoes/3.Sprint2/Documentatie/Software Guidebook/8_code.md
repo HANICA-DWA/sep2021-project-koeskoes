@@ -8,6 +8,10 @@ Voor het maken van de QR-codes maken wij gebruik van de node module 'qr-code-sty
 
 Voor het unit- & integratie testen van de applicatie is er gebruikgemaakt van 'Jest'.
 
+## To do
+
+Lars moet nog nadenken over feedback over dit hoofdstuk.
+
 <!--
 • Generating/rendering HTML: a short description of an in-house framework that was created for generating HTML, including the major classes and concepts.
 • Data binding: our approach to updating business objects as the result of HTTP POST requests.

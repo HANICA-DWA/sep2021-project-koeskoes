@@ -1,5 +1,8 @@
 # Deployment
 
+## To do
+Ik begrijp niet wat er hier gedaan moet worden, de notulen zijn niet duidelijk - Sjoerd
+
 ![system_context_diagram](assets/deployment/deployment_diagram.png "System Context diagram")
 *Deployment diagram*
 
@@ -14,6 +17,7 @@ De database bevat alle (gevoelige) data. In development heeft het team een datab
 ## Mailer
 
 De SMTP Service SendPulse wordt gebruikt voor het versturen/ontvangen van e-mails.
+
 
 <!--
 Intent

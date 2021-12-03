@@ -12,6 +12,14 @@ Een snelle keuze waarom wij voor Bootstrap hebben gekozen is dat iedereen hierme
 
 Een onderzoek is gestart naar SMTP over welke de beste service bied en of er genoeg e-mails verzonden kunnen worden in verband met de (e-mail) limieten. Al gauw kwamen we erachter dat de meeste services niet genoeg e-mails kunnen versturen i.v.m. de limieten. De beste optie is SendPulse. Deze kan de meeste e-mails versturen met de gratis service. Dit is dus voor ons de reden waarom wij SendPulse gekozen hebben.
 
+## 3. Onderzoek video's converteren
+
+...
+
+## 4. Onderzoek stijl van QR-codes
+
+...
+
 <!--
 Intent
 

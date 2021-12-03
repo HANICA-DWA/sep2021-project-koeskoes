@@ -4,7 +4,7 @@ Er is een duidelijke structuur binnen de software architectuur. Zoals de afbeeld
 
 ## Level 1: System Context diagram
 
-![system_context_diagram](assets/software_architecture/system_context_diagram.png "System Context diagram")
+Zie [Context](1_context.md)
 
 ## Level 2: Container diagram
 
@@ -13,6 +13,10 @@ Er is een duidelijke structuur binnen de software architectuur. Zoals de afbeeld
 ## Level 3: Component diagram
 
 ![component_diagram](assets/software_architecture/component_diagram.png "Component diagram")
+
+### To do
+
+Maak een component diagram voor de express app!
 
 ## Level 4: Code diagram
 

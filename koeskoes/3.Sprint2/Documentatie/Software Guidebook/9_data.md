@@ -2,21 +2,45 @@
 
 ## Algemene informatie
 
-![Data](assets/data/data.png "Data")
-*Datamodel*
+De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op het moment maar één collectie, genaamd 'uploadschemas'.
 
-De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op het moment maar één collectie (table), genaamd 'uploadschemas'. De data is bij het opleveren in bezit van de opdrachtgevers van dit project Giftle. Tijdens de productie is het team Koeskoes van de Hogeschool van Arnhem en Nijmegen (HAN) verantwoordelijk voor de data. Er is minimaal 50GB aan opslagruimte nodig voor alle data in deze database. Voor de productie is dit sowieso voldoende, maar als het project opgeleverd wordt, kan er meer opslagruimte nodig zijn.
+## Database schema
 
-De archieven van Giftle worden bewaard in het (GitHub) project van team Koeskoes. Zo kan het development team makkelijk en snel bij de documenten.
+    const mongoose = require("mongoose");
 
-Binnen dit project zal het huidige development team geen gebruikmaken van "flat files", ookwel platte databases (datamodellen voor databases).
-
-## Wettelijke vereisten
-
-Er zijn verschillende wettelijke vereisten rondom data waar rekening mee gehouden moet worden:
-
-* Vereisten voor de langetermijnarchivering van bedrijfsgegevens, die hier te vinden zijn: [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens);
-* Vereisten voor log bestanden en "audit trails", die via de volgende twee bronnen te vinden zijn: [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf) & [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
+    const uploadSchema = new mongoose.Schema({
+      nameGifter: {
+        type: String,
+        required: true,
+      },
+      emailGifter: {
+        type: String,
+        required: true,
+      },
+      nameReceiver: {
+        type: String,
+      },
+      emailReceiver: {
+        type: String,
+      },
+      videoName: {
+        type: String,
+        default: undefined,
+        unique: true,
+        sparse: true,
+      },
+      textCode: {
+        type: String,
+        unique: true,
+      },
+      prePrinted: {
+        type: Boolean,
+      },
+      printed: {
+        type: Boolean,
+        required: true,
+      },
+    });
 
 <!--
 Intent
