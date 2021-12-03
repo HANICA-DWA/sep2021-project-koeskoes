@@ -34,6 +34,8 @@ function RecordVideo() {
   const [timer, setTimer] = useState(0);
   const [totalTime, setTotalTime] = useState(120);
 
+  
+
   /**
    *
    * UseEffect to check if audio and video is available for the webcam module.
@@ -83,55 +85,6 @@ function RecordVideo() {
     }
   });
 
-  useEffect(() => {
-    switch (resolution) {
-      case "720":
-        setTotalTime((prevTotal) => (prevTotal = 140));
-        break;
-      case "1080":
-        setTotalTime((prevTotal) => (prevTotal = 80));
-        break;
-      default:
-        return setTotalTime((prevTotal) => (prevTotal = 140));
-    }
-  }, [resolution]);
-
-  const interval = useCallback(() => {
-    setTimer((prevTimer) => {
-      prevTimer = setTimeout(function () {
-        console.log(Date.now());
-        const tempTime = currentTime + 1;
-        if (
-          (tempTime >= 120 && totalTime === 140) ||
-          (tempTime >= 60 && totalTime === 80)
-        ) {
-          setBarColor("bg-danger");
-        } else {
-          setBarColor("bg-info");
-        }
-        setCurrentTime((prevTime) => (prevTime = tempTime));
-      }, 1000);
-    });
-  }, [currentTime, totalTime]);
-
-  useEffect(() => {
-    if (currentTime < totalTime && pressed) {
-      interval();
-    }
-  }, [currentTime, interval, totalTime, pressed]);
-
-  const countdownRecording = useCallback(() => {
-    setPressed((pressedState) => (pressedState = !pressedState));
-    if (pressed) {
-      if (currentTime === 0) {
-        interval();
-      }
-    } else {
-      setCurrentTime((prevTime) => (prevTime = 0));
-      clearTimeout(timer);
-    }
-  }, [currentTime, interval, pressed, timer]);
-
   /**
    *
    * Adds new data chunks to previously recorded chunks.
@@ -153,7 +106,7 @@ function RecordVideo() {
    */
   const handleStartCaptureClick = useCallback(() => {
     setCapturing(true);
-    countdownRecording();
+    // countdownRecording();
     mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
       mimeType: "video/webm",
     });
@@ -167,7 +120,6 @@ function RecordVideo() {
     setCapturing,
     mediaRecorderRef,
     handleDataAvailable,
-    countdownRecording,
   ]);
 
   /**
@@ -177,9 +129,8 @@ function RecordVideo() {
    */
   const handleStopCaptureClick = useCallback(() => {
     mediaRecorderRef.current.stop();
-    countdownRecording();
     setCapturing(false);
-  }, [mediaRecorderRef, setCapturing, countdownRecording]);
+  }, [mediaRecorderRef, setCapturing]);
 
   /**
    *
@@ -237,16 +188,64 @@ function RecordVideo() {
   const handleResetRecording = () => {
     setRecordedChunks([]);
   };
-  
+
   useEffect(() => {
-    setProgress(
-      (prevProgress) => (prevProgress = (currentTime / totalTime) * 100)
-    );
+    switch(resolution) {
+      case "720":
+        setTotalTime(prevTotal => prevTotal = 140);
+        break;
+      case "1080":
+        setTotalTime(prevTotal => prevTotal = 80);
+        break;
+      default:
+        return setTotalTime(prevTotal => prevTotal = 140);
+    }
+  }, [resolution]);
+
+  useEffect(() => {
+    setProgress(prevProgress => prevProgress = (currentTime / totalTime) * 100);
     if (currentTime >= totalTime) {
       clearTimeout(timer);
       handleStopCaptureClick();
     }
   }, [currentTime, totalTime, timer, handleStopCaptureClick]);
+
+  const interval = useCallback(() => {
+    setTimer(prevTimer => {
+      prevTimer = setTimeout(function () {
+        const tempTime = currentTime + 1;
+        if (
+          (tempTime >= 120 && totalTime === 140) ||
+          (tempTime >= 60 && totalTime === 80)
+        ) {
+          setBarColor("bg-danger");
+        }
+        else {
+          setBarColor("bg-info");
+        }
+        setCurrentTime(prevTime => prevTime = tempTime);
+      }, 1000)
+    });
+  }, [currentTime, totalTime]);
+
+  useEffect(() => {
+    if (currentTime < totalTime && pressed) {
+      interval();
+    }
+  }, [currentTime, interval, totalTime, pressed]);
+
+  const countdownRecording = () => {
+    setPressed(pressedState => pressedState = !pressedState);
+    if (pressed) {
+      if (currentTime === 0) {
+        interval();
+      }
+    }
+    else {
+      setCurrentTime(prevTime => prevTime = 0);
+      clearTimeout(timer);
+    }
+  };
 
   /**
    *
