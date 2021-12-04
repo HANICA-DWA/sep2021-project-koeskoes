@@ -32,9 +32,7 @@ function ScanQR() {
         const videoAccess = await navigator.mediaDevices.getUserMedia({
           video: true,
         });
-        if (videoAccess.getVideoTracks().length > 0) {
-          console.log("Camera is aanwezig!");
-        } else {
+        if (videoAccess.getVideoTracks().length < 1) {
           setError(ErrorMessage("Geen webcam gevonden", () => setError(null)));
         }
       } catch (e) {

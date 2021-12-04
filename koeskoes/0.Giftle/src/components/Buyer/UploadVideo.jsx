@@ -35,24 +35,10 @@ function UploadVideo() {
     }
     const sourceVideoFile = video.files[0];
 
-    if (sourceVideoFile.size > 10485760) {
-      return setError(
-        ErrorMessage("Kies een kleiner bestand!", () => setError(null))
-      );
-    }
-
-    if (sourceVideoFile.size < 512000) {
-      return setError(
-        ErrorMessage("Kies een groter bestand!", () => setError(null))
-      );
-    }
-
     if (sourceVideoFile.type.split("/")[0] === "video") {
       const formData = new FormData();
 
-      const blob = new Blob([sourceVideoFile], { type: "video/mp4" });
-
-      formData.append("video", blob, sourceVideoFile.name);
+      formData.append("video", sourceVideoFile, sourceVideoFile.name);
 
       const uploadResponse = await axios.post(
         `http://localhost:4000/orders/new/`,

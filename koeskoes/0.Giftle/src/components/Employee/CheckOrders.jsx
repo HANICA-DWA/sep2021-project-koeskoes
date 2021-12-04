@@ -63,9 +63,7 @@ const CheckOrders = () => {
         <button
           className="btn btn-primary"
           onClick={(e) => {
-            console.log(order.prePrinted);
             axios.patch(`http://localhost:4000/orders/${order._id}/prePrint`);
-            console.log(order.prePrinted);
           }}
         >
           Maak QR-code

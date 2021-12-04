@@ -17,8 +17,6 @@ router.post("/:textCode", async (req, res) => {
     })
     .exec();
 
-  console.log(order);
-
   const mailInfo = await mail.sendTextCode(
     order.emailReceiver,
     order.nameReceiver,

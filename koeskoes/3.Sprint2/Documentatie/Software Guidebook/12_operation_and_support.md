@@ -36,7 +36,7 @@
 
     sudo systemctl status mongod
 
-## Creeer "create read update delete" gebruiker
+## Creeer database "create read update delete" rol en gebruiker
 
     mongosh
 
@@ -77,6 +77,12 @@
     - Maak een nieuwe map aan genaamd "www". Dit maakt het makkelijk voor andere om de webapplicatie te vinden.
   
     - Plaats de webapplicatie in de "www" map.
+
+## Installeer FFmpeg
+
+    sudo apt update
+
+    sudo apt install ffmpeg
 
 ## Automatisch opstarten na server restart - Source: https://serverok.in/run-a-script-on-boot-using-systemd-on-ubuntu-18-04
 

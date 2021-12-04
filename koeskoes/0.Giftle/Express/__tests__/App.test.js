@@ -263,7 +263,7 @@ describe("commonFunctions tests", () => {
 
     expect(files).toEqual({
       finalFileName: "videoname.mp4.mp3randomNumber123.mp4",
-      uploadPath: "videos/videoname.mp4.mp3randomNumber123.mp4",
+      uploadPath: "videos/",
     });
   });
 });
@@ -499,7 +499,7 @@ describe("mail tests", () => {
         message: {
           accepted: ["mail@mail.com"],
           rejected: [],
-          messageSize: 2331,
+          messageSize: 2370,
           envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
         },
       });

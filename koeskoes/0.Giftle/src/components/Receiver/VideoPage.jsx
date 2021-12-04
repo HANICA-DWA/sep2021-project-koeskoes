@@ -22,7 +22,6 @@ function VideoPage() {
       );
 
       if (!videoRequest.data.status) {
-        console.log(videoRequest.data);
         setVideoData(videoRequest.data);
         return setVideoError(false);
       } else {
@@ -118,7 +117,6 @@ function VideoPage() {
   };
 
   const videoPlayer = () => {
-    console.log("huiawd", videoError);
     if (videoError === null) {
       return (
         <div className="d-flex justify-content-center">
