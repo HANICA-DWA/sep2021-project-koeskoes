@@ -1,24 +1,8 @@
 # Quality Attributes
 
-## Prestatie (b.v. latency and throughput)
-
-Hier zijn wij niet mee bezig geweest.
-
-## Schaalbaarheid (b.v. data and traffic volumes)
-
-Hier zijn wij niet mee bezig geweest.
-
-## Beschikbaarheid (b.v. uptime, downtime, scheduled maintenance, 24x7, 99.9%, etc)
-
-Hier houden wij ons niet mee bezig.
-
 ## Beveiliging (b.v. authentication, authorisation, data confidentiality, etc)
 
 Er is een maximale video duur, dit is zodat de server genoeg video's kan opslaan. Bovendien kunnen QR-codes die niet naar een andere pagina binnen de plug-in leiden, niet gescand worden via de ingebouwde QR-scanner van Giftle ["0.giftle/src/components/Receiver/ScanQR.jsx" - Regel 80 t/m 91]. Dit zorgt ervoor dat de gebruiker niet naar onbekende/externe websites wordt gelokt.
-
-## Uitbreidbaarheid
-
-Hier houden wij ons niet mee bezig.
 
 ## (Her)bruikbaarheid
 
@@ -50,14 +34,14 @@ De plug-in is afhankelijk van het volgende:
 
 ## Wettelijke, nalevings- en regelgevende vereisten (b.v. data protection act)
 
-<!-- MOET ERUIT ALS HIER NIKS MEE GEDAAN WORDT -->
-
 Om Giftle aan deze vereisten te laten voldoen, moet er rekening gehouden worden met het volgende:
 * De gebruiker moet de algemene voorwaarden kunnen lezen en op basis hiervan akkoord gaan.
 * De privacy wetgeving van Europa moet nagevolgd worden. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/wetten/internationale-privacywetgeving).
 * Wettelijke vereisten voor langetermijnarchivering van bedrijfsgegevens. Zie [autoriteitpersoonsgegevens](https://www.autoriteitpersoonsgegevens.nl/nl/over-privacy/persoonsgegevens/bewaren-van-persoonsgegevens).
 * Wettelijke vereisten voor log bestanden. Zie [logbestanden](https://cip-overheid.nl/media/1169/bid-operationale-producten-bir-015-logging-beleid-10.pdf).
 * Wettelijke vereisten voor 'audit trails'. Zie [audit trails](https://www.graydon.nl/nl/resources/blog/strategie/wat-een-audit-trail).
+
+Op dit moment hebben wij hier nog geen rekening mee gehouden, maar het is belangrijk om deze wetgevingen door te nemen en in overweging te nemen als Giftle daadwerkelijk voor het publiek ingezet gaat worden.
 
 ## Internationalisering (i18n) en localisatie (L10n)
 
@@ -66,9 +50,9 @@ Om Giftle aan deze vereisten te laten voldoen, moet er rekening gehouden worden 
 * Front-end is in het Nederlands geschreven.
 * Ondersteuning voor meerdere talen (voor front-end) is niet aanwezig.
 
-## Toegankelijkheid
+## Toegankelijkheid, prestatie, schaalbaarheid, beschikbaarheid en uitbreidbaarheid
 
-Hier zijn wij niet mee bezig geweest.
+Hier houden wij ons niet mee bezig.
 
 <!--
 Intent
