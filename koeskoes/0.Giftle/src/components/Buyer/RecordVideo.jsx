@@ -4,6 +4,7 @@ import Webcam from "react-webcam";
 import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
+import NextArrowIcon from "../Common/NextArrowIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { setVideoUploaded } from "../../redux/actions/orderActions";
 
@@ -149,17 +150,6 @@ function RecordVideo() {
    */
   const handleDownload = useCallback(async () => {
     if (recordedChunks.length) {
-      if (recordedChunks[0].size > 10485760) {
-        return setError(
-          ErrorMessage("Maak een kortere video!", () => setError(null))
-        );
-      }
-
-      if (recordedChunks[0].size < 512000) {
-        return setError(
-          ErrorMessage("Maak een langere video!", () => setError(null))
-        );
-      }
 
       const blob = new Blob(recordedChunks, {
         type: "video/webm",
@@ -169,8 +159,8 @@ function RecordVideo() {
 
       formData.append("video", blob, "recordedVideo");
 
-      const uploadResponse = await axios.post(
-        `http://localhost:4000/orders/new/`,
+      const uploadResponse = await axios.patch(
+        `http://localhost:4000/orders/order/video/${textCode}`,
         formData
       );
 
@@ -184,7 +174,7 @@ function RecordVideo() {
         return setIsGoToWatchVideo(true);
       }
     }
-  }, [recordedChunks]);
+  }, [recordedChunks, textCode]);
 
   /**
    *
@@ -314,13 +304,6 @@ function RecordVideo() {
     <div className="vertical-center colored-background">
       {error}
       <div className="container text-center rounded p-3 bg-light">
-        <button
-          className="btn btn-primary float-start"
-          onClick={() => setIsGoBackBuyerMain(true)}
-        >
-          {<BackArrow />}
-          Terug
-        </button>
         <h1>Uw video opnemen</h1>
         <br />
         <Webcam
@@ -350,7 +333,8 @@ function RecordVideo() {
             <select
               className="form-select"
               defaultValue="720"
-              onChange={(e) => setResolution(e.target.value)}
+              disabled={pressed}
+              onChange={(e) => (!pressed ? setResolution(e.target.value) : null)}
             >
               <option value="720">Standaard kwaliteit / 2 minuten</option>
               <option value="1080">Hoge kwaliteit / 1 minuut</option>
@@ -377,7 +361,8 @@ function RecordVideo() {
             <select
               className="form-select md-sm-hidden"
               value={cameraPosition}
-              onChange={(e) => setCameraPosition(e.target.value)}
+              disabled={pressed}
+              onChange={(e) => (!pressed ? setCameraPosition(e.target.value) : null)}
             >
               {availableCameras.map(camera => <option value={camera.deviceId}>{camera.label}</option>)}
               {/* <option value="first_cam">Eerste camera</option>
@@ -389,6 +374,13 @@ function RecordVideo() {
           Door een video op te nemen gaat u akkoord met de{" "}
           <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
         </p>
+        <button
+          className="btn btn-primary me-3"
+          onClick={() => setIsGoBackBuyerMain(true)}
+        >
+          {<BackArrow />}
+          Terug
+        </button>
         {isWebcamAvailable && isAudioAvailable ? (
           capturing ? (
             <button className="btn btn-primary me-3" onClick={stopRecordAndBar}>
@@ -404,6 +396,7 @@ function RecordVideo() {
               </button>
               <button className="btn btn-primary me-3" onClick={handleDownload}>
                 Volgende stap
+                {<NextArrowIcon />}
               </button>
             </>
           ) : (
@@ -419,7 +412,7 @@ function RecordVideo() {
         )}
         
         {(videoUploaded
-          ? <button className="btn btn-primary mx-3" onClick={() => setIsGoToWatchVideo(true)}>
+          ? <button className="btn btn-primary me-3" onClick={() => setIsGoToWatchVideo(true)}>
               Gebruik vorige video
             </button>
           : null
