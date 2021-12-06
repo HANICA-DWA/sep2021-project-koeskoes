@@ -3,14 +3,19 @@ import { Navigate } from "react-router";
 import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
+import { useSelector } from "react-redux";
 
 function UploadVideo() {
   // Creates the state for uploaded files and errors that can occur.
   const [video, setVideo] = useState(null);
-  const [textCode, setTextCode] = useState(null);
   const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
   const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(false);
   const [error, setError] = useState(null);
+  const textCode = useSelector((state) => state.orders.textCode);
+
+  if (!textCode) {
+    return <Navigate to="/noTextCode" />;
+  }
 
   if (isGoBackBuyerMain === true) {
     return <Navigate to="/buyer" />;
@@ -18,7 +23,7 @@ function UploadVideo() {
 
   if (isGoToWatchVideo === true) {
     if (textCode !== null) {
-      return <Navigate to={`/rewatchvideo/` + textCode} />;
+      return <Navigate to="/rewatchvideo" />;
     }
     return null;
   }
@@ -40,8 +45,8 @@ function UploadVideo() {
 
       formData.append("video", sourceVideoFile, sourceVideoFile.name);
 
-      const uploadResponse = await axios.post(
-        `http://localhost:4000/orders/new/`,
+      const uploadResponse = await axios.patch(
+        `http://localhost:4000/orders/order/video/${textCode}`,
         formData
       );
 
@@ -50,7 +55,6 @@ function UploadVideo() {
           ErrorMessage(uploadResponse.data.message, () => setError(null))
         );
       } else {
-        setTextCode(uploadResponse.data.textCode);
         return setIsGoToWatchVideo(true);
       }
     } else {

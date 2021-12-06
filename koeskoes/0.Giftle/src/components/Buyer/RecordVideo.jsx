@@ -4,6 +4,7 @@ import Webcam from "react-webcam";
 import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
+import { useSelector } from "react-redux";
 
 /**
  *
@@ -26,13 +27,13 @@ function RecordVideo() {
   const mediaRecorderRef = useRef(null);
   const [capturing, setCapturing] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
-  const [textCode, setTextCode] = useState(null);
   const [cameraPosition, setCameraPosition] = useState(null);
 
   const [pressed, setPressed] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [timer, setTimer] = useState(0);
   const [totalTime, setTotalTime] = useState(120);
+  const textCode = useSelector((state) => state.orders.textCode);
 
   
 
@@ -174,7 +175,6 @@ function RecordVideo() {
           ErrorMessage(uploadResponse.data.message, () => setError(null))
         );
       } else {
-        setTextCode(uploadResponse.data.textCode);
         return setIsGoToWatchVideo(true);
       }
     }
@@ -278,13 +278,17 @@ function RecordVideo() {
    * Events to navigate to different pages.
    *
    */
+  if (!textCode) {
+    return <Navigate to="/noTextCode" />;
+  }
+
   if (isGoBackBuyerMain === true) {
     return <Navigate to="/buyer" />;
   }
 
   if (isGoToWatchVideo === true) {
     if (textCode !== null) {
-      return <Navigate to={`/rewatchvideo/` + textCode} />;
+      return <Navigate to="/rewatchvideo" />;
     }
     return null;
   }

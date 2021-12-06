@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { Navigate } from "react-router";
-import { useParams } from "react-router-dom";
 import BackArrow from "../Common/BackArrowIcon";
 import NextArrow from "../Common/NextArrowIcon";
 import { Button, Modal } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 /**
  *
@@ -14,7 +14,6 @@ import { Button, Modal } from "react-bootstrap";
  *
  */
 function RewatchVideo() {
-  const { textCode } = useParams();
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isVideoTime, setIsVideoTime] = useState(null);
@@ -25,6 +24,7 @@ function RewatchVideo() {
   const [isPreviousPage, setIsPreviousPage] = useState(false);
   const [isNextPage, setIsNextPage] = useState(false);
   const [show, setShow] = useState(false);
+  const textCode = useSelector((state) => state.orders.textCode);
 
   /**
    *
@@ -150,11 +150,14 @@ function RewatchVideo() {
    * Events to navigate to different pages.
    *
    */
+  if (!textCode) {
+    return <Navigate to="/noTextCode" />;
+  }
   if (isPreviousPage === true) {
     return <Navigate to="/buyer" />;
   }
   if (isNextPage === true) {
-    return <Navigate to={`/personalize/` + textCode} />;
+    return <Navigate to="/personalize/" />;
   }
 
   /**

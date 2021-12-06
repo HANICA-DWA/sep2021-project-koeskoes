@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function HomeBuyer() {
   // Creates the state for checking if the corresponding button has been clicked
@@ -8,6 +9,11 @@ function HomeBuyer() {
 
   const [isBtnRecord, setIsBtnRecord] = useState(false);
   const [isBtnUpload, setIsBtnUpload] = useState(false);
+  const textCode = useSelector((state) => state.orders.textCode);
+
+  if (!textCode) {
+    return <Navigate to="/noTextCode" />;
+  }
 
   if (isBtnRecord === true) {
     return <Navigate to="/record" />;

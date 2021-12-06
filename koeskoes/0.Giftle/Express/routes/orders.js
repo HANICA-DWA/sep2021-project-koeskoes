@@ -73,7 +73,7 @@ router.post("/newOrder", async (req, res) => {
   }
 });
 
-router.post("/new", async (req, res) => {
+router.patch("/order/video/:textCode", async (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.json({ status: "error", message: "No file has been uploaded" });
   }
@@ -124,19 +124,18 @@ router.post("/new", async (req, res) => {
         ffmpeg(uploadPath + video.name)
         .on('end', async () => {
           fs.unlinkSync(uploadPath + video.name);
-          const newRecord = new uploads({
-            nameGifter: "firstname lastname",
-            emailGifter: "mail@mail.com",
-            videoName: finalFileName,
-            prePrinted: false,
-            printed: false,
-          });
 
-          await newRecord.save();
+          const uploadRecord = await uploads.findOne(
+            {
+              textCode: req.params.textCode
+            }
+          ).exec();
 
-          await newRecord.setCode();
+          uploadRecord.videoName = finalFileName;
 
-          return res.json(newRecord);
+          uploadRecord.save();
+
+          return res.json(uploadRecord);
         })
         .save(uploadPath + finalFileName);
       }

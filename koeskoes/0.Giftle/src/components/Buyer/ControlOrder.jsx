@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setTextCode } from "../../redux/actions/orderActions";
 import axios from "axios";
 
 /**
  * A page that checks if order has a video
  * @returns the front end of the ControlOrder page
  */
-
 function ControlOrder() {
   // TODO: De parameter textCode moet in de Redux State en textCode niet meegeven in URL!
   const { textCode } = useParams();
-  const [videoExistsInOrder, setVideoExistsInOrder] = useState(true);
   const [orderData, setOrderData] = useState({});
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getVideoInOrder = async () => {
@@ -21,6 +22,7 @@ function ControlOrder() {
       );
 
       if (!videoExists.data.status) {
+        dispatch(setTextCode(textCode));
         setOrderData(videoExists.data);
       } else {
         setOrderData(null);
@@ -28,7 +30,7 @@ function ControlOrder() {
     };
 
     getVideoInOrder();
-  }, [textCode]);
+  }, [textCode, dispatch]);
 
   const videoInOrderExists = () => {
     if (orderData.videoName === "") {

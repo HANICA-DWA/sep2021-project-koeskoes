@@ -28,3 +28,10 @@ export const setPageNumber = (pageNumber) => {
     payload: pageNumber,
   };
 };
+
+export const setTextCode = (textCode) => {
+  return {
+    type: "setTextCode",
+    payload: textCode,
+  };
+};

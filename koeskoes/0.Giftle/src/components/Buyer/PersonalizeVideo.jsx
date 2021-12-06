@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
+import { useSelector } from "react-redux";
 
 /**
  *
@@ -14,15 +14,19 @@ import BackArrow from "../Common/BackArrowIcon";
  */
 function PersonalizeVideo() {
   // Creates the state for the order and errors that can occur.
-  const { textCode } = useParams();
   const [nameReceiver, setNameReceiver] = useState(null);
   const [emailReceiver, setEmailReceiver] = useState(null);
   const [isPreviousPage, setIsPreviousPage] = useState(false);
   const [isNextPage, setIsNextPage] = useState(false);
   const [error, setError] = useState(null);
+  const textCode = useSelector((state) => state.orders.textCode);
+
+  if (!textCode) {
+    return <Navigate to="/noTextCode" />;
+  }
 
   if (isPreviousPage === true) {
-    return <Navigate to={`/rewatchvideo/` + textCode} />;
+    return <Navigate to="/rewatchvideo" />;
   }
 
   if (isNextPage === true) {

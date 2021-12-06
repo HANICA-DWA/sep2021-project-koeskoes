@@ -9,6 +9,7 @@ import CheckOutPageDone from "./Buyer/CheckOutPageDone";
 
 //Perm components
 import ControlOrder from "./Buyer/ControlOrder";
+import NoTextCode from "./Buyer/NoTextCode";
 import HomeBuyer from "./Buyer/HomeBuyer";
 import UploadVideo from "./Buyer/UploadVideo";
 import RecordVideo from "./Buyer/RecordVideo";
@@ -43,19 +44,12 @@ function App() {
             exact
             element={<ControlOrder />}
           />
+          <Route path="/noTextCode" element={<NoTextCode />} />
           <Route path="/buyer" exact element={<HomeBuyer />} />
           <Route path="/upload" exact element={<UploadVideo />} />
           <Route path="/record" exact element={<RecordVideo />} />
-          <Route
-            path="/rewatchvideo/:textCode"
-            exact
-            element={<RewatchVideo />}
-          />
-          <Route
-            path="/personalize/:textCode"
-            exact
-            element={<PersonalizeVideo />}
-          />
+          <Route path="/rewatchvideo" exact element={<RewatchVideo />} />
+          <Route path="/personalize/" exact element={<PersonalizeVideo />} />
           <Route path="/thankyou" exact element={<FinalPage />} />
           <Route path="/receiver" exact element={<HomeReceiver />} />
           <Route path="/qr-code" exact element={<QRPage />} />

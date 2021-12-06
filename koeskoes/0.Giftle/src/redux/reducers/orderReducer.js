@@ -3,6 +3,7 @@ const initialOrderState = {
   filteredOrders: [],
   searchParams: "",
   pageNumber: 1,
+  textCode: '',
 };
 
 export function orderReducer(state = initialOrderState, action) {
@@ -33,6 +34,12 @@ export function orderReducer(state = initialOrderState, action) {
       return {
         ...state,
         pageNumber: action.payload,
+      };
+
+    case "setTextCode":
+      return {
+        ...state,
+        textCode: action.payload,
       };
 
     default:
