@@ -39,7 +39,6 @@ Elk project heeft zijn eigen regels/ principes. Deze kunnen gaan over de code, m
 - Er mogen geen fouten uit de testen komen.
 - Foutmeldingen moeten bij voorkomende errors verschijnen.
 - Documenteren is goed, maar houd het kort.
-- Push je geleverde werk pas als het werkt.
 - Implementeer geen dingen die totaal onnodig zijn.
 
 <!--
