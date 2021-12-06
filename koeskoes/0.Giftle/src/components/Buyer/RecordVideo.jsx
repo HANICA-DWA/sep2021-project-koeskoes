@@ -69,13 +69,10 @@ function RecordVideo() {
 
         if (videoAccess.getVideoTracks().length > 0) {
           setIsWebcamAvailable(true);
-          if (videoAccess.getVideoTracks().length > 1) {
-            for (let i = 0; i < 2; i++) {
-              const cameraDirection = (i === 0 ? "user" : "environment");
-              setAvailableCameras(prevCameras => prevCameras.push({...videoAccess.getVideoTracks()[i], direction: cameraDirection}));
-            }
-          }
-          setAvailableCameras(videoAccess.getVideoTracks());
+          console.log(navigator.mediaDevices.enumerateDevices());
+          const devices = await navigator.mediaDevices.enumerateDevices();
+          const videoDevices = devices.filter(device => device.kind === 'videoinput');
+          setAvailableCameras(videoDevices);
         } else {
           setIsWebcamAvailable(false);
           setError(ErrorMessage("Geen webcam gevonden", () => setError(null)));
@@ -330,7 +327,7 @@ function RecordVideo() {
           videoConstraints={{
             height: resolution,
             width: (resolution / 9) * 16,
-            facingMode: cameraPosition,
+            deviceId: cameraPosition,
           }}
           width={"100%"}
         />
@@ -379,7 +376,7 @@ function RecordVideo() {
               value={cameraPosition}
               onChange={(e) => setCameraPosition(e.target.value)}
             >
-              {availableCameras.map(camera => <option value={camera.direction}>{camera.label}</option>)}
+              {availableCameras.map(camera => <option value={camera.deviceId}>{camera.label}</option>)}
               {/* <option value="first_cam">Eerste camera</option>
               <option value="second_cam">Tweede camera</option> */}
             </select>
