@@ -78,7 +78,15 @@ function PersonalizeVideo() {
     const maxLength = 300;
     const re = /^[a-zA-Z\s]+$/;
 
-    if (nameReceiver.length > maxLength) {
+    if (!nameReceiver) {
+      return {
+        status: "error",
+        message:
+          "Je hebt geen naam ingevuld.",
+      };
+    }
+
+    if (!nameReceiver || nameReceiver.length > maxLength) {
       return {
         status: "error",
         message:
