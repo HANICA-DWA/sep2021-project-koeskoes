@@ -39,8 +39,6 @@ function RecordVideo() {
   const textCode = useSelector((state) => state.orders.textCode);
   const videoUploaded = useSelector((state) => state.orders.videoUploaded);
 
-  
-
   /**
    *
    * UseEffect to check if audio and video is available for the webcam module.
@@ -74,7 +72,9 @@ function RecordVideo() {
         if (videoAccess.getVideoTracks().length > 0) {
           setIsWebcamAvailable(true);
           const devices = await navigator.mediaDevices.enumerateDevices();
-          const videoDevices = devices.filter(device => device.kind === 'videoinput');
+          const videoDevices = devices.filter(
+            (device) => device.kind === "videoinput"
+          );
           setAvailableCameras(videoDevices);
         } else {
           setIsWebcamAvailable(false);
@@ -123,12 +123,7 @@ function RecordVideo() {
       handleDataAvailable
     );
     mediaRecorderRef.current.start();
-  }, [
-    webcamRef,
-    setCapturing,
-    mediaRecorderRef,
-    handleDataAvailable,
-  ]);
+  }, [webcamRef, setCapturing, mediaRecorderRef, handleDataAvailable]);
 
   /**
    *
@@ -150,7 +145,6 @@ function RecordVideo() {
    */
   const handleDownload = useCallback(async () => {
     if (recordedChunks.length) {
-
       const blob = new Blob(recordedChunks, {
         type: "video/webm",
       });
@@ -188,20 +182,20 @@ function RecordVideo() {
   /**
    * UseEffect activates when resolution changes.
    * Changes the total recording time to a time in seconds.
-   * 
+   *
    * 720p = 120 seconds + 20 seconds
    * 1080p = 60 seconds + 20 seconds
    */
   useEffect(() => {
-    switch(resolution) {
+    switch (resolution) {
       case "720":
-        setTotalTime(prevTotal => prevTotal = 140);
+        setTotalTime((prevTotal) => (prevTotal = 140));
         break;
       case "1080":
-        setTotalTime(prevTotal => prevTotal = 80);
+        setTotalTime((prevTotal) => (prevTotal = 80));
         break;
       default:
-        return setTotalTime(prevTotal => prevTotal = 140);
+        return setTotalTime((prevTotal) => (prevTotal = 140));
     }
   }, [resolution]);
 
@@ -211,7 +205,9 @@ function RecordVideo() {
    * When the currentTime is more than the total recording time it will stop recording.
    */
   useEffect(() => {
-    setProgress(prevProgress => prevProgress = (currentTime / totalTime) * 100);
+    setProgress(
+      (prevProgress) => (prevProgress = (currentTime / totalTime) * 100)
+    );
     if (currentTime >= totalTime) {
       clearTimeout(timer);
       handleStopCaptureClick();
@@ -225,7 +221,7 @@ function RecordVideo() {
    * After the total recording time - 20 seconds the recording bar will changes to a red color.
    */
   const interval = useCallback(() => {
-    setTimer(prevTimer => {
+    setTimer((prevTimer) => {
       prevTimer = setTimeout(function () {
         const tempTime = currentTime + 1;
         if (
@@ -233,12 +229,11 @@ function RecordVideo() {
           (tempTime >= 60 && totalTime === 80)
         ) {
           setBarColor("bg-danger");
-        }
-        else {
+        } else {
           setBarColor("bg-info");
         }
-        setCurrentTime(prevTime => prevTime = tempTime);
-      }, 1000)
+        setCurrentTime((prevTime) => (prevTime = tempTime));
+      }, 1000);
     });
   }, [currentTime, totalTime]);
 
@@ -257,14 +252,13 @@ function RecordVideo() {
    * If the state pressed is false it will stop the recording progress bar from moving.
    */
   const countdownRecording = () => {
-    setPressed(pressedState => pressedState = !pressedState);
+    setPressed((pressedState) => (pressedState = !pressedState));
     if (pressed) {
       if (currentTime === 0) {
         interval();
       }
-    }
-    else {
-      setCurrentTime(prevTime => prevTime = 0);
+    } else {
+      setCurrentTime((prevTime) => (prevTime = 0));
       clearTimeout(timer);
     }
   };
@@ -334,7 +328,9 @@ function RecordVideo() {
               className="form-select"
               defaultValue="720"
               disabled={pressed}
-              onChange={(e) => (!pressed ? setResolution(e.target.value) : null)}
+              onChange={(e) =>
+                !pressed ? setResolution(e.target.value) : null
+              }
             >
               <option value="720">Standaard kwaliteit / 2 minuten</option>
               <option value="1080">Hoge kwaliteit / 1 minuut</option>
@@ -342,7 +338,7 @@ function RecordVideo() {
           </div>
           <div className="col-md-4 col-sm-12">
             <p className="text-start">Camerapositie: </p>
-            <button className="btn btn-primary lg-hidden">
+            <button className="btn btn-primary lg-hidden float-md-none float-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -362,9 +358,13 @@ function RecordVideo() {
               className="form-select md-sm-hidden"
               value={cameraPosition}
               disabled={pressed}
-              onChange={(e) => (!pressed ? setCameraPosition(e.target.value) : null)}
+              onChange={(e) =>
+                !pressed ? setCameraPosition(e.target.value) : null
+              }
             >
-              {availableCameras.map(camera => <option value={camera.deviceId}>{camera.label}</option>)}
+              {availableCameras.map((camera) => (
+                <option value={camera.deviceId}>{camera.label}</option>
+              ))}
               {/* <option value="first_cam">Eerste camera</option>
               <option value="second_cam">Tweede camera</option> */}
             </select>
@@ -374,13 +374,6 @@ function RecordVideo() {
           Door een video op te nemen gaat u akkoord met de{" "}
           <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
         </p>
-        <button
-          className="btn btn-primary me-3"
-          onClick={() => setIsGoBackBuyerMain(true)}
-        >
-          {<BackArrow />}
-          Terug
-        </button>
         {isWebcamAvailable && isAudioAvailable ? (
           capturing ? (
             <button className="btn btn-primary me-3" onClick={stopRecordAndBar}>
@@ -410,13 +403,22 @@ function RecordVideo() {
         ) : (
           <p>Er is geen toegang tot de camera of microfoon</p>
         )}
-        
-        {(videoUploaded
-          ? <button className="btn btn-primary me-3" onClick={() => setIsGoToWatchVideo(true)}>
-              Gebruik vorige video
-            </button>
-          : null
-        )}
+
+        {videoUploaded ? (
+          <button
+            className="btn btn-primary me-3"
+            onClick={() => setIsGoToWatchVideo(true)}
+          >
+            Gebruik vorige video
+          </button>
+        ) : null}
+        <button
+          className="btn btn-primary me-3 float-start"
+          onClick={() => setIsGoBackBuyerMain(true)}
+        >
+          {<BackArrow />}
+          Terug
+        </button>
       </div>
     </div>
   );
