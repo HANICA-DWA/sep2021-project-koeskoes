@@ -14,6 +14,8 @@ Zie [Context](1_context.md)
 
 ![component_diagram](assets/software_architecture/component_diagram.png "Component diagram")
 
+![component_diagram_express_app](assets/software_architecture/component_diagram_express_app.png "Component diagram Express app")
+
 ### To do
 
 Maak een component diagram voor de express app!
