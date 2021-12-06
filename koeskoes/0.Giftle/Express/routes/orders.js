@@ -122,22 +122,22 @@ router.patch("/order/video/:textCode", async (req, res) => {
         });
       } else {
         ffmpeg(uploadPath + video.name)
-        .on('end', async () => {
-          fs.unlinkSync(uploadPath + video.name);
+          .on("end", async () => {
+            fs.unlinkSync(uploadPath + video.name);
 
-          const uploadRecord = await uploads.findOne(
-            {
-              textCode: req.params.textCode
-            }
-          ).exec();
+            const uploadRecord = await uploads
+              .findOne({
+                textCode: req.params.textCode,
+              })
+              .exec();
 
-          uploadRecord.videoName = finalFileName;
+            uploadRecord.videoName = finalFileName;
 
-          uploadRecord.save();
+            uploadRecord.save();
 
-          return res.json(uploadRecord);
-        })
-        .save(uploadPath + finalFileName);
+            return res.json(uploadRecord);
+          })
+          .save(uploadPath + finalFileName);
       }
     });
   } catch (e) {

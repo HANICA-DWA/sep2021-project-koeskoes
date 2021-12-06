@@ -45,7 +45,9 @@ describe("Express route tests", () => {
   });
 
   test("create new order without file", async () => {
-    const orders = await axios.post("http://localhost:4000/orders/new/");
+    const orders = await axios.patch(
+      `http://localhost:4000/orders/order/video/${order.textCode}`
+    );
 
     expect(orders.data).toEqual({
       status: "error",
@@ -172,6 +174,50 @@ describe("database tests", () => {
       .findOne(
         {
           textCode: order.textCode,
+        },
+        {
+          _id: 1,
+          nameGifter: 1,
+          emailGifter: 1,
+          videoName: 1,
+          printed: 1,
+          textCode: 1,
+        }
+      )
+      .lean();
+
+    findOrderById._id = findOrderById._id.toString();
+
+    expect(findOrderById).toEqual(order);
+  });
+
+  test("get order by emailGifter J", async () => {
+    const findOrderById = await uploads
+      .findOne(
+        {
+          emailGifter: order.emailGifter,
+        },
+        {
+          _id: 1,
+          nameGifter: 1,
+          emailGifter: 1,
+          videoName: 1,
+          printed: 1,
+          textCode: 1,
+        }
+      )
+      .lean();
+
+    findOrderById._id = findOrderById._id.toString();
+
+    expect(findOrderById).toEqual(order);
+  });
+
+  test("get order by printed J", async () => {
+    const findOrderById = await uploads
+      .findOne(
+        {
+          printed: order.printed,
         },
         {
           _id: 1,
@@ -494,6 +540,7 @@ describe("mail tests", () => {
 
       const checkableData = convertMailData(happyMailPath);
 
+      // messageSize from 2331 to 2370, check if it runs with these settings | Jordi
       expect(checkableData).toEqual({
         status: "success",
         message: {
@@ -525,6 +572,28 @@ describe("mail tests", () => {
       expect(checkableData).toEqual({
         status: "error",
         message: "Buyer not included",
+      });
+    });
+    test("send mail (w/ textCode) J", async () => {
+      const textCodeMailPath = await mail.sendMailOrderPlaced(
+        "mail@mail.com",
+        "buyer",
+        "123abc"
+      );
+
+      const checkableData = convertMailData(textCodeMailPath);
+
+      expect(checkableData).toEqual({
+        status: "success",
+        message: {
+          accepted: ["mail@mail.com"],
+          rejected: [],
+          messageSize: 2358,
+          envelope: {
+            from: "info@giftle.nl",
+            to: ["mail@mail.com"],
+          },
+        },
       });
     });
   });
