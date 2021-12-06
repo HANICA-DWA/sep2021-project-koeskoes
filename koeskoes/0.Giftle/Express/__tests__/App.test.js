@@ -12,6 +12,7 @@ let order = {
   nameGifter: "firstname lastname",
   emailGifter: "mail@mail.com",
   videoName: "video.mp4",
+  prePrinted: false,
   printed: false,
   textCode: "123abc",
 };
@@ -95,6 +96,7 @@ describe("database tests", () => {
           nameGifter: 1,
           emailGifter: 1,
           videoName: 1,
+          prePrinted: 1,
           printed: 1,
           textCode: 1,
         }
@@ -108,6 +110,7 @@ describe("database tests", () => {
       nameGifter: "firstname lastname",
       emailGifter: "mail@mail.com",
       videoName: "video.mp4",
+      prePrinted: false,
       printed: false,
       textCode: "123abc",
     });
@@ -136,6 +139,7 @@ describe("database tests", () => {
           nameGifter: 1,
           emailGifter: 1,
           videoName: 1,
+          prePrinted: 1,
           printed: 1,
           textCode: 1,
         }
@@ -158,6 +162,7 @@ describe("database tests", () => {
           nameGifter: 1,
           emailGifter: 1,
           videoName: 1,
+          prePrinted: 1,
           printed: 1,
           textCode: 1,
         }
@@ -180,6 +185,7 @@ describe("database tests", () => {
           nameGifter: 1,
           emailGifter: 1,
           videoName: 1,
+          prePrinted: 1,
           printed: 1,
           textCode: 1,
         }
@@ -191,7 +197,7 @@ describe("database tests", () => {
     expect(findOrderById).toEqual(order);
   });
 
-  test("get order by emailGifter J", async () => {
+  test("get order by emailGifter", async () => {
     const findOrderById = await uploads
       .findOne(
         {
@@ -202,6 +208,7 @@ describe("database tests", () => {
           nameGifter: 1,
           emailGifter: 1,
           videoName: 1,
+          prePrinted: 1,
           printed: 1,
           textCode: 1,
         }
@@ -213,7 +220,7 @@ describe("database tests", () => {
     expect(findOrderById).toEqual(order);
   });
 
-  test("get order by printed J", async () => {
+  test("get order by printed", async () => {
     const findOrderById = await uploads
       .findOne(
         {
@@ -224,6 +231,7 @@ describe("database tests", () => {
           nameGifter: 1,
           emailGifter: 1,
           videoName: 1,
+          prePrinted: 1,
           printed: 1,
           textCode: 1,
         }
@@ -240,6 +248,7 @@ describe("database tests", () => {
       ...order,
       _id: "619b7c66d79dad758c1e5520",
       videoName: "duplicateVideo.mp4",
+      prePrinted: true,
       printed: true,
       textCode: "456def",
     };
@@ -256,6 +265,7 @@ describe("database tests", () => {
           nameGifter: 1,
           emailGifter: 1,
           videoName: 1,
+          prePrinted: 1,
           printed: 1,
           textCode: 1,
         }
@@ -280,6 +290,7 @@ describe("database tests", () => {
           nameGifter: 1,
           emailGifter: 1,
           videoName: 1,
+          prePrinted: 1,
           printed: 1,
           textCode: 1,
         }
@@ -291,6 +302,67 @@ describe("database tests", () => {
     });
 
     expect(notPrintedOrders).toEqual([order]);
+  });
+
+  test("get pre printed orders", async () => {
+    const duplicateOrder = {
+      ...order,
+      _id: "619b7c66d79dad758c1e5520",
+      videoName: "duplicateVideo.mp4",
+      prePrinted: true,
+      printed: false,
+      textCode: "456def",
+    };
+
+    await uploads.create(duplicateOrder);
+
+    const prePrintedOrders = await uploads
+      .find(
+        {
+          prePrinted: true,
+        },
+        {
+          _id: 1,
+          nameGifter: 1,
+          emailGifter: 1,
+          videoName: 1,
+          prePrinted: 1,
+          printed: 1,
+          textCode: 1,
+        }
+      )
+      .lean();
+
+    prePrintedOrders.forEach((prePrintedOrder) => {
+      prePrintedOrder._id = prePrintedOrder._id.toString();
+    });
+
+    expect(prePrintedOrders).toEqual([duplicateOrder]);
+  });
+
+  test("get not pre printed orders", async () => {
+    const notPrePrintedOrders = await uploads
+      .find(
+        {
+          prePrinted: false,
+        },
+        {
+          _id: 1,
+          nameGifter: 1,
+          emailGifter: 1,
+          videoName: 1,
+          prePrinted: 1,
+          printed: 1,
+          textCode: 1,
+        }
+      )
+      .lean();
+
+    notPrePrintedOrders.forEach((notPrePrintedOrder) => {
+      notPrePrintedOrder._id = notPrePrintedOrder._id.toString();
+    });
+
+    expect(notPrePrintedOrders).toEqual([order]);
   });
 });
 
@@ -574,7 +646,7 @@ describe("mail tests", () => {
         message: "Buyer not included",
       });
     });
-    test("send mail (w/ textCode) J", async () => {
+    test("send mail (w/ textCode)", async () => {
       const textCodeMailPath = await mail.sendMailOrderPlaced(
         "mail@mail.com",
         "buyer",
