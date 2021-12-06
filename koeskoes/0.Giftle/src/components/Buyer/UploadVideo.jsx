@@ -69,17 +69,6 @@ function UploadVideo() {
       {error}
       <div className="container text-center rounded p-3 bg-light">
         <div className="row">
-          <div className="col-lg-4 col-md-4 col-sm-4">
-            <button
-              className="btn btn-primary float-start"
-              onClick={() => setIsGoBackBuyerMain(true)}
-            >
-              {<BackArrow />}
-              Terug
-            </button>
-          </div>
-        </div>
-        <div className="row">
           <h1>Video uploaden!</h1>
         </div>
         <p>
@@ -91,11 +80,19 @@ function UploadVideo() {
           type="file"
           name="uploadedVideo"
           accept="video/*"
+          className="form-control mx-auto"
           onChange={(e) => setVideo(e.target)}
         />
         <br />
         <br />
-        <button className="btn btn-primary" onClick={convertVideo}>
+        <button
+          className="btn btn-primary mx-3"
+          onClick={() => setIsGoBackBuyerMain(true)}
+        >
+          {<BackArrow />}
+          Terug
+        </button>
+        <button className="btn btn-primary mx-3" onClick={convertVideo}>
           Upload video
         </button>
       </div>

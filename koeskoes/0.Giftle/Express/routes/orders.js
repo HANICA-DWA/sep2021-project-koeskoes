@@ -96,8 +96,15 @@ router.patch("/order/video/:textCode", async (req, res) => {
      * ffprobe HAS to be a callback because this function doesn't return a promise.
      */
     ffmpeg.ffprobe(uploadPath + video.name, async (err, metadata) => {
-      const height = metadata.streams[0].height,
-        duration = metadata.streams[0].duration;
+      let height, duration;
+      metadata.streams.forEach((stream) => {
+        if (!height && stream.height) {
+          height = stream.height;
+        }
+        if (!duration && stream.duration) {
+          duration = stream.duration;
+        }
+      });
 
       if (height !== 1080 && height !== 720) {
         fs.unlinkSync(uploadPath + video.name);
@@ -142,7 +149,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
     });
   } catch (e) {
     try {
-      fs.unlinkSync(uploadPath);
+      fs.unlinkSync(uploadPath + video.name);
     } catch (e) {}
     return res.json({
       status: "error",
