@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setVideoPath } from "../../redux/actions/orderActions";
 
 function HomeBuyer() {
   // Creates the state for checking if the corresponding button has been clicked
   // Flips to true if clicked and then navigates to the corresponding url/ component
-
+  const dispatch = useDispatch();
   const [isBtnRecord, setIsBtnRecord] = useState(false);
   const [isBtnUpload, setIsBtnUpload] = useState(false);
   const textCode = useSelector((state) => state.orders.textCode);
@@ -16,10 +17,12 @@ function HomeBuyer() {
   }
 
   if (isBtnRecord === true) {
+    dispatch(setVideoPath("record"));
     return <Navigate to="/record" />;
   }
 
   if (isBtnUpload === true) {
+    dispatch(setVideoPath("upload"));
     return <Navigate to="/upload" />;
   }
 

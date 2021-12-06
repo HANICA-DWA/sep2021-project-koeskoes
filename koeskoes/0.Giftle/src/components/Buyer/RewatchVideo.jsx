@@ -25,12 +25,9 @@ function RewatchVideo() {
   const [isPreviousPage, setIsPreviousPage] = useState(false);
   const [isNextPage, setIsNextPage] = useState(false);
   const [show, setShow] = useState(false);
-  const [videoData, setVideoData] = useState({
-    data: {
-      videoName: "TextInMotion-VideoSample-720p1638798697855.mp4"
-    }
-  });
+  const [videoData, setVideoData] = useState(null);
   const textCode = useSelector((state) => state.orders.textCode);
+  const videoPath = useSelector((state) => state.orders.videoPath);
 
   useEffect(() => {
 
@@ -180,8 +177,7 @@ function RewatchVideo() {
           </div>
         </div>
         <ReactPlayer
-          url={"http://localhost:4000/videos/video/" + videoData.data.videoName}
-          // url={"http://localhost:4000/videos/video/TextInMotion-VideoSample-720p1638798277979.mp4"}
+          url={"http://localhost:4000/videos/video/" + (videoData ? videoData.data.videoName : null)}
           width="100%"
           height="100%"
           playing={videoState === 2 ? true : false}
@@ -207,7 +203,8 @@ function RewatchVideo() {
     return <Navigate to="/noTextCode" />;
   }
   if (isPreviousPage === true) {
-    return <Navigate to="/buyer" />;
+    console.log(videoPath);
+    return <Navigate to={"/" + videoPath} />;
   }
   if (isNextPage === true) {
     return <Navigate to="/personalize/" />;

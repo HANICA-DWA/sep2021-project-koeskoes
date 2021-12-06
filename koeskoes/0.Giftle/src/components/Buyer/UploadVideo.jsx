@@ -3,15 +3,18 @@ import { Navigate } from "react-router";
 import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setVideoUploaded } from "../../redux/actions/orderActions";
 
 function UploadVideo() {
   // Creates the state for uploaded files and errors that can occur.
+  const dispatch = useDispatch();
   const [video, setVideo] = useState(null);
   const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
   const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(false);
   const [error, setError] = useState(null);
   const textCode = useSelector((state) => state.orders.textCode);
+  const videoUploaded = useSelector((state) => state.orders.videoUploaded);
 
   if (!textCode) {
     return <Navigate to="/noTextCode" />;
@@ -23,6 +26,7 @@ function UploadVideo() {
 
   if (isGoToWatchVideo === true) {
     if (textCode !== null) {
+      dispatch(setVideoUploaded());
       return <Navigate to="/rewatchvideo" />;
     }
     return null;
@@ -95,6 +99,12 @@ function UploadVideo() {
         <button className="btn btn-primary mx-3" onClick={convertVideo}>
           Upload video
         </button>
+        {(videoUploaded
+          ? <button className="btn btn-primary mx-3" onClick={() => setIsGoToWatchVideo(true)}>
+              Gebruik vorige video
+            </button>
+          : null
+        )}
       </div>
     </div>
   );

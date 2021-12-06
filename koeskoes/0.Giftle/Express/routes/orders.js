@@ -46,11 +46,9 @@ router.get("/all/", async (req, res) => {
 
 router.get("/order/:textCode", async (req, res) => {
   const order = await uploads
-    .findOne(
-      {
-        textCode: req.params.textCode
-      }
-    )
+    .findOne({
+      textCode: req.params.textCode,
+    })
     .exec();
 
   res.json(order);
@@ -149,6 +147,12 @@ router.patch("/order/video/:textCode", async (req, res) => {
                 textCode: req.params.textCode,
               })
               .exec();
+
+            try {
+              if (uploadRecord.videoName) {
+                fs.unlinkSync(uploadPath + uploadRecord.videoName);
+              }
+            } catch (e) {}
 
             uploadRecord.videoName = finalFileName;
 

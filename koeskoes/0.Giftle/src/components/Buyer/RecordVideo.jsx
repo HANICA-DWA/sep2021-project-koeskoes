@@ -4,7 +4,8 @@ import Webcam from "react-webcam";
 import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setVideoUploaded } from "../../redux/actions/orderActions";
 
 /**
  *
@@ -14,6 +15,7 @@ import { useSelector } from "react-redux";
  *
  */
 function RecordVideo() {
+  const dispatch = useDispatch();
   const [error, setError] = useState(null);
   const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
   const [resolution, setResolution] = useState("720");
@@ -34,6 +36,7 @@ function RecordVideo() {
   const [timer, setTimer] = useState(0);
   const [totalTime, setTotalTime] = useState(120);
   const textCode = useSelector((state) => state.orders.textCode);
+  const videoUploaded = useSelector((state) => state.orders.videoUploaded);
 
   
 
@@ -291,6 +294,7 @@ function RecordVideo() {
 
   if (isGoToWatchVideo === true) {
     if (textCode !== null) {
+      dispatch(setVideoUploaded());
       return <Navigate to="/rewatchvideo" />;
     }
     return null;
@@ -412,6 +416,13 @@ function RecordVideo() {
           )
         ) : (
           <p>Er is geen toegang tot de camera of microfoon</p>
+        )}
+        
+        {(videoUploaded
+          ? <button className="btn btn-primary mx-3" onClick={() => setIsGoToWatchVideo(true)}>
+              Gebruik vorige video
+            </button>
+          : null
         )}
       </div>
     </div>
