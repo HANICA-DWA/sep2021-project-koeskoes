@@ -12,13 +12,11 @@ Zie [Context](1_context.md)
 
 ## Level 3: Component diagram
 
+### Client application
 ![component_diagram](assets/software_architecture/component_diagram.png "Component diagram")
 
+### Server application
 ![component_diagram_express_app](assets/software_architecture/component_diagram_express_app.png "Component diagram Express app")
-
-### To do
-
-Maak een component diagram voor de express app!
 
 ## Level 4: Code diagram
 
