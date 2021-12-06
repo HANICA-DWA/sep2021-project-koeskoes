@@ -20,10 +20,10 @@ router.get("/:textCode", async (req, res) => {
   }
 });
 
-router.get('/video/:textCode', async (req, res) => {
+router.get('/video/:videoName', async (req, res) => {
   const video = await uploads
     .findOne({
-      textCode: req.params.textCode,
+      videoName: req.params.videoName,
     })
     .exec();
 

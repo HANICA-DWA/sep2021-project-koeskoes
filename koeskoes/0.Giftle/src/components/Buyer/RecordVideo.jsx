@@ -69,7 +69,6 @@ function RecordVideo() {
 
         if (videoAccess.getVideoTracks().length > 0) {
           setIsWebcamAvailable(true);
-          console.log(navigator.mediaDevices.enumerateDevices());
           const devices = await navigator.mediaDevices.enumerateDevices();
           const videoDevices = devices.filter(device => device.kind === 'videoinput');
           setAvailableCameras(videoDevices);

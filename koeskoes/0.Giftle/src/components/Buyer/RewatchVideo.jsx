@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ReactPlayer from "react-player";
 import { Navigate } from "react-router";
 import BackArrow from "../Common/BackArrowIcon";
 import NextArrow from "../Common/NextArrowIcon";
 import { Button, Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 /**
  *
@@ -24,7 +25,23 @@ function RewatchVideo() {
   const [isPreviousPage, setIsPreviousPage] = useState(false);
   const [isNextPage, setIsNextPage] = useState(false);
   const [show, setShow] = useState(false);
+  const [videoData, setVideoData] = useState({
+    data: {
+      videoName: "TextInMotion-VideoSample-720p1638798697855.mp4"
+    }
+  });
   const textCode = useSelector((state) => state.orders.textCode);
+
+  useEffect(() => {
+
+    const fetchVideoData = async () => {
+      const data = await axios.get("http://localhost:4000/orders/order/" + textCode);
+
+      setVideoData(data);
+    }
+
+    fetchVideoData();
+  }, [textCode]);
 
   /**
    *
@@ -104,7 +121,7 @@ function RewatchVideo() {
    * Video settings for the video
    *
    */
-  const videoPlayerSettings = () => {
+  const videoPlayerSettings = useCallback(() => {
     return (
       <>
         {progressBar}
@@ -126,14 +143,14 @@ function RewatchVideo() {
         </Button>
       </>
     );
-  };
+  }, [minutes, progressBar, seconds, videoState]);
 
   /**
    *
    * Loading icon if video is loading
    *
    */
-  const loadingPlayer = (loading) => {
+  const loadingPlayer = useCallback((loading) => {
     if (loading) {
       return (
         <div className="spinner-border" role="status">
@@ -143,7 +160,43 @@ function RewatchVideo() {
     } else {
       return videoPlayerSettings();
     }
-  };
+  }, [videoPlayerSettings]);
+
+  /**
+   *
+   * Full video player.
+   *
+   */
+   const videoPlayer = useCallback(() => {
+    return (
+      <>
+        <div className="row">
+          <div className="col-12">
+            <h2>Video terugkijken</h2>
+            <p>
+              Hier kan je jouw video terugkijken voordat je deze opstuurt naar
+              de ontvanger. Zo weet je zeker dat jouw video perfect is.
+            </p>
+          </div>
+        </div>
+        <ReactPlayer
+          url={"http://localhost:4000/videos/video/" + videoData.data.videoName}
+          // url={"http://localhost:4000/videos/video/TextInMotion-VideoSample-720p1638798277979.mp4"}
+          width="100%"
+          height="100%"
+          playing={videoState === 2 ? true : false}
+          progressInterval={100}
+          onReady={() => setIsLoading(false)}
+          onEnded={() => setVideoState(3)}
+          onDuration={(time) => setIsVideoTime(time)}
+          onProgress={({ playedSeconds }) =>
+            setIsVideoWatchedTime(playedSeconds)
+          }
+        />
+        {loadingPlayer(isLoading)}
+      </>
+    );
+  }, [videoData, isLoading, loadingPlayer, videoState])
 
   /**
    *
@@ -159,60 +212,6 @@ function RewatchVideo() {
   if (isNextPage === true) {
     return <Navigate to="/personalize/" />;
   }
-
-  /**
-   *
-   * Full video player.
-   *
-   */
-  const videoPlayer = () => {
-    if (textCode === null) {
-      return (
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
-      );
-    }
-    if (textCode === "") {
-      return (
-        <>
-          <h1>Er is geen video gevonden met deze code.</h1>
-          <button className="btn btn-primary">Terug</button>
-        </>
-      );
-    }
-    if (textCode !== "") {
-      return (
-        <>
-          <div className="row">
-            <div className="col-12">
-              <h2>Video terugkijken</h2>
-              <p>
-                Hier kan je jouw video terugkijken voordat je deze opstuurt naar
-                de ontvanger. Zo weet je zeker dat jouw video perfect is.
-              </p>
-            </div>
-          </div>
-          <ReactPlayer
-            url={"http://localhost:4000/videos/video/" + textCode}
-            width="100%"
-            height="100%"
-            playing={videoState === 2 ? true : false}
-            progressInterval={100}
-            onReady={() => setIsLoading(false)}
-            onEnded={() => setVideoState(3)}
-            onDuration={(time) => setIsVideoTime(time)}
-            onProgress={({ playedSeconds }) =>
-              setIsVideoWatchedTime(playedSeconds)
-            }
-          />
-          {loadingPlayer(isLoading)}
-        </>
-      );
-    }
-  };
 
   return (
     <div className="vertical-center colored-background">

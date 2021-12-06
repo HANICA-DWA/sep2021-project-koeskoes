@@ -44,6 +44,18 @@ router.get("/all/", async (req, res) => {
   res.json(orders);
 });
 
+router.get("/order/:textCode", async (req, res) => {
+  const order = await uploads
+    .findOne(
+      {
+        textCode: req.params.textCode
+      }
+    )
+    .exec();
+
+  res.json(order);
+});
+
 /**
  * creating new order in the db from checkoutpage
  */
