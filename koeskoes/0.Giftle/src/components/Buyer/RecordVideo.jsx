@@ -27,8 +27,8 @@ function RecordVideo() {
   const mediaRecorderRef = useRef(null);
   const [capturing, setCapturing] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
-  const [cameraPosition, setCameraPosition] = useState(null);
-
+  const [cameraPosition, setCameraPosition] = useState("user");
+  const [availableCameras, setAvailableCameras] = useState([]);
   const [pressed, setPressed] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [timer, setTimer] = useState(0);
@@ -69,6 +69,13 @@ function RecordVideo() {
 
         if (videoAccess.getVideoTracks().length > 0) {
           setIsWebcamAvailable(true);
+          if (videoAccess.getVideoTracks().length > 1) {
+            for (let i = 0; i < 2; i++) {
+              const cameraDirection = (i === 0 ? "user" : "environment");
+              setAvailableCameras(prevCameras => prevCameras.push({...videoAccess.getVideoTracks()[i], direction: cameraDirection}));
+            }
+          }
+          setAvailableCameras(videoAccess.getVideoTracks());
         } else {
           setIsWebcamAvailable(false);
           setError(ErrorMessage("Geen webcam gevonden", () => setError(null)));
@@ -323,6 +330,7 @@ function RecordVideo() {
           videoConstraints={{
             height: resolution,
             width: (resolution / 9) * 16,
+            facingMode: cameraPosition,
           }}
           width={"100%"}
         />
@@ -368,14 +376,12 @@ function RecordVideo() {
             </button>
             <select
               className="form-select md-sm-hidden"
-              defaultValue="kiezen"
+              value={cameraPosition}
               onChange={(e) => setCameraPosition(e.target.value)}
             >
-              <option value="kiezen" disabled>
-                Kies een camera positie
-              </option>
-              <option value="first_cam">Eerste camera</option>
-              <option value="second_cam">Tweede camera</option>
+              {availableCameras.map(camera => <option value={camera.direction}>{camera.label}</option>)}
+              {/* <option value="first_cam">Eerste camera</option>
+              <option value="second_cam">Tweede camera</option> */}
             </select>
           </div>
         </div>
