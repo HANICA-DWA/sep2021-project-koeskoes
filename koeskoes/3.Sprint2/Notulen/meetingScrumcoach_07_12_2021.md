@@ -38,17 +38,25 @@
 #### Server
 
 - In de code moet generateUniqueRandomCode verplaatst worden naar onder het uploadmodel, waardoor de pijl van commonFunctions naar de database verdwijnt.
+- Bij de pijl naar routes wordt i.p.v. 'gebruikt' 'configureert'.
 
 ## Software guidebook
 
 Meer tekst/toelichting bij de diagrammen.
 
-### Deployment
+### 04. Constraints
 
-- Bij server info over server noteren.
-- Blokjes binnen het diagram zijn i.p.v. wat het nu is, de blokjes uit het containerdiagram.
+- I.p.v. wat er nu staat: hoelang we met javascript, node, redux, et cetera bezig zijn. 
 
-### Infrastructure
+### 07. External interfaces
+
+- Duidelijker uitleggen hoe we met de mailserver communiceren. (Misschien anders bij diagram, ligt eraan hoeveel het is).
+
+### 10. Infrastructure
 
 - Infrastructure hoeft niet aangezien deze zo makkelijk is dat alle informatie binnen deployment staat. Dit noteren in het hoofdstuk.
 
+### 11. Deployment
+
+- Bij server info over server noteren.
+- Blokjes binnen het diagram zijn i.p.v. wat het nu is, de blokjes uit het containerdiagram.
