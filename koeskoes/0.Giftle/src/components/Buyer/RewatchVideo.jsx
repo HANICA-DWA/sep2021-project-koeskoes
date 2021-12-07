@@ -30,12 +30,13 @@ function RewatchVideo() {
   const videoPath = useSelector((state) => state.orders.videoPath);
 
   useEffect(() => {
-
     const fetchVideoData = async () => {
-      const data = await axios.get("http://localhost:4000/orders/order/" + textCode);
+      const data = await axios.get(
+        "http://localhost:4000/orders/order/" + textCode
+      );
 
       setVideoData(data);
-    }
+    };
 
     fetchVideoData();
   }, [textCode]);
@@ -79,7 +80,7 @@ function RewatchVideo() {
    * Play button state to check video is playing or is paused.
    *
    */
-  const videoPlayButton = (state) => {
+  const videoPlayPauseButton = (state) => {
     switch (state) {
       case 1:
         return (
@@ -133,7 +134,7 @@ function RewatchVideo() {
         >
           {<BackArrow />}&nbsp;Vorige stap
         </button>
-        {videoPlayButton(videoState)}
+        {videoPlayPauseButton(videoState)}
         <Button variant="secondary" onClick={handleShow}>
           Volgende stap&nbsp;
           {<NextArrow />}
@@ -147,24 +148,27 @@ function RewatchVideo() {
    * Loading icon if video is loading
    *
    */
-  const loadingPlayer = useCallback((loading) => {
-    if (loading) {
-      return (
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      );
-    } else {
-      return videoPlayerSettings();
-    }
-  }, [videoPlayerSettings]);
+  const loadingPlayer = useCallback(
+    (loading) => {
+      if (loading) {
+        return (
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        );
+      } else {
+        return videoPlayerSettings();
+      }
+    },
+    [videoPlayerSettings]
+  );
 
   /**
    *
    * Full video player.
    *
    */
-   const videoPlayer = useCallback(() => {
+  const videoPlayer = useCallback(() => {
     return (
       <>
         <div className="row">
@@ -177,7 +181,10 @@ function RewatchVideo() {
           </div>
         </div>
         <ReactPlayer
-          url={"http://localhost:4000/videos/video/" + (videoData ? videoData.data.videoName : null)}
+          url={
+            "http://localhost:4000/videos/video/" +
+            (videoData ? videoData.data.videoName : null)
+          }
           width="100%"
           height="100%"
           playing={videoState === 2 ? true : false}
@@ -192,7 +199,7 @@ function RewatchVideo() {
         {loadingPlayer(isLoading)}
       </>
     );
-  }, [videoData, isLoading, loadingPlayer, videoState])
+  }, [videoData, isLoading, loadingPlayer, videoState]);
 
   /**
    *
@@ -203,7 +210,6 @@ function RewatchVideo() {
     return <Navigate to="/noTextCode" />;
   }
   if (isPreviousPage === true) {
-    console.log(videoPath);
     return <Navigate to={"/" + videoPath} />;
   }
   if (isNextPage === true) {
