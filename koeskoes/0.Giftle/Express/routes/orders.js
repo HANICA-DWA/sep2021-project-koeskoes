@@ -206,6 +206,10 @@ router.patch("/:orderNumber", async (req, res) => {
 
   await order.setPrinted();
 
+  if (order.emailReceiver && order.nameReceiver && order.nameGifter && order.textCode) {
+    await mail.sendTextCode(order.emailReceiver, order.nameReceiver, order.nameGifter, order.textCode);
+  }
+
   res.json({ status: "success", message: "Order change saved" });
 });
 

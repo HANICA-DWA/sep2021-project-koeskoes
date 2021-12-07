@@ -43,10 +43,10 @@ const mailTextCode = (receiver, buyer, textCode) => {
           <p>Om deze Giftle te kunnen openen, klikt u op de knop hieronder. Hiervoor heeft u een speciale tekstcode nodig.</p>
           <p>Uw tekstcode is: <b><i>${textCode}</i></b>.</p>
         </div>
-          <a href="http://localhost:3000/watchVideo/${textCode}" class="btn btn-secondary mt-4 mb-4">Bekijk de Giftle!</a>
+          <a href="http://localhost:3000/watchvideo/${textCode}" class="btn btn-secondary mt-4 mb-4">Bekijk de Giftle!</a>
         <div class="row">
           <p>Werkt de knop niet? Dan kunt u onze pagina ook vinden door op deze link te klikken:</p>
-          <a href="http://localhost:3000/watchVideo/${textCode}">http://localhost:3000/watchVideo/${textCode}</a>
+          <a href="http://localhost:3000/watchvideo/${textCode}">http://localhost:3000/watchvideo/${textCode}</a>
         </div>
         <div class="row mt-4">
           <p>Met vriendelijke groet,</p>
