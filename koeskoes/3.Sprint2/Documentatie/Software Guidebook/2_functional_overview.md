@@ -10,7 +10,7 @@ Als de koper kiest voor het uploaden van een video, krijgt deze een invoerveld t
 Als de koper kiest voor het opnemen van een video, krijgt deze een scherm te zien waar de camera en microfoon van het huidige apparaat in gebruikt worden.
 
 ## Videoboodschap bekijken
-Wanneer een cadeau is ontvangen door de ontvangen kan deze de aanhangende videoboodschap bekijken door een QR-code te scannen of de bijpassende tekstcode in te vullen.
+Wanneer een cadeau is ontvangen door de ontvanger kan deze de aanhangende videoboodschap bekijken door een QR-code te scannen of de bijpassende tekstcode in te vullen.
 
 ### QR-code
 Een QR-code wordt meegeleverd met het cadeau zodat de ontvanger deze kan scannen. De applicatie komt met een ingebouwde QR-code scanner voor het geval dat de ontvanger deze niet heeft.
