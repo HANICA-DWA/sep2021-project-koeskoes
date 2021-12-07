@@ -3,6 +3,11 @@ import ReactPlayer from "react-player";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+/**
+ * Page showing the video (by textCode) for the receiver
+ *
+ * @return the front-end for the VideoPage
+ */
 function VideoPage() {
   const { textCode } = useParams();
   const [videoData, setVideoData] = useState({});
@@ -54,6 +59,14 @@ function VideoPage() {
     );
   }, [isVideoTime, isVideoWatchedTime]);
 
+  /**
+   *
+   * Video play button with state indicating what button to show
+   *
+   * @param state state with: case 1. "play" - case 2. "pause" - case 3. "replay"
+   * @returns button with the state, indicating what button to show
+   *
+   */
   const videoPlayButton = (state) => {
     switch (state) {
       case 1:
@@ -88,6 +101,13 @@ function VideoPage() {
     }
   };
 
+  /**
+   *
+   * Videoplayer settings for the video
+   *
+   * @returns progressbar with timer, two buttons for the step proces and a button indicating "pause" of "play"
+   *
+   */
   const videoPlayerSettings = () => {
     return (
       <>
@@ -104,6 +124,14 @@ function VideoPage() {
     );
   };
 
+  /**
+   *
+   * Loading icon if the video is still loading (fetching data)
+   *
+   * @param loading boolean if true show loading, if false return function
+   * @returns loading spinner or text if loading is true, if loading is false return function
+   *
+   */
   const loadingPlayer = (loading) => {
     if (loading) {
       return (
@@ -116,6 +144,13 @@ function VideoPage() {
     }
   };
 
+  /**
+   *
+   * Videoplayer to show the video.
+   *
+   * @returns video by textCode if fetching from DB succeeds or error message if fetching from DB fails
+   *
+   */
   const videoPlayer = () => {
     if (videoError === null) {
       return (

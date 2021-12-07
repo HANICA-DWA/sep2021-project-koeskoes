@@ -298,6 +298,13 @@ function RecordVideo() {
     <div className="vertical-center colored-background">
       {error}
       <div className="container text-center rounded p-3 bg-light">
+        <button
+          className="btn btn-primary float-start justify-content-center"
+          onClick={() => setIsGoBackBuyerMain(true)}
+        >
+          {<BackArrow />}
+          Terug
+        </button>
         <h1>Uw video opnemen</h1>
         <br />
         <Webcam
@@ -412,13 +419,6 @@ function RecordVideo() {
             Gebruik vorige video
           </button>
         ) : null}
-        <button
-          className="btn btn-primary me-3 float-start"
-          onClick={() => setIsGoBackBuyerMain(true)}
-        >
-          {<BackArrow />}
-          Terug
-        </button>
       </div>
     </div>
   );
