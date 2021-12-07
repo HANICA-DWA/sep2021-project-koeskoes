@@ -48,6 +48,7 @@ Meer tekst/toelichting bij de diagrammen.
 ### 04. Constraints
 
 - I.p.v. wat er nu staat: hoelang we met javascript, node, redux, et cetera bezig zijn. 
+- <i><b>done</b></i>
 
 ### 07. External interfaces
 
@@ -56,6 +57,7 @@ Meer tekst/toelichting bij de diagrammen.
 ### 10. Infrastructure
 
 - Infrastructure hoeft niet aangezien deze zo makkelijk is dat alle informatie binnen deployment staat. Dit noteren in het hoofdstuk.
+- <i><b>done</b></i>
 
 ### 11. Deployment
 
