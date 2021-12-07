@@ -1,7 +1,5 @@
 # Infrastructure Architecture
-
-## To do 
-Lars zegt dat we dit gaan we later doen.
+Aangezien de infrastructure architecture erg klein is, staat hier geen informatie in. Een deel van de informatie over infrastructure architecture kan gevonden worden op [Deployment](11_deployment.md).
 
 <!-- 
 De fysieke architectuur is in de afbeelding hieronder te zien:
