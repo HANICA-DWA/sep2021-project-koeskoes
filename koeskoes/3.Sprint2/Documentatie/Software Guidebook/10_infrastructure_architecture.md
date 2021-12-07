@@ -1,5 +1,5 @@
 # Infrastructure Architecture
-Aangezien de infrastructure architecture erg klein is, wordt hier verder in dit hoofdstuk niet op ingegaan. De informatie over infrastructure architecture kan gevonden worden in het [hoofdstuk 11 deployment](11_deployment.md).
+Aangezien de infrastructure architecture erg klein is, wordt hier verder in dit hoofdstuk niet op ingegaan. De informatie over infrastructure architecture kan gevonden worden in [hoofdstuk 11 deployment](11_deployment.md).
 
 <!-- 
 De fysieke architectuur is in de afbeelding hieronder te zien:
