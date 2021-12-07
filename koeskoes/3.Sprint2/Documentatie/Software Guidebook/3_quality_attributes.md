@@ -2,7 +2,7 @@
 
 ## Beveiliging (b.v. authentication, authorisation, data confidentiality, etc)
 
-Er is een maximale video duur, dit is zodat de server genoeg video's kan opslaan. Bovendien kunnen QR-codes die niet naar een andere pagina binnen de plug-in leiden, niet gescand worden via de ingebouwde QR-scanner van Giftle ["0.giftle/src/components/Receiver/ScanQR.jsx" - Regel 80 t/m 91]. Dit zorgt ervoor dat de gebruiker niet naar onbekende/externe websites wordt gelokt.
+Er is een maximale video duur, dit is zodat de server genoeg video's kan opslaan. Bovendien kunnen QR-codes die niet naar een andere pagina binnen de plug-in leiden, niet gescand worden via de ingebouwde QR-scanner van Giftle ["0.giftle/src/components/Receiver/ScanQR.jsx"]. Dit zorgt ervoor dat de gebruiker niet naar onbekende/externe websites wordt gelokt.
 
 ## (Her)bruikbaarheid
 
