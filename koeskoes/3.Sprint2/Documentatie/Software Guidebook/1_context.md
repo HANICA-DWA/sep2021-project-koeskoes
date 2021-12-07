@@ -2,7 +2,7 @@
 
 ## Giftle
 
-In het kort is het project Giftle een product, waarbij iemand een (video)boodschap kan versturen als cadeau. Dit product wordt gezien als een plug-in, die uiteindelijk door meerdere webshops gebruikt kan worden.
+In het kort is het project Giftle een product, waarbij iemand een videoboodschap kan versturen als cadeau. Dit product wordt gezien als een plug-in, die uiteindelijk door meerdere webshops gebruikt kan worden.
 
 De geüploade video's kunnen door de magazijnmedewerkers beheerd worden via een backend systeem. Hier kunnen ze met het versturen van een cadeau de QR-code uitprinten en aan het bijbehorende cadeau vastmaken.
 
