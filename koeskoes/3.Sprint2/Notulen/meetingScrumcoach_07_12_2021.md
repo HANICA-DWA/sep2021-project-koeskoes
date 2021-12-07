@@ -53,6 +53,7 @@ Meer tekst/toelichting bij de diagrammen.
 ### 07. External interfaces
 
 - Duidelijker uitleggen hoe we met de mailserver communiceren. (Misschien anders bij diagram, ligt eraan hoeveel het is).
+- <i><b>done</b></i>
 
 ### 10. Infrastructure
 
