@@ -4,10 +4,10 @@ const mongoose = require("mongoose");
 const path = require('path');
 require("../model/uploadModel");
 
-const uploads = mongoose.model("UploadSchema");
+const Uploads = mongoose.model("UploadSchema");
 
 router.get("/:textCode", async (req, res) => {
-  const video = await uploads
+  const video = await Uploads
     .findOne({
       textCode: req.params.textCode,
     })
@@ -21,7 +21,7 @@ router.get("/:textCode", async (req, res) => {
 });
 
 router.get('/video/:videoName', async (req, res) => {
-  const video = await uploads
+  const video = await Uploads
     .findOne({
       videoName: req.params.videoName,
     })

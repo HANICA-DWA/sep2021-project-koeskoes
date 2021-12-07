@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 require("../model/uploadModel");
 
-const uploads = mongoose.model("UploadSchema");
+const Uploads = mongoose.model("UploadSchema");
 
 /**
  *
@@ -15,7 +15,7 @@ const generateUniqueRandomCode = async () => {
     const createRandomCode = () =>
       (Math.random() + 1).toString(36).substr(2, 6);
 
-    const randomCode = await uploads
+    const randomCode = await Uploads
       .findOne(
         {
           textCode: createRandomCode(),

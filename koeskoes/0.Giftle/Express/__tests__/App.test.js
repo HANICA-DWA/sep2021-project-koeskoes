@@ -5,7 +5,7 @@ const generateRandomFileName = require("../commonFunctions/generateRandomFileNam
 const mailModule = require("../commonFunctions/sendMails");
 require("../model/uploadModel");
 
-const uploads = mongoose.model("UploadSchema");
+const Uploads = mongoose.model("UploadSchema");
 
 let order = {
   _id: "619b7c66d79dad758c1e5519",
@@ -23,15 +23,15 @@ beforeAll(async () => {
     useUnifiedTopology: true,
     useCreateIndex: true,
   });
-  await uploads.deleteMany({});
+  await Uploads.deleteMany({});
 });
 
 beforeEach(async () => {
-  await uploads.create(order);
+  await Uploads.create(order);
 });
 
 afterEach(async () => {
-  await uploads.deleteMany({});
+  await Uploads.deleteMany({});
 });
 
 afterAll(async () => {
@@ -77,13 +77,13 @@ describe("database tests", () => {
       textCode: "456def",
     };
 
-    const createdOrder = await uploads.create(duplicateOrder);
+    const createdOrder = await Uploads.create(duplicateOrder);
 
     expect(!!createdOrder).toEqual(true);
   });
 
   test("check if video is mp4", async () => {
-    const orderWithMp4 = await uploads
+    const orderWithMp4 = await Uploads
       .findOne(
         {
           videoName: {
@@ -124,9 +124,9 @@ describe("database tests", () => {
       textCode: "456def",
     };
 
-    await uploads.create(duplicateOrder);
+    await Uploads.create(duplicateOrder);
 
-    const orderWithNoMp4 = await uploads
+    const orderWithNoMp4 = await Uploads
       .findOne(
         {
           videoName: {
@@ -152,7 +152,7 @@ describe("database tests", () => {
   });
 
   test("get order by id", async () => {
-    const findOrderById = await uploads
+    const findOrderById = await Uploads
       .findOne(
         {
           _id: order._id,
@@ -175,7 +175,7 @@ describe("database tests", () => {
   });
 
   test("get order by textcode", async () => {
-    const findOrderById = await uploads
+    const findOrderById = await Uploads
       .findOne(
         {
           textCode: order.textCode,
@@ -198,7 +198,7 @@ describe("database tests", () => {
   });
 
   test("get order by emailGifter", async () => {
-    const findOrderById = await uploads
+    const findOrderById = await Uploads
       .findOne(
         {
           emailGifter: order.emailGifter,
@@ -221,7 +221,7 @@ describe("database tests", () => {
   });
 
   test("get order by printed", async () => {
-    const findOrderById = await uploads
+    const findOrderById = await Uploads
       .findOne(
         {
           printed: order.printed,
@@ -253,9 +253,9 @@ describe("database tests", () => {
       textCode: "456def",
     };
 
-    await uploads.create(duplicateOrder);
+    await Uploads.create(duplicateOrder);
 
-    const printedOrders = await uploads
+    const printedOrders = await Uploads
       .find(
         {
           printed: true,
@@ -280,7 +280,7 @@ describe("database tests", () => {
   });
 
   test("get not printed orders", async () => {
-    const notPrintedOrders = await uploads
+    const notPrintedOrders = await Uploads
       .find(
         {
           printed: false,
@@ -314,9 +314,9 @@ describe("database tests", () => {
       textCode: "456def",
     };
 
-    await uploads.create(duplicateOrder);
+    await Uploads.create(duplicateOrder);
 
-    const prePrintedOrders = await uploads
+    const prePrintedOrders = await Uploads
       .find(
         {
           prePrinted: true,
@@ -341,7 +341,7 @@ describe("database tests", () => {
   });
 
   test("get not pre printed orders", async () => {
-    const notPrePrintedOrders = await uploads
+    const notPrePrintedOrders = await Uploads
       .find(
         {
           prePrinted: false,

@@ -9,7 +9,7 @@ const fs = require("fs");
 const ffmpeg = require("fluent-ffmpeg");
 require("../model/uploadModel");
 
-const uploads = mongoose.model("UploadSchema");
+const Uploads = mongoose.model("UploadSchema");
 
 router.use(
   fileUpload({
@@ -21,7 +21,7 @@ router.use(
 );
 
 router.get("/all/", async (req, res) => {
-  const orders = await uploads
+  const orders = await Uploads
     .find(
       {
         videoName: { $ne: "" },
@@ -45,7 +45,7 @@ router.get("/all/", async (req, res) => {
 });
 
 router.get("/order/:textCode", async (req, res) => {
-  const order = await uploads
+  const order = await Uploads
     .findOne({
       textCode: req.params.textCode,
     })
@@ -59,7 +59,7 @@ router.get("/order/:textCode", async (req, res) => {
  */
 router.post("/newOrder", async (req, res) => {
   try {
-    const newRecord = new uploads({
+    const newRecord = new Uploads({
       nameGifter: req.body.nameBuyer,
       emailGifter: req.body.emailBuyer,
       videoName: "",
@@ -142,7 +142,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
           .on("end", async () => {
             fs.unlinkSync(uploadPath + video.name);
 
-            const uploadRecord = await uploads
+            const uploadRecord = await Uploads
               .findOne({
                 textCode: req.params.textCode,
               })
@@ -180,7 +180,7 @@ router.patch("/new/:textCode/", async (req, res) => {
     return res.json({ status: "error", message: "No name entered" });
   }
 
-  const order = await uploads
+  const order = await Uploads
     .findOne({
       textCode: req.params.textCode,
     })
@@ -198,7 +198,7 @@ router.patch("/new/:textCode/", async (req, res) => {
 });
 
 router.patch("/:orderNumber", async (req, res) => {
-  const order = await uploads
+  const order = await Uploads
     .findOne({
       _id: req.params.orderNumber,
     })
@@ -214,7 +214,7 @@ router.patch("/:orderNumber", async (req, res) => {
  */
 
 router.patch("/:orderNumber/prePrint", async (req, res) => {
-  const order = await uploads
+  const order = await Uploads
     .findOne({
       _id: req.params.orderNumber,
     })
