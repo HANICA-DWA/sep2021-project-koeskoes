@@ -179,6 +179,7 @@ function RecordVideo() {
    */
   const handleResetRecording = () => {
     setRecordedChunks([]);
+    setProgress("0");
   };
 
   /**
@@ -208,7 +209,7 @@ function RecordVideo() {
    */
   useEffect(() => {
     setProgress(
-      (prevProgress) => (prevProgress = (currentTime / totalTime) * 100)
+      (prevProgress) => (prevProgress = (totalTime - 20 > currentTime ? currentTime / (totalTime - 20) : currentTime / totalTime) * 100)
     );
     if (currentTime >= totalTime) {
       clearTimeout(timer);
