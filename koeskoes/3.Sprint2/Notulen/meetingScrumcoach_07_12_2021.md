@@ -48,6 +48,7 @@ Meer tekst/toelichting bij de diagrammen.
 ### 04. Constraints
 
 - I.p.v. wat er nu staat: hoelang we met javascript, node, redux, et cetera bezig zijn. 
+- <i><b>done</b></i>
 
 ### 07. External interfaces
 
