@@ -1,6 +1,6 @@
 # Code
 
-In dit product is gebruikgemaakt van React en voor de state control is van Redux. Voor het maken van asynchrone action creators is er gebruikgemaakt van 'redux-thunk'. Deze aspecten maken samen de frontend van de webapplicatie. Voor de backend is Express gebruikt. Deze twee verschillende applicaties zijn verbonden met de REST API. Voor de database is er gebruik gemaakt van MongoDB. Door middel van Mongoose maakt Express gebruik van deze database.
+In dit product is gebruikgemaakt van React en voor de state control is gebruik gemaakt van Redux. Voor het maken van asynchrone action creators is er gebruikgemaakt van 'redux-thunk'. Deze aspecten maken samen de frontend van de webapplicatie. Voor de backend is Express gebruikt. Deze twee verschillende applicaties zijn verbonden met de REST API. Voor de database is er gebruik gemaakt van MongoDB. Door middel van Mongoose maakt Express gebruik van deze database.
 
 Voor het responsive design en het stylen van de website is er gebruik gemaakt van 'Bootstrap'.
 
