@@ -57,6 +57,7 @@ Meer tekst/toelichting bij de diagrammen.
 ### 10. Infrastructure
 
 - Infrastructure hoeft niet aangezien deze zo makkelijk is dat alle informatie binnen deployment staat. Dit noteren in het hoofdstuk.
+- <i><b>done</b></i>
 
 ### 11. Deployment
 
