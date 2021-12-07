@@ -21,6 +21,7 @@
 ### 1. Context
 
 - Bij het eerste C4-model even pijltjes van de SMTP-server naar de koper en ontvanger trekken, net als in de andere modellen.
+- <i><b>done</b></i>
 
 ### 2. Container
 
