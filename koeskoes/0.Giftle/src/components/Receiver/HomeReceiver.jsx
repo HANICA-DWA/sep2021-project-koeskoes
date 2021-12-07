@@ -2,10 +2,20 @@ import React from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
+/**
+ * Functional component start the watch video proces.
+ *
+ * @return the front-end for the receiver homepage.
+ */
 function HomeReceiver() {
   const [isBtnQRcode, setIsBtnQRcode] = useState(false);
   const [isBtnTextcode, setIsBtnTextcode] = useState(false);
 
+  /**
+   *
+   * Events to navigate to different pages.
+   *
+   */
   if (isBtnQRcode === true) {
     return <Navigate to="/qr-code" />;
   }

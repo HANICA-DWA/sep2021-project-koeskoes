@@ -21,6 +21,7 @@ function PersonalizeVideo() {
   const [error, setError] = useState(null);
   const textCode = useSelector((state) => state.orders.textCode);
 
+  // Navigation functionality to navigate the user to a different page.
   if (!textCode) {
     return <Navigate to="/noTextCode" />;
   }
@@ -34,9 +35,7 @@ function PersonalizeVideo() {
   }
 
   /**
-   *
    * This function will send the data of the receiver to the server.
-   *
    */
   const saveReceiverData = async () => {
     const checkedName = checkName();
@@ -70,9 +69,8 @@ function PersonalizeVideo() {
   };
 
   /**
-   *
    * This function will check if the given name isn't too long and only exists of letters and spaces.
-   *
+   * @returns true or an object {status, message}
    */
   const checkName = () => {
     const maxLength = 300;
@@ -106,9 +104,8 @@ function PersonalizeVideo() {
   };
 
   /**
-   *
    * This function will check if the given e-mail is of the right e-mail format.
-   *
+   * @returns true or an object {status, message}
    */
   const checkEmail = () => {
     const re = /\S+@\S+\.\S+/;

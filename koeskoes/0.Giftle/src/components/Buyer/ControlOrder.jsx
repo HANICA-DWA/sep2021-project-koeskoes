@@ -10,11 +10,14 @@ import axios from "axios";
  * @returns the front end of the ControlOrder page
  */
 function ControlOrder() {
-  // TODO: De parameter textCode moet in de Redux State en textCode niet meegeven in URL!
   const { textCode } = useParams();
   const [orderData, setOrderData] = useState({});
   const dispatch = useDispatch();
 
+  /**
+   * Useeffect activates when the textCode changes.
+   * Converts the textCode in the URL to a textCode in the state.
+   */
   useEffect(() => {
     const getVideoInOrder = async () => {
       const videoExists = await axios.get(
@@ -32,6 +35,10 @@ function ControlOrder() {
     getVideoInOrder();
   }, [textCode, dispatch]);
 
+  /**
+   * Check if order has video. If true show message, if false navigate to /buyer
+   * @returns the front end of the ControlOrder page
+   */
   const videoInOrderExists = () => {
     if (orderData.videoName === "") {
       return <Navigate to={`/buyer`} />;
@@ -54,11 +61,6 @@ function ControlOrder() {
       </div>
     );
   };
-
-  /**
-   * Check if order has video. If true show message, if false navigate to /buyer
-   * @returns the front end of the ControlOrder page
-   */
 
   return videoInOrderExists();
 }

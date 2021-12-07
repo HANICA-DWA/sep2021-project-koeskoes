@@ -1,6 +1,9 @@
 import React from "react";
 
-
+/**
+ * This page has no special functionality other than showing some simple html.
+ * @returns the html when the textcode isn't available in the state.
+ */
 function NoTextCode() {
   return (
     <div className="vertical-center">

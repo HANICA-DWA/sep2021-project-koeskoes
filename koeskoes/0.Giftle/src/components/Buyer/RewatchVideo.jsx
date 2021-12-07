@@ -29,6 +29,11 @@ function RewatchVideo() {
   const textCode = useSelector((state) => state.orders.textCode);
   const videoPath = useSelector((state) => state.orders.videoPath);
 
+  /**
+   *
+   * UseEffect to get the videodata by textcode from the database
+   *
+   */
   useEffect(() => {
     const fetchVideoData = async () => {
       const data = await axios.get(
@@ -76,9 +81,8 @@ function RewatchVideo() {
   const handleShow = () => setShow(true);
 
   /**
-   *
    * Play button state to check video is playing or is paused.
-   *
+   * @returns null or a button.
    */
   const videoPlayPauseButton = (state) => {
     switch (state) {

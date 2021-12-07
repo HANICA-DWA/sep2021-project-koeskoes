@@ -1,3 +1,7 @@
+/**
+ * This page has no special functionality.
+ * @returns the final html page for the buyer.
+ */
 function FinalPage() {
   return (
     <div className="vertical-center colored-background">

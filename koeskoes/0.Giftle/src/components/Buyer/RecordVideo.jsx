@@ -42,6 +42,8 @@ function RecordVideo() {
   /**
    *
    * UseEffect to check if audio and video is available for the webcam module.
+   * If the webcam is available it will safe the available video devices in a state.
+   * This state can be used for a dropdown menu to select which camera the user wants to use. 
    *
    */
   useEffect(() => {
@@ -75,6 +77,7 @@ function RecordVideo() {
           const videoDevices = devices.filter(
             (device) => device.kind === "videoinput"
           );
+          setCameraPosition(videoDevices[0].deviceId);
           setAvailableCameras(videoDevices);
         } else {
           setIsWebcamAvailable(false);
@@ -114,7 +117,6 @@ function RecordVideo() {
    */
   const handleStartCaptureClick = useCallback(() => {
     setCapturing(true);
-    // countdownRecording();
     mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
       mimeType: "video/webm",
     });
@@ -284,11 +286,17 @@ function RecordVideo() {
     return null;
   }
 
+  /**
+   * This function handles the onClick event to start the recording process AND start the recording progress bar.
+   */
   const startRecordAndBar = () => {
     handleStartCaptureClick();
     countdownRecording();
   };
 
+  /**
+   * This function handles to onClick event to stop the recording process AND stop the recording progress bar.
+   */
   const stopRecordAndBar = () => {
     handleStopCaptureClick();
     countdownRecording();
@@ -372,8 +380,6 @@ function RecordVideo() {
               {availableCameras.map((camera) => (
                 <option value={camera.deviceId}>{camera.label}</option>
               ))}
-              {/* <option value="first_cam">Eerste camera</option>
-              <option value="second_cam">Tweede camera</option> */}
             </select>
           </div>
         </div>

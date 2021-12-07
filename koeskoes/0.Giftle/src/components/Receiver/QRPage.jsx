@@ -16,6 +16,11 @@ function QRPage() {
   const [isBtnClicked, setIsBtnClicked] = useState(false);
   const [isGoBackReceiverMain, setIsGoBackReceiverMain] = useState(false);
 
+  /**
+   *
+   * Events to navigate to different pages.
+   *
+   */
   if (isBtnClicked === true) {
     return <Navigate to="/scan" />;
   }

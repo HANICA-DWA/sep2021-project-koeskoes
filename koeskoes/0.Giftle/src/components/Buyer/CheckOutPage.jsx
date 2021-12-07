@@ -4,7 +4,7 @@ import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
 
 /**
- *  This is a temp page for simulating the checkout page
+ * This is a temp page for simulating the checkout page
  * @returns the front end of the checkout page
  */
 
@@ -15,6 +15,7 @@ function CheckOutPage() {
   const [isNextPage, setIsNextPage] = useState(false);
   const [error, setError] = useState(null);
 
+  // Navigation functionality to send the user to te next page
   if (isNextPage === true) {
     return <Navigate to="/checked-out" />;
   }
@@ -91,9 +92,8 @@ function CheckOutPage() {
   };
 
   /**
-   *
    * This function will check if the given e-mail is of the right e-mail format.
-   *
+   * @returns true if email is not empty and is in the format user@mail.com
    */
   const checkEmail = () => {
     const re = /\S+@\S+\.\S+/;

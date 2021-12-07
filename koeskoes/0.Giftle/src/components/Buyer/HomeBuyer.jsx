@@ -4,14 +4,19 @@ import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setVideoPath } from "../../redux/actions/orderActions";
 
+/**
+ * This component creates the starting page for the buyer proces.
+ * @returns the html for the start of the buyer video upload proces.
+ */
 function HomeBuyer() {
+  const dispatch = useDispatch();
   // Creates the state for checking if the corresponding button has been clicked
   // Flips to true if clicked and then navigates to the corresponding url/ component
-  const dispatch = useDispatch();
   const [isBtnRecord, setIsBtnRecord] = useState(false);
   const [isBtnUpload, setIsBtnUpload] = useState(false);
   const textCode = useSelector((state) => state.orders.textCode);
 
+  // Navigation functionality to send the user to a different page after a certain action.
   if (!textCode) {
     return <Navigate to="/noTextCode" />;
   }

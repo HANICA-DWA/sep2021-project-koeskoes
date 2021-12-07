@@ -45,6 +45,11 @@ function ScanQR() {
     }
   });
 
+  /**
+   *
+   * Events to navigate to different pages.
+   *
+   */
   if (isGoBackBuyerMain === true) {
     return <Navigate to="/qr-code" />;
   }
