@@ -12,7 +12,18 @@ Om Giftle daadwerkelijk in gebruik te kunnen nemen, zal er een betaalde SMTP-ser
 
 ## Kennis
 
-Omdat het team bestaat uit beginnende programmeurs is er vaak onderzoek gedaan naar functionaliteiten.
+Het team bestaat uit beginnende programmeurs. Daarom is er nauwelijks ervaring. Hieronder is een tabel weergeven van onze ervaring.
+
+| Naam        | Wat is het?                                                                      | Ervaring    |
+|-------------|----------------------------------------------------------------------------------|-------------|
+| JavaScript  | Scripttaal                                                                       | 3 maanden   |
+| Node.js     | Open source en multiplatform JavaScript-runtime-omgeving                         | 3 maanden   |
+| React       | JavaScript library                                                               | 2,5 maanden |
+| React-Redux | Open source JavaScript library                                                   | 2,5 maanden |
+| Express.js  | Open source back-end webapplicatie framework voor Node.js                        | 2,5 maanden |
+| MongoDB     | Open source document georienteerde database                                      | 2,5 maanden |
+| Mongoose    | JavaScript objectgeorienteerde library                                           | 2,5 maanden |
+| Google SMTP | Communicatie protocol om berichten naar een mailserver te verzenden of ontvangen | 3 weken     |
 
 ## React-Redux
 
