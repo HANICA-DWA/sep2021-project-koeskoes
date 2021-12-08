@@ -69,13 +69,24 @@ router.post("/newOrder", async (req, res) => {
 
     await newRecord.save();
 
-    await newRecord.setCode();
+    const savedRecord = await newRecord.setCode();
 
     await mail.sendMailOrderPlaced(
       req.body.emailBuyer,
       req.body.nameBuyer,
       newRecord.textCode
     );
+
+    setTimeout(async () => {
+      const checkOrder = await Uploads.findOne({
+        textCode: savedRecord.textCode,
+        videoName: "",
+      }).exec();
+      console.log(checkOrder);
+      if (checkOrder) {
+        mail.sendReminderUploadVideo(checkOrder.emailGifter, checkOrder.nameGifter);
+      }
+    }, 90000)
 
     return res.json(newRecord);
   } catch (e) {
