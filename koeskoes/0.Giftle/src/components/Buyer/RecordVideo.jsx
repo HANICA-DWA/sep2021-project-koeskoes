@@ -36,6 +36,8 @@ function RecordVideo() {
   const [currentTime, setCurrentTime] = useState(0);
   const [timer, setTimer] = useState(0);
   const [totalTime, setTotalTime] = useState(120);
+  const [minutes, setMinutes] = useState(null);
+  const [seconds, setSeconds] = useState(null);
   const textCode = useSelector((state) => state.orders.textCode);
   const videoUploaded = useSelector((state) => state.orders.videoUploaded);
 
@@ -180,6 +182,7 @@ function RecordVideo() {
   const handleResetRecording = () => {
     setRecordedChunks([]);
     setProgress("0");
+    setCurrentTime(0);
   };
 
   /**
@@ -216,6 +219,13 @@ function RecordVideo() {
       handleStopCaptureClick();
     }
   }, [currentTime, totalTime, timer, handleStopCaptureClick]);
+
+  useEffect(() => {
+    setMinutes(Math.floor(currentTime / 60));
+    setSeconds(
+      Math.floor(currentTime) - Math.floor(currentTime / 60) * 60
+    );
+  }, [currentTime]);
 
   /**
    * interval function activates after it being called out.
@@ -336,6 +346,11 @@ function RecordVideo() {
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
+        </div>
+        <div>
+          {(minutes < 10 ? "0" + minutes : minutes) +
+            ":" +
+            (seconds < 10 ? "0" + seconds : seconds === 60 ? "00" : seconds)}
         </div>
         <div className="row">
           <div className="col-md-8 col-sm-12">
