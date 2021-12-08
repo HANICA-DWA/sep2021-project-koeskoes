@@ -1,7 +1,7 @@
 # Deployment
 
 ## Diagram
-Hieronder in het system context diagram is te zien hoe alle interne en externe delen van de applicatie met elkaar in verhouding staan. Hieronder wat extra informatie over de server:
+Hieronder in het system context diagram is te zien hoe alle interne en externe delen van de applicatie met elkaar in verhouding staan en waaruit deze zijn opgebouwd. Hieronder wat extra informatie over de server:
 
 - CPU: 1 vCPU
 - RAM: 1GB
