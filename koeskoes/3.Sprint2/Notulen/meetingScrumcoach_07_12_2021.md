@@ -24,7 +24,7 @@
 
 ### 2. Container
 
-- [ ] Proberen src-mapnaam aan te passen naar naar SPA. Zorg dat naamgeving mappen overeenkomt met de code. Dit eigenlijk in alle diagrammen, zodat alle diagrammen ook mooi overeenkomen.
+- [x] Proberen src-mapnaam aan te passen naar naar SPA. Zorg dat naamgeving mappen overeenkomt met de code. Dit eigenlijk in alle diagrammen, zodat alle diagrammen ook mooi overeenkomen.
 
 ### 3. Component
 
