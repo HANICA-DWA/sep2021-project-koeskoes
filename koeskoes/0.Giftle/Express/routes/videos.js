@@ -32,7 +32,7 @@ router.get("/video/:videoName", async (req, res) => {
   if (video !== null) {
     res.sendFile(path.join(__dirname, "../", "videos/", video.videoName));
   } else {
-    res.json({ status: "error", message: "No textcode found" });
+    res.json({ status: "error", message: "No video found" });
   }
 });
 
