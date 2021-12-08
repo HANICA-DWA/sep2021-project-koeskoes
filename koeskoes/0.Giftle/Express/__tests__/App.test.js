@@ -231,7 +231,7 @@ describe("database tests", () => {
     expect(findOrderById).toEqual(order);
   });
 
-  test("get printed orders", async () => {
+  test("set printed model method (printed false -> true)", async () => {
     const newOrder = await new Uploads({
       ...order,
       _id: "619b7c66d79dad758c1e5521",
@@ -257,36 +257,10 @@ describe("database tests", () => {
       }
     ).lean();
 
-    printedOrders.forEach((printedOrder) => {
-      printedOrder._id = printedOrder._id;
-    });
     expect(JSON.stringify(printedOrders)).toEqual(JSON.stringify([newOrder]));
   });
 
-  test("get not printed orders", async () => {
-    const notPrintedOrders = await Uploads.find(
-      {
-        printed: false,
-      },
-      {
-        _id: 1,
-        nameGifter: 1,
-        emailGifter: 1,
-        videoName: 1,
-        prePrinted: 1,
-        printed: 1,
-        textCode: 1,
-      }
-    ).lean();
-
-    notPrintedOrders.forEach((notPrintedOrder) => {
-      notPrintedOrder._id = notPrintedOrder._id.toString();
-    });
-
-    expect(notPrintedOrders).toEqual([order]);
-  });
-
-  test("get pre printed orders", async () => {
+  test("set pre printed model method (prePrinted false -> true)", async () => {
     const newOrder = await new Uploads({
       ...order,
       _id: "619b7c66d79dad758c1e5521",
@@ -312,36 +286,9 @@ describe("database tests", () => {
       }
     ).lean();
 
-    prePrintedOrders.forEach((prePrintedOrder) => {
-      prePrintedOrder._id = prePrintedOrder._id;
-    });
-
     expect(JSON.stringify(prePrintedOrders)).toEqual(
       JSON.stringify([newOrder])
     );
-  });
-
-  test("get not pre printed orders", async () => {
-    const notPrePrintedOrders = await Uploads.find(
-      {
-        prePrinted: false,
-      },
-      {
-        _id: 1,
-        nameGifter: 1,
-        emailGifter: 1,
-        videoName: 1,
-        prePrinted: 1,
-        printed: 1,
-        textCode: 1,
-      }
-    ).lean();
-
-    notPrePrintedOrders.forEach((notPrePrintedOrder) => {
-      notPrePrintedOrder._id = notPrePrintedOrder._id.toString();
-    });
-
-    expect(notPrePrintedOrders).toEqual([order]);
   });
 });
 
