@@ -169,7 +169,7 @@ describe("database tests", () => {
   });
 
   test("get order by textcode", async () => {
-    const findOrderById = await Uploads.findOne(
+    const findOrderByTextCode = await Uploads.findOne(
       {
         textCode: order.textCode,
       },
@@ -184,13 +184,13 @@ describe("database tests", () => {
       }
     ).lean();
 
-    findOrderById._id = findOrderById._id.toString();
+    findOrderByTextCode._id = findOrderByTextCode._id.toString();
 
-    expect(findOrderById).toEqual(order);
+    expect(findOrderByTextCode).toEqual(order);
   });
 
   test("get order by emailGifter", async () => {
-    const findOrderById = await Uploads.findOne(
+    const findOrderByEmailGifter = await Uploads.findOne(
       {
         emailGifter: order.emailGifter,
       },
@@ -205,13 +205,13 @@ describe("database tests", () => {
       }
     ).lean();
 
-    findOrderById._id = findOrderById._id.toString();
+    findOrderByEmailGifter._id = findOrderByEmailGifter._id.toString();
 
-    expect(findOrderById).toEqual(order);
+    expect(findOrderByEmailGifter).toEqual(order);
   });
 
   test("get order by printed", async () => {
-    const findOrderById = await Uploads.findOne(
+    const findOrderByPrinted = await Uploads.findOne(
       {
         printed: order.printed,
       },
@@ -226,9 +226,9 @@ describe("database tests", () => {
       }
     ).lean();
 
-    findOrderById._id = findOrderById._id.toString();
+    findOrderByPrinted._id = findOrderByPrinted._id.toString();
 
-    expect(findOrderById).toEqual(order);
+    expect(findOrderByPrinted).toEqual(order);
   });
 
   test("set printed model method (printed false -> true)", async () => {
