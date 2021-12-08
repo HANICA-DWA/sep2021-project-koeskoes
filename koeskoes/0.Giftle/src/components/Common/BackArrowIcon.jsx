@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ *
+ * Used for every (go) back button
+ * @returns an svg icon arrow pointing left
+ *
+ **/
 function BackArrow() {
   return (
     <>
@@ -19,4 +25,4 @@ function BackArrow() {
     </>
   );
 }
-export default BackArrow
+export default BackArrow;

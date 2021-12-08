@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ *
+ * Used for every (go) next button
+ * @returns an svg icon arrow pointing right
+ *
+ **/
 function NextArrowIcon() {
   return (
     <>

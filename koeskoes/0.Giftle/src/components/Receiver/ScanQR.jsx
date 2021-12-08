@@ -11,7 +11,6 @@ import "../../styles/receiver/scanQR.css";
  *
  * @return the front-end for the scanning page
  */
-
 function ScanQR() {
   // Creates the state for delay, style and errors that can occur for the QR-scanner.
 

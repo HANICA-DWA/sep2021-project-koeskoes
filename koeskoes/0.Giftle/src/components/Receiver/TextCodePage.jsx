@@ -6,6 +6,11 @@ import { getVideo, resetVideo } from "../../redux/actions/videoActions";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import BackArrow from "../Common/BackArrowIcon";
 
+/**
+ * Functional component for receiving a textCode
+ *
+ * @returns the front-end for the TextCodePage
+ */
 const TextCodePage = () => {
   const dispatch = useDispatch();
   const video = useSelector((state) => state.videos.video || null);
