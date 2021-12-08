@@ -489,7 +489,8 @@ describe("mail tests", () => {
     test("send mail (happy path)", async () => {
       const happyMailPath = await mail.sendReminderUploadVideo(
         "mail@mail.com",
-        "buyer"
+        "buyer",
+        "123abc"
       );
 
       const checkableData = convertMailData(happyMailPath);
@@ -499,7 +500,7 @@ describe("mail tests", () => {
         message: {
           accepted: ["mail@mail.com"],
           rejected: [],
-          messageSize: 2422,
+          messageSize: 2493,
           envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
         },
       });
