@@ -14,7 +14,8 @@
   },
   "private": true,
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node app.js"
   },
   "jest": {
     "verbose": true,

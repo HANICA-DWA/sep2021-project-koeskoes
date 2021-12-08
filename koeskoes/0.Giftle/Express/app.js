@@ -3,11 +3,14 @@ const express = require("express");
 const http = require("http");
 var ws = require("ws");
 var cors = require("cors");
+const path = require("path");
 const mongoose = require("mongoose");
 require("./model/uploadModel");
 
 const app = express();
 // const uploads = mongoose.model("UploadSchema");
+
+app.use(express.static("build"));
 
 app.use(cors({ origin: true, credentials: true }));
 app.options("*", cors({ origin: true, credentials: true }));
@@ -30,6 +33,10 @@ const mails = require("./routes/mails");
 app.use("/orders", fileUpload);
 app.use("/videos", videos);
 app.use("/mails", mails);
+
+app.use('/*', (req, res, next) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 /*-----------END OF ROUTERS------------*/
 
@@ -67,7 +74,7 @@ websocketServer.on("connection", (socket, req) => {
   });
 });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 80;
 httpServer.listen(port, () => {
   mongoose.connect(
     `mongodb://localhost:27017/giftle`,
