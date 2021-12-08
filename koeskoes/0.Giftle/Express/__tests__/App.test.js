@@ -231,7 +231,7 @@ describe("database tests", () => {
     expect(findOrderById).toEqual(order);
   });
 
-  test("get printed orders", async () => {
+  test("set printed model method (printed false -> true)", async () => {
     const newOrder = await new Uploads({
       ...order,
       _id: "619b7c66d79dad758c1e5521",
@@ -260,7 +260,7 @@ describe("database tests", () => {
     expect(JSON.stringify(printedOrders)).toEqual(JSON.stringify([newOrder]));
   });
 
-  test("get pre printed orders", async () => {
+  test("set pre printed model method (prePrinted false -> true)", async () => {
     const newOrder = await new Uploads({
       ...order,
       _id: "619b7c66d79dad758c1e5521",
