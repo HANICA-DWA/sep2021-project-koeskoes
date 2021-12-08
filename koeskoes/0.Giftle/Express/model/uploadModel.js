@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+/**
+ * This schema is used to store all orders that want to send a Giftle videomessage.
+ */
 const uploadSchema = new mongoose.Schema({
   nameGifter: {
     type: String,
@@ -40,8 +43,31 @@ const uploadSchema = new mongoose.Schema({
  *
  */
 uploadSchema.methods.setCode = async function () {
-  // Because this function uses the database it has to be required INSIDE the method.
-  const generateUniqueRandomCode = require("../commonFunctions/generateUniqueRandomCode");
+  const Uploads = mongoose.model("UploadSchema", uploadSchema);
+
+  const generateUniqueRandomCode = async () => {
+    while (true) {
+      const createRandomCode = () =>
+        (Math.random() + 1).toString(36).substr(2, 6);
+
+      const generatedRandomCode = createRandomCode();
+      
+      const randomCode = await Uploads
+      .findOne(
+        {
+          textCode: generatedRandomCode,
+        },
+        {
+          textCode: 1,
+        }
+      )
+      .exec();
+
+      if (randomCode === null) {
+        return generatedRandomCode;
+      }
+    }
+  };
 
   const randomCode = await generateUniqueRandomCode();
 
