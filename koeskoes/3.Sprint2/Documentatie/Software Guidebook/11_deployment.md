@@ -3,11 +3,11 @@
 ## Diagram
 Hieronder in het system context diagram is te zien hoe alle interne en externe delen van de applicatie met elkaar in verhouding staan. Hieronder wat extra informatie over de server:
 
-CPU: 1 vCPU
-RAM: 1GB
-Opslag: 25GB
-OS: Ubuntu 18.04 x64
-Locatie: Amsterdam
+- CPU: 1 vCPU
+- RAM: 1GB
+- Opslag: 25GB
+- OS: Ubuntu 18.04 x64
+- Locatie: Amsterdam
 
 ![system_context_diagram](assets/deployment/deployment_diagram.png "System Context diagram")
 *Deployment diagram*
