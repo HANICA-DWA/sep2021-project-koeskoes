@@ -1,6 +1,6 @@
 # Meeting scrumcoach
 
-- Sprint review om 12 uur in C2.04. Stukje interessante code laten zien bij sprint review voor Lars (per persoon).
+-[ ] Sprint review om 12 uur in C2.04. Stukje interessante code laten zien bij sprint review voor Lars (per persoon).
 - Ook een installatiegids maken voor de programmeurs maken, maar daar gaan we het later nog over hebben (hoeft nu nog niet, pas bij eindverantwoording). QR-code goed uitleggen voor komende programmeurs. Maar is nu nog niet nodig.
 - Voor de eindverantwoording: netwerkverkeer in redux, nu is het te onduidelijk. Ook bijhouden van huidige en vorige pagina is redux-state.
 
