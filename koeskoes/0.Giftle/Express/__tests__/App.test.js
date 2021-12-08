@@ -1,6 +1,5 @@
 const axios = require("axios");
 const mongoose = require("mongoose");
-const generateUniqueRandomCode = require("../commonFunctions/generateUniqueRandomCode");
 const generateRandomFileName = require("../commonFunctions/generateRandomFileName");
 const MailModule = require("../commonFunctions/sendMails");
 require("../model/uploadModel");
@@ -290,15 +289,30 @@ describe("database tests", () => {
       JSON.stringify([newOrder])
     );
   });
+
+  test("method setCode test", async () => {
+    const setCodeTest = await Uploads.findOne(
+      {
+        _id: order._id,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).exec();
+
+    await setCodeTest.setCode();
+
+    expect(setCodeTest).not.toEqual(order);
+  });
 });
 
 describe("commonFunctions tests", () => {
-  test("generate textcode", async () => {
-    const randomCode = await generateUniqueRandomCode();
-
-    expect(randomCode).not.toEqual(order.textCode);
-  });
-
   test("generate filename", () => {
     const files = generateRandomFileName(
       "videoname.mp4.mp3.avi",
