@@ -83,25 +83,23 @@ describe("database tests", () => {
   });
 
   test("check if video is mp4", async () => {
-    const orderWithMp4 = await Uploads
-      .findOne(
-        {
-          videoName: {
-            $exists: true,
-            $regex: /.*.mp4.*/,
-          },
+    const orderWithMp4 = await Uploads.findOne(
+      {
+        videoName: {
+          $exists: true,
+          $regex: /.*.mp4.*/,
         },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).lean();
 
     orderWithMp4._id = orderWithMp4._id.toString();
 
@@ -126,25 +124,23 @@ describe("database tests", () => {
 
     await Uploads.create(duplicateOrder);
 
-    const orderWithNoMp4 = await Uploads
-      .findOne(
-        {
-          videoName: {
-            $exists: true,
-            $not: /.*.mp4.*/,
-          },
+    const orderWithNoMp4 = await Uploads.findOne(
+      {
+        videoName: {
+          $exists: true,
+          $not: /.*.mp4.*/,
         },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).lean();
 
     orderWithNoMp4._id = orderWithNoMp4._id.toString();
 
@@ -152,22 +148,20 @@ describe("database tests", () => {
   });
 
   test("get order by id", async () => {
-    const findOrderById = await Uploads
-      .findOne(
-        {
-          _id: order._id,
-        },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
+    const findOrderById = await Uploads.findOne(
+      {
+        _id: order._id,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).lean();
 
     findOrderById._id = findOrderById._id.toString();
 
@@ -175,22 +169,20 @@ describe("database tests", () => {
   });
 
   test("get order by textcode", async () => {
-    const findOrderById = await Uploads
-      .findOne(
-        {
-          textCode: order.textCode,
-        },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
+    const findOrderById = await Uploads.findOne(
+      {
+        textCode: order.textCode,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).lean();
 
     findOrderById._id = findOrderById._id.toString();
 
@@ -198,22 +190,20 @@ describe("database tests", () => {
   });
 
   test("get order by emailGifter", async () => {
-    const findOrderById = await Uploads
-      .findOne(
-        {
-          emailGifter: order.emailGifter,
-        },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
+    const findOrderById = await Uploads.findOne(
+      {
+        emailGifter: order.emailGifter,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).lean();
 
     findOrderById._id = findOrderById._id.toString();
 
@@ -221,22 +211,20 @@ describe("database tests", () => {
   });
 
   test("get order by printed", async () => {
-    const findOrderById = await Uploads
-      .findOne(
-        {
-          printed: order.printed,
-        },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
+    const findOrderById = await Uploads.findOne(
+      {
+        printed: order.printed,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).lean();
 
     findOrderById._id = findOrderById._id.toString();
 
@@ -244,58 +232,52 @@ describe("database tests", () => {
   });
 
   test("get printed orders", async () => {
-    const duplicateOrder = {
+    const newOrder = await new Uploads({
       ...order,
-      _id: "619b7c66d79dad758c1e5520",
-      videoName: "duplicateVideo.mp4",
-      prePrinted: true,
-      printed: true,
+      _id: "619b7c66d79dad758c1e5521",
       textCode: "456def",
-    };
-
-    await Uploads.create(duplicateOrder);
-
-    const printedOrders = await Uploads
-      .find(
-        {
-          printed: true,
-        },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
-
-    printedOrders.forEach((printedOrder) => {
-      printedOrder._id = printedOrder._id.toString();
+      videoName: "newVideo.mp4",
     });
 
-    expect(printedOrders).toEqual([duplicateOrder]);
+    await newOrder.setPrinted();
+
+    const printedOrders = await Uploads.find(
+      {
+        printed: true,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+        __v: 1,
+      }
+    ).lean();
+
+    printedOrders.forEach((printedOrder) => {
+      printedOrder._id = printedOrder._id;
+    });
+    expect(JSON.stringify(printedOrders)).toEqual(JSON.stringify([newOrder]));
   });
 
   test("get not printed orders", async () => {
-    const notPrintedOrders = await Uploads
-      .find(
-        {
-          printed: false,
-        },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
+    const notPrintedOrders = await Uploads.find(
+      {
+        printed: false,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).lean();
 
     notPrintedOrders.forEach((notPrintedOrder) => {
       notPrintedOrder._id = notPrintedOrder._id.toString();
@@ -305,58 +287,55 @@ describe("database tests", () => {
   });
 
   test("get pre printed orders", async () => {
-    const duplicateOrder = {
+    const newOrder = await new Uploads({
       ...order,
-      _id: "619b7c66d79dad758c1e5520",
-      videoName: "duplicateVideo.mp4",
-      prePrinted: true,
-      printed: false,
+      _id: "619b7c66d79dad758c1e5521",
       textCode: "456def",
-    };
-
-    await Uploads.create(duplicateOrder);
-
-    const prePrintedOrders = await Uploads
-      .find(
-        {
-          prePrinted: true,
-        },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
-
-    prePrintedOrders.forEach((prePrintedOrder) => {
-      prePrintedOrder._id = prePrintedOrder._id.toString();
+      videoName: "newVideo.mp4",
     });
 
-    expect(prePrintedOrders).toEqual([duplicateOrder]);
+    await newOrder.setPrePrinted();
+
+    const prePrintedOrders = await Uploads.find(
+      {
+        prePrinted: true,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+        __v: 1,
+      }
+    ).lean();
+
+    prePrintedOrders.forEach((prePrintedOrder) => {
+      prePrintedOrder._id = prePrintedOrder._id;
+    });
+
+    expect(JSON.stringify(prePrintedOrders)).toEqual(
+      JSON.stringify([newOrder])
+    );
   });
 
   test("get not pre printed orders", async () => {
-    const notPrePrintedOrders = await Uploads
-      .find(
-        {
-          prePrinted: false,
-        },
-        {
-          _id: 1,
-          nameGifter: 1,
-          emailGifter: 1,
-          videoName: 1,
-          prePrinted: 1,
-          printed: 1,
-          textCode: 1,
-        }
-      )
-      .lean();
+    const notPrePrintedOrders = await Uploads.find(
+      {
+        prePrinted: false,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).lean();
 
     notPrePrintedOrders.forEach((notPrePrintedOrder) => {
       notPrePrintedOrder._id = notPrePrintedOrder._id.toString();
@@ -386,7 +365,7 @@ describe("commonFunctions tests", () => {
   });
 });
 
-describe("mail tests", () => {
+xdescribe("mail tests", () => {
   let mail;
 
   const convertMailData = (response) => {
