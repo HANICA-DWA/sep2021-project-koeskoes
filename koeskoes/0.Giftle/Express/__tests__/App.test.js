@@ -67,7 +67,7 @@ describe("Express route tests", () => {
   });
 });
 
-describe("database tests", () => {
+describe("Database tests", () => {
   test("create new order in database", async () => {
     const duplicateOrder = {
       ...order,
@@ -333,7 +333,7 @@ describe("database tests", () => {
   });
 });
 
-describe("commonFunctions tests", () => {
+describe("CommonFunctions tests", () => {
   test("generate filename", () => {
     const files = generateRandomFileName(
       "videoname.mp4.mp3.avi",
@@ -347,7 +347,7 @@ describe("commonFunctions tests", () => {
   });
 });
 
-describe("mail tests", () => {
+describe("Mail tests", () => {
   let mail;
 
   const convertMailData = (response) => {
