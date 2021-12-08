@@ -26,7 +26,7 @@ function ScanQR() {
    *
    */
   useEffect(() => {
-    const checkVideoAndAudio = async () => {
+    const checkCamera = async () => {
       try {
         const videoAccess = await navigator.mediaDevices.getUserMedia({
           video: true,
@@ -40,7 +40,7 @@ function ScanQR() {
       setIsDevicesChecked(true);
     };
     if (isDevicesChecked !== true) {
-      checkVideoAndAudio();
+      checkCamera();
     }
   });
 
@@ -53,21 +53,6 @@ function ScanQR() {
     return <Navigate to="/qr-code" />;
   }
 
-  /**
-   * This function will handle the occuring error
-   * IsError will be set to true, which effects the errorBox function
-   * After the boolean change, the error will be send to the console.
-   *
-   * @param err object containing the error that occured.
-   */
-  const handleError = (err) => {
-    setError(
-      ErrorMessage("Fout met het de camera of het scannen!", () =>
-        setError(null)
-      )
-    );
-  };
-
   return (
     <div className="vertical-center colored-background">
       <div className="errorBox">{error}</div>
@@ -77,7 +62,10 @@ function ScanQR() {
           <QrReader
             delay={delay}
             style={previewStyle}
-            onError={handleError}
+            onError={ErrorMessage(
+              "Fout met het de camera of het scannen!",
+              () => setError(null)
+            )}
             onScan={(data) => {
               if (data) {
                 if (!data.includes("localhost")) {

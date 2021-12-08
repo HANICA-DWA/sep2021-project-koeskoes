@@ -18,7 +18,7 @@ function QRPage() {
 
   /**
    *
-   * Events to navigate to different pages.
+   * Events for navigating to different pages.
    *
    */
   if (isBtnClicked === true) {
