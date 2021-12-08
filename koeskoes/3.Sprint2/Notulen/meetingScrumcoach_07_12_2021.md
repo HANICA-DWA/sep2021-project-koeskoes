@@ -1,6 +1,6 @@
 # Meeting scrumcoach
 
--[ ] Sprint review om 12 uur in C2.04. Stukje interessante code laten zien bij sprint review voor Lars (per persoon).
+- Sprint review om 12 uur in C2.04. Stukje interessante code laten zien bij sprint review voor Lars (per persoon).
 - Ook een installatiegids maken voor de programmeurs maken, maar daar gaan we het later nog over hebben (hoeft nu nog niet, pas bij eindverantwoording). QR-code goed uitleggen voor komende programmeurs. Maar is nu nog niet nodig.
 - Voor de eindverantwoording: netwerkverkeer in redux, nu is het te onduidelijk. Ook bijhouden van huidige en vorige pagina is redux-state.
 
@@ -20,47 +20,43 @@
 
 ### 1. Context
 
-- Bij het eerste C4-model even pijltjes van de SMTP-server naar de koper en ontvanger trekken, net als in de andere modellen.
-- <i><b>done</b></i>
+- [x] Bij het eerste C4-model even pijltjes van de SMTP-server naar de koper en ontvanger trekken, net als in de andere modellen.
 
 ### 2. Container
 
-- Proberen src-mapnaam aan te passen naar naar SPA. Zorg dat naamgeving mappen overeenkomt met de code. Dit eigenlijk in alle diagrammen, zodat alle diagrammen ook mooi overeenkomen.
+- [ ] Proberen src-mapnaam aan te passen naar naar SPA. Zorg dat naamgeving mappen overeenkomt met de code. Dit eigenlijk in alle diagrammen, zodat alle diagrammen ook mooi overeenkomen.
 
 ### 3. Component
 
 #### Client
 
-- Indeling van buyer, receiver en employee in het model uitleggen. In navigatie zelf (niet alleen bij het importeren) ook de verdeling doorvoeren. Homepagina is buyer, daarna buyer/upload, buyer/record, et cetera. Zo blijft het duidelijk. Zet bij de buyer, receiver en employee dat het pagina's zijn, bij de common dat het geen pagina's zijn.
-- Als het allemaal pages zijn, noem ze ook daadwerkelijk page. Dit maakt het duidelijker.
-- Alle redux actions en reducers zijn niet handig om in componenten te zetten. Redux als component beschouwen en in het diagram zetten.
-- Geen 'gebruikt' naar de API, maar duidelijk maken dat het requests zijn.
+- [ ] Indeling van buyer, receiver en employee in het model uitleggen. In navigatie zelf (niet alleen bij het importeren) ook de verdeling doorvoeren. Homepagina is buyer, daarna buyer/upload, buyer/record, et cetera. Zo blijft het duidelijk. Zet bij de buyer, receiver en employee dat het pagina's zijn, bij de common dat het geen pagina's zijn.
+- [ ] Als het allemaal pages zijn, noem ze ook daadwerkelijk page. Dit maakt het duidelijker.
+- [ ] Alle redux actions en reducers zijn niet handig om in componenten te zetten. Redux als component beschouwen en in het diagram zetten.
+- [ ] Geen 'gebruikt' naar de API, maar duidelijk maken dat het requests zijn.
 
 #### Server
 
-- In de code moet generateUniqueRandomCode verplaatst worden naar onder het uploadmodel, waardoor de pijl van commonFunctions naar de database verdwijnt.
-- Bij de pijl naar routes wordt i.p.v. 'gebruikt' 'configureert'.
+- [x] In de code moet generateUniqueRandomCode verplaatst worden naar onder het uploadmodel, waardoor de pijl van commonFunctions naar de database verdwijnt.
+- [x] Bij de pijl naar routes wordt i.p.v. 'gebruikt' 'configureert'.
 
 ## Software guidebook
 
-Meer tekst/toelichting bij de diagrammen.
+- [ ] Meer tekst/toelichting bij de diagrammen.
 
 ### 04. Constraints
 
-- I.p.v. wat er nu staat: hoelang we met javascript, node, redux, et cetera bezig zijn. 
-- <i><b>done</b></i>
+- [x] I.p.v. wat er nu staat: hoelang we met javascript, node, redux, et cetera bezig zijn. 
 
 ### 07. External interfaces
 
-- Duidelijker uitleggen hoe we met de mailserver communiceren. (Misschien anders bij diagram, ligt eraan hoeveel het is).
-- <i><b>done</b></i>
+- [x] Duidelijker uitleggen hoe we met de mailserver communiceren. (Misschien anders bij diagram, ligt eraan hoeveel het is).
 
 ### 10. Infrastructure
 
-- Infrastructure hoeft niet aangezien deze zo makkelijk is dat alle informatie binnen deployment staat. Dit noteren in het hoofdstuk.
-- <i><b>done</b></i>
+- [x] Infrastructure hoeft niet aangezien deze zo makkelijk is dat alle informatie binnen deployment staat. Dit noteren in het hoofdstuk.
 
 ### 11. Deployment
 
-- Bij server info over server noteren.
-- Blokjes binnen het diagram zijn i.p.v. wat het nu is, de blokjes uit het containerdiagram.
+- [ ] Bij server info over server noteren.
+- [ ] Blokjes binnen het diagram zijn i.p.v. wat het nu is, de blokjes uit het containerdiagram.
