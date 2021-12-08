@@ -42,7 +42,7 @@
 
 ## Software guidebook
 
-- [ ] Meer tekst/toelichting bij de diagrammen.
+- [x] Meer tekst/toelichting bij de diagrammen.
 
 ### 04. Constraints
 
@@ -59,4 +59,4 @@
 ### 11. Deployment
 
 - [x] Bij de server info, details over de server beschrijven.
-- [ ] Blokjes binnen het diagram zijn i.p.v. wat het nu is, de blokjes uit het containerdiagram.
+- [x] Blokjes binnen het diagram zijn i.p.v. wat het nu is, de blokjes uit het containerdiagram.
