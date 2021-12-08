@@ -230,7 +230,26 @@ describe("database tests", () => {
     expect(findOrderByPrinted).toEqual(order);
   });
 
-  
+  test("get order by pre printed from database", async () => {
+    const findOrderByPrePrinted = await Uploads.findOne(
+      {
+        prePrinted: order.prePrinted,
+      },
+      {
+        _id: 1,
+        nameGifter: 1,
+        emailGifter: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+      }
+    ).lean();
+
+    findOrderByPrePrinted._id = findOrderByPrePrinted._id.toString();
+
+    expect(findOrderByPrePrinted).toEqual(order);
+  });
 
   test("set printed model method (printed false -> true)", async () => {
     const newOrder = await new Uploads({
