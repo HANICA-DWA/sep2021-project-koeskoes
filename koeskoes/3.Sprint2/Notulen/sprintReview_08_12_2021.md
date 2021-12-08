@@ -7,8 +7,8 @@
 | Rol              | Naam                |
 | ---------------- | ------------------- |
 | **Scrummaster**  | Jordi               |
-| **Scrumbord**    | Niet aangewezen nog |
-| **Demonstratie** | Niet aangewezen nog |
+| **Scrumbord**    | Sven                |
+| **Demonstratie** | Sjoerd              |
 | **Notulist**     | Ilse                |
 
 ### Gesprekspunten
@@ -19,7 +19,7 @@
 - A.d.h.v. Scrumbord laten zien welke US 100% af zijn.
 - A.d.h.v. Scrumbord laten zien welke US niet af zijn.
   - #109 refresh na toestaan webcam/microfoon
-  - Winkelmandje van Magento nabootsen -> vanuit onderzoek
+- Onderzoek naar Magento
 - Demonstratie van de US die af zijn (acceptatiecriteria & DoD benadrukken).
 - Vragen naar feedback.
 
