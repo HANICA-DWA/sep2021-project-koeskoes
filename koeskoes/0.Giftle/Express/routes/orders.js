@@ -11,6 +11,9 @@ require("../model/uploadModel");
 
 const Uploads = mongoose.model("UploadSchema");
 
+/**
+ * middleware for Express that provides easy way to handle file upload.
+ */
 router.use(
   fileUpload({
     createParentPath: true,
@@ -20,6 +23,9 @@ router.use(
   })
 );
 
+/**
+ * return orders if record contains 'printed = false'.
+ */
 router.get("/all/", async (req, res) => {
   const orders = await Uploads.find(
     {
@@ -42,6 +48,9 @@ router.get("/all/", async (req, res) => {
   res.json(orders);
 });
 
+/**
+ * return order if textCode exists.
+ */
 router.get("/order/:textCode", async (req, res) => {
   const order = await Uploads.findOne({
     textCode: req.params.textCode,
@@ -72,7 +81,7 @@ router.post("/newOrder", async (req, res) => {
       req.body.nameBuyer,
       newRecord.textCode
     );
-    
+
     setTimeout(async () => {
       const checkOrder = await Uploads.findOne({
         textCode: savedRecord.textCode,
@@ -94,6 +103,10 @@ router.post("/newOrder", async (req, res) => {
   }
 });
 
+/**
+ * if req.files (video) exists, call mongoose method 'generateRandomFileName' that sets the videoName + the current date as 'finalFileName'.
+ * upload file (with patch request) if there is no error, if there is an error show the error containing information.
+ */
 router.patch("/order/video/:textCode", async (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.json({ status: "error", message: "No file has been uploaded" });
@@ -184,6 +197,9 @@ router.patch("/order/video/:textCode", async (req, res) => {
   }
 });
 
+/**
+ * if name receiver exists, find textCode in DB and update both name receiver and name email
+ */
 router.patch("/new/:textCode/", async (req, res) => {
   if (req.body.name === "null" || req.body.name === "") {
     return res.json({ status: "error", message: "No name entered" });
@@ -204,6 +220,9 @@ router.patch("/new/:textCode/", async (req, res) => {
   res.json({ status: "success", message: "Receiver data added to order" });
 });
 
+/**
+ * if order exists (with email, nameGifter, nameReceiver and textCode), it calls mongoose method 'setPrinted' that sets 'printed = true'
+ */
 router.patch("/:orderNumber", async (req, res) => {
   const order = await Uploads.findOne({
     _id: req.params.orderNumber,
@@ -229,7 +248,7 @@ router.patch("/:orderNumber", async (req, res) => {
 });
 
 /**
- * Changes value prePrinted to true in db
+ * changes value prePrinted to true in db
  */
 
 router.patch("/:orderNumber/prePrint", async (req, res) => {
