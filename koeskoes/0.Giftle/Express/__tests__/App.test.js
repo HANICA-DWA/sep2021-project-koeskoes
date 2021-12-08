@@ -312,7 +312,7 @@ describe("commonFunctions tests", () => {
   });
 });
 
-xdescribe("mail tests", () => {
+describe("mail tests", () => {
   let mail;
 
   const convertMailData = (response) => {
