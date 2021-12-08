@@ -66,6 +66,8 @@
       ]
     })
 
+    exit
+
 ## Webapplicatie plaatsen op de server
 
     - Open een FTP applicatie naar keuze (bijv. FileZilla Client).
@@ -77,6 +79,12 @@
     - Maak een nieuwe map aan genaamd "www". Dit maakt het makkelijk voor andere om de webapplicatie te vinden.
   
     - Plaats de webapplicatie in de "www" map.
+
+## Node modules installeren
+
+    cd /var/www
+
+    npm install
 
 ## Installeer FFmpeg
 
