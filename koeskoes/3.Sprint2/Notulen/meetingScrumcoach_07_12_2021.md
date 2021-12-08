@@ -58,5 +58,5 @@
 
 ### 11. Deployment
 
-- [ ] Bij de server info, details over de server beschrijven.
+- [x] Bij de server info, details over de server beschrijven.
 - [ ] Blokjes binnen het diagram zijn i.p.v. wat het nu is, de blokjes uit het containerdiagram.
