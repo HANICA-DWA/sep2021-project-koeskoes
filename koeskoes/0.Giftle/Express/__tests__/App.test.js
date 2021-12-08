@@ -38,13 +38,13 @@ afterAll(async () => {
 });
 
 describe("Express route tests", () => {
-  test("get orders from mongoose", async () => {
+  test("get orders from mongoose route", async () => {
     const orders = await axios.get("http://localhost:4000/orders/all/");
 
     expect(orders.data).toEqual([order]);
   });
 
-  test("create new order without file", async () => {
+  test("create new order without file route", async () => {
     const orders = await axios.patch(
       `http://localhost:4000/orders/order/video/${order.textCode}`
     );
@@ -55,7 +55,7 @@ describe("Express route tests", () => {
     });
   });
 
-  test("change order", async () => {
+  test("change order route", async () => {
     const orderChange = await axios.patch(
       "http://localhost:4000/orders/" + order._id
     );
@@ -68,7 +68,7 @@ describe("Express route tests", () => {
 });
 
 describe("database tests", () => {
-  test("create new order", async () => {
+  test("create new order in database", async () => {
     const duplicateOrder = {
       ...order,
       _id: "619b7c66d79dad758c1e5520",
@@ -146,7 +146,7 @@ describe("database tests", () => {
     expect({ ...orderWithNoMp4 }).toEqual(duplicateOrder);
   });
 
-  test("get order by id", async () => {
+  test("get order by id from database", async () => {
     const findOrderById = await Uploads.findOne(
       {
         _id: order._id,
@@ -167,7 +167,7 @@ describe("database tests", () => {
     expect(findOrderById).toEqual(order);
   });
 
-  test("get order by textcode", async () => {
+  test("get order by textcode from database", async () => {
     const findOrderByTextCode = await Uploads.findOne(
       {
         textCode: order.textCode,
@@ -188,7 +188,7 @@ describe("database tests", () => {
     expect(findOrderByTextCode).toEqual(order);
   });
 
-  test("get order by emailGifter", async () => {
+  test("get order by emailGifter from database", async () => {
     const findOrderByEmailGifter = await Uploads.findOne(
       {
         emailGifter: order.emailGifter,
@@ -209,7 +209,7 @@ describe("database tests", () => {
     expect(findOrderByEmailGifter).toEqual(order);
   });
 
-  test("get order by printed", async () => {
+  test("get order by printed from database", async () => {
     const findOrderByPrinted = await Uploads.findOne(
       {
         printed: order.printed,
@@ -229,6 +229,8 @@ describe("database tests", () => {
 
     expect(findOrderByPrinted).toEqual(order);
   });
+
+  
 
   test("set printed model method (printed false -> true)", async () => {
     const newOrder = await new Uploads({
