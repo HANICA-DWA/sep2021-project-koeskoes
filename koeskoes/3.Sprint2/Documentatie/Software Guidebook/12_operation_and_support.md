@@ -40,7 +40,7 @@
 
     mongosh
 
-    use admin
+    use giftle
     
     db.createRole(
     {
