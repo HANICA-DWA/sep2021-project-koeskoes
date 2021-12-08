@@ -34,7 +34,7 @@ app.use("/orders", fileUpload);
 app.use("/videos", videos);
 app.use("/mails", mails);
 
-app.use('/*', (req, res, next) => {
+app.use("/*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
@@ -74,7 +74,7 @@ websocketServer.on("connection", (socket, req) => {
   });
 });
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 4000;
 httpServer.listen(port, () => {
   mongoose.connect(
     `mongodb://localhost:27017/giftle`,
