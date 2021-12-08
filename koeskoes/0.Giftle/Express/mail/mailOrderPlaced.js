@@ -1,6 +1,7 @@
 /**
+ * Mail template for the mail when an order is placed
  *
- * @param {string} buyer
+ * @param {string} buyer the buyer
  * @returns Mail preset
  */
 const mailOrderPlaced = (buyer, textCode) => {

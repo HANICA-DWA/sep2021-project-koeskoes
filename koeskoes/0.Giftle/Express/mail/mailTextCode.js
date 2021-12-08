@@ -1,8 +1,10 @@
 /**
- * 
+ * Mail template for the receiver when an order is placed 
+ * containing the textcode 
+ *
  * @param {string} receiver 
- * @param {string} buyer 
- * @param {string} textCode 
+ * @param {string} buyer
+ * @param {string} textCode
  * @returns Mail preset
  */
 const mailTextCode = (receiver, buyer, textCode) => {

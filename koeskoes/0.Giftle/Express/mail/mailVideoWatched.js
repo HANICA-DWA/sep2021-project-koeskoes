@@ -1,7 +1,9 @@
 /**
- * 
- * @param {string} buyer 
- * @param {string} receiver 
+ * Mail template for the mail when a video is watched
+ * mail will be send to the buyer.
+ *
+ * @param {string} buyer
+ * @param {string} receiver
  * @returns Mail preset
  */
 const mailVideoWatched = (buyer, receiver) => {
