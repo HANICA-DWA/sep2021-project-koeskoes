@@ -9,9 +9,9 @@ import axios from "axios";
 
 /**
  *
- * React component to rewatch a video.
+ * React component to rewatch a video before uploading it to the database.
  *
- * @return the front-end for the rewatch page
+ * @return the front-end for the RewatchVideo page.
  *
  */
 function RewatchVideo() {
@@ -31,7 +31,8 @@ function RewatchVideo() {
 
   /**
    *
-   * UseEffect to get the videodata by textcode from the database
+   * UseEffect to fetch the (video)data by textcode from the database. If fetching succeeds
+   * the data will get set by the setVideoData function that updates videoData.
    *
    */
   useEffect(() => {
@@ -48,7 +49,9 @@ function RewatchVideo() {
 
   /**
    *
-   * UseEffect to check progressbar and videotime watched.
+   * UseEffect to check the progressbar and the videotime (mm:ss) watched.
+   * Everytime isVideoTime or isVideoWatchedTime is changed, useEffect will
+   * re-render these particular functions
    *
    */
   useEffect(() => {
@@ -74,15 +77,15 @@ function RewatchVideo() {
 
   /**
    *
-   * Handlers to show modal.
+   * Handlers to show or hide the modal by setting it true or false.
    *
    */
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   /**
-   * Play button state to check video is playing or is paused.
-   * @returns null or a button.
+   * Play button state to check video replay, is playing or is paused.
+   * @returns null by default or one of three buttons depending on the state.
    */
   const videoPlayPauseButton = (state) => {
     switch (state) {
@@ -120,7 +123,8 @@ function RewatchVideo() {
 
   /**
    *
-   * Video settings for the video
+   * Video player settings for a video. It shows the progressBar, minutes and seconds and the three (state) buttons.
+   * Everytime minutes, seconds, progressBar or videoState gets changed, it will be re-rendered by the useCallback.
    *
    */
   const videoPlayerSettings = useCallback(() => {
@@ -149,7 +153,9 @@ function RewatchVideo() {
 
   /**
    *
-   * Loading icon if video is loading
+   * If video is still loading it will render an spinner icon or text.
+   * If video is done loading it will render the function videoPlayerSettings.
+   * If videoPlayerSettings gets changed, it will get re-rendered by the useCallback.
    *
    */
   const loadingPlayer = useCallback(
@@ -169,7 +175,9 @@ function RewatchVideo() {
 
   /**
    *
-   * Full video player.
+   * Video player that uses the ReactPlayer component and the useCallback function that returns a memoized version
+   * of the callback that only changes if one of the dependencies has changed. So everytime videoData, isLoading,
+   * loadingPlayer or videoState is changed, it will be re-rendered
    *
    */
   const videoPlayer = useCallback(() => {
@@ -207,7 +215,7 @@ function RewatchVideo() {
 
   /**
    *
-   * Events to navigate to different pages.
+   * Events to navigate to different (step) pages.
    *
    */
   if (!textCode) {
