@@ -80,18 +80,21 @@ class MailModule {
    *
    * @param {string} to
    * @param {string} buyer
+   * @param {string} textCode
    * @returns
    */
-  sendReminderUploadVideo = async (to, buyer) => {
+  sendReminderUploadVideo = async (to, buyer, textCode) => {
     if (!to) return { status: "error", message: "Mail not included" };
     if (!buyer) return { status: "error", message: "Buyer not included" };
+    if (!textCode)
+      return { status: "error", message: "Textcode not included " };
 
     try {
       const mailInfo = await this.transport.sendMail({
         from: '"Giftle.nl" info@giftle.nl',
         to: to,
         subject: "Giftle - Je hebt nog geen videoboodschap geüpload!",
-        html: mailUploadReminder(buyer),
+        html: mailUploadReminder(buyer, textCode),
       });
 
       return { status: "success", message: mailInfo };

@@ -21,35 +21,31 @@ router.use(
 );
 
 router.get("/all/", async (req, res) => {
-  const orders = await Uploads
-    .find(
-      {
-        videoName: { $ne: "" },
-        printed: false,
-      },
-      {
-        _id: 1,
-        nameGifter: 1,
-        emailGifter: 1,
-        nameReceiver: 1,
-        emailReceiver: 1,
-        videoName: 1,
-        textCode: 1,
-        printed: 1,
-        prePrinted: 1,
-      }
-    )
-    .exec();
+  const orders = await Uploads.find(
+    {
+      videoName: { $ne: "" },
+      printed: false,
+    },
+    {
+      _id: 1,
+      nameGifter: 1,
+      emailGifter: 1,
+      nameReceiver: 1,
+      emailReceiver: 1,
+      videoName: 1,
+      textCode: 1,
+      printed: 1,
+      prePrinted: 1,
+    }
+  ).exec();
 
   res.json(orders);
 });
 
 router.get("/order/:textCode", async (req, res) => {
-  const order = await Uploads
-    .findOne({
-      textCode: req.params.textCode,
-    })
-    .exec();
+  const order = await Uploads.findOne({
+    textCode: req.params.textCode,
+  }).exec();
 
   res.json(order);
 });
@@ -84,9 +80,13 @@ router.post("/newOrder", async (req, res) => {
       }).exec();
       console.log(checkOrder);
       if (checkOrder) {
-        mail.sendReminderUploadVideo(checkOrder.emailGifter, checkOrder.nameGifter);
+        mail.sendReminderUploadVideo(
+          checkOrder.emailGifter,
+          checkOrder.nameGifter,
+          checkOrder.textCode
+        );
       }
-    }, 90000)
+    }, 90000);
 
     return res.json(newRecord);
   } catch (e) {
@@ -153,11 +153,9 @@ router.patch("/order/video/:textCode", async (req, res) => {
           .on("end", async () => {
             fs.unlinkSync(uploadPath + video.name);
 
-            const uploadRecord = await Uploads
-              .findOne({
-                textCode: req.params.textCode,
-              })
-              .exec();
+            const uploadRecord = await Uploads.findOne({
+              textCode: req.params.textCode,
+            }).exec();
 
             try {
               if (uploadRecord.videoName) {
@@ -191,11 +189,9 @@ router.patch("/new/:textCode/", async (req, res) => {
     return res.json({ status: "error", message: "No name entered" });
   }
 
-  const order = await Uploads
-    .findOne({
-      textCode: req.params.textCode,
-    })
-    .exec();
+  const order = await Uploads.findOne({
+    textCode: req.params.textCode,
+  }).exec();
 
   order.nameReceiver = req.body.name;
 
@@ -209,16 +205,24 @@ router.patch("/new/:textCode/", async (req, res) => {
 });
 
 router.patch("/:orderNumber", async (req, res) => {
-  const order = await Uploads
-    .findOne({
-      _id: req.params.orderNumber,
-    })
-    .exec();
+  const order = await Uploads.findOne({
+    _id: req.params.orderNumber,
+  }).exec();
 
   await order.setPrinted();
 
-  if (order.emailReceiver && order.nameReceiver && order.nameGifter && order.textCode) {
-    await mail.sendTextCode(order.emailReceiver, order.nameReceiver, order.nameGifter, order.textCode);
+  if (
+    order.emailReceiver &&
+    order.nameReceiver &&
+    order.nameGifter &&
+    order.textCode
+  ) {
+    await mail.sendTextCode(
+      order.emailReceiver,
+      order.nameReceiver,
+      order.nameGifter,
+      order.textCode
+    );
   }
 
   res.json({ status: "success", message: "Order change saved" });
@@ -229,11 +233,9 @@ router.patch("/:orderNumber", async (req, res) => {
  */
 
 router.patch("/:orderNumber/prePrint", async (req, res) => {
-  const order = await Uploads
-    .findOne({
-      _id: req.params.orderNumber,
-    })
-    .exec();
+  const order = await Uploads.findOne({
+    _id: req.params.orderNumber,
+  }).exec();
 
   await order.setPrePrinted();
 

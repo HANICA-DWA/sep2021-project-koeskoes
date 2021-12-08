@@ -1,9 +1,10 @@
 /**
- * 
- * @param {string} buyer 
+ *
+ * @param {string} buyer
+ * @param {string} textCode
  * @returns Mail preset
  */
-const mailUploadReminder = (buyer) => {
+const mailUploadReminder = (buyer, textCode) => {
   return `<html>
     <head>
       <link 
@@ -43,10 +44,10 @@ const mailUploadReminder = (buyer) => {
         <div class="row">
           <p>Je kan via de knop hieronder jouw video <i>uploaden</i> of <i>opnemen</i>, daarna kan je de naam en het e-mailadres van de ontvanger doorgeven.</p>
         </div>
-          <a href="#/buyer" class="btn btn-secondary mt-4 mb-4">Ga naar Giftle!</a>
+          <a href="http://localhost:3000/orderControl/${textCode}" class="btn btn-secondary mt-4 mb-4">Ga naar Giftle!</a>
         <div class="row">
           <p>Werkt de knop niet? Dan kunt u onze pagina ook vinden door op deze link te klikken:</p>
-          <a href="#/buyer">www.giftle.nl</a>
+          <a href="http://localhost:3000/orderControl/${textCode}">www.giftle.nl</a>
         </div>
         <div class="row mt-4">
           <p>Met vriendelijke groet,</p>
