@@ -32,7 +32,7 @@
 
 - [ ] Indeling van buyer, receiver en employee in het model uitleggen. In navigatie zelf (niet alleen bij het importeren) ook de verdeling doorvoeren. Homepagina is buyer, daarna buyer/upload, buyer/record, et cetera. Zo blijft het duidelijk. Zet bij de buyer, receiver en employee dat het pagina's zijn, bij de common dat het geen pagina's zijn.
 - [ ] Als het allemaal pages zijn, noem ze ook daadwerkelijk page. Dit maakt het duidelijker.
-- [ ] In de code is het niet handig om alle redux actions en reducers in componenten te zetten. Daarom Redux als component beschouwen en in het diagram zetten.
+- [x] In de code is het niet handig om alle redux actions en reducers in componenten te zetten. Daarom Redux als component beschouwen en in het diagram zetten.
 - [x] Geen 'gebruikt' naar de API, maar duidelijk maken dat het requests zijn.
 
 #### Server
