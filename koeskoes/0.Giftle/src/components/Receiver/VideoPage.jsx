@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { sendVideoWatchedMail } from "../../redux/actions/videoActions";
 
 /**
  * Page showing the video (by textCode) for the receiver
@@ -10,6 +12,7 @@ import { useParams } from "react-router-dom";
  */
 function VideoPage() {
   const { textCode } = useParams();
+  const dispatch = useDispatch();
   const [videoData, setVideoData] = useState({});
   const [videoError, setVideoError] = useState(null);
   const [isVideoTime, setIsVideoTime] = useState(null);
@@ -19,6 +22,7 @@ function VideoPage() {
   const [progressBar, setProgressBar] = useState(null);
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const watched = useSelector((state) => state.videos.watched);
 
   useEffect(() => {
     const getVideo = async () => {
@@ -39,6 +43,14 @@ function VideoPage() {
   }, [textCode]);
 
   useEffect(() => {
+    if (!watched) {
+      if (isVideoWatchedTime != null && isVideoTime != null) {
+        if (Math.floor(isVideoWatchedTime) === Math.floor(isVideoTime / 2)) {
+          dispatch(sendVideoWatchedMail(textCode));
+        }
+      }
+    }
+
     setMinutes(Math.floor(isVideoWatchedTime / 60));
     setSeconds(
       Math.floor(isVideoWatchedTime) - Math.floor(isVideoWatchedTime / 60) * 60
@@ -57,7 +69,7 @@ function VideoPage() {
         ></div>
       </div>
     );
-  }, [isVideoTime, isVideoWatchedTime]);
+  }, [isVideoTime, isVideoWatchedTime, textCode, dispatch, watched]);
 
   /**
    *
@@ -174,7 +186,7 @@ function VideoPage() {
         <>
           <h2>Videoboodschap voor {videoData.nameReceiver}</h2>
           <ReactPlayer
-            url={"http://localhost:4000/videos/video/" + textCode}
+            url={"http://localhost:4000/videos/video/" + videoData.videoName}
             width="100%"
             height="100%"
             playing={videoState === 2 ? true : false}

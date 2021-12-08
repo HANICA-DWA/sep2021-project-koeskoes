@@ -15,6 +15,20 @@ export const getVideo = (textCode) => {
   };
 };
 
+export const setVideoWatched = () => {
+  return {
+    type: "setVideoWatched"
+  };
+};
+
+export const sendVideoWatchedMail = (textCode) => {
+  return (dispatch) => {
+    axios.post(`http://localhost:4000/mails/notification/video/${textCode}/watched`);
+
+    return dispatch(setVideoWatched());
+  };
+};
+
 export const resetVideo = () => {
   return { type: "resetVideo" };
 };

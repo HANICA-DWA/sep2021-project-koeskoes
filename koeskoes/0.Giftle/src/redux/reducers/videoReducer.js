@@ -1,5 +1,6 @@
 const initialVideoState = {
   video: "",
+  watched: false,
 };
 
 export function videoReducer(state = initialVideoState, action) {
@@ -14,6 +15,12 @@ export function videoReducer(state = initialVideoState, action) {
       return {
         ...state,
         video: "",
+      };
+
+    case "setVideoWatched":
+      return {
+        ...state,
+        watched: true,
       };
 
     default:
