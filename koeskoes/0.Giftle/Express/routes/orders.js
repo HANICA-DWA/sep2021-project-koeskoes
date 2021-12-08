@@ -3,8 +3,8 @@ const generateRandomFileName = require("../commonFunctions/generateRandomFileNam
 const fileUpload = require("express-fileupload");
 const router = express.Router();
 const mongoose = require("mongoose");
-const mailModule = require("../commonFunctions/sendMails");
-const mail = new mailModule();
+const MailModule = require("../commonFunctions/sendMails");
+const mail = new MailModule();
 const fs = require("fs");
 const ffmpeg = require("fluent-ffmpeg");
 require("../model/uploadModel");
@@ -76,7 +76,7 @@ router.post("/newOrder", async (req, res) => {
       req.body.nameBuyer,
       newRecord.textCode
     );
-
+    
     setTimeout(async () => {
       const checkOrder = await Uploads.findOne({
         textCode: savedRecord.textCode,

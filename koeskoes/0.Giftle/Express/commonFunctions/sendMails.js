@@ -8,7 +8,7 @@ const mailOrderPlaced = require("../mail/mailOrderPlaced");
  * This class adds the ability to send mails via an SMTP server.
  * It will send multiple presets that have been built specifically for this application.
  */
-class mailModule {
+class MailModule {
   constructor() {
     this.transport = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -125,4 +125,4 @@ class mailModule {
   };
 }
 
-module.exports = mailModule;
+module.exports = MailModule;

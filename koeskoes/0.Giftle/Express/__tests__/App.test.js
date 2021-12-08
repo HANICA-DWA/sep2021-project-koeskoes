@@ -2,7 +2,7 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const generateUniqueRandomCode = require("../commonFunctions/generateUniqueRandomCode");
 const generateRandomFileName = require("../commonFunctions/generateRandomFileName");
-const mailModule = require("../commonFunctions/sendMails");
+const MailModule = require("../commonFunctions/sendMails");
 require("../model/uploadModel");
 
 const Uploads = mongoose.model("UploadSchema");
@@ -409,7 +409,7 @@ describe("mail tests", () => {
   };
 
   beforeAll(async () => {
-    mail = new mailModule();
+    mail = new MailModule();
   });
 
   describe("Send mail with textcode", () => {

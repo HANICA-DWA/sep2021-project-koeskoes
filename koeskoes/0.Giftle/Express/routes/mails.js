@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const mailModule = require("../commonFunctions/sendMails");
-const mail = new mailModule();
+const MailModule = require("../commonFunctions/sendMails");
+const mail = new MailModule();
 const mongoose = require("mongoose");
 require("../model/uploadModel");
 
