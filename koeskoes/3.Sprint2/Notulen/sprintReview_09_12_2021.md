@@ -41,6 +41,7 @@
 - Deployment op de server & transitie naar redux zijn beide grote taken die komende sprintplanning aan bod moeten komen. Beargumentatie waarom dit in belang is voor de product owner. Basis functionaliteiten sowieso in komende sprint toevoegen. Richtingen komende sprint:
   1. Meer focus op webshopeigenaar die Giftle koopt (zoals configuratie prijzen, teksten mailtjes, styling).
   2. Deny's voorkeur: _Meer focus op zender en ontvanger en user experience volledig en gelikt afmaken._
+- [Promisify](https://www.npmjs.com/package/es6-promisify) gebruiken om een promise te maken van een callback.
 
 #### User stories
 
@@ -56,7 +57,7 @@
   - DoD item dat applicatie naar vermogen tolerant is voor vergissingen (zoals dingen kwijtraken op het moment dat ik nog niet verwacht dat ik ze kwijtraak).
   - Feedback geven over dat er geen audio is opgenomen bij de video & over dat de video verdacht kort is. Geen eis maken, maar gewoon als check zodat we een tip daarover kunnen geven.
   - Icoontjes in knoppen toevoegen bij afspelen, pauzeren en opnieuw afspelen.
-- US 13 (#15): de regular expression is heel nauw, uitbreiden of NPM module gebruiken.
+- US 13 (#15): de regular expression is heel nauw, uitbreiden of NPM module gebruiken. Daarbij meer kijken naar "__escaping__" voor de beveiliging en namen met bijvoorbeeld apostrof et cetera moeten wel kunnen.
 - US 16 (#88): -
 - US 8 (#12): -
 - US 15 (#8): nadenken over of er een 'vorige stap' nodig is, of de startpagina voor de ontvanger nodig is.
