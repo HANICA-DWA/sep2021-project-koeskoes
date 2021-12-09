@@ -30,15 +30,15 @@
 - In software guidebook duidelijk beschrijven wat de criteria zijn voor: óf redux-state, óf lokale state.
 - RewatchVideo: Progressbar wellicht een apart component maken wat props meekrijgt en in de render wordt aangeroepen. Overweeg om andere useCallbacks kwijt te raken door meer componentjes te maken.
 - Bij navigate onderzoek doen naar waarom deze niet goed werken, i.p.v. maar gewoon een workaround gebruiken. History.push() is de manier om dit te doen. In het algemeen: als je een workaround moet gebruiken door een rare fout, doe dit niet op deze manier. Ga onderzoek doen naar waarom het niet werkt.
-- Deployment op de server & transitie naar redux zijn beide grote taken die komende sprintplanning aan bod moeten komen. Beargumentatie waarom dit in belang is voor de product owner. Basis functionaliteiten sowieso in komende sprint toevoegen. Richtingen komende sprint:
-  1. Meer focus op webshopeigenaar die Giftle koopt (zoals configuratie prijzen, teksten mailtjes, styling).
-  2. Deny's voorkeur: _Meer focus op zender en ontvanger en user experience volledig en gelikt afmaken._
 
 ### Sprint review
 
 - Iets meer inzicht en achtergrond in automatisch herladen na toestaan microfoon/camera. Goede betrouwbare bron waar wordt bewezen dat het onmogelijk is naar Robert sturen, anders beargumenteren waarom het ons niet lukt.
 - DoD toevoegen: labels duidelijk maken, gebruiker wordt vriendelijk en respectvol benaderd (foutmeldingen etc.), simpele user interface eisen toevoegen. Bijvoorbeeld dat systeem de gebruiker moet voorzien van goede feedback op alle veranderingen binnen de pagina. Bijvoorbeeld als camera stopt, dit erg duidelijk maken.
 - Video groot weergeven mogelijk maken (morgen tijdens sprintplannning over hebben).
+- - Deployment op de server & transitie naar redux zijn beide grote taken die komende sprintplanning aan bod moeten komen. Beargumentatie waarom dit in belang is voor de product owner. Basis functionaliteiten sowieso in komende sprint toevoegen. Richtingen komende sprint:
+  1. Meer focus op webshopeigenaar die Giftle koopt (zoals configuratie prijzen, teksten mailtjes, styling).
+  2. Deny's voorkeur: _Meer focus op zender en ontvanger en user experience volledig en gelikt afmaken._
 
 - US 11 (#19): Knop is nog niet duidelijk genoeg vormgegeven als een knop om het echt een knop te kunnen noemen. Wijzig het dan naar 'URL' in de zin erboven of pas de styling aan (zonder Bootstrap). We moeten meer denken aan de gebruiker.
 - US 14 (#82): 
