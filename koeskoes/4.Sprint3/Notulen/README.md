@@ -6,4 +6,4 @@
 
 ## Sprint Planning Sprint 3
 
-- [26_11_Sprint_Planning_Sprint_3](26_11_Sprint_Planning_Sprint_3.md)
+- [10_12_Sprint_Planning_Sprint_3](10_12_Sprint_Planning_Sprint_3.md)
