@@ -32,7 +32,7 @@
 - Bij navigate onderzoek doen naar waarom deze niet goed werken, i.p.v. maar gewoon een workaround gebruiken. History.push() is de manier om dit te doen. In het algemeen: als je een workaround moet gebruiken door een rare fout, doe dit niet op deze manier. Ga onderzoek doen naar waarom het niet werkt.
 - Deployment op de server & transitie naar redux zijn beide grote taken die komende sprintplanning aan bod moeten komen. Beargumentatie waarom dit in belang is voor de product owner. Basis functionaliteiten sowieso in komende sprint toevoegen. Richtingen komende sprint:
   1. Meer focus op webshopeigenaar die Giftle koopt (zoals configuratie prijzen, teksten mailtjes, styling).
-  2. Deny's voorkeur: Meer focus op zender en ontvangen en user experience volledig en gelikt afmaken.
+  2. Deny's voorkeur: *Meer focus op zender en ontvanger en user experience volledig en gelikt afmaken.*
 
 ### Sprint review
 
