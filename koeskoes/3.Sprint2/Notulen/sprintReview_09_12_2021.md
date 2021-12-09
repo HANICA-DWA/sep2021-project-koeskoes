@@ -33,12 +33,16 @@
 
 ### Sprint review
 
+#### Algemeen
+
 - Iets meer inzicht en achtergrond in automatisch herladen na toestaan microfoon/camera. Goede betrouwbare bron waar wordt bewezen dat het onmogelijk is naar Robert sturen, anders beargumenteren waarom het ons niet lukt.
 - DoD toevoegen: labels duidelijk maken, gebruiker wordt vriendelijk en respectvol benaderd (foutmeldingen etc.), simpele user interface eisen toevoegen. Bijvoorbeeld dat systeem de gebruiker moet voorzien van goede feedback op alle veranderingen binnen de pagina. Bijvoorbeeld als camera stopt, dit erg duidelijk maken.
 - Video groot weergeven mogelijk maken (morgen tijdens sprintplannning over hebben).
-- - Deployment op de server & transitie naar redux zijn beide grote taken die komende sprintplanning aan bod moeten komen. Beargumentatie waarom dit in belang is voor de product owner. Basis functionaliteiten sowieso in komende sprint toevoegen. Richtingen komende sprint:
+- Deployment op de server & transitie naar redux zijn beide grote taken die komende sprintplanning aan bod moeten komen. Beargumentatie waarom dit in belang is voor de product owner. Basis functionaliteiten sowieso in komende sprint toevoegen. Richtingen komende sprint:
   1. Meer focus op webshopeigenaar die Giftle koopt (zoals configuratie prijzen, teksten mailtjes, styling).
   2. Deny's voorkeur: _Meer focus op zender en ontvanger en user experience volledig en gelikt afmaken._
+
+#### User stories
 
 - US 11 (#19): Knop is nog niet duidelijk genoeg vormgegeven als een knop om het echt een knop te kunnen noemen. Wijzig het dan naar 'URL' in de zin erboven of pas de styling aan (zonder Bootstrap). We moeten meer denken aan de gebruiker.
 - US 14 (#82): 
