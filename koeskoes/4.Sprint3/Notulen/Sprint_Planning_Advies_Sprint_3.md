@@ -32,3 +32,5 @@
   - Op einde moet camera sluiten of iets om het duidelijk te maken dat degene die opneemt niet meer verder kan praten.
 
 ### Technische taken voor tijdens sprint 3
+- Redux state overal toevoegen waar nodig
+- <<Lars zijn feedback>>
