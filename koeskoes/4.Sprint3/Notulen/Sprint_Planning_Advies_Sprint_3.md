@@ -32,5 +32,7 @@
   - Op einde moet camera sluiten of iets om het duidelijk te maken dat degene die opneemt niet meer verder kan praten.
 
 ### Technische taken voor tijdens sprint 3
-- Redux state overal toevoegen waar nodig
+- Redux state overal toevoegen waar nodig (gaat veel tijd kosten)
+- Deployment op de server (gaat veel tijd kosten)
+- Alle componenten met pagina's beschrijven (b.v. OrderControl -> OrderControlPage)
 - >Lars zijn feedback<
