@@ -5,10 +5,10 @@
 ### Rollen
 
 - Robert (Product owner)
-- Sven
-- Ilse
-- Sjoerd
-- Jordi
+- Sven -> Scrumbord
+- Ilse -> Ziek :(
+- Sjoerd -> Notulist
+- Jordi -> Gesprekleider
 
 ### Gesprekspunten
 
