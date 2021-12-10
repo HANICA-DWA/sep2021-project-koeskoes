@@ -30,3 +30,5 @@
   - 'Camerapositie' veranderen naar 'camera'.
   - Als tijd voorbij is wordt opnemen automatisch gestopt, daardoor wordt boolean aangepast. Vervolgens opnieuw opnemen klikken zorgt ervoor dat boolean weer op 'start' staat, gaat niet goed.
   - Op einde moet camera sluiten of iets om het duidelijk te maken dat degene die opneemt niet meer verder kan praten.
+
+### Technische taken voor tijdens sprint 3
