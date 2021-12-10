@@ -36,3 +36,4 @@
 - Deployment op de server (gaat veel tijd kosten)
 - Alle componenten met pagina's beschrijven (b.v. OrderControl -> OrderControlPage)
 - Navigatie verbeteren. Nu is het /orderControl, maar is beter om /buyer/orderControl te doen (i.v.m. mappenstructuur)
+- API calls gebruiken we /api
