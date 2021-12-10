@@ -33,4 +33,4 @@
 
 ### Technische taken voor tijdens sprint 3
 - Redux state overal toevoegen waar nodig
-- <<Lars zijn feedback>>
+- >Lars zijn feedback<
