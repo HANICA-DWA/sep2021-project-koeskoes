@@ -35,4 +35,4 @@
 - Redux state overal toevoegen waar nodig (gaat veel tijd kosten)
 - Deployment op de server (gaat veel tijd kosten)
 - Alle componenten met pagina's beschrijven (b.v. OrderControl -> OrderControlPage)
-- >Lars zijn feedback<
+- Navigatie verbeteren. Nu is het /orderControl, maar is beter om /buyer/orderControl te doen (i.v.m. mappenstructuur)
