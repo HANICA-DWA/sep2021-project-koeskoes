@@ -8,6 +8,7 @@
 - [#89](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/89) Als ontvanger wil ik een videoreactie kunnen sturen naar de verzender, zodat ik de koper persoonlijk kan bedanken.
 - [#21](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/21) Als ontvanger wil ik eenvoudig de video kunnen delen via social media, zodat ik de video aan anderen kan laten zien.
 - [#1](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/1) Als webshop beheerder wil ik eenvoudig de plug-in aan een webshop kunnen toevoegen, zodat de klanten makkelijk gebruik kunnen maken van de plug-in. -> Winkelwagen 'nabootsen'. 
+- [#125](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/125) Als klant wil ik op een uitnodigende pagina komen, zodat ik later nog een keer een Giftle wil bestellen.
 
 ### Van de sprint review van sprint 2
 
@@ -26,10 +27,12 @@
 - [#80](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/80)
   - Als er maar 1 camera is de dropdown hiervan weghalen.
   - Als er opgenomen wordt duidelijk feedback geven dat er opgenomen wordt (kader om camerabeeld / label met 'Opname loopt').
-- [#82](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/82)
   - 'Camerapositie' veranderen naar 'camera'.
   - Als tijd voorbij is wordt opnemen automatisch gestopt, daardoor wordt boolean aangepast. Vervolgens opnieuw opnemen klikken zorgt ervoor dat boolean weer op 'start' staat, gaat niet goed.
   - Op einde moet camera sluiten of iets om het duidelijk te maken dat degene die opneemt niet meer verder kan praten.
+
+### Nieuwe User Stories
+- Als klant wil ik op een uitnodigende pagina komen, zodat ik later nog een keer een Giftle wil bestellen.
 
 ### Technische taken voor tijdens sprint 3
 - Redux state overal toevoegen waar nodig (gaat veel tijd kosten)
