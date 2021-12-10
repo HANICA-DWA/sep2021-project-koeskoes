@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 
 /**
  * Functional component start the watch video proces.
@@ -35,6 +35,9 @@ function HomeReceiver() {
           <br />
           Ik heb een...
         </p>
+        {/* <Link to="/qr-code" className="btn btn-primary mx-2">
+          QR-code
+        </Link> */}
         <button
           className="btn btn-primary mx-2"
           onClick={() => setIsBtnQRcode(true)}
