@@ -7,6 +7,7 @@
 - [#90](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/90) Als ontvanger wil ik een tekstreactie kunnen sturen naar de verzender, zodat ik de koper persoonlijk kan bedanken.
 - [#89](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/89) Als ontvanger wil ik een videoreactie kunnen sturen naar de verzender, zodat ik de koper persoonlijk kan bedanken.
 - [#21](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/21) Als ontvanger wil ik eenvoudig de video kunnen delen via social media, zodat ik de video aan anderen kan laten zien.
+- [#1](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/1) Als webshop beheerder wil ik eenvoudig de plug-in aan een webshop kunnen toevoegen, zodat de klanten makkelijk gebruik kunnen maken van de plug-in. -> Winkelwagen 'nabootsen'. 
 
 ### Van de sprint review van sprint 2
 
@@ -14,8 +15,10 @@
   - DoD item dat applicatie naar vermogen tolerant is voor vergissingen (zoals dingen kwijtraken op het moment dat ik nog niet verwacht dat ik ze kwijtraak).
   - Feedback geven over dat er geen audio is opgenomen bij de video & over dat de video verdacht kort is. Geen eis maken, maar gewoon als check zodat we een tip daarover kunnen geven.
   - Icoontjes in knoppen toevoegen bij afspelen, pauzeren en opnieuw afspelen.
+  - Video fullscreen kunnen maken.
 - [#8](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/8)
   - nadenken over of er een 'vorige stap' nodig is, of de startpagina voor de ontvanger nodig is.
+  - Video fullscreen kunnen maken.
 - [#15](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/15)
   - de regular expression is heel nauw, uitbreiden of NPM module gebruiken. Daarbij meer kijken naar "escaping" voor de beveiliging en namen met bijvoorbeeld apostrof et cetera moeten wel kunnen.
 - [#19](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/19)
