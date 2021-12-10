@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+// import { Navigate, Link } from "react-router-dom";
 
 /**
  * Functional component start the watch video proces.

@@ -135,3 +135,57 @@ input[type="file"]::-webkit-file-upload-button:hover {
     width: 14rem;
   }
 }
+
+.btn-round {
+  position: relative;
+  top: -10px;
+  border-radius: 50%;
+  border: 1px solid darkblue;
+  width: 4rem;
+  height: 4rem;
+}
+
+.btn-round svg {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-record {
+  z-index: 1;
+  margin-top: -100px;
+  margin-bottom: -100px;
+}
+
+.recording-breathing {
+  background: red;
+  -webkit-animation: breathing 4s ease-out infinite normal;
+          animation: breathing 4s ease-out infinite normal;
+}
+
+@-webkit-keyframes breathing {
+  0% {
+    background-color: red;
+  }
+
+  50% {
+    background-color: white;
+  }
+
+  100% {
+    background-color: red;
+  }
+}
+
+@keyframes breathing {
+  0% {
+    background-color: red;
+  }
+
+  50% {
+    background-color: white;
+  }
+
+  100% {
+    background-color: red;
+  }
+}
