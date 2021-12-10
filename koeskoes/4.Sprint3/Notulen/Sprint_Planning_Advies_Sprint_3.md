@@ -4,7 +4,6 @@
 
 ### Van de mogelijke (extra) user stories uit sprint 2
 
-- [#92](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/92) Als koper wil ik op een reminder kunnen reageren met een videobijlage, zodat ik niet door het hele uploadproces hoef te gaan.
 - [#90](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/90) Als ontvanger wil ik een tekstreactie kunnen sturen naar de verzender, zodat ik de koper persoonlijk kan bedanken.
 - [#89](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/89) Als ontvanger wil ik een videoreactie kunnen sturen naar de verzender, zodat ik de koper persoonlijk kan bedanken.
 - [#21](https://github.com/HANICA-DWA/sep2021-project-koeskoes/issues/21) Als ontvanger wil ik eenvoudig de video kunnen delen via social media, zodat ik de video aan anderen kan laten zien.
