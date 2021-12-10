@@ -6,7 +6,7 @@
 
 - Robert (Product owner)
 - Sven -> Scrumbord
-- Ilse -> Ziek :(
+- Ilse -> Ziek 😢
 - Sjoerd -> Notulist
 - Jordi -> Gesprekleider
 
