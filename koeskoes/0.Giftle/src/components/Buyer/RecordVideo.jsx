@@ -155,7 +155,7 @@ function RecordVideo() {
 
       const formData = new FormData();
 
-      formData.append("video", blob, "recordedVideo");
+      formData.append("video", blob, "recordedVideo.webm");
 
       const uploadResponse = await axios.patch(
         `http://localhost:4000/orders/order/video/${textCode}`,

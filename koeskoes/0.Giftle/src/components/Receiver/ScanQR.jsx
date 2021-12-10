@@ -63,7 +63,7 @@ function ScanQR() {
             delay={delay}
             style={previewStyle}
             onError={ErrorMessage(
-              "Fout met het de camera of het scannen!",
+              "Fout met de camera of het scannen!",
               () => setError(null)
             )}
             onScan={(data) => {
