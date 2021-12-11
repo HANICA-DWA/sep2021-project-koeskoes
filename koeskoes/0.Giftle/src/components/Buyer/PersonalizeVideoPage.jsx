@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
  * @return the front-end for the personalization page
  *
  */
-function PersonalizeVideo() {
+function PersonalizeVideoPage() {
   // Creates the state for the order and errors that can occur.
   const [nameReceiver, setNameReceiver] = useState(null);
   const [emailReceiver, setEmailReceiver] = useState(null);
@@ -186,4 +186,4 @@ function PersonalizeVideo() {
   );
 }
 
-export default PersonalizeVideo;
+export default PersonalizeVideoPage;

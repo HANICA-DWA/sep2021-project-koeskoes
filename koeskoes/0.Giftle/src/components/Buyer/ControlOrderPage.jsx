@@ -9,7 +9,7 @@ import axios from "axios";
  * A page that checks if order has a video
  * @returns the front end of the ControlOrder page
  */
-function ControlOrder() {
+function ControlOrderPage() {
   const { textCode } = useParams();
   const [orderData, setOrderData] = useState({});
   const dispatch = useDispatch();
@@ -65,4 +65,4 @@ function ControlOrder() {
   return videoInOrderExists();
 }
 
-export default ControlOrder;
+export default ControlOrderPage;

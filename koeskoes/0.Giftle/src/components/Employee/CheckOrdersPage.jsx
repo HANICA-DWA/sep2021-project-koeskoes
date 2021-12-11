@@ -10,14 +10,14 @@ import qrcode from "../Common/CreateQRcode";
 import ErrorMessage from "../Common/CreateErrorMessage";
 
 /**
- * CheckOrders component has a list of orders within a table, for the employee to work with.
+ * CheckOrdersPage component has a list of orders within a table, for the employee to work with.
  * It has (valuable) data if exists, does have a feature to create a QR-code and has a feature
  * to search for specific data.
  *
  * @return List of mapped orders and QR-code if exists, otherwise returns nothing
  *
  */
-const CheckOrders = () => {
+const CheckOrdersPage = () => {
   // Local variables
   const dispatch = useDispatch();
   const orders = useSelector((state) =>
@@ -230,4 +230,4 @@ const CheckOrders = () => {
   );
 };
 
-export default CheckOrders;
+export default CheckOrdersPage;

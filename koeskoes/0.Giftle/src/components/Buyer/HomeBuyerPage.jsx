@@ -8,7 +8,7 @@ import { setVideoPath } from "../../redux/actions/orderActions";
  * This component creates the starting page for the buyer proces.
  * @returns the html for the start of the buyer video upload proces.
  */
-function HomeBuyer() {
+function HomeBuyerPage() {
   const dispatch = useDispatch();
   // Creates the state for checking if the corresponding button has been clicked
   // Flips to true if clicked and then navigates to the corresponding url/ component
@@ -56,4 +56,4 @@ function HomeBuyer() {
   );
 }
 
-export default HomeBuyer;
+export default HomeBuyerPage;

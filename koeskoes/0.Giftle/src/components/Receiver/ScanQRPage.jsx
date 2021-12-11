@@ -4,14 +4,14 @@ import { Navigate } from "react-router";
 import BackArrow from "../Common/BackArrowIcon";
 import QrReader from "react-qr-reader";
 import ErrorMessage from "../Common/CreateErrorMessage";
-import "../../styles/receiver/scanQR.css";
+import "../../styles/receiver/ScanQRPage.css";
 
 /**
  * Functional component for scanning the QR-code
  *
  * @return the front-end for the scanning page
  */
-function ScanQR() {
+function ScanQRPage() {
   // Creates the state for delay, style and errors that can occur for the QR-scanner.
 
   const [delay] = useState(100);
@@ -94,4 +94,4 @@ function ScanQR() {
   );
 }
 
-export default ScanQR;
+export default ScanQRPage;

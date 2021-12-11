@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function NotFound() {
+function NotFoundPage() {
   return (
     <div className="vertical-center">
       <h1>404 - Page Not Found!</h1>
@@ -9,4 +9,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default NotFoundPage;

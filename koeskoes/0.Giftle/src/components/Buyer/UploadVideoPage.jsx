@@ -6,7 +6,7 @@ import BackArrow from "../Common/BackArrowIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { setVideoUploaded } from "../../redux/actions/orderActions";
 
-function UploadVideo() {
+function UploadVideoPage() {
   // Creates the state for uploaded files and errors that can occur.
   const dispatch = useDispatch();
   const [video, setVideo] = useState(null);
@@ -110,4 +110,4 @@ function UploadVideo() {
   );
 }
 
-export default UploadVideo;
+export default UploadVideoPage;

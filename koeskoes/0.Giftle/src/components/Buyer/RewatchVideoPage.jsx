@@ -14,7 +14,7 @@ import axios from "axios";
  * @return the front-end for the RewatchVideo page.
  *
  */
-function RewatchVideo() {
+function RewatchVideoPage() {
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isVideoTime, setIsVideoTime] = useState(null);
@@ -257,4 +257,4 @@ function RewatchVideo() {
   );
 }
 
-export default RewatchVideo;
+export default RewatchVideoPage;

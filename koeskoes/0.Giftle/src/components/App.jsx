@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NotFound from "./NotFound";
+import NotFoundPage from "./NotFoundPage";
 
 // Buyer components
 // Temp components
@@ -8,24 +8,24 @@ import CheckOutPage from "./Buyer/CheckOutPage";
 import CheckOutPageDone from "./Buyer/CheckOutPageDone";
 
 //Perm components
-import ControlOrder from "./Buyer/ControlOrder";
-import NoTextCode from "./Buyer/NoTextCode";
-import HomeBuyer from "./Buyer/HomeBuyer";
-import UploadVideo from "./Buyer/UploadVideo";
+import ControlOrderPage from "./Buyer/ControlOrderPage";
+import NoTextCodePage from "./Buyer/NoTextCodePage";
+import HomeBuyerPage from "./Buyer/HomeBuyerPage";
+import UploadVideoPage from "./Buyer/UploadVideoPage";
 import RecordVideo from "./Buyer/RecordVideo";
-import RewatchVideo from "./Buyer/RewatchVideo";
-import PersonalizeVideo from "./Buyer/PersonalizeVideo";
+import RewatchVideoPage from "./Buyer/RewatchVideoPage";
+import PersonalizeVideoPage from "./Buyer/PersonalizeVideoPage";
 import FinalPage from "./Buyer/FinalPage";
 
 // Receiver components
-import HomeReceiver from "./Receiver/HomeReceiver";
+import HomeReceiverPage from "./Receiver/HomeReceiverPage";
 import QRPage from "./Receiver/QRPage";
-import ScanQR from "./Receiver/ScanQR";
+import ScanQRPage from "./Receiver/ScanQRPage";
 import TextCodePage from "./Receiver/TextCodePage";
 import VideoPage from "./Receiver/VideoPage";
 
 // Employee components
-import CheckOrders from "./Employee/CheckOrders";
+import CheckOrdersPage from "./Employee/CheckOrdersPage";
 
 // Styling
 import "../styles/App.css";
@@ -42,22 +42,22 @@ function App() {
           <Route
             path="/orderControl/:textCode"
             exact
-            element={<ControlOrder />}
+            element={<ControlOrderPage />}
           />
-          <Route path="/noTextCode" element={<NoTextCode />} />
-          <Route path="/buyer" exact element={<HomeBuyer />} />
-          <Route path="/upload" exact element={<UploadVideo />} />
+          <Route path="/noTextCode" element={<NoTextCodePage />} />
+          <Route path="/buyer" exact element={<HomeBuyerPage />} />
+          <Route path="/upload" exact element={<UploadVideoPage />} />
           <Route path="/record" exact element={<RecordVideo />} />
-          <Route path="/rewatchvideo" exact element={<RewatchVideo />} />
-          <Route path="/personalize/" exact element={<PersonalizeVideo />} />
+          <Route path="/rewatchvideo" exact element={<RewatchVideoPage />} />
+          <Route path="/personalize/" exact element={<PersonalizeVideoPage />} />
           <Route path="/thankyou" exact element={<FinalPage />} />
-          <Route path="/receiver" exact element={<HomeReceiver />} />
+          <Route path="/receiver" exact element={<HomeReceiverPage />} />
           <Route path="/qr-code" exact element={<QRPage />} />
-          <Route path="/scan" exact element={<ScanQR />} />
+          <Route path="/scan" exact element={<ScanQRPage />} />
           <Route path="/textcode" exact element={<TextCodePage />} />
           <Route path="/watchvideo/:textCode" element={<VideoPage />} />
-          <Route path="/checkorders" exact element={<CheckOrders />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/checkorders" exact element={<CheckOrdersPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>
     </div>

@@ -8,7 +8,7 @@ import { Navigate } from "react-router-dom";
  *
  * @return the front-end for the receiver homepage.
  */
-function HomeReceiver() {
+function HomeReceiverPage() {
   const [isBtnQRcode, setIsBtnQRcode] = useState(false);
   const [isBtnTextcode, setIsBtnTextcode] = useState(false);
 
@@ -56,4 +56,4 @@ function HomeReceiver() {
   );
 }
 
-export default HomeReceiver;
+export default HomeReceiverPage;
