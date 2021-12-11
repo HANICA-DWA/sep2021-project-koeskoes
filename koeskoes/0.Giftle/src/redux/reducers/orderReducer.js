@@ -4,8 +4,6 @@ const initialOrderState = {
   searchParams: "",
   pageNumber: 1,
   textCode: '',
-  videoPath: '',
-  videoUploaded: false,
 };
 
 export function orderReducer(state = initialOrderState, action) {
@@ -42,18 +40,6 @@ export function orderReducer(state = initialOrderState, action) {
       return {
         ...state,
         textCode: action.payload,
-      };
-
-    case "setVideoPath":
-      return {
-        ...state,
-        videoPath: action.payload,
-      };
-
-    case "setVideoUploaded":
-      return {
-        ...state,
-        videoUploaded: true,
       };
 
     default:

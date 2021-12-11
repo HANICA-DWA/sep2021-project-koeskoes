@@ -111,23 +111,23 @@ input[type="file"]::-webkit-file-upload-button:hover {
 }
 
 .progress {
+  margin-top: -20px;
   margin-bottom: 15px;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
 }
 
 .video-player {
   height: 19.1em;
 }
 
-@media only screen and (min-width: 769px) {
-  .lg-hidden {
-    display: none !important;
-  }
-}
+/* .rewatchVideoPlayer video {
+  margin-bottom: -90px;
+} */
 
-@media only screen and (max-width: 768px) {
-  .md-sm-hidden {
-    display: none !important;
-  }
+.container {
+  transition: 300ms ease;
 }
 
 @media only screen and (max-width: 320px) {
@@ -136,13 +136,37 @@ input[type="file"]::-webkit-file-upload-button:hover {
   }
 }
 
+@media only screen and (min-width: 768px) {
+  .lg-hidden {
+    display: none !important;
+  }
+
+  .md-sm-hidden {
+    display: none !important;
+  }
+
+  .container-wide {
+    width: 90% !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .lg-hidden {
+    display: none !important;
+  }
+
+  .container-wide {
+    width: 60% !important;
+  }
+}
+
 .btn-round {
   position: relative;
   top: -10px;
   border-radius: 50%;
   border: 1px solid darkblue;
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
 }
 
 .btn-round svg {
@@ -153,7 +177,7 @@ input[type="file"]::-webkit-file-upload-button:hover {
 .btn-record {
   z-index: 1;
   margin-top: -100px;
-  margin-bottom: -100px;
+  margin-bottom: -70px;
 }
 
 .recording-breathing {

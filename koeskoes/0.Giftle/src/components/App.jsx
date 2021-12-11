@@ -11,10 +11,7 @@ import CheckOutPageDone from "./Buyer/CheckOutPageDone";
 import ControlOrderPage from "./Buyer/ControlOrderPage";
 import NoTextCodePage from "./Buyer/NoTextCodePage";
 import HomeBuyerPage from "./Buyer/HomeBuyerPage";
-import UploadVideoPage from "./Buyer/UploadVideoPage";
-import RecordVideo from "./Buyer/RecordVideo";
-import RewatchVideoPage from "./Buyer/RewatchVideoPage";
-import PersonalizeVideoPage from "./Buyer/PersonalizeVideoPage";
+import CreateVideoPage from "./Buyer/CreateVideoPage";
 import FinalPage from "./Buyer/FinalPage";
 
 // Receiver components
@@ -46,10 +43,7 @@ function App() {
           />
           <Route path="/buyer/noTextCode" element={<NoTextCodePage />} />
           <Route path="/buyer" exact element={<HomeBuyerPage />} />
-          <Route path="/buyer/upload" exact element={<UploadVideoPage />} />
-          <Route path="/buyer/record" exact element={<RecordVideo />} />
-          <Route path="/buyer/rewatchvideo" exact element={<RewatchVideoPage />} />
-          <Route path="/buyer/personalize/" exact element={<PersonalizeVideoPage />} />
+          <Route path="/buyer/create" exact element={<CreateVideoPage />} />
           <Route path="/buyer/thankyou" exact element={<FinalPage />} />
           <Route path="/receiver" exact element={<HomeReceiverPage />} />
           <Route path="/receiver/qr-code" exact element={<QRPage />} />

@@ -1,22 +1,23 @@
-import Webcam from "react-webcam";
-import { useEffect, useState, useCallback, useRef } from "react";
-import ErrorMessage from "./CreateErrorMessage";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
+import ErrorMessage from "../Common/CreateErrorMessage";
+import { useSelector } from "react-redux";
+import Webcam from "react-webcam";
 import { ReactComponent as RecButton } from "../../assets/rec-button.svg";
 import { ReactComponent as PauseButton } from "../../assets/pause.svg";
 
 const Camera = (props) => {
+  const webcamRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
   const [resolution, setResolution] = useState("720");
   const [progress, setProgress] = useState("0");
   const [barColor, setBarColor] = useState("bg-info");
   const [isDevicesChecked, setIsDevicesChecked] = useState(false);
   const [isAudioAvailable, setIsAudioAvailable] = useState(false);
   const [isWebcamAvailable, setIsWebcamAvailable] = useState(false);
-  const webcamRef = useRef(null);
-  const mediaRecorderRef = useRef(null);
   const [capturing, setCapturing] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
-  const [cameraPosition, setCameraPosition] = useState("user");
+  const [cameraPosition, setCameraPosition] = useState(null);
   const [availableCameras, setAvailableCameras] = useState([]);
   const [pressed, setPressed] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -24,6 +25,7 @@ const Camera = (props) => {
   const [totalTime, setTotalTime] = useState(120);
   const [minutes, setMinutes] = useState(null);
   const [seconds, setSeconds] = useState(null);
+  const textCode = useSelector((state) => state.orders.textCode);
 
   /**
    *
@@ -43,13 +45,19 @@ const Camera = (props) => {
           setIsAudioAvailable(true);
         } else {
           setIsAudioAvailable(false);
-          props.error.setError(
-            ErrorMessage("Geen microfoon gevonden", () => props.error.setError(null))
-          );
+          if (props.setError)
+            props.setError(
+              ErrorMessage("Geen microfoon gevonden", () =>
+                props.setError(null)
+              )
+            );
         }
       } catch (e) {
         setIsAudioAvailable(false);
-        props.error.setError(ErrorMessage("Geen microfoon gevonden", () => props.error.setError(null)));
+        if (props.setError)
+          props.setError(
+            ErrorMessage("Geen microfoon gevonden", () => props.setError(null))
+          );
       }
 
       try {
@@ -67,11 +75,17 @@ const Camera = (props) => {
           setAvailableCameras(videoDevices);
         } else {
           setIsWebcamAvailable(false);
-          props.error.setError(ErrorMessage("Geen webcam gevonden", () => props.error.setError(null)));
+          if (props.setError)
+            props.setError(
+              ErrorMessage("Geen webcam gevonden", () => props.setError(null))
+            );
         }
       } catch (e) {
         setIsWebcamAvailable(false);
-        props.error.setError(ErrorMessage("Geen webcam gevonden", () => props.error.setError(null)));
+        if (props.setError)
+          props.setError(
+            ErrorMessage("Geen webcam gevonden", () => props.setError(null))
+          );
       }
 
       setIsDevicesChecked(true);
@@ -111,8 +125,7 @@ const Camera = (props) => {
       handleDataAvailable
     );
     mediaRecorderRef.current.start();
-    props.onRecordingStart();
-  }, [webcamRef, setCapturing, mediaRecorderRef, handleDataAvailable, props]);
+  }, [webcamRef, setCapturing, mediaRecorderRef, handleDataAvailable]);
 
   /**
    *
@@ -122,33 +135,37 @@ const Camera = (props) => {
    * @return setIsGoToWatchVideo to true if no erro
    *
    */
-  const handleUpload = useCallback(async () => {
-    if (recordedChunks.length) {
-      const blob = new Blob(recordedChunks, {
-        type: "video/webm",
-      });
+  useEffect(() => {
+    const handleUpload = async () => {
+      if (recordedChunks.length > 0) {
+        const blob = new Blob(recordedChunks, {
+          type: "video/webm",
+        });
 
-      const formData = new FormData();
+        const formData = new FormData();
 
-      formData.append("video", blob, "recordedVideo.webm");
+        formData.append("video", blob, "recordedVideo.webm");
+        const uploadResponse = await axios.patch(props.uploadPath, formData);
 
-      const uploadResponse = await axios.patch(
-        props.uploadPath,
-        formData
-      );
+        setRecordedChunks([]);
 
-      setRecordedChunks([]);
-
-      if (uploadResponse.status === "error") {
-        return props.error.setError(
-          ErrorMessage(uploadResponse.data.message, () => props.error.setError(null))
-        );
-      } else {
-        // return setIsGoToWatchVideo(true);
-        // Go to watch video component
+        if (uploadResponse.status === "error") {
+          return props.setError
+            ? props.setError(
+                ErrorMessage(uploadResponse.data.message, () =>
+                  props.setError(null)
+                )
+              )
+            : null;
+        } else {
+          // return setIsGoToWatchVideo(true);
+          // Go to watch video component
+        }
       }
-    }
-  }, [recordedChunks, props]);
+    };
+
+    handleUpload();
+  }, [recordedChunks, textCode, props]);
 
   /**
    *
@@ -158,9 +175,7 @@ const Camera = (props) => {
   const handleStopCaptureClick = useCallback(() => {
     mediaRecorderRef.current.stop();
     setCapturing(false);
-    handleUpload();
-    props.onRecordingStop();
-  }, [mediaRecorderRef, setCapturing, handleUpload, props]);
+  }, [mediaRecorderRef, setCapturing]);
 
   /**
    * UseEffect activates when resolution changes.
@@ -273,8 +288,17 @@ const Camera = (props) => {
 
   return (
     <>
+      <div className="row">
+        <h1>Uw video opnemen</h1>
+      </div>
       <div className="row mb-2">
-        <div className={(availableCameras.length > 1 ? "col-md-8" : "col-md-12") + " " + "col-sm-12"}>
+        <div
+          className={
+            (availableCameras.length > 1 ? "col-md-8" : "col-md-12") +
+            " " +
+            "col-sm-6 col-12"
+          }
+        >
           <p className="text-start mb-1">Opnameduur en kwaliteit: </p>
           <select
             className="form-select"
@@ -287,26 +311,10 @@ const Camera = (props) => {
           </select>
         </div>
         {availableCameras.length > 1 ? (
-          <div className="col-md-4 col-sm-12">
+          <div className="col-md-4 col-sm-6 col-12">
             <p className="text-start mb-1">Camera: </p>
-            <button className="btn btn-primary lg-hidden float-md-none float-start">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-arrow-clockwise"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
-                />
-                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
-              </svg>
-            </button>
             <select
-              className="form-select md-sm-hidden"
+              className="form-select"
               value={cameraPosition}
               disabled={pressed}
               onChange={(e) =>

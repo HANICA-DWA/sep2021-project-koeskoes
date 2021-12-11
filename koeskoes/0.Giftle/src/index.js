@@ -16,7 +16,7 @@ const logger = (store) => (next) => (action) => {
 
 export const theStore = Redux.createStore(
   mainReducer,
-  Redux.compose(Redux.applyMiddleware(logger, thunkMiddleware))
+  Redux.compose(Redux.applyMiddleware(logger, thunkMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
 );
 
 const mainComponent = (

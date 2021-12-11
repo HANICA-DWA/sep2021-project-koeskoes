@@ -36,13 +36,6 @@ export const setTextCode = (textCode) => {
   };
 };
 
-export const setVideoPath = (videoPath) => {
-  return {
-    type: "setVideoPath",
-    payload: videoPath,
-  };
-};
-
 export const setVideoUploaded = () => {
   return {
     type: "setVideoUploaded",
