@@ -129,7 +129,6 @@ function VideoPage() {
             ":" +
             (seconds < 10 ? "0" + seconds : seconds === 60 ? "00" : seconds)}
         </div>
-        <button className="btn btn-primary my-3 mx-4">Vorige stap</button>
         {videoPlayButton(videoState)}
         <button className="btn btn-primary my-3 mx-4">Volgende stap</button>
       </>
