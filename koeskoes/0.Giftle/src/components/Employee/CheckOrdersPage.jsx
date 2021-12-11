@@ -63,7 +63,7 @@ const CheckOrdersPage = () => {
         <button
           className="btn btn-primary"
           onClick={(e) => {
-            axios.patch(`http://localhost:4000/orders/${order._id}/prePrint`);
+            axios.patch(`http://localhost:4000/api/orders/${order._id}/prePrint`);
           }}
         >
           Maak QR-code
@@ -184,7 +184,7 @@ const CheckOrdersPage = () => {
     try {
       const qrCode = qrcode("http://localhost:3000/watchvideo/" + orderNumber);
 
-      await axios.patch("http://localhost:4000/orders/" + orderNumber);
+      await axios.patch("http://localhost:4000/api/orders/" + orderNumber);
 
       dispatch(getOrders());
 

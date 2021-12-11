@@ -75,7 +75,7 @@ function RecordVideo() {
         </button>
         <h1>Uw video opnemen</h1>
         <br />
-        <Camera error={{error, setError}} uploadPath={`http://localhost:4000/orders/order/video/${textCode}`} />
+        <Camera error={{error, setError}} uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`} />
         <p className="mt-3">
           Door een video op te nemen gaat u akkoord met de{" "}
           <a href="#algemene-voorwaarden">algemene voorwaarden</a>.

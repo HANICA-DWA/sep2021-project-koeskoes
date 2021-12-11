@@ -50,7 +50,7 @@ function UploadVideoPage() {
       formData.append("video", sourceVideoFile, sourceVideoFile.name);
 
       const uploadResponse = await axios.patch(
-        `http://localhost:4000/orders/order/video/${textCode}`,
+        `http://localhost:4000/api/orders/order/video/${textCode}`,
         formData
       );
 

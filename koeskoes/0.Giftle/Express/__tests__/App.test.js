@@ -39,14 +39,14 @@ afterAll(async () => {
 
 describe("Express route tests", () => {
   test("get orders from mongoose route", async () => {
-    const orders = await axios.get("http://localhost:4000/orders/all/");
+    const orders = await axios.get("http://localhost:4000/api/orders/all/");
 
     expect(orders.data).toEqual([order]);
   });
 
   test("create new order without file route", async () => {
     const orders = await axios.patch(
-      `http://localhost:4000/orders/order/video/${order.textCode}`
+      `http://localhost:4000/api/orders/order/video/${order.textCode}`
     );
 
     expect(orders.data).toEqual({
@@ -57,7 +57,7 @@ describe("Express route tests", () => {
 
   test("change order route", async () => {
     const orderChange = await axios.patch(
-      "http://localhost:4000/orders/" + order._id
+      "http://localhost:4000/api/orders/" + order._id
     );
 
     expect(orderChange.data).toEqual({

@@ -43,7 +43,7 @@ function CheckOutPage() {
     formData.append("emailBuyer", emailBuyer);
 
     const uploadResponse = await axios.post(
-      `http://localhost:4000/orders/newOrder`,
+      `http://localhost:4000/api/orders/newOrder`,
       formData
     );
 

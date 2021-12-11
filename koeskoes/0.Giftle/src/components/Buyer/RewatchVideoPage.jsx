@@ -38,7 +38,7 @@ function RewatchVideoPage() {
   useEffect(() => {
     const fetchVideoData = async () => {
       const data = await axios.get(
-        "http://localhost:4000/orders/order/" + textCode
+        "http://localhost:4000/api/orders/order/" + textCode
       );
 
       setVideoData(data);
@@ -194,7 +194,7 @@ function RewatchVideoPage() {
         </div>
         <ReactPlayer
           url={
-            "http://localhost:4000/videos/video/" +
+            "http://localhost:4000/api/videos/video/" +
             (videoData ? videoData.data.videoName : null)
           }
           width="100%"

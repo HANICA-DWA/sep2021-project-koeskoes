@@ -27,7 +27,7 @@ function VideoPage() {
   useEffect(() => {
     const getVideo = async () => {
       const videoRequest = await axios.get(
-        "http://localhost:4000/videos/" + textCode
+        "http://localhost:4000/api/videos/" + textCode
       );
 
       if (!videoRequest.data.status) {
@@ -185,7 +185,7 @@ function VideoPage() {
         <>
           <h2>Videoboodschap voor {videoData.nameReceiver}</h2>
           <ReactPlayer
-            url={"http://localhost:4000/videos/video/" + videoData.videoName}
+            url={"http://localhost:4000/api/videos/video/" + videoData.videoName}
             width="100%"
             height="100%"
             playing={videoState === 2 ? true : false}

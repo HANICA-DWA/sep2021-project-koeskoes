@@ -55,7 +55,7 @@ function PersonalizeVideoPage() {
     formData.append("email", emailReceiver);
 
     const uploadResponse = await axios.patch(
-      `http://localhost:4000/orders/new/` + textCode,
+      `http://localhost:4000/api/orders/new/` + textCode,
       formData
     );
 

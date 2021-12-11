@@ -30,9 +30,9 @@ const fileUpload = require("./routes/orders");
 const videos = require("./routes/videos");
 const mails = require("./routes/mails");
 
-app.use("/orders", fileUpload);
-app.use("/videos", videos);
-app.use("/mails", mails);
+app.use("/api/orders", fileUpload);
+app.use("/api/videos", videos);
+app.use("/api/mails", mails);
 
 app.use("/*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));

@@ -21,7 +21,7 @@ function ControlOrderPage() {
   useEffect(() => {
     const getVideoInOrder = async () => {
       const videoExists = await axios.get(
-        "http://localhost:4000/videos/" + textCode
+        "http://localhost:4000/api/videos/" + textCode
       );
 
       if (!videoExists.data.status) {
