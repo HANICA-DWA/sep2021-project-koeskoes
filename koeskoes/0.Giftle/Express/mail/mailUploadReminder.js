@@ -22,10 +22,7 @@ const mailUploadReminder = (buyer, textCode) => {
       }
       .container{
           background-color: #e8e8e8;
-          margin-left: 18.75rem;
-          margin-right: 18.75rem;
-          padding-left: 5rem;
-          padding-right: 5rem;
+          padding: 1rem 5rem 1rem 5rem;
       }
       .row{
           margin-bottom: 2rem;
@@ -44,7 +41,7 @@ const mailUploadReminder = (buyer, textCode) => {
           opacity: 0.8;
         }
       .note > p, .note > a{
-          font-size: 12px;
+        font-size: 12px;
       }
       .link{
         color: #1c0dfd;
