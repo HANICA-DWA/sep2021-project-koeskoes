@@ -22,7 +22,7 @@ function QRPage() {
    *
    */
   if (isBtnClicked === true) {
-    return <Navigate to="/scan" />;
+    return <Navigate to="/receiver/scan" />;
   }
 
   if (isGoBackReceiverMain === true) {

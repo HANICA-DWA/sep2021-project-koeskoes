@@ -23,15 +23,15 @@ function PersonalizeVideoPage() {
 
   // Navigation functionality to navigate the user to a different page.
   if (!textCode) {
-    return <Navigate to="/noTextCode" />;
+    return <Navigate to="/buyer/noTextCode" />;
   }
 
   if (isPreviousPage === true) {
-    return <Navigate to="/rewatchvideo" />;
+    return <Navigate to="/buyer/rewatchvideo" />;
   }
 
   if (isNextPage === true) {
-    return <Navigate to="/thankyou" />;
+    return <Navigate to="/buyer/thankyou" />;
   }
 
   /**

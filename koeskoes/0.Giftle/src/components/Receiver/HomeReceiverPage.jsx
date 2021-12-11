@@ -18,11 +18,11 @@ function HomeReceiverPage() {
    *
    */
   if (isBtnQRcode === true) {
-    return <Navigate to="/qr-code" />;
+    return <Navigate to="/receiver/qr-code" />;
   }
 
   if (isBtnTextcode === true) {
-    return <Navigate to="/textcode" />;
+    return <Navigate to="/receiver/textcode" />;
   }
 
   return (

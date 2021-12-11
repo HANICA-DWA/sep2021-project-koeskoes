@@ -50,7 +50,7 @@ function ScanQRPage() {
    *
    */
   if (isGoBackBuyerMain === true) {
-    return <Navigate to="/qr-code" />;
+    return <Navigate to="/receiver/qr-code" />;
   }
 
   return (

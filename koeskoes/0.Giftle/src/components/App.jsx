@@ -44,19 +44,19 @@ function App() {
             exact
             element={<ControlOrderPage />}
           />
-          <Route path="/noTextCode" element={<NoTextCodePage />} />
+          <Route path="/buyer/noTextCode" element={<NoTextCodePage />} />
           <Route path="/buyer" exact element={<HomeBuyerPage />} />
-          <Route path="/upload" exact element={<UploadVideoPage />} />
-          <Route path="/record" exact element={<RecordVideo />} />
-          <Route path="/rewatchvideo" exact element={<RewatchVideoPage />} />
-          <Route path="/personalize/" exact element={<PersonalizeVideoPage />} />
-          <Route path="/thankyou" exact element={<FinalPage />} />
+          <Route path="/buyer/upload" exact element={<UploadVideoPage />} />
+          <Route path="/buyer/record" exact element={<RecordVideo />} />
+          <Route path="/buyer/rewatchvideo" exact element={<RewatchVideoPage />} />
+          <Route path="/buyer/personalize/" exact element={<PersonalizeVideoPage />} />
+          <Route path="/buyer/thankyou" exact element={<FinalPage />} />
           <Route path="/receiver" exact element={<HomeReceiverPage />} />
-          <Route path="/qr-code" exact element={<QRPage />} />
-          <Route path="/scan" exact element={<ScanQRPage />} />
-          <Route path="/textcode" exact element={<TextCodePage />} />
-          <Route path="/watchvideo/:textCode" element={<VideoPage />} />
-          <Route path="/checkorders" exact element={<CheckOrdersPage />} />
+          <Route path="/receiver/qr-code" exact element={<QRPage />} />
+          <Route path="/receiver/scan" exact element={<ScanQRPage />} />
+          <Route path="/receiver/textcode" exact element={<TextCodePage />} />
+          <Route path="/receiver/watchvideo/:textCode" element={<VideoPage />} />
+          <Route path="/employee/checkorders" exact element={<CheckOrdersPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>

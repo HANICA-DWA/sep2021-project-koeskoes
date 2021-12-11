@@ -23,12 +23,12 @@ function HomeBuyerPage() {
 
   if (isBtnRecord === true) {
     dispatch(setVideoPath("record"));
-    return <Navigate to="/record" />;
+    return <Navigate to="/buyer/record" />;
   }
 
   if (isBtnUpload === true) {
     dispatch(setVideoPath("upload"));
-    return <Navigate to="/upload" />;
+    return <Navigate to="/buyer/upload" />;
   }
 
   return (

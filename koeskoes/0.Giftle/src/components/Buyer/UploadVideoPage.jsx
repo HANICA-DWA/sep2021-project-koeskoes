@@ -17,7 +17,7 @@ function UploadVideoPage() {
   const videoUploaded = useSelector((state) => state.orders.videoUploaded);
 
   if (!textCode) {
-    return <Navigate to="/noTextCode" />;
+    return <Navigate to="/buyer/noTextCode" />;
   }
 
   if (isGoBackBuyerMain === true) {
@@ -27,7 +27,7 @@ function UploadVideoPage() {
   if (isGoToWatchVideo === true) {
     if (textCode !== null) {
       dispatch(setVideoUploaded());
-      return <Navigate to="/rewatchvideo" />;
+      return <Navigate to="/buyer/rewatchvideo" />;
     }
     return null;
   }

@@ -55,7 +55,7 @@ const TextCodePage = () => {
    *
    */
   if (isGoToWatchVideo !== null) {
-    return <Navigate to={"/watchvideo/" + isGoToWatchVideo} />;
+    return <Navigate to={"/receiver/watchvideo/" + isGoToWatchVideo} />;
   }
 
   if (isGoBackReceiverMain === true) {

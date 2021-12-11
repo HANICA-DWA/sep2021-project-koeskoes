@@ -219,13 +219,13 @@ function RewatchVideoPage() {
    *
    */
   if (!textCode) {
-    return <Navigate to="/noTextCode" />;
+    return <Navigate to="/buyer/noTextCode" />;
   }
   if (isPreviousPage === true) {
-    return <Navigate to={"/" + videoPath} />;
+    return <Navigate to={"/buyer/" + videoPath} />;
   }
   if (isNextPage === true) {
-    return <Navigate to="/personalize/" />;
+    return <Navigate to="/buyer/personalize/" />;
   }
 
   return (
