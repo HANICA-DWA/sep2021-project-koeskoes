@@ -499,7 +499,7 @@
                   </label>
                 </div>
               </div>
-              <div className="col-12 mt-1 text-end" id="createOrder">
+              <div className="col-12 my-3 text-end" id="createOrder">
                 <button className="btn btn-primary" onClick={saveReceiverData}>
                   Plaats bestelling&nbsp;
                   {<NextArrow />}
