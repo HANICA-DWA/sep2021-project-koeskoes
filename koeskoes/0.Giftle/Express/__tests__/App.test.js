@@ -357,7 +357,6 @@ describe("Mail tests", () => {
         message: {
           accepted: response.message.accepted,
           rejected: response.message.rejected,
-          messageSize: response.message.messageSize,
           envelope: response.message.envelope,
         },
       };
@@ -389,7 +388,6 @@ describe("Mail tests", () => {
         message: {
           accepted: ["mail@mail.com"],
           rejected: [],
-          messageSize: 2354,
           envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
         },
       });
@@ -471,7 +469,6 @@ describe("Mail tests", () => {
         message: {
           accepted: ["mail@mail.com"],
           rejected: [],
-          messageSize: 1849,
           envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
         },
       });
@@ -535,7 +532,6 @@ describe("Mail tests", () => {
         message: {
           accepted: ["mail@mail.com"],
           rejected: [],
-          messageSize: 2493,
           envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
         },
       });
@@ -580,7 +576,6 @@ describe("Mail tests", () => {
         message: {
           accepted: ["mail@mail.com"],
           rejected: [],
-          messageSize: 2370,
           envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
         },
       });
@@ -622,7 +617,6 @@ describe("Mail tests", () => {
         message: {
           accepted: ["mail@mail.com"],
           rejected: [],
-          messageSize: 2358,
           envelope: {
             from: "info@giftle.nl",
             to: ["mail@mail.com"],
