@@ -1,5 +1,5 @@
 const initialUploadState = {
-  videoPath: '',
+  videoCreationPath: '',
   uploadVisualState: 1, // 1 is recording/uploading, 2 is rewatching the video
   videoUploaded: false,
   personalized: false,
@@ -7,10 +7,10 @@ const initialUploadState = {
 
 export function uploadReducer(state = initialUploadState, action) {
   switch (action.type) {
-    case "setVideoPath":
+    case "setVideoCreationPath":
       return {
         ...state,
-        videoPath: action.payload,
+        videoCreationPath: action.payload,
       };
 
     case "setVideoUploaded":

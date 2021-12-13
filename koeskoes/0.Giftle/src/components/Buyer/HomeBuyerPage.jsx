@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setVideoPath } from "../../redux/actions/uploadActions";
+import { setVideoCreationPath } from "../../redux/actions/uploadActions";
 
 /**
  * This component creates the starting page for the buyer proces.
@@ -22,12 +22,12 @@ function HomeBuyerPage() {
   }
 
   if (isBtnRecord === true) {
-    dispatch(setVideoPath("record"));
+    dispatch(setVideoCreationPath("record"));
     return <Navigate to="/buyer/create" />;
   }
 
   if (isBtnUpload === true) {
-    dispatch(setVideoPath("upload"));
+    dispatch(setVideoCreationPath("upload"));
     return <Navigate to="/buyer/create" />;
   }
 

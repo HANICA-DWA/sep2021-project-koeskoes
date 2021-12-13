@@ -1,7 +1,7 @@
-export const setVideoPath = (videoPath) => {
+export const setVideoCreationPath = (videoCreationPath) => {
   return {
-    type: "setVideoPath",
-    payload: videoPath,
+    type: "setVideoCreationPath",
+    payload: videoCreationPath,
   };
 };
 

@@ -30,7 +30,7 @@ const VideoPlayer = (props) => {
    */
   useEffect(() => {
     const fetchVideoData = async () => {
-      const data = await axios.get(props.videoPath);
+      const data = await axios.get(props.videoCreationPath);
 
       setVideoData(data);
     };

@@ -8,7 +8,7 @@ import PersonalizationForm from "../Common/PersonalizationForm";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import {
-  setVideoPath,
+  setVideoCreationPath,
   setVideoUploaded,
   setPersonalized,
   changeUploadVisualState,
@@ -26,7 +26,7 @@ function CreateVideoPage() {
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
   const textCode = useSelector((state) => state.orders.textCode);
-  const videoPath = useSelector((state) => state.uploads.videoPath);
+  const videoCreationPath = useSelector((state) => state.uploads.videoCreationPath);
   const videoUploaded = useSelector((state) => state.uploads.videoUploaded);
   const uploadVisualState = useSelector(
     (state) => state.uploads.uploadVisualState
@@ -72,18 +72,18 @@ function CreateVideoPage() {
                 className="btn btn-primary float-start"
                 onClick={() =>
                   dispatch(
-                    setVideoPath(videoPath === "upload" ? "record" : "upload")
+                    setVideoCreationPath(videoCreationPath === "upload" ? "record" : "upload")
                   )
                 }
               >
-                {videoPath === "upload" ? "Record" : "Upload"}
+                {videoCreationPath === "upload" ? "Record" : "Upload"}
               </button>
             ) : (
               <button
                 className="btn btn-primary float-start"
                 onClick={() => dispatch(changeUploadVisualState(1))}
               >
-                Opnieuw {videoPath === "upload" ? "uploaden" : "opnemen"}
+                Opnieuw {videoCreationPath === "upload" ? "uploaden" : "opnemen"}
               </button>
             )}
           </div>
@@ -111,7 +111,7 @@ function CreateVideoPage() {
         <div className="row">
           <div className={`${personalized ? "col-lg-6" : "col-lg-12" } col-md-12 col-sm-12`}>
             {uploadVisualState === 1 ? (
-              videoPath === "upload" ? (
+              videoCreationPath === "upload" ? (
                 <UploadVideo
                   uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`}
                   setError={setError}
@@ -124,13 +124,13 @@ function CreateVideoPage() {
               )
             ) : (
               <VideoPlayer
-                videoPath={`http://localhost:4000/api/orders/order/` + textCode}
+                videoCreationPath={`http://localhost:4000/api/orders/order/` + textCode}
               />
             )}
             {uploadVisualState === 1 ? (
               <p className="mt-3">
                 Door een video{" "}
-                {videoPath === "upload" ? "te uploaden" : "op te nemen"} gaat u
+                {videoCreationPath === "upload" ? "te uploaden" : "op te nemen"} gaat u
                 akkoord met de{" "}
                 <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
               </p>

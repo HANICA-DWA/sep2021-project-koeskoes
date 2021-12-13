@@ -5,7 +5,8 @@ import {
   getOrders,
   setSearch,
   setPageNumber,
-} from "../../redux/actions/orderActions";
+  setPageNumbers,
+} from "../../redux/actions/employeeActions";
 import qrcode from "../Common/CreateQRcode";
 import ErrorMessage from "../Common/CreateErrorMessage";
 
@@ -21,13 +22,13 @@ const CheckOrdersPage = () => {
   // Local variables
   const dispatch = useDispatch();
   const orders = useSelector((state) =>
-    state.orders.searchParams
-      ? state.orders.filteredOrders
-      : state.orders.orders
+    state.employee.searchParams
+      ? state.employee.filteredOrders
+      : state.employee.orders
   );
-  const pageNumber = useSelector((state) => state.orders.pageNumber);
-  const [pageNumbers, setPageNumbers] = useState(null);
-  const searchParams = useSelector((state) => state.orders.searchParams);
+  const pageNumber = useSelector((state) => state.employee.pageNumber);
+  const pageNumbers = useSelector((state) => state.employee.pageNumbers);
+  const searchParams = useSelector((state) => state.employee.searchParams);
   const [error, setError] = useState(null);
 
   // Use effect to update the list of orders.
@@ -92,7 +93,7 @@ const CheckOrdersPage = () => {
           }
 
           if (pageNumbers !== temporary.length) {
-            setPageNumbers(temporary.length);
+            dispatch(setPageNumbers(temporary.length));
           }
 
           return temporary;
@@ -100,7 +101,7 @@ const CheckOrdersPage = () => {
           const newOrders = [orders];
 
           if (pageNumbers !== newOrders.length) {
-            setPageNumbers(newOrders.length);
+            dispatch(setPageNumbers(newOrders.length));
           }
 
           return newOrders;
