@@ -10,12 +10,14 @@
 
   // VERWIJDER DEZE NAVIGATE -> andere manier van toepassing
   import { Navigate } from "react-router";
+  import { useNavigate } from "react-router-dom";
 
   /**
    * This is a temporary page simulating the CheckOutPage
    * @returns the front end of the CheckOutPage
    */
   function CheckOutPage() {
+    const navigate = useNavigate();
   // Hook variables
   const [firstNameBuyer, setFirstNameBuyer] = useState(null);
   const [lastNameBuyer, setLastNameBuyer] = useState(null);
@@ -86,7 +88,7 @@
         return setIsNextPage(true);
       }
     }
-    return setIsNextPage(true);
+    return navigate('/magento-checked-out');
   };
 
   /**
@@ -96,28 +98,19 @@
    */
   const checkFullName = () => {
     const maxLength = 300;
-    const re = /^[a-zA-Z\s]+$/;
 
-    if (firstNameBuyer === null || firstNameBuyer === "" || lastNameBuyer === null || lastNameBuyer === "") {
+    if (firstNameBuyer === null || firstNameBuyer.trim() === "" || lastNameBuyer === null || lastNameBuyer.trim() === "") {
       return {
         status: "error",
         message: "De voor- en achternaam moeten ingevuld worden!",
       };
     }
 
-    if (firstNameBuyer.length > maxLength || lastNameBuyer > maxLength) {
+    if (firstNameBuyer.length > maxLength || lastNameBuyer.length > maxLength) {
       return {
         status: "error",
         message:
           "De voor- en/of achternaam die je hebt ingevuld is te lang! De naam mag maximaal 300 karakters lang zijn.",
-      };
-    }
-
-    if (!re.test(firstNameBuyer) || !re.test(lastNameBuyer)) {
-      return {
-        status: "error",
-        message:
-          "De voor- en/of achternaam die je hebt ingevuld bevat speciale karakters. Gebruik alleen letters (en spaties).",
       };
     }
 
@@ -131,7 +124,7 @@
   const checkEmail = () => {
     const re = /\S+@\S+\.\S+/;
 
-    if (emailBuyer === null || emailBuyer === "") {
+    if (emailBuyer === null || emailBuyer.trim() === "") {
       return {
         status: "error",
         message: "E-mailadres mag niet leeg zijn!",

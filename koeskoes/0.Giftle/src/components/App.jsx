@@ -6,6 +6,7 @@ import NotFoundPage from "./NotFoundPage";
 // Temp components
 import CheckOutPage from "./Buyer/CheckOutPage";
 import CheckOutPageDone from "./Buyer/CheckOutPageDone";
+import CheckOutPageDoneMagento from "./Buyer/CheckOutPageDoneMagento";
 
 //Perm components
 import ControlOrderPage from "./Buyer/ControlOrderPage";
@@ -35,6 +36,7 @@ function App() {
           {/* Temp Routes */}
           <Route path="/checkout" exact element={<CheckOutPage />} />
           <Route path="/checked-out" exact element={<CheckOutPageDone />} />
+          <Route path="/magento-checked-out" exact element={<CheckOutPageDoneMagento />} />
           {/* Perm Routes */}
           <Route
             path="/orderControl/:textCode"
