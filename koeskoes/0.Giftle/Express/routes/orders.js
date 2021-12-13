@@ -78,7 +78,7 @@ router.post("/newOrder", async (req, res) => {
 
     await mail.sendMailOrderPlaced(
       req.body.emailBuyer,
-      req.body.nameBuyer,
+      req.body.fullNameBuyer,
       newRecord.textCode
     );
 
@@ -87,7 +87,7 @@ router.post("/newOrder", async (req, res) => {
         textCode: savedRecord.textCode,
         videoName: "",
       }).exec();
-      console.log(checkOrder);
+      
       if (checkOrder) {
         mail.sendReminderUploadVideo(
           checkOrder.emailGifter,
