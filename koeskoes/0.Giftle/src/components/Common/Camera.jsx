@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Webcam from "react-webcam";
 import { ReactComponent as RecButton } from "../../assets/rec-button.svg";
 import { ReactComponent as PauseButton } from "../../assets/pause.svg";
+import { setVideo } from "../../redux/actions/videoActions";
 
 const Camera = (props) => {
+  const dispatch = useDispatch();
   const webcamRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const [resolution, setResolution] = useState("720");
@@ -158,8 +160,7 @@ const Camera = (props) => {
               )
             : null;
         } else {
-          // return setIsGoToWatchVideo(true);
-          // Go to watch video component
+          return dispatch(setVideo(uploadResponse.data));
         }
       }
     };
