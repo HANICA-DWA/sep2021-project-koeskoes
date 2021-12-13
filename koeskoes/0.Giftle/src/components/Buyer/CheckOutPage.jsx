@@ -322,7 +322,7 @@
             </div>
             {billingAddress()}
           </div>
-          <div className="col-lg-4 mt-3 vertical-col bg-light">
+          <div className="col-md-12 col-lg-3 col-xl-4 mt-3 vertical-col bg-light">
             <h2><span className="square mt-3 text-center"><p className="square-text">2.</p></span> Verzendopties</h2>
             <hr />
             <div className="form-check">
@@ -393,7 +393,7 @@
               <input type="text" className="form-control" placeholder="Uw kortingscode indien van toepassing" disabled />
             </div>
           </div>
-          <div className="col-lg-3 mt-3 vertical-col bg-light">
+          <div className="col-md-12 col-lg-4 col-xl-3 mt-3 vertical-col bg-light">
             <h2><span className="square mt-3 text-center"><p className="square-text">✔</p></span> Bestelling bekijken</h2>
             <hr />
             <div className="row">
