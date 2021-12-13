@@ -332,6 +332,7 @@ const Camera = (props) => {
       <div style={{ width: "100%" }}>
         <Webcam
           audio={true}
+          muted={true}
           ref={webcamRef}
           forceScreenshotSourceSize
           videoConstraints={{
