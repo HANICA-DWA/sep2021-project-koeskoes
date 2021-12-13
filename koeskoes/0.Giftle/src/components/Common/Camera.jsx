@@ -166,7 +166,7 @@ const Camera = (props) => {
     };
 
     handleUpload();
-  }, [recordedChunks, textCode, props]);
+  }, [recordedChunks, textCode, props, dispatch]);
 
   /**
    *

@@ -417,7 +417,7 @@
             </div>
             <div className="row">
               <div className="col-5 text-center">
-                <img src={backpack} className="img-thumbnail" />
+                <img src={backpack} className="img-thumbnail" alt="" />
                 <div className="badge bg-orange text-wrap w-100">
                   Rugtas kleurrijk
                 </div>
@@ -443,7 +443,7 @@
             <hr className="style-dotted" />
             <div className="row">
               <div className="col-5">
-                <img src={socks} className="img-thumbnail" />
+                <img src={socks} className="img-thumbnail" alt="" />
                 <div className="badge bg-orange text-wrap w-100">
                   Sokken met bladprint
                 </div>
@@ -489,7 +489,7 @@
             <div className="row">
             <div className="col-12">
                 <div className="form-check" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Via Giftle kunt u een videoboodschap versturen met uw cadeau mee">
-                  <input className="form-check-input" type="checkbox" value={isGiftleEnabled} onClick={e => setGiftleEnabled(e.target.checked)} />
+                  <input id="checkBoxGiftle" className="form-check-input" type="checkbox" value={isGiftleEnabled} onClick={e => setGiftleEnabled(e.target.checked)} />
                   <label className="form-check-label" for="flexCheckDefault">
                     Voeg <b>een Giftle</b> toe aan uw bestelling <i>(+€ 3,95)</i>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-question-circle-fill ms-2 text-primary" viewBox="0 0 16 16">
@@ -506,7 +506,7 @@
                   </label>
                 </div>
               </div>
-              <div className="col-12 mt-1 text-end">
+              <div className="col-12 mt-1 text-end" id="createOrder">
                 <button className="btn btn-primary" onClick={saveReceiverData}>
                   Plaats bestelling&nbsp;
                   {<NextArrow />}
