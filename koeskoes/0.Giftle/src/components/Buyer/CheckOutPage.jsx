@@ -12,8 +12,8 @@
   import { Navigate } from "react-router";
 
   /**
-   * This is a temp page htmlFor simulating the checkout page
-   * @returns the front end of the checkout page
+   * This is a temporary page simulating the CheckOutPage
+   * @returns the front end of the CheckOutPage
    */
   function CheckOutPage() {
   // Hook variables
@@ -26,6 +26,11 @@
   const [isGiftleEnabled, setGiftleEnabled] = useState(false);
   const [isNextPage, setIsNextPage] = useState(false);
 
+  /**
+   *
+   * Check when totalPrice gets changed
+   *
+   */
   useEffect(() => {
     const giftleWithinPrice = () => {
       if(isGiftleEnabled) {
@@ -39,7 +44,7 @@
     giftleWithinPrice();
   }, [isGiftleEnabled, priceTotal]);
 
-  // Navigation functionality to send the user to te next page
+  // VERWIJDER DEZE NAVIGATE -> andere manier van toepassing
   if (isNextPage === true) {
     return <Navigate to="/checked-out" />;
   } 
@@ -143,6 +148,13 @@
     return true;
   };
 
+  /**
+   * 
+   * This function returns the billing address if isSameAddress is false.
+   * This function returns an image if isSameAddress is true, to fill-in the space.
+   * @returns front-end (form) for the billingAddress
+   * 
+   */
   const billingAddress = () => {
     if(!isSameAddress) {
       return (
@@ -155,7 +167,7 @@
             <path fillRule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494Z"/>
           </svg>
           </span>
-          <input type="text" className="form-control" placeholder="Straatnaam" aria-label="Straatnaam" />
+          <input type="text" className="form-control" placeholder="Straatnaam" aria-label="Straatnaam" disabled />
         </div>
         <div className="input-group mb-3">
           <span className="input-group-text">
@@ -164,14 +176,14 @@
             <path d="M12 3H4a4 4 0 0 0-4 4v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7a4 4 0 0 0-4-4zM8 7a3.99 3.99 0 0 0-1.354-3H12a3 3 0 0 1 3 3v6H8V7zm-3.415.157C4.42 7.087 4.218 7 4 7c-.218 0-.42.086-.585.157C3.164 7.264 3 7.334 3 7a1 1 0 0 1 2 0c0 .334-.164.264-.415.157z"/>
           </svg>
           </span>
-          <input type="text" className="form-control" placeholder="Postcode" aria-label="Postcode" />
+          <input type="text" className="form-control" placeholder="Postcode" aria-label="Postcode" disabled />
           <span className="input-group-text">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-house-fill" viewBox="0 0 16 16">
             <path fillRule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
             <path fillRule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
           </svg>
           </span>
-          <input type="text" className="form-control" placeholder="Plaats" aria-label="Plaats" />
+          <input type="text" className="form-control" placeholder="Plaats" aria-label="Plaats" disabled />
         </div>
         <div className="input-group mb-3">
           <span className="input-group-text">
@@ -179,7 +191,7 @@
             <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
           </svg>
           </span>
-          <select className="form-select text-muted">
+          <select className="form-select text-muted" disabled>
             <option selected disabled>Selecteer land</option>
             <option value="nederland">Nederland</option>
             <option value="belgie">België</option>
@@ -190,7 +202,7 @@
             <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
           </svg>
           </span>
-          <select className="form-select text-muted">
+          <select className="form-select text-muted" disabled>
             <option selected disabled>Selecteer regio</option>
             <option value="nederland">Gelderland</option>
             <option value="belgie">Limburg</option>
@@ -246,7 +258,7 @@
                 <path fillRule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494Z"/>
               </svg>
               </span>
-              <input type="text" className="form-control" placeholder="Straatnaam" aria-label="Straatnaam" />
+              <input type="text" className="form-control" placeholder="Straatnaam" aria-label="Straatnaam" disabled />
             </div>
             <div className="input-group mb-3">
               <span className="input-group-text">
@@ -255,14 +267,14 @@
                 <path d="M12 3H4a4 4 0 0 0-4 4v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7a4 4 0 0 0-4-4zM8 7a3.99 3.99 0 0 0-1.354-3H12a3 3 0 0 1 3 3v6H8V7zm-3.415.157C4.42 7.087 4.218 7 4 7c-.218 0-.42.086-.585.157C3.164 7.264 3 7.334 3 7a1 1 0 0 1 2 0c0 .334-.164.264-.415.157z"/>
               </svg>
               </span>
-              <input type="text" className="form-control" placeholder="Postcode" aria-label="Postcode" />
+              <input type="text" className="form-control" placeholder="Postcode" aria-label="Postcode" disabled />
               <span className="input-group-text">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-house-fill" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                 <path fillRule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
               </svg>
               </span>
-              <input type="text" className="form-control" placeholder="Plaats" aria-label="Plaats" />
+              <input type="text" className="form-control" placeholder="Plaats" aria-label="Plaats" disabled />
             </div>
             <div className="input-group mb-3">
               <span className="input-group-text">
@@ -270,7 +282,7 @@
                 <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
               </svg>
               </span>
-              <select className="form-select text-muted">
+              <select className="form-select text-muted" disabled>
                 <option selected disabled>Selecteer land</option>
                 <option value="nederland">Nederland</option>
                 <option value="belgie">België</option>
@@ -281,7 +293,7 @@
                 <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
               </svg>
               </span>
-              <select className="form-select text-muted">
+              <select className="form-select text-muted" disabled>
                 <option selected disabled>Selecteer regio</option>
                 <option value="nederland">Gelderland</option>
                 <option value="belgie">Limburg</option>
@@ -294,14 +306,14 @@
                 <path d="M3 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2zm6 11a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/>
               </svg>
               </span>
-              <input type="text" className="form-control" placeholder="Phone number" aria-label="Phone-number" />
+              <input type="text" className="form-control" placeholder="Phone number" aria-label="Phone-number" disabled />
               <span className="input-group-text">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-briefcase-fill" viewBox="0 0 16 16">
                 <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
                 <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
               </svg>
               </span>
-              <input type="text" className="form-control" placeholder="Company" aria-label="Company" />
+              <input type="text" className="form-control" placeholder="Company" aria-label="Company" disabled />
             </div>
             <div className="input-group mb-1">
               <div className="form-check form-switch">
@@ -321,14 +333,14 @@
             <h2><span className="square mt-3 text-center"><p className="square-text">2.</p></span> Verzendopties</h2>
             <hr />
             <div className="form-check">
-              <input className="form-check-input" type="radio" name="exampleRadios" value="option1" />
+              <input className="form-check-input" type="radio" name="exampleRadios" value="option1" disabled />
               <label className="form-check-label">
                 Standaard verzending (€ 6,95)
               </label>
             </div>
             <hr className="style-dotted" />
             <div className="form-check mb-4">
-              <input className="form-check-input" type="radio" name="exampleRadios" value="option2" />
+              <input className="form-check-input" type="radio" name="exampleRadios" value="option2" disabled />
               <label className="form-check-label">
                 Snelle verzending (€ 13,95)
               </label>
@@ -340,7 +352,7 @@
                 <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
               </svg>
               </span>
-              <input type="date" className="form-control" />
+              <input type="date" className="form-control" disabled />
             </div>
             <h5>Opmerking</h5>
             <div className="input-group mb-3">
@@ -350,30 +362,30 @@
                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
               </svg>
               </span>
-              <textarea className="form-control" placeholder="Plaats hier uw opmerking" rows="2"></textarea>
+              <textarea className="form-control" placeholder="Plaats hier uw opmerking" rows="2" disabled />
             </div>
             <h2><span className="square mt-5 text-center"><p className="square-text">3.</p></span> Betaalmethode</h2>
             <hr />
             <div className="form-check mb-2">
-              <input className="form-check-input" type="radio" name="exampleRadios" value="option1" />
+              <input className="form-check-input" type="radio" name="exampleRadios" value="option1" disabled />
               <label className="form-check-label">
                 PayPal
               </label>
             </div>
             <div className="form-check mb-2">
-              <input className="form-check-input" type="radio" name="exampleRadios" value="option2" />
+              <input className="form-check-input" type="radio" name="exampleRadios" value="option2" disabled />
               <label className="form-check-label">
                 iDeal
               </label>
             </div>
             <div className="form-check mb-2">
-              <input className="form-check-input" type="radio" name="exampleRadios" value="option2" />
+              <input className="form-check-input" type="radio" name="exampleRadios" value="option2" disabled />
               <label className="form-check-label">
                 Creditcard
               </label>
             </div>
             <div className="form-check mb-4">
-              <input className="form-check-input" type="radio" name="exampleRadios" value="option2" />
+              <input className="form-check-input" type="radio" name="exampleRadios" value="option2" disabled />
               <label className="form-check-label">
                 Bankoverschrijving
               </label>
@@ -385,7 +397,7 @@
                 <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
               </svg>
               </span>
-              <input type="text" className="form-control" placeholder="Uw kortingscode indien van toepassing" />
+              <input type="text" className="form-control" placeholder="Uw kortingscode indien van toepassing" disabled />
             </div>
           </div>
           <div className="col-lg-3 mt-3 vertical-col bg-light">
@@ -488,7 +500,7 @@
               </div>
               <div className="col-12">
                 <div className="form-check">
-                  <input className="form-check-input" type="checkbox" value="" />
+                  <input className="form-check-input" type="checkbox" value="" disabled />
                   <label className="form-check-label" for="flexCheckDefault">
                     Registreer mij voor de nieuwsbrief
                   </label>
