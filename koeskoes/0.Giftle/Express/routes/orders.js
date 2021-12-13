@@ -65,7 +65,7 @@ router.get("/order/:textCode", async (req, res) => {
 router.post("/newOrder", async (req, res) => {
   try {
     const newRecord = new Uploads({
-      nameGifter: req.body.nameBuyer,
+      nameGifter: req.body.fullNameBuyer,
       emailGifter: req.body.emailBuyer,
       videoName: "",
       prePrinted: false,
