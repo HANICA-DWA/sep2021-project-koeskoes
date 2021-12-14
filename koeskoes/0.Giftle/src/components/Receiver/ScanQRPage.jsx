@@ -12,10 +12,10 @@ import "../../styles/receiver/ScanQRPage.css";
  * @return the front-end for the scanning page
  */
 function ScanQRPage() {
-  // Creates the state for delay, style and errors that can occur for the QR-scanner.
+  const delay = 100;
+  const previewStyle = { height: "17em", width: "17em" };
 
-  const [delay] = useState(100);
-  const [previewStyle] = useState({ height: "17em", width: "17em" });
+  // Creates the state for delay, style and errors that can occur for the QR-scanner.
   const [isDevicesChecked, setIsDevicesChecked] = useState(false);
   const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
   const [error, setError] = useState(null);
@@ -62,9 +62,8 @@ function ScanQRPage() {
           <QrReader
             delay={delay}
             style={previewStyle}
-            onError={ErrorMessage(
-              "Fout met de camera of het scannen!",
-              () => setError(null)
+            onError={ErrorMessage("Fout met de camera of het scannen!", () =>
+              setError(null)
             )}
             onScan={(data) => {
               if (data) {
