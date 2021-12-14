@@ -21,6 +21,7 @@ import QRPage from "./Receiver/QRPage";
 import ScanQRPage from "./Receiver/ScanQRPage";
 import TextCodePage from "./Receiver/TextCodePage";
 import VideoPage from "./Receiver/VideoPage";
+import SendTextReactionPage from "./Receiver/SendTextReactionPage";
 
 // Employee components
 import CheckOrdersPage from "./Employee/CheckOrdersPage";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/receiver/scan" exact element={<ScanQRPage />} />
           <Route path="/receiver/textcode" exact element={<TextCodePage />} />
           <Route path="/receiver/watchvideo/:textCode" element={<VideoPage />} />
+          <Route path="/receiver/text-reaction" element={<SendTextReactionPage />} />
           <Route path="/employee/checkorders" exact element={<CheckOrdersPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
