@@ -57,7 +57,7 @@ test("Create new order (no lastname)", async (test) => {
 
 checkoutFixture();
 
-test("Create new order (firstname to long > 300 characters)", async (test) => {
+test("Create new order (firstname too long > 300 characters)", async (test) => {
   await test
     .typeText("#email", "mail@mail.com")
     .typeText("#firstname", "ibhjasfeijhbawedijbjbiawjbawjibadefwaefuiiuwadkhjbadwkhbaewfbseafbjikesbfibeihjkfbasjkefdbiukajwbndkjawbvkjda ihfdbnawjkbfiuabfdhkjabkjdbaiwudnbjkhabidawnihdhakwjbdiuasbdchjasbkjdbaiudbnwakhbdkjabidbakjwbdkajwbdkujabnkjdwbakjdbakwjhbdkjawbdkjasbjhkdbakjsdbkjasndkjasnkjdabnskjdbakjsbdkjahbsdjkabjkwdbk")
@@ -69,7 +69,7 @@ test("Create new order (firstname to long > 300 characters)", async (test) => {
 
 checkoutFixture();
 
-test("Create new order (lastname to long > 300 characters)", async (test) => {
+test("Create new order (lastname too long > 300 characters)", async (test) => {
   await test
     .typeText("#email", "mail@mail.com")
     .typeText("#firstname", "firstname")
