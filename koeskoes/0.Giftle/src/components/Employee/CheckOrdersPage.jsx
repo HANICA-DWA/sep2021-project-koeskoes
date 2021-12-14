@@ -10,6 +10,10 @@ import {
 import qrcode from "../Common/CreateQRcode";
 import ErrorMessage from "../Common/CreateErrorMessage";
 
+// import SVG as ReactComponent for easier use
+import { ReactComponent as QRCode } from "../../assets/qr-code.svg";
+import { ReactComponent as Printer } from "../../assets/printer.svg";
+
 /**
  * CheckOrdersPage component has a list of orders within a table, for the employee to work with.
  * It has (valuable) data if exists, does have a feature to create a QR-code and has a feature
@@ -56,7 +60,8 @@ const CheckOrdersPage = () => {
           className="btn btn-success"
           onClick={(e) => createQRCode(order._id)}
         >
-          Print QR-code
+          Print QR-code&nbsp;
+          <Printer />
         </button>
       );
     } else {
@@ -67,7 +72,8 @@ const CheckOrdersPage = () => {
             axios.patch(`http://localhost:4000/api/orders/${order._id}/prePrint`);
           }}
         >
-          Maak QR-code
+          Maak QR-code&nbsp;
+          <QRCode />
         </button>
       );
     }

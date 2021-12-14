@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import NextArrowIcon from "../Common/NextArrowIcon";
 import { useSelector, useDispatch } from "react-redux";
 import Camera from "../Common/Camera";
 import UploadVideo from "../Common/UploadVideo";
@@ -13,6 +12,11 @@ import {
   setPersonalized,
   changeUploadVisualState,
 } from "../../redux/actions/uploadActions";
+
+// import SVG as ReactComponent for easier use
+import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
+import { ReactComponent as DownUpArrow } from "../../assets/arrow-down-up.svg";
+import { ReactComponent as RepeatArrow } from "../../assets/arrow-repeat.svg";
 
 /**
  *
@@ -76,14 +80,16 @@ function CreateVideoPage() {
                   )
                 }
               >
-                {videoCreationPath === "upload" ? "Record" : "Upload"}
+                {videoCreationPath === "upload" ? `Record` : `Upload`}
+                &nbsp;<DownUpArrow />
               </button>
             ) : (
               <button
                 className="btn btn-primary float-start"
                 onClick={() => dispatch(changeUploadVisualState(1))}
               >
-                Opnieuw {videoCreationPath === "upload" ? "uploaden" : "opnemen"}
+                Opnieuw {videoCreationPath === "upload" ? "uploaden" : "opnemen"}&nbsp;
+                <RepeatArrow />
               </button>
             )}
           </div>
@@ -94,16 +100,16 @@ function CreateVideoPage() {
                 className="btn btn-primary float-end"
                 onClick={() => dispatch(changeUploadVisualState(2))}
               >
-                Gebruik vorige video
-                {<NextArrowIcon />}
+                Gebruik vorige video&nbsp;
+                {<RightArrow />}
               </button>
             ) : uploadVisualState === 2 ? (
               <button
                 className="btn btn-primary float-end"
                 onClick={() => goToPersonalization()}
               >
-                Personaliseren
-                {<NextArrowIcon />}
+                Personaliseren&nbsp;
+                {<RightArrow />}
               </button>
             ) : null}
           </div>

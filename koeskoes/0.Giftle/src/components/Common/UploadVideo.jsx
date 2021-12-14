@@ -4,6 +4,9 @@ import axios from "axios";
 import ErrorMessage from "./CreateErrorMessage";
 import { setVideo } from "../../redux/actions/videoActions";
 
+// import SVG as ReactComponent for easier use
+import { ReactComponent as FileUpload } from "../../assets/file-upload.svg";
+
 const UploadVideo = (props) => {
   const dispatch = useDispatch();
   const [uploadedVideo, setUploadedVideo] = useState(null);
@@ -73,7 +76,8 @@ const UploadVideo = (props) => {
           style={{ width: "51%" }}
           onClick={convertVideo}
         >
-          Upload video
+          Upload video&nbsp;
+          <FileUpload />
         </button>
       </div>
     </>

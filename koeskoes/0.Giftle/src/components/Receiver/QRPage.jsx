@@ -1,7 +1,10 @@
 import React from "react";
 import { Navigate } from "react-router";
 import { useState } from "react";
-import BackArrow from "../Common/BackArrowIcon";
+
+// import SVG as ReactComponent for easier use
+import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
+import { ReactComponent as QRCodeScan } from "../../assets/qr-code-scan.svg";
 
 /**
  * Functional component for letting the user know that they are about to scan a QR-code
@@ -40,14 +43,15 @@ function QRPage() {
           className="btn btn-primary my-3 mx-4"
           onClick={() => setIsGoBackReceiverMain(true)}
         >
-          {<BackArrow />}
+          {<LeftArrow />}&nbsp;
           Terug
         </button>
         <button
           className="btn btn-primary my-3 mx-4"
           onClick={() => setIsBtnClicked(true)}
         >
-          Scan QR-code
+          Scan QR-code&nbsp;
+          <QRCodeScan />
         </button>
       </div>
     </div>

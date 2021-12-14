@@ -4,6 +4,10 @@ import { Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setVideoCreationPath } from "../../redux/actions/uploadActions";
 
+// import SVG as ReactComponent for easier use
+import { ReactComponent as FileUpload } from "../../assets/file-upload.svg";
+import { ReactComponent as RecordCircle } from "../../assets/record-circle.svg";
+
 /**
  * This component creates the starting page for the buyer proces.
  * @returns the html for the start of the buyer video upload proces.
@@ -43,13 +47,15 @@ function HomeBuyerPage() {
           className="btn btn-primary mx-4"
           onClick={() => setIsBtnRecord(true)}
         >
-          Opnemen
+          Opnemen&nbsp;
+          <RecordCircle />
         </button>
         <button
           className="btn btn-primary mx-4"
           onClick={() => setIsBtnUpload(true)}
         >
-          Uploaden
+          Uploaden&nbsp;
+          <FileUpload />
         </button>
       </div>
     </div>

@@ -1,12 +1,14 @@
   import React, { useState, useEffect } from "react";
   import axios from "axios";
   import ErrorMessage from "../Common/CreateErrorMessage";
-  import NextArrow from "../Common/NextArrowIcon";
 
   // import images from assets folder
   import logo from "./../../assets/magento-logo.png";
   import socks from "./../../assets/socks.png";
   import backpack from "./../../assets/rugtas.png";
+
+  // import SVG as ReactComponent for easier use
+  import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
 
   // VERWIJDER DEZE NAVIGATE -> andere manier van toepassing
   import { Navigate } from "react-router";
@@ -502,7 +504,7 @@
               <div className="col-12 my-3 text-end" id="createOrder">
                 <button className="btn btn-primary" onClick={saveReceiverData}>
                   Plaats bestelling&nbsp;
-                  {<NextArrow />}
+                  {<RightArrow />}
                 </button>
               </div>
             </div>

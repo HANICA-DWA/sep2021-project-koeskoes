@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { sendVideoWatchedMail } from "../../redux/actions/videoActions";
+
+// import SVG as ReactComponent for easier use
+import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
+import { ReactComponent as PlayCircle } from "../../assets/play-circle.svg";
+import { ReactComponent as PauseCircle } from "../../assets/pause-circle.svg";
+import { ReactComponent as ReplayCircle } from "../../assets/arrow-clockwise.svg";
 
 /**
  * Page showing the video (by textCode) for the receiver
@@ -12,6 +18,7 @@ import { sendVideoWatchedMail } from "../../redux/actions/videoActions";
  */
 function VideoPage() {
   const { textCode } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [videoData, setVideoData] = useState({});
   const [videoError, setVideoError] = useState(null);
@@ -87,7 +94,8 @@ function VideoPage() {
             className="btn btn-primary my-3 mx-4"
             onClick={() => setVideoState(2)}
           >
-            Afspelen
+            Afspelen&nbsp;
+            <PlayCircle />
           </button>
         );
       case 2:
@@ -96,7 +104,8 @@ function VideoPage() {
             className="btn btn-primary my-3 mx-4"
             onClick={() => setVideoState(1)}
           >
-            Pauzeren
+            Pauzeren&nbsp;
+            <PauseCircle />
           </button>
         );
       case 3:
@@ -105,7 +114,8 @@ function VideoPage() {
             className="btn btn-primary my-3 mx-4"
             onClick={() => setVideoState(2)}
           >
-            Opnieuw afspelen
+            Opnieuw afspelen&nbsp;
+            <ReplayCircle />
           </button>
         );
       default:
@@ -130,7 +140,10 @@ function VideoPage() {
             (seconds < 10 ? "0" + seconds : seconds === 60 ? "00" : seconds)}
         </div>
         {videoPlayButton(videoState)}
-        <button className="btn btn-primary my-3 mx-4">Volgende stap</button>
+        <button className="btn btn-primary my-3 mx-4" onClick={() => navigate("/receiver/reaction")}>
+          Verstuur een reactie&nbsp;
+          <RightArrow />
+        </button>
       </>
     );
   };

@@ -4,7 +4,10 @@ import { Navigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { getVideo, resetVideo } from "../../redux/actions/videoActions";
 import ErrorMessage from "../Common/CreateErrorMessage";
-import BackArrow from "../Common/BackArrowIcon";
+
+// import SVG as ReactComponent for easier use
+import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
+import { ReactComponent as PersonVideo } from "../../assets/person-video.svg";
 
 /**
  * Functional component for receiving a textCode
@@ -88,14 +91,15 @@ const TextCodePage = () => {
           className="btn btn-primary my-3 mx-4"
           onClick={() => setIsGoBackReceiverMain(true)}
         >
-          {<BackArrow />}
-          Terug
+          {<LeftArrow />}
+          &nbsp;Terug
         </button>
         <button
           className="btn btn-primary my-3 mx-4"
           onClick={() => checkTextcode()}
         >
-          Bekijk video
+          Bekijk video&nbsp;
+          {<PersonVideo />}
         </button>
       </div>
     </div>

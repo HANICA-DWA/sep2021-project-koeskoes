@@ -3,6 +3,10 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 // import { Navigate, Link } from "react-router-dom";
 
+// import SVG as ReactComponent for easier use
+import { ReactComponent as QRCode } from "../../assets/qr-code.svg";
+import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
+
 /**
  * Functional component start the watch video proces.
  *
@@ -43,13 +47,15 @@ function HomeReceiverPage() {
           className="btn btn-primary mx-2"
           onClick={() => setIsBtnQRcode(true)}
         >
-          QR-code
+          QR-code&nbsp;
+          <QRCode />
         </button>
         <button
           className="btn btn-primary mx-2"
           onClick={() => setIsBtnTextcode(true)}
         >
-          Tekstcode
+          Tekstcode&nbsp;
+          <PencilSquare />
         </button>
       </div>
     </div>

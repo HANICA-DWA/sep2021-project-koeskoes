@@ -3,6 +3,9 @@ import axios from "axios";
 import ErrorMessage from "./CreateErrorMessage";
 import { useSelector } from "react-redux";
 
+// import SVG as ReactComponent for easier use
+import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
+
 /**
  *
  * React component to rewatch a video.
@@ -151,7 +154,8 @@ function PersonalizationForm(props) {
       <br />
       <br />
       <button className="btn btn-primary" onClick={saveReceiverData} disabled={(props.disabled ? props.disabled : false)}>
-        Versturen
+        Versturen&nbsp;
+        <RightArrow />
       </button>
     </>
   );

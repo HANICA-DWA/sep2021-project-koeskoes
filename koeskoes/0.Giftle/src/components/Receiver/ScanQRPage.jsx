@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router";
-import BackArrow from "../Common/BackArrowIcon";
 import QrReader from "react-qr-reader";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import "../../styles/receiver/ScanQRPage.css";
+
+// import SVG as ReactComponent for easier use
+import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
 
 /**
  * Functional component for scanning the QR-code
@@ -84,8 +86,8 @@ function ScanQRPage() {
             className="btn btn-primary my-3 mx-4"
             onClick={() => setIsGoBackBuyerMain(true)}
           >
-            {<BackArrow />}
-            Terug
+            {<LeftArrow />}
+            &nbsp;Terug
           </button>
         </div>
       </div>
