@@ -117,6 +117,10 @@ input[type="file"]::-webkit-file-upload-button {
   }
 }
 
+.rewatchVideoPlayer {
+  width: 100%;
+}
+
 .btn-round {
   border: 1px solid;
   border-color: #000000;
@@ -136,6 +140,12 @@ input[type="file"]::-webkit-file-upload-button {
   z-index: 1;
   margin-top: -100px;
   margin-bottom: -70px;
+  transform: translateX(50%);
+}
+
+.btn-record-right {
+  position: relative;
+  transform: translateX(75%);
 }
 
 .recording-breathing {

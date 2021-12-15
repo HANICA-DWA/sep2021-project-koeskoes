@@ -86,6 +86,14 @@ const VideoPlayer = (props) => {
     return (
       <>
         {videoPlayPauseButton(videoState)}
+        {props.setFullScreen ? (
+          <button
+            className="btn btn-primary btn-round btn-record btn-record-right"
+            onClick={() => props.setFullScreen()}
+          >
+            <ReplayButton />
+          </button>
+        ) : null}
         <ProgressBar current={isVideoWatchedTime} max={isVideoTime} />
         <TimeComponent time={isVideoWatchedTime} />
       </>
@@ -117,9 +125,12 @@ const VideoPlayer = (props) => {
         <hr />
       </div>
       <div className="row">
-        <p>Als je geluid hebt opgenomen, controleer dan hier of het geluid correct is opgenomen.</p>
+        <p>
+          Als je geluid hebt opgenomen, controleer dan hier of het geluid
+          correct is opgenomen.
+        </p>
       </div>
-      <div style={{ width: "100%" }} className="mb-5 rewatchVideoPlayer">
+      <div className="mb-5 rewatchVideoPlayer">
         <ReactPlayer
           url={props.url + (videoData ? videoData.data.videoName : null)}
           width="100%"
@@ -132,6 +143,7 @@ const VideoPlayer = (props) => {
           onProgress={({ playedSeconds }) =>
             setIsVideoWatchedTime(playedSeconds)
           }
+          fullscreen={true}
         />
         {loadingPlayer(isLoading)}
       </div>
