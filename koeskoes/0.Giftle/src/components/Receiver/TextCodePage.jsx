@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getVideo, resetVideo } from "../../redux/actions/videoActions";
 import ErrorMessage from "../Common/CreateErrorMessage";
 
 // import SVG as ReactComponent for easier use
-import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
+import { ReactComponent as QRCode } from "../../assets/qr-code.svg";
 import { ReactComponent as PersonVideo } from "../../assets/person-video.svg";
 
 /**
@@ -16,11 +16,9 @@ import { ReactComponent as PersonVideo } from "../../assets/person-video.svg";
  */
 const TextCodePage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const video = useSelector((state) => state.videos.video || null);
-
   const [givenTextCode, setGivenTextCode] = useState(null);
-  const [isGoToWatchVideo, setIsGoToWatchVideo] = useState(null);
-  const [isGoBackReceiverMain, setIsGoBackReceiverMain] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -32,7 +30,7 @@ const TextCodePage = () => {
         );
       }
 
-      setIsGoToWatchVideo(video.textCode);
+      navigate("/receiver/watchvideo/" + video.textCode);
     }
   }, [video, dispatch]);
 
@@ -51,19 +49,6 @@ const TextCodePage = () => {
       dispatch(getVideo(givenTextCode));
     }
   };
-
-  /**
-   *
-   * Events to navigate to different pages.
-   *
-   */
-  if (isGoToWatchVideo !== null) {
-    return <Navigate to={"/receiver/watchvideo/" + isGoToWatchVideo} />;
-  }
-
-  if (isGoBackReceiverMain === true) {
-    return <Navigate to="/receiver" />;
-  }
 
   return (
     <div className="vertical-center colored-background">
@@ -89,10 +74,10 @@ const TextCodePage = () => {
         <div className="col-lg-2 col-md-2 col-sm-2"></div>
         <button
           className="btn btn-primary my-3 mx-4"
-          onClick={() => setIsGoBackReceiverMain(true)}
+          onClick={() => navigate("/receiver/qr-code")}
         >
-          {<LeftArrow />}
-          &nbsp;Terug
+          QR code scannen&nbsp;
+          <QRCode />
         </button>
         <button
           className="btn btn-primary my-3 mx-4"

@@ -87,7 +87,7 @@ function ScanQRPage() {
             onClick={() => setIsGoBackBuyerMain(true)}
           >
             {<LeftArrow />}
-            &nbsp;Terug
+            &nbsp;Terug naar keuzemenu
           </button>
         </div>
       </div>

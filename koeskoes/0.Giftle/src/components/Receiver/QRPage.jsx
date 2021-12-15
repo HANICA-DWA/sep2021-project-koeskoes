@@ -1,9 +1,8 @@
 import React from "react";
-import { Navigate } from "react-router";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // import SVG as ReactComponent for easier use
-import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
+import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
 import { ReactComponent as QRCodeScan } from "../../assets/qr-code-scan.svg";
 
 /**
@@ -15,22 +14,7 @@ import { ReactComponent as QRCodeScan } from "../../assets/qr-code-scan.svg";
 function QRPage() {
   // Creates the state for checking if the button is clicked.
   // Flips to true if clicked and then navigates to the corresponding url/ component
-
-  const [isBtnClicked, setIsBtnClicked] = useState(false);
-  const [isGoBackReceiverMain, setIsGoBackReceiverMain] = useState(false);
-
-  /**
-   *
-   * Events for navigating to different pages.
-   *
-   */
-  if (isBtnClicked === true) {
-    return <Navigate to="/receiver/scan" />;
-  }
-
-  if (isGoBackReceiverMain === true) {
-    return <Navigate to="/receiver" />;
-  }
+  const navigate = useNavigate();
 
   return (
     <div className="vertical-center colored-background">
@@ -41,14 +25,14 @@ function QRPage() {
         </p>
         <button
           className="btn btn-primary my-3 mx-4"
-          onClick={() => setIsGoBackReceiverMain(true)}
+          onClick={() => navigate("/receiver/textcode")}
         >
-          {<LeftArrow />}&nbsp;
-          Terug
+          Tekstcode invullen&nbsp;
+          {<PencilSquare />}
         </button>
         <button
           className="btn btn-primary my-3 mx-4"
-          onClick={() => setIsBtnClicked(true)}
+          onClick={() => navigate("/receiver/scan")}
         >
           Scan QR-code&nbsp;
           <QRCodeScan />
