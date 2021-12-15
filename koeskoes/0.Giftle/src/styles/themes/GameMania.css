@@ -1,0 +1,51 @@
+.text-primary {
+  color: #000000;
+}
+
+.text-danger {
+  color: #000000;
+}
+
+.text-white {
+  color: #000000;
+}
+
+.btn-primary {
+  color: #000000;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.btn-primary:hover {
+  color: #000000;
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.form-control:focus {
+  border-color: #000000;
+  box-shadow: #000000;
+}
+
+.form-check-input:checked {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+input[type="file"] {
+  color: #000000;
+  background-color: #000000;
+}
+
+.style-dotted {
+  border-color: #000000;
+  background: #000000;
+}
+
+.colored-background {
+  background-color: #000000;
+}
+
+.terms-and-conditions {
+  color: #000000;
+}

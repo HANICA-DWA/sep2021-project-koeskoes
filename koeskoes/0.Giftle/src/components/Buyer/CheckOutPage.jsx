@@ -222,7 +222,7 @@
       <div className="container-fluid">
         <div className="row justify-content-evenly text-start">
           <div className="col-lg-4 mt-3 vertical-col position-relative bg-light">
-            <h2><span className="square mt-3 text-center"><p className="square-text">1.</p></span> Verzendadres</h2>
+            <h2><span className="square mt-3 text-center bg-primary"><p className="square-text text-white">1.</p></span> Verzendadres</h2>
             <hr />
             <div className="input-group mb-3">
               <span className="input-group-text">
@@ -325,7 +325,7 @@
             {billingAddress()}
           </div>
           <div className="col-md-12 col-lg-3 col-xl-4 mt-3 vertical-col bg-light">
-            <h2><span className="square mt-3 text-center"><p className="square-text">2.</p></span> Verzendopties</h2>
+            <h2><span className="square mt-3 text-center bg-primary"><p className="square-text text-white">2.</p></span> Verzendopties</h2>
             <hr />
             <div className="form-check">
               <input className="form-check-input" type="radio" name="exampleRadios" value="option1" disabled />
@@ -359,7 +359,7 @@
               </span>
               <textarea className="form-control" placeholder="Plaats hier uw opmerking" rows="2" disabled />
             </div>
-            <h2><span className="square mt-5 text-center"><p className="square-text">3.</p></span> Betaalmethode</h2>
+            <h2><span className="square mt-5 text-center bg-primary"><p className="square-text text-white">3.</p></span> Betaalmethode</h2>
             <hr />
             <div className="form-check mb-2">
               <input className="form-check-input" type="radio" name="exampleRadios" value="option1" disabled />
@@ -396,7 +396,7 @@
             </div>
           </div>
           <div className="col-md-12 col-lg-4 col-xl-3 mt-3 vertical-col bg-light">
-            <h2><span className="square mt-3 text-center"><p className="square-text">✔</p></span> Bestelling bekijken</h2>
+            <h2><span className="square mt-3 text-center bg-primary"><p className="square-text text-white">✔</p></span> Bestelling bekijken</h2>
             <hr />
             <div className="row">
               <div className="col-5">

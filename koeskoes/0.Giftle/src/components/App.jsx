@@ -31,6 +31,8 @@ import CheckOrdersPage from "./Employee/CheckOrdersPage";
 
 // Styling
 import "../styles/App.css";
+// import "../styles/themes/Rituals.css";
+// import "../styles/themes/GameMania.css";
 
 function App() {
   return (

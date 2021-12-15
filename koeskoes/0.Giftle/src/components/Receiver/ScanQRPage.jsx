@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router";
 import QrReader from "react-qr-reader";
 import ErrorMessage from "../Common/CreateErrorMessage";
-import "../../styles/receiver/ScanQRPage.css";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
