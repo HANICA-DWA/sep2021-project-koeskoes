@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  EmailShareButton,
+  EmailIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "react-share";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +20,7 @@ import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
 import { ReactComponent as PlayCircle } from "../../assets/play-circle.svg";
 import { ReactComponent as PauseCircle } from "../../assets/pause-circle.svg";
 import { ReactComponent as ReplayCircle } from "../../assets/arrow-clockwise.svg";
+import { ReactComponent as ShareIcon } from "../../assets/share-fill.svg";
 
 /**
  * Page showing the video (by textCode) for the receiver
@@ -30,6 +41,8 @@ function VideoPage() {
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const watched = useSelector((state) => state.videos.watched);
+
+  const [isPopUp, setIsPopUp] = useState(false);
 
   useEffect(() => {
     const getVideo = async () => {
@@ -140,7 +153,10 @@ function VideoPage() {
             (seconds < 10 ? "0" + seconds : seconds === 60 ? "00" : seconds)}
         </div>
         {videoPlayButton(videoState)}
-        <button className="btn btn-primary my-3 mx-4" onClick={() => navigate("/receiver/reaction")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/receiver/reaction")}
+        >
           Verstuur een reactie&nbsp;
           <RightArrow />
         </button>
@@ -165,6 +181,53 @@ function VideoPage() {
       );
     } else {
       return videoPlayerSettings();
+    }
+  };
+
+  const showPopUp = () => {
+    const videoURL = `http://localhost:3000/receiver/watchSharedVideo/${textCode}`;
+    if (isPopUp) {
+      return (
+        <span class="popuptext" id="myPopup">
+          <div className="icon-container">
+            <div className="icon">
+              <EmailShareButton
+                url={videoURL}
+                quote="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
+              >
+                <EmailIcon size={30} round={true} />
+              </EmailShareButton>
+            </div>
+            <div className="icon">
+              <TwitterShareButton
+                url={videoURL}
+                title="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
+              >
+                <TwitterIcon size={30} round={true} />
+              </TwitterShareButton>
+            </div>
+            <div className="icon">
+              <FacebookShareButton
+                url={videoURL}
+                quote="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
+              >
+                <FacebookIcon size={30} round={true} />
+              </FacebookShareButton>
+            </div>
+            <div className="icon">
+              <WhatsappShareButton
+                url={videoURL}
+                title="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
+                separator=" - "
+              >
+                <WhatsappIcon size={30} round={true} />
+              </WhatsappShareButton>
+            </div>
+          </div>
+        </span>
+      );
+    } else {
+      return null;
     }
   };
 
@@ -198,7 +261,9 @@ function VideoPage() {
         <>
           <h2>Videoboodschap voor {videoData.nameReceiver}</h2>
           <ReactPlayer
-            url={"http://localhost:4000/api/videos/video/" + videoData.videoName}
+            url={
+              "http://localhost:4000/api/videos/video/" + videoData.videoName
+            }
             width="100%"
             height="100%"
             playing={videoState === 2 ? true : false}
@@ -212,10 +277,26 @@ function VideoPage() {
           />
           {loadingPlayer(isLoading)}
           <hr />
-          <div className="text-start">
+          <div className="text-start float-start">
             <h3>Afzender:</h3>
             {videoData.nameGifter ? <h5>{videoData.nameGifter}</h5> : null}
             {videoData.emailGifter ? <h5>{videoData.emailGifter}</h5> : null}
+          </div>
+          <div className="float-end shareButtonPlacement popup">
+            {showPopUp()}
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                if (isPopUp) {
+                  setIsPopUp(false);
+                } else {
+                  setIsPopUp(true);
+                }
+              }}
+            >
+              Delen &nbsp;
+              <ShareIcon />
+            </button>
           </div>
         </>
       );
