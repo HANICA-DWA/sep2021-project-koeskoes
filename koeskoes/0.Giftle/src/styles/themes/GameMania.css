@@ -1,51 +1,86 @@
 .text-primary {
-  color: #000000;
-}
-
-.text-danger {
-  color: #000000;
+  color: #39b54a !important;
 }
 
 .text-white {
-  color: #000000;
+  color: #ffffff !important;
+}
+
+.rounded {
+  border: 1px dotted #39b54a !important;
+}
+
+.bg-primary {
+  background-color: #e5c847 !important;
+}
+
+.btn {
+  transition: none !important;
 }
 
 .btn-primary {
-  color: #000000;
-  background-color: #000000;
-  border-color: #000000;
+  color: #686669 !important;
+  background-color: #e5c847 !important;
+  border-color: #686669 !important;
 }
 
 .btn-primary:hover {
-  color: #000000;
-  background-color: #000000;
-  border-color: #000000;
+  color: #686669 !important;
+  background-color: #e5c847 !important;
+  border-color: #686669 !important;
 }
 
 .form-control:focus {
-  border-color: #000000;
-  box-shadow: #000000;
+  border-color: #e5c847 !important;
+  box-shadow: none !important;
+}
+
+.form-check-input:focus,
+.form-select:focus {
+  border-color: #e5c847 !important;
+  box-shadow: 0 0 0 0.25rem #e5c847 !important;
+}
+
+.btn-check:active + .btn-primary:focus,
+.btn-check:checked + .btn-primary:focus,
+.btn-primary:active,
+.btn-primary:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: none !important;
 }
 
 .form-check-input:checked {
-  background-color: #000000;
-  border-color: #000000;
+  background-color: #39b54a !important;
+  border-color: #e5c847 !important;
 }
 
 input[type="file"] {
-  color: #000000;
-  background-color: #000000;
+  color: #e5c847 !important;
+  background-color: #39b54a !important;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  background-color: #e5c847;
+  border: 1px;
+  border-color: #e5c847;
+  border-radius: 0.25rem;
+  color: #686669;
+  margin: 1px;
 }
 
 .style-dotted {
-  border-color: #000000;
-  background: #000000;
+  border-color: #e5c847 !important;
+  background: #39b54a !important;
 }
 
 .colored-background {
-  background-color: #000000;
+  background-color: #ffffff !important;
+}
+
+.progress-bar {
+  background-color: #39b54a;
 }
 
 .terms-and-conditions {
-  color: #000000;
+  color: #39b54a !important;
 }

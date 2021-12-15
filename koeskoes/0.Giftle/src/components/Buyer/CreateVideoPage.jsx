@@ -150,9 +150,9 @@ function CreateVideoPage() {
             {uploadVisualState === 1 ? (
               <p className="mt-3">
                 Door een video{" "}
-                {videoCreationPath === "upload" ? "te uploaden" : "op te nemen"}{" "}
-                gaat u akkoord met de{" "}
-                <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
+                {videoCreationPath === "upload" ? "te uploaden" : "op te nemen"} gaat u
+                akkoord met de{" "}
+                <a href="#algemene-voorwaarden" className="terms-and-conditions">algemene voorwaarden</a>.
               </p>
             ) : null}
           </div>

@@ -1,5 +1,5 @@
 .text-primary {
-  color: #000000 !important;
+  color: #191919 !important;
 }
 
 .text-white {
@@ -7,11 +7,11 @@
 }
 
 .rounded {
-  border: 1px dotted #242222 !important;
+  border: none !important;
 }
 
 .bg-primary {
-  background-color: #242222 !important;
+  background-color: #191919 !important;
 }
 
 .btn {
@@ -19,26 +19,26 @@
 }
 
 .btn-primary {
-  color: #000000 !important;
-  background-color: #ffffff !important;
-  border-color: #b4b4b4 !important;
+  color: #ffffff !important;
+  background-color: #191919 !important;
+  border-color: #000000 !important;
 }
 
 .btn-primary:hover {
-  color: #000000 !important;
-  background-color: #ffffff !important;
+  color: #ffffff !important;
+  background-color: #333333 !important;
   border-color: #000000 !important;
 }
 
 .form-control:focus {
-  border-color: #1a1919 !important;
-  box-shadow: 0 0 0 0.25rem #f6f4f2 !important;
+  border-color: #000000 !important;
+  box-shadow: none !important;
 }
 
 .form-check-input:focus,
 .form-select:focus {
-  border-color: #222221 !important;
-  box-shadow: 0 0 0 0.25rem #f6f4f2 !important;
+  border-color: none !important;
+  box-shadow: none !important;
 }
 
 .btn-check:active + .btn-primary:focus,
@@ -50,19 +50,19 @@
 }
 
 .form-check-input:checked {
-  background-color: #242222 !important;
-  border-color: #242222 !important;
+  background-color: #000000 !important;
+  border-color: #000000 !important;
 }
 
 input[type="file"] {
-  color: #000000 !important;
-  background-color: #f6f4f2 !important;
+  color: #191919 !important;
+  background-color: #ffffff !important;
 }
 
 input[type="file"]::-webkit-file-upload-button {
-  background-color: #222221;
+  background-color: #191919;
   border: 1px;
-  border-color: #222221;
+  border-color: #000000;
   border-radius: 0.25rem;
   color: #ffffff;
   margin: 1px;
@@ -74,13 +74,13 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .colored-background {
-  background-color: #f6f4f2 !important;
+  background-color: #191919 !important;
 }
 
 .progress-bar {
-  background-color: #222221;
+  background-color: #191919;
 }
 
 .terms-and-conditions {
-  color: #222221 !important;
+  color: #191919 !important;
 }
