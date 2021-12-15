@@ -113,14 +113,12 @@ const VideoPlayer = (props) => {
   return (
     <>
       <div className="row">
-        <h1>Uw video terugkijken</h1>
+        <h2>{props.title}</h2>
+        <hr />
       </div>
       <div style={{ width: "100%" }} className="mb-5 rewatchVideoPlayer">
         <ReactPlayer
-          url={
-            "http://localhost:4000/api/videos/video/" +
-            (videoData ? videoData.data.videoName : null)
-          }
+          url={props.url + (videoData ? videoData.data.videoName : null)}
           width="100%"
           height="100%"
           playing={videoState === 2 ? true : false}

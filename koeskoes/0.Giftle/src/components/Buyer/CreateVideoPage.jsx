@@ -30,7 +30,9 @@ function CreateVideoPage() {
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
   const textCode = useSelector((state) => state.orders.textCode);
-  const videoCreationPath = useSelector((state) => state.uploads.videoCreationPath);
+  const videoCreationPath = useSelector(
+    (state) => state.uploads.videoCreationPath
+  );
   const videoUploaded = useSelector((state) => state.uploads.videoUploaded);
   const uploadVisualState = useSelector(
     (state) => state.uploads.uploadVisualState
@@ -59,7 +61,7 @@ function CreateVideoPage() {
   const goToPersonalization = () => {
     dispatch(setPersonalized());
     dispatch(changeUploadVisualState(3));
-  }
+  };
 
   return (
     <div className="vertical-center colored-background">
@@ -76,19 +78,23 @@ function CreateVideoPage() {
                 className="btn btn-primary float-start"
                 onClick={() =>
                   dispatch(
-                    setVideoCreationPath(videoCreationPath === "upload" ? "record" : "upload")
+                    setVideoCreationPath(
+                      videoCreationPath === "upload" ? "record" : "upload"
+                    )
                   )
                 }
               >
                 {videoCreationPath === "upload" ? `Record` : `Upload`}
-                &nbsp;<DownUpArrow />
+                &nbsp;
+                <DownUpArrow />
               </button>
             ) : (
               <button
                 className="btn btn-primary float-start"
                 onClick={() => dispatch(changeUploadVisualState(1))}
               >
-                Opnieuw {videoCreationPath === "upload" ? "uploaden" : "opnemen"}&nbsp;
+                Opnieuw{" "}
+                {videoCreationPath === "upload" ? "uploaden" : "opnemen"}&nbsp;
                 <RepeatArrow />
               </button>
             )}
@@ -115,7 +121,11 @@ function CreateVideoPage() {
           </div>
         </div>
         <div className="row">
-          <div className={`${personalized ? "col-lg-6" : "col-lg-12" } col-md-12 col-sm-12`}>
+          <div
+            className={`${
+              personalized ? "col-lg-6" : "col-lg-12"
+            } col-md-12 col-sm-12`}
+          >
             {uploadVisualState === 1 ? (
               videoCreationPath === "upload" ? (
                 <UploadVideo
@@ -130,20 +140,30 @@ function CreateVideoPage() {
               )
             ) : (
               <VideoPlayer
-                videoCreationPath={`http://localhost:4000/api/orders/order/` + textCode}
+                title="Uw video terugkijken"
+                url={"http://localhost:4000/api/videos/video/"}
+                videoCreationPath={
+                  `http://localhost:4000/api/orders/order/` + textCode
+                }
               />
             )}
             {uploadVisualState === 1 ? (
               <p className="mt-3">
                 Door een video{" "}
-                {videoCreationPath === "upload" ? "te uploaden" : "op te nemen"} gaat u
-                akkoord met de{" "}
+                {videoCreationPath === "upload" ? "te uploaden" : "op te nemen"}{" "}
+                gaat u akkoord met de{" "}
                 <a href="#algemene-voorwaarden">algemene voorwaarden</a>.
               </p>
             ) : null}
           </div>
           <div className="col-lg-6 col-md-12 col-sm-12">
-            {personalized ? <PersonalizationForm next={() => navigate("/buyer/thankyou")} setError={setError} disabled={uploadVisualState !== 3} /> : null}
+            {personalized ? (
+              <PersonalizationForm
+                next={() => navigate("/buyer/thankyou")}
+                setError={setError}
+                disabled={uploadVisualState !== 3}
+              />
+            ) : null}
           </div>
         </div>
       </div>
