@@ -16,9 +16,9 @@ function ReactionHomePage() {
   return (
     <div className="vertical-center colored-background">
       <div className="container text-center rounded p-3 bg-light">
-        <h1>Uw keuze om een reactie te geven</h1>
+        <h1>Jouw keuze om een reactie te geven</h1>
         <p>
-          Om de Giftle gever te kunnen bedanken kiest u tussen een tekstreactie of videoreactie te versturen.
+          Om degene die jou de Giftle heeft gestuurd te kunnen bedanken, kies je hieronder tussen een tekstreactie of videoreactie. Het is niet verplicht om een reactie te geven.
         </p>
         {/* <Link to="/qr-code" className="btn btn-primary mx-2">
           QR-code
