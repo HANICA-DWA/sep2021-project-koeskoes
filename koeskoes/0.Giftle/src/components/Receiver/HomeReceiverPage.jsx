@@ -1,7 +1,5 @@
 import React from "react";
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
-// import { Navigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as QRCode } from "../../assets/qr-code.svg";
@@ -13,21 +11,7 @@ import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
  * @return the front-end for the receiver homepage.
  */
 function HomeReceiverPage() {
-  const [isBtnQRcode, setIsBtnQRcode] = useState(false);
-  const [isBtnTextcode, setIsBtnTextcode] = useState(false);
-
-  /**
-   *
-   * Events to navigate to different pages.
-   *
-   */
-  if (isBtnQRcode === true) {
-    return <Navigate to="/receiver/qr-code" />;
-  }
-
-  if (isBtnTextcode === true) {
-    return <Navigate to="/receiver/textcode" />;
-  }
+  const navigate = useNavigate();
 
   return (
     <div className="vertical-center colored-background">
@@ -45,14 +29,14 @@ function HomeReceiverPage() {
         </Link> */}
         <button
           className="btn btn-primary mx-2"
-          onClick={() => setIsBtnQRcode(true)}
+          onClick={() => navigate("/receiver/qr-code")}
         >
           QR-code&nbsp;
           <QRCode />
         </button>
         <button
           className="btn btn-primary mx-2"
-          onClick={() => setIsBtnTextcode(true)}
+          onClick={() => navigate("/receiver/textcode")}
         >
           Tekstcode&nbsp;
           <PencilSquare />

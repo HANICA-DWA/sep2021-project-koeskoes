@@ -1,6 +1,5 @@
 import React from "react";
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setVideoCreationPath } from "../../redux/actions/uploadActions";
 
@@ -13,26 +12,14 @@ import { ReactComponent as RecordCircle } from "../../assets/record-circle.svg";
  * @returns the html for the start of the buyer video upload proces.
  */
 function HomeBuyerPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  // Creates the state for checking if the corresponding button has been clicked
-  // Flips to true if clicked and then navigates to the corresponding url/ component
-  const [isBtnRecord, setIsBtnRecord] = useState(false);
-  const [isBtnUpload, setIsBtnUpload] = useState(false);
+
   const textCode = useSelector((state) => state.orders.textCode);
 
   // Navigation functionality to send the user to a different page after a certain action.
   if (!textCode) {
-    return <Navigate to="/noTextCode" />;
-  }
-
-  if (isBtnRecord === true) {
-    dispatch(setVideoCreationPath("record"));
-    return <Navigate to="/buyer/create" />;
-  }
-
-  if (isBtnUpload === true) {
-    dispatch(setVideoCreationPath("upload"));
-    return <Navigate to="/buyer/create" />;
+    return navigate("/noTextCode");
   }
 
   return (
@@ -45,14 +32,20 @@ function HomeBuyerPage() {
         </p>
         <button
           className="btn btn-primary mx-4"
-          onClick={() => setIsBtnRecord(true)}
+          onClick={() => {
+            dispatch(setVideoCreationPath("record"));
+            return navigate("/buyer/create");
+          }}
         >
           Opnemen&nbsp;
           <RecordCircle />
         </button>
         <button
           className="btn btn-primary mx-4"
-          onClick={() => setIsBtnUpload(true)}
+          onClick={() => {
+            dispatch(setVideoCreationPath("upload"));
+            return navigate("/buyer/create");
+          }}
         >
           Uploaden&nbsp;
           <FileUpload />
