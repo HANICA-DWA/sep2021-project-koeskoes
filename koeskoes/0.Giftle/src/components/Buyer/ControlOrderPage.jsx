@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setTextCode } from "../../redux/actions/orderActions";
 import axios from "axios";
@@ -10,6 +9,7 @@ import axios from "axios";
  * @returns the front end of the ControlOrder page
  */
 function ControlOrderPage() {
+  const navigate = useNavigate();
   const { textCode } = useParams();
   const [orderData, setOrderData] = useState({});
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ function ControlOrderPage() {
    */
   const videoInOrderExists = () => {
     if (orderData.videoName === "") {
-      return <Navigate to={`/buyer`} />;
+      return navigate("/buyer");
     }
     return (
       <div className="vertical-center colored-background">

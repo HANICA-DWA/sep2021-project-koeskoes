@@ -9,9 +9,7 @@
 
   // import SVG as ReactComponent for easier use
   import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
-
-  // VERWIJDER DEZE NAVIGATE -> andere manier van toepassing
-  import { Navigate } from "react-router";
+  
   import { useNavigate } from "react-router-dom";
 
   /**
@@ -28,7 +26,6 @@
   const [error, setError] = useState(null);
   const [isSameAddress, setSameAddress] = useState(false);
   const [isGiftleEnabled, setGiftleEnabled] = useState(false);
-  const [isNextPage, setIsNextPage] = useState(false);
 
   /**
    *
@@ -48,11 +45,7 @@
     giftleWithinPrice();
   }, [isGiftleEnabled, priceTotal]);
 
-  // VERWIJDER DEZE NAVIGATE -> andere manier van toepassing
-  if (isNextPage === true) {
-    return <Navigate to="/checked-out" />;
-  } 
-
+  
   /**
    *
    * This function will send the data of the receiver to the server.
@@ -87,7 +80,7 @@
           ErrorMessage(uploadResponse.data.message, () => setError(null))
         );
       } else {
-        return setIsNextPage(true);
+        return navigate("/checked-out");
       }
     }
     return navigate('/magento-checked-out');

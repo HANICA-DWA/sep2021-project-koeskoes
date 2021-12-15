@@ -72,7 +72,7 @@ function CreateVideoPage() {
         } text-center rounded p-3 bg-light mt-4 mb-4`}
       >
         <div className="row">
-          <div className="col-lg-3 col-md-5 col-sm-5 col-5">
+          <div className="col-lg-5 col-md-5 col-sm-5 col-5">
             {uploadVisualState === 1 ? (
               <button
                 className="btn btn-primary float-start"
@@ -99,7 +99,7 @@ function CreateVideoPage() {
               </button>
             )}
           </div>
-          <div className="col-lg-4 col-md-1 col-sm-1 col-1"></div>
+          <div className="col-lg-2 col-md-1 col-sm-1 col-1"></div>
           <div className="col-lg-5 col-md-6 col-sm-6 col-6">
             {videoUploaded && uploadVisualState === 1 ? (
               <button

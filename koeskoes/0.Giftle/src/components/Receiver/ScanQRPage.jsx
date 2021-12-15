@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Navigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import QrReader from "react-qr-reader";
 import ErrorMessage from "../Common/CreateErrorMessage";
 
@@ -13,12 +13,12 @@ import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
  * @return the front-end for the scanning page
  */
 function ScanQRPage() {
+  const navigate = useNavigate();
   const delay = 100;
   const previewStyle = { height: "17em", width: "17em" };
 
   // Creates the state for delay, style and errors that can occur for the QR-scanner.
   const [isDevicesChecked, setIsDevicesChecked] = useState(false);
-  const [isGoBackBuyerMain, setIsGoBackBuyerMain] = useState(false);
   const [error, setError] = useState(null);
 
   /**
@@ -44,15 +44,6 @@ function ScanQRPage() {
       checkCamera();
     }
   });
-
-  /**
-   *
-   * Events to navigate to different pages.
-   *
-   */
-  if (isGoBackBuyerMain === true) {
-    return <Navigate to="/receiver/qr-code" />;
-  }
 
   return (
     <div className="vertical-center colored-background">
@@ -83,7 +74,7 @@ function ScanQRPage() {
           />
           <button
             className="btn btn-primary my-3 mx-4"
-            onClick={() => setIsGoBackBuyerMain(true)}
+            onClick={() => navigate("/receiver/qr-code")}
           >
             {<LeftArrow />}
             &nbsp;Terug naar keuzemenu
