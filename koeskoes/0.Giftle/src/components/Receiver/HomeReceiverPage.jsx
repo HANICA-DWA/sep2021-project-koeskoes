@@ -24,9 +24,6 @@ function HomeReceiverPage() {
           <br />
           Ik heb een...
         </p>
-        {/* <Link to="/qr-code" className="btn btn-primary mx-2">
-          QR-code
-        </Link> */}
         <button
           className="btn btn-primary mx-2"
           onClick={() => navigate("/receiver/qr-code")}

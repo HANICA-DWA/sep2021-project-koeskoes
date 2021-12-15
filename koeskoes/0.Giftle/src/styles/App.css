@@ -231,8 +231,6 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .popup .popuptext {
-  /* visibility: show; */
-  /* width: 160px; */
   background-color: #555;
   color: #fff;
   text-align: center;
@@ -241,7 +239,6 @@ input[type="file"]::-webkit-file-upload-button {
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  /* left: 50%; */
   margin-left: -4em;
 }
 
@@ -264,7 +261,6 @@ input[type="file"]::-webkit-file-upload-button {
 
 .icon {
   flex-basis: 100px;
-  /* height: 100px; */
   margin: 5px;
 }
 
