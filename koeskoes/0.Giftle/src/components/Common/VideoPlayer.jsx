@@ -116,6 +116,9 @@ const VideoPlayer = (props) => {
         <h2>{props.title}</h2>
         <hr />
       </div>
+      <div className="row">
+        <p>Als je geluid hebt opgenomen, controleer dan hier of het geluid correct is opgenomen.</p>
+      </div>
       <div style={{ width: "100%" }} className="mb-5 rewatchVideoPlayer">
         <ReactPlayer
           url={props.url + (videoData ? videoData.data.videoName : null)}

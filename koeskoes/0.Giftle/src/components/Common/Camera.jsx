@@ -3,6 +3,7 @@ import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
 import { useSelector, useDispatch } from "react-redux";
 import Webcam from "react-webcam";
+import Spinner from "../Common/Spinner";
 import { ReactComponent as RecButton } from "../../assets/rec-button.svg";
 import { ReactComponent as PauseButton } from "../../assets/pause.svg";
 import { setVideo } from "../../redux/actions/videoActions";
@@ -18,6 +19,7 @@ const Camera = (props) => {
   const [isAudioAvailable, setIsAudioAvailable] = useState(false);
   const [isWebcamAvailable, setIsWebcamAvailable] = useState(false);
   const [capturing, setCapturing] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
   const [cameraPosition, setCameraPosition] = useState(null);
   const [availableCameras, setAvailableCameras] = useState([]);
@@ -140,6 +142,7 @@ const Camera = (props) => {
   useEffect(() => {
     const handleUpload = async () => {
       if (recordedChunks.length > 0) {
+        setUploading(true);
         const blob = new Blob(recordedChunks, {
           type: "video/webm",
         });
@@ -160,6 +163,7 @@ const Camera = (props) => {
               )
             : null;
         } else {
+          if (props.setError) props.setError(null)
           return dispatch(setVideo(uploadResponse.data));
         }
       }
@@ -292,91 +296,99 @@ const Camera = (props) => {
       <div className="row">
         <h1>Uw video opnemen</h1>
       </div>
-      <div className="row mb-2">
-        <div
-          className={
-            (availableCameras.length > 1 ? "col-md-8" : "col-md-12") +
-            " " +
-            "col-sm-6 col-12"
-          }
-        >
-          <p className="text-start mb-1">Opnameduur en kwaliteit: </p>
-          <select
-            className="form-select"
-            defaultValue="720"
-            disabled={pressed}
-            onChange={(e) => (!pressed ? setResolution(e.target.value) : null)}
-          >
-            <option value="720">Standaard kwaliteit / 2 minuten</option>
-            <option value="1080">Hoge kwaliteit / 1 minuut</option>
-          </select>
-        </div>
-        {availableCameras.length > 1 ? (
-          <div className="col-md-4 col-sm-6 col-12">
-            <p className="text-start mb-1">Camera: </p>
-            <select
-              className="form-select"
-              value={cameraPosition}
-              disabled={pressed}
-              onChange={(e) =>
-                !pressed ? setCameraPosition(e.target.value) : null
+      {!uploading ? (
+        <>
+          <div className="row mb-2">
+            <div
+              className={
+                (availableCameras.length > 1 ? "col-md-8" : "col-md-12") +
+                " " +
+                "col-sm-6 col-12"
               }
             >
-              {availableCameras.map((camera) => (
-                <option value={camera.deviceId}>{camera.label}</option>
-              ))}
-            </select>
+              <p className="text-start mb-1">Opnameduur en kwaliteit: </p>
+              <select
+                className="form-select"
+                defaultValue="720"
+                disabled={pressed}
+                onChange={(e) =>
+                  !pressed ? setResolution(e.target.value) : null
+                }
+              >
+                <option value="720">Standaard kwaliteit / 2 minuten</option>
+                <option value="1080">Hoge kwaliteit / 1 minuut</option>
+              </select>
+            </div>
+            {availableCameras.length > 1 ? (
+              <div className="col-md-4 col-sm-6 col-12">
+                <p className="text-start mb-1">Camera: </p>
+                <select
+                  className="form-select"
+                  value={cameraPosition}
+                  disabled={pressed}
+                  onChange={(e) =>
+                    !pressed ? setCameraPosition(e.target.value) : null
+                  }
+                >
+                  {availableCameras.map((camera) => (
+                    <option value={camera.deviceId}>{camera.label}</option>
+                  ))}
+                </select>
+              </div>
+            ) : null}
           </div>
-        ) : null}
-      </div>
-      <div style={{ width: "100%" }}>
-        <Webcam
-          audio={true}
-          muted={true}
-          ref={webcamRef}
-          forceScreenshotSourceSize
-          videoConstraints={{
-            height: resolution,
-            width: (resolution / 9) * 16,
-            deviceId: cameraPosition,
-          }}
-          width={"100%"}
-        />
-        {isWebcamAvailable && isAudioAvailable ? (
-          capturing ? (
-            <button
-              className="btn btn-round btn-record recording-breathing"
-              onClick={stopRecordAndBar}
-            >
-              <PauseButton />
-            </button>
-          ) : recordedChunks.length < 1 ? (
-            <button
-              className="btn btn-primary btn-round btn-record"
-              onClick={startRecordAndBar}
-            >
-              <RecButton />
-            </button>
-          ) : null
-        ) : (
-          <p>Er is geen toegang tot de camera of microfoon</p>
-        )}
-      </div>
-      <div className="progress">
-        <div
-          className={`progress-bar ` + barColor}
-          role="progressbar"
-          style={{ width: progress + "%" }}
-          aria-valuenow={progress}
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
-      <div>
-        {(minutes < 10 ? "0" + minutes : minutes) +
-          ":" +
-          (seconds < 10 ? "0" + seconds : seconds === 60 ? "00" : seconds)}
-      </div>
+          <div style={{ width: "100%" }}>
+            <Webcam
+              audio={true}
+              muted={true}
+              ref={webcamRef}
+              forceScreenshotSourceSize
+              videoConstraints={{
+                height: resolution,
+                width: (resolution / 9) * 16,
+                deviceId: cameraPosition,
+              }}
+              width={"100%"}
+            />
+            {isWebcamAvailable && isAudioAvailable ? (
+              capturing ? (
+                <button
+                  className="btn btn-round btn-record recording-breathing"
+                  onClick={stopRecordAndBar}
+                >
+                  <PauseButton />
+                </button>
+              ) : recordedChunks.length < 1 ? (
+                <button
+                  className="btn btn-primary btn-round btn-record"
+                  onClick={startRecordAndBar}
+                >
+                  <RecButton />
+                </button>
+              ) : null
+            ) : (
+              <p>Er is geen toegang tot de camera of microfoon</p>
+            )}
+          </div>
+          <div className="progress">
+            <div
+              className={`progress-bar ` + barColor}
+              role="progressbar"
+              style={{ width: progress + "%" }}
+              aria-valuenow={progress}
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+          <div>
+            {(minutes < 10 ? "0" + minutes : minutes) +
+              ":" +
+              (seconds < 10 ? "0" + seconds : seconds === 60 ? "00" : seconds)}
+          </div>
+        </>
+      ) : (
+        <Spinner />
+      )}
     </>
   );
 };
