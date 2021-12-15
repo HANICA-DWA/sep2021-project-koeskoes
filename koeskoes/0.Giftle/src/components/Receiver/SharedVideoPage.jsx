@@ -3,7 +3,10 @@ import ReactPlayer from "react-player";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { sendVideoWatchedMail } from "../../redux/actions/videoActions";
+
+import ProgressBar from "../Common/ProgressBar";
+import TimeComponent from "../Common/TimerComponent";
+import Spinner from "../Common/Spinner";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as PlayCircle } from "../../assets/play-circle.svg";
@@ -24,12 +27,9 @@ function SharedVideoPage() {
   const [isVideoWatchedTime, setIsVideoWatchedTime] = useState(null);
   const [minutes, setMinutes] = useState(null);
   const [seconds, setSeconds] = useState(null);
-  const [progressBar, setProgressBar] = useState(null);
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const watched = useSelector((state) => state.videos.watched);
-
-  const [isPopUp, setIsPopUp] = useState(false);
 
   useEffect(() => {
     const getVideo = async () => {
@@ -50,31 +50,9 @@ function SharedVideoPage() {
   }, [textCode]);
 
   useEffect(() => {
-    if (!watched) {
-      if (isVideoWatchedTime != null && isVideoTime != null) {
-        if (Math.floor(isVideoWatchedTime) === Math.floor(isVideoTime / 2)) {
-          dispatch(sendVideoWatchedMail(textCode));
-        }
-      }
-    }
-
     setMinutes(Math.floor(isVideoWatchedTime / 60));
     setSeconds(
       Math.floor(isVideoWatchedTime) - Math.floor(isVideoWatchedTime / 60) * 60
-    );
-
-    setProgressBar(
-      <div className="progress">
-        <div
-          title="Tijd"
-          className="progress-bar"
-          role="progressbar"
-          aria-valuenow="1"
-          style={{ width: (100 / isVideoTime) * isVideoWatchedTime + "%" }}
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
     );
   }, [isVideoTime, isVideoWatchedTime, textCode, dispatch, watched]);
 
@@ -133,12 +111,8 @@ function SharedVideoPage() {
   const videoPlayerSettings = () => {
     return (
       <>
-        {progressBar}
-        <div>
-          {(minutes < 10 ? "0" + minutes : minutes) +
-            ":" +
-            (seconds < 10 ? "0" + seconds : seconds === 60 ? "00" : seconds)}
-        </div>
+        <ProgressBar current={isVideoWatchedTime} max={isVideoTime} />
+        <TimeComponent time={isVideoWatchedTime} />
         {videoPlayButton(videoState)}
       </>
     );
@@ -154,11 +128,7 @@ function SharedVideoPage() {
    */
   const loadingPlayer = (loading) => {
     if (loading) {
-      return (
-        <div className="spinner-border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      );
+      return <Spinner />;
     } else {
       return videoPlayerSettings();
     }
@@ -193,6 +163,7 @@ function SharedVideoPage() {
       return (
         <>
           <h2>Videoboodschap voor {videoData.nameReceiver}</h2>
+          <hr />
           <ReactPlayer
             url={
               "http://localhost:4000/api/videos/video/" + videoData.videoName
@@ -209,12 +180,6 @@ function SharedVideoPage() {
             }
           />
           {loadingPlayer(isLoading)}
-          <hr />
-          <div className="text-start float-start">
-            <h3>Afzender:</h3>
-            {videoData.nameGifter ? <h5>{videoData.nameGifter}</h5> : null}
-            {videoData.emailGifter ? <h5>{videoData.emailGifter}</h5> : null}
-          </div>
         </>
       );
     }
