@@ -21,6 +21,7 @@ import QRPage from "./Receiver/QRPage";
 import ScanQRPage from "./Receiver/ScanQRPage";
 import TextCodePage from "./Receiver/TextCodePage";
 import VideoPage from "./Receiver/VideoPage";
+import SharedVideoPage from "./Receiver/SharedVideoPage";
 import ReactionHomePage from "./Receiver/ReactionHomePage";
 import TextReactionPage from "./Receiver/TextReactionPage";
 import VideoReactionPage from "./Receiver/VideoReactionPage";
@@ -55,6 +56,7 @@ function App() {
           <Route path="/receiver/scan" exact element={<ScanQRPage />} />
           <Route path="/receiver/textcode" exact element={<TextCodePage />} />
           <Route path="/receiver/watchvideo/:textCode" element={<VideoPage />} />
+          <Route path="/receiver/watchSharedVideo/:textCode" element={<SharedVideoPage/>}/>
           <Route path="/receiver/reaction" element={<ReactionHomePage />} />
           <Route path="/receiver/text-reaction" exact element={<TextReactionPage />} />
           <Route path="/receiver/video-reaction" exact element={<VideoReactionPage />} />

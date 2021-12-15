@@ -213,3 +213,57 @@ input[type="file"]::-webkit-file-upload-button:hover {
     background-color: red;
   }
 }
+
+.shareButtonPlacement{
+  margin-top: 4em;
+}
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  /* visibility: show; */
+  /* width: 160px; */
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  /* left: 50%; */
+  margin-left: -4em;
+}
+
+.popuptext:before {
+  position: absolute;
+  z-index: 10;
+  content: "";
+  right: calc(65% - 10px);
+  top: 55px;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color:  #555 #555  transparent transparent;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+
+.icon-container{
+  display: flex;
+}
+
+.icon{
+  flex-basis: 100px;
+  /* height: 100px; */
+  margin: 5px;
+}
