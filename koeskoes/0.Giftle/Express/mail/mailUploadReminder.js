@@ -16,8 +16,8 @@ const mailUploadReminder = (buyer, textCode) => {
       p{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
-      a{
-        color: #000000;
+      a, a:active{
+        color: #ffffff;
         text-decoration: none;
       }
       .container{
@@ -30,7 +30,7 @@ const mailUploadReminder = (buyer, textCode) => {
           .row > p{
             margin-bottom: 0rem;
           }
-      .btn{
+      .btn, btn:active{
           background-color: #0d6efd;
           border-radius: 0.25rem;
           color: #ffffff;
@@ -43,7 +43,7 @@ const mailUploadReminder = (buyer, textCode) => {
       .note > p, .note > a{
         font-size: 12px;
       }
-      .link{
+      .link, .link:active{
         color: #1c0dfd;
         font-style: italic;
       }

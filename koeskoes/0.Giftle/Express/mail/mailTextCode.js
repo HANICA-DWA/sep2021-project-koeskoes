@@ -17,8 +17,8 @@ const mailTextCode = (receiver, buyer, textCode) => {
       p{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
-      a{
-        color: #000000;
+      a, a:active{
+        color: #ffffff;
         text-decoration: none;
       }
       span{
@@ -38,7 +38,7 @@ const mailTextCode = (receiver, buyer, textCode) => {
       .mb{
           margin-bottom: 3rem;
       }
-      .btn{
+      .btn, .btn:active{
           background-color: #0d6efd;
           border-radius: 0.25rem;
           color: #ffffff;
@@ -51,7 +51,7 @@ const mailTextCode = (receiver, buyer, textCode) => {
       .note > p, .note > a{
           font-size: 12px;
       }
-      .link{
+      .link, .link:active{
         color: #1c0dfd;
         font-style: italic;
       }

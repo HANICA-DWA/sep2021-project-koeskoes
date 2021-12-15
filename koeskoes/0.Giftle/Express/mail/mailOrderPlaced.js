@@ -14,8 +14,8 @@ const mailOrderPlaced = (buyer, textCode) => {
       p{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
-      a{
-        color: #000000;
+      a, a:active{
+        color: #ffffff;
         text-decoration: none;
       }
       .container{
@@ -28,7 +28,7 @@ const mailOrderPlaced = (buyer, textCode) => {
           .row > p{
             margin-bottom: 0rem;
           }
-      .btn{
+      .btn, .btn:active{
           background-color: #0d6efd;
           border-radius: 0.25rem;
           color: #ffffff;
@@ -41,9 +41,10 @@ const mailOrderPlaced = (buyer, textCode) => {
       .note > p, .note > a{
         font-size: 12px;
       }
-      .link{
+      .link, .link:active{
         color: #1c0dfd;
         font-style: italic;
+        text-decoration: none;
       }
         .link:hover{
           text-decoration: underline;
