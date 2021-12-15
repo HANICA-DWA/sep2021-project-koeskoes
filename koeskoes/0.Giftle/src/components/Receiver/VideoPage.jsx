@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ReactPlayer from "react-player";
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -12,16 +11,14 @@ import {
 } from "react-share";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { sendVideoWatchedMail } from "../../redux/actions/videoActions";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
-import { ReactComponent as PlayCircle } from "../../assets/play-circle.svg";
-import { ReactComponent as PauseCircle } from "../../assets/pause-circle.svg";
-import { ReactComponent as ReplayCircle } from "../../assets/arrow-clockwise.svg";
 import { ReactComponent as ShareIcon } from "../../assets/share-fill.svg";
+
+// Reused Common components
 import VideoPlayer from "../Common/VideoPlayer";
+
 /**
  * Page showing the video (by textCode) for the receiver
  *
@@ -52,10 +49,17 @@ function VideoPage() {
     getVideo();
   }, [textCode]);
 
-
-  
-  const showPopUp = () => {
+  /**
+   * Function with code containing share options
+   * Right now the options for sharing are: E-mail, Twitter, Whatsapp, Facebook
+   * NOTE: Facebook won't work with localhost, but will work with other domains like www.giftle.nl
+   * @returns front-end popup message if boolean isPopUp is true else returns null
+   */
+  const showSharePopUp = () => {
     const videoURL = `http://localhost:3000/receiver/watchSharedVideo/${textCode}`;
+    const message =
+      "Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken.";
+    const iconSize = 30;
     if (isPopUp) {
       return (
         <span class="popuptext" id="myPopup">
@@ -63,34 +67,25 @@ function VideoPage() {
             <div className="icon">
               <EmailShareButton
                 url={videoURL}
-                quote="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
+                subject="Giftle video"
+                body={message}
               >
-                <EmailIcon size={30} round={true} />
+                <EmailIcon size={iconSize} round={true} />
               </EmailShareButton>
             </div>
             <div className="icon">
-              <TwitterShareButton
-                url={videoURL}
-                title="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
-              >
-                <TwitterIcon size={30} round={true} />
+              <TwitterShareButton url={videoURL} title={message}>
+                <TwitterIcon size={iconSize} round={true} />
               </TwitterShareButton>
             </div>
             <div className="icon">
-              <FacebookShareButton
-                url={videoURL}
-                quote="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
-              >
-                <FacebookIcon size={30} round={true} />
+              <FacebookShareButton url={videoURL} quote={message}>
+                <FacebookIcon size={iconSize} round={true} />
               </FacebookShareButton>
             </div>
             <div className="icon">
-              <WhatsappShareButton
-                url={videoURL}
-                title="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
-                separator=" - "
-              >
-                <WhatsappIcon size={30} round={true} />
+              <WhatsappShareButton url={videoURL} title={message}>
+                <WhatsappIcon size={iconSize} round={true} />
               </WhatsappShareButton>
             </div>
           </div>
@@ -149,7 +144,7 @@ function VideoPage() {
             {videoData.emailGifter ? <h5>{videoData.emailGifter}</h5> : null}
           </div>
           <div className="float-end shareButtonPlacement popup">
-            {showPopUp()}
+            {showSharePopUp()}
             <button
               className="btn btn-primary"
               onClick={() => {
