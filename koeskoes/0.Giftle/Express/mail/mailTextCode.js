@@ -72,7 +72,7 @@ const mailTextCode = (receiver, buyer, textCode) => {
           <p>Uw tekstcode is: <span><b><i>${textCode}</i></b></span></p>
       </div>
       <div class="row">
-          <a href="http://localhost:3000/watchvideo/${textCode}" class="btn" style="color: #ffffff !important;">Bekijk de Giftle!</a>
+          <a href="http://localhost:3000/watchvideo/${textCode}" class="btn" style="color: #fffffe !important;">Bekijk de Giftle!</a>
       </div>
       <div class="row note">
           <p>Werkt de knop niet? Dan kunt u onze pagina ook vinden door op deze link te klikken:</p>
