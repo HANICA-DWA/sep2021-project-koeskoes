@@ -33,6 +33,7 @@ import CheckOrdersPage from "./Employee/CheckOrdersPage";
 import "../styles/App.css";
 // import "../styles/themes/Rituals.css";
 // import "../styles/themes/GameMania.css";
+import "../styles/themes/DarkMode.css";
 
 function App() {
   return (
