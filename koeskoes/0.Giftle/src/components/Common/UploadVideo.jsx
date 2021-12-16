@@ -72,6 +72,7 @@ const UploadVideo = (props) => {
               name="uploadedVideo"
               accept="video/*"
               className="form-control mx-auto mb-3"
+              id="fileInput"
               onChange={(e) => setUploadedVideo(e.target)}
             />
           </div>
@@ -79,6 +80,7 @@ const UploadVideo = (props) => {
             <button
               className="btn btn-primary mx-auto"
               style={{ width: "51%" }}
+              id="upload"
               onClick={convertVideo}
             >
               Upload video&nbsp;

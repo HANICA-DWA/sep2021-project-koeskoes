@@ -45,7 +45,7 @@ const VideoPlayer = (props) => {
 
   return (
     <>
-      <div className="row">
+      <div className="row" id="rewatchVideoComponent">
         <h2>{props.title}</h2>
         <hr />
       </div>

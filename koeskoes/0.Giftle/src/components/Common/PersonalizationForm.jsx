@@ -171,11 +171,7 @@ function PersonalizationForm(props) {
       </div>
       <br />
       <br />
-      <button
-        className="btn btn-primary"
-        onClick={saveReceiverData}
-        disabled={props.disabled ? props.disabled : false}
-      >
+      <button id="sendVideoMessage" className="btn btn-primary" onClick={saveReceiverData} disabled={(props.disabled ? props.disabled : false)}>
         Versturen&nbsp;
         <RightArrow />
       </button>

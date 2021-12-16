@@ -58,6 +58,7 @@ const CheckOrdersPage = () => {
       return (
         <button
           className="btn btn-success"
+          id="printFinalOrder"
           onClick={(e) => createQRCode(order._id)}
         >
           Print QR-code&nbsp;
@@ -68,6 +69,7 @@ const CheckOrdersPage = () => {
       return (
         <button
           className="btn btn-primary"
+          id="prePrintOrder"
           onClick={(e) => {
             axios.patch(`http://localhost:4000/api/orders/${order._id}/prePrint`);
           }}
@@ -218,7 +220,7 @@ const CheckOrdersPage = () => {
           onChange={(e) => dispatch(setSearch(e.target.value))}
           value={searchParams}
         />
-        <table className="table">
+        <table className="table" id="checkOrdersTable">
           <thead>
             <tr>
               <th scope="col">Ordernummer</th>

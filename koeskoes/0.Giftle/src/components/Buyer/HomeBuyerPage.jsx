@@ -32,6 +32,7 @@ function HomeBuyerPage() {
         </p>
         <button
           className="btn btn-primary mx-4"
+          id="recordVideo"
           onClick={() => {
             dispatch(setVideoCreationPath("record"));
             return navigate("/buyer/create");
@@ -42,6 +43,7 @@ function HomeBuyerPage() {
         </button>
         <button
           className="btn btn-primary mx-4"
+          id="uploadVideo"
           onClick={() => {
             dispatch(setVideoCreationPath("upload"));
             return navigate("/buyer/create");

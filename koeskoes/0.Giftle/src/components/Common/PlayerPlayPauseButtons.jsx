@@ -41,6 +41,7 @@ const PlayerPlayPauseButtons = (props) => {
       {props.setFullScreen ? (
         <button
           className="btn btn-primary btn-round btn-record btn-record-right"
+          id="fullscreen"
           onClick={() => props.setFullScreen()}
         >
           <FullScreenButton className="text-dark" />

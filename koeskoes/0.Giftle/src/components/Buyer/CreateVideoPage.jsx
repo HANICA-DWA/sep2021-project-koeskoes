@@ -108,6 +108,7 @@ function CreateVideoPage() {
             <div className="col-md-6">
               <button
                 className="btn btn-primary float-end"
+                id="personalize"
                 onClick={() => goToPersonalization()}
               >
                 Personaliseren&nbsp;
@@ -193,7 +194,7 @@ function CreateVideoPage() {
             ) : null}
           </div>
           {personalized && fullScreen ? <div className="col-lg-3"></div> : null}
-          <div className="col-lg-6 col-md-12 col-sm-12 mt-4">
+          <div className="col-lg-6 col-md-12 col-sm-12 mt-4" id="personalizationForm">
             {personalized ? (
               <PersonalizationForm
                 next={() => navigate("/buyer/thankyou")}
