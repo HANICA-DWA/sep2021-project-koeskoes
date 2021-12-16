@@ -127,7 +127,7 @@ function CreateVideoPage() {
           <div
             className={`${
               personalized && !fullScreen ? "col-lg-6" : "col-lg-12"
-            } col-md-12 col-sm-12 ${personalized ? "item-center" : null}`}
+            } col-md-12 col-sm-12 mt-4 ${personalized ? "item-center" : null}`}
           >
             {uploadVisualState === 1 ? (
               videoCreationPath === "upload" ? (
@@ -170,7 +170,7 @@ function CreateVideoPage() {
             ) : null}
           </div>
           {personalized && fullScreen ? <div className="col-lg-3"></div> : null}
-          <div className="col-lg-6 col-md-12 col-sm-12">
+          <div className="col-lg-6 col-md-12 col-sm-12 mt-4">
             {personalized ? (
               <PersonalizationForm
                 next={() => navigate("/buyer/thankyou")}

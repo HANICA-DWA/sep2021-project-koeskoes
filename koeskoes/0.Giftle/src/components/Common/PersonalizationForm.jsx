@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ErrorMessage from "./CreateErrorMessage";
 import { useSelector } from "react-redux";
@@ -18,6 +18,20 @@ function PersonalizationForm(props) {
   const [nameReceiver, setNameReceiver] = useState(null);
   const [emailReceiver, setEmailReceiver] = useState(null);
   const textCode = useSelector((state) => state.orders.textCode);
+
+  /**
+    * 
+    * Red border on input clarification for the error message(s)
+    * 
+    */
+  useEffect(() => {
+    const redNameError = document.getElementById("nameReceiver");
+    if(nameReceiver === "" || nameReceiver === null) {
+      redNameError.classList.add("errorInput");
+    } else {
+      redNameError.classList.remove("errorInput");
+    }
+  });
 
   /**
    * This function will send the data of the receiver to the server.
@@ -77,7 +91,7 @@ function PersonalizationForm(props) {
     if (!nameReceiver) {
       return {
         status: "error",
-        message: "Je hebt geen naam ingevuld.",
+        message: "De naam van de ontvanger mag niet leeg zijn. Een naam moet minimaal 1 teken bevatten.",
       };
     }
 
@@ -103,7 +117,7 @@ function PersonalizationForm(props) {
       if (!re.test(emailReceiver)) {
         return {
           status: "error",
-          message: "Vul een geldig e-mailadres in",
+          message: "Vul een geldig e-mailadres in. Een e-mailadres moet op dit formaat lijken: naam@domein.com",
         };
       }
     }

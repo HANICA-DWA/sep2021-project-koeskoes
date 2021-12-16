@@ -51,7 +51,7 @@ const Camera = (props) => {
           setIsAudioAvailable(false);
           if (props.setError)
             props.setError(
-              ErrorMessage("Geen microfoon gevonden", () =>
+              ErrorMessage("Er is geen microfoon gevonden. Controleer of er een microfoon aangesloten is.", () =>
                 props.setError(null)
               )
             );
@@ -60,7 +60,7 @@ const Camera = (props) => {
         setIsAudioAvailable(false);
         if (props.setError)
           props.setError(
-            ErrorMessage("Geen microfoon gevonden", () => props.setError(null))
+            ErrorMessage("Er is geen microfoon gevonden. Controleer of er een microfoon aangesloten is.", () => props.setError(null))
           );
       }
 
@@ -81,14 +81,14 @@ const Camera = (props) => {
           setIsWebcamAvailable(false);
           if (props.setError)
             props.setError(
-              ErrorMessage("Geen webcam gevonden", () => props.setError(null))
+              ErrorMessage("Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.", () => props.setError(null))
             );
         }
       } catch (e) {
         setIsWebcamAvailable(false);
         if (props.setError)
           props.setError(
-            ErrorMessage("Geen webcam gevonden", () => props.setError(null))
+            ErrorMessage("Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.", () => props.setError(null))
           );
       }
 

@@ -33,10 +33,10 @@ function ScanQRPage() {
           video: true,
         });
         if (videoAccess.getVideoTracks().length < 1) {
-          setError(ErrorMessage("Geen webcam gevonden", () => setError(null)));
+          setError(ErrorMessage("Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.", () => setError(null)));
         }
       } catch (e) {
-        setError(ErrorMessage("Geen webcam gevonden", () => setError(null)));
+        setError(ErrorMessage("Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.", () => setError(null)));
       }
       setIsDevicesChecked(true);
     };
