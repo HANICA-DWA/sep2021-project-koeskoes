@@ -277,6 +277,16 @@ input[type="file"]::-webkit-file-upload-button {
   margin: 5px;
 }
 
-.reactionButton{
+.reactionButton {
   margin-top: -2em;
+}
+
+/* Error message helper - input border becomes red */
+.errorInput {
+  border-color: none;
+  box-shadow: none;
+}
+.errorInput:focus {
+  border-color: #ff0000;
+  box-shadow: none;
 }
