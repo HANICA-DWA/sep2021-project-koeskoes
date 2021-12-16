@@ -20,13 +20,13 @@ function PersonalizationForm(props) {
   const textCode = useSelector((state) => state.orders.textCode);
 
   /**
-    * 
-    * Red border on input clarification for the error message(s)
-    * 
-    */
+   *
+   * Red border on input clarification for the error message(s)
+   *
+   */
   useEffect(() => {
     const redNameError = document.getElementById("nameReceiver");
-    if(nameReceiver === "" || nameReceiver === null) {
+    if (nameReceiver === "" || nameReceiver === null) {
       redNameError.classList.add("errorInput");
     } else {
       redNameError.classList.remove("errorInput");
@@ -43,7 +43,7 @@ function PersonalizationForm(props) {
     if (checkedName.status === "error") {
       return props.setError
         ? props.setError(
-            ErrorMessage(checkedName.message, () => props.setError(null))
+            ErrorMessage(checkedName.message, () => props.setError(null)),
           )
         : null;
     }
@@ -51,7 +51,7 @@ function PersonalizationForm(props) {
     if (checkedEmail.status === "error") {
       return props.setError
         ? props.setError(
-            ErrorMessage(checkedEmail.message, () => props.setError(null))
+            ErrorMessage(checkedEmail.message, () => props.setError(null)),
           )
         : null;
     }
@@ -63,15 +63,15 @@ function PersonalizationForm(props) {
 
     const uploadResponse = await axios.patch(
       `http://localhost:4000/api/orders/new/` + textCode,
-      formData
+      formData,
     );
 
     if (uploadResponse.data.status === "error") {
       return props.setError
         ? props.setError(
             ErrorMessage(uploadResponse.data.message, () =>
-              props.setError(null)
-            )
+              props.setError(null),
+            ),
           )
         : null;
     } else {
@@ -91,7 +91,8 @@ function PersonalizationForm(props) {
     if (!nameReceiver) {
       return {
         status: "error",
-        message: "De naam van de ontvanger mag niet leeg zijn. Een naam moet minimaal 1 teken bevatten.",
+        message:
+          "De naam van de ontvanger mag niet leeg zijn. Een naam moet minimaal 1 teken bevatten.",
       };
     }
 
@@ -117,7 +118,8 @@ function PersonalizationForm(props) {
       if (!re.test(emailReceiver)) {
         return {
           status: "error",
-          message: "Vul een geldig e-mailadres in. Een e-mailadres moet op dit formaat lijken: naam@domein.com",
+          message:
+            "Vul een geldig e-mailadres in. Een e-mailadres moet op dit formaat lijken: naam@domein.com",
         };
       }
     }
@@ -128,7 +130,7 @@ function PersonalizationForm(props) {
   return (
     <>
       <div className="row">
-        <h1>Video personaliseren</h1>
+        <h1>Personaliseren</h1>
       </div>
       <p>
         Om de video bij de juiste persoon aan te laten komen, hebben we de naam
@@ -150,6 +152,7 @@ function PersonalizationForm(props) {
             id="nameReceiver"
             name="nameReceiver"
             onChange={(e) => setNameReceiver(e.target.value)}
+            disabled={props.disabled ? props.disabled : false}
           />
           <br />
           <label htmlFor="emailReceiver" className="form-label">
@@ -161,13 +164,18 @@ function PersonalizationForm(props) {
             id="emailReceiver"
             name="emailReceiver"
             onChange={(e) => setEmailReceiver(e.target.value)}
+            disabled={props.disabled ? props.disabled : false}
           />
         </div>
         <div className="col-lg-2 col-md-2 col-sm-2"></div>
       </div>
       <br />
       <br />
-      <button className="btn btn-primary" onClick={saveReceiverData} disabled={(props.disabled ? props.disabled : false)}>
+      <button
+        className="btn btn-primary"
+        onClick={saveReceiverData}
+        disabled={props.disabled ? props.disabled : false}
+      >
         Versturen&nbsp;
         <RightArrow />
       </button>

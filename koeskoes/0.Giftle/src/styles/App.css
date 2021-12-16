@@ -113,6 +113,12 @@ input[type="file"]::-webkit-file-upload-button {
   }
 }
 
+@media only screen and (min-width: 320px) {
+  .form-switch-alignment {
+    margin: auto auto;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .lg-hidden {
     display: none !important;
@@ -129,6 +135,10 @@ input[type="file"]::-webkit-file-upload-button {
   .container-flex {
     width: 85vw;
   }
+
+  .form-switch-alignment {
+    margin: auto 0;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -140,6 +150,10 @@ input[type="file"]::-webkit-file-upload-button {
 @media only screen and (min-width: 1200px) {
   .lg-hidden {
     display: none !important;
+  }
+
+  .form-switch-alignment {
+    margin: auto 0;
   }
 
   .container-wide {

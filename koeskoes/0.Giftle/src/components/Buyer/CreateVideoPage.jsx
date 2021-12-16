@@ -31,11 +31,11 @@ function CreateVideoPage() {
   const [fullScreen, setFullScreen] = useState(false);
   const textCode = useSelector((state) => state.orders.textCode);
   const videoCreationPath = useSelector(
-    (state) => state.uploads.videoCreationPath
+    (state) => state.uploads.videoCreationPath,
   );
   const videoUploaded = useSelector((state) => state.uploads.videoUploaded);
   const uploadVisualState = useSelector(
-    (state) => state.uploads.uploadVisualState
+    (state) => state.uploads.uploadVisualState,
   );
   const personalized = useSelector((state) => state.uploads.personalized);
   const video = useSelector((state) => state.videos.video);
@@ -58,6 +58,10 @@ function CreateVideoPage() {
     }
   }, [video, dispatch]);
 
+  useEffect(() => {
+    setError(null);
+  }, [videoCreationPath]);
+
   const goToPersonalization = () => {
     setFullScreen(false);
     dispatch(setPersonalized());
@@ -68,12 +72,30 @@ function CreateVideoPage() {
     <div className="vertical-center colored-background">
       {error}
       <div
-        className={`${fullScreen ? `container-flex` : ( `container container-w40 ` + (personalized ? "container-wide" : null))} text-center rounded p-3 bg-light mt-4 mb-4`}
+        className={`${
+          fullScreen
+            ? `container-flex`
+            : `container container-w40 ` +
+              (personalized ? "container-wide" : null)
+        } text-center rounded p-3 bg-light mt-4 mb-4`}
       >
         <div className="row">
-          <div className="col-lg-2 col-md-1 col-sm-1 col-1"></div>
-          <div className="col-lg-5 col-md-6 col-sm-6 col-6">
-            {videoUploaded && uploadVisualState === 1 ? (
+          <div className="col-6">
+            {uploadVisualState !== 1 ? (
+              <button
+                className="btn btn-primary float-start"
+                onClick={() => {
+                  setFullScreen(false);
+                  dispatch(changeUploadVisualState(1));
+                }}
+              >
+                Opnieuw{" "}
+                {videoCreationPath === "upload" ? "uploaden" : "opnemen"}
+              </button>
+            ) : null}
+          </div>
+          {videoUploaded && uploadVisualState === 1 ? (
+            <div className="col-lg-6 col-md-12">
               <button
                 className="btn btn-primary float-end"
                 onClick={() => dispatch(changeUploadVisualState(2))}
@@ -81,7 +103,9 @@ function CreateVideoPage() {
                 Gebruik vorige video&nbsp;
                 {<RightArrow />}
               </button>
-            ) : uploadVisualState === 2 ? (
+            </div>
+          ) : uploadVisualState === 2 ? (
+            <div className="col-md-6">
               <button
                 className="btn btn-primary float-end"
                 onClick={() => goToPersonalization()}
@@ -89,8 +113,8 @@ function CreateVideoPage() {
                 Personaliseren&nbsp;
                 {<RightArrow />}
               </button>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
         </div>
         <div className="row">
           <div
@@ -102,16 +126,23 @@ function CreateVideoPage() {
               videoCreationPath === "upload" ? (
                 <>
                   <div className="row mb-5">
-                    <SwitchUploadRecord />
-                    <div className="col-9 text-start">
-                      <h1>Uw video uploaden</h1>
+                    <div className="col-12 mb-3 text-center">
+                      <h1>Uploaden</h1>
                     </div>
+                    <SwitchUploadRecord />
                   </div>
                   <div className="row">
                     <p>
-                      Klik op <b>Bestand kiezen</b> en selecteer een video of sleep een bestand in hetzelde vakje.<br />
-                      Om de video te uploaden moet je vervolgens op de <b>Upload video</b> knop klikken.<br />
-                      De video moet de volgende resoluties hebben: <i>1080p</i> of <i>720p</i>.
+                      Klik op <b>Bestand kiezen</b> en selecteer een video of
+                      sleep een bestand in hetzelde vakje.
+                      <br />
+                      Om de video te uploaden moet je vervolgens op de{" "}
+                      <b>Upload video</b> knop klikken.
+                      <br />
+                      De video moet de volgende resoluties hebben: <i>
+                        1080p
+                      </i>{" "}
+                      of <i>720p</i>.
                     </p>
                   </div>
                   <UploadVideo
@@ -122,26 +153,26 @@ function CreateVideoPage() {
               ) : (
                 <>
                   <div className="row mb-5">
-                    <SwitchUploadRecord />
-                    <div className="col-9 text-start">
-                      <h1>Uw video opnemen</h1>
+                    <div className="col-12 mb-3 text-center">
+                      <h1>Opnemen</h1>
                     </div>
+                    <SwitchUploadRecord />
                   </div>
-                <Camera
-                  uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`}
-                  setError={setError}
-                />
+                  <Camera
+                    uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`}
+                    setError={setError}
+                  />
                 </>
               )
             ) : (
               <VideoPlayer
-                title="Uw video terugkijken"
+                title="Video terugkijken"
                 url={"http://localhost:4000/api/videos/video/"}
                 videoData={video}
                 created={true}
                 setFullScreen={() =>
                   setFullScreen(
-                    (prevScreenState) => (prevScreenState = !prevScreenState)
+                    (prevScreenState) => (prevScreenState = !prevScreenState),
                   )
                 }
               />
