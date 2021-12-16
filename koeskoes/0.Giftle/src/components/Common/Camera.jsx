@@ -315,8 +315,8 @@ const Camera = (props) => {
                   !pressed ? setResolution(e.target.value) : null
                 }
               >
-                <option value="720">Standaard kwaliteit / 2 minuten</option>
-                <option value="1080">Hoge kwaliteit / 1 minuut</option>
+                <option key="720" value="720">Standaard kwaliteit / 2 minuten</option>
+                <option key="1080" value="1080">Hoge kwaliteit / 1 minuut</option>
               </select>
             </div>
             {availableCameras.length > 1 ? (
