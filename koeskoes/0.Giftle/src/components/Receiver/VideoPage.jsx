@@ -65,7 +65,7 @@ function VideoPage() {
           <ShareMenu
             url={`http://localhost:3000/receiver/watchSharedVideo/${textCode}`}
             message="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
-            open={isPopUp}
+            isOpen={isPopUp}
           />
           <button
             className="btn btn-primary"

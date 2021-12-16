@@ -20,7 +20,7 @@ const ShareMenu = (props) => {
   const message = props.message || "";
   const iconSize = props.iconSize || 30;
 
-  if (props.open) {
+  if (props.isOpen) {
     return (
       <span class="popuptext" id="myPopup">
         <div className="icon-container">
