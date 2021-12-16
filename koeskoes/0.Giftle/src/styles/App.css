@@ -169,7 +169,8 @@ input[type="file"]::-webkit-file-upload-button {
 
 .btn-record-right {
   position: relative;
-  transform: translateX(75%);
+  float: right;
+  transform: translateY(127%);
 }
 
 .recording-breathing {
