@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import ReactPlayer from "react-player";
-import axios from "axios";
 import Spinner from "./Spinner";
 import ProgressBar from "./ProgressBar";
 import TimeComponent from "./TimerComponent";
 import PlayerPlayPauseButtons from "./PlayerPlayPauseButtons";
-import { useSelector } from "react-redux";
 
 /**
  *
@@ -19,24 +17,6 @@ const VideoPlayer = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isVideoTime, setIsVideoTime] = useState(null);
   const [isVideoWatchedTime, setIsVideoWatchedTime] = useState(null);
-  // const [videoData, setVideoData] = useState(null);
-  const videoData = useSelector(state => state.videos.video);
-
-  /**
-   *
-   * UseEffect to fetch the (video)data by textcode from the database. If fetching succeeds
-   * the data will get set by the setVideoData function that updates videoData.
-   *
-   */
-  // useEffect(() => {
-  //   const fetchVideoData = async () => {
-  //     const data = await axios.get(props.videoCreationPath);
-
-  //     setVideoData(data);
-  //   };
-
-  //   fetchVideoData();
-  // }, [props]);
 
   /**
    *
@@ -62,8 +42,6 @@ const VideoPlayer = (props) => {
       );
     }
   };
-
-  console.log(videoData);
 
   return (
     <>
