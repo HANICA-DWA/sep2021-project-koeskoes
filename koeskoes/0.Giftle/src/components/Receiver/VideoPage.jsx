@@ -24,7 +24,7 @@ function VideoPage() {
   const [isPopUp, setIsPopUp] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
   const videoData = useSelector((state) => state.videos.video);
-  
+
   /**
    * A useEffect to collect all video data from the database using Redux State
    */
@@ -46,11 +46,15 @@ function VideoPage() {
           title={`Videoboodschap voor ${videoData.nameReceiver}`}
           url="http://localhost:4000/api/videos/video/"
           videoData={videoData}
-          setFullScreen={() => setFullScreen(prevScreenState => prevScreenState = !prevScreenState)}
+          setFullScreen={() =>
+            setFullScreen(
+              (prevScreenState) => (prevScreenState = !prevScreenState)
+            )
+          }
         />
         <button
           className="btn btn-primary reactionButton"
-          onClick={() => navigate("/receiver/reaction")}
+          onClick={() => navigate(`/receiver/reaction/` + textCode)}
         >
           Verstuur een reactie&nbsp;
           <RightArrow />
@@ -81,7 +85,11 @@ function VideoPage() {
 
   return (
     <div className="vertical-center colored-background">
-      <div className={`${fullScreen ? `container-flex` : `container`} text-center rounded p-3 bg-light`}>
+      <div
+        className={`${
+          fullScreen ? `container-flex` : `container`
+        } text-center rounded p-3 bg-light`}
+      >
         {videoPlayer()}
       </div>
     </div>

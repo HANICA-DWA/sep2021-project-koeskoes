@@ -60,9 +60,9 @@ function App() {
           <Route path="/receiver/textcode" exact element={<TextCodePage />} />
           <Route path="/receiver/watchvideo/:textCode" element={<VideoPage />} />
           <Route path="/receiver/watchSharedVideo/:textCode" element={<SharedVideoPage/>}/>
-          <Route path="/receiver/reaction" element={<ReactionHomePage />} />
-          <Route path="/receiver/text-reaction" exact element={<TextReactionPage />} />
-          <Route path="/receiver/video-reaction" exact element={<VideoReactionPage />} />
+          <Route path="/receiver/reaction/:textCode" element={<ReactionHomePage />} />
+          <Route path="/receiver/text-reaction/:textCode" exact element={<TextReactionPage />} />
+          <Route path="/receiver/video-reaction/:textCode" exact element={<VideoReactionPage />} />
           <Route path="/employee/checkorders" exact element={<CheckOrdersPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

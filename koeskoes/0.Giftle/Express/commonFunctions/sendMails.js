@@ -3,6 +3,8 @@ const mailTextCode = require("../mail/mailTextCode");
 const mailVideoWatched = require("../mail/mailVideoWatched");
 const mailUploadReminder = require("../mail/mailUploadReminder");
 const mailOrderPlaced = require("../mail/mailOrderPlaced");
+const mailTextReaction = require("../mail/mailTextReaction");
+const mailVideoReaction = require("../mail/mailVideoReaction");
 
 /**
  * This class adds the ability to send mails via an SMTP server.
@@ -119,6 +121,62 @@ class MailModule {
         to: to,
         subject: "Giftle - Bedankt voor je bestelling!",
         html: mailOrderPlaced(buyer, textCode),
+      });
+
+      return { status: "success", message: mailInfo };
+    } catch (e) {
+      return { status: "error", message: e };
+    }
+  };
+
+  /**
+   *
+   * @param {string} to
+   * @param {string} buyer
+   * @param {string} receiver
+   * @param {string} textReaction
+   * @returns
+   */
+  sendTextReaction = async (to, buyer, receiver, textReaction) => {
+    if (!to) return { status: "error", message: "Mail not included" };
+    if (!buyer) return { status: "error", message: "Buyer not included" };
+    if (!receiver) return { status: "error", message: "Receiver not included" };
+    if (!textReaction) return { status: "error", message: "Reaction not included" };
+
+    try {
+      const mailInfo = await this.transport.sendMail({
+        from: '"Giftle.nl" info@giftle.nl',
+        to: to,
+        subject: "Giftle - Tekstreactie ontvangen!",
+        html: mailTextReaction(buyer, receiver, textReaction),
+      });
+
+      return { status: "success", message: mailInfo };
+    } catch (e) {
+      return { status: "error", message: e };
+    }
+  };
+
+  /**
+   *
+   * @param {string} to
+   * @param {string} buyer
+   * @param {string} receiver
+   * @param {string} videoReaction
+   * @returns
+   */
+   sendVideoReaction = async (to, buyer, receiver, videoReaction) => {
+    if (!to) return { status: "error", message: "Mail not included" };
+    if (!buyer) return { status: "error", message: "Buyer not included" };
+    if (!receiver) return { status: "error", message: "Receiver not included" };
+    if (!videoReaction) return { status: "error", message: "Reaction not included" };
+
+    try {
+      const mailInfo = await this.transport.sendMail({
+        from: '"Giftle.nl" info@giftle.nl',
+        to: to,
+        subject: "Giftle - Videoreactie ontvangen!",
+        html: mailVideoReaction(buyer, receiver, videoReaction),
       });
 
       return { status: "success", message: mailInfo };

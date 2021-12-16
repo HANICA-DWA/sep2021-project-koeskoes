@@ -1,12 +1,12 @@
 /**
- * Mail template for the mail when a video is watched
- * mail will be send to the buyer.
+ * Mail template for the buyer when the receiver sent a text reaction
  *
  * @param {string} buyer
  * @param {string} receiver
+ * @param {string} textReaction
  * @returns Mail preset
  */
-const mailVideoWatched = (buyer, receiver) => {
+const mailTextReaction = (buyer, receiver, textReaction) => {
   return `<html>
     <head>
       <style>
@@ -34,10 +34,13 @@ const mailVideoWatched = (buyer, receiver) => {
           <p>Beste ${buyer},</p>
         </div>
         <div class="row">
-          <p>${receiver} heeft jouw Giftle ontvangen en bekeken!</p>
-        </div>
-        <div class="row">
-          <p>Heel erg bedankt voor het bestellen van <b><i>een Giftle</i></b> en wie weet krijg jij er binnenkort wel eentje als cadeau!</p>
+          <p>
+            ${receiver} heeft gereageerd op de Giftle die je hebt gestuurd!
+            <br><br>
+            Lees hieronder de tekstreactie die ${receiver} heeft gegeven:
+            <br><br>
+            <i>${textReaction}</i>
+          </p>
         </div>
         <div>
           <p>Met vriendelijke groet,</p>
@@ -48,4 +51,4 @@ const mailVideoWatched = (buyer, receiver) => {
   </html>`;
 };
 
-module.exports = mailVideoWatched;
+module.exports = mailTextReaction;

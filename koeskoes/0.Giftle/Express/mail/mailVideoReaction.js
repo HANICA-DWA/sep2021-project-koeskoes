@@ -1,13 +1,12 @@
 /**
- * Mail template for the receiver when an order is placed
- * containing the textcode
+ * Mail template for the buyer when the receiver sent a video reaction
  *
- * @param {string} receiver
  * @param {string} buyer
- * @param {string} textCode
+ * @param {string} receiver
+ * @param {string} videoReaction
  * @returns Mail preset
  */
-const mailTextCode = (receiver, buyer, textCode) => {
+const mailVideoReaction = (buyer, receiver, videoReaction) => {
   return `<html>
     <head>
       <style>
@@ -20,10 +19,6 @@ const mailTextCode = (receiver, buyer, textCode) => {
         a {
           color: #ffffff;
           text-decoration: none;
-        }
-        span {
-          border: 2px dotted black;
-          padding: 0.5rem;
         }
         .container {
           background-color: #e8e8e8;
@@ -62,21 +57,21 @@ const mailTextCode = (receiver, buyer, textCode) => {
     <body>
       <div class="container">
         <div class="row">
-          <p>Beste ${receiver},</p>
-        </div>
-        <div class="row">
-          <p>${buyer} heeft jou een Giftle gestuurd!</p>
+          <p>Beste ${buyer},</p>
         </div>
         <div class="row mb">
-          <p>Om deze Giftle te kunnen openen, klik je op de knop hieronder. Hiervoor heb je een speciale tekstcode nodig.</p>
-          <p>Jouw tekstcode is: <span><b><i>${textCode}</i></b></span></p>
+          <p>
+            ${receiver} heeft gereageerd op de Giftle die je hebt gestuurd!
+            <br><br>
+            Klik op de knop hieronder om de videoreactie van ${receiver} te bekijken.
+          </p>
         </div>
         <div class="row">
-          <a href="http://localhost:3000/watchvideo/${textCode}" class="btn" style="color: #fffffe !important;">Bekijk de Giftle!</a>
+          <a href="http://localhost:3000/watchvideo/${textCode}/answer" class="btn" style="color: #fffffe !important;">Bekijk de reactie!</a>
         </div>
         <div class="row note">
-          <p>Werkt de knop niet? Dan kun je onze pagina ook vinden door op deze link te klikken:</p>
-          <a href="http://localhost:3000/watchvideo/${textCode}" class="link">https://www.giftle.nl/watchvideo/${textCode}</a>
+          <p>Werkt de knop niet? Dan kun je de reactie ook bekijken door op deze link te klikken:</p>
+          <a href="http://localhost:3000/watchvideo/${textCode}/answer" class="link">https://www.giftle.nl/watchvideo/${textCode}/answer</a>
         </div>
         <div>
           <p>Met vriendelijke groet,</p>
@@ -87,4 +82,4 @@ const mailTextCode = (receiver, buyer, textCode) => {
   </html>`;
 };
 
-module.exports = mailTextCode;
+module.exports = mailVideoReaction;
