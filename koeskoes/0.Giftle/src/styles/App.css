@@ -12,7 +12,9 @@ body {
 .container {
   width: 90% !important;
 }
-.container, .container-wide, .container-flex {
+.container,
+.container-wide,
+.container-flex {
   transition: 300ms ease;
 }
 
@@ -30,8 +32,16 @@ body {
       .container {
         width: 30% !important;
       }
+      .container-w40 {
+        min-height: 615px !important;
+        width: 40% !important;
+      }
     }
   }
+}
+
+.video-rem5 {
+  margin-top: 5rem;
 }
 
 .visualizer {
@@ -299,6 +309,10 @@ input[type="file"]::-webkit-file-upload-button {
 
 .reactionButton {
   margin-top: -2em;
+}
+
+#flexSwitchCheckDefault {
+  margin-left: -40px;
 }
 
 /* Error message helper - input border becomes red */

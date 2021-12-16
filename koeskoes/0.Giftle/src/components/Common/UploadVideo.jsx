@@ -64,12 +64,9 @@ const UploadVideo = (props) => {
 
   return (
     <>
-      <div className="row">
-        <h1>Uw video uploaden</h1>
-      </div>
       {!uploading ? (
         <>
-          <div className="row">
+          <div className="row video-rem5">
             <input
               type="file"
               name="uploadedVideo"
@@ -78,7 +75,7 @@ const UploadVideo = (props) => {
               onChange={(e) => setUploadedVideo(e.target)}
             />
           </div>
-          <div className="row">
+          <div className="row mb-5">
             <button
               className="btn btn-primary mx-auto"
               style={{ width: "51%" }}

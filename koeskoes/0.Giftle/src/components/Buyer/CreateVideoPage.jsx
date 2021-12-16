@@ -4,6 +4,7 @@ import Camera from "../Common/Camera";
 import UploadVideo from "../Common/UploadVideo";
 import VideoPlayer from "../Common/VideoPlayer";
 import PersonalizationForm from "../Common/PersonalizationForm";
+import SwitchUploadRecord from "../Common/SwitchUploadRecord";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import {
@@ -15,8 +16,6 @@ import {
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
-import { ReactComponent as DownUpArrow } from "../../assets/arrow-down-up.svg";
-import { ReactComponent as RepeatArrow } from "../../assets/arrow-repeat.svg";
 
 /**
  *
@@ -69,39 +68,9 @@ function CreateVideoPage() {
     <div className="vertical-center colored-background">
       {error}
       <div
-        className={`${fullScreen ? `container-flex` : ( `container ` + (personalized ? "container-wide" : null))} text-center rounded p-3 bg-light mt-4 mb-4`}
+        className={`${fullScreen ? `container-flex` : ( `container container-w40 ` + (personalized ? "container-wide" : null))} text-center rounded p-3 bg-light mt-4 mb-4`}
       >
         <div className="row">
-          <div className="col-lg-5 col-md-5 col-sm-5 col-5">
-            {uploadVisualState === 1 ? (
-              <button
-                className="btn btn-primary float-start"
-                onClick={() =>
-                  dispatch(
-                    setVideoCreationPath(
-                      videoCreationPath === "upload" ? "record" : "upload"
-                    )
-                  )
-                }
-              >
-                {videoCreationPath === "upload" ? `Record` : `Upload`}
-                &nbsp;
-                <DownUpArrow />
-              </button>
-            ) : (
-              <button
-                className="btn btn-primary float-start"
-                onClick={() => {
-                  setFullScreen(false);
-                  dispatch(changeUploadVisualState(1));
-                }}
-              >
-                Opnieuw{" "}
-                {videoCreationPath === "upload" ? "uploaden" : "opnemen"}&nbsp;
-                <RepeatArrow />
-              </button>
-            )}
-          </div>
           <div className="col-lg-2 col-md-1 col-sm-1 col-1"></div>
           <div className="col-lg-5 col-md-6 col-sm-6 col-6">
             {videoUploaded && uploadVisualState === 1 ? (
@@ -131,15 +100,38 @@ function CreateVideoPage() {
           >
             {uploadVisualState === 1 ? (
               videoCreationPath === "upload" ? (
-                <UploadVideo
-                  uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`}
-                  setError={setError}
-                />
+                <>
+                  <div className="row mb-5">
+                    <SwitchUploadRecord />
+                    <div className="col-9 text-start">
+                      <h1>Uw video uploaden</h1>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <p>
+                      Klik op <b>Bestand kiezen</b> en selecteer een video of sleep een bestand in hetzelde vakje.<br />
+                      Om de video te uploaden moet je vervolgens op de <b>Upload video</b> knop klikken.<br />
+                      De video moet de volgende resoluties hebben: <i>1080p</i> of <i>720p</i>.
+                    </p>
+                  </div>
+                  <UploadVideo
+                    uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`}
+                    setError={setError}
+                  />
+                </>
               ) : (
+                <>
+                  <div className="row mb-5">
+                    <SwitchUploadRecord />
+                    <div className="col-9 text-start">
+                      <h1>Uw video opnemen</h1>
+                    </div>
+                  </div>
                 <Camera
                   uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`}
                   setError={setError}
                 />
+                </>
               )
             ) : (
               <VideoPlayer
@@ -155,7 +147,7 @@ function CreateVideoPage() {
               />
             )}
             {uploadVisualState === 1 ? (
-              <p className="mt-3">
+              <p className="mt-4">
                 Door een video{" "}
                 {videoCreationPath === "upload" ? "te uploaden" : "op te nemen"}{" "}
                 gaat u akkoord met de{" "}

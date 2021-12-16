@@ -294,9 +294,6 @@ const Camera = (props) => {
 
   return (
     <>
-      <div className="row">
-        <h1>Uw video opnemen</h1>
-      </div>
       {!uploading ? (
         <>
           <div className="row mb-2">
