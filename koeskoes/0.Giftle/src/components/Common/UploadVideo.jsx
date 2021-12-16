@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import ErrorMessage from "./CreateErrorMessage";
 import { setVideo } from "../../redux/actions/videoActions";
+import Spinner from "./Spinner";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as FileUpload } from "../../assets/file-upload.svg";
@@ -10,6 +11,7 @@ import { ReactComponent as FileUpload } from "../../assets/file-upload.svg";
 const UploadVideo = (props) => {
   const dispatch = useDispatch();
   const [uploadedVideo, setUploadedVideo] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   /**
    *
@@ -27,6 +29,8 @@ const UploadVideo = (props) => {
     }
     const sourceVideoFile = uploadedVideo.files[0];
 
+    setUploading(true);
+
     if (sourceVideoFile.type.split("/")[0] === "video") {
       const formData = new FormData();
 
@@ -35,6 +39,7 @@ const UploadVideo = (props) => {
       const uploadResponse = await axios.patch(props.uploadPath, formData);
 
       if (uploadResponse.data.status === "error") {
+        setUploading(false);
         return props.setError
           ? props.setError(
               ErrorMessage(uploadResponse.data.message, () =>
@@ -46,6 +51,7 @@ const UploadVideo = (props) => {
         return dispatch(setVideo(uploadResponse.data));
       }
     } else {
+      setUploading(false);
       return props.setError
         ? props.setError(
             ErrorMessage("Kies een geldig video bestand!", () =>
@@ -61,25 +67,31 @@ const UploadVideo = (props) => {
       <div className="row">
         <h1>Uw video uploaden</h1>
       </div>
-      <div className="row">
-        <input
-          type="file"
-          name="uploadedVideo"
-          accept="video/*"
-          className="form-control mx-auto mb-3"
-          onChange={(e) => setUploadedVideo(e.target)}
-        />
-      </div>
-      <div className="row">
-        <button
-          className="btn btn-primary mx-auto"
-          style={{ width: "51%" }}
-          onClick={convertVideo}
-        >
-          Upload video&nbsp;
-          <FileUpload />
-        </button>
-      </div>
+      {!uploading ? (
+        <>
+          <div className="row">
+            <input
+              type="file"
+              name="uploadedVideo"
+              accept="video/*"
+              className="form-control mx-auto mb-3"
+              onChange={(e) => setUploadedVideo(e.target)}
+            />
+          </div>
+          <div className="row">
+            <button
+              className="btn btn-primary mx-auto"
+              style={{ width: "51%" }}
+              onClick={convertVideo}
+            >
+              Upload video&nbsp;
+              <FileUpload />
+            </button>
+          </div>
+        </>
+      ) : (
+        <Spinner />
+      )}
     </>
   );
 };

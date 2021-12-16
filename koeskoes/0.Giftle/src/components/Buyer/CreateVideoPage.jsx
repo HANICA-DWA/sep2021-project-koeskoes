@@ -69,7 +69,7 @@ function CreateVideoPage() {
     <div className="vertical-center colored-background">
       {error}
       <div
-        className={`${fullScreen ? `container-flex` : ( `container ` + personalized ? "container-wide" : null)} text-center rounded p-3 bg-light mt-4 mb-4`}
+        className={`${fullScreen ? `container-flex` : ( `container ` + (personalized ? "container-wide" : null))} text-center rounded p-3 bg-light mt-4 mb-4`}
       >
         <div className="row">
           <div className="col-lg-5 col-md-5 col-sm-5 col-5">
