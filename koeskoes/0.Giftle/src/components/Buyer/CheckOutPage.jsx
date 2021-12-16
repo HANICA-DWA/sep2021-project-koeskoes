@@ -499,7 +499,7 @@ return (
             </div>
           </div>
           <div className="row">
-          <div className="col-12">
+          <div className="col-12 mt-4">
               <div className="form-check" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Via Giftle kunt u een videoboodschap versturen met uw cadeau mee">
                 <input id="checkBoxGiftle" className="form-check-input" type="checkbox" value={isGiftleEnabled} onClick={e => setGiftleEnabled(e.target.checked)} />
                 <label className="form-check-label" for="flexCheckDefault">
@@ -518,7 +518,7 @@ return (
                 </label>
               </div>
             </div>
-            <div className="col-12 my-3 text-end" id="createOrder">
+            <div className="col-12 mt-4 mb-2 text-end" id="createOrder">
               <button className="btn btn-primary" onClick={saveReceiverData}>
                 Plaats bestelling&nbsp;
                 {<RightArrow />}
