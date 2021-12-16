@@ -1,8 +1,8 @@
 const session = require("express-session");
 const express = require("express");
 const http = require("http");
-var ws = require("ws");
-var cors = require("cors");
+const ws = require("ws");
+const cors = require("cors");
 const path = require("path");
 const mongoose = require("mongoose");
 require("./model/uploadModel");
