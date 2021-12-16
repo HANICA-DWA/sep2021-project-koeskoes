@@ -162,11 +162,6 @@ input[type="file"]::-webkit-file-upload-button {
   margin-bottom: -70px;
 }
 
-.btn-record-center {
-  position: relative;
-  transform: translateX(50%);
-}
-
 .btn-record-right {
   position: relative;
   float: right;

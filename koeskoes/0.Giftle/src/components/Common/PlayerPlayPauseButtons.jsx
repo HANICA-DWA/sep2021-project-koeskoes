@@ -9,9 +9,7 @@ import { ReactComponent as FullScreenButton } from "../../assets/fullscreen.svg"
  */
 const PlayerPlayPauseButtons = (props) => {
   const playPauseButtons = () => {
-    const buttonClasses = `btn btn-primary btn-round btn-record ${
-      props.setFullScreen ? "btn-record-center" : ""
-    }`;
+    const buttonClasses = `btn btn-primary btn-round btn-record`;
 
     switch (props.state) {
       case 1:
