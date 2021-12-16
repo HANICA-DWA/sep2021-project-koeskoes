@@ -389,11 +389,11 @@
             </div>
           </div>
           <div className="col-md-12 col-lg-4 col-xl-3 mt-3 vertical-col bg-light">
-            <h2><span className="square mt-3 text-center bg-primary"><p className="square-text text-white">✔</p></span> Bestelling bekijken</h2>
+            <h2><span className="square mt-3 text-center bg-primary"><p className="square-text text-white">✔</p></span> Bestelling</h2>
             <hr />
             <div className="row">
-              <div className="col-5">
-                <h5>Product naam</h5>
+              <div className="col-4">
+                <h5>Product</h5>
               </div>
               <div className="col-3">
                 <h5>Aantal</h5>
@@ -401,12 +401,12 @@
               <div className="col-3">
                 <h5>Subtotaal</h5>
               </div>
-              <div className="col-1"></div>
+              <div className="col-2"></div>
             </div>
             <div className="row">
-              <div className="col-5 text-center">
+              <div className="col-4 text-center">
                 <img src={backpack} className="img-thumbnail" alt="" />
-                <div className="badge bg-orange text-wrap w-100">
+                <div className="badge bg-primary text-wrap w-100">
                   Rugtas kleurrijk
                 </div>
               </div>
@@ -422,7 +422,7 @@
               <div className="col-3">
                 <p>€ 59,00</p>
               </div>
-              <div className="col-1">
+              <div className="col-2 text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-square-fill text-danger" viewBox="0 0 16 16">
                   <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
                 </svg>
@@ -430,9 +430,9 @@
             </div>
             <hr className="style-dotted" />
             <div className="row">
-              <div className="col-5">
+              <div className="col-4">
                 <img src={socks} className="img-thumbnail" alt="" />
-                <div className="badge bg-orange text-wrap w-100">
+                <div className="badge bg-primary text-wrap w-100">
                   Sokken met bladprint
                 </div>
               </div>
@@ -448,7 +448,7 @@
               <div className="col-3">
                 <p>€ 22,00</p>
               </div>
-              <div className="col-1">
+              <div className="col-2 text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x-square-fill text-danger" viewBox="0 0 16 16">
                   <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
                 </svg>
