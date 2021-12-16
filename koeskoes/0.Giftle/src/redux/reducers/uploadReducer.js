@@ -1,6 +1,6 @@
 const initialUploadState = {
   videoCreationPath: '',
-  uploadVisualState: 1, // 1 is recording/uploading, 2 is rewatching the video
+  uploadVisualState: 1, // 1 is recording/uploading, 2 is rewatching the video, 3 is personalisation form
   videoUploaded: false,
   personalized: false,
 };

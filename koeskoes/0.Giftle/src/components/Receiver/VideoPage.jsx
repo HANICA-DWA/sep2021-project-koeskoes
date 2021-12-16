@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  EmailShareButton,
-  EmailIcon,
-  TwitterShareButton,
-  TwitterIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-} from "react-share";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { getVideo } from "../../redux/actions/videoActions";
+
+import ShareMenu from "../Common/ShareMenu";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
@@ -18,6 +10,7 @@ import { ReactComponent as ShareIcon } from "../../assets/share-fill.svg";
 
 // Reused Common components
 import VideoPlayer from "../Common/VideoPlayer";
+import { useDispatch, useSelector } from "react-redux";
 
 /**
  * Page showing the video (by textCode) for the receiver
@@ -26,75 +19,18 @@ import VideoPlayer from "../Common/VideoPlayer";
  */
 function VideoPage() {
   const { textCode } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [videoData, setVideoData] = useState({});
-  const [videoError, setVideoError] = useState(null);
-
   const [isPopUp, setIsPopUp] = useState(false);
-
-  useEffect(() => {
-    const getVideo = async () => {
-      const videoRequest = await axios.get(
-        "http://localhost:4000/api/videos/" + textCode
-      );
-
-      if (!videoRequest.data.status) {
-        setVideoData(videoRequest.data);
-        return setVideoError(false);
-      } else {
-        setVideoData(null);
-        return setVideoError(true);
-      }
-    };
-    getVideo();
-  }, [textCode]);
-
+  const [fullScreen, setFullScreen] = useState(false);
+  const videoData = useSelector((state) => state.videos.video);
+  
   /**
-   * Function with code containing share options
-   * Right now the options for sharing are: E-mail, Twitter, Whatsapp, Facebook
-   * NOTE: Facebook won't work with localhost, but will work with other domains like www.giftle.nl
-   * @returns front-end popup message if boolean isPopUp is true else returns null
+   * A useEffect to collect all video data from the database using Redux State
    */
-  const showSharePopUp = () => {
-    const videoURL = `http://localhost:3000/receiver/watchSharedVideo/${textCode}`;
-    const message =
-      "Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken.";
-    const iconSize = 30;
-    if (isPopUp) {
-      return (
-        <span class="popuptext" id="myPopup">
-          <div className="icon-container">
-            <div className="icon">
-              <EmailShareButton
-                url={videoURL}
-                subject="Giftle video"
-                body={message}
-              >
-                <EmailIcon size={iconSize} round={true} />
-              </EmailShareButton>
-            </div>
-            <div className="icon">
-              <TwitterShareButton url={videoURL} title={message}>
-                <TwitterIcon size={iconSize} round={true} />
-              </TwitterShareButton>
-            </div>
-            <div className="icon">
-              <FacebookShareButton url={videoURL} quote={message}>
-                <FacebookIcon size={iconSize} round={true} />
-              </FacebookShareButton>
-            </div>
-            <div className="icon">
-              <WhatsappShareButton url={videoURL} title={message}>
-                <WhatsappIcon size={iconSize} round={true} />
-              </WhatsappShareButton>
-            </div>
-          </div>
-        </span>
-      );
-    } else {
-      return null;
-    }
-  };
+  useEffect(() => {
+    dispatch(getVideo(textCode));
+  }, [textCode, dispatch]);
 
   /**
    *
@@ -104,69 +40,48 @@ function VideoPage() {
    *
    */
   const videoPlayer = () => {
-    if (videoError === null) {
-      return (
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
+    return (
+      <>
+        <VideoPlayer
+          title={`Videoboodschap voor ${videoData.nameReceiver}`}
+          url="http://localhost:4000/api/videos/video/"
+          videoData={videoData}
+          setFullScreen={() => setFullScreen(prevScreenState => prevScreenState = !prevScreenState)}
+        />
+        <button
+          className="btn btn-primary reactionButton"
+          onClick={() => navigate("/receiver/reaction")}
+        >
+          Verstuur een reactie&nbsp;
+          <RightArrow />
+        </button>
+        <hr />
+        <div className="text-start float-start">
+          <h3>Afzender:</h3>
+          {videoData.nameGifter ? <h5>{videoData.nameGifter}</h5> : null}
+          {videoData.emailGifter ? <h5>{videoData.emailGifter}</h5> : null}
         </div>
-      );
-    }
-    if (videoError === true) {
-      return (
-        <>
-          <h2>Er is geen video gevonden met deze code.</h2>
-        </>
-      );
-    }
-    if (videoError === false) {
-      return (
-        <>
-          <VideoPlayer
-            title={`Videoboodschap voor ${videoData.nameReceiver}`}
-            url="http://localhost:4000/api/videos/video/"
-            videoCreationPath={
-              `http://localhost:4000/api/orders/order/` + textCode
-            }
+        <div className="float-end shareButtonPlacement popup">
+          <ShareMenu
+            url={`http://localhost:3000/receiver/watchSharedVideo/${textCode}`}
+            message="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
+            open={isPopUp}
           />
           <button
-            className="btn btn-primary reactionButton"
-            onClick={() => navigate("/receiver/reaction")}
+            className="btn btn-primary"
+            onClick={() => setIsPopUp((prevState) => (prevState = !prevState))}
           >
-            Verstuur een reactie&nbsp;
-            <RightArrow />
+            Delen &nbsp;
+            <ShareIcon />
           </button>
-          <hr />
-          <div className="text-start float-start">
-            <h3>Afzender:</h3>
-            {videoData.nameGifter ? <h5>{videoData.nameGifter}</h5> : null}
-            {videoData.emailGifter ? <h5>{videoData.emailGifter}</h5> : null}
-          </div>
-          <div className="float-end shareButtonPlacement popup">
-            {showSharePopUp()}
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                if (isPopUp) {
-                  setIsPopUp(false);
-                } else {
-                  setIsPopUp(true);
-                }
-              }}
-            >
-              Delen &nbsp;
-              <ShareIcon />
-            </button>
-          </div>
-        </>
-      );
-    }
+        </div>
+      </>
+    );
   };
 
   return (
     <div className="vertical-center colored-background">
-      <div className="container text-center rounded p-3 bg-light">
+      <div className={`${fullScreen ? `container-flex` : `container`} text-center rounded p-3 bg-light`}>
         {videoPlayer()}
       </div>
     </div>
