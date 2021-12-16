@@ -10,8 +10,10 @@ body {
 
 /* Slightly changing the container width on some devices */
 .container {
-  transition: 300ms ease;
   width: 90% !important;
+}
+.container, .container-wide, .container-flex {
+  transition: 300ms ease;
 }
 
 @media (min-width: 768px) {
@@ -34,6 +36,10 @@ body {
 
 .visualizer {
   display: none;
+}
+
+.item-center {
+  margin: auto 0;
 }
 
 .vertical-center {
@@ -91,6 +97,10 @@ input[type="file"]::-webkit-file-upload-button {
   input[type="file"] {
     width: 14rem;
   }
+
+  .container-flex {
+    width: 90vw;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -104,6 +114,16 @@ input[type="file"]::-webkit-file-upload-button {
 
   .container-wide {
     width: 90% !important;
+  }
+
+  .container-flex {
+    width: 85vw;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .container-flex {
+    width: 90vw;
   }
 }
 
@@ -140,6 +160,10 @@ input[type="file"]::-webkit-file-upload-button {
   z-index: 1;
   margin-top: -100px;
   margin-bottom: -70px;
+}
+
+.btn-record-center {
+  position: relative;
   transform: translateX(50%);
 }
 

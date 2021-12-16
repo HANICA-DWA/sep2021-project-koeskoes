@@ -29,6 +29,7 @@ function CreateVideoPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
+  const [fullScreen, setFullScreen] = useState(false);
   const textCode = useSelector((state) => state.orders.textCode);
   const videoCreationPath = useSelector(
     (state) => state.uploads.videoCreationPath
@@ -59,6 +60,7 @@ function CreateVideoPage() {
   }, [video, dispatch]);
 
   const goToPersonalization = () => {
+    setFullScreen(false);
     dispatch(setPersonalized());
     dispatch(changeUploadVisualState(3));
   };
@@ -67,9 +69,7 @@ function CreateVideoPage() {
     <div className="vertical-center colored-background">
       {error}
       <div
-        className={`container ${
-          personalized ? "container-wide" : null
-        } text-center rounded p-3 bg-light mt-4 mb-4`}
+        className={`${fullScreen ? `container-flex` : ( `container ` + (personalized ? "container-wide" : null))} text-center rounded p-3 bg-light mt-4 mb-4`}
       >
         <div className="row">
           <div className="col-lg-5 col-md-5 col-sm-5 col-5">
@@ -91,7 +91,10 @@ function CreateVideoPage() {
             ) : (
               <button
                 className="btn btn-primary float-start"
-                onClick={() => dispatch(changeUploadVisualState(1))}
+                onClick={() => {
+                  setFullScreen(false);
+                  dispatch(changeUploadVisualState(1));
+                }}
               >
                 Opnieuw{" "}
                 {videoCreationPath === "upload" ? "uploaden" : "opnemen"}&nbsp;
@@ -123,8 +126,8 @@ function CreateVideoPage() {
         <div className="row">
           <div
             className={`${
-              personalized ? "col-lg-6" : "col-lg-12"
-            } col-md-12 col-sm-12`}
+              personalized && !fullScreen ? "col-lg-6" : "col-lg-12"
+            } col-md-12 col-sm-12 ${personalized ? "item-center" : null}`}
           >
             {uploadVisualState === 1 ? (
               videoCreationPath === "upload" ? (
@@ -142,20 +145,31 @@ function CreateVideoPage() {
               <VideoPlayer
                 title="Uw video terugkijken"
                 url={"http://localhost:4000/api/videos/video/"}
-                videoCreationPath={
-                  `http://localhost:4000/api/orders/order/` + textCode
+                videoData={video}
+                created={true}
+                setFullScreen={() =>
+                  setFullScreen(
+                    (prevScreenState) => (prevScreenState = !prevScreenState)
+                  )
                 }
               />
             )}
             {uploadVisualState === 1 ? (
               <p className="mt-3">
                 Door een video{" "}
-                {videoCreationPath === "upload" ? "te uploaden" : "op te nemen"} gaat u
-                akkoord met de{" "}
-                <a href="#algemene-voorwaarden" className="terms-and-conditions">algemene voorwaarden</a>.
+                {videoCreationPath === "upload" ? "te uploaden" : "op te nemen"}{" "}
+                gaat u akkoord met de{" "}
+                <a
+                  href="#algemene-voorwaarden"
+                  className="terms-and-conditions"
+                >
+                  algemene voorwaarden
+                </a>
+                .
               </p>
             ) : null}
           </div>
+          {personalized && fullScreen ? <div className="col-lg-3"></div> : null}
           <div className="col-lg-6 col-md-12 col-sm-12">
             {personalized ? (
               <PersonalizationForm
@@ -165,6 +179,7 @@ function CreateVideoPage() {
               />
             ) : null}
           </div>
+          {personalized && fullScreen ? <div className="col-lg-3"></div> : null}
         </div>
       </div>
     </div>
