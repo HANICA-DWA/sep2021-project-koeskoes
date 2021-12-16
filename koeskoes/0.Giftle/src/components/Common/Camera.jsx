@@ -155,6 +155,7 @@ const Camera = (props) => {
         setRecordedChunks([]);
 
         if (uploadResponse.status === "error") {
+          setUploading(false);
           return props.setError
             ? props.setError(
                 ErrorMessage(uploadResponse.data.message, () =>

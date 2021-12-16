@@ -9,7 +9,7 @@ import VideoPlayer from "../Common/VideoPlayer";
 /**
  * Page showing the video (by textCode) for the receiver
  *
- * @return the front-end for the VideoPage
+ * @return the front-end for the shared video page
  */
 function SharedVideoPage() {
   const { textCode } = useParams();
