@@ -31,11 +31,11 @@ function CreateVideoPage() {
   const [fullScreen, setFullScreen] = useState(false);
   const textCode = useSelector((state) => state.orders.textCode);
   const videoCreationPath = useSelector(
-    (state) => state.uploads.videoCreationPath
+    (state) => state.uploads.videoCreationPath,
   );
   const videoUploaded = useSelector((state) => state.uploads.videoUploaded);
   const uploadVisualState = useSelector(
-    (state) => state.uploads.uploadVisualState
+    (state) => state.uploads.uploadVisualState,
   );
   const personalized = useSelector((state) => state.uploads.personalized);
   const video = useSelector((state) => state.videos.video);
@@ -80,7 +80,7 @@ function CreateVideoPage() {
         } text-center rounded p-3 bg-light mt-4 mb-4`}
       >
         <div className="row">
-          <div className="col-6">
+          <div className="col-xl-3 col-lg-5 col-md-6 col-6">
             {uploadVisualState !== 1 ? (
               <button
                 className="btn btn-primary float-start"
@@ -92,10 +92,12 @@ function CreateVideoPage() {
                 Opnieuw{" "}
                 {videoCreationPath === "upload" ? "uploaden" : "opnemen"}
               </button>
-            ) : null}
+            ) : (
+              <SwitchUploadRecord />
+            )}
           </div>
           {videoUploaded && uploadVisualState === 1 ? (
-            <div className="col-lg-6 col-md-12">
+            <div className="col-xl-9 col-lg-7 col-md-6 col-6">
               <button
                 className="btn btn-primary float-end"
                 onClick={() => dispatch(changeUploadVisualState(2))}
@@ -105,7 +107,7 @@ function CreateVideoPage() {
               </button>
             </div>
           ) : uploadVisualState === 2 ? (
-            <div className="col-md-6">
+            <div className="col-xl-9 col-lg-7 col-md-6 col-4 text-end">
               <button
                 className="btn btn-primary float-end"
                 id="personalize"
@@ -130,7 +132,6 @@ function CreateVideoPage() {
                     <div className="col-12 mb-3 text-center">
                       <h1>Uploaden</h1>
                     </div>
-                    <SwitchUploadRecord />
                   </div>
                   <div className="row">
                     <p>
@@ -153,11 +154,10 @@ function CreateVideoPage() {
                 </>
               ) : (
                 <>
-                  <div className="row mb-5">
+                  <div className="row">
                     <div className="col-12 mb-3 text-center">
                       <h1>Opnemen</h1>
                     </div>
-                    <SwitchUploadRecord />
                   </div>
                   <Camera
                     uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`}
@@ -173,7 +173,7 @@ function CreateVideoPage() {
                 created={true}
                 setFullScreen={() =>
                   setFullScreen(
-                    (prevScreenState) => (prevScreenState = !prevScreenState)
+                    (prevScreenState) => (prevScreenState = !prevScreenState),
                   )
                 }
               />

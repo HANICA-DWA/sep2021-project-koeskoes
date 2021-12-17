@@ -43,7 +43,11 @@ function App() {
           {/* Temp Routes */}
           <Route path="/checkout" exact element={<CheckOutPage />} />
           <Route path="/checked-out" exact element={<CheckOutPageDone />} />
-          <Route path="/magento-checked-out" exact element={<CheckOutPageDoneMagento />} />
+          <Route
+            path="/magento-checked-out"
+            exact
+            element={<CheckOutPageDoneMagento />}
+          />
           {/* Perm Routes */}
           <Route
             path="/orderControl/:textCode"
@@ -58,12 +62,33 @@ function App() {
           <Route path="/receiver/qr-code" exact element={<QRPage />} />
           <Route path="/receiver/scan" exact element={<ScanQRPage />} />
           <Route path="/receiver/textcode" exact element={<TextCodePage />} />
-          <Route path="/receiver/watchvideo/:textCode" element={<VideoPage />} />
-          <Route path="/receiver/watchSharedVideo/:textCode" element={<SharedVideoPage/>}/>
-          <Route path="/receiver/reaction/:textCode" element={<ReactionHomePage />} />
-          <Route path="/receiver/text-reaction/:textCode" exact element={<TextReactionPage />} />
-          <Route path="/receiver/video-reaction/:textCode" exact element={<VideoReactionPage />} />
-          <Route path="/employee/checkorders" exact element={<CheckOrdersPage />} />
+          <Route
+            path="/receiver/watchvideo/:textCode"
+            element={<VideoPage />}
+          />
+          <Route
+            path="/receiver/watchSharedVideo/:textCode"
+            element={<SharedVideoPage />}
+          />
+          <Route
+            path="/receiver/reaction/:textCode"
+            element={<ReactionHomePage />}
+          />
+          <Route
+            path="/receiver/text-reaction/:textCode"
+            exact
+            element={<TextReactionPage />}
+          />
+          <Route
+            path="/receiver/video-reaction/:textCode"
+            exact
+            element={<VideoReactionPage />}
+          />
+          <Route
+            path="/employee/checkorders"
+            exact
+            element={<CheckOrdersPage />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Router>

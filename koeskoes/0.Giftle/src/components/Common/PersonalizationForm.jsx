@@ -136,9 +136,8 @@ function PersonalizationForm(props) {
         Om de video bij de juiste persoon aan te laten komen, hebben we de naam
         van deze persoon nodig! Ook is het mogelijk om per mail een tekstcode te
         versturen naar de ontvanger. Hiermee kan de video ook geopend en bekeken
-        worden. Wil je dit? Vul dan ook zijn/haar mail hieronder in.
+        worden. Wil je dit? Vul dan ook zijn mail hieronder in.
       </p>
-
       <div className="row">
         <div className="col-lg-2 col-md-2 col-sm-2"></div>
         <div className="col-lg-8 col-md-8 col-sm-8">
@@ -171,7 +170,12 @@ function PersonalizationForm(props) {
       </div>
       <br />
       <br />
-      <button id="sendVideoMessage" className="btn btn-primary" onClick={saveReceiverData} disabled={(props.disabled ? props.disabled : false)}>
+      <button
+        id="sendVideoMessage"
+        className="btn btn-primary"
+        onClick={saveReceiverData}
+        disabled={props.disabled ? props.disabled : false}
+      >
         Versturen&nbsp;
         <RightArrow />
       </button>

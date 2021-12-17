@@ -31,7 +31,7 @@ function HomeBuyerPage() {
           u deze uploaden. Er kan ook een video worden opgenomen.
         </p>
         <button
-          className="btn btn-primary mx-4"
+          className="btn btn-primary mx-4 mb-4"
           id="recordVideo"
           onClick={() => {
             dispatch(setVideoCreationPath("record"));
@@ -42,7 +42,7 @@ function HomeBuyerPage() {
           <RecordCircle />
         </button>
         <button
-          className="btn btn-primary mx-4"
+          className="btn btn-primary mx-4 mb-4"
           id="uploadVideo"
           onClick={() => {
             dispatch(setVideoCreationPath("upload"));

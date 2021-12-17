@@ -9,7 +9,7 @@ function SwitchUploadRecord(props) {
   );
 
   return (
-    <div className="col-lg-4 col-md-5 col-8 form-switch-alignment">
+    <div className="form-switch-alignment">
       <div className="form-control-lg form-check form-switch border border-primary">
         <input
           className="form-check-input"
