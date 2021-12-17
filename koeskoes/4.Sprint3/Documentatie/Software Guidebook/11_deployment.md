@@ -14,7 +14,7 @@ Hieronder in het system context diagram is te zien hoe alle interne en externe d
 
 ## Software
 
-De software wordt geïnstalleerd door Node.js. Via de command prompt worden er commands (npm install) uitgevoerd, die de afhankelijkheden van het project installeren. Zodra dit gedaan is, is het enige wat nog nodig is het uitvoeren van het project. In development wordt dit lokaal gedaan, maar in productie wordt dit uiteraard op de productieserver gedaan.
+De software wordt geïnstalleerd door [Node.js](https://nodejs.org/en/). Via de command prompt worden er commands (npm install) uitgevoerd, die de afhankelijkheden van het project installeren. Zodra dit gedaan is, is het enige wat nog nodig is het uitvoeren van het project. In development wordt dit lokaal gedaan, maar in productie wordt dit uiteraard op de productieserver gedaan.
 
 ## Database
 
