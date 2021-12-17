@@ -35,7 +35,7 @@ function SharedVideoPage() {
         <VideoPlayer
           title={`Videoboodschap voor ${video.nameReceiver}`}
           url="http://localhost:4000/api/videos/video/"
-          videoData={video}
+          videoData={video.videoName}
           setFullScreen={() =>
             setFullScreen(
               (prevScreenState) => (prevScreenState = !prevScreenState)

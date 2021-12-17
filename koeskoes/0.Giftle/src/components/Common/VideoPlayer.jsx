@@ -59,7 +59,7 @@ const VideoPlayer = (props) => {
       ) : null}
       <div className="mb-5 rewatchVideoPlayer">
         <ReactPlayer
-          url={props.url + (props.videoData ? props.videoData.videoName : null)}
+          url={props.url + (props.videoData ? props.videoData : null)}
           width="100%"
           height="100%"
           playing={videoState === 2 ? true : false}

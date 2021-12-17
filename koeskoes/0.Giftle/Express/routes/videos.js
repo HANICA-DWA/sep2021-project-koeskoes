@@ -25,12 +25,8 @@ router.get("/:textCode", async (req, res) => {
  * if videoName exists, it will fetch data from that videoName record
  */
 router.get("/video/:videoName", async (req, res) => {
-  const video = await Uploads.findOne({
-    videoName: req.params.videoName,
-  }).exec();
-
-  if (video !== null) {
-    res.sendFile(path.join(__dirname, "../", "videos/", video.videoName));
+  if (path.join(__dirname, "../", "videos/", req.params.videoName) !== null) {
+    res.sendFile(path.join(__dirname, "../", "videos/", req.params.videoName));
   } else {
     res.json({ status: "error", message: "No video found" });
   }

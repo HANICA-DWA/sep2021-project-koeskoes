@@ -45,7 +45,7 @@ function VideoPage() {
         <VideoPlayer
           title={`Videoboodschap voor ${videoData.nameReceiver}`}
           url="http://localhost:4000/api/videos/video/"
-          videoData={videoData}
+          videoData={videoData.videoName}
           setFullScreen={() =>
             setFullScreen(
               (prevScreenState) => (prevScreenState = !prevScreenState)

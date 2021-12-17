@@ -343,7 +343,7 @@ const Camera = (props) => {
                   }
                 >
                   {availableCameras.map((camera) => (
-                    <option value={camera.deviceId}>{camera.label}</option>
+                    <option key={camera.deviceId} value={camera.deviceId}>{camera.label}</option>
                   ))}
                 </select>
               </div>
