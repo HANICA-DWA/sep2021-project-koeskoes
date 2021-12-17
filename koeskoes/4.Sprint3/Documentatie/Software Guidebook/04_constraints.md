@@ -24,14 +24,16 @@ Het team bestaat uit beginnende programmeurs. Daarom is er nauwelijks ervaring. 
 | MongoDB     | Open source document georienteerde database                                      | 2,5 maanden |
 | Mongoose    | JavaScript objectgeorienteerde library                                           | 2,5 maanden |
 | Google SMTP | Communicatie protocol om berichten naar een mailserver te verzenden of ontvangen | 3 weken     |
+| Jest        | JavaScript testing framework                                                     | 4 weken     |
+| Puppeteer   | Node library end-to-end testen                                                   | 1 week      |
 
 ## React-Redux
 
-Voor dit product moeten wij gebruik maken van react-redux. Hierdoor is onze keuze in libraries en programmeertalen gelimiteerd.
+Voor dit product moeten wij gebruik maken van [React-Redux](https://react-redux.js.org/). Hierdoor is onze keuze in libraries en programmeertalen gelimiteerd.
 
 ## Jest
 
-Voor dit product moeten wij gebruik maken van Jest. Hierdoor is onze keuze in JavaScript test frameworks gelimiteerd.
+Voor dit product moeten wij gebruik maken van [Jest](https://jestjs.io/). Hierdoor is onze keuze in JavaScript test frameworks gelimiteerd.
 
 <!--
 Intent
