@@ -30,7 +30,7 @@ function TextReactionPage() {
       { message: message }
     );
 
-    return navigate("/receiver");
+    return navigate("/receiver/sent");
   };
 
   const checkMessage = () => {
@@ -71,9 +71,10 @@ function TextReactionPage() {
         <div className="row">
           <h1>Tekstreactie verzenden</h1>
         </div>
-        <p>Typ in het tekstvak hieronder je reactie.</p>
+        <p>Type in het tekstvak hieronder je reactie.</p>
         <div className="row my-4 px-5">
           <textarea
+            id="textfield-reaction"
             rows="8"
             cols="30"
             placeholder="Schrijf hier uw bericht"
@@ -92,7 +93,7 @@ function TextReactionPage() {
               {<LeftArrow />}&nbsp; Bekijk video opnieuw
             </button>
           </div>
-          <div className="col-6 text-end">
+          <div className="col-6 text-end" id="send-text-message">
             <button
               className="btn btn-primary"
               onClick={() => saveMessageData()}

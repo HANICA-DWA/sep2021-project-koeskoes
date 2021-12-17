@@ -23,11 +23,8 @@ function ReactionHomePage() {
           hieronder tussen een tekstreactie of videoreactie. Het is niet
           verplicht om een reactie te geven.
         </p>
-        {/* <Link to="/qr-code" className="btn btn-primary mx-2">
-          QR-code
-        </Link> */}
         <button
-          className="btn btn-primary mx-2"
+          className="btn btn-primary mx-2 text-reaction-button"
           onClick={() => navigate(`/receiver/text-reaction/` + textCode)}
         >
           Tekstreactie&nbsp;

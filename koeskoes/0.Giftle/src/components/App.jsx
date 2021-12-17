@@ -25,6 +25,7 @@ import SharedVideoPage from "./Receiver/SharedVideoPage";
 import ReactionHomePage from "./Receiver/ReactionHomePage";
 import TextReactionPage from "./Receiver/TextReactionPage";
 import VideoReactionPage from "./Receiver/VideoReactionPage";
+import ReactionSentPage from "./Receiver/ReactionSentPage"
 
 // Employee components
 import CheckOrdersPage from "./Employee/CheckOrdersPage";
@@ -54,10 +55,12 @@ function App() {
             exact
             element={<ControlOrderPage />}
           />
+          {/* Buyer Routes */}
           <Route path="/buyer/noTextCode" element={<NoTextCodePage />} />
           <Route path="/buyer" exact element={<HomeBuyerPage />} />
           <Route path="/buyer/create" exact element={<CreateVideoPage />} />
           <Route path="/buyer/thankyou" exact element={<FinalPage />} />
+          {/* Receiver Router */}
           <Route path="/receiver" exact element={<HomeReceiverPage />} />
           <Route path="/receiver/qr-code" exact element={<QRPage />} />
           <Route path="/receiver/scan" exact element={<ScanQRPage />} />
@@ -84,6 +87,8 @@ function App() {
             exact
             element={<VideoReactionPage />}
           />
+          <Route path="/receiver/sent" exact element={<ReactionSentPage/>}/>
+          {/* Employee Routes */}
           <Route
             path="/employee/checkorders"
             exact

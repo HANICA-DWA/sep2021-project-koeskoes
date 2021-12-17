@@ -10,7 +10,7 @@ describe("Giftle tests", () => {
   beforeAll(async () => {
     browserA = await puppeteer.launch({
       headless: false,
-      slowMo: 5,
+      slowMo: 50,
       args: ["--window-size=700,800", "--window-position=0,0"],
     });
     pageA = await browserA.newPage();
@@ -69,7 +69,7 @@ describe("Giftle tests", () => {
     });
   });
 
-  describe("Buyer tests", () => {
+  describe.skip("Buyer tests", () => {
     test("Upload testFile1.mp4", async () => {
       await pageA.goto("http://localhost:3000/ordercontrol/abc123");
 
@@ -219,6 +219,61 @@ describe("Giftle tests", () => {
       );
 
       expect(pageBResultAfter[1]).toEqual(undefined);
+    });
+  });
+
+  describe("Receiver tests", () => {
+    test("Send textreaction", async () => {
+      await pageA.goto("http://localhost:3000/receiver/watchvideo/abc123");
+
+      const sendReaction = await pageA.$(".reactionButton");
+      expect(sendReaction).toBeDefined();
+      await sendReaction.evaluate((b) => b.click());
+
+      const goTextReaction = await pageA.$(".text-reaction-button");
+      expect(goTextReaction).toBeDefined();
+      await goTextReaction.evaluate((b) => b.click());
+
+      await pageA.type(
+        "#textfield-reaction",
+        "Heel erg bedankt voor de video!"
+      );
+
+      const createReaction = await pageA.$(
+        'div[id="send-text-message"] button'
+      );
+      expect(createReaction).toBeDefined();
+      await createReaction.evaluate((b) => b.click());
+
+      await pageA.waitForSelector('h1[id="reaction-sent"]');
+      const h1 = await pageA.$("h1");
+      const value = await pageA.evaluate((el) => el.textContent, h1);
+      expect(value).toBe("Bedankt voor het versturen van een reactie!");
+    });
+
+    test("Send textreaction (no text)", async () => {
+      await pageA.goto("http://localhost:3000/receiver/watchvideo/abc123");
+
+      const sendReaction = await pageA.$(".reactionButton");
+      expect(sendReaction).toBeDefined();
+      await sendReaction.evaluate((b) => b.click());
+
+      const goTextReaction = await pageA.$(".text-reaction-button");
+      expect(goTextReaction).toBeDefined();
+      await goTextReaction.evaluate((b) => b.click());
+
+      await pageA.type("#textfield-reaction", " ");
+
+      const createReaction = await pageA.$(
+        'div[id="send-text-message"] button'
+      );
+      expect(createReaction).toBeDefined();
+      await createReaction.evaluate((b) => b.click());
+
+      await pageA.waitForSelector("div.alert");
+      const alert = await pageA.$("div.alert > div");
+      const value = await pageA.evaluate((el) => el.textContent, alert);
+      expect(value).toBe("Het bericht mag niet leeg zijn!");
     });
   });
 });
