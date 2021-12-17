@@ -21,7 +21,7 @@ function VideoReactionPage() {
     <div className="vertical-center colored-background">
       <div className="container text-center rounded p-3 bg-light mt-4 mb-4">
         <div className="row mb-4">
-          <div className="col-5 text-start" id="v">
+          <div className="col-5 text-start" id="text-reaction-switch">
             <button
               className="btn btn-primary"
               onClick={() => navigate(`/receiver/text-reaction/` + textCode)}
