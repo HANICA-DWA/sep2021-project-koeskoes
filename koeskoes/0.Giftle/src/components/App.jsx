@@ -32,7 +32,7 @@ import CheckOrdersPage from "./Employee/CheckOrdersPage";
 
 // Styling
 import "../styles/App.css";
-import "../styles/themes/Rituals.css";
+// import "../styles/themes/Rituals.css";
 // import "../styles/themes/GameMania.css";
 // import "../styles/themes/DarkMode.css";
 
@@ -87,7 +87,11 @@ function App() {
             exact
             element={<VideoReactionPage />}
           />
-          <Route path="/receiver/reaction-sent" exact element={<ReactionSentPage/>}/>
+          <Route
+            path="/receiver/reaction-sent"
+            exact
+            element={<ReactionSentPage />}
+          />
           {/* Employee Routes */}
           <Route
             path="/employee/checkorders"
