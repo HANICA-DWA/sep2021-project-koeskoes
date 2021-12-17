@@ -27,7 +27,7 @@ function ControlOrderPage() {
    */
   useEffect(() => {
     if (video.videoName === "") {
-      navigate("/buyer");
+      navigate("/buyer/create");
     }
   }, [video, navigate]);
 

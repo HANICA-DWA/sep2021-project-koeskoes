@@ -59,7 +59,7 @@ const CheckOrdersPage = () => {
         <button
           className="btn btn-success"
           id="printFinalOrder"
-          onClick={(e) => createQRCode(order._id)}
+          onClick={(e) => createQRCode(order.textCode)}
         >
           Print QR-code&nbsp;
           <Printer />
@@ -188,18 +188,18 @@ const CheckOrdersPage = () => {
    * This function will create a QR-code with a data string.
    * This QR-code will be downloaded to the local machine.
    *
-   * @param {String} orderNumber Puts the orderNumber in the orders URL
+   * @param {String} textCode Puts the textCode in the orders URL
    *
    */
-  const createQRCode = async (orderNumber) => {
+  const createQRCode = async (textCode) => {
     try {
-      const qrCode = qrcode("http://localhost:3000/watchvideo/" + orderNumber);
+      const qrCode = qrcode("http://localhost:3000/receiver/watchvideo/" + textCode);
 
-      await axios.patch("http://localhost:4000/api/orders/" + orderNumber);
+      await axios.patch("http://localhost:4000/api/orders/" + textCode);
 
       dispatch(getOrders());
 
-      qrCode.download({ name: orderNumber, extension: "png" });
+      qrCode.download({ name: textCode, extension: "png" });
     } catch (e) {
       setError(
         ErrorMessage(

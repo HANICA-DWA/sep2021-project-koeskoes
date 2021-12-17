@@ -223,9 +223,9 @@ router.patch("/new/:textCode/", async (req, res) => {
 /**
  * if order exists (with email, nameGifter, nameReceiver and textCode), it calls mongoose method 'setPrinted' that sets 'printed = true'
  */
-router.patch("/:orderNumber", async (req, res) => {
+router.patch("/:textCode", async (req, res) => {
   const order = await Uploads.findOne({
-    _id: req.params.orderNumber,
+    textCode: req.params.textCode,
   }).exec();
 
   await order.setPrinted();
