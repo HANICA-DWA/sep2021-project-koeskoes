@@ -11,7 +11,7 @@ const ProgressBar = (props) => {
         aria-valuemax="100"
       ></div>
     </div>
-  )
-}
+  );
+};
 
-export default ProgressBar
+export default ProgressBar;

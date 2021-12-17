@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideoInOrder } from '../../redux/actions/orderActions';
+import { getVideoInOrder } from "../../redux/actions/orderActions";
 
 /**
  * A page that checks if order has a video
@@ -11,7 +11,7 @@ function ControlOrderPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { textCode } = useParams();
-  const video = useSelector(state => state.videos.video);
+  const video = useSelector((state) => state.videos.video);
 
   /**
    * Useeffect activates when the textCode changes.
@@ -27,7 +27,7 @@ function ControlOrderPage() {
    */
   useEffect(() => {
     if (video.videoName === "") {
-      navigate('/buyer');
+      navigate("/buyer");
     }
   }, [video, navigate]);
 

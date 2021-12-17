@@ -9,6 +9,6 @@ const TimeComponent = (props) => {
         (seconds < 10 ? "0" + seconds : seconds === 60 ? "00" : seconds)}
     </div>
   );
-}
+};
 
 export default TimeComponent;

@@ -10,11 +10,11 @@ import {
 } from "react-share";
 
 /**
-  * Function with code containing share options
-  * Right now the options for sharing are: E-mail, Twitter, Whatsapp, Facebook
-  * NOTE: Facebook won't work with localhost, but will work with other domains like www.giftle.nl
-  * @returns front-end popup message if boolean isPopUp is true else returns null
-  */
+ * Function with code containing share options
+ * Right now the options for sharing are: E-mail, Twitter, Whatsapp, Facebook
+ * NOTE: Facebook won't work with localhost, but will work with other domains like www.giftle.nl
+ * @returns front-end popup message if boolean isPopUp is true else returns null
+ */
 const ShareMenu = (props) => {
   const url = props.url || "";
   const message = props.message || "";
@@ -25,11 +25,7 @@ const ShareMenu = (props) => {
       <span class="popuptext" id="myPopup">
         <div className="icon-container">
           <div className="icon">
-            <EmailShareButton
-              url={url}
-              subject="Giftle video"
-              body={message}
-            >
+            <EmailShareButton url={url} subject="Giftle video" body={message}>
               <EmailIcon size={iconSize} round={true} />
             </EmailShareButton>
           </div>
@@ -54,6 +50,6 @@ const ShareMenu = (props) => {
   } else {
     return null;
   }
-}
+};
 
 export default ShareMenu;

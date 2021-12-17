@@ -17,7 +17,7 @@ function TextReactionPage() {
   const dispatch = useDispatch();
   const [message, setMessage] = useState(null);
   const [error, setError] = useState();
-  const reaction = useSelector(state => state.uploads.reaction);
+  const reaction = useSelector((state) => state.uploads.reaction);
 
   const saveMessageData = async () => {
     const checkedMessage = checkMessage();
@@ -32,7 +32,7 @@ function TextReactionPage() {
   };
 
   useEffect(() => {
-    if (reaction.status === 'success') {
+    if (reaction.status === "success") {
       navigate("/receiver/sent");
     }
   }, [reaction, navigate]);

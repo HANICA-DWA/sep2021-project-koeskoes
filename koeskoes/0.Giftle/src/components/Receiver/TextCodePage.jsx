@@ -26,7 +26,10 @@ const TextCodePage = () => {
       if (!video.textCode) {
         dispatch(resetVideo());
         return setError(
-          ErrorMessage("Je hebt geen geldige tekstcode ingevuld. Vul de tekstcode opnieuw in.", () => setError(null))
+          ErrorMessage(
+            "Je hebt geen geldige tekstcode ingevuld. Vul de tekstcode opnieuw in.",
+            () => setError(null)
+          )
         );
       }
 
@@ -35,13 +38,13 @@ const TextCodePage = () => {
   }, [video, navigate, dispatch]);
 
   /**
-    * 
-    * Red border on input clarification for the error message(s)
-    * 
-    */
+   *
+   * Red border on input clarification for the error message(s)
+   *
+   */
   useEffect(() => {
     const redTextcodeError = document.getElementById("givenTextcode");
-    if(givenTextCode === "" || givenTextCode === null) {
+    if (givenTextCode === "" || givenTextCode === null) {
       redTextcodeError.classList.add("errorInput");
     } else {
       redTextcodeError.classList.remove("errorInput");
@@ -57,7 +60,10 @@ const TextCodePage = () => {
   const checkTextcode = () => {
     if (givenTextCode === null || givenTextCode === "") {
       return setError(
-        ErrorMessage("Voer een tekstcode in. Een tekstcode bestaat uit een 6-cijferige code.", () => setError(null))
+        ErrorMessage(
+          "Voer een tekstcode in. Een tekstcode bestaat uit een 6-cijferige code.",
+          () => setError(null)
+        )
       );
     } else {
       dispatch(getVideo(givenTextCode));

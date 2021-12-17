@@ -51,8 +51,9 @@ const Camera = (props) => {
           setIsAudioAvailable(false);
           if (props.setError)
             props.setError(
-              ErrorMessage("Er is geen microfoon gevonden. Controleer of er een microfoon aangesloten is.", () =>
-                props.setError(null)
+              ErrorMessage(
+                "Er is geen microfoon gevonden. Controleer of er een microfoon aangesloten is.",
+                () => props.setError(null)
               )
             );
         }
@@ -60,7 +61,10 @@ const Camera = (props) => {
         setIsAudioAvailable(false);
         if (props.setError)
           props.setError(
-            ErrorMessage("Er is geen microfoon gevonden. Controleer of er een microfoon aangesloten is.", () => props.setError(null))
+            ErrorMessage(
+              "Er is geen microfoon gevonden. Controleer of er een microfoon aangesloten is.",
+              () => props.setError(null)
+            )
           );
       }
 
@@ -81,14 +85,20 @@ const Camera = (props) => {
           setIsWebcamAvailable(false);
           if (props.setError)
             props.setError(
-              ErrorMessage("Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.", () => props.setError(null))
+              ErrorMessage(
+                "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
+                () => props.setError(null)
+              )
             );
         }
       } catch (e) {
         setIsWebcamAvailable(false);
         if (props.setError)
           props.setError(
-            ErrorMessage("Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.", () => props.setError(null))
+            ErrorMessage(
+              "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
+              () => props.setError(null)
+            )
           );
       }
 
@@ -164,7 +174,7 @@ const Camera = (props) => {
               )
             : null;
         } else {
-          if (props.setError) props.setError(null)
+          if (props.setError) props.setError(null);
           return dispatch(setVideo(uploadResponse.data));
         }
       }
@@ -313,8 +323,12 @@ const Camera = (props) => {
                   !pressed ? setResolution(e.target.value) : null
                 }
               >
-                <option key="720" value="720">Standaard kwaliteit / 2 minuten</option>
-                <option key="1080" value="1080">Hoge kwaliteit / 1 minuut</option>
+                <option key="720" value="720">
+                  Standaard kwaliteit / 2 minuten
+                </option>
+                <option key="1080" value="1080">
+                  Hoge kwaliteit / 1 minuut
+                </option>
               </select>
             </div>
             {availableCameras.length > 1 ? (

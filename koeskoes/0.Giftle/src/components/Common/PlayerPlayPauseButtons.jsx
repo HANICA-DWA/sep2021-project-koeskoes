@@ -14,26 +14,35 @@ const PlayerPlayPauseButtons = (props) => {
     switch (props.state) {
       case 1:
         return (
-          <button className={buttonClasses} onClick={() => props.setVideoState(2)}>
+          <button
+            className={buttonClasses}
+            onClick={() => props.setVideoState(2)}
+          >
             <PlayButton className="text-dark" />
           </button>
         );
       case 2:
         return (
-          <button className={buttonClasses} onClick={() => props.setVideoState(1)}>
+          <button
+            className={buttonClasses}
+            onClick={() => props.setVideoState(1)}
+          >
             <PauseButton className="text-dark" />
           </button>
         );
       case 3:
         return (
-          <button className={buttonClasses} onClick={() => props.setVideoState(1)}>
+          <button
+            className={buttonClasses}
+            onClick={() => props.setVideoState(1)}
+          >
             <ReplayButton className="text-dark" />
           </button>
         );
       default:
         return null;
     }
-  }
+  };
 
   return (
     <>

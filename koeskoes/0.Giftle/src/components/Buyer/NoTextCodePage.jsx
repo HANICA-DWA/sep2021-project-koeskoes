@@ -7,7 +7,11 @@ import React from "react";
 function NoTextCodePage() {
   return (
     <div className="vertical-center">
-      <h1>Wij kunnen uw order niet vinden,<br />probeer opnieuw door het upload proces heen te gaan.</h1>
+      <h1>
+        Wij kunnen uw order niet vinden,
+        <br />
+        probeer opnieuw door het upload proces heen te gaan.
+      </h1>
     </div>
   );
 }

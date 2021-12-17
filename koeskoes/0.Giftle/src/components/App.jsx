@@ -25,7 +25,7 @@ import SharedVideoPage from "./Receiver/SharedVideoPage";
 import ReactionHomePage from "./Receiver/ReactionHomePage";
 import TextReactionPage from "./Receiver/TextReactionPage";
 import VideoReactionPage from "./Receiver/VideoReactionPage";
-import ReactionSentPage from "./Receiver/ReactionSentPage"
+import ReactionSentPage from "./Receiver/ReactionSentPage";
 
 // Employee components
 import CheckOrdersPage from "./Employee/CheckOrdersPage";
@@ -87,7 +87,7 @@ function App() {
             exact
             element={<VideoReactionPage />}
           />
-          <Route path="/receiver/sent" exact element={<ReactionSentPage/>}/>
+          <Route path="/receiver/sent" exact element={<ReactionSentPage />} />
           {/* Employee Routes */}
           <Route
             path="/employee/checkorders"

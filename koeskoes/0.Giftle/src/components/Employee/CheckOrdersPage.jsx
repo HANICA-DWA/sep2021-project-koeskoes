@@ -51,7 +51,7 @@ const CheckOrdersPage = () => {
    * @param {Object} order this is the specific order, so that the click interaction and the id go to a specific single order
    * @returns the button that creates a qrcode and prints it if prePrinted is true
    *          else it will return the button that makes clear where to click.
-   * 
+   *
    */
   const buttonUpdate = (order) => {
     if (order.prePrinted) {
@@ -71,7 +71,9 @@ const CheckOrdersPage = () => {
           className="btn btn-primary"
           id="prePrintOrder"
           onClick={(e) => {
-            axios.patch(`http://localhost:4000/api/orders/${order._id}/prePrint`);
+            axios.patch(
+              `http://localhost:4000/api/orders/${order._id}/prePrint`
+            );
           }}
         >
           Maak QR-code&nbsp;

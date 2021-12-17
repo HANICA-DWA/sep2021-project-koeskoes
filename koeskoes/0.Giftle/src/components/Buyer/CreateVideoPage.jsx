@@ -30,11 +30,11 @@ function CreateVideoPage() {
   const [fullScreen, setFullScreen] = useState(false);
   const textCode = useSelector((state) => state.orders.textCode);
   const videoCreationPath = useSelector(
-    (state) => state.uploads.videoCreationPath,
+    (state) => state.uploads.videoCreationPath
   );
   const videoUploaded = useSelector((state) => state.uploads.videoUploaded);
   const uploadVisualState = useSelector(
-    (state) => state.uploads.uploadVisualState,
+    (state) => state.uploads.uploadVisualState
   );
   const personalized = useSelector((state) => state.uploads.personalized);
   const video = useSelector((state) => state.videos.video);
@@ -172,7 +172,7 @@ function CreateVideoPage() {
                 created={true}
                 setFullScreen={() =>
                   setFullScreen(
-                    (prevScreenState) => (prevScreenState = !prevScreenState),
+                    (prevScreenState) => (prevScreenState = !prevScreenState)
                   )
                 }
               />

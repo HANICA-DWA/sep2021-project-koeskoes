@@ -43,7 +43,7 @@ function PersonalizationForm(props) {
     if (checkedName.status === "error") {
       return props.setError
         ? props.setError(
-            ErrorMessage(checkedName.message, () => props.setError(null)),
+            ErrorMessage(checkedName.message, () => props.setError(null))
           )
         : null;
     }
@@ -51,7 +51,7 @@ function PersonalizationForm(props) {
     if (checkedEmail.status === "error") {
       return props.setError
         ? props.setError(
-            ErrorMessage(checkedEmail.message, () => props.setError(null)),
+            ErrorMessage(checkedEmail.message, () => props.setError(null))
           )
         : null;
     }
@@ -63,15 +63,15 @@ function PersonalizationForm(props) {
 
     const uploadResponse = await axios.patch(
       `http://localhost:4000/api/orders/new/` + textCode,
-      formData,
+      formData
     );
 
     if (uploadResponse.data.status === "error") {
       return props.setError
         ? props.setError(
             ErrorMessage(uploadResponse.data.message, () =>
-              props.setError(null),
-            ),
+              props.setError(null)
+            )
           )
         : null;
     } else {
