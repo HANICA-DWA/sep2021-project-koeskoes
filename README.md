@@ -4,23 +4,18 @@
 
 ## Opdracht
 
-Giftle
+[Giftle](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/01_context.md)
 
-## Leden
+## Betrokkenen
 
-- Sjoerd de Bruin
-- Sven van Ee
-- Ilse van de Peppel
-- Jordi Obermeier
+| Naam               |         | Rol           |
+|--------------------|---------|---------------|
+| Robert Holwerda    | Docent  | Product Owner |
+| Lars Tijsma        | Docent  | Coach         |
+| Helen Visser       | Docent  | Skills        |
+| Sjoerd de Bruin    | Student |               |
+| Sven van Ee        | Student |               |
+| Ilse van de Peppel | Student |               |
+| Jordi Obermeier    | Student |               |
 
-## Product Owner
-
-Robert Holwerda
-
-## Coach
-
-Lars Tijsma
-
-## Skills
-
-Helen Visser
+## Installatie
