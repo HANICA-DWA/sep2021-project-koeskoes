@@ -25,14 +25,14 @@ function HomeReceiverPage() {
           Ik heb een...
         </p>
         <button
-          className="btn btn-primary mx-2"
+          className="btn btn-primary mx-2 mb-4"
           onClick={() => navigate("/receiver/qr-code")}
         >
           QR-code&nbsp;
           <QRCode />
         </button>
         <button
-          className="btn btn-primary mx-2"
+          className="btn btn-primary mx-2 mb-4"
           onClick={() => navigate("/receiver/textcode")}
         >
           Tekstcode&nbsp;

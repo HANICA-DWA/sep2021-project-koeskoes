@@ -155,11 +155,11 @@ router.patch("/order/video/:textCode", async (req, res) => {
         fs.unlinkSync(uploadPath + video.name);
         return res.json({
           status: "error",
-          message: `De video die u heeft gekozen is te lang. Selecteer een video de minder dan ${
+          message: `De video die u heeft gekozen is te lang. Selecteer een video met een tijd minder dan ${
             height === 1080
               ? "1 minuut en 20 seconden"
               : "2 minuten en 20 seconden"
-          } is`,
+          }.`,
         });
       } else {
         ffmpeg(uploadPath + video.name)
@@ -192,7 +192,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
     return res.json({
       status: "error",
       message:
-        "Er is een fout opgetreden tijdens het uploaden van de video en de video is helaas niet geupload. Probeer het later opnieuw",
+        "Er is een fout opgetreden tijdens het uploaden van de video. De video is helaas niet geupload. Probeer het later opnieuw.",
     });
   }
 });

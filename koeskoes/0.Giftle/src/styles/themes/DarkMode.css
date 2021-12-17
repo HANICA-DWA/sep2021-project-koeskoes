@@ -1,8 +1,20 @@
+body {
+  color: #ffffff;
+}
+
+.bg-light {
+  background-color: #616161 !important;
+}
+
 .text-primary {
-  color: #191919 !important;
+  color: #121212 !important;
 }
 
 .text-white {
+  color: #ffffff !important;
+}
+
+.text-dark {
   color: #ffffff !important;
 }
 
@@ -10,8 +22,12 @@
   border: none !important;
 }
 
+.border-primary {
+  border-color: #ffffff !important;
+}
+
 .bg-primary {
-  background-color: #191919 !important;
+  background-color: #121212 !important;
 }
 
 .btn {
@@ -20,7 +36,7 @@
 
 .btn-primary {
   color: #ffffff !important;
-  background-color: #191919 !important;
+  background-color: #121212 !important;
   border-color: #000000 !important;
 }
 
@@ -28,6 +44,14 @@
   color: #ffffff !important;
   background-color: #333333 !important;
   border-color: #000000 !important;
+}
+
+.form-switch .form-check-input:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23121212'/%3e%3c/svg%3e");
+}
+
+.form-switch .form-check-input:checked {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23ffffff'/%3e%3c/svg%3e");
 }
 
 .form-control:focus {
@@ -55,12 +79,12 @@
 }
 
 input[type="file"] {
-  color: #191919 !important;
+  color: #121212 !important;
   background-color: #ffffff !important;
 }
 
 input[type="file"]::-webkit-file-upload-button {
-  background-color: #191919;
+  background-color: #121212;
   border: 1px;
   border-color: #000000;
   border-radius: 0.25rem;
@@ -74,13 +98,13 @@ input[type="file"]::-webkit-file-upload-button {
 }
 
 .colored-background {
-  background-color: #191919 !important;
+  background-color: #121212 !important;
 }
 
 .progress-bar {
-  background-color: #191919;
+  background-color: #121212;
 }
 
 .terms-and-conditions {
-  color: #191919 !important;
+  color: #121212 !important;
 }
