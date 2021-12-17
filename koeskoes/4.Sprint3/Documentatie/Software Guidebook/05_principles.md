@@ -6,21 +6,21 @@ Elk project heeft zijn eigen regels/ principes. Deze kunnen gaan over de code, m
 
 - De geschreven variabel- & functienamen moeten in lowerCamelCase geschreven zijn.
 - Bij elke functie moet commentaar geschreven staan wat de functie doet en hoe je deze moet gebruiken, eventueel binnen de functie commentaar als er tijdens de code review wat onduidelijkheid plaats vindt.
-- Asynchrone functies moeten gebruik maken van async en await, .then en promises zijn niet toegestaan.
+- Asynchrone functies moeten gebruik maken van [async en await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await), .then en promises zijn niet toegestaan.
 - Zo veel mogelijk gebruik gemaakt van const en totaal geen gebruik gemaakt van var.
 - De code syntax is in het Engels geschreven.
 - Code comments zijn in het Engels.
-- Code comments zijn volgens de Javadoc standaard geschreven.
-- Code is geformateerd met de extension Prettier - Code formatter.
+- Code comments zijn volgens de [Javadoc](https://www.oracle.com/nl/technical-resources/articles/java/javadoc-tool.html) standaard geschreven.
+- Code is geformateerd met de extension [Prettier - Code formatter](https://prettier.io/).
 - Indent using Spaces moet op 2 staan.
 - Functies kunnen complex worden, zorg ervoor dat de comments dit goed uitleggen.
 - Herhaal jezelf zo min mogelijk. Gebruik hier functies voor of maak components aan.
 - Design components op een manier dat ze zo min mogelijk tegelijk doen. Als je een nieuwe functionaliteit moet maken, kan je hier een aparte component voor maken.
 - Maak geen volledige moeilijke functionaliteiten als hier ook een module voor is. Kijk bijvoorbeeld naar de QR-code scanner.
-- Gebruik, daar waar nodig, hooks.
-- Interacties met de database gebeuren met de Mongoose model methode.
+- Gebruik, daar waar nodig, React [hooks](https://reactjs.org/docs/hooks-intro.html).
+- Interacties met de database gebeuren met de [Mongoose model methode](https://mongoosejs.com/docs/2.7.x/docs/methods-statics.html).
 - Functies hebben zo min mogelijk zijeffecten.
-- Alle API-calls zijn RESTful.
+- Alle API-calls zijn [RESTful](https://restfulapi.net/).
 
 ## Gebruiksvriendlijkheid
 
@@ -38,7 +38,7 @@ Elk project heeft zijn eigen regels/ principes. Deze kunnen gaan over de code, m
 - De testen moeten uitgevoerd zijn met jest volgens de happy flow + minimaal een (1) alternatieve flow.
 - Er mogen geen fouten uit de testen komen.
 - Foutmeldingen moeten bij voorkomende errors verschijnen.
-- Documenteren is goed, maar houd het kort.
+- Documenteren is goed, maar houd het kort en krachtig.
 - Implementeer geen dingen die totaal onnodig zijn.
 
 <!--
