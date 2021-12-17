@@ -27,16 +27,16 @@ Elk project heeft zijn eigen regels/ principes. Deze kunnen gaan over de code, m
 - Is het uitvoeren te complex voor een developer, dan kan een gebruiker het al helemaal niet gebruiken.
 - De pagina's moeten duidelijk aangeven bij welke stap de gebruiker is en waar hij naartoe kan navigeren.
 - Componenten die bij elkaar horen moeten duidelijk gegroepeerd zijn.
-- Componenten van dezelfde soort moeten dezelfde stijl krijgen om uniformiteit te behouden.
-- Foutmeldingen moeten bij voorkomende errors verschijnen, zodat de gebruiker weet wat er fout gaat.
+- Componenten van dezelfde soort moeten dezelfde stijling krijgen om uniformiteit te behouden.
+- Foutmeldingen moeten bij voorkomende errors verschijnen, zodat de gebruiker weet dat en wat er fout gaat.
 - Het lettertype en de knoppen moeten voor de gemiddelde gebruiker goed leesbaar zijn.
 
 ## Kwaliteit
 
 - Gebruik de plug-in prettier voor het formateren van de code.
-- Testen wordt met Unit & End-to-End Testing gedaan.
+- Testen wordt met Unit Testing gedaan.
 - De testen moeten uitgevoerd zijn met jest volgens de happy flow + minimaal een (1) alternatieve flow.
-- Er mogen geen fouten uit bovenstaande testen komen.
+- Er mogen geen fouten uit de testen komen.
 - Foutmeldingen moeten bij voorkomende errors verschijnen.
 - Documenteren is goed, maar houd het kort.
 - Implementeer geen dingen die totaal onnodig zijn.

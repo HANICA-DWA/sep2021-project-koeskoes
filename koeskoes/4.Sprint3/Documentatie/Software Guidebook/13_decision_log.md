@@ -14,19 +14,11 @@ Een onderzoek is gestart naar SMTP over welke de beste service bied en of er gen
 
 ## 3. Onderzoek video's converteren
 
-[Onderzoek](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/3.Sprint2/Onderzoeken/Onderzoek_Video_Converters.md)
-
-#### Conclusie
-
-Omdat FFmpeg enorm bekend is en wij weinig tijd hebben zal voor het prototype van Giftle gebruik gemaakt worden van deze tool. Deze tool kan de nodige video formaten converteren.
+...
 
 ## 4. Onderzoek stijl van QR-codes
 
-[Onderzoek](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/3.Sprint2/Onderzoeken/Onderzoek_qr_stijling.md)
-
-#### Conclusie
-
-Een QR-code kan dus een hele metamorfose ondergaan. Zolang de QR-code maar leesbaar is. Dit is te doen door het contrast tussen de kleuren hoog te houden en een quiet zone toe te voegen. Daarnaast moet de code vierkant zijn en mag er 30% van de code wegvallen.
+...
 
 <!--
 Intent

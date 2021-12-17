@@ -11,35 +11,35 @@
 ## Update en upgrade
 
     sudo apt-get update
-    
+
     sudo apt-get upgrade
 
-## Installeer nodejs & npm - [Source]([How To Install Node.js on Ubuntu 20.04 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04))
+## Installeer nodejs & npm - Source: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
 
     curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
-    
+
     sudo bash nodesource_setup.sh
-    
+
     sudo apt install nodejs
 
-## Installeer mongodb - [Source](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
+## Installeer mongodb - Source: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
     wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
-    
+
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-    
+
     sudo apt-get update
-    
+
     sudo apt-get install -y mongodb-org
-    
+
     sudo systemctl start mongod
-    
+
     sudo systemctl status mongod
 
-## Creëer database "create read update delete" rol en gebruiker
+## Creeer database "create read update delete" rol en gebruiker
 
     mongosh
-    
+
     use giftle
     
     db.createRole(
@@ -53,7 +53,7 @@
       ],
       roles: []
     })
-    
+
     db.createUser(
     {
       user: "crudUser",
@@ -65,34 +65,34 @@
         }
       ]
     })
-    
+
     exit
 
 ## Webapplicatie plaatsen op de server
 
     - Open een FTP applicatie naar keuze (bijv. FileZilla Client).
-    
+  
     - Verbind met de server.
-    
+  
     - Navigeer naar de map /var/.
-    
+  
     - Maak een nieuwe map aan genaamd "www". Dit maakt het makkelijk voor andere om de webapplicatie te vinden.
-    
+  
     - Plaats de webapplicatie in de "www" map.
 
 ## Node modules installeren
 
     cd /var/www
-    
+
     npm install
 
 ## Installeer FFmpeg
 
     sudo apt update
-    
+
     sudo apt install ffmpeg
 
-## Automatisch opstarten na server restart - [Source]([Run a script on boot using systemd on Ubuntu 18.04 &ndash; ServerOK](https://serverok.in/run-a-script-on-boot-using-systemd-on-ubuntu-18-04))
+## Automatisch opstarten na server restart - Source: https://serverok.in/run-a-script-on-boot-using-systemd-on-ubuntu-18-04
 
     nano /etc/systemd/system/sok-startup.service
     - [Unit]
@@ -109,20 +109,20 @@
     
     - [Install]
     - WantedBy=multi-user.target
-    
+
     nano /etc/rc.local
     - #!/bin/bash
-    
+ 
     - sudo rm -rf /tmp/mongodb-27017.sock ; sudo service mongod start ; cd /var/www/ ; npm start
-    
+ 
     - exit 0
-    
+  
     chmod 755 /etc/rc.local
-    
+
     systemctl daemon-reload
-    
+
     systemctl enable sok-startup.service
-    
+
     sudo reboot
 
 <!--

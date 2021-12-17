@@ -2,12 +2,12 @@
 
 ## Algemene informatie
 
-De data wordt opgeslagen in MongoDB onder de databasenaam 'giftle' en heeft op het moment maar één collectie, genaamd 'uploadschemas'.
+De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op het moment maar één collectie, genaamd 'uploadschemas'.
 
 ## Database schema
 
     const mongoose = require("mongoose");
-    
+
     const uploadSchema = new mongoose.Schema({
       nameGifter: {
         type: String,
