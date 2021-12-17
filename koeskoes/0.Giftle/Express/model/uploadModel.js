@@ -30,13 +30,17 @@ const uploadSchema = new mongoose.Schema({
   },
   prePrinted: {
     type: Boolean,
+    required: true,
+    default: false,
   },
   printed: {
     type: Boolean,
     required: true,
+    default: false,
   },
   textCodeSend: {
     type: Boolean,
+    required: true,
     default: false,
   },
   answerVideo: {
