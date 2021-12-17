@@ -38,6 +38,7 @@ function CreateVideoPage() {
   );
   const personalized = useSelector((state) => state.uploads.personalized);
   const video = useSelector((state) => state.videos.video);
+  const videoName = useSelector((state) => state.videos.video.videoName);
 
   /**
    *
@@ -51,11 +52,11 @@ function CreateVideoPage() {
   }, [textCode, navigate]);
 
   useEffect(() => {
-    if (video !== "") {
+    if (videoName !== "") {
       dispatch(setVideoUploaded());
       dispatch(changeUploadVisualState(2));
     }
-  }, [video, dispatch]);
+  }, [videoName, dispatch]);
 
   useEffect(() => {
     setError(null);
