@@ -32,7 +32,7 @@ const TextCodePage = () => {
 
       navigate("/receiver/watchvideo/" + video.textCode);
     }
-  }, [video, dispatch]);
+  }, [video, navigate, dispatch]);
 
   /**
     * 

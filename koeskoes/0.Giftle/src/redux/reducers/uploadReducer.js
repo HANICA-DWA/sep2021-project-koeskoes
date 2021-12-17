@@ -3,6 +3,7 @@ const initialUploadState = {
   uploadVisualState: 1, // 1 is recording/uploading, 2 is rewatching the video, 3 is personalisation form
   videoUploaded: false,
   personalized: false,
+  reaction: {},
 };
 
 export function uploadReducer(state = initialUploadState, action) {
@@ -29,6 +30,12 @@ export function uploadReducer(state = initialUploadState, action) {
       return {
         ...state,
         uploadVisualState: action.payload,
+      };
+
+    case "setReaction":
+      return {
+        ...state,
+        reaction: action.payload,
       };
 
     default:

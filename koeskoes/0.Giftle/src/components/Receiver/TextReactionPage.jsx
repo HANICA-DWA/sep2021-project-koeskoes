@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import ErrorMessage from "../Common/CreateErrorMessage";
+
+import { sendReaction } from "../../redux/actions/uploadActions";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
 import { ReactComponent as CameraVideo } from "../../assets/camera-video.svg";
+import { useEffect } from "react";
 
 function TextReactionPage() {
   const { textCode } = useParams();
@@ -15,6 +17,7 @@ function TextReactionPage() {
   const dispatch = useDispatch();
   const [message, setMessage] = useState(null);
   const [error, setError] = useState();
+  const reaction = useSelector(state => state.uploads.reaction);
 
   const saveMessageData = async () => {
     const checkedMessage = checkMessage();
@@ -25,13 +28,14 @@ function TextReactionPage() {
       );
     }
 
-    await axios.post(
-      `http://localhost:4000/api/mails/reaction/text/${textCode}`,
-      { message: message }
-    );
-
-    return navigate("/receiver/sent");
+    dispatch(sendReaction(textCode, message));
   };
+
+  useEffect(() => {
+    if (reaction.status === 'success') {
+      navigate("/receiver/sent");
+    }
+  }, [reaction, navigate]);
 
   const checkMessage = () => {
     const maxLength = 280;

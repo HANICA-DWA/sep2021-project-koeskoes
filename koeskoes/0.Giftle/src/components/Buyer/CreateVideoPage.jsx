@@ -8,7 +8,6 @@ import SwitchUploadRecord from "../Common/SwitchUploadRecord";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import {
-  setVideoCreationPath,
   setVideoUploaded,
   setPersonalized,
   changeUploadVisualState,

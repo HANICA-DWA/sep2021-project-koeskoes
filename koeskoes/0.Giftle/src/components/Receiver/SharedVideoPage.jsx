@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getVideo } from "../../redux/actions/videoActions";
 
 // Reused Common components
-import Spinner from "../Common/Spinner";
 import VideoPlayer from "../Common/VideoPlayer";
 
 /**
@@ -12,27 +13,14 @@ import VideoPlayer from "../Common/VideoPlayer";
  * @return the front-end for the shared video page
  */
 function SharedVideoPage() {
+  const dispatch = useDispatch();
   const { textCode } = useParams();
-  const [videoData, setVideoData] = useState({});
-  const [videoError, setVideoError] = useState(null);
+  const video = useSelector((state) => state.videos.video);
+  const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
-    const getVideo = async () => {
-      const videoRequest = await axios.get(
-        "http://localhost:4000/api/videos/" + textCode
-      );
-
-      if (!videoRequest.data.status) {
-        setVideoData(videoRequest.data);
-        return setVideoError(false);
-      } else {
-        setVideoData(null);
-        return setVideoError(true);
-      }
-    };
-
-    getVideo();
-  }, [textCode]);
+    dispatch(getVideo(textCode));
+  }, [textCode, dispatch]);
 
   /**
    *
@@ -42,38 +30,29 @@ function SharedVideoPage() {
    *
    */
   const videoPlayer = () => {
-    if (videoError === null) {
-      return (
-        <div className="d-flex justify-content-center">
-          <Spinner />
-        </div>
-      );
-    }
-    if (videoError === true) {
-      return (
-        <>
-          <h2>Er is geen video gevonden met deze code.</h2>
-        </>
-      );
-    }
-    if (videoError === false) {
-      return (
-        <>
-          <VideoPlayer
-            title={`Videoboodschap voor ${videoData.nameReceiver}`}
-            url="http://localhost:4000/api/videos/video/"
-            videoCreationPath={
-              `http://localhost:4000/api/orders/order/` + textCode
-            }
-          />
-        </>
-      );
-    }
+    return (
+      <>
+        <VideoPlayer
+          title={`Videoboodschap voor ${video.nameReceiver}`}
+          url="http://localhost:4000/api/videos/video/"
+          videoData={video}
+          setFullScreen={() =>
+            setFullScreen(
+              (prevScreenState) => (prevScreenState = !prevScreenState)
+            )
+          }
+        />
+      </>
+    );
   };
 
   return (
     <div className="vertical-center colored-background">
-      <div className="container text-center rounded p-3 bg-light">
+      <div
+        className={`${
+          fullScreen ? `container-flex` : `container`
+        } text-center rounded p-3 bg-light`}
+      >
         {videoPlayer()}
       </div>
     </div>
