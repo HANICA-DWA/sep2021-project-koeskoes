@@ -15,7 +15,7 @@ Om Giftle daadwerkelijk in gebruik te kunnen nemen, zal er een betaalde SMTP-ser
 Het team bestaat uit beginnende programmeurs. Daarom is er nauwelijks ervaring. Hieronder is een tabel weergeven van onze ervaring.
 
 | Naam        | Wat is het?                                                                      | Ervaring    |
-| ----------- | -------------------------------------------------------------------------------- | ----------- |
+|-------------|----------------------------------------------------------------------------------|-------------|
 | JavaScript  | Scripttaal                                                                       | 3 maanden   |
 | Node.js     | Open source en multiplatform JavaScript-runtime-omgeving                         | 3 maanden   |
 | React       | JavaScript library                                                               | 2,5 maanden |
@@ -32,10 +32,6 @@ Voor dit product moeten wij gebruik maken van react-redux. Hierdoor is onze keuz
 ## Jest
 
 Voor dit product moeten wij gebruik maken van Jest. Hierdoor is onze keuze in JavaScript test frameworks gelimiteerd.
-
-## Puppeteer
-
-Voor dit product hebben mij End-to-End testen moeten schrijven met de mogelijkheid op websocket testen. Hierdoor was de keuze schaars en hebben wij moeten kiezen voor het framework 'Puppeteer'.
 
 <!--
 Intent

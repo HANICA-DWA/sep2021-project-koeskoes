@@ -19,6 +19,22 @@ Op het moment is de applicatie getest op de volgende apparaten/browsers:
 - PC (1920x1080)
 - Android (OnePlus 9)
 
+### Ondersteunde breedtes
+
+- 320px
+
+- 576px
+
+- 768px
+
+- 992px
+
+- 1000px
+
+- 1200px
+
+- 1400px
+
 ## Management en toezicht
 
 De mogelijkheid moet er zijn om het systeem op enkele stukken aan te passen, daarom worden er met meerdere 'react components' gewerkt.
@@ -37,7 +53,7 @@ De plug-in is afhankelijk van het volgende:
 
 ## Wettelijke, nalevings- en regelgevende vereisten (b.v. data protection act)
 
-[TODO] Als hier niks mee gedaan wordt moet dit weggehaald worden.
+[TODO] Als hier niet meer naar gekeken wordt, moet dit eruit gehaald worden
 
 Om Giftle aan deze vereisten te laten voldoen, moet er rekening gehouden worden met het volgende:
 
