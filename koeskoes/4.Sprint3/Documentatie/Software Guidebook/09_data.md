@@ -6,6 +6,8 @@ De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op h
 
 ## Database schema
 
+[Wat is een Schema?](https://docs.mongodb.com/realm/schemas/)
+
     const mongoose = require("mongoose");
 
     const uploadSchema = new mongoose.Schema({
