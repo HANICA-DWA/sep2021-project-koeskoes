@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { setReactionCreationPath } from "../../redux/actions/reactionActions";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
@@ -13,6 +15,7 @@ import { ReactComponent as CameraVideo } from "../../assets/camera-video.svg";
 function ReactionHomePage() {
   const { textCode } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <div className="vertical-center colored-background">
@@ -32,7 +35,10 @@ function ReactionHomePage() {
         </button>
         <button
           className="btn btn-primary mx-2"
-          onClick={() => navigate(`/receiver/video-reaction/` + textCode)}
+          onClick={() => {
+            dispatch(setReactionCreationPath("upload"));
+            return navigate(`/receiver/video-reaction/` + textCode);
+          }}
         >
           Videoreactie&nbsp;
           <CameraVideo />

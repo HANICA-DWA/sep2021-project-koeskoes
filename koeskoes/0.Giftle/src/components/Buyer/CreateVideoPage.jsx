@@ -136,7 +136,7 @@ function CreateVideoPage() {
                   <div className="row">
                     <p>
                       Klik op <b>Bestand kiezen</b> en selecteer een video of
-                      sleep een bestand in hetzelde vakje.
+                      sleep een bestand in hetzelfde vakje.
                       <br />
                       Om de video te uploaden moet je vervolgens op de{" "}
                       <b>Upload video</b> knop klikken.

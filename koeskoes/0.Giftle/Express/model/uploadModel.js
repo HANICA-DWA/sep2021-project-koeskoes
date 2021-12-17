@@ -39,6 +39,9 @@ const uploadSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  answerVideo: {
+    type: String,
+  },
 });
 
 /**

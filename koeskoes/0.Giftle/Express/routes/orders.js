@@ -71,6 +71,7 @@ router.post("/newOrder", async (req, res) => {
       videoName: "",
       prePrinted: false,
       printed: false,
+      answerVideo: "",
     });
 
     await newRecord.save();
