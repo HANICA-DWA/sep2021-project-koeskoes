@@ -16,6 +16,7 @@ Op het moment is de applicatie getest op de volgende apparaten/browsers:
 
 ### Devices
 
+- PC (3840x2160)
 - PC (1920x1080)
 - Android (OnePlus 9)
 
