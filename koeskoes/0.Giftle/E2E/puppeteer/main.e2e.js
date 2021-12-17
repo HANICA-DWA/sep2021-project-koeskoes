@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const path = require("path");
 
-jest.setTimeout(30000);
+jest.setTimeout(60000);
 
 describe("Giftle tests", () => {
   let browserA, pageA;
@@ -274,6 +274,57 @@ describe("Giftle tests", () => {
       const alert = await pageA.$("div.alert > div");
       const value = await pageA.evaluate((el) => el.textContent, alert);
       expect(value).toBe("Het bericht mag niet leeg zijn!");
+    });
+
+    test("Send textreaction (more than 280 characters)", async () => {
+      await pageA.goto("http://localhost:3000/receiver/watchvideo/abc123");
+
+      const sendReaction = await pageA.$(".reactionButton");
+      expect(sendReaction).toBeDefined();
+      await sendReaction.evaluate((b) => b.click());
+
+      const goTextReaction = await pageA.$(".text-reaction-button");
+      expect(goTextReaction).toBeDefined();
+      await goTextReaction.evaluate((b) => b.click());
+
+      await pageA.type(
+        "#textfield-reaction",
+        " TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestt"
+      );
+
+      const createReaction = await pageA.$(
+        'div[id="send-text-message"] button'
+      );
+      expect(createReaction).toBeDefined();
+      await createReaction.evaluate((b) => b.click());
+
+      await pageA.waitForSelector("div.alert");
+      const alert = await pageA.$("div.alert > div");
+      const value = await pageA.evaluate((el) => el.textContent, alert);
+      expect(value).toBe("Het bericht mag maximaal 280 karakters lang zijn.");
+    });
+
+    test("Switch to videoreaction", async () => {
+      await pageA.goto("http://localhost:3000/receiver/watchvideo/abc123");
+
+      const sendReaction = await pageA.$(".reactionButton");
+      expect(sendReaction).toBeDefined();
+      await sendReaction.evaluate((b) => b.click());
+
+      const goTextReaction = await pageA.$(".text-reaction-button");
+      expect(goTextReaction).toBeDefined();
+      await goTextReaction.evaluate((b) => b.click());
+
+      const goVideoReactionSwitch = await pageA.$(
+        'div[id="video-reaction-switch"] button'
+      );
+      expect(goVideoReactionSwitch).toBeDefined();
+      await goVideoReactionSwitch.evaluate((b) => b.click());
+
+      await pageA.waitForSelector('h1[id="video-reaction-title"]');
+      const h1Text = await pageA.$("h1");
+      const valueText = await pageA.evaluate((el) => el.textContent, h1Text);
+      expect(valueText).toBe("Videoreactie verzenden");
     });
   });
 });

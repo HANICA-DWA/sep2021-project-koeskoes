@@ -87,7 +87,7 @@ function App() {
             exact
             element={<VideoReactionPage />}
           />
-          <Route path="/receiver/sent" exact element={<ReactionSentPage />} />
+          <Route path="/receiver/reaction-sent" exact element={<ReactionSentPage/>}/>
           {/* Employee Routes */}
           <Route
             path="/employee/checkorders"

@@ -21,7 +21,7 @@ function VideoReactionPage() {
     <div className="vertical-center colored-background">
       <div className="container text-center rounded p-3 bg-light mt-4 mb-4">
         <div className="row mb-4">
-          <div className="col-5 text-start">
+          <div className="col-5 text-start" id="v">
             <button
               className="btn btn-primary"
               onClick={() => navigate(`/receiver/text-reaction/` + textCode)}
@@ -32,7 +32,7 @@ function VideoReactionPage() {
           </div>
         </div>
         <div className="row">
-          <h1>Videoreactie verzenden</h1>
+          <h1 id="video-reaction-title">Videoreactie verzenden</h1>
         </div>
         <p className="px-3">
           Om een videoreactie te versturen klik je op de knop "opnemen" of

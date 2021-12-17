@@ -33,7 +33,7 @@ function TextReactionPage() {
 
   useEffect(() => {
     if (reaction.status === "success") {
-      navigate("/receiver/sent");
+      navigate("/receiver/reaction-sent");
     }
   }, [reaction, navigate]);
 
@@ -62,7 +62,7 @@ function TextReactionPage() {
       {error}
       <div className="container text-center rounded p-3 bg-light mt-4 mb-4">
         <div className="row mb-3">
-          <div className="col-5 text-start">
+          <div className="col-5 text-start" id="video-reaction-switch">
             <button
               className="btn btn-primary"
               onClick={() => navigate(`/receiver/video-reaction/` + textCode)}
@@ -73,7 +73,7 @@ function TextReactionPage() {
           </div>
         </div>
         <div className="row">
-          <h1>Tekstreactie verzenden</h1>
+          <h1 id="text-reaction-title">Tekstreactie verzenden</h1>
         </div>
         <p>Type in het tekstvak hieronder je reactie.</p>
         <div className="row my-4 px-5">
