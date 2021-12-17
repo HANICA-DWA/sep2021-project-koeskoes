@@ -1,23 +1,29 @@
 const initialOrderState = {
   orders: [],
   filteredOrders: [],
+  orderPageNumber: 1,
+  orderPageNumbers: 1,
+  received: [],
+  filteredReceived: [],
+  receivedPageNumber: 1,
+  receivedPageNumbers: 1,
   searchParams: "",
-  pageNumber: 1,
-  pageNumbers: 1,
+  webSocket: null,
 };
 
 export function employeeReducer(state = initialOrderState, action) {
   switch (action.type) {
     case "setOrders":
-      if (state.orders === action.payload) {
-        return {...state}
-      }
-      else {
-        return {
-          ...state,
-          orders: action.payload,
-        };
-      }
+      return {
+        ...state,
+        orders: action.payload,
+      };
+
+    case "setReceived":
+      return {
+        ...state,
+        received: action.payload,
+      };
 
     case "setSearch":
       const filteredOrders = state.orders.filter((order) => {
@@ -35,16 +41,34 @@ export function employeeReducer(state = initialOrderState, action) {
         searchParams: action.payload,
       };
 
-    case "setPageNumber":
+    case "setOrderPageNumber":
       return {
         ...state,
-        pageNumber: action.payload,
+        orderPageNumber: action.payload,
       };
 
-    case "setPageNumbers":
+    case "setOrderPageNumbers":
       return {
         ...state,
-        pageNumbers: action.payload,
+        orderPageNumbers: action.payload,
+      };
+
+    case "setReceivedPageNumber":
+      return {
+        ...state,
+        receivedPageNumber: action.payload,
+      };
+
+    case "setReceivedPageNumbers":
+      return {
+        ...state,
+        receivedPageNumbers: action.payload,
+      };
+
+    case "setWebSocket":
+      return {
+        ...state,
+        webSocket: action.payload,
       };
 
     default:

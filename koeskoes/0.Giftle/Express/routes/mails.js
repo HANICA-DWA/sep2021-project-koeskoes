@@ -15,14 +15,28 @@ router.post("/:textCode", async (req, res) => {
     textCode: req.params.textCode,
   }).exec();
 
-  const mailInfo = await mail.sendTextCode(
-    order.emailReceiver,
-    order.nameReceiver,
-    order.nameGifter,
-    order.textCode
-  );
+  order.textCodeSend = true;
 
-  res.json(mailInfo);
+  const orderSave = await order.save();
+
+  if (orderSave) {
+    const mailInfo = await mail.sendTextCode(
+      order.emailReceiver,
+      order.nameReceiver,
+      order.nameGifter,
+      order.textCode
+    );
+
+    if (mailInfo.status === 'error') {
+      order.textCodeSend = false;
+    
+      await order.save();
+    }
+
+    return res.json(mailInfo);
+  }
+
+  return res.json({status: 'error', message:'Tekstcode is niet verstuurd, probeer het later opnieuw'});
 });
 
 /**

@@ -9,9 +9,24 @@ export const setOrders = (orders) => {
 
 export const getOrders = () => {
   return async (dispatch) => {
-    const orders = await axios.get("http://localhost:4000/api/orders/all/");
+    const orders = await axios.get("http://localhost:4000/api/orders/all/?printed=false");
 
     return dispatch(setOrders(orders.data));
+  };
+};
+
+export const setReceived = (orders) => {
+  return {
+    type: "setReceived",
+    payload: orders,
+  };
+};
+
+export const getReceived = () => {
+  return async (dispatch) => {
+    const orders = await axios.get("http://localhost:4000/api/orders/all/?printed=true&textCodeSend=false");
+
+    return dispatch(setReceived(orders.data));
   };
 };
 
@@ -22,16 +37,39 @@ export const setSearch = (search) => {
   };
 };
 
-export const setPageNumber = (pageNumber) => {
+export const setOrderPageNumber = (orderPageNumber) => {
   return {
-    type: "setPageNumber",
-    payload: pageNumber,
+    type: "setOrderPageNumber",
+    payload: orderPageNumber,
   };
 };
 
-export const setPageNumbers = (pageNumbers) => {
+export const setOrderPageNumbers = (orderPageNumbers) => {
   return {
     type: "setPageNumbers",
-    payload: pageNumbers,
+    payload: orderPageNumbers,
+  };
+};
+
+export const setReceivedPageNumber = (receivedPageNumber) => {
+  return {
+    type: "setPageNumber",
+    payload: receivedPageNumber,
+  };
+};
+
+export const setReceivedPageNumbers = (receivedPageNumbers) => {
+  return {
+    type: "setPageNumbers",
+    payload: receivedPageNumbers,
+  };
+};
+
+export const setWebSocket = () => {
+  const port = process.env.PORT || 4000;
+  const serverHostname = `${window.location.hostname}:${port}`
+  return {
+    type: "setWebSocket",
+    payload: new WebSocket(`ws://${serverHostname}`),
   };
 };

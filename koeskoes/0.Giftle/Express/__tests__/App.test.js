@@ -39,7 +39,7 @@ afterAll(async () => {
 
 describe("Express route tests", () => {
   test("get orders from mongoose route", async () => {
-    const orders = await axios.get("http://localhost:4000/api/orders/all/");
+    const orders = await axios.get("http://localhost:4000/api/orders/all/false/");
 
     expect(orders.data).toEqual([order]);
   });

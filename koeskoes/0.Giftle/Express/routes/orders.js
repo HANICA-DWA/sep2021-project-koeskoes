@@ -30,7 +30,7 @@ router.get("/all/", async (req, res) => {
   const orders = await Uploads.find(
     {
       videoName: { $ne: "" },
-      printed: false,
+      ...req.query
     },
     {
       _id: 1,
@@ -42,6 +42,7 @@ router.get("/all/", async (req, res) => {
       textCode: 1,
       printed: 1,
       prePrinted: 1,
+      textCodeSend: 1,
     }
   ).exec();
 
@@ -229,20 +230,6 @@ router.patch("/:textCode", async (req, res) => {
   }).exec();
 
   await order.setPrinted();
-
-  if (
-    order.emailReceiver &&
-    order.nameReceiver &&
-    order.nameGifter &&
-    order.textCode
-  ) {
-    await mail.sendTextCode(
-      order.emailReceiver,
-      order.nameReceiver,
-      order.nameGifter,
-      order.textCode
-    );
-  }
 
   res.json({ status: "success", message: "Order change saved" });
 });

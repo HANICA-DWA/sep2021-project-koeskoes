@@ -1,18 +1,8 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getOrders,
-  setSearch,
-  setPageNumber,
-  setPageNumbers,
-} from "../../redux/actions/employeeActions";
-import qrcode from "../Common/CreateQRcode";
-import ErrorMessage from "../Common/CreateErrorMessage";
-
-// import SVG as ReactComponent for easier use
-import { ReactComponent as QRCode } from "../../assets/qr-code.svg";
-import { ReactComponent as Printer } from "../../assets/printer.svg";
+import { getOrders, getReceived, setSearch, setWebSocket } from "../../redux/actions/employeeActions";
+import PrintOrders from "./PrintOrders";
+import ReceivedOrders from "./ReceivedOrders";
 
 /**
  * CheckOrdersPage component has a list of orders within a table, for the employee to work with.
@@ -25,190 +15,50 @@ import { ReactComponent as Printer } from "../../assets/printer.svg";
 const CheckOrdersPage = () => {
   // Local variables
   const dispatch = useDispatch();
+  const totalReceived = useSelector((state) => state.employee.received.map(received => received.printed === true));
+  const totalOrders = useSelector((state) => state.employee.orders.map(order => order.printed === false));
   const orders = useSelector((state) =>
     state.employee.searchParams
       ? state.employee.filteredOrders
       : state.employee.orders
   );
-  const pageNumber = useSelector((state) => state.employee.pageNumber);
-  const pageNumbers = useSelector((state) => state.employee.pageNumbers);
+  const received = useSelector((state) =>
+    state.employee.searchParams
+      ? state.employee.filteredReceived
+      : state.employee.received
+  );
   const searchParams = useSelector((state) => state.employee.searchParams);
+  const webSocket = useSelector((state) => state.employee.webSocket);
   const [error, setError] = useState(null);
+  const [table, setTable] = useState('Orders');
 
   // Use effect to update the list of orders.
   useEffect(() => {
-    if (orders.length === 0) {
-      dispatch(getOrders());
-    } else if (orders.length >= 0) {
-      dispatch(getOrders());
+    dispatch(getOrders());
+    dispatch(getReceived());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (webSocket) {
+      const ws = webSocket;
+      ws.onmessage = (message) => {
+        const parsedMessage = JSON.parse(message.data);
+        switch(parsedMessage.action) {
+          case "getOrders":
+            return dispatch(getOrders());
+          case "getReceived":
+            dispatch(getOrders());
+            return dispatch(getReceived());
+
+          default:
+            return null;
+        }        
+      }
     }
-  }, [orders, dispatch]);
-
-  /**
-   * This function makes it that the buttons linked to an order get rendered and updated on click
-   * Employees get an extra check with printing, so that they won't missclick
-   *
-   * @param {Object} order this is the specific order, so that the click interaction and the id go to a specific single order
-   * @returns the button that creates a qrcode and prints it if prePrinted is true
-   *          else it will return the button that makes clear where to click.
-   *
-   */
-  const buttonUpdate = (order) => {
-    if (order.prePrinted) {
-      return (
-        <button
-          className="btn btn-success"
-          id="printFinalOrder"
-          onClick={(e) => createQRCode(order.textCode)}
-        >
-          Print QR-code&nbsp;
-          <Printer />
-        </button>
-      );
-    } else {
-      return (
-        <button
-          className="btn btn-primary"
-          id="prePrintOrder"
-          onClick={(e) => {
-            axios.patch(
-              `http://localhost:4000/api/orders/${order._id}/prePrint`
-            );
-          }}
-        >
-          Maak QR-code&nbsp;
-          <QRCode />
-        </button>
-      );
+    else {
+      dispatch(setWebSocket());
     }
-  };
-
-  /**
-   * This function will update the list of orders to a usable list of orders.
-   * This list can be used in a table that employees use before sending out orders.
-   *
-   * @returns List of mapped orders if exists, otherwise returns nothing
-   *
-   */
-  const updateOrderList = () => {
-    if (orders.length !== 0) {
-      const mappedOrders = () => {
-        if (orders.length > 10) {
-          let i,
-            j,
-            temporary = [],
-            chunk = 10;
-          for (i = 0, j = orders.length; i < j; i += chunk) {
-            temporary.push(orders.slice(i, i + chunk));
-          }
-
-          if (pageNumbers !== temporary.length) {
-            dispatch(setPageNumbers(temporary.length));
-          }
-
-          return temporary;
-        } else {
-          const newOrders = [orders];
-
-          if (pageNumbers !== newOrders.length) {
-            dispatch(setPageNumbers(newOrders.length));
-          }
-
-          return newOrders;
-        }
-      };
-
-      return mappedOrders()[pageNumber - 1].map((order) => {
-        return (
-          <tr key={order._id}>
-            <th scope="row">{order._id}</th>
-            <td>{order.nameGifter}</td>
-            <td>{order.emailGifter}</td>
-            <td>{order.nameReceiver}</td>
-            <td>{order.emailReceiver}</td>
-            <td>{buttonUpdate(order)}</td>
-          </tr>
-        );
-      });
-    }
-    return null;
-  };
-
-  /**
-   * This function will create the pagination for the table so employees can move through different pages of orders.
-   *
-   * @return Table with orders and pagination if exists
-   *
-   */
-  const pagination = () => {
-    const pages = [];
-
-    for (let i = 1; i <= pageNumbers; i++) {
-      pages.push(
-        <li
-          key={i}
-          className={"page-item " + (pageNumber === i ? "disabled" : "")}
-          onClick={(e) => dispatch(setPageNumber(i))}
-        >
-          <span className="page-link">{i}</span>
-        </li>
-      );
-    }
-
-    return (
-      <ul className="pagination">
-        <li
-          key={"lt"}
-          className={"page-item " + (pageNumber === 1 ? "disabled" : "")}
-          onClick={(e) =>
-            pageNumber !== 1 ? dispatch(setPageNumber(pageNumber - 1)) : null
-          }
-        >
-          <span className="page-link">&lt;&lt;</span>
-        </li>
-        {pages}
-        <li
-          key={"gt"}
-          className={
-            "page-item " + (pageNumber >= pageNumbers ? "disabled" : "")
-          }
-          onClick={(e) =>
-            pageNumber < pageNumbers
-              ? dispatch(setPageNumber(pageNumber + 1))
-              : null
-          }
-        >
-          <span className="page-link">&gt;&gt;</span>
-        </li>
-      </ul>
-    );
-  };
-
-  /**
-   * This function will create a QR-code with a data string.
-   * This QR-code will be downloaded to the local machine.
-   *
-   * @param {String} textCode Puts the textCode in the orders URL
-   *
-   */
-  const createQRCode = async (textCode) => {
-    try {
-      const qrCode = qrcode("http://localhost:3000/receiver/watchvideo/" + textCode);
-
-      await axios.patch("http://localhost:4000/api/orders/" + textCode);
-
-      dispatch(getOrders());
-
-      qrCode.download({ name: textCode, extension: "png" });
-    } catch (e) {
-      setError(
-        ErrorMessage(
-          "Er is een fout opgetreden bij het maken van de QR-code.",
-          () => setError(null)
-        )
-      );
-    }
-  };
+  }, [webSocket, dispatch]);
 
   return (
     <div className="vertical-center colored-background">
@@ -222,20 +72,36 @@ const CheckOrdersPage = () => {
           onChange={(e) => dispatch(setSearch(e.target.value))}
           value={searchParams}
         />
-        <table className="table" id="checkOrdersTable">
-          <thead>
-            <tr>
-              <th scope="col">Ordernummer</th>
-              <th scope="col">Naam koper</th>
-              <th scope="col">E-mail koper</th>
-              <th scope="col">Naam ontvanger</th>
-              <th scope="col">E-mail ontvanger</th>
-              <th scope="col">QR-code</th>
-            </tr>
-          </thead>
-          <tbody>{updateOrderList()}</tbody>
-        </table>
-        {pagination()}
+        <ul className="nav nav-tabs" id="orderTabs">
+          <li className="nav-item">
+            <button
+              className={`nav-link ${table === "Orders" ? "active" : null}`}
+              onClick={() => setTable(prevTable => prevTable = "Orders")}
+            >
+              Orders [{totalOrders.length}]
+            </button>
+          </li>
+          <li className="nav-item">
+            <button
+              className={`nav-link ${table === "Received" ? "active" : null}`}
+              onClick={() => setTable(prevTable => prevTable = "Received")}
+            >
+              Geleverd [{totalReceived.length}]
+            </button>
+          </li>
+        </ul>
+        <div className="tab-content" id="orderContent">
+          <div
+            className={`tab-pane fade ${table === "Orders" ? "show active" : null}`}
+          >
+            <PrintOrders setError={setError} orders={orders} />
+          </div>
+          <div
+            className={`tab-pane fade ${table === "Received" ? "show active" : null}`}
+          >
+            <ReceivedOrders setError={setError} orders={received} />
+          </div>
+        </div>
       </div>
     </div>
   );

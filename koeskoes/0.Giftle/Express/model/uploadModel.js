@@ -35,16 +35,20 @@ const uploadSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  textCodeSend: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 /**
- * 
- * 
+ *
+ *
  * SetCode is a function to set the text code in the database
  * The code is randomly generated and doesn't yet exist.
  * NOTE: Don't change this function to an arrow function. Thank you <3
  *
- * @returns database save command 
+ * @returns database save command
  */
 uploadSchema.methods.setCode = async function () {
   const Uploads = mongoose.model("UploadSchema", uploadSchema);
@@ -55,17 +59,15 @@ uploadSchema.methods.setCode = async function () {
         (Math.random() + 1).toString(36).substr(2, 6);
 
       const generatedRandomCode = createRandomCode();
-      
-      const randomCode = await Uploads
-      .findOne(
+
+      const randomCode = await Uploads.findOne(
         {
           textCode: generatedRandomCode,
         },
         {
           textCode: 1,
         }
-      )
-      .exec();
+      ).exec();
 
       if (randomCode === null) {
         return generatedRandomCode;
@@ -80,10 +82,9 @@ uploadSchema.methods.setCode = async function () {
   return await this.save();
 };
 
-
 /**
- * SetPrinted is a function to set the printed value to true in the database 
- * 
+ * SetPrinted is a function to set the printed value to true in the database
+ *
  * @returns database save command
  */
 uploadSchema.methods.setPrinted = async function () {
@@ -93,8 +94,8 @@ uploadSchema.methods.setPrinted = async function () {
 };
 
 /**
- * SetPrePrinted is a function to set the prePrinted value to true in the database 
- * 
+ * SetPrePrinted is a function to set the prePrinted value to true in the database
+ *
  * @returns database save command
  */
 
@@ -103,6 +104,5 @@ uploadSchema.methods.setPrePrinted = async function () {
 
   return await this.save();
 };
-
 
 mongoose.model("UploadSchema", uploadSchema);
