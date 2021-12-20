@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getOrders, getReceived, setSearch, setWebSocket } from "../../redux/actions/employeeActions";
+import {
+  getOrders,
+  getReceived,
+  setSearch,
+  setWebSocket,
+} from "../../redux/actions/employeeActions";
 import PrintOrders from "./PrintOrders";
 import ReceivedOrders from "./ReceivedOrders";
 
@@ -15,8 +20,12 @@ import ReceivedOrders from "./ReceivedOrders";
 const CheckOrdersPage = () => {
   // Local variables
   const dispatch = useDispatch();
-  const totalReceived = useSelector((state) => state.employee.received.map(received => received.printed === true));
-  const totalOrders = useSelector((state) => state.employee.orders.map(order => order.printed === false));
+  const totalReceived = useSelector((state) =>
+    state.employee.received.map((received) => received.printed === true)
+  );
+  const totalOrders = useSelector((state) =>
+    state.employee.orders.map((order) => order.printed === false)
+  );
   const orders = useSelector((state) =>
     state.employee.searchParams
       ? state.employee.filteredOrders
@@ -30,7 +39,7 @@ const CheckOrdersPage = () => {
   const searchParams = useSelector((state) => state.employee.searchParams);
   const webSocket = useSelector((state) => state.employee.webSocket);
   const [error, setError] = useState(null);
-  const [table, setTable] = useState('Orders');
+  const [table, setTable] = useState("Orders");
 
   // Use effect to update the list of orders.
   useEffect(() => {
@@ -43,7 +52,7 @@ const CheckOrdersPage = () => {
       const ws = webSocket;
       ws.onmessage = (message) => {
         const parsedMessage = JSON.parse(message.data);
-        switch(parsedMessage.action) {
+        switch (parsedMessage.action) {
           case "getOrders":
             return dispatch(getOrders());
           case "getReceived":
@@ -52,10 +61,9 @@ const CheckOrdersPage = () => {
 
           default:
             return null;
-        }        
-      }
-    }
-    else {
+        }
+      };
+    } else {
       dispatch(setWebSocket());
     }
   }, [webSocket, dispatch]);
@@ -76,7 +84,7 @@ const CheckOrdersPage = () => {
           <li className="nav-item">
             <button
               className={`nav-link ${table === "Orders" ? "active" : null}`}
-              onClick={() => setTable(prevTable => prevTable = "Orders")}
+              onClick={() => setTable((prevTable) => (prevTable = "Orders"))}
             >
               Orders [{totalOrders.length}]
             </button>
@@ -84,7 +92,7 @@ const CheckOrdersPage = () => {
           <li className="nav-item">
             <button
               className={`nav-link ${table === "Received" ? "active" : null}`}
-              onClick={() => setTable(prevTable => prevTable = "Received")}
+              onClick={() => setTable((prevTable) => (prevTable = "Received"))}
             >
               Geleverd [{totalReceived.length}]
             </button>
@@ -92,12 +100,16 @@ const CheckOrdersPage = () => {
         </ul>
         <div className="tab-content" id="orderContent">
           <div
-            className={`tab-pane fade ${table === "Orders" ? "show active" : null}`}
+            className={`tab-pane fade ${
+              table === "Orders" ? "show active" : null
+            }`}
           >
             <PrintOrders setError={setError} orders={orders} />
           </div>
           <div
-            className={`tab-pane fade ${table === "Received" ? "show active" : null}`}
+            className={`tab-pane fade ${
+              table === "Received" ? "show active" : null
+            }`}
           >
             <ReceivedOrders setError={setError} orders={received} />
           </div>

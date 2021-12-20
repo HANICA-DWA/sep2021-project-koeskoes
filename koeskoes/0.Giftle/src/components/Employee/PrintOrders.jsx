@@ -14,8 +14,12 @@ import { ReactComponent as Printer } from "../../assets/printer.svg";
 
 const PrintOrders = (props) => {
   const dispatch = useDispatch();
-  const orderPageNumber = useSelector((state) => state.employee.orderPageNumber);
-  const orderPageNumbers = useSelector((state) => state.employee.orderPageNumbers);
+  const orderPageNumber = useSelector(
+    (state) => state.employee.orderPageNumber
+  );
+  const orderPageNumbers = useSelector(
+    (state) => state.employee.orderPageNumbers
+  );
   const webSocket = useSelector((state) => state.employee.webSocket);
   /**
    * This function will create the pagination for the table so employees can move through different pages of props.orders.
@@ -44,7 +48,9 @@ const PrintOrders = (props) => {
           key={"lt"}
           className={"page-item " + (orderPageNumber === 1 ? "disabled" : "")}
           onClick={(e) =>
-            orderPageNumber !== 1 ? dispatch(setOrderPageNumber(orderPageNumber - 1)) : null
+            orderPageNumber !== 1
+              ? dispatch(setOrderPageNumber(orderPageNumber - 1))
+              : null
           }
         >
           <span className="page-link">&lt;&lt;</span>
@@ -53,7 +59,8 @@ const PrintOrders = (props) => {
         <li
           key={"gt"}
           className={
-            "page-item " + (orderPageNumber >= orderPageNumbers ? "disabled" : "")
+            "page-item " +
+            (orderPageNumber >= orderPageNumbers ? "disabled" : "")
           }
           onClick={(e) =>
             orderPageNumber < orderPageNumbers
@@ -130,7 +137,7 @@ const PrintOrders = (props) => {
 
       await axios.patch("http://localhost:4000/api/orders/" + textCode);
 
-      webSocket.send(JSON.stringify({action:"getReceived"}));
+      webSocket.send(JSON.stringify({ action: "getReceived" }));
 
       qrCode.download({ name: textCode, extension: "png" });
     } catch (e) {
@@ -175,7 +182,7 @@ const PrintOrders = (props) => {
             await axios.patch(
               `http://localhost:4000/api/orders/${order._id}/prePrint`
             );
-            webSocket.send(JSON.stringify({action:"getOrders"}));
+            webSocket.send(JSON.stringify({ action: "getOrders" }));
           }}
         >
           Maak QR-code&nbsp;
