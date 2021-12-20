@@ -30,7 +30,7 @@ Er is onderzoek gedaan naar hoe goed een QR-code leesbaar is als deze "gestyled"
 
 ## 7. Onderzoek thema CSS
 
-Er is onderzoek gedaan naar de beste manier om snel en gemakkelijk te laten zien om van thema te veranderen zonder een backend systeem te hebben. Er waren drie mogelijkheden hiervoor, maar custom CSS was toch het meest eenvoudig om te gebruiken. Daarom hebben wij drie extra thema bestanden, zodat wij kunnen laten zien dat er van thema veranderd kan worden van de webshops voor de plug-in.
+Er is onderzoek gedaan naar de beste manier om snel en gemakkelijk te laten zien om van thema te veranderen zonder een backend systeem te hebben. Er waren drie mogelijkheden hiervoor, maar custom CSS was toch het meest eenvoudig om te gebruiken. Daarom hebben wij drie extra thema bestanden, zodat wij kunnen laten zien dat er van thema veranderd kan worden van de plug-in voor de webshops.
 
 <!--
 Intent
