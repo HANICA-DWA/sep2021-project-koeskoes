@@ -2,11 +2,7 @@
 
 ### Voor de installatie van deze applicatie gaan wij ervan uit dat je ervaring hebt met Ubuntu en de Linux commandline, ook gaan wij ervan uit dat de domeinnaam naar de correcte server verwijst en deze correct is ingesteld.
 
-
-
 ## Installeer Ubuntu 20.04
-
-
 
 ## Server setup
 
@@ -25,8 +21,6 @@ To                         Action      From
 OpenSSH                    ALLOW       Anywhere
 OpenSSH (v6)               ALLOW       Anywhere (v6)
 ```
-
-
 
 ## Installeer Nginx
 
@@ -48,8 +42,6 @@ Nginx HTTP                 ALLOW       Anywhere
 OpenSSH (v6)               ALLOW       Anywhere (v6)             
 Nginx HTTP (v6)            ALLOW       Anywhere (v6)
 ```
-
-
 
 ## Nginx instellen
 
@@ -109,8 +101,6 @@ http {
 sudo nginx -t && systemctl restart nginx
 ```
 
-
-
 ## Certificaat aanvragen
 
 ```
@@ -162,8 +152,6 @@ IMPORTANT NOTES:
 sudo nginx -t && systemctl restart nginx
 ```
 
-
-
 ## Server routing toevoegen
 
 ```
@@ -194,8 +182,6 @@ location / {
 sudo nginx -t && systemctl restart nginx
 ```
 
-
-
 ## Verander de maximale upload grootte van bestanden
 
 ```
@@ -218,8 +204,6 @@ http {
 ```
 sudo nginx -t && systemctl restart nginx
 ```
-
-
 
 ## Update en upgrade
 
