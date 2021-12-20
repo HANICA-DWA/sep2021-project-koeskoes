@@ -24,6 +24,22 @@ De database bevat alle (gevoelige) data. In development heeft het team een datab
 
 De SMTP Service van Google wordt gebruikt voor het versturen/ontvangen van e-mails.
 
+# Deployment op de server
+Op de volgende manier "deployen" wij ons project naar de server:
+
+1. Navigeer naar de 0.Giftle map (standaard locatie: C:\Users\{naam}\Documents\GitHub\sep2021-project-koeskoes\koeskoes\0.Giftle).
+2. Typ het volgende in bij de command prompt of windows powershell: "npm run build".
+3. Een map build wordt aangemaakt, deze map moet in de Express map verplaatst worden.
+4. Verander alle "localhost:4000" in de code naar "www.giftle.nl". Het makkelijkst om dit te doen is: find all -> replace all
+5. !!!localhost:3000 -> giftle.nl (app.js en App.test.js moet localhost:3000 blijven, rest mag veranderd worden)
+6. app.js PORT 4000 naar 80
+7. FTP gebruiken (wij gebruiken filezilla)
+   --> gebruikersnaam..
+   --> wachtwoord..
+8. Ga naar:
+            /dir/var/www
+            nodemodules niet meenemen! (i.v.m. tijd)
+            putty -> server inloggen -> root + password -> sudo reboot
 
 <!--
 Intent
