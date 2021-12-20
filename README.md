@@ -33,8 +33,10 @@ Nu bovengenoemde software geïnstalleerd is, kunnen wij verder met het installer
 3. Als de melding op komt, klik je op **GitHubDesktop openen** en volg je de stappen die daar staan om het project Giftle lokaal te krijgen.
 4. Nu staat het project lokaal. Open (twee keer!) command prompt of windows powershell. Navigeer een keer naar de **0.Giftle** map in een command prompt of powershell. Navigeer ook een keer naar de **Express** map in een andere command prompt of powershell.\
 Dus twee command prompts of powershells met: \
-**0.Giftle** -> sep2021-project-koeskoes\koeskoes\0.Giftle            (*standaard locatie: C:\Users\{jouw naam}\Documents\GitHub\sep2021-project-koeskoes\koeskoes\0.Giftle*) \
-**Express**  -> sep2021-project-koeskoes\koeskoes\0.Giftle\Express    (*standaard locatie: C:\Users\{jouw naam}\Documents\GitHubsep2021-project-koeskoes\koeskoes\0.Giftle\Express*) \
+**0.Giftle** -> sep2021-project-koeskoes\koeskoes\0.Giftle \
+(*standaard locatie: C:\Users\{jouw naam}\Documents\GitHub\sep2021-project-koeskoes\koeskoes\0.Giftle*) \
+**Express**  -> sep2021-project-koeskoes\koeskoes\0.Giftle\Express \
+(*standaard locatie: C:\Users\{jouw naam}\Documents\GitHubsep2021-project-koeskoes\koeskoes\0.Giftle\Express*)
 5. Eerst gaan wij naar de Express map en dus ook met de command prompt of windows powershell. Dit is de server die benodigd is om alle connecties met de database te doen, daarom installeren en starten wij deze als eerst. \
 *Installeren*:  npm i (dit voert alle afhankelijkheden uit die dit project nodig heeft) \
 *Starten*:      node app.js (dit start de server) \
