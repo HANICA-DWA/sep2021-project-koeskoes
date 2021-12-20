@@ -31,11 +31,14 @@ Op de volgende manier "deployen" wij ons project naar de server:
 2. Typ het volgende in bij de command prompt of windows powershell: "npm run build".
 3. Een map build wordt aangemaakt, deze map moet in de Express map verplaatst worden.
 4. Verander alle "localhost:4000" in de code naar "www.giftle.nl". Het makkelijkst om dit te doen is: find all -> replace all
-5. !!!localhost:3000 -> giftle.nl (app.js en App.test.js moet localhost:3000 blijven, rest mag veranderd worden)
-6. app.js PORT 4000 naar 80
-7. FTP gebruiken (wij gebruiken filezilla)
-   --> gebruikersnaam..
-   --> wachtwoord..
+5. **!!NOTE!!** app.js en App.test.js moet localhost:3000 blijven! \
+*Verander voor de rest* alle "localhost:3000" in de code naar "giftle.nl".
+6. Verander in app.js de PORT "4000" naar "80"
+7. Gebruik een FTP software (wij gebruiken filezilla)
+   --> host...
+   --> gebruikersnaam...
+   --> wachtwoord...
+   --> port... (indien nodig)
 8. Ga naar:
             /dir/var/www
             nodemodules niet meenemen! (i.v.m. tijd)
