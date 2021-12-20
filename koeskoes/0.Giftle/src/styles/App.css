@@ -338,3 +338,7 @@ input[type="file"]::-webkit-file-upload-button {
   border-color: #ff0000;
   box-shadow: none;
 }
+
+.loading-text{
+  margin-top: -1em;
+}
