@@ -162,21 +162,21 @@ class MailModule {
    * @param {string} to
    * @param {string} buyer
    * @param {string} receiver
-   * @param {string} videoReaction
+   * @param {string} textCode
    * @returns
    */
-   sendVideoReaction = async (to, buyer, receiver, videoReaction) => {
+   sendVideoReaction = async (to, buyer, receiver, textCode) => {
     if (!to) return { status: "error", message: "Mail not included" };
     if (!buyer) return { status: "error", message: "Buyer not included" };
     if (!receiver) return { status: "error", message: "Receiver not included" };
-    if (!videoReaction) return { status: "error", message: "Reaction not included" };
+    if (!textCode) return { status: "error", message: "Reaction not included" };
 
     try {
       const mailInfo = await this.transport.sendMail({
         from: '"Giftle.nl" info@giftle.nl',
         to: to,
         subject: "Giftle - Videoreactie ontvangen!",
-        html: mailVideoReaction(buyer, receiver, videoReaction),
+        html: mailVideoReaction(buyer, receiver, textCode),
       });
 
       return { status: "success", message: mailInfo };

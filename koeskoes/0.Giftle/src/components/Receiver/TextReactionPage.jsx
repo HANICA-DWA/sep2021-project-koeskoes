@@ -19,6 +19,18 @@ function TextReactionPage() {
   const [error, setError] = useState();
   const reaction = useSelector((state) => state.uploads.reaction);
 
+  // useEffect(() => {
+  //   if () {
+  //     return navigate("/receiver/reaction-sent");
+  //   }
+  // }, [, navigate]);
+
+  useEffect(() => {
+    if (reaction.status === "success") {
+      navigate("/receiver/reaction-sent");
+    }
+  }, [reaction, navigate]);
+
   const saveMessageData = async () => {
     const checkedMessage = checkMessage();
 
@@ -28,14 +40,8 @@ function TextReactionPage() {
       );
     }
 
-    dispatch(sendReaction(textCode, message));
+    dispatch(sendReaction(textCode, "text", message));
   };
-
-  useEffect(() => {
-    if (reaction.status === "success") {
-      navigate("/receiver/reaction-sent");
-    }
-  }, [reaction, navigate]);
 
   const checkMessage = () => {
     const maxLength = 280;

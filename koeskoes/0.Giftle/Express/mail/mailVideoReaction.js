@@ -3,10 +3,10 @@
  *
  * @param {string} buyer
  * @param {string} receiver
- * @param {string} videoReaction
+ * @param {string} textCode
  * @returns Mail preset
  */
-const mailVideoReaction = (buyer, receiver, videoReaction) => {
+const mailVideoReaction = (buyer, receiver, textCode) => {
   return `<html>
     <head>
       <style>
@@ -67,11 +67,11 @@ const mailVideoReaction = (buyer, receiver, videoReaction) => {
           </p>
         </div>
         <div class="row">
-          <a href="http://localhost:3000/watchvideo/${textCode}/answer" class="btn" style="color: #fffffe !important;">Bekijk de reactie!</a>
+          <a href="http://localhost:3000/buyer/watchvideo/${textCode}" class="btn" style="color: #fffffe !important;">Bekijk de reactie!</a>
         </div>
         <div class="row note">
           <p>Werkt de knop niet? Dan kun je de reactie ook bekijken door op deze link te klikken:</p>
-          <a href="http://localhost:3000/watchvideo/${textCode}/answer" class="link">https://www.giftle.nl/watchvideo/${textCode}/answer</a>
+          <a href="http://localhost:3000/buyer/watchvideo/${textCode}" class="link">https://www.giftle.nl/watchvideo/${textCode}</a>
         </div>
         <div>
           <p>Met vriendelijke groet,</p>

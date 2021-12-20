@@ -14,6 +14,7 @@ import NoTextCodePage from "./Buyer/NoTextCodePage";
 import HomeBuyerPage from "./Buyer/HomeBuyerPage";
 import CreateVideoPage from "./Buyer/CreateVideoPage";
 import FinalPage from "./Buyer/FinalPage";
+import ReactionVideoPage from "./Buyer/ReactionVideoPage";
 
 // Receiver components
 import HomeReceiverPage from "./Receiver/HomeReceiverPage";
@@ -60,6 +61,10 @@ function App() {
           <Route path="/buyer" exact element={<HomeBuyerPage />} />
           <Route path="/buyer/create" exact element={<CreateVideoPage />} />
           <Route path="/buyer/thankyou" exact element={<FinalPage />} />
+          <Route
+            path="/buyer/watchvideo/:textCode"
+            element={<ReactionVideoPage />}
+          />
           {/* Receiver Router */}
           <Route path="/receiver" exact element={<HomeReceiverPage />} />
           <Route path="/receiver/qr-code" exact element={<QRPage />} />

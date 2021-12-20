@@ -14,6 +14,12 @@ function ReactionHomePage() {
   const { textCode } = useParams();
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   if () {
+  //     return navigate("/receiver/reaction-sent");
+  //   }
+  // }, [, navigate]);
+
   return (
     <div className="vertical-center colored-background">
       <div className="container text-center rounded p-3 bg-light">

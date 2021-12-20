@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 // import axios from "axios";
 
+import { sendReaction } from "../../redux/actions/uploadActions";
+
 import Camera from "../Common/Camera";
 import UploadVideo from "../Common/UploadVideo";
 import VideoPlayer from "../Common/VideoPlayer";
@@ -13,7 +15,7 @@ import {
 } from "../../redux/actions/reactionActions";
 
 // import SVG as ReactComponent for easier use
-// import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
+import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
 import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
 
@@ -33,24 +35,35 @@ function VideoReactionPage() {
   const reactionUploadVisualState = useSelector(
     (state) => state.reaction.reactionUploadVisualState
   );
-  const reaction = useSelector((state) => state.videos.video);
+  const reaction = useSelector((state) => state.uploads.reaction);
+  const reactionVideo = useSelector((state) => state.videos.video);
 
-  console.log(reaction);
+  // useEffect(() => {
+  //   if () {
+  //     return navigate("/receiver/reaction-sent");
+  //   }
+  // }, [, navigate]);
 
   useEffect(() => {
-    if (reaction !== "") {
+    if (reaction.status === "success") {
+      navigate("/receiver/reaction-sent");
+    }
+  }, [reaction, navigate]);
+
+  useEffect(() => {
+    if (reactionVideo !== "") {
       dispatch(setReactionUploaded());
       dispatch(changeReactionUploadVisualState(2));
     }
-  }, [reaction, dispatch]);
+  }, [reactionVideo, dispatch]);
 
   useEffect(() => {
     setError(null);
   }, [reactionCreationPath]);
 
-  // const saveMessageData = () => {
-  //   return null;
-  // };
+  const saveMessageData = () => {
+    dispatch(sendReaction(textCode, "video", null));
+  };
 
   return (
     <div className="vertical-center colored-background">
@@ -60,25 +73,20 @@ function VideoReactionPage() {
           fullScreen ? `container-flex` : `container container-w40 `
         } text-center rounded p-3 bg-light mt-4 mb-4`}
       >
-        <div className="row mb-4">
+        <div className="row">
           <div className="col-4 text-start" id="text-reaction-switch">
             {reactionUploadVisualState === 1 ? (
               <button
-                className="btn btn-primary"
-                onClick={() => navigate(`/receiver/text-reaction/` + textCode)}
+                className="btn btn-primary mb-4"
+                onClick={() => {
+                  navigate(`/receiver/text-reaction/` + textCode);
+                  dispatch(setReactionCreationPath(""));
+                }}
               >
                 Tekstreactie versturen&nbsp;
                 <PencilSquare />
               </button>
-            ) : (
-              <button
-                className="btn btn-primary"
-                onClick={() => dispatch(changeReactionUploadVisualState(1))}
-              >
-                Tekstreactie versturen&nbsp;
-                <PencilSquare />
-              </button>
-            )}
+            ) : null}
           </div>
           {reactionUploadVisualState === 1 ? (
             reactionCreationPath ? (
@@ -123,7 +131,7 @@ function VideoReactionPage() {
             </div>
           ) : null}
         </div>
-        {!reactionCreationPath ? (
+        {!reactionCreationPath || reactionCreationPath === "" ? (
           <>
             <div className="row">
               <h1 id="video-reaction-title">Videoreactie verzenden</h1>
@@ -189,18 +197,39 @@ function VideoReactionPage() {
                     </>
                   )
                 ) : (
-                  <VideoPlayer
-                    title="Video terugkijken"
-                    url={"http://localhost:4000/api/videos/video/"}
-                    videoData={reaction.answerVideo}
-                    created={true}
-                    setFullScreen={() =>
-                      setFullScreen(
-                        (prevScreenState) =>
-                          (prevScreenState = !prevScreenState)
-                      )
-                    }
-                  />
+                  <div>
+                    <VideoPlayer
+                      title="Video terugkijken"
+                      url={"http://localhost:4000/api/videos/video/"}
+                      videoData={reactionVideo.answerVideo}
+                      created={true}
+                      setFullScreen={() =>
+                        setFullScreen(
+                          (prevScreenState) =>
+                            (prevScreenState = !prevScreenState)
+                        )
+                      }
+                    />
+
+                    <div className="d-flex justify-content-between" id="send-video-message">
+                      <button
+                        className="btn btn-primary"
+                        onClick={() =>
+                          dispatch(changeReactionUploadVisualState(1))
+                        }
+                      >
+                        <LeftArrow />
+                        &nbsp;Opnieuw {reactionCreationPath === "record" ? "opnemen" : "uploaden"}
+                      </button>
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => saveMessageData()}
+                      >
+                        Versturen&nbsp;
+                        {<RightArrow />}
+                      </button>
+                    </div>
+                  </div>
                 )}
                 {reactionUploadVisualState === 1 ? (
                   <p className="mt-4">

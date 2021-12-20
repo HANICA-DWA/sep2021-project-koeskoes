@@ -106,6 +106,33 @@ router.post("/reaction/text/:textCode", async (req, res) => {
   res.send(mailInfo);
 });
 
+router.post("/reaction/video/:textCode", async (req, res) => {
+  const order = await Uploads.findOne({
+    textCode: req.params.textCode,
+  }).exec();
+
+  const mailInfo = await mail.sendVideoReaction(
+    order.emailGifter,
+    order.nameGifter,
+    order.nameReceiver,
+    order.textCode
+  );
+
+  res.send(mailInfo);
+});
+
+router.patch("/reaction/sent/:textCode", async (req, res) => {
+  const order = await Uploads.findOne({
+    textCode: req.params.textCode,
+  }).exec();
+
+  order.answerSent = true;
+
+  await order.save();
+
+  res.json({ status: "success", message: "Reaction has been sent" });
+});
+
 /**
  * This post request will save the video reaction and send a mail to the buyer including a link to this video.
  */
@@ -202,17 +229,6 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
         "Er is een fout opgetreden tijdens het uploaden van de video en de video is helaas niet geupload. Probeer het later opnieuw",
     });
   }
-
-
-
-  // const mailInfo = await mail.sendVideoReaction(
-  //   order.emailGifter,
-  //   order.nameGifter,
-  //   order.nameReceiver,
-  //   req.body.video
-  // );
-
-  // res.send(mailInfo);
 });
 
 module.exports = router;
