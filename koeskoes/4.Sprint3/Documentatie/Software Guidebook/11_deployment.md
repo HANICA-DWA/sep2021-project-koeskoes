@@ -35,14 +35,18 @@ Op de volgende manier "deployen" wij ons project naar de server:
 *Verander voor de rest* alle "localhost:3000" in de code naar "giftle.nl".
 6. Verander in app.js de PORT "4000" naar "80"
 7. Gebruik een FTP software (wij gebruiken filezilla)
-   --> host...
-   --> gebruikersnaam...
-   --> wachtwoord...
-   --> port... (indien nodig)
-8. Ga naar:
-            /dir/var/www
-            nodemodules niet meenemen! (i.v.m. tijd)
-            putty -> server inloggen -> root + password -> sudo reboot
+   |          |              |
+   |----------|--------------|
+   | host     | 178.62.234.7 |
+   | username | root         |
+   | password | vragen aan team Koeskoes |
+   | port     | 22           |
+8. Ga naar: \
+            "/var/www" map \
+            nodemodules niet meenemen (i.v.m. tijd) en verplaats de gehele Express map in de "/www/giftle" map \
+            gebruik putty -> server inloggen -> root + password (vragen aan team Koeskoes): \
+            --> npm i (om alle afhankelijkheden weer te installeren) \
+            --> sudo reboot (opnieuw opstarten van de server)
 
 <!--
 Intent
