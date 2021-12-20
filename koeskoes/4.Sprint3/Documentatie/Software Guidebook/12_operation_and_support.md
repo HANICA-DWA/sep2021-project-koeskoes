@@ -1,45 +1,258 @@
 # Operation and Support
 
-### Voor de installatie van deze applicatie gaan wij ervan uit dat je ervaring hebt met Ubuntu en de Linux commandline
+### Voor de installatie van deze applicatie gaan wij ervan uit dat je ervaring hebt met Ubuntu en de Linux commandline, ook gaan wij ervan uit dat de domeinnaam naar de correcte server verwijst en deze correct is ingesteld.
 
-<br>
 
-## Installeer Ubuntu 18.04
 
-<br>
+## Installeer Ubuntu 20.04
+
+
+
+## Server setup
+
+```
+ufw allow OpenSSH
+ufw enable
+ufw status
+```
+
+```
+Output
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere
+OpenSSH (v6)               ALLOW       Anywhere (v6)
+```
+
+
+
+## Installeer Nginx
+
+```
+sudo apt update
+sudo apt install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo ufw status
+```
+
+```
+Output
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+Nginx HTTP                 ALLOW       Anywhere                  
+OpenSSH (v6)               ALLOW       Anywhere (v6)             
+Nginx HTTP (v6)            ALLOW       Anywhere (v6)
+```
+
+
+
+## Nginx instellen
+
+```
+sudo mkdir -p /var/www/giftle.nl
+sudo chown -R $USER:$USER /var/www/giftle.nl
+sudo chmod -R 755 /var/www/giftle.nl
+sudo nano /etc/nginx/sites-available/giftle.nl
+```
+
+```
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/giftle.nl/;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name giftle.nl www.giftle.nl;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+```
+
+```
+sudo ln -s /etc/nginx/sites-available/giftle.nl /etc/nginx/sites-enabled/
+sudo nano /etc/nginx/nginx.conf
+```
+
+Verander
+
+```
+...
+http {
+    ...
+    # server_names_hash_bucket_size 64;
+    ...
+}
+...
+```
+
+Naar
+
+```
+...
+http {
+    ...
+    server_names_hash_bucket_size 64;
+    ...
+}
+...
+```
+
+```
+sudo nginx -t && systemctl restart nginx
+```
+
+
+
+## Certificaat aanvragen
+
+```
+sudo apt install certbot python3-certbot-nginx
+sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
+sudo ufw status
+```
+
+```
+Output
+Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere
+Nginx Full                 ALLOW       Anywhere
+OpenSSH (v6)               ALLOW       Anywhere (v6)
+Nginx Full (v6)            ALLOW       Anywhere (v6)
+```
+
+```
+sudo certbot --nginx -d giftle.nl -d www.giftle.nl
+```
+
+```
+Select the appropriate number [1-2] then [enter]
+2
+```
+
+```
+Output
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/example.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/example.com/privkey.pem
+   Your cert will expire on 2020-08-18. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot again
+   with the "certonly" option. To non-interactively renew *all* of
+   your certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+```
+
+```
+sudo nginx -t && systemctl restart nginx
+```
+
+
+
+## Server routing toevoegen
+
+```
+nano /etc/nginx/site-available/giftle.nl
+```
+
+Vervang
+
+```
+location / {
+    ...
+}
+```
+
+Met
+
+```
+location / {
+    proxy_pass http://127.0.0.1:4000/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "Upgrade";
+    proxy_set_header Host $host;
+}
+```
+
+```
+sudo nginx -t && systemctl restart nginx
+```
+
+
+
+## Verander de maximale upload grootte van bestanden
+
+```
+sudo nano /etc/nginx/nginx.conf
+```
+
+```
+G -> Gigabyte -> 2G
+M -> Megabyte -> 2048M
+K -> Kilobyte -> 2097152K
+```
+
+```
+http {
+    ...
+    client_max_body_size 100M;
+}   
+```
+
+```
+sudo nginx -t && systemctl restart nginx
+```
+
+
 
 ## Update en upgrade
 
     sudo apt-get update
-
+    
     sudo apt-get upgrade
 
 ## Installeer nodejs & npm - Source: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
 
     curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
-
+    
     sudo bash nodesource_setup.sh
-
+    
     sudo apt install nodejs
 
 ## Installeer mongodb - Source: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
     wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
-
+    
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-
+    
     sudo apt-get update
-
+    
     sudo apt-get install -y mongodb-org
-
+    
     sudo systemctl start mongod
-
+    
     sudo systemctl status mongod
 
 ## Creeer database "create read update delete" rol en gebruiker
 
     mongosh
-
+    
     use giftle
     
     db.createRole(
@@ -53,7 +266,7 @@
       ],
       roles: []
     })
-
+    
     db.createUser(
     {
       user: "crudUser",
@@ -65,31 +278,29 @@
         }
       ]
     })
-
+    
     exit
 
 ## Webapplicatie plaatsen op de server
 
     - Open een FTP applicatie naar keuze (bijv. FileZilla Client).
-  
+    
     - Verbind met de server.
-  
-    - Navigeer naar de map /var/.
-  
-    - Maak een nieuwe map aan genaamd "www". Dit maakt het makkelijk voor andere om de webapplicatie te vinden.
-  
-    - Plaats de webapplicatie in de "www" map.
+    
+    - Navigeer naar de map /var/www/giftle.nl.
+    
+    - Plaats de webapplicatie in de "giftle.nl" map.
 
 ## Node modules installeren
 
-    cd /var/www
-
+    cd /var/www/giftle.nl
+    
     npm install
 
 ## Installeer FFmpeg
 
     sudo apt update
-
+    
     sudo apt install ffmpeg
 
 ## Automatisch opstarten na server restart - Source: https://serverok.in/run-a-script-on-boot-using-systemd-on-ubuntu-18-04
@@ -109,20 +320,20 @@
     
     - [Install]
     - WantedBy=multi-user.target
-
+    
     nano /etc/rc.local
     - #!/bin/bash
- 
-    - sudo rm -rf /tmp/mongodb-27017.sock ; sudo service mongod start ; cd /var/www/ ; npm start
- 
+    
+    - sudo rm -rf /tmp/mongodb-27017.sock ; sudo service mongod start ; cd /var/www/giftle.nl/ ; npm start
+    
     - exit 0
-  
+    
     chmod 755 /etc/rc.local
-
+    
     systemctl daemon-reload
-
+    
     systemctl enable sok-startup.service
-
+    
     sudo reboot
 
 <!--
