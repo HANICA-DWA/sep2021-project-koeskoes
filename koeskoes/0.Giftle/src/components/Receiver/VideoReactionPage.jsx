@@ -18,7 +18,6 @@ import {
 // import SVG as ReactComponent for easier use
 import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
-import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
 
 function VideoReactionPage() {
   const { textCode } = useParams();
@@ -56,7 +55,7 @@ function VideoReactionPage() {
     if (video.answerSent) {
       navigate("/receiver/reaction-sent");
     }
-  }, [video]);
+  }, [video, navigate]);
 
   /**
    * This useEffect activates when the e-mail has been succesfully sent.
@@ -66,7 +65,7 @@ function VideoReactionPage() {
     if (reaction.status === "success") {
       navigate("/receiver/reaction-sent");
     }
-  }, [reaction]);
+  }, [reaction, navigate]);
 
   /**
    * These useEffects are used for correctly uploading the videofile.

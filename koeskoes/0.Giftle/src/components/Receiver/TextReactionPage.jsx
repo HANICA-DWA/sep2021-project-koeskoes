@@ -35,7 +35,7 @@ function TextReactionPage() {
     if (video.answerSent) {
       navigate("/receiver/reaction-sent");
     }
-  }, [video]);
+  }, [video, navigate]);
 
   /**
    * This useEffect activates when the e-mail has been succesfully sent.
@@ -45,7 +45,7 @@ function TextReactionPage() {
     if (reaction.status === "success") {
       navigate("/receiver/reaction-sent");
     }
-  }, [reaction]);
+  }, [reaction, navigate]);
 
   /**
    * This async function dispatches sendReaction with the checked message, which sends the e-mail to the buyer.

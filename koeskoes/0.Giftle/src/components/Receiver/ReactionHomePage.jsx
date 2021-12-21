@@ -35,7 +35,7 @@ function ReactionHomePage() {
     if (video.answerSent) {
       navigate("/receiver/reaction-already-sent");
     }
-  }, [video]);
+  }, [video, navigate]);
 
   return (
     <div className="vertical-center colored-background">

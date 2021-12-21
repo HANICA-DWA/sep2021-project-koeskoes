@@ -1,27 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const generateRandomFileName = require('../commonFunctions/generateRandomFileName');
-const fileUpload = require("express-fileupload");
 const MailModule = require("../commonFunctions/sendMails");
 const mail = new MailModule();
-const fs = require("fs");
-const ffmpeg = require("fluent-ffmpeg");
 const mongoose = require("mongoose");
 require("../model/uploadModel");
 
 const Uploads = mongoose.model("UploadSchema");
-
-/**
- * middleware for Express that provides easy way to handle file upload.
- */
- router.use(
-  fileUpload({
-    createParentPath: true,
-    limits: {
-      fileSize: 1073741824,
-    },
-  })
-);
 
 /**
  * This post request will send a mail to the receiver of a specific order.
