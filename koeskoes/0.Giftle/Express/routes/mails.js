@@ -171,7 +171,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 
       if (height !== 1080 && height !== 720) {
         fs.unlinkSync(uploadPath + video.name);
-        console.log(1);
+        
         return res.json({
           status: "error",
           message: `De kwaliteit van de video die u heeft geupload wordt niet door ons ondersteund. Probeer een andere video te uploaden.`,
@@ -183,7 +183,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
         (height === 720 && duration > 140)
       ) {
         fs.unlinkSync(uploadPath + video.name);
-        console.log(2);
+        
         return res.json({
           status: "error",
           message: `De video die u heeft gekozen is te lang. Selecteer een video de minder dan ${
@@ -196,7 +196,6 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
         ffmpeg(uploadPath + video.name)
           .on("end", async () => {
             fs.unlinkSync(uploadPath + video.name);
-            console.log(5);
 
             const uploadRecord = await Uploads.findOne({
               textCode: req.params.textCode,
@@ -205,7 +204,6 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
             try {
               if (uploadRecord.answerVideo) {
                 fs.unlinkSync(uploadPath + uploadRecord.answerVideo);
-                console.log(3);
               }
             } catch (e) {}
 
@@ -221,7 +219,6 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
   } catch (e) {
     try {
       fs.unlinkSync(uploadPath + video.name);
-      console.log(4);
     } catch (e) {}
     return res.json({
       status: "error",

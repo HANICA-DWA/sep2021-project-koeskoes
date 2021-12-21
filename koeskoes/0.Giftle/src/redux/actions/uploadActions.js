@@ -27,8 +27,6 @@ export const changeUploadVisualState = (state) => {
 };
 
 export const setReaction = (mailInfo) => {
-
-  console.log(mailInfo);
   return {
     type: "setReaction",
     payload: mailInfo,

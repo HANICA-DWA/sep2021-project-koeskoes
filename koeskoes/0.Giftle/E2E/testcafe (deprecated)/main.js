@@ -229,7 +229,7 @@ test("Print QR-code (websockets)", async (test) => {
   }
 
   const prePrintOrder = Selector('#prePrintOrder').nth(0);
-console.log(prePrintOrder.innerText);
+  
   await test
     .expect(prePrintOrder.exists).ok()
     .click(prePrintOrder)

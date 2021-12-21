@@ -570,7 +570,6 @@ describe("Mail tests", () => {
 
       const checkableData = convertMailData(happyMailPath);
 
-      // messageSize from 2331 to 2370, check if it runs with these settings | Jordi
       expect(checkableData).toEqual({
         status: "success",
         message: {

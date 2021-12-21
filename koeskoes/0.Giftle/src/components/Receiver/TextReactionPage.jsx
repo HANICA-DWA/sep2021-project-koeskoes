@@ -35,9 +35,7 @@ function TextReactionPage() {
     const checkedMessage = checkMessage();
 
     if (checkedMessage.status === "error") {
-      return setError(
-        Message(checkedMessage.message, () => setError(null))
-      );
+      return setError(Message(checkedMessage.message, () => setError(null)));
     }
 
     dispatch(sendReaction(textCode, "text", message));
@@ -96,9 +94,7 @@ function TextReactionPage() {
           <div className="col-6 text-start">
             <button
               className="btn btn-primary"
-              onClick={() =>
-                console.log("TODO: via redux state path teruggaan")
-              }
+              onClick={() => navigate(`/receiver/watchvideo/` + textCode)}
             >
               {<LeftArrow />}&nbsp; Bekijk video opnieuw
             </button>

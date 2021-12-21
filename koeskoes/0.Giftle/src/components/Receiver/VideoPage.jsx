@@ -43,7 +43,7 @@ function VideoPage() {
     return (
       <>
         <VideoPlayer
-          title={`Videoboodschap voor ${videoData.nameReceiver}`}
+          title={`Videoboodschap voor ${(videoData.nameReceiver ? videoData.nameReceiver : 'jou')}`}
           url="http://localhost:4000/api/videos/video/"
           videoData={videoData.videoName}
           setFullScreen={() =>
