@@ -9,7 +9,7 @@ Hieronder in het system context diagram is te zien hoe alle interne en externe d
 - OS: Ubuntu 18.04 x64
 - Locatie: Amsterdam
 
-![system_context_diagram](assets/deployment/deployment_diagram.png "System Context diagram")
+![system_context_diagram](assets/deployment/deployment_diagram.png "System Context diagram")\
 *Deployment diagram*
 
 ## Software
