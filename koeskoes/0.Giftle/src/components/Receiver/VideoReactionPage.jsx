@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 // import axios from "axios";
 
 import { sendReaction } from "../../redux/actions/uploadActions";
+import { getVideoInOrder } from "../../redux/actions/orderActions";
 
 import Camera from "../Common/Camera";
 import UploadVideo from "../Common/UploadVideo";
@@ -37,19 +38,39 @@ function VideoReactionPage() {
   );
   const reaction = useSelector((state) => state.uploads.reaction);
   const reactionVideo = useSelector((state) => state.videos.video);
+  const video = useSelector((state) => state.videos.video);
 
-  // useEffect(() => {
-  //   if () {
-  //     return navigate("/receiver/reaction-sent");
-  //   }
-  // }, [, navigate]);
+  /**
+   * Useeffect activates when the textCode changes.
+   * Converts the textCode in the URL to a textCode in the state.
+   */
+  useEffect(() => {
+    dispatch(getVideoInOrder(textCode));
+  }, [textCode, dispatch]);
 
+  /**
+   * This useEffect activates when a reaction is already sent.
+   * If no reaction has been uploaded yet, the user stays on the current page.
+   */
+  useEffect(() => {
+    if (video.answerSent) {
+      navigate("/receiver/reaction-sent");
+    }
+  }, [video, navigate]);
+
+  /**
+   * This useEffect activates when the e-mail has been succesfully sent.
+   * If something goes wrong, the user stays on the current page.
+   */
   useEffect(() => {
     if (reaction.status === "success") {
       navigate("/receiver/reaction-sent");
     }
   }, [reaction, navigate]);
 
+  /**
+   * These useEffects are used for correctly uploading the videofile.
+   */
   useEffect(() => {
     if (reactionVideo !== "") {
       dispatch(setReactionUploaded());
@@ -61,6 +82,9 @@ function VideoReactionPage() {
     setError(null);
   }, [reactionCreationPath]);
 
+  /**
+   * This async function dispatches sendReaction, which sends the e-mail to the buyer.
+   */
   const saveMessageData = () => {
     dispatch(sendReaction(textCode, "video", null));
   };
@@ -211,7 +235,10 @@ function VideoReactionPage() {
                       }
                     />
 
-                    <div className="d-flex justify-content-between" id="send-video-message">
+                    <div
+                      className="d-flex justify-content-between"
+                      id="send-video-message"
+                    >
                       <button
                         className="btn btn-primary"
                         onClick={() =>
@@ -219,7 +246,10 @@ function VideoReactionPage() {
                         }
                       >
                         <LeftArrow />
-                        &nbsp;Opnieuw {reactionCreationPath === "record" ? "opnemen" : "uploaden"}
+                        &nbsp;Opnieuw{" "}
+                        {reactionCreationPath === "record"
+                          ? "opnemen"
+                          : "uploaden"}
                       </button>
                       <button
                         className="btn btn-primary"

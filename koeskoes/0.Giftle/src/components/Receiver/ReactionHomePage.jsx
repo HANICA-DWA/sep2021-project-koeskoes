@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+
+import { getVideoInOrder } from "../../redux/actions/orderActions";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
@@ -13,12 +16,26 @@ import { ReactComponent as CameraVideo } from "../../assets/camera-video.svg";
 function ReactionHomePage() {
   const { textCode } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const video = useSelector((state) => state.videos.video);
 
-  // useEffect(() => {
-  //   if () {
-  //     return navigate("/receiver/reaction-sent");
-  //   }
-  // }, [, navigate]);
+  /**
+   * Useeffect activates when the textCode changes.
+   * Converts the textCode in the URL to a textCode in the state.
+   */
+  useEffect(() => {
+    dispatch(getVideoInOrder(textCode));
+  }, [textCode, dispatch]);
+
+  /**
+   * This useEffect activates when a reaction is already sent.
+   * If no reaction has been uploaded yet, the user stays on the current page.
+   */
+  useEffect(() => {
+    if (video.answerSent) {
+      navigate("/receiver/reaction-sent");
+    }
+  }, [video, navigate]);
 
   return (
     <div className="vertical-center colored-background">
@@ -38,9 +55,7 @@ function ReactionHomePage() {
         </button>
         <button
           className="btn btn-primary mx-2"
-          onClick={() => {
-            return navigate(`/receiver/video-reaction/` + textCode);
-          }}
+          onClick={() => navigate(`/receiver/video-reaction/` + textCode)}
         >
           Videoreactie&nbsp;
           <CameraVideo />

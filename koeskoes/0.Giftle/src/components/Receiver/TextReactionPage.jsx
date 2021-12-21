@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Message from "../Common/CreateMessage";
 
 import { sendReaction } from "../../redux/actions/uploadActions";
+import { getVideoInOrder } from "../../redux/actions/orderActions";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
 import { ReactComponent as CameraVideo } from "../../assets/camera-video.svg";
-import { useEffect } from "react";
 
 function TextReactionPage() {
   const { textCode } = useParams();
@@ -18,19 +18,39 @@ function TextReactionPage() {
   const [message, setMessage] = useState(null);
   const [error, setError] = useState();
   const reaction = useSelector((state) => state.uploads.reaction);
+  const video = useSelector((state) => state.videos.video);
 
-  // useEffect(() => {
-  //   if () {
-  //     return navigate("/receiver/reaction-sent");
-  //   }
-  // }, [, navigate]);
+  /**
+   * Useeffect activates when the textCode changes.
+   * Converts the textCode in the URL to a textCode in the state.
+   */
+  useEffect(() => {
+    dispatch(getVideoInOrder(textCode));
+  }, [textCode, dispatch]);
 
+  /**
+   * This useEffect activates when a reaction is already sent.
+   * If no reaction has been uploaded yet, the user stays on the current page.
+   */
+  useEffect(() => {
+    if (video.answerSent) {
+      navigate("/receiver/reaction-sent");
+    }
+  }, [video, navigate]);
+
+  /**
+   * This useEffect activates when the e-mail has been succesfully sent.
+   * If something goes wrong, the user stays on the current page.
+   */
   useEffect(() => {
     if (reaction.status === "success") {
       navigate("/receiver/reaction-sent");
     }
   }, [reaction, navigate]);
 
+  /**
+   * This async function dispatches sendReaction with the checked message, which sends the e-mail to the buyer.
+   */
   const saveMessageData = async () => {
     const checkedMessage = checkMessage();
 
@@ -41,6 +61,9 @@ function TextReactionPage() {
     dispatch(sendReaction(textCode, "text", message));
   };
 
+  /**
+   * This function checks the userinput (message) and returns true if the message is okay.
+   */
   const checkMessage = () => {
     const maxLength = 280;
 
