@@ -10,7 +10,7 @@ Een snelle keuze waarom wij voor Bootstrap hebben gekozen is dat iedereen hierme
 
 ## 2. Onderzoek SMTP
 
-Er is onderzoek gedaan naar zeventien verschillende SMTP-services. Zeven hiervan zijn uitgekozen op basis van de hoeveelheid e-mails die verstuurd konden worden. In de conclusie is SendPulse het beste om te gebruiken als SMTP-services. Uiteindelijk hebben wij toch voor de Google SMTP gekozen, aangezien dit erg makkelijk was om te koppelen en de hoeeelheid e-mails per dag genoeg is.
+Er is onderzoek gedaan naar zeventien verschillende SMTP-services. Zeven hiervan zijn uitgekozen op basis van de hoeveelheid e-mails die verstuurd konden worden. In de conclusie is SendPulse het beste om te gebruiken als SMTP-services. Uiteindelijk hebben wij toch voor de Google SMTP gekozen, aangezien dit erg makkelijk was om te koppelen en de hoeeelheid e-mails per dag (500 mails) genoeg is.
 
 ## 3. Onderzoek bestand formaat
 
