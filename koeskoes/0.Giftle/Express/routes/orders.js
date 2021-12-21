@@ -30,7 +30,7 @@ router.get("/all/", async (req, res) => {
   const orders = await Uploads.find(
     {
       videoName: { $ne: "" },
-      ...req.query
+      ...req.query,
     },
     {
       _id: 1,
@@ -43,6 +43,7 @@ router.get("/all/", async (req, res) => {
       printed: 1,
       prePrinted: 1,
       textCodeSend: 1,
+      answerSent: 1,
     }
   ).exec();
 
@@ -89,7 +90,7 @@ router.post("/newOrder", async (req, res) => {
         textCode: savedRecord.textCode,
         videoName: "",
       }).exec();
-      
+
       if (checkOrder) {
         mail.sendReminderUploadVideo(
           checkOrder.emailGifter,
@@ -287,7 +288,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 
       if (height !== 1080 && height !== 720) {
         fs.unlinkSync(uploadPath + video.name);
-        
+
         return res.json({
           status: "error",
           message: `De kwaliteit van de video die u heeft geupload wordt niet door ons ondersteund. Probeer een andere video te uploaden.`,
@@ -299,7 +300,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
         (height === 720 && duration > 140)
       ) {
         fs.unlinkSync(uploadPath + video.name);
-        
+
         return res.json({
           status: "error",
           message: `De video die u heeft gekozen is te lang. Selecteer een video de minder dan ${

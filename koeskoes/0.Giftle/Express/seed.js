@@ -28,7 +28,7 @@ async function seedE2ETests() {
     {
       nameGifter: "Sjoerd de Bruin",
       emailGifter: "sjoerddebruin1@hotmail.com",
-      videoName: "",
+      videoName: "recordedVideo1640083296162.mp4",
       prePrinted: false,
       printed: false,
       textCode: "abc123",

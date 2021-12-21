@@ -10,10 +10,12 @@ let order = {
   _id: "619b7c66d79dad758c1e5519",
   nameGifter: "firstname lastname",
   emailGifter: "mail@mail.com",
+  textCodeSend: false,
   videoName: "video.mp4",
   prePrinted: false,
   printed: false,
   textCode: "123abc",
+  answerSent: false,
 };
 
 beforeAll(async () => {
@@ -39,7 +41,9 @@ afterAll(async () => {
 
 describe("Express route tests", () => {
   test("get orders from mongoose route", async () => {
-    const orders = await axios.get("http://localhost:4000/api/orders/all/false/");
+    const orders = await axios.get(
+      "http://localhost:4000/api/orders/all/?printed=false"
+    );
 
     expect(orders.data).toEqual([order]);
   });
@@ -55,9 +59,9 @@ describe("Express route tests", () => {
     });
   });
 
-  test("change order route", async () => {
+  test("set order to printed route", async () => {
     const orderChange = await axios.patch(
-      "http://localhost:4000/api/orders/" + order._id
+      "http://localhost:4000/api/orders/" + order.textCode
     );
 
     expect(orderChange.data).toEqual({
@@ -134,10 +138,14 @@ describe("Database tests", () => {
         _id: 1,
         nameGifter: 1,
         emailGifter: 1,
+        nameReceiver: 1,
+        emailReceiver: 1,
         videoName: 1,
-        prePrinted: 1,
-        printed: 1,
         textCode: 1,
+        printed: 1,
+        prePrinted: 1,
+        textCodeSend: 1,
+        answerSent: 1,
       }
     ).lean();
 
@@ -159,6 +167,8 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
+        textCodeSend: 1,
+        answerSent: 1,
       }
     ).lean();
 
@@ -180,6 +190,8 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
+        textCodeSend: 1,
+        answerSent: 1,
       }
     ).lean();
 
@@ -201,6 +213,8 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
+        textCodeSend: 1,
+        answerSent: 1,
       }
     ).lean();
 
@@ -222,6 +236,8 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
+        textCodeSend: 1,
+        answerSent: 1,
       }
     ).lean();
 
@@ -243,6 +259,8 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
+        textCodeSend: 1,
+        answerSent: 1,
       }
     ).lean();
 
@@ -273,11 +291,13 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
+        textCodeSend: 1,
+        answerSent: 1,
         __v: 1,
       }
     ).lean();
 
-    expect(JSON.stringify(printedOrders)).toEqual(JSON.stringify([newOrder]));
+    expect(printedOrders).toEqual([newOrder.toObject()]);
   });
 
   test("set pre printed model method (prePrinted false -> true)", async () => {
@@ -302,13 +322,13 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
+        textCodeSend: 1,
+        answerSent: 1,
         __v: 1,
       }
     ).lean();
 
-    expect(JSON.stringify(prePrintedOrders)).toEqual(
-      JSON.stringify([newOrder])
-    );
+    expect(prePrintedOrders).toEqual([newOrder.toObject()]);
   });
 
   test("method setCode test", async () => {

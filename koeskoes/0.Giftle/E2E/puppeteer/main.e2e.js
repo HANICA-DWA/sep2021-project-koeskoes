@@ -147,6 +147,10 @@ describe("Giftle tests", () => {
       pageB = await browserB.newPage();
     });
 
+    afterAll(async () => {
+      await browserB.close();
+    });
+
     test("Employee check order page (websocket)", async () => {
       await pageA.goto("http://localhost:3000/employee/checkorders");
       await pageB.goto("http://localhost:3000/employee/checkorders");
@@ -223,7 +227,6 @@ describe("Giftle tests", () => {
   });
 
   describe("Receiver tests", () => {
-
     test("Switch to videoreaction", async () => {
       await pageA.goto("http://localhost:3000/receiver/watchvideo/abc123");
 
@@ -275,8 +278,6 @@ describe("Giftle tests", () => {
       expect(value).toBe("Bedankt voor het versturen van een reactie!");
     });
 
-    
-    
     test("Send textreaction (reaction was already send)", async () => {
       await pageA.goto("http://localhost:3000/receiver/watchvideo/abc123");
 
