@@ -328,6 +328,11 @@ input[type="file"]::-webkit-file-upload-button {
   margin-left: -40px;
 }
 
+.switch-text {
+  font-size: 0.85rem !important;
+  margin-top: 0.4em;
+}
+
 /* Error message helper - input border becomes red */
 .errorInput {
   border-color: none;
@@ -338,6 +343,6 @@ input[type="file"]::-webkit-file-upload-button {
   box-shadow: none;
 }
 
-.loading-text{
+.loading-text {
   margin-top: -1em;
 }

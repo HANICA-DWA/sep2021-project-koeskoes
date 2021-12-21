@@ -27,6 +27,7 @@ import ReactionHomePage from "./Receiver/ReactionHomePage";
 import TextReactionPage from "./Receiver/TextReactionPage";
 import VideoReactionPage from "./Receiver/VideoReactionPage";
 import ReactionSentPage from "./Receiver/ReactionSentPage";
+import ReactionAlreadySentPage from "./Receiver/ReactionAlreadySentPage";
 
 // Employee components
 import CheckOrdersPage from "./Employee/CheckOrdersPage";
@@ -96,6 +97,11 @@ function App() {
             path="/receiver/reaction-sent"
             exact
             element={<ReactionSentPage />}
+          />
+          <Route
+            path="/receiver/reaction-already-sent"
+            exact
+            element={<ReactionAlreadySentPage />}
           />
           {/* Employee Routes */}
           <Route

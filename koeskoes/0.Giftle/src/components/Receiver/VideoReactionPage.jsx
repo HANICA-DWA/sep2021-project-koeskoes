@@ -28,16 +28,16 @@ function VideoReactionPage() {
   const [error, setError] = useState(null);
   const [fullScreen, setFullScreen] = useState(false);
   const reactionCreationPath = useSelector(
-    (state) => state.reaction.reactionCreationPath
+    (state) => state.reaction.reactionCreationPath,
   );
   const reactionUploaded = useSelector(
-    (state) => state.reaction.reactionUploaded
+    (state) => state.reaction.reactionUploaded,
   );
   const reactionUploadVisualState = useSelector(
-    (state) => state.reaction.reactionUploadVisualState
+    (state) => state.reaction.reactionUploadVisualState,
   );
   const reaction = useSelector((state) => state.uploads.reaction);
-  const reactionVideo = useSelector((state) => state.videos.video);
+  const reactionVideo = useSelector((state) => state.videos.video.answerVideo);
   const video = useSelector((state) => state.videos.video);
 
   /**
@@ -56,7 +56,7 @@ function VideoReactionPage() {
     if (video.answerSent) {
       navigate("/receiver/reaction-sent");
     }
-  }, [video, navigate]);
+  }, [video]);
 
   /**
    * This useEffect activates when the e-mail has been succesfully sent.
@@ -66,7 +66,7 @@ function VideoReactionPage() {
     if (reaction.status === "success") {
       navigate("/receiver/reaction-sent");
     }
-  }, [reaction, navigate]);
+  }, [reaction]);
 
   /**
    * These useEffects are used for correctly uploading the videofile.
@@ -100,16 +100,20 @@ function VideoReactionPage() {
         <div className="row">
           <div className="col-4 text-start" id="text-reaction-switch">
             {reactionUploadVisualState === 1 ? (
-              <button
-                className="btn btn-primary mb-4"
-                onClick={() => {
-                  navigate(`/receiver/text-reaction/` + textCode);
-                  dispatch(setReactionCreationPath(""));
-                }}
-              >
-                Tekstreactie versturen&nbsp;
-                <PencilSquare />
-              </button>
+              <div className="form-switch-alignment">
+                <div className="form-control-lg form-check form-switch border border-primary">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckDefault"
+                    onChange={() => {
+                      navigate(`/receiver/text-reaction/` + textCode);
+                    }}
+                  />
+                  <h6 className="switch-text">&nbsp;Tekstreactie versturen</h6>
+                </div>
+              </div>
             ) : null}
           </div>
           {reactionUploadVisualState === 1 ? (
@@ -225,12 +229,12 @@ function VideoReactionPage() {
                     <VideoPlayer
                       title="Video terugkijken"
                       url={"http://localhost:4000/api/videos/video/"}
-                      videoData={reactionVideo.answerVideo}
+                      videoData={reactionVideo}
                       created={true}
                       setFullScreen={() =>
                         setFullScreen(
                           (prevScreenState) =>
-                            (prevScreenState = !prevScreenState)
+                            (prevScreenState = !prevScreenState),
                         )
                       }
                     />

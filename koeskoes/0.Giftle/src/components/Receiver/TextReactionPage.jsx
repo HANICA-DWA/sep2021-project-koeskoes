@@ -9,7 +9,6 @@ import { getVideoInOrder } from "../../redux/actions/orderActions";
 // import SVG as ReactComponent for easier use
 import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
-import { ReactComponent as CameraVideo } from "../../assets/camera-video.svg";
 
 function TextReactionPage() {
   const { textCode } = useParams();
@@ -36,7 +35,7 @@ function TextReactionPage() {
     if (video.answerSent) {
       navigate("/receiver/reaction-sent");
     }
-  }, [video, navigate]);
+  }, [video]);
 
   /**
    * This useEffect activates when the e-mail has been succesfully sent.
@@ -46,7 +45,7 @@ function TextReactionPage() {
     if (reaction.status === "success") {
       navigate("/receiver/reaction-sent");
     }
-  }, [reaction, navigate]);
+  }, [reaction]);
 
   /**
    * This async function dispatches sendReaction with the checked message, which sends the e-mail to the buyer.
@@ -90,13 +89,21 @@ function TextReactionPage() {
       <div className="container text-center rounded p-3 bg-light mt-4 mb-4">
         <div className="row mb-3">
           <div className="col-5 text-start" id="video-reaction-switch">
-            <button
-              className="btn btn-primary"
-              onClick={() => navigate(`/receiver/video-reaction/` + textCode)}
-            >
-              Videoreactie versturen&nbsp;
-              <CameraVideo />
-            </button>
+            <div className="form-switch-alignment">
+              <div className="form-control-lg form-check form-switch border border-primary">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckDefault"
+                  onChange={() => {
+                    navigate(`/receiver/video-reaction/` + textCode);
+                  }}
+                  checked
+                />
+                <h6 className="switch-text">&nbsp;Videoreactie versturen</h6>
+              </div>
+            </div>
           </div>
         </div>
         <div className="row">
