@@ -63,6 +63,9 @@ const CheckOrdersPage = () => {
             return null;
         }
       };
+      ws.onclose = () => {
+        dispatch(setWebSocket());
+      }
     } else {
       dispatch(setWebSocket());
     }

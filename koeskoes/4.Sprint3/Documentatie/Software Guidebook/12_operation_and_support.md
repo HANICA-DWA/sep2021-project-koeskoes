@@ -4,15 +4,15 @@
 
 ## Installeer Ubuntu 20.04
 
-
 [https://releases.ubuntu.com/20.04/](https://releases.ubuntu.com/20.04/)
-
 
 ## Server setup
 
 ```
 ufw allow OpenSSH
 ufw enable
+Y
+
 ufw status
 ```
 
@@ -212,37 +212,37 @@ sudo nginx -t && systemctl restart nginx
 ## Update en upgrade
 
     sudo apt-get update
-
+    
     sudo apt-get upgrade
 
 ## Installeer nodejs & npm - Source: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
 
     curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
-
+    
     sudo bash nodesource_setup.sh
-
+    
     sudo apt install nodejs
 
 ## Installeer mongodb - Source: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
     wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
-
+    
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-
+    
     sudo apt-get update
-
+    
     sudo apt-get install -y mongodb-org
-
+    
     sudo systemctl start mongod
-
+    
     sudo systemctl status mongod
 
 ## Creeer database "create read update delete" rol en gebruiker
 
     mongosh
-
+    
     use giftle
-
+    
     db.createRole(
     {
       role: "crudRole",
@@ -254,7 +254,7 @@ sudo nginx -t && systemctl restart nginx
       ],
       roles: []
     })
-
+    
     db.createUser(
     {
       user: "crudUser",
@@ -266,29 +266,29 @@ sudo nginx -t && systemctl restart nginx
         }
       ]
     })
-
+    
     exit
 
 ## Webapplicatie plaatsen op de server
 
     - Open een FTP applicatie naar keuze (bijv. FileZilla Client).
-
+    
     - Verbind met de server.
-
+    
     - Navigeer naar de map /var/www/giftle.nl.
-
+    
     - Plaats de webapplicatie in de "giftle.nl" map.
 
 ## Node modules installeren
 
     cd /var/www/giftle.nl
-
+    
     npm install
 
 ## Installeer FFmpeg
 
     sudo apt update
-
+    
     sudo apt install ffmpeg
 
 ## Automatisch opstarten na server restart - Source: https://serverok.in/run-a-script-on-boot-using-systemd-on-ubuntu-18-04
@@ -297,7 +297,7 @@ sudo nginx -t && systemctl restart nginx
     - [Unit]
     - Description=Start up script
     - ConditionPathExists=/etc/rc.local
-
+    
     - [Service]
     - Type=forking
     - ExecStart=/etc/rc.local start
@@ -305,23 +305,23 @@ sudo nginx -t && systemctl restart nginx
     - StandardOutput=tty
     - RemainAfterExit=yes
     - SysVStartPriority=99
-
+    
     - [Install]
     - WantedBy=multi-user.target
-
+    
     nano /etc/rc.local
     - #!/bin/bash
-
+    
     - sudo rm -rf /tmp/mongodb-27017.sock ; sudo service mongod start ; cd /var/www/giftle.nl/ ; npm start
-
+    
     - exit 0
-
+    
     chmod 755 /etc/rc.local
-
+    
     systemctl daemon-reload
-
+    
     systemctl enable sok-startup.service
-
+    
     sudo reboot
 
 <!--
