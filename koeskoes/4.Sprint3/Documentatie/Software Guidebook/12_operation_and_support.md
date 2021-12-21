@@ -12,7 +12,6 @@
 ufw allow OpenSSH
 ufw enable
 Y
-
 ufw status
 ```
 
@@ -31,6 +30,7 @@ OpenSSH (v6)               ALLOW       Anywhere (v6)
 ```
 sudo apt update
 sudo apt install nginx
+Y
 sudo ufw allow 'Nginx HTTP'
 sudo ufw status
 ```
@@ -109,6 +109,7 @@ sudo nginx -t && systemctl restart nginx
 
 ```
 sudo apt install certbot python3-certbot-nginx
+Y
 sudo ufw allow 'Nginx Full'
 sudo ufw delete allow 'Nginx HTTP'
 sudo ufw status
@@ -159,7 +160,7 @@ sudo nginx -t && systemctl restart nginx
 ## Server routing toevoegen
 
 ```
-nano /etc/nginx/site-available/giftle.nl
+nano /etc/nginx/sites-available/giftle.nl
 ```
 
 Vervang
@@ -212,29 +213,22 @@ sudo nginx -t && systemctl restart nginx
 ## Update en upgrade
 
     sudo apt-get update
-    
     sudo apt-get upgrade
+    Y
 
 ## Installeer nodejs & npm - Source: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
 
     curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
-    
     sudo bash nodesource_setup.sh
-    
     sudo apt install nodejs
 
 ## Installeer mongodb - Source: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
     wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
-    
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-    
     sudo apt-get update
-    
     sudo apt-get install -y mongodb-org
-    
     sudo systemctl start mongod
-    
     sudo systemctl status mongod
 
 ## Creeer database "create read update delete" rol en gebruiker
@@ -282,13 +276,11 @@ sudo nginx -t && systemctl restart nginx
 ## Node modules installeren
 
     cd /var/www/giftle.nl
-    
     npm install
 
 ## Installeer FFmpeg
 
     sudo apt update
-    
     sudo apt install ffmpeg
 
 ## Automatisch opstarten na server restart - Source: https://serverok.in/run-a-script-on-boot-using-systemd-on-ubuntu-18-04
