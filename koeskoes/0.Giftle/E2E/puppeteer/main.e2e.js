@@ -21,7 +21,7 @@ describe("Giftle tests", () => {
     await browserB.close();
   });
 
-  describe.skip("Order creation tests", () => {
+  describe("Order creation tests", () => {
     test("Create new order (happy path)", async () => {
       await pageA.goto("http://localhost:3000/checkout");
 
@@ -137,7 +137,7 @@ describe("Giftle tests", () => {
     });
   });
 
-  describe.skip("Employee tests", () => {
+  describe("Employee tests", () => {
     beforeAll(async () => {
       browserB = await puppeteer.launch({
         headless: false,
@@ -205,7 +205,7 @@ describe("Giftle tests", () => {
         }
       );
 
-      expect(pageAResultAfter[1]).toEqual(undefined);
+      expect(pageAResultAfter[1]).toEqual([]);
 
       await pageB.waitForSelector("#checkOrdersTable");
       const pageBResultAfter = await pageB.$$eval(
@@ -218,7 +218,7 @@ describe("Giftle tests", () => {
         }
       );
 
-      expect(pageBResultAfter[1]).toEqual(undefined);
+      expect(pageBResultAfter[1]).toEqual([]);
     });
   });
 
