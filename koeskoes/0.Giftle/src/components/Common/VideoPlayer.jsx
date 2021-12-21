@@ -21,7 +21,6 @@ const VideoPlayer = (props) => {
   const [isVideoWatchedTime, setIsVideoWatchedTime] = useState(null);
 
   useEffect(() => {
-    console.log(isVideoTime);
     if (isVideoTime < 2 && isVideoTime !== null && warningVideoDuration !== isVideoTime && props.created) {
       setWarningVideoDuration(isVideoTime);
       if (props.setError) {
