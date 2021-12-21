@@ -1,14 +1,14 @@
 /**
- * ErrorMessage function to describe the message and runs a callback function.
+ * Message function to describe the message and runs a callback function.
  *
  * @param {String} message Text to describe the message
  * @param cb Callback to run a function
- * @return ErrorMessage with text and a callback function
+ * @return Message with text and a callback function
  *
  */
-const ErrorMessage = (message, cb) => {
+const Message = (message, cb, color = "danger") => {
   return (
-    <div className="alert alert-danger d-flex align-items-center" role="alert">
+    <div className={`alert alert-${color} d-flex align-items-center`} role="alert">
       <div>{message}</div>
       <button
         type="button"
@@ -21,4 +21,4 @@ const ErrorMessage = (message, cb) => {
   );
 };
 
-export default ErrorMessage;
+export default Message;

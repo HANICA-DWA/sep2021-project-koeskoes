@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import QrReader from "react-qr-reader";
-import ErrorMessage from "../Common/CreateErrorMessage";
+import Message from "../Common/CreateMessage";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
@@ -34,7 +34,7 @@ function ScanQRPage() {
         });
         if (videoAccess.getVideoTracks().length < 1) {
           setError(
-            ErrorMessage(
+            Message(
               "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
               () => setError(null)
             )
@@ -42,7 +42,7 @@ function ScanQRPage() {
         }
       } catch (e) {
         setError(
-          ErrorMessage(
+          Message(
             "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
             () => setError(null)
           )
@@ -64,14 +64,14 @@ function ScanQRPage() {
           <QrReader
             delay={delay}
             style={previewStyle}
-            onError={ErrorMessage("Fout met de camera of het scannen!", () =>
+            onError={Message("Fout met de camera of het scannen!", () =>
               setError(null)
             )}
             onScan={(data) => {
               if (data) {
                 if (!data.includes("localhost")) {
                   setError(
-                    ErrorMessage(
+                    Message(
                       "De QR-code verwijst niet naar deze site!",
                       () => setError(null)
                     )

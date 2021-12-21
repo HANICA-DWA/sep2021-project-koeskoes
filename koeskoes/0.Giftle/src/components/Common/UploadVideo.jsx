@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import ErrorMessage from "./CreateErrorMessage";
+import Message from "./CreateMessage";
 import { setVideo } from "../../redux/actions/videoActions";
 import Spinner from "./Spinner";
 
@@ -23,7 +23,7 @@ const UploadVideo = (props) => {
     if (uploadedVideo === null) {
       return props.setError
         ? props.setError(
-            ErrorMessage(
+            Message(
               "Kies een geldige videoformaat bestand (.mp4, .mov).",
               () => props.setError(null)
             )
@@ -45,7 +45,7 @@ const UploadVideo = (props) => {
         setUploading(false);
         return props.setError
           ? props.setError(
-              ErrorMessage(uploadResponse.data.message, () =>
+              Message(uploadResponse.data.message, () =>
                 props.setError(null)
               )
             )
@@ -57,7 +57,7 @@ const UploadVideo = (props) => {
       setUploading(false);
       return props.setError
         ? props.setError(
-            ErrorMessage(
+            Message(
               "Kies een geldige videoformaat bestand. Andere formaten zijn niet toegestaan.",
               () => props.setError(null)
             )

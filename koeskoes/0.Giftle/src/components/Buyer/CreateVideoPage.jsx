@@ -176,6 +176,7 @@ function CreateVideoPage() {
                     (prevScreenState) => (prevScreenState = !prevScreenState)
                   )
                 }
+                setError={setError}
               />
             )}
             {uploadVisualState === 1 ? (

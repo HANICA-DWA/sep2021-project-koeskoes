@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import ErrorMessage from "../Common/CreateErrorMessage";
+import Message from "../Common/CreateMessage";
 
 import { sendReaction } from "../../redux/actions/uploadActions";
 
@@ -36,7 +36,7 @@ function TextReactionPage() {
 
     if (checkedMessage.status === "error") {
       return setError(
-        ErrorMessage(checkedMessage.message, () => setError(null))
+        Message(checkedMessage.message, () => setError(null))
       );
     }
 

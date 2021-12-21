@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ErrorMessage from "./CreateErrorMessage";
+import Message from "./CreateMessage";
 import { useSelector } from "react-redux";
 
 // import SVG as ReactComponent for easier use
@@ -43,7 +43,7 @@ function PersonalizationForm(props) {
     if (checkedName.status === "error") {
       return props.setError
         ? props.setError(
-            ErrorMessage(checkedName.message, () => props.setError(null))
+            Message(checkedName.message, () => props.setError(null))
           )
         : null;
     }
@@ -51,7 +51,7 @@ function PersonalizationForm(props) {
     if (checkedEmail.status === "error") {
       return props.setError
         ? props.setError(
-            ErrorMessage(checkedEmail.message, () => props.setError(null))
+            Message(checkedEmail.message, () => props.setError(null))
           )
         : null;
     }
@@ -69,7 +69,7 @@ function PersonalizationForm(props) {
     if (uploadResponse.data.status === "error") {
       return props.setError
         ? props.setError(
-            ErrorMessage(uploadResponse.data.message, () =>
+            Message(uploadResponse.data.message, () =>
               props.setError(null)
             )
           )

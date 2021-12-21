@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
-import ErrorMessage from "../Common/CreateErrorMessage";
+import Message from "../Common/CreateMessage";
 import { useSelector, useDispatch } from "react-redux";
 import Webcam from "react-webcam";
 import Spinner from "../Common/Spinner";
@@ -51,7 +51,7 @@ const Camera = (props) => {
           setIsAudioAvailable(false);
           if (props.setError)
             props.setError(
-              ErrorMessage(
+              Message(
                 "Er is geen microfoon gevonden. Controleer of er een microfoon aangesloten is.",
                 () => props.setError(null)
               )
@@ -61,7 +61,7 @@ const Camera = (props) => {
         setIsAudioAvailable(false);
         if (props.setError)
           props.setError(
-            ErrorMessage(
+            Message(
               "Er is geen microfoon gevonden. Controleer of er een microfoon aangesloten is.",
               () => props.setError(null)
             )
@@ -85,7 +85,7 @@ const Camera = (props) => {
           setIsWebcamAvailable(false);
           if (props.setError)
             props.setError(
-              ErrorMessage(
+              Message(
                 "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
                 () => props.setError(null)
               )
@@ -95,7 +95,7 @@ const Camera = (props) => {
         setIsWebcamAvailable(false);
         if (props.setError)
           props.setError(
-            ErrorMessage(
+            Message(
               "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
               () => props.setError(null)
             )
@@ -168,7 +168,7 @@ const Camera = (props) => {
           setUploading(false);
           return props.setError
             ? props.setError(
-                ErrorMessage(uploadResponse.data.message, () =>
+                Message(uploadResponse.data.message, () =>
                   props.setError(null)
                 )
               )

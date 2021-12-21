@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ErrorMessage from "../Common/CreateErrorMessage";
+import Message from "../Common/CreateMessage";
 
 // import images from assets folder
 import socks from "./../../assets/socks.png";
@@ -62,12 +62,12 @@ function CheckOutPage() {
 
     if (checkedFullName.status === "error") {
       return setError(
-        ErrorMessage(checkedFullName.message, () => setError(null))
+        Message(checkedFullName.message, () => setError(null))
       );
     }
 
     if (checkedEmail.status === "error") {
-      return setError(ErrorMessage(checkedEmail.message, () => setError(null)));
+      return setError(Message(checkedEmail.message, () => setError(null)));
     }
 
     if (isGiftleEnabled) {
@@ -83,7 +83,7 @@ function CheckOutPage() {
 
       if (uploadResponse.data.status === "error") {
         return setError(
-          ErrorMessage(uploadResponse.data.message, () => setError(null))
+          Message(uploadResponse.data.message, () => setError(null))
         );
       } else {
         return navigate("/checked-out");

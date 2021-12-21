@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import Spinner from "./Spinner";
 import ProgressBar from "./ProgressBar";
 import TimeComponent from "./TimerComponent";
 import PlayerPlayPauseButtons from "./PlayerPlayPauseButtons";
+import Message from "./CreateMessage";
 
 /**
  *
@@ -16,7 +17,24 @@ const VideoPlayer = (props) => {
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isVideoTime, setIsVideoTime] = useState(null);
+  const [warningVideoDuration, setWarningVideoDuration] = useState(null);
   const [isVideoWatchedTime, setIsVideoWatchedTime] = useState(null);
+
+  useEffect(() => {
+    console.log(isVideoTime);
+    if (isVideoTime < 2 && isVideoTime !== null && warningVideoDuration !== isVideoTime && props.created) {
+      setWarningVideoDuration(isVideoTime);
+      if (props.setError) {
+        props.setError(
+          Message(
+            "De video die u heeft geupload is korter dan 2 seconden. Weet u zeker dat dit correct is?",
+            () => props.setError(null),
+            "warning"
+          )
+        )
+      }
+    }
+  }, [isVideoTime, warningVideoDuration, props]);
 
   /**
    *

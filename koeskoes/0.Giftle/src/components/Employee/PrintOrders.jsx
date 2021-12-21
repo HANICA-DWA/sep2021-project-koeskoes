@@ -5,7 +5,7 @@ import {
 } from "../../redux/actions/employeeActions";
 import { useSelector, useDispatch } from "react-redux";
 import qrcode from "../Common/CreateQRcode";
-import ErrorMessage from "../Common/CreateErrorMessage";
+import Message from "../Common/CreateMessage";
 import axios from "axios";
 
 // import SVG as ReactComponent for easier use
@@ -143,7 +143,7 @@ const PrintOrders = (props) => {
     } catch (e) {
       if (props.setError) {
         props.setError(
-          ErrorMessage(
+          Message(
             "Er is een fout opgetreden bij het maken van de QR-code.",
             () => props.setError(null)
           )

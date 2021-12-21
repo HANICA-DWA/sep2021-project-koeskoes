@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getVideo, resetVideo } from "../../redux/actions/videoActions";
-import ErrorMessage from "../Common/CreateErrorMessage";
+import Message from "../Common/CreateMessage";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as QRCode } from "../../assets/qr-code.svg";
@@ -26,7 +26,7 @@ const TextCodePage = () => {
       if (!video.textCode) {
         dispatch(resetVideo());
         return setError(
-          ErrorMessage(
+          Message(
             "Je hebt geen geldige tekstcode ingevuld. Vul de tekstcode opnieuw in.",
             () => setError(null)
           )
@@ -60,7 +60,7 @@ const TextCodePage = () => {
   const checkTextcode = () => {
     if (givenTextCode === null || givenTextCode === "") {
       return setError(
-        ErrorMessage(
+        Message(
           "Voer een tekstcode in. Een tekstcode bestaat uit een 6-cijferige code.",
           () => setError(null)
         )
