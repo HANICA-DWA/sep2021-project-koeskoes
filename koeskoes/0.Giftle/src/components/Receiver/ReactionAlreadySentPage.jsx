@@ -6,7 +6,7 @@ function ReactionAlreadySentPage() {
   return (
     <div className="vertical-center colored-background">
       <div className="container text-center rounded p-3 bg-light">
-        <h1 id="reaction-sent">Er is al een reactie verstuurd.</h1>
+        <h1 id="reaction-already-sent">Er is al een reactie verstuurd.</h1>
         <p>Wij hebben de reactie al naar de desbetreffende persoon gestuurd!</p>
       </div>
     </div>

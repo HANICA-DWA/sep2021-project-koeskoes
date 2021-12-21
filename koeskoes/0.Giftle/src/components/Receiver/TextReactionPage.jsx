@@ -88,9 +88,9 @@ function TextReactionPage() {
       {error}
       <div className="container text-center rounded p-3 bg-light mt-4 mb-4">
         <div className="row mb-3">
-          <div className="col-5 text-start" id="video-reaction-switch">
+          <div className="col-5 text-start">
             <div className="form-switch-alignment">
-              <div className="form-control-lg form-check form-switch border border-primary">
+              <div className="form-control-lg form-check form-switch border border-primary" id="video-reaction-switch">
                 <input
                   className="form-check-input"
                   type="checkbox"
