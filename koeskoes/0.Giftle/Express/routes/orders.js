@@ -249,4 +249,99 @@ router.patch("/:orderNumber/prePrint", async (req, res) => {
   res.json({ status: "success", message: "Order change saved" });
 });
 
+/**
+ * This post request will save the video reaction.
+ */
+router.patch("/reaction/video/:textCode", async (req, res) => {
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.json({ status: "error", message: "No file has been uploaded" });
+  }
+
+  const video = req.files.video;
+
+  const { finalFileName, uploadPath } = generateRandomFileName(
+    video.name,
+    Date.now()
+  );
+
+  try {
+    const uploadStatus = await video.mv(uploadPath + video.name);
+
+    if (uploadStatus && uploadStatus.err) {
+      return res.json({ status: "error", message: "File not uploaded" });
+    }
+
+    /**
+     * ffprobe HAS to be a callback because this function doesn't return a promise.
+     */
+    ffmpeg.ffprobe(uploadPath + video.name, async (err, metadata) => {
+      let height, duration;
+      metadata.streams.forEach((stream) => {
+        if (!height && stream.height) {
+          height = stream.height;
+        }
+        if (!duration && stream.duration) {
+          duration = stream.duration;
+        }
+      });
+
+      if (height !== 1080 && height !== 720) {
+        fs.unlinkSync(uploadPath + video.name);
+        
+        return res.json({
+          status: "error",
+          message: `De kwaliteit van de video die u heeft geupload wordt niet door ons ondersteund. Probeer een andere video te uploaden.`,
+        });
+      }
+
+      if (
+        (height === 1080 && duration > 80) ||
+        (height === 720 && duration > 140)
+      ) {
+        fs.unlinkSync(uploadPath + video.name);
+        
+        return res.json({
+          status: "error",
+          message: `De video die u heeft gekozen is te lang. Selecteer een video de minder dan ${
+            height === 1080
+              ? "1 minuut en 20 seconden"
+              : "2 minuten en 20 seconden"
+          } is`,
+        });
+      } else {
+        ffmpeg(uploadPath + video.name)
+          .on("end", async () => {
+            fs.unlinkSync(uploadPath + video.name);
+
+            const uploadRecord = await Uploads.findOne({
+              textCode: req.params.textCode,
+            }).exec();
+
+            try {
+              if (uploadRecord.answerVideo) {
+                fs.unlinkSync(uploadPath + uploadRecord.answerVideo);
+              }
+            } catch (e) {}
+
+            uploadRecord.answerVideo = finalFileName;
+
+            uploadRecord.save();
+
+            return res.json(uploadRecord);
+          })
+          .save(uploadPath + finalFileName);
+      }
+    });
+  } catch (e) {
+    try {
+      fs.unlinkSync(uploadPath + video.name);
+    } catch (e) {}
+    return res.json({
+      status: "error",
+      message:
+        "Er is een fout opgetreden tijdens het uploaden van de video en de video is helaas niet geupload. Probeer het later opnieuw",
+    });
+  }
+});
+
 module.exports = router;

@@ -212,14 +212,14 @@ function VideoReactionPage() {
                         </p>
                       </div>
                       <UploadVideo
-                        uploadPath={`http://localhost:4000/api/mails/reaction/video/${textCode}`}
+                        uploadPath={`http://localhost:4000/api/orders/reaction/video/${textCode}`}
                         setError={setError}
                       />
                     </>
                   ) : (
                     <>
                       <Camera
-                        uploadPath={`http://localhost:4000/api/mails/reaction/video/${textCode}`}
+                        uploadPath={`http://localhost:4000/api/orders/reaction/video/${textCode}`}
                         setError={setError}
                       />
                     </>
