@@ -42,6 +42,14 @@ De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op h
         type: Boolean,
         required: true,
       },
+      textCodeSend: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
+      answerVideo: {
+        type: String,
+      },
     });
 
 <!--
