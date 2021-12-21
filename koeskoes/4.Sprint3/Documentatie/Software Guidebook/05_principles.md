@@ -17,7 +17,7 @@ Elk project heeft zijn eigen regels/ principes. Deze kunnen gaan over de code, m
 - Herhaal jezelf zo min mogelijk. Gebruik hier functies voor of maak components aan.
 - Design components op een manier dat ze zo min mogelijk tegelijk doen. Als je een nieuwe functionaliteit moet maken, kan je hier een aparte component voor maken.
 - Maak geen volledige moeilijke functionaliteiten als hier ook een module voor is. Kijk bijvoorbeeld naar de QR-code scanner.
-- Gebruik, daar waar nodig, React [hooks](https://reactjs.org/docs/hooks-intro.html).
+- Gebruik, daar waar nodig, React [Hooks](https://reactjs.org/docs/hooks-intro.html).
 - Interacties met de database gebeuren met de [Mongoose model methode](https://mongoosejs.com/docs/2.7.x/docs/methods-statics.html).
 - Functies hebben zo min mogelijk zijeffecten.
 - Alle API-calls zijn [RESTful](https://restfulapi.net/).
