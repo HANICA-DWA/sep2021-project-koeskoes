@@ -108,3 +108,17 @@ input[type="file"]::-webkit-file-upload-button {
 .terms-and-conditions {
   color: #121212 !important;
 }
+
+.nav-link.active {
+  color: #222221 !important;
+}
+
+.nav-link {
+  color: #b4b4b4 !important;
+}
+
+.form-select > option {
+  color: #ffffff !important;
+  background-color: #222221 !important;
+  box-shadow: 0 0 10px 100px #222221 inset !important;
+}
