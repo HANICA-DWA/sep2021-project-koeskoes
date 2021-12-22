@@ -24,7 +24,7 @@ export const setReceived = (orders) => {
 
 export const getReceived = () => {
   return async (dispatch) => {
-    const orders = await axios.get("http://localhost:4000/api/orders/all/?printed=true&textCodeSend=false");
+    const orders = await axios.get("http://localhost:4000/api/orders/all/?printed=true&textcodeSent=false");
 
     return dispatch(setReceived(orders.data));
   };

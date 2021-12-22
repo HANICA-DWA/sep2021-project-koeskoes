@@ -42,7 +42,7 @@ router.get("/all/", async (req, res) => {
       textCode: 1,
       printed: 1,
       prePrinted: 1,
-      textCodeSend: 1,
+      textcodeSent: 1,
       answerSent: 1,
     }
   ).exec();

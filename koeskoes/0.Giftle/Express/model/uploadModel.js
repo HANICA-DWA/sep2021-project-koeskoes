@@ -37,7 +37,7 @@ const uploadSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
-  textCodeSend: {
+  textcodeSent: {
     type: Boolean,
     required: true,
     default: false,

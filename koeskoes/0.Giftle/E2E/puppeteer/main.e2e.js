@@ -278,7 +278,7 @@ describe("Giftle tests", () => {
       expect(value).toBe("Bedankt voor het versturen van een reactie!");
     });
 
-    test("Send textreaction (reaction was already send)", async () => {
+    test("Send textreaction (reaction has already been sent)", async () => {
       await pageA.goto("http://localhost:3000/receiver/watchvideo/abc123");
 
       const sendReaction = await pageA.$(".reactionButton");
