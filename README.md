@@ -6,44 +6,179 @@
 
 [Giftle](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/01_context.md)
 
-## Betrokkenen
-
-| Naam               |         | Rol           |
-|--------------------|---------|---------------|
-| Robert Holwerda    | Docent  | Product Owner |
-| Lars Tijsma        | Docent  | Coach         |
-| Helen Visser       | Docent  | Skills        |
-| Sjoerd de Bruin    | Student |               |
-| Sven van Ee        | Student |               |
-| Ilse van de Peppel | Student |               |
-| Jordi Obermeier    | Student |               |
-
 ## Installatie
+
 Om goed voorbereid te zijn op deze installatie en om de installatie helemaal goed te krijgen, vragen wij je om de volgende installaties alvast te hebben en te checken:
-- [GitHub desktop](https://desktop.github.com/)
+
 - [Node.js](https://nodejs.org/en/)
 - [MongoDB](https://www.mongodb.com/try/download/community)
-- [Robo3T](https://robomongo.org/)
-- [BELANGRIJK - FFmpeg hoe te installeren](https://www.wikihow.com/Install-FFmpeg-on-Windows) | [FFmpeg downloads](https://www.ffmpeg.org/download.html) | [versie van Windows die wij gebruiken voor dit project](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.2-full_build.7z)
 
-### Het project installeren lokaal | 6 stappen
+## Installeer FFmpeg
+
+#### Windows
+
+[FFmpeg installatie Windows](https://www.wikihow.com/Install-FFmpeg-on-Windows)
+
+#### MacOS
+
+[FFmpeg installatie MacOS](https://trac.ffmpeg.org/wiki/CompilationGuide/macOS)
+
+#### Linux - Ubuntu 18.04
+
+[FFmpeg installatie Ubuntu](https://linuxize.com/post/how-to-install-ffmpeg-on-ubuntu-18-04/)
+
+### Project installatie
+
 Nu bovengenoemde software geïnstalleerd is, kunnen wij verder met het installeren van het project Giftle. Om het project Giftle online te zetten klik je op de volgende link: [Giftle online zetten](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/11_deployment.md).
-1. Klik op de groene knop **Code**. Maak een keuze door om de bestanden te downloaden *(volg 2)* of om het te openen in GitHub desktop *(volg 3)*.
-2. Als de bestanden zijn gedownload, dan pak je het bestand uit en vervolgens plaats je deze in de door jou aangegeven (algemene) GitHub mapje (*standaard locatie: C:\Users\{jouw naam}\Documents\GitHub*). Ga nu meteen door naar stap 4.
-3. Als de melding op komt, klik je op **GitHubDesktop openen** en volg je de stappen die daar staan om het project Giftle lokaal te krijgen.
-4. Nu staat het project lokaal. Open (twee keer!) command prompt of windows powershell. Navigeer een keer naar de **0.Giftle** map in een command prompt of powershell. Navigeer ook een keer naar de **Express** map in een andere command prompt of powershell.\
-Dus twee command prompts of powershells met: \
-**0.Giftle** -> sep2021-project-koeskoes\koeskoes\0.Giftle \
-(*standaard locatie: C:\Users\{jouw naam}\Documents\GitHub\sep2021-project-koeskoes\koeskoes\0.Giftle*) \
-**Express**  -> sep2021-project-koeskoes\koeskoes\0.Giftle\Express \
-(*standaard locatie: C:\Users\{jouw naam}\Documents\GitHubsep2021-project-koeskoes\koeskoes\0.Giftle\Express*)
-5. Eerst gaan wij naar de Express map en dus ook met de command prompt of windows powershell. Dit is de server die benodigd is om alle connecties met de database te doen, daarom installeren en starten wij deze als eerst. \
-*Installeren*:  npm i (dit voert alle afhankelijkheden uit die dit project nodig heeft) \
-*Starten*:      node app.js (dit start de server) \
-Nu staat er in de command prompt of windows powershell: Server started on port 4000. De server staat op dit moment aan.
-6. Nu gaan wij naar de 0.Giftle map en dus ook met de command prompt of windows powershell. Dit is de gehele website dat front- en backend bij elkaar samenbrengt. Ook hier installeren en starten wij 0.Giftle via de command prompt. \
-*Installeren*:  npm i (dit voert alle afhankelijkheden uit die dit project nodig heeft) \
-*Starten*:      npm start (dit start de development server)
-Nu staan er wat gegevens in voor de connectie, maar dit wordt ook al automatisch gedaan bij het opstarten.
 
-Nu is Giftle lokaal geïnstalleerd.
+- Clone deze repository.
+
+- Start mongodb op als dit nog niet gedaan is.
+
+- Open 2 terminals:
+  
+  - In terminal 1 navigeer naar `/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/`
+  
+  - In terminal 2 navigaar naar `/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+
+- In terminal 2 volg de volgende stappen
+
+```
+npm i of npm install
+node app.js
+```
+
+```
+Output
+Server started on port 4000
+```
+
+- Wanneer de Express server is opgestart volg de volgende stappen in terminal 1
+
+```
+npm i of npm install
+npm start
+```
+
+```
+Output
+Compiled successfully!
+```
+
+- Nu zal de React applicatie jouw browser naar keuze openen en naar de volgende pagina navigeren:
+
+`http://localhost:3000/`
+
+- Deze pagina zal een 404 berichten moeten weergeven.
+
+## Beschikbare URL's
+
+Zodra de React applicatie is opgestart kan je naar de volgende URL's navigeren. 
+
+> Alle URL's waar :textCode in staat moet een textCode beschikbaar staan in de database om op deze pagina te komen.
+
+```
+http://localhost:3000/checkout
+http://localhost:3000/checked-out
+http://localhost:3000/magento-checked-out
+http://localhost:3000/orderControl/:textCode
+http://localhost:3000/buyer/noTextCode - Alleen bereikbaar via de orderControl pagina
+http://localhost:3000/buyer - Alleen bereikbaar via de orderControl pagina
+http://localhost:3000/buyer/create - Alleen bereikbaar via de orderControl pagina
+http://localhost:3000/buyer/thankyou
+http://localhost:3000/buyer/watchvideo/:textCode
+http://localhost:3000/receiver
+http://localhost:3000/receiver/qr-code
+http://localhost:3000/receiver/scan
+http://localhost:3000/receiver/textcode
+http://localhost:3000/receiver/watchvideo/:textCode
+http://localhost:3000/receiver/watchSharedVideo/:textCode
+http://localhost:3000/receiver/reaction/:textCode
+http://localhost:3000/receiver/text-reaction/:textCode
+http://localhost:3000/receiver/video-reaction/:textCode
+http://localhost:3000/receiver/reaction-sent
+http://localhost:3000/receiver/reaction-already-sent
+http://localhost:3000/employee/checkorders
+```
+
+## Werkende mail server
+
+- Omdat deze applicatie gebruik maakt van de Google SMTP server moet je een Google account hebben met een Google mail.
+
+- Volg vervolgens [deze](https://support.google.com/mail/answer/185833?hl=en) stappen om een `App password` te maken voor de mail.
+
+- Maak een `.env` bestand in de volgende locatie:
+
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+
+- Maak vervolgens 2 variabelen aan in dit bestand:
+
+```
+EMAILUSERNAME=<Google E-mail>
+EMAILPASSWORD=<Google App Password>
+```
+
+## Runnen van de testen
+
+#### React testen
+
+- Navigeer naar de map `0.Giftle` als je dat nog niet hebt gedaan:
+
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/`
+
+- Voer het volgende commando uit:
+
+```
+npm test
+```
+
+#### E2E testen
+
+- Navigeer naar de volgende map:
+
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+
+- Maak hier de map videos aan als deze nog niet bestaat.
+
+- Plaats in deze map een .mp4 video naar keuze.
+
+- Open de `seed.js` in de Express map
+
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/seed.js`
+
+- Plaats in de `insertMany` functie, onder `videoName` de video naam + extensie van de eerder geüploade video 
+
+- Navigeer naar de map `0.Giftle` als je dat nog niet hebt gedaan:
+
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/`
+
+- Voer de volgende commando's uit:
+
+```
+node ./Express/seed.js
+```
+
+```
+Output
+The seed has successfully been planted
+```
+
+```
+npm run e2e
+```
+
+#### Unit testen
+
+- Navigeer naar de map `Express` als je dat nog niet hebt gedaan:
+
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+
+- Voer het volgende commando uit:
+
+```
+npm test
+```
+
+## Software Guidebook
+
+[Software Guidebook](https://github.com/HANICA-DWA/sep2021-project-koeskoes/tree/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook)

@@ -155,10 +155,10 @@ describe("Giftle tests", () => {
       await pageA.goto("http://localhost:3000/employee/checkorders");
       await pageB.goto("http://localhost:3000/employee/checkorders");
       const checkableTableData = [
-        "Sjoerd de Bruin",
-        "sjoerddebruin1@hotmail.com",
-        "Sjoerd de Bruin",
-        "sjoerddebruin1@hotmail.com",
+        "Voornaam Achternaam",
+        "mail@mail.com",
+        "Voornaam Achternaam",
+        "mail@mail.com",
       ];
 
       await pageA.waitForSelector("#checkOrdersTable");

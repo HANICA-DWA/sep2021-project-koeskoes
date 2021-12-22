@@ -4,6 +4,8 @@ const generateRandomFileName = require("../commonFunctions/generateRandomFileNam
 const MailModule = require("../commonFunctions/sendMails");
 require("../model/uploadModel");
 
+require('dotenv').config();
+
 const Uploads = mongoose.model("UploadSchema");
 
 let order = {

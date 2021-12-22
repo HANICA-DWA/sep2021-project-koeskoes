@@ -1,59 +1,61 @@
 ## Algemeen
 
-De proxy_pass oplossing is een goede oplossing voor nu (niet voor later?)
+- [x] De proxy_pass oplossing is een goede oplossing voor nu (niet voor later?)
 
-Mail naar Robert sturen voor een teams meeting voor de sprint review
+- [x] Mail naar Robert sturen voor een teams meeting voor de sprint review
 
-Wegens AVG betrokkenen weg halen
+- [x] Wegens AVG betrokkenen weg halen
 
-Er is win-get voor windows, ongeveer hetzelfde als apt-get voor Linux
+- [x] Er is win-get voor windows, ongeveer hetzelfde als apt-get voor Linux
 
-Aan het einde van de readme een link naar het software guidebook
+- [x] Aan het einde van de readme een link naar het software guidebook
 
-Plaats validatie in het mongoose schema. Zo dicht mogelijk bij de database. En test deze validatie
+- [ ] Plaats validatie in het mongoose schema. Zo dicht mogelijk bij de database. En test deze validatie
 
-## Installatie:
+## Installatie: done
 
-Github Desktop moet weg
+- [x] Github Desktop moet weg
 
-Robo3T moet weg
+- [x] Robo3T moet weg
 
-How to install FFmpeg voor andere besturingssystemen dan windows
+- [x] How to install FFmpeg voor andere besturingssystemen dan windows
 
-`clone deze repo` verwacht dat de developer weet hoe je een repo moet clonen
+- [x] `clone deze repo` verwacht dat de developer weet hoe je een repo moet clonen
 
-Maak er stappen van waarbij de developer weet wat hij doet
+- [x] Maak er stappen van waarbij de developer weet wat hij doet
 
-Zorg ervoor dat je niet client specifiek bent
+- [x] Zorg ervoor dat je niet client specifiek bent
 
-`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/`
+- [x] `/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/`
 
-Stap 4 minder tekst meer aangeven wat je moet doen
+- [x] Stap 4 minder tekst meer aangeven wat je moet doen
 
-Maak dit voor een developer niet een standaard gebruiker
+- [x] Maak dit voor een developer niet een standaard gebruiker
 
-Wanneer de website start aangeven dat de developer nu een 404 pagina moet zien
+- [x] Wanneer de website start aangeven dat de developer nu een 404 pagina moet zien
 
-Aangeven dat mongodb moet starten
+- [x] Aangeven dat mongodb moet starten
 
-Geef wat url's om met de app te spelen
+- [x] Geef wat url's om met de app te spelen
 
-Mail inlog verwijderen en documentatie maken hoe je dit moet instellen met een `.env` map
+- [x] Mail inlog verwijderen en documentatie maken hoe je dit moet instellen met een `.env` map
 
 ## Testen runnen
 
-Voor het runnen van de E2E testen aangeven wat je moet doen
+- [x] Voor het runnen van de E2E testen aangeven wat je moet doen
 
-`run seed voor het testen`
+- [x] `run seed voor het testen`
 
-Geef een console log als de seed lukt
+- [x] Geef een console log als de seed lukt
 
-E2E testen zijn goedgekeurd jammer van het uploaden (probeer dit op te lossen)
+- [ ] E2E testen zijn goedgekeurd jammer van het uploaden (probeer dit op te lossen)
 
-Extra E2E test, na een validatie error daarna het veld goed invullen en versturen.
+- [ ] Extra E2E test, na een validatie error daarna het veld goed invullen en versturen.
 
-Jest testen zijn netjes.
+- [x] Jest testen zijn netjes.
 
 ## Software guidebook
 
-Common functions maakt gebruik van de mails map en de googlesmtp
+- [x] Common functions maakt gebruik van de mails map en de googlesmtp
+
+
