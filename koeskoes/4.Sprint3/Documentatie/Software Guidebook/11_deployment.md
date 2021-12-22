@@ -27,13 +27,13 @@ De SMTP Service van Google wordt gebruikt voor het versturen/ontvangen van e-mai
 # Deployment op de server
 Op de volgende manier "deployen" wij ons project naar de server:
 
-1. Navigeer naar de 0.Giftle map (standaard locatie: C:\Users\{naam}\Documents\GitHub\sep2021-project-koeskoes\koeskoes\0.Giftle).
-2. Typ het volgende in bij de command prompt of windows powershell: "npm run build".
-3. Een map build wordt aangemaakt, deze map moet in de Express map verplaatst worden.
-4. Verander alle "localhost:4000" in de code naar "www.giftle.nl". Het makkelijkst om dit te doen is: find all -> replace all
-5. **!!NOTE!!** app.js en App.test.js moet localhost:3000 blijven! \
-*Verander voor de rest* alle "localhost:3000" in de code naar "giftle.nl".
-6. Verander in app.js de PORT "4000" naar "80"
+1. Navigeer naar de ```0.Giftle``` map.
+2. Typ het volgende in bij de command prompt of windows powershell: ```npm run build```.
+3. Een map ```build``` wordt aangemaakt, deze map moet in de Express map verplaatst worden.
+4. Verander alle ```localhost:4000``` in de code naar ```www.giftle.nl```. Het makkelijkst om dit te doen is: find all -> replace all
+5. **!!NOTE!!** ```app.js``` en ```App.test.js``` moet ```localhost:3000``` blijven! \
+*Verander voor de rest* alle ```localhost:3000``` in de code naar ```giftle.nl```.
+6. Verander in ```app.js``` de PORT ```4000``` naar ```80```
 7. Gebruik een FTP software (wij gebruiken filezilla)
    |          |              |
    |----------|--------------|
@@ -42,11 +42,11 @@ Op de volgende manier "deployen" wij ons project naar de server:
    | password | vragen aan team Koeskoes |
    | port     | 22           |
 8. Ga naar: \
-            "/var/www" map \
-            nodemodules niet meenemen (i.v.m. tijd) en verplaats de gehele Express map in de "/www/giftle" map \
+            ```/var/www``` map \
+            nodemodules niet meenemen (i.v.m. tijd) en verplaats de gehele Express map in de ```/www/giftle``` map \
             gebruik putty -> server inloggen -> root + password (vragen aan team Koeskoes): \
-            --> npm i (om alle afhankelijkheden weer te installeren) \
-            --> sudo reboot (opnieuw opstarten van de server)
+            --> ```npm i``` (om alle afhankelijkheden weer te installeren) \
+            --> ```sudo reboot``` (opnieuw opstarten van de server)
 
 <!--
 Intent
