@@ -133,7 +133,7 @@ const PrintOrders = (props) => {
    */
   const createQRCode = async (textCode) => {
     try {
-      const qrCode = qrcode("http://localhost:3000/watchvideo/" + textCode);
+      const qrCode = qrcode("http://localhost:3000/receiver/watchvideo/" + textCode);
 
       await axios.patch("http://localhost:4000/api/orders/" + textCode);
 
