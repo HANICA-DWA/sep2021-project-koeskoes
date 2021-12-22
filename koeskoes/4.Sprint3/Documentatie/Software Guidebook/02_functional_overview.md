@@ -46,6 +46,18 @@ Wanneer het cadeau het magazijn uit gaat, kan aan het cadeau een kaartje met de 
 <br />
 <img src="https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/assets/screenshots_giftle/1_employee_checkorders.png" width="1000"/>
 
+## Tekstreactie versturen
+
+Een ontvanger kan een tekstreactie sturen naar de persoon die de Giftle gestuurd heeft. Deze tekstreactie wordt alleen via de mail gestuurd en dus niet opgeslagen in de database.\
+<br />
+<img src="https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/assets/screenshots_giftle/1_text_reaction.png" width="1000"/>
+
+## Videoreactie versturen
+
+Een ontvanger kan een videoreactie sturen naar de persoon die de Giftle gestuurd heeft. Deze videoreactie wordt via de mail gestuurd en ook opgeslagen in de database.\
+<br />
+<img src="https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/assets/screenshots_giftle/1_video_reaction.png" width="1000"/>
+
 <!--
 Oude tekst
 
