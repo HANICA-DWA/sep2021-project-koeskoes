@@ -644,4 +644,168 @@ describe("Mail tests", () => {
       });
     });
   });
+
+  describe("Send mail with text reaction", () => {
+    test("send mail (happy path)", async () => {
+      const happyMailPath = await mail.sendTextReaction(
+        "mail@mail.com",
+        "buyer",
+        "receiver",
+        "text reaction"
+      );
+
+      const checkableData = convertMailData(happyMailPath);
+
+      expect(checkableData).toEqual({
+        status: "success",
+        message: {
+          accepted: ["mail@mail.com"],
+          rejected: [],
+          envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
+        },
+      });
+    });
+    test("send mail (no buyer mail)", async () => {
+      const noBuyerMailPath = await mail.sendTextReaction(
+        "",
+        "buyer",
+        "receiver",
+        "text reaction"
+      );
+
+      const checkableData = convertMailData(noBuyerMailPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Mail not included",
+      });
+    });
+    test("send mail (no buyer name)", async () => {
+      const noBuyerNamePath = await mail.sendTextReaction(
+        "mail@mail.com",
+        "",
+        "receiver",
+        "text reaction"
+      );
+
+      const checkableData = convertMailData(noBuyerNamePath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Buyer not included",
+      });
+    });
+    test("send mail (no receiver name)", async () => {
+      const noReceiverNamePath = await mail.sendTextReaction(
+        "mail@mail.com",
+        "buyer",
+        "",
+        "text reaction"
+      );
+
+      const checkableData = convertMailData(noReceiverNamePath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Receiver not included",
+      });
+    });
+    test("send mail (no text reaction)", async () => {
+      const noTextReactionPath = await mail.sendTextReaction(
+        "mail@mail.com",
+        "buyer",
+        "receiver",
+        ""
+      );
+
+      const checkableData = convertMailData(noTextReactionPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Reaction not included",
+      });
+    });
+  });
+
+  describe("Send mail with video reaction", () => {
+    test("send mail (happy path)", async () => {
+      const happyMailPath = await mail.sendVideoReaction(
+        "mail@mail.com",
+        "buyer",
+        "receiver",
+        "123abc"
+      );
+
+      const checkableData = convertMailData(happyMailPath);
+
+      expect(checkableData).toEqual({
+        status: "success",
+        message: {
+          accepted: ["mail@mail.com"],
+          rejected: [],
+          envelope: { from: "info@giftle.nl", to: ["mail@mail.com"] },
+        },
+      });
+    });
+    test("send mail (no buyer mail)", async () => {
+      const noBuyerMailPath = await mail.sendVideoReaction(
+        "",
+        "buyer",
+        "receiver",
+        "123abc"
+      );
+
+      const checkableData = convertMailData(noBuyerMailPath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Mail not included",
+      });
+    });
+    test("send mail (no buyer name)", async () => {
+      const noBuyerNamePath = await mail.sendVideoReaction(
+        "mail@mail.com",
+        "",
+        "receiver",
+        "123abc"
+      );
+
+      const checkableData = convertMailData(noBuyerNamePath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Buyer not included",
+      });
+    });
+    test("send mail (no receiver name)", async () => {
+      const noReceiverNamePath = await mail.sendVideoReaction(
+        "mail@mail.com",
+        "buyer",
+        "",
+        "123abc"
+      );
+
+      const checkableData = convertMailData(noReceiverNamePath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Receiver not included",
+      });
+    });
+    test("send mail (no textcode)", async () => {
+      const noTextcodePath = await mail.sendVideoReaction(
+        "mail@mail.com",
+        "buyer",
+        "receiver",
+        ""
+      );
+
+      const checkableData = convertMailData(noTextcodePath);
+
+      expect(checkableData).toEqual({
+        status: "error",
+        message: "Textcode not included",
+      });
+    });
+  });
 });

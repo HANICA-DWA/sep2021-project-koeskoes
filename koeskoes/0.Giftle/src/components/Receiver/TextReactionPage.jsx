@@ -90,7 +90,10 @@ function TextReactionPage() {
         <div className="row mb-3">
           <div className="col-5 text-start">
             <div className="form-switch-alignment">
-              <div className="form-control-lg form-check form-switch border border-primary" id="video-reaction-switch">
+              <div
+                className="form-control-lg form-check form-switch border border-primary"
+                id="video-reaction-switch"
+              >
                 <input
                   className="form-check-input"
                   type="checkbox"
@@ -120,16 +123,16 @@ function TextReactionPage() {
             required
           />
         </div>
-        <div className="row mt-5 mb-3">
-          <div className="col-6 text-start">
+        <div className="row mt-5 mb-3 justify-content-center">
+          {/* <div className="col-6 text-start">
             <button
               className="btn btn-primary"
               onClick={() => navigate(`/receiver/watchvideo/` + textCode)}
             >
               {<LeftArrow />}&nbsp; Bekijk video opnieuw
             </button>
-          </div>
-          <div className="col-6 text-end" id="send-text-message">
+          </div> */}
+          <div className="col-6 text-center" id="send-text-message">
             <button
               className="btn btn-primary"
               onClick={() => saveMessageData()}

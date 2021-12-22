@@ -265,20 +265,34 @@ function VideoReactionPage() {
                   </div>
                 )}
                 {reactionUploadVisualState === 1 ? (
-                  <p className="mt-4">
-                    Door een video{" "}
-                    {reactionCreationPath === "upload"
-                      ? "te uploaden"
-                      : "op te nemen"}{" "}
-                    gaat u akkoord met de{" "}
-                    <a
-                      href="#algemene-voorwaarden"
-                      className="terms-and-conditions"
-                    >
-                      algemene voorwaarden
-                    </a>
-                    .
-                  </p>
+                  <>
+                    {/* <div className="row">
+                      <div className="col-4">
+                        <button
+                          className="btn btn-primary"
+                          onClick={() =>
+                            navigate(`/receiver/watchvideo/` + textCode)
+                          }
+                        >
+                          {<LeftArrow />}&nbsp; Bekijk video opnieuw
+                        </button>
+                      </div>
+                    </div> */}
+                    <p className="mt-4">
+                      Door een video{" "}
+                      {reactionCreationPath === "upload"
+                        ? "te uploaden"
+                        : "op te nemen"}{" "}
+                      gaat u akkoord met de{" "}
+                      <a
+                        href="#algemene-voorwaarden"
+                        className="terms-and-conditions"
+                      >
+                        algemene voorwaarden
+                      </a>
+                      .
+                    </p>
+                  </>
                 ) : null}
               </div>
             </div>
