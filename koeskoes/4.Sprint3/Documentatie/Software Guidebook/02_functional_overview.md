@@ -22,6 +22,12 @@ Als de koper kiest voor het opnemen van een video, krijgt deze een scherm te zie
 <br />
 <img src="https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/assets/screenshots_giftle/1_record.png" width="1000"/>
 
+### Personaliseren
+
+Als de koper kiest om de video te versturen, moet de koper een naam en e-mailadres meegeven voor wie de Giftle bedoeld is.\
+<br />
+<img src="https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/assets/screenshots_giftle/1_personalize.png" width="1000"/>
+
 ## Videoboodschap bekijken
 
 Wanneer een cadeau is ontvangen door de ontvanger kan deze de aanhangende videoboodschap bekijken door een QR-code te scannen of de bijpassende tekstcode in te vullen.\
