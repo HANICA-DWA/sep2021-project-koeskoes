@@ -85,7 +85,7 @@ function VideoReactionPage() {
    * This async function dispatches sendReaction, which sends the e-mail to the buyer.
    */
   const saveMessageData = () => {
-    dispatch(sendReaction(textCode, "video", null));
+    dispatch(sendReaction(textCode, "video"));
   };
 
   return (
@@ -271,5 +271,3 @@ function VideoReactionPage() {
 }
 
 export default VideoReactionPage;
-
-// <button onclick="">Go Back</button>

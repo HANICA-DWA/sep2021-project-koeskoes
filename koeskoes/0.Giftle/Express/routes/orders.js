@@ -145,6 +145,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
 
       if (height !== 1080 && height !== 720) {
         fs.unlinkSync(uploadPath + video.name);
+
         return res.json({
           status: "error",
           message: `De kwaliteit van de video die u heeft geupload wordt niet door ons ondersteund. Probeer een andere video te uploaden.`,
@@ -181,7 +182,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
 
             uploadRecord.videoName = finalFileName;
 
-            uploadRecord.save();
+            await uploadRecord.save();
 
             return res.json(uploadRecord);
           })
@@ -326,7 +327,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 
             uploadRecord.answerVideo = finalFileName;
 
-            uploadRecord.save();
+            await uploadRecord.save();
 
             return res.json(uploadRecord);
           })
