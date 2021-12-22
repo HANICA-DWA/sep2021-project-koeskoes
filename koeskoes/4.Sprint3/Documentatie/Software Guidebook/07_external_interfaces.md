@@ -14,3 +14,6 @@ SMTP is een protocol dat werkt volgens een "client-servermodel". Het komt er op 
 
 - In de map ```Express``` staan alle templates voor de e-mails in ```mailTemplate``` die gebruikt worden voor Giftle.
 - In de map ```Express``` staan meerdere voorinstellingen in ```commonFunctions``` voor de mail.
+
+#### Een werkende mailserver
+Hierover is meer te vinden over in het hoofdstuk ```Werkende mail server``` in de [readme](https://github.com/HANICA-DWA/sep2021-project-koeskoes).
