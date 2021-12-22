@@ -127,41 +127,30 @@ function VideoReactionPage() {
           </div>
           {reactionUploadVisualState === 1 ? (
             reactionCreationPath ? (
-              <>
-                {reactionCreationPath === "upload" ? (
-                  <div className="col-4 text-start form-switch-alignment">
-                    <div className="form-control-lg form-check form-switch border border-primary">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        role="switch"
-                        id="flexSwitchCheckDefault"
-                        onChange={() => {
-                          setFullScreen(false);
-                          dispatch(setReactionCreationPath("record"));
-                        }}
-                      />
-                      <h6 className="switch-text">&nbsp;Opnemen</h6>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="col-4 text-start form-switch-alignment">
-                    <div className="form-control-lg form-check form-switch border border-primary">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        role="switch"
-                        id="flexSwitchCheckDefault"
-                        onChange={() => {
-                          setFullScreen(false);
-                          dispatch(setReactionCreationPath("upload"));
-                        }}
-                      />
-                      <h6 className="switch-text">&nbsp;Uploaden</h6>
-                    </div>
-                  </div>
-                )}
-              </>
+              <div className="col-4 text-start form-switch-alignment">
+                <div className="form-control-lg form-check form-switch border border-primary">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckDefault"
+                    onChange={() => {
+                      setFullScreen(false);
+                      dispatch(
+                        setReactionCreationPath(
+                          reactionCreationPath === "upload"
+                            ? "record"
+                            : "upload"
+                        )
+                      );
+                    }}
+                  />
+                  <h6 className="switch-text">
+                    &nbsp;
+                    {reactionCreationPath === "upload" ? "Opnemen" : "Uploaden"}
+                  </h6>
+                </div>
+              </div>
             ) : null
           ) : null}
         </div>
