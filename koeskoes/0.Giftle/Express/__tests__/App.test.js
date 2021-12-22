@@ -10,7 +10,7 @@ let order = {
   _id: "619b7c66d79dad758c1e5519",
   nameGifter: "firstname lastname",
   emailGifter: "mail@mail.com",
-  textCodeSend: false,
+  textcodeSent: false,
   videoName: "video.mp4",
   prePrinted: false,
   printed: false,
@@ -144,7 +144,7 @@ describe("Database tests", () => {
         textCode: 1,
         printed: 1,
         prePrinted: 1,
-        textCodeSend: 1,
+        textcodeSent: 1,
         answerSent: 1,
       }
     ).lean();
@@ -167,7 +167,7 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
-        textCodeSend: 1,
+        textcodeSent: 1,
         answerSent: 1,
       }
     ).lean();
@@ -190,7 +190,7 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
-        textCodeSend: 1,
+        textcodeSent: 1,
         answerSent: 1,
       }
     ).lean();
@@ -213,7 +213,7 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
-        textCodeSend: 1,
+        textcodeSent: 1,
         answerSent: 1,
       }
     ).lean();
@@ -236,7 +236,7 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
-        textCodeSend: 1,
+        textcodeSent: 1,
         answerSent: 1,
       }
     ).lean();
@@ -259,7 +259,7 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
-        textCodeSend: 1,
+        textcodeSent: 1,
         answerSent: 1,
       }
     ).lean();
@@ -291,7 +291,7 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
-        textCodeSend: 1,
+        textcodeSent: 1,
         answerSent: 1,
         __v: 1,
       }
@@ -322,7 +322,7 @@ describe("Database tests", () => {
         prePrinted: 1,
         printed: 1,
         textCode: 1,
-        textCodeSend: 1,
+        textcodeSent: 1,
         answerSent: 1,
         __v: 1,
       }

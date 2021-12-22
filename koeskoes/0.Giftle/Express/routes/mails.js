@@ -15,7 +15,7 @@ router.post("/:textCode", async (req, res) => {
     textCode: req.params.textCode,
   }).exec();
 
-  order.textCodeSend = true;
+  order.textcodeSent = true;
 
   const orderSave = await order.save();
 
@@ -28,7 +28,7 @@ router.post("/:textCode", async (req, res) => {
     );
 
     if (mailInfo.status === 'error') {
-      order.textCodeSend = false;
+      order.textcodeSent = false;
     
       await order.save();
     }
