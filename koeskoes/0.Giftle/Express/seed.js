@@ -18,6 +18,7 @@ mongoose
     console.log(err);
   })
   .then(() => {
+    console.log('The seed has successfully been planted');
     db.close();
   });
 
