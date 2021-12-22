@@ -7,7 +7,7 @@ import { sendReaction } from "../../redux/actions/uploadActions";
 import { getVideoInOrder } from "../../redux/actions/orderActions";
 
 // import SVG as ReactComponent for easier use
-import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
+// import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
 
 function TextReactionPage() {

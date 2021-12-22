@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { getVideoInOrder } from "../../redux/actions/orderActions";
+import { setReactionCreationPath } from "../../redux/actions/reactionActions";
 
 // import SVG as ReactComponent for easier use
 import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
@@ -55,7 +56,10 @@ function ReactionHomePage() {
         </button>
         <button
           className="btn btn-primary mx-2"
-          onClick={() => navigate(`/receiver/video-reaction/` + textCode)}
+          onClick={() => {
+            navigate(`/receiver/video-reaction/` + textCode);
+            dispatch(setReactionCreationPath("upload"));
+          }}
         >
           Videoreactie&nbsp;
           <CameraVideo />

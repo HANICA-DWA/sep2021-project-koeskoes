@@ -52,7 +52,7 @@ function CreateVideoPage() {
   }, [textCode, navigate]);
 
   useEffect(() => {
-    if (videoName !== "") {
+    if (videoName !== "" && videoName !== undefined) {
       dispatch(setVideoUploaded());
       dispatch(changeUploadVisualState(2));
     }

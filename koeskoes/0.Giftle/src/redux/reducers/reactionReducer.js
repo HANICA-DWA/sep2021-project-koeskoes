@@ -1,5 +1,5 @@
 const initialReactionState = {
-  reactionCreationPath: "",
+  reactionCreationPath: "upload",
   reactionUploadVisualState: 1, // 1 is recording/uploading, 2 is rewatching the video
   reactionUploaded: false,
   reaction: "",
