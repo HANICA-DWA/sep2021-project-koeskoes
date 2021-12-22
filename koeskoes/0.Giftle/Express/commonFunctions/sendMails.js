@@ -169,7 +169,7 @@ class MailModule {
     if (!to) return { status: "error", message: "Mail not included" };
     if (!buyer) return { status: "error", message: "Buyer not included" };
     if (!receiver) return { status: "error", message: "Receiver not included" };
-    if (!textCode) return { status: "error", message: "Reaction not included" };
+    if (!textCode) return { status: "error", message: "Textcode not included" };
 
     try {
       const mailInfo = await this.transport.sendMail({
