@@ -21,7 +21,12 @@ const VideoPlayer = (props) => {
   const [isVideoWatchedTime, setIsVideoWatchedTime] = useState(null);
 
   useEffect(() => {
-    if (isVideoTime < 2 && isVideoTime !== null && warningVideoDuration !== isVideoTime && props.created) {
+    if (
+      isVideoTime < 2 &&
+      isVideoTime !== null &&
+      warningVideoDuration !== isVideoTime &&
+      props.created
+    ) {
       setWarningVideoDuration(isVideoTime);
       if (props.setError) {
         props.setError(
@@ -30,7 +35,7 @@ const VideoPlayer = (props) => {
             () => props.setError(null),
             "warning"
           )
-        )
+        );
       }
     }
   }, [isVideoTime, warningVideoDuration, props]);
@@ -75,20 +80,24 @@ const VideoPlayer = (props) => {
         </div>
       ) : null}
       <div className="mb-5 rewatchVideoPlayer">
-        <ReactPlayer
-          url={props.url + (props.videoData ? props.videoData : null)}
-          width="100%"
-          height="100%"
-          playing={videoState === 2 ? true : false}
-          progressInterval={100}
-          onReady={() => setIsLoading(false)}
-          onEnded={() => setVideoState(3)}
-          onDuration={(time) => setIsVideoTime(time)}
-          onProgress={({ playedSeconds }) =>
-            setIsVideoWatchedTime(playedSeconds)
-          }
-          fullscreen={true}
-        />
+        {props.videoData === null ? (
+          <Spinner />
+        ) : (
+          <ReactPlayer
+            url={props.url + (props.videoData ? props.videoData : null)}
+            width="100%"
+            height="100%"
+            playing={videoState === 2 ? true : false}
+            progressInterval={100}
+            onReady={() => setIsLoading(false)}
+            onEnded={() => setVideoState(3)}
+            onDuration={(time) => setIsVideoTime(time)}
+            onProgress={({ playedSeconds }) =>
+              setIsVideoWatchedTime(playedSeconds)
+            }
+            fullscreen={true}
+          />
+        )}
         {loadingPlayer(isLoading)}
       </div>
     </>
