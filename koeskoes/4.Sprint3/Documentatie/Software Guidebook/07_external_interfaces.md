@@ -12,5 +12,5 @@ Ten eerste hebben wij de [Nodemailer](https://www.npmjs.com/package/nodemailer) 
 
 SMTP is een protocol dat werkt volgens een "client-servermodel". Het komt er op neer dat de "client" het initiatief neemt tot communicatie met de "server", die op zijn tijd altijd beschikbaar en reactief is. De "client" is dus de verzendende partij en de "server" de ontvangende.
 
-- In de map __'Express' -> 'mail'__ staan alle templates voor de e-mails die gebruikt worden voor Giftle.
-- In de map __'Express' -> 'commonFunctions'__ staan meerdere voorinstellingen voor de mail.
+- In de map ```Express``` staan alle templates voor de e-mails in ```mailTemplate``` die gebruikt worden voor Giftle.
+- In de map ```Express``` staan meerdere voorinstellingen in ```commonFunctions``` voor de mail.
