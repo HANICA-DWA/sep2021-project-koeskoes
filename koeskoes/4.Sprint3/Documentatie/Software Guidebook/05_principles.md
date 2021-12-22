@@ -21,6 +21,11 @@ Elk project heeft zijn eigen regels/ principes. Deze kunnen gaan over de code, m
 - Interacties met de database gebeuren met de [Mongoose model methode](https://mongoosejs.com/docs/2.7.x/docs/methods-statics.html).
 - Functies hebben zo min mogelijk zijeffecten.
 - Alle API-calls zijn [RESTful](https://restfulapi.net/).
+- Er wordt zoveel mogelijk code in de Mongoose Model Methods gestopt.
+- Er wordt zoveel mogelijk gebruik gemaakt van Redux.
+- In de Redux (state) store staan bijvoorbeeld alle API calls en websockets.
+- In de Local State staan de states die near-realtime aanpassingen moeten doorgeven aan technische componenenten (bijvoorbeeld camera aansturing)
+- Het afrekenproces valt buiten de Redux regels, aangezien dit een tijdelijke oplossing voor Magento was. Magento is namelijk nagemaakt en niet officieel gebruikt (dit moet nog wel gebeuren).
 
 ## Gebruiksvriendlijkheid
 
@@ -30,12 +35,19 @@ Elk project heeft zijn eigen regels/ principes. Deze kunnen gaan over de code, m
 - Componenten van dezelfde soort moeten dezelfde stijling krijgen om uniformiteit te behouden.
 - Foutmeldingen moeten bij voorkomende errors verschijnen, zodat de gebruiker weet dat en wat er fout gaat.
 - Het lettertype en de knoppen moeten voor de gemiddelde gebruiker goed leesbaar zijn.
+- De gebruiker wordt vriendelijk en respectvol benaderd in uitlegteksten
+- De gebruiker wordt vriendelijk en respectvol benaderd in foutmeldingen
+- De gebruiker moet goede en duidelijke feedback krijgen bij veranderingen binnen de pagina (b.v. camera stopt met opnemen of camera is aan het opnemen)
+- Het gebruik van symbolen moet gebruiker de extra feedback geven bij het gebruik van de plug-in
+- Knoppen moeten duidelijk knoppen zijn (ook in de mail)
+- Als een gebruiker ergens niet bij kan is dit duidelijk aangegeven (disabled input fields)
 
 ## Kwaliteit
 
 - Gebruik de plug-in prettier voor het formateren van de code.
 - Testen wordt met Unit Testing gedaan.
-- De testen moeten uitgevoerd zijn met jest volgens de happy flow + minimaal een (1) alternatieve flow.
+- De automatische testen moeten uitgevoerd zijn met jest volgens de happy flow + minimaal een (1) alternatieve flow.
+- Front-end E2E testen worden met Puppeteer gedaan
 - Er mogen geen fouten uit de testen komen.
 - Foutmeldingen moeten bij voorkomende errors verschijnen.
 - Documenteren is goed, maar houd het kort en krachtig.
