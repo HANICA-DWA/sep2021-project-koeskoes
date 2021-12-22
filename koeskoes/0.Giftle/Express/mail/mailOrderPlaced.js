@@ -60,7 +60,7 @@ const mailOrderPlaced = (buyer, textCode) => {
         </div>
         <div class="row">
           <p>Als je hieronder op de knop drukt, wordt je doorgeleid naar onze pagina.
-          Hier kun je je video uploaden of opnemen. Vervolgens kan je de naam en het e-mailadres van de ontvanger doorgeven!</p>
+          Hier kun je een video uploaden of opnemen. Vervolgens kan je de naam en het e-mailadres van de ontvanger doorgeven!</p>
         </div>
         <div class="row">
           <a href="http://localhost:3000/ordercontrol/${textCode}" class="btn" style="color: #fffffe !important;">Ga naar Giftle!</a>
