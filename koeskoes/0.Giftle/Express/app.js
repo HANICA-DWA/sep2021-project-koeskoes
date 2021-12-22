@@ -6,6 +6,8 @@ const path = require("path");
 const mongoose = require("mongoose");
 require("./model/uploadModel");
 
+require('dotenv').config();
+
 const app = express();
 // const uploads = mongoose.model("UploadSchema");
 

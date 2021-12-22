@@ -17,8 +17,8 @@ class MailModule {
       port: 587,
       secure: false,
       auth: {
-        user: "faithspooky@gmail.com",
-        pass: "bwtmtzbeexpuxoms",
+        user: process.env.EMAILUSERNAME,
+        pass: process.env.EMAILPASSWORD,
       },
     });
   }
