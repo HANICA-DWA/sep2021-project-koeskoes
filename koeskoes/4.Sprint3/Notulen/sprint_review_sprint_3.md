@@ -48,7 +48,7 @@ Ilse: Gespekslid
 - US 20 (#139):
   - [ ] handig om default camera weer terug te zetten als er terug wordt gegaan naar opnemen vanuit personaliseren.
 - US 28 (#143):
-  - [ ] e2e testen voor magazijnmedewerkers
+  - [x] e2e testen voor magazijnmedewerkers
 - US 26 (#21):
   - geen opmerkingen
 - US 24 (#90):
