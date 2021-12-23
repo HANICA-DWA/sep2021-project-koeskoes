@@ -2,10 +2,10 @@
 
 ### Rollen:
 
-Sjoerd: ...\
-Sven: ...\
-Ilse: ...\
-Jordi: ...
+Sjoerd: Demonstratie koper gedeelte\
+Sven: Demonstratie tekstcode en qr-code gedeelte\
+Ilse: Demonstratie tekstreactie en videoreactie gedeelte\
+Jordi: Winkelmand gedeelte en notuleren
 
 ### Agenda
 
