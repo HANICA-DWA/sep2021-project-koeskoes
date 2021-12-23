@@ -57,5 +57,6 @@ Ilse: Gespekslid
   - [x] "tekstreactie versturen" in switch button veranderen naar "Tekstreactie"
 - US 25 (#89):
   - [ ] onderscheid tekst en video niet doen! Net zoals opnemen en uploaden doen.
+  - [ ] Robert wil graag tekst combineren met videoreactie. Maar niet afgesproken in sprint planning van sprint 3. Even kijken wat wij hiermee gaan doen.
 - US 27 (#125):
   - geen opmerkingen
