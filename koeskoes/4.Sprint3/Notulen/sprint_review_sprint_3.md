@@ -33,7 +33,7 @@ Ilse: Gespekslid
 
 - US 23 (#1):
   - [ ] prijs van 3.95 naar b.v. 0.99 (realistischere prijs)
-  - [ ] videoboodschap neerzetten bij Giftle checkbox voor meer duidelijkheid
+  - [x] videoboodschap neerzetten bij Giftle checkbox voor meer duidelijkheid
   - [ ] e-mailadres en naam moeten ingevuld kunnen worden voor de ontvanger
   - [ ] e-mailadres en naam moeten ook meegenomen worden van de ontvanger voor de personalisatie pagina
 - US 21 (#140):
@@ -44,7 +44,7 @@ Ilse: Gespekslid
   - [ ] converteren hoeft niet per se MP4 te zijn
   - [ ] alleen bestanden converteren die nodig zijn
 - US 19 (#136):
-  - [ ] titel veranderen naar "Video terugkijken en geluid controleren"
+  - [x] titel veranderen naar "Video terugkijken en geluid controleren"
 - US 20 (#139):
   - [ ] handig om default camera weer terug te zetten als er terug wordt gegaan naar opnemen vanuit personaliseren.
 - US 28 (#143):
@@ -54,7 +54,7 @@ Ilse: Gespekslid
 - US 24 (#90):
   - [ ] webshop owners willen dat er naar een webpagina gegaan wordt voor aanbiedingen etc. Hier verdient Giftle dan weer aan. Tekstreactie dus naar een andere pagina. 
   ```Gedachte van Robert of wij dit wel of niet gaan doen voor postGame```
-  - [ ] "tekstreactie versturen" in switch button veranderen naar "Tekstreactie"
+  - [x] "tekstreactie versturen" in switch button veranderen naar "Tekstreactie"
 - US 25 (#89):
   - [ ] onderscheid tekst en video niet doen! Net zoals opnemen en uploaden doen.
 - US 27 (#125):
