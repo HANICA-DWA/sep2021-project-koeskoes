@@ -11,7 +11,10 @@ Ilse: Gespekslid
 - Eerst Demo aan de hand van Sprint Board met acceptatie criteria
 - Vragen Postgame
 
-### Notulen
+### Notulen sprint review
+
+#### Algemeen
+- ...
 
 #### User stories
 - US 23 (#1):
