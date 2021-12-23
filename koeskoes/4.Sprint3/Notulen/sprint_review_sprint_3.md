@@ -19,7 +19,7 @@ Ilse: Gespekslid
 
 #### Gesprek 16:00 uur tot 17:00 uur
 
-- [ ] Checkorders op Giftle.nl met 10 ~ 20 data vullen, zodat de werking realistisch lijkt.
+- [x] Checkorders op Giftle.nl met 10 ~ 20 data vullen, zodat de werking realistisch lijkt.
 - Goed de demonstratie laten zien. Er hoeft niet per se diep op alles in te gaan, behalve als ze hierom vragen.
 - Voor Robert graag opnemen voor het gesprek van 16:00 uur. Niet per se belangrijk.
 
