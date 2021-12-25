@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Message from "./CreateMessage";
 import { useSelector } from "react-redux";
@@ -14,64 +14,53 @@ import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
  *
  */
 function PersonalizationForm(props) {
-  // Creates the state for the order and errors that can occur.
-  const [nameReceiver, setNameReceiver] = useState(null);
-  const [emailReceiver, setEmailReceiver] = useState(null);
   const textCode = useSelector((state) => state.orders.textCode);
-
-  /**
-   *
-   * Red border on input clarification for the error message(s)
-   *
-   */
-  useEffect(() => {
-    const redNameError = document.getElementById("nameReceiver");
-    if (nameReceiver === "" || nameReceiver === null) {
-      redNameError.classList.add("errorInput");
-    } else {
-      redNameError.classList.remove("errorInput");
-    }
-  });
+  const firstNameAlreadyReceived = useSelector(
+    (state) => state.videos.video.firstNameReceiver,
+  );
+  const lastNameAlreadyReceived = useSelector(
+    (state) => state.videos.video.lastNameReceiver,
+  );
+  const emailAlreadyReceived = useSelector(
+    (state) => state.videos.video.emailReceiver,
+  );
+  const [firstNameReceiver, setFirstNameReceiver] = useState(
+    firstNameAlreadyReceived,
+  );
+  const [lastNameReceiver, setLastNameReceiver] = useState(
+    lastNameAlreadyReceived,
+  );
+  const [emailReceiver, setEmailReceiver] = useState(emailAlreadyReceived);
 
   /**
    * This function will send the data of the receiver to the server.
    */
   const saveReceiverData = async () => {
-    const checkedName = checkName();
-    const checkedEmail = checkEmail();
+    const validatedInputs = validateInputs();
 
-    if (checkedName.status === "error") {
+    if (validatedInputs.status === "error") {
       return props.setError
         ? props.setError(
-            Message(checkedName.message, () => props.setError(null))
-          )
-        : null;
-    }
-
-    if (checkedEmail.status === "error") {
-      return props.setError
-        ? props.setError(
-            Message(checkedEmail.message, () => props.setError(null))
+            Message(validatedInputs.message, () => props.setError(null)),
           )
         : null;
     }
 
     const formData = new FormData();
 
-    formData.append("name", nameReceiver.trim());
-    formData.append("email", emailReceiver);
+    formData.append("firstNameReceiver", firstNameReceiver.trim());
+    formData.append("lastNameReceiver", lastNameReceiver);
+    formData.append("emailReceiver", emailReceiver);
 
     const uploadResponse = await axios.patch(
       `http://localhost:4000/api/orders/new/` + textCode,
-      formData
+      formData,
     );
 
     if (uploadResponse.data.status === "error") {
       return props.setError
         ? props.setError(
-            Message(uploadResponse.data.message, () =>
-              props.setError(null)
-            )
+            Message(uploadResponse.data.message, () => props.setError(null)),
           )
         : null;
     } else {
@@ -82,46 +71,55 @@ function PersonalizationForm(props) {
   };
 
   /**
-   * This function will check if the given name isn't too long and only exists of letters and spaces.
-   * @returns true or an object {status, message}
+   * This function will validate the input fields.
+   * @returns true if there is no error from the input fields.
    */
-  const checkName = () => {
+  const validateInputs = () => {
+    const regexEmail = /\S+@\S+\.\S+/;
     const maxLength = 300;
 
-    if (!nameReceiver) {
-      return {
-        status: "error",
-        message:
-          "De naam van de ontvanger mag niet leeg zijn. Een naam moet minimaal 1 teken bevatten.",
-      };
-    }
-
-    if (!nameReceiver || nameReceiver.length > maxLength) {
-      return {
-        status: "error",
-        message:
-          "De naam die je hebt ingevuld is te lang! De naam mag maximaal 300 karakters lang zijn.",
-      };
-    }
-
-    return true;
-  };
-
-  /**
-   * This function will check if the given e-mail is of the right e-mail format.
-   * @returns true or an object {status, message}
-   */
-  const checkEmail = () => {
-    const re = /\S+@\S+\.\S+/;
-
     if (emailReceiver !== null && emailReceiver !== "") {
-      if (!re.test(emailReceiver)) {
+      if (!regexEmail.test(emailReceiver)) {
         return {
           status: "error",
           message:
             "Vul een geldig e-mailadres in. Een e-mailadres moet op dit formaat lijken: naam@domein.com",
         };
       }
+    }
+
+    // Check if firstname is not empty
+    if (firstNameReceiver === null || firstNameReceiver === "") {
+      return {
+        status: "error",
+        message:
+          "De voornaam van de ontvanger mag niet leeg zijn. Een naam moet minimaal 1 teken bevatten.",
+      };
+    }
+
+    // Check if lastname is not empty
+    if (lastNameReceiver === null || lastNameReceiver === "") {
+      return {
+        status: "error",
+        message:
+          "De voornaam van de ontvanger mag niet leeg zijn. Een naam moet minimaal 1 teken bevatten.",
+      };
+    }
+
+    // Check if firstname receiver is not bigger than 300 characters
+    if (firstNameReceiver.length > maxLength) {
+      return {
+        status: "error",
+        message: `De voornaam die je hebt ingevuld is te lang! Een voornaam mag maximaal ${maxLength} karakters lang zijn.`,
+      };
+    }
+
+    // Check if lastname receiver is not bigger than 300 characters
+    if (lastNameReceiver.length > maxLength) {
+      return {
+        status: "error",
+        message: `De achternaam die je hebt ingevuld is te lang! Een achternaam mag maximaal ${maxLength} karakters lang zijn.`,
+      };
     }
 
     return true;
@@ -142,15 +140,25 @@ function PersonalizationForm(props) {
         <div className="col-lg-2 col-md-2 col-sm-2"></div>
         <div className="col-lg-8 col-md-8 col-sm-8">
           <br />
-          <label htmlFor="nameReceiver" className="form-label">
-            Naam van de ontvanger
-          </label>
+          <label className="form-label">Voornaam van de ontvanger</label>
           <input
             type="name"
             className="form-control"
-            id="nameReceiver"
-            name="nameReceiver"
-            onChange={(e) => setNameReceiver(e.target.value)}
+            id="firstNameReceiver"
+            name="firstNameReceiver"
+            value={firstNameReceiver}
+            onChange={(e) => setFirstNameReceiver(e.target.value)}
+            disabled={props.disabled ? props.disabled : false}
+          />
+          <br />
+          <label className="form-label">Achternaam van de ontvanger</label>
+          <input
+            type="name"
+            className="form-control"
+            id="lastNameReceiver"
+            name="lastNameReceiver"
+            value={lastNameReceiver}
+            onChange={(e) => setLastNameReceiver(e.target.value)}
             disabled={props.disabled ? props.disabled : false}
           />
           <br />
@@ -162,6 +170,7 @@ function PersonalizationForm(props) {
             className="form-control"
             id="emailReceiver"
             name="emailReceiver"
+            value={emailReceiver}
             onChange={(e) => setEmailReceiver(e.target.value)}
             disabled={props.disabled ? props.disabled : false}
           />

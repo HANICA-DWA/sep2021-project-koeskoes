@@ -7,7 +7,7 @@
  * @param {string} textCode
  * @returns Mail preset
  */
-const mailTextCode = (receiver, buyer, textCode) => {
+const mailTextCode = (firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textCode) => {
   return `<html>
     <head>
       <style>
@@ -62,10 +62,10 @@ const mailTextCode = (receiver, buyer, textCode) => {
     <body>
       <div class="container">
         <div class="row">
-          <p>Beste ${receiver},</p>
+          <p>Beste ${firstNameReceiver} ${lastNameReceiver},</p>
         </div>
         <div class="row">
-          <p>${buyer} heeft jou een Giftle gestuurd!</p>
+          <p>${firstNameBuyer} ${lastNameBuyer} heeft jou een Giftle gestuurd!</p>
         </div>
         <div class="row mb">
           <p>Om deze Giftle te kunnen openen, klik je op de knop hieronder. Hiervoor heb je een speciale tekstcode nodig.</p>

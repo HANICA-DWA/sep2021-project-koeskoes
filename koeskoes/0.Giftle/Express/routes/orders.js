@@ -34,10 +34,12 @@ router.get("/all/", async (req, res) => {
     },
     {
       _id: 1,
-      nameGifter: 1,
       emailGifter: 1,
-      nameReceiver: 1,
-      emailReceiver: 1,
+      firstNameGifter: 1,
+      lastNameGifter: 1,
+      emailReceiver: 1,    
+      firstNameReceiver: 1,
+      lastNameReceiver: 1,
       videoName: 1,
       textCode: 1,
       printed: 1,
@@ -67,8 +69,12 @@ router.get("/order/:textCode", async (req, res) => {
 router.post("/newOrder", async (req, res) => {
   try {
     const newRecord = new Uploads({
-      nameGifter: req.body.fullNameBuyer,
       emailGifter: req.body.emailBuyer,
+      firstNameGifter: req.body.firstNameBuyer,
+      lastNameGifter: req.body.lastNameBuyer,
+      emailReceiver: req.body.emailReceiver,
+      firstNameReceiver: req.body.firstNameReceiver,
+      lastNameReceiver: req.body.lastNameReceiver,
       videoName: "",
       prePrinted: false,
       printed: false,
@@ -81,7 +87,8 @@ router.post("/newOrder", async (req, res) => {
 
     await mail.sendMailOrderPlaced(
       req.body.emailBuyer,
-      req.body.fullNameBuyer,
+      req.body.firstNameBuyer,
+      req.body.lastNameBuyer,
       newRecord.textCode
     );
 
@@ -94,7 +101,8 @@ router.post("/newOrder", async (req, res) => {
       if (checkOrder) {
         mail.sendReminderUploadVideo(
           checkOrder.emailGifter,
-          checkOrder.nameGifter,
+          checkOrder.firstNameGifter,
+          checkOrder.lastNameGifter,
           checkOrder.textCode
         );
       }
@@ -205,7 +213,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
  * if name receiver exists, find textCode in DB and update both name receiver and name email
  */
 router.patch("/new/:textCode/", async (req, res) => {
-  if (req.body.name === "null" || req.body.name === "") {
+  if (req.body.firstNameReceiver === "null" || req.body.firstNameReceiver === "" || req.body.lastNameReceiver === "null" || req.body.lastNameReceiver === "") {
     return res.json({ status: "error", message: "No name entered" });
   }
 
@@ -213,10 +221,11 @@ router.patch("/new/:textCode/", async (req, res) => {
     textCode: req.params.textCode,
   }).exec();
 
-  order.nameReceiver = req.body.name;
+  order.firstNameReceiver = req.body.firstNameReceiver;
+  order.lastNameReceiver = req.body.lastNameReceiver;
 
-  if (req.body.email !== "null" && req.body.email !== "") {
-    order.emailReceiver = req.body.email;
+  if (req.body.emailReceiver !== "null" && req.body.emailReceiver !== "") {
+    order.emailReceiver = req.body.emailReceiver;
   }
 
   await order.save();

@@ -4,7 +4,7 @@
  * @param {string} buyer the buyer
  * @returns Mail preset
  */
-const mailOrderPlaced = (buyer, textCode) => {
+const mailOrderPlaced = (firstNameBuyer, lastNameBuyer, textCode) => {
   return `<html>
     <head>
       <style>
@@ -53,14 +53,14 @@ const mailOrderPlaced = (buyer, textCode) => {
     <body>
       <div class="container">
         <div class="row">
-          <p>Beste ${buyer},</p>
+          <p>Beste ${firstNameBuyer + " " + lastNameBuyer},</p>
         </div>
         <div class="row">
           <p>Wat leuk dat je een Giftle hebt besteld!</p>
         </div>
         <div class="row">
-          <p>Als je hieronder op de knop drukt, wordt je doorgeleid naar onze pagina.
-          Hier kun je een video uploaden of opnemen. Vervolgens kan je de naam en het e-mailadres van de ontvanger doorgeven!</p>
+          <p>Als je hieronder op de knop drukt, wordt je doorgeleid naar onze upload pagina.
+          Hier kun je een video uploaden of opnemen. Vervolgens kan je een e-mailadres van de ontvanger invoeren mocht je dit nog niet gedaan hebben.</p>
         </div>
         <div class="row">
           <a href="http://localhost:3000/ordercontrol/${textCode}" class="btn" style="color: #fffffe !important;">Ga naar Giftle!</a>

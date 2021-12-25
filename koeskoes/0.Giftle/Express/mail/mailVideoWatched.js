@@ -6,7 +6,7 @@
  * @param {string} receiver
  * @returns Mail preset
  */
-const mailVideoWatched = (buyer, receiver) => {
+const mailVideoWatched = (firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver) => {
   return `<html>
     <head>
       <style>
@@ -31,10 +31,10 @@ const mailVideoWatched = (buyer, receiver) => {
     <body>
       <div class="container">
         <div class="row">
-          <p>Beste ${buyer},</p>
+          <p>Beste ${firstNameBuyer} ${lastNameBuyer},</p>
         </div>
         <div class="row">
-          <p>${receiver} heeft jouw Giftle ontvangen en bekeken!</p>
+          <p>${firstNameReceiver} ${lastNameReceiver} heeft jouw Giftle ontvangen en bekeken!</p>
         </div>
         <div class="row">
           <p>Heel erg bedankt voor het bestellen van <b><i>een Giftle</i></b> en wie weet krijg jij er binnenkort wel eentje als cadeau!</p>

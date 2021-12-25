@@ -31,19 +31,21 @@ class MailModule {
    * @param {string} textCode
    * @returns
    */
-  sendTextCode = async (to, receiver, buyer, textCode) => {
+  sendTextCode = async (to, firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textCode) => {
     if (to === "null" || !to)
       return { status: "error", message: "Mail not included" };
-    if (!receiver) return { status: "error", message: "Receiver not included" };
-    if (!buyer) return { status: "error", message: "Buyer not included" };
+    if (!firstNameBuyer) return { status: "error", message: "Firstname buyer not included" };
+    if (!lastNameBuyer) return { status: "error", message: "Lastname buyer not included" };
+    if (!firstNameReceiver) return { status: "error", message: "Firstname receiver not included" };
+    if (!lastNameReceiver) return { status: "error", message: "Lastname receiver not included" };
     if (!textCode) return { status: "error", message: "Textcode not included" };
 
     try {
       const mailInfo = await this.transport.sendMail({
         from: '"Giftle.nl" info@giftle.nl',
         to: to,
-        subject: `Giftle - ${buyer} heeft jou een videoboodschap gestuurd!`,
-        html: mailTextCode(receiver, buyer, textCode),
+        subject: `Giftle - ${firstNameBuyer} ${lastNameBuyer} heeft jou een videoboodschap gestuurd!`,
+        html: mailTextCode(firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textCode),
       });
 
       return { status: "success", message: mailInfo };
@@ -59,17 +61,19 @@ class MailModule {
    * @param {string} receiver
    * @returns
    */
-  sendReminderVideoWatched = async (to, buyer, receiver) => {
+  sendReminderVideoWatched = async (to, firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver) => {
     if (!to) return { status: "error", message: "Mail not included" };
-    if (!buyer) return { status: "error", message: "Buyer not included" };
-    if (!receiver) return { status: "error", message: "Receiver not included" };
+    if (!firstNameBuyer) return { status: "error", message: "Firstname buyer not included" };
+    if (!lastNameBuyer) return { status: "error", message: "Lastname buyer not included" };
+    if (!firstNameReceiver) return { status: "error", message: "Firstname receiver not included" };
+    if (!lastNameReceiver) return { status: "error", message: "Lastname receiver not included" };
 
     try {
       const mailInfo = await this.transport.sendMail({
         from: '"Giftle.nl" info@giftle.nl',
         to: to,
         subject: "Giftle - Jouw videoboodschap is ontvangen en bekeken!",
-        html: mailVideoWatched(buyer, receiver),
+        html: mailVideoWatched(firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver),
       });
 
       return { status: "success", message: mailInfo };
@@ -85,9 +89,10 @@ class MailModule {
    * @param {string} textCode
    * @returns
    */
-  sendReminderUploadVideo = async (to, buyer, textCode) => {
+  sendReminderUploadVideo = async (to, firstNameBuyer, lastNameBuyer, textCode) => {
     if (!to) return { status: "error", message: "Mail not included" };
-    if (!buyer) return { status: "error", message: "Buyer not included" };
+    if (!firstNameBuyer) return { status: "error", message: "Buyer firstname not included" };
+    if (!lastNameBuyer) return { status: "error", message: "Buyer lastname not included" };
     if (!textCode)
       return { status: "error", message: "Textcode not included " };
 
@@ -96,7 +101,7 @@ class MailModule {
         from: '"Giftle.nl" info@giftle.nl',
         to: to,
         subject: "Giftle - Je hebt nog geen videoboodschap geüpload!",
-        html: mailUploadReminder(buyer, textCode),
+        html: mailUploadReminder(firstNameBuyer, lastNameBuyer, textCode),
       });
 
       return { status: "success", message: mailInfo };
@@ -111,16 +116,17 @@ class MailModule {
    * @param {string} buyer
    * @returns
    */
-  sendMailOrderPlaced = async (to, buyer, textCode) => {
+  sendMailOrderPlaced = async (to, firstNameBuyer, lastNameBuyer, textCode) => {
     if (!to) return { status: "error", message: "Mail not included" };
-    if (!buyer) return { status: "error", message: "Buyer not included" };
+    if (!firstNameBuyer) return { status: "error", message: "Firstname buyer not included" };
+    if (!lastNameBuyer) return { status: "error", message: "Lastname buyer not included" };
 
     try {
       const mailInfo = await this.transport.sendMail({
         from: '"Giftle.nl" info@giftle.nl',
         to: to,
         subject: "Giftle - Bedankt voor je bestelling!",
-        html: mailOrderPlaced(buyer, textCode),
+        html: mailOrderPlaced(firstNameBuyer, lastNameBuyer, textCode),
       });
 
       return { status: "success", message: mailInfo };
@@ -137,10 +143,12 @@ class MailModule {
    * @param {string} textReaction
    * @returns
    */
-  sendTextReaction = async (to, buyer, receiver, textReaction) => {
+  sendTextReaction = async (to, firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textReaction) => {
     if (!to) return { status: "error", message: "Mail not included" };
-    if (!buyer) return { status: "error", message: "Buyer not included" };
-    if (!receiver) return { status: "error", message: "Receiver not included" };
+    if (!firstNameBuyer) return { status: "error", message: "Firstname buyer not included" };
+    if (!lastNameBuyer) return { status: "error", message: "Lastname buyer not included" };
+    if (!firstNameReceiver) return { status: "error", message: "Firstname receiver not included" };
+    if (!lastNameReceiver) return { status: "error", message: "Lastname receiver not included" };
     if (!textReaction) return { status: "error", message: "Reaction not included" };
 
     try {
@@ -148,7 +156,7 @@ class MailModule {
         from: '"Giftle.nl" info@giftle.nl',
         to: to,
         subject: "Giftle - Tekstreactie ontvangen!",
-        html: mailTextReaction(buyer, receiver, textReaction),
+        html: mailTextReaction(firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textReaction),
       });
 
       return { status: "success", message: mailInfo };
@@ -165,10 +173,12 @@ class MailModule {
    * @param {string} textCode
    * @returns
    */
-   sendVideoReaction = async (to, buyer, receiver, textCode) => {
+   sendVideoReaction = async (to, firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textCode) => {
     if (!to) return { status: "error", message: "Mail not included" };
-    if (!buyer) return { status: "error", message: "Buyer not included" };
-    if (!receiver) return { status: "error", message: "Receiver not included" };
+    if (!firstNameBuyer) return { status: "error", message: "Firstname buyer not included" };
+    if (!lastNameBuyer) return { status: "error", message: "Lastname buyer not included" };
+    if (!firstNameReceiver) return { status: "error", message: "Firstname receiver not included" };
+    if (!lastNameReceiver) return { status: "error", message: "Lastname receiver not included" };
     if (!textCode) return { status: "error", message: "Textcode not included" };
 
     try {
@@ -176,7 +186,7 @@ class MailModule {
         from: '"Giftle.nl" info@giftle.nl',
         to: to,
         subject: "Giftle - Videoreactie ontvangen!",
-        html: mailVideoReaction(buyer, receiver, textCode),
+        html: mailVideoReaction(firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textCode),
       });
 
       return { status: "success", message: mailInfo };

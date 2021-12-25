@@ -4,19 +4,28 @@ const mongoose = require("mongoose");
  * This schema is used to store all orders that want to send a Giftle videomessage.
  */
 const uploadSchema = new mongoose.Schema({
-  nameGifter: {
-    type: String,
-    required: true,
-  },
   emailGifter: {
     type: String,
     required: true,
   },
-  nameReceiver: {
+  firstNameGifter: {
     type: String,
+    required: true,
+  },
+  lastNameGifter: {
+    type: String,
+    required: true,
   },
   emailReceiver: {
     type: String,
+  },
+  firstNameReceiver: {
+    type: String,
+    required: true,
+  },
+  lastNameReceiver: {
+    type: String,
+    required: true,
   },
   videoName: {
     type: String,

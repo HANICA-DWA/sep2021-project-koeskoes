@@ -33,8 +33,8 @@ const VideoPlayer = (props) => {
           Message(
             "De video die u heeft geupload is korter dan 2 seconden. Weet u zeker dat dit correct is?",
             () => props.setError(null),
-            "warning"
-          )
+            "warning",
+          ),
         );
       }
     }
@@ -71,14 +71,6 @@ const VideoPlayer = (props) => {
         <h2>{props.title}</h2>
         <hr />
       </div>
-      {props.created ? (
-        <div className="row">
-          <p>
-            Als je geluid hebt opgenomen, controleer dan hier of het geluid
-            correct is opgenomen.
-          </p>
-        </div>
-      ) : null}
       <div className="mb-5 rewatchVideoPlayer">
         {props.videoData === null ? (
           <Spinner />

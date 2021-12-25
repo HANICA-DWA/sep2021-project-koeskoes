@@ -22,8 +22,10 @@ router.post("/:textCode", async (req, res) => {
   if (orderSave) {
     const mailInfo = await mail.sendTextCode(
       order.emailReceiver,
-      order.nameReceiver,
-      order.nameGifter,
+      order.firstNameGifter,
+      order.lastNameGifter,
+      order.firstNameReceiver,
+      order.lastNameReceiver,
       order.textCode
     );
 
@@ -49,8 +51,10 @@ router.post("/notification/video/:textCode/watched", async (req, res) => {
 
   const mailInfo = await mail.sendReminderVideoWatched(
     order.emailGifter,
-    order.nameGifter,
-    order.nameReceiver
+    order.firstNameGifter,
+    order.lastNameGifter,
+    order.firstNameReceiver,
+    order.lastNameReceiver
   );
 
   res.send(mailInfo);
@@ -66,7 +70,8 @@ router.post("/notification/video/:textCode/upload", async (req, res) => {
 
   const mailInfo = await mail.sendReminderUploadVideo(
     order.emailGifter,
-    order.nameGifter
+    order.firstNameGifter,
+    order.lastNameGifter
   );
 
   res.send(mailInfo);
@@ -82,8 +87,10 @@ router.post("/reaction/text/:textCode", async (req, res) => {
 
   const mailInfo = await mail.sendTextReaction(
     order.emailGifter,
-    order.nameGifter,
-    order.nameReceiver,
+    order.firstNameGifter,
+    order.lastNameGifter,
+    order.firstNameReceiver,
+    order.lastNameReceiver,
     req.body.message
   );
 
@@ -97,8 +104,10 @@ router.post("/reaction/video/:textCode", async (req, res) => {
 
   const mailInfo = await mail.sendVideoReaction(
     order.emailGifter,
-    order.nameGifter,
-    order.nameReceiver,
+    order.firstNameGifter,
+    order.lastNameGifter,
+    order.firstNameReceiver,
+    order.lastNameReceiver,
     order.textCode
   );
 

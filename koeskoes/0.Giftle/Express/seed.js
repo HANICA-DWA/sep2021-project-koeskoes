@@ -27,14 +27,16 @@ async function seedE2ETests() {
 
   await uploads.insertMany([
     {
-      nameGifter: "Voornaam Achternaam",
-      emailGifter: "mail@mail.com",
+      emailGifter: "gifter@mail.com",
+      firstNameGifter: "VoornaamGifter",
+      lastNameGifter: "AchternaamGifter",
+      emailReceiver: "receiver@mail.com",
+      firstNameReceiver: "VoornaamReceiver",
+      lastNameReceiver: "AchternaamReceiver",
       videoName: "recordedVideo1640083296162.mp4",
       prePrinted: false,
       printed: false,
       textCode: "abc123",
-      emailReceiver: "mail@mail.com",
-      nameReceiver: "Voornaam Achternaam",
     },
   ]);
 }

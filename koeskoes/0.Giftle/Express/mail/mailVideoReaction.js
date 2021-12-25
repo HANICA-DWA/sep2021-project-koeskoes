@@ -6,7 +6,7 @@
  * @param {string} textCode
  * @returns Mail preset
  */
-const mailVideoReaction = (buyer, receiver, textCode) => {
+const mailVideoReaction = (firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textCode) => {
   return `<html>
     <head>
       <style>
@@ -57,13 +57,13 @@ const mailVideoReaction = (buyer, receiver, textCode) => {
     <body>
       <div class="container">
         <div class="row">
-          <p>Beste ${buyer},</p>
+          <p>Beste ${firstNameBuyer} ${lastNameBuyer},</p>
         </div>
         <div class="row mb">
           <p>
-            ${receiver} heeft gereageerd op de Giftle die je hebt gestuurd!
+            ${firstNameReceiver} ${lastNameReceiver} heeft gereageerd op de Giftle die je hebt gestuurd!
             <br><br>
-            Klik op de knop hieronder om de videoreactie van ${receiver} te bekijken.
+            Klik op de knop hieronder om de videoreactie van ${firstNameReceiver} ${lastNameReceiver} te bekijken.
           </p>
         </div>
         <div class="row">

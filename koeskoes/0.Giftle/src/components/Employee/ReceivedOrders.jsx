@@ -12,10 +12,10 @@ import axios from "axios";
 const ReceivedOrders = (props) => {
   const dispatch = useDispatch();
   const receivedPageNumber = useSelector(
-    (state) => state.employee.receivedPageNumber
+    (state) => state.employee.receivedPageNumber,
   );
   const receivedPageNumbers = useSelector(
-    (state) => state.employee.receivedPageNumbers
+    (state) => state.employee.receivedPageNumbers,
   );
   const webSocket = useSelector((state) => state.employee.webSocket);
 
@@ -38,7 +38,7 @@ const ReceivedOrders = (props) => {
           onClick={(e) => dispatch(setReceivedPageNumber(i))}
         >
           <span className="page-link">{i}</span>
-        </li>
+        </li>,
       );
     }
 
@@ -78,7 +78,7 @@ const ReceivedOrders = (props) => {
 
   const sendCode = async (textCode) => {
     const mailInfo = await axios.post(
-      `http://localhost:4000/api/mails/${textCode}`
+      `http://localhost:4000/api/mails/${textCode}`,
     );
 
     if (mailInfo.data.status === "error") {
@@ -124,12 +124,17 @@ const ReceivedOrders = (props) => {
       };
 
       return mappedOrders()[receivedPageNumber - 1].map((order) => {
+        console.log(order);
         return (
           <tr key={order._id}>
             <th scope="row">{order._id}</th>
-            <td>{order.nameGifter}</td>
+            <td>
+              {order.firstNameGifter} {order.lastNameGifter}
+            </td>
             <td>{order.emailGifter}</td>
-            <td>{order.nameReceiver}</td>
+            <td>
+              {order.firstNameReceiver} {order.lastNameReceiver}
+            </td>
             <td>{order.emailReceiver}</td>
             <td>
               <button

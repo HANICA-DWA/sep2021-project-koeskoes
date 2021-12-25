@@ -10,8 +10,11 @@ const Uploads = mongoose.model("UploadSchema");
 
 let order = {
   _id: "619b7c66d79dad758c1e5519",
-  nameGifter: "firstname lastname",
-  emailGifter: "mail@mail.com",
+  emailGifter: "gifter@mail.com",
+  firstNameGifter: "firstnameGifter",
+  lastNameGifter: "lastnameGifter",
+  firstNameReceiver: "firstnameReceiver",
+  lastNameReceiver: "lastnameReceiver",
   textcodeSent: false,
   videoName: "video.mp4",
   prePrinted: false,
@@ -97,8 +100,11 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         prePrinted: 1,
         printed: 1,
@@ -110,8 +116,11 @@ describe("Database tests", () => {
 
     expect({ ...orderWithMp4 }).toEqual({
       _id: "619b7c66d79dad758c1e5519",
-      nameGifter: "firstname lastname",
-      emailGifter: "mail@mail.com",
+      emailGifter: "gifter@mail.com",
+      firstNameGifter: "firstnameGifter",
+      lastNameGifter: "lastnameGifter",
+      firstNameReceiver: "firstnameReceiver",
+      lastNameReceiver: "lastnameReceiver",
       videoName: "video.mp4",
       prePrinted: false,
       printed: false,
@@ -138,10 +147,12 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
-        nameReceiver: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
         emailReceiver: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         textCode: 1,
         printed: 1,
@@ -163,8 +174,11 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         prePrinted: 1,
         printed: 1,
@@ -186,8 +200,11 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         prePrinted: 1,
         printed: 1,
@@ -209,8 +226,11 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         prePrinted: 1,
         printed: 1,
@@ -232,8 +252,11 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         prePrinted: 1,
         printed: 1,
@@ -255,8 +278,11 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         prePrinted: 1,
         printed: 1,
@@ -287,8 +313,11 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         prePrinted: 1,
         printed: 1,
@@ -318,8 +347,11 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         prePrinted: 1,
         printed: 1,
@@ -340,8 +372,11 @@ describe("Database tests", () => {
       },
       {
         _id: 1,
-        nameGifter: 1,
         emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
         videoName: 1,
         prePrinted: 1,
         printed: 1,
@@ -398,8 +433,10 @@ describe("Mail tests", () => {
     test("send mail with textcode (happy path)", async () => {
       const happyMailPath = await mail.sendTextCode(
         "mail@mail.com",
-        "receiver",
-        "buyer",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver",
         "123abc"
       );
 
@@ -417,8 +454,10 @@ describe("Mail tests", () => {
     test("send mail with textcode (no receiver mail)", async () => {
       const noReceiverMailPath = await mail.sendTextCode(
         "",
-        "receiver",
-        "buyer",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver",
         "123abc"
       );
 
@@ -432,8 +471,10 @@ describe("Mail tests", () => {
     test("send mail with textcode (no receiver name)", async () => {
       const noReceiverMailPath = await mail.sendTextCode(
         "mail@mail.com",
+        "firstNameBuyer",
+        "lastNameBuyer",
         "",
-        "buyer",
+        "",
         "123abc"
       );
 
@@ -441,14 +482,16 @@ describe("Mail tests", () => {
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Receiver not included",
+        message: "Firstname receiver not included",
       });
     });
     test("send mail with textcode (no buyer name)", async () => {
       const noReceiverMailPath = await mail.sendTextCode(
         "mail@mail.com",
-        "receiver",
         "",
+        "",
+        "firstNameReceiver",
+        "lastNameReceiver",
         "123abc"
       );
 
@@ -456,14 +499,16 @@ describe("Mail tests", () => {
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Buyer not included",
+        message: "Firstname buyer not included",
       });
     });
     test("send mail with textcode (no textcode)", async () => {
       const noReceiverMailPath = await mail.sendTextCode(
         "mail@mail.com",
-        "receiver",
-        "buyer",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver",
         ""
       );
 
@@ -480,8 +525,10 @@ describe("Mail tests", () => {
     test("send mail (happy path)", async () => {
       const happyMailPath = await mail.sendReminderVideoWatched(
         "mail@mail.com",
-        "buyer",
-        "receiver"
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver"
       );
 
       const checkableData = convertMailData(happyMailPath);
@@ -498,8 +545,10 @@ describe("Mail tests", () => {
     test("send mail (no buyer mail)", async () => {
       const noBuyerMailPath = await mail.sendReminderVideoWatched(
         "",
-        "buyer",
-        "receiver"
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver"
       );
 
       const checkableData = convertMailData(noBuyerMailPath);
@@ -513,20 +562,24 @@ describe("Mail tests", () => {
       const noBuyerNamePath = await mail.sendReminderVideoWatched(
         "mail@mail.com",
         "",
-        "receiver"
+        "",
+        "firstNameReceiver",
+        "lastNameReceiver"
       );
 
       const checkableData = convertMailData(noBuyerNamePath);
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Buyer not included",
+        message: "Firstname buyer not included",
       });
     });
     test("send mail (no receiver name)", async () => {
       const noReceiverNamePath = await mail.sendReminderVideoWatched(
         "mail@mail.com",
-        "buyer",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "",
         ""
       );
 
@@ -534,7 +587,7 @@ describe("Mail tests", () => {
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Receiver not included",
+        message: "Firstname receiver not included",
       });
     });
   });
@@ -543,7 +596,8 @@ describe("Mail tests", () => {
     test("send mail (happy path)", async () => {
       const happyMailPath = await mail.sendReminderUploadVideo(
         "mail@mail.com",
-        "buyer",
+        "firstNameBuyer",
+        "lastNameBuyer",
         "123abc"
       );
 
@@ -559,7 +613,12 @@ describe("Mail tests", () => {
       });
     });
     test("send mail (no buyer mail)", async () => {
-      const noBuyerMailPath = await mail.sendReminderUploadVideo("", "buyer");
+      const noBuyerMailPath = await mail.sendReminderUploadVideo(
+        "", 
+        "firstNameBuyer", 
+        "lastNameBuyer",
+        "123abc"
+      );
 
       const checkableData = convertMailData(noBuyerMailPath);
 
@@ -571,14 +630,16 @@ describe("Mail tests", () => {
     test("send mail (no buyer name)", async () => {
       const noBuyerNamePath = await mail.sendReminderUploadVideo(
         "mail@mail.com",
-        ""
+        "",
+        "",
+        "123abc"
       );
 
       const checkableData = convertMailData(noBuyerNamePath);
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Buyer not included",
+        message: "Buyer firstname not included",
       });
     });
   });
@@ -587,7 +648,8 @@ describe("Mail tests", () => {
     test("send mail (happy path)", async () => {
       const happyMailPath = await mail.sendMailOrderPlaced(
         "mail@mail.com",
-        "buyer"
+        "firstNameBuyer",
+        "lastNameBuyer"
       );
 
       const checkableData = convertMailData(happyMailPath);
@@ -614,20 +676,23 @@ describe("Mail tests", () => {
     test("send mail (no buyer name)", async () => {
       const noBuyerNamePath = await mail.sendMailOrderPlaced(
         "mail@mail.com",
-        ""
+        "",
+        "",
+        "123abc"
       );
 
       const checkableData = convertMailData(noBuyerNamePath);
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Buyer not included",
+        message: "Firstname buyer not included",
       });
     });
     test("send mail (w/ textCode)", async () => {
       const textCodeMailPath = await mail.sendMailOrderPlaced(
         "mail@mail.com",
-        "buyer",
+        "firstNameBuyer",
+        "lastNameBuyer",
         "123abc"
       );
 
@@ -651,8 +716,10 @@ describe("Mail tests", () => {
     test("send mail (happy path)", async () => {
       const happyMailPath = await mail.sendTextReaction(
         "mail@mail.com",
-        "buyer",
-        "receiver",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver",
         "text reaction"
       );
 
@@ -670,8 +737,10 @@ describe("Mail tests", () => {
     test("send mail (no buyer mail)", async () => {
       const noBuyerMailPath = await mail.sendTextReaction(
         "",
-        "buyer",
-        "receiver",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver",
         "text reaction"
       );
 
@@ -686,7 +755,9 @@ describe("Mail tests", () => {
       const noBuyerNamePath = await mail.sendTextReaction(
         "mail@mail.com",
         "",
-        "receiver",
+        "",
+        "firstNameReceiver",
+        "lastNameReceiver",
         "text reaction"
       );
 
@@ -694,13 +765,15 @@ describe("Mail tests", () => {
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Buyer not included",
+        message: "Firstname buyer not included",
       });
     });
     test("send mail (no receiver name)", async () => {
       const noReceiverNamePath = await mail.sendTextReaction(
         "mail@mail.com",
-        "buyer",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "",
         "",
         "text reaction"
       );
@@ -709,14 +782,16 @@ describe("Mail tests", () => {
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Receiver not included",
+        message: "Firstname receiver not included",
       });
     });
     test("send mail (no text reaction)", async () => {
       const noTextReactionPath = await mail.sendTextReaction(
         "mail@mail.com",
-        "buyer",
-        "receiver",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver",
         ""
       );
 
@@ -733,8 +808,10 @@ describe("Mail tests", () => {
     test("send mail (happy path)", async () => {
       const happyMailPath = await mail.sendVideoReaction(
         "mail@mail.com",
-        "buyer",
-        "receiver",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver",
         "123abc"
       );
 
@@ -752,8 +829,10 @@ describe("Mail tests", () => {
     test("send mail (no buyer mail)", async () => {
       const noBuyerMailPath = await mail.sendVideoReaction(
         "",
-        "buyer",
-        "receiver",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver",
         "123abc"
       );
 
@@ -768,7 +847,9 @@ describe("Mail tests", () => {
       const noBuyerNamePath = await mail.sendVideoReaction(
         "mail@mail.com",
         "",
-        "receiver",
+        "",
+        "firstNameReceiver",
+        "lastNameReceiver",
         "123abc"
       );
 
@@ -776,13 +857,15 @@ describe("Mail tests", () => {
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Buyer not included",
+        message: "Firstname buyer not included",
       });
     });
     test("send mail (no receiver name)", async () => {
       const noReceiverNamePath = await mail.sendVideoReaction(
         "mail@mail.com",
-        "buyer",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "",
         "",
         "123abc"
       );
@@ -791,14 +874,16 @@ describe("Mail tests", () => {
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Receiver not included",
+        message: "Firstname receiver not included",
       });
     });
     test("send mail (no textcode)", async () => {
       const noTextcodePath = await mail.sendVideoReaction(
         "mail@mail.com",
-        "buyer",
-        "receiver",
+        "firstNameBuyer",
+        "lastNameBuyer",
+        "firstNameReceiver",
+        "lastNameReceiver",
         ""
       );
 

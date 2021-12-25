@@ -15,10 +15,10 @@ import { ReactComponent as Printer } from "../../assets/printer.svg";
 const PrintOrders = (props) => {
   const dispatch = useDispatch();
   const orderPageNumber = useSelector(
-    (state) => state.employee.orderPageNumber
+    (state) => state.employee.orderPageNumber,
   );
   const orderPageNumbers = useSelector(
-    (state) => state.employee.orderPageNumbers
+    (state) => state.employee.orderPageNumbers,
   );
   const webSocket = useSelector((state) => state.employee.webSocket);
   /**
@@ -38,7 +38,7 @@ const PrintOrders = (props) => {
           onClick={(e) => dispatch(setOrderPageNumber(i))}
         >
           <span className="page-link">{i}</span>
-        </li>
+        </li>,
       );
     }
 
@@ -109,12 +109,17 @@ const PrintOrders = (props) => {
       };
 
       return mappedOrders()[orderPageNumber - 1].map((order) => {
+        console.log(order);
         return (
           <tr key={order._id}>
             <th scope="row">{order._id}</th>
-            <td>{order.nameGifter}</td>
+            <td>
+              {order.firstNameGifter} {order.lastNameGifter}
+            </td>
             <td>{order.emailGifter}</td>
-            <td>{order.nameReceiver}</td>
+            <td>
+              {order.firstNameReceiver} {order.lastNameReceiver}
+            </td>
             <td>{order.emailReceiver}</td>
             <td>{buttonUpdate(order)}</td>
           </tr>
@@ -133,7 +138,9 @@ const PrintOrders = (props) => {
    */
   const createQRCode = async (textCode) => {
     try {
-      const qrCode = qrcode("http://localhost:3000/receiver/watchvideo/" + textCode);
+      const qrCode = qrcode(
+        "http://localhost:3000/receiver/watchvideo/" + textCode,
+      );
 
       await axios.patch("http://localhost:4000/api/orders/" + textCode);
 
@@ -145,8 +152,8 @@ const PrintOrders = (props) => {
         props.setError(
           Message(
             "Er is een fout opgetreden bij het maken van de QR-code.",
-            () => props.setError(null)
-          )
+            () => props.setError(null),
+          ),
         );
       }
     }
@@ -180,7 +187,7 @@ const PrintOrders = (props) => {
           id="prePrintOrder"
           onClick={async () => {
             await axios.patch(
-              `http://localhost:4000/api/orders/${order._id}/prePrint`
+              `http://localhost:4000/api/orders/${order._id}/prePrint`,
             );
             webSocket.send(JSON.stringify({ action: "getOrders" }));
           }}

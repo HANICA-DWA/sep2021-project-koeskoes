@@ -6,7 +6,7 @@
  * @param {string} textCode
  * @returns Mail preset
  */
-const mailUploadReminder = (buyer, textCode) => {
+const mailUploadReminder = (firstNameBuyer, lastNameBuyer, textCode) => {
   return `<html>
     <head>
       <style>
@@ -54,7 +54,7 @@ const mailUploadReminder = (buyer, textCode) => {
     <body>
       <div class="container">
         <div class="row">
-          <p>Beste ${buyer},</p>
+          <p>Beste ${firstNameBuyer + " " + lastNameBuyer},</p>
         </div>
         <div class="row">
           <p>Klopt het dat je nog geen filmpje hebt opgenomen?</p>

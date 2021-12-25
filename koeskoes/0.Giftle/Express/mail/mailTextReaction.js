@@ -6,7 +6,7 @@
  * @param {string} textReaction
  * @returns Mail preset
  */
-const mailTextReaction = (buyer, receiver, textReaction) => {
+const mailTextReaction = (firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textReaction) => {
   return `<html>
     <head>
       <style>
@@ -31,13 +31,13 @@ const mailTextReaction = (buyer, receiver, textReaction) => {
     <body>
       <div class="container">
         <div class="row">
-          <p>Beste ${buyer},</p>
+          <p>Beste ${firstNameBuyer} ${lastNameBuyer},</p>
         </div>
         <div class="row">
           <p>
-            ${receiver} heeft gereageerd op de Giftle die je hebt gestuurd!
+            ${firstNameReceiver} ${lastNameReceiver} heeft gereageerd op de Giftle die je hebt gestuurd!
             <br><br>
-            Lees hieronder de tekstreactie die ${receiver} heeft gegeven:
+            Lees hieronder de tekstreactie die ${firstNameReceiver} ${lastNameReceiver} heeft gegeven:
             <br><br>
             <i>${textReaction}</i>
           </p>

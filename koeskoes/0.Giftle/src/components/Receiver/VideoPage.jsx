@@ -43,12 +43,16 @@ function VideoPage() {
     return (
       <>
         <VideoPlayer
-          title={`Videoboodschap voor ${(videoData.nameReceiver ? videoData.nameReceiver : 'jou')}`}
+          title={`Videoboodschap voor ${
+            videoData.firstNameReceiver && videoData.lastNameReceiver
+              ? videoData.firstNameReceiver + " " + videoData.lastNameReceiver
+              : "jou"
+          }`}
           url="http://localhost:4000/api/videos/video/"
           videoData={videoData.videoName}
           setFullScreen={() =>
             setFullScreen(
-              (prevScreenState) => (prevScreenState = !prevScreenState)
+              (prevScreenState) => (prevScreenState = !prevScreenState),
             )
           }
         />
@@ -62,7 +66,11 @@ function VideoPage() {
         <hr />
         <div className="text-start float-start">
           <h3>Afzender:</h3>
-          {videoData.nameGifter ? <h5>{videoData.nameGifter}</h5> : null}
+          {videoData.firstNameGifter && videoData.lastNameGifter ? (
+            <h5>
+              {videoData.firstNameGifter} {videoData.lastNameGifter}
+            </h5>
+          ) : null}
           {videoData.emailGifter ? <h5>{videoData.emailGifter}</h5> : null}
         </div>
         <div className="float-end shareButtonPlacement popup">

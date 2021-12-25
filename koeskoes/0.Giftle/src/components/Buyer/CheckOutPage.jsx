@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Message from "../Common/CreateMessage";
 
@@ -9,81 +10,56 @@ import backpack from "./../../assets/rugtas.png";
 // import SVG as ReactComponent for easier use
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
 
-import { useNavigate } from "react-router-dom";
-
 /**
  * This is a temporary page simulating the CheckOutPage
  * @returns the front end of the CheckOutPage
  */
 function CheckOutPage() {
   const navigate = useNavigate();
-  // Hook variables
-  const [emailBuyer, setEmailBuyer] = useState(null);
-  const [firstNameBuyer, setFirstNameBuyer] = useState(null);
-  const [lastNameBuyer, setLastNameBuyer] = useState(null);
   const [error, setError] = useState(null);
   const [isGiftleEnabled, setGiftleEnabled] = useState(false);
 
-  /**
-   *
-   * Red border on input clarification for the error message(s)
-   *
-   */
-  useEffect(() => {
-    const redEmailError = document.getElementById("email");
-    const redFirstnameError = document.getElementById("firstname");
-    const redLastnameError = document.getElementById("lastname");
-    if (emailBuyer === "" || emailBuyer === null) {
-      redEmailError.classList.add("errorInput");
-    } else {
-      redEmailError.classList.remove("errorInput");
-    }
-    if (firstNameBuyer === "" || firstNameBuyer === null) {
-      redFirstnameError.classList.add("errorInput");
-    } else {
-      redFirstnameError.classList.remove("errorInput");
-    }
-    if (lastNameBuyer === "" || lastNameBuyer === null) {
-      redLastnameError.classList.add("errorInput");
-    } else {
-      redLastnameError.classList.remove("errorInput");
-    }
-  });
+  // Buyer variables
+  const [emailBuyer, setEmailBuyer] = useState(null);
+  const [firstNameBuyer, setFirstNameBuyer] = useState(null);
+  const [lastNameBuyer, setLastNameBuyer] = useState(null);
+  // Receiver variables
+  const [emailReceiver, setEmailReceiver] = useState("");
+  const [firstNameReceiver, setFirstNameReceiver] = useState(null);
+  const [lastNameReceiver, setLastNameReceiver] = useState(null);
 
   /**
-   *
-   * This function will send the data of the receiver to the server.
-   *
+   * This function will send the data of the buyer and receiver to the database.
    */
   const saveReceiverData = async () => {
-    const checkedFullName = checkFullName();
-    const checkedEmail = checkEmail();
-    let fullName = `${firstNameBuyer} ${lastNameBuyer}`;
+    const validatedInputs = validateInputs();
 
-    if (checkedFullName.status === "error") {
-      return setError(
-        Message(checkedFullName.message, () => setError(null))
-      );
-    }
-
-    if (checkedEmail.status === "error") {
-      return setError(Message(checkedEmail.message, () => setError(null)));
+    // Validate all input fields
+    if (validatedInputs.status === "error") {
+      return setError(Message(validatedInputs.message, () => setError(null)));
     }
 
     if (isGiftleEnabled) {
       const formData = new FormData();
 
-      formData.append("fullNameBuyer", fullName.trim());
+      // formData append buyer details to database
       formData.append("emailBuyer", emailBuyer);
+      formData.append("firstNameBuyer", firstNameBuyer.trim());
+      formData.append("lastNameBuyer", lastNameBuyer);
 
-      const uploadResponse = await axios.post(
+      // formData append receiver details to database
+      formData.append("emailReceiver", emailReceiver);
+      formData.append("firstNameReceiver", firstNameReceiver.trim());
+      formData.append("lastNameReceiver", lastNameReceiver);
+
+      const createOrder = await axios.post(
         `http://localhost:4000/api/orders/newOrder`,
-        formData
+        formData,
       );
 
-      if (uploadResponse.data.status === "error") {
+      if (createOrder.data.status === "error") {
         return setError(
-          Message(uploadResponse.data.message, () => setError(null))
+          Message(createOrder.data.message, () => setError(null)),
         );
       } else {
         return navigate("/checked-out");
@@ -93,200 +69,111 @@ function CheckOutPage() {
   };
 
   /**
-   *
-   * This function will check if the given name isn't too long and only exists of letters and spaces.
-   *
+   * This function will validate all input fields. It validates: correct email format, maximum length and empty strings.
+   * @returns true if all input fields got through the validation.
    */
-  const checkFullName = () => {
-    const maxLength = 300;
+  const validateInputs = () => {
+    let regexEmail = /\S+@\S+\.\S+/;
+    let maxLength = 300;
 
-    if (firstNameBuyer === null || firstNameBuyer.trim() === "") {
+    // Check if e-mail buyer and receiver is valid email address
+    if (!regexEmail.test(emailBuyer)) {
       return {
         status: "error",
         message:
-          "De voornaam mag niet leeg zijn. Een voornaam moet minimaal 1 teken bevatten.",
+          "Vul een geldig e-mailadres van uw zelf in. Een e-mailadres moet op dit formaat lijken: naam@domein.com",
       };
     }
 
-    if (lastNameBuyer === null || lastNameBuyer.trim() === "") {
-      return {
-        status: "error",
-        message:
-          "De achternaam mag niet leeg zijn. Een achternaam moet minimaal 1 teken bevatten.",
-      };
-    }
-
-    if (firstNameBuyer.length > maxLength) {
-      return {
-        status: "error",
-        message: `De voornaam is te lang. De voornaam mag maximaal ${maxLength} karakters lang zijn.`,
-      };
-    }
-
-    if (lastNameBuyer.length > maxLength) {
-      return {
-        status: "error",
-        message: `De achternaam is te lang. De achternaam mag maximaal ${maxLength} karakters lang zijn.`,
-      };
-    }
-
-    return true;
-  };
-
-  /**
-   * This function will check if the given e-mail is of the right e-mail format.
-   * @returns true if email is not empty and is in the format user@mail.com
-   */
-  const checkEmail = () => {
-    const re = /\S+@\S+\.\S+/;
-
+    // Check if e-mail buyer is not empty
     if (emailBuyer === null || emailBuyer.trim() === "") {
       return {
         status: "error",
         message:
-          "E-mailadres mag niet leeg zijn. Een e-mailadres moet minimaal 1 teken bevatten.",
+          "Uw e-mailadres mag niet leeg zijn. Een e-mailadres moet minimaal 1 teken bevatten.",
       };
     }
 
-    if (!re.test(emailBuyer)) {
+    // Check if e-mail is not empty and has a valid email format
+    if (emailReceiver !== null && emailReceiver !== "") {
+      if (!regexEmail.test(emailReceiver)) {
+        return {
+          status: "error",
+          message:
+            "Vul een geldig e-mailadres voor de ontvanger in. Een e-mailadres moet op dit formaat lijken: naam@domein.com",
+        };
+      }
+    }
+
+    // Check if firstname buyer is not empty
+    if (firstNameBuyer === null || firstNameBuyer.trim() === "") {
       return {
         status: "error",
         message:
-          "Vul een geldig e-mailadres in. Een e-mailadres moet op dit formaat lijken: naam@domein.com",
+          "Een voornaam van u mag niet leeg zijn. Een voornaam moet minimaal 1 teken bevatten.",
+      };
+    }
+
+    // Check if lastname buyer is not empty
+    if (lastNameBuyer === null || lastNameBuyer === "") {
+      return {
+        status: "error",
+        message:
+          "De achternaam van u mag niet leeg zijn. Een achternaam moet minimaal 1 teken bevatten.",
+      };
+    }
+
+    // Check if firstname buyer is not bigger than 300 characters
+    if (firstNameBuyer.length > maxLength) {
+      return {
+        status: "error",
+        message: `De voornaam van u is te lang. De voornaam mag maximaal ${maxLength} karakters lang zijn.`,
+      };
+    }
+
+    // Check if lastname buyer is not bigger than 300 characters
+    if (lastNameBuyer.length > maxLength) {
+      return {
+        status: "error",
+        message: `De achternaam van u is te lang. De achternaam mag maximaal ${maxLength} karakters lang zijn.`,
+      };
+    }
+
+    // Check if firstname receiver is not empty
+    if (firstNameReceiver === null || firstNameReceiver.trim() === "") {
+      return {
+        status: "error",
+        message:
+          "Een voornaam van de ontvanger mag niet leeg zijn. Een voornaam moet minimaal 1 teken bevatten.",
+      };
+    }
+
+    // Check if lastname receiver is not empty
+    if (lastNameReceiver === null || lastNameReceiver === "") {
+      return {
+        status: "error",
+        message:
+          "De achternaam van de ontvanger mag niet leeg zijn. Een achternaam moet minimaal 1 teken bevatten.",
+      };
+    }
+
+    // Check if firstname receiver is not bigger than 300 characters
+    if (firstNameReceiver.length > maxLength) {
+      return {
+        status: "error",
+        message: `De voornaam van de ontvanger is te lang. De voornaam mag maximaal ${maxLength} karakters lang zijn.`,
+      };
+    }
+
+    // Check if lastname receiver is not bigger than 300 characters
+    if (lastNameReceiver.length > maxLength) {
+      return {
+        status: "error",
+        message: `De achternaam van de ontvanger is te lang. De achternaam mag maximaal ${maxLength} karakters lang zijn.`,
       };
     }
 
     return true;
-  };
-
-  /**
-   *
-   * This function returns the billing address if isSameAddress is false.
-   * This function returns an image if isSameAddress is true, to fill-in the space.
-   * @returns front-end (form) for the billingAddress
-   *
-   */
-  const billingAddress = () => {
-    return (
-      <>
-        <h3>Factuuradres</h3>
-        <hr />
-        <div className="input-group mb-3">
-          <span className="input-group-text">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-send-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fillRule="evenodd"
-                d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494Z"
-              />
-            </svg>
-          </span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Straatnaam"
-            aria-label="Straatnaam"
-            disabled
-          />
-        </div>
-        <div className="input-group mb-3">
-          <span className="input-group-text">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-mailbox2"
-              viewBox="0 0 16 16"
-            >
-              <path d="M9 8.5h2.793l.853.854A.5.5 0 0 0 13 9.5h1a.5.5 0 0 0 .5-.5V8a.5.5 0 0 0-.5-.5H9v1z" />
-              <path d="M12 3H4a4 4 0 0 0-4 4v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7a4 4 0 0 0-4-4zM8 7a3.99 3.99 0 0 0-1.354-3H12a3 3 0 0 1 3 3v6H8V7zm-3.415.157C4.42 7.087 4.218 7 4 7c-.218 0-.42.086-.585.157C3.164 7.264 3 7.334 3 7a1 1 0 0 1 2 0c0 .334-.164.264-.415.157z" />
-            </svg>
-          </span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Postcode"
-            aria-label="Postcode"
-            disabled
-          />
-          <span className="input-group-text">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-house-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fillRule="evenodd"
-                d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"
-              />
-              <path
-                fillRule="evenodd"
-                d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"
-              />
-            </svg>
-          </span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Plaats"
-            aria-label="Plaats"
-            disabled
-          />
-        </div>
-        <div className="input-group mb-3">
-          <span className="input-group-text">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-globe2"
-              viewBox="0 0 16 16"
-            >
-              <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z" />
-            </svg>
-          </span>
-          <select className="form-select text-muted" disabled>
-            <option selected disabled>
-              Selecteer land
-            </option>
-            <option value="nederland">Nederland</option>
-            <option value="belgie">België</option>
-            <option value="duitsland">Duitsland</option>
-          </select>
-          <span className="input-group-text">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-globe"
-              viewBox="0 0 16 16"
-            >
-              <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
-            </svg>
-          </span>
-          <select className="form-select text-muted" disabled>
-            <option selected disabled>
-              Selecteer regio
-            </option>
-            <option value="nederland">Gelderland</option>
-            <option value="belgie">Limburg</option>
-            <option value="duitsland">Groningen</option>
-          </select>
-        </div>
-      </>
-    );
   };
 
   return (
@@ -299,7 +186,7 @@ function CheckOutPage() {
               <span className="square mt-3 text-center bg-primary">
                 <p className="square-text text-white">1.</p>
               </span>{" "}
-              Verzendadres
+              Klantgegevens
             </h2>
             <hr />
             <div className="input-group mb-3">
@@ -320,7 +207,7 @@ function CheckOutPage() {
                 id="email"
                 className="form-control"
                 onChange={(e) => setEmailBuyer(e.target.value)}
-                placeholder="E-mailadres *"
+                placeholder="Uw eigen e-mailadres"
                 aria-label="E-mailadres"
                 required
               />
@@ -344,7 +231,7 @@ function CheckOutPage() {
                 id="firstname"
                 className="form-control"
                 onChange={(e) => setFirstNameBuyer(e.target.value)}
-                placeholder="Voornaam *"
+                placeholder="Uw voornaam"
                 aria-label="Voornaam"
                 required
               />
@@ -365,7 +252,97 @@ function CheckOutPage() {
                 id="lastname"
                 className="form-control"
                 onChange={(e) => setLastNameBuyer(e.target.value)}
-                placeholder="Achternaam *"
+                placeholder="Uw achternaam"
+                aria-label="Achternaam"
+                required
+              />
+            </div>
+            <div className="input-group mb-1">
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="flexSwitchCheckDefault"
+                  disabled
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor="flexSwitchCheckDefault"
+                >
+                  Maak een account aan
+                </label>
+              </div>
+            </div>
+            <h2>
+              <span className="square mt-3 text-center bg-primary">
+                <p className="square-text text-white">2.</p>
+              </span>{" "}
+              Verzendadres
+            </h2>
+            <hr />
+            <div className="input-group mb-3">
+              <span className="input-group-text">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-envelope-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
+                </svg>
+              </span>
+              <input
+                type="email"
+                id="email"
+                className="form-control"
+                onChange={(e) => setEmailReceiver(e.target.value)}
+                placeholder="E-mailadres van de ontvanger"
+                aria-label="E-mailadres"
+              />
+            </div>
+            <div className="input-group mb-3">
+              <span className="input-group-text">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-file-person"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
+                  <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                id="firstname"
+                className="form-control"
+                onChange={(e) => setFirstNameReceiver(e.target.value)}
+                placeholder="Voornaam van de ontvanger"
+                aria-label="Voornaam"
+                required
+              />
+              <span className="input-group-text">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-file-person-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                id="lastname"
+                className="form-control"
+                onChange={(e) => setLastNameReceiver(e.target.value)}
+                placeholder="Achternaam van de ontvanger"
                 aria-label="Achternaam"
                 required
               />
@@ -500,7 +477,7 @@ function CheckOutPage() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Phone number"
+                placeholder="Telefoonnummer"
                 aria-label="Phone-number"
                 disabled
               />
@@ -520,49 +497,16 @@ function CheckOutPage() {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Company"
+                placeholder="Bedrijf"
                 aria-label="Company"
                 disabled
               />
             </div>
-            <div className="input-group mb-1">
-              <div className="form-check form-switch">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="flexSwitchCheckDefault"
-                  disabled
-                />
-                <label
-                  className="form-check-label"
-                  htmlFor="flexSwitchCheckDefault"
-                >
-                  Maak een account aan
-                </label>
-              </div>
-            </div>
-            <div className="input-group mb-3">
-              <div className="form-check form-switch">
-                <input
-                  type="checkbox"
-                  id="bothAddress"
-                  className="form-check-input"
-                  disabled
-                />
-                <label
-                  className="form-check-label"
-                  htmlFor="flexSwitchCheckDefault"
-                >
-                  Mijn verzendadres en factuuradres zijn hetzelfde
-                </label>
-              </div>
-            </div>
-            {billingAddress()}
           </div>
           <div className="col-md-12 col-lg-3 col-xl-4 mt-3 vertical-col bg-light">
             <h2>
               <span className="square mt-3 text-center bg-primary">
-                <p className="square-text text-white">2.</p>
+                <p className="square-text text-white">3.</p>
               </span>{" "}
               Verzendopties
             </h2>
@@ -635,7 +579,7 @@ function CheckOutPage() {
             </div>
             <h2>
               <span className="square mt-5 text-center bg-primary">
-                <p className="square-text text-white">3.</p>
+                <p className="square-text text-white">4.</p>
               </span>{" "}
               Betaalmethode
             </h2>
@@ -839,7 +783,7 @@ function CheckOutPage() {
               </div>
               <div className="col-5 text-end">
                 <p className="mb-0">
-                  {isGiftleEnabled ? "€ 91,90" : "€ 87,95"}
+                  {isGiftleEnabled ? "€ 88,94" : "€ 87,95"}
                 </p>
               </div>
             </div>
@@ -860,7 +804,7 @@ function CheckOutPage() {
                   />
                   <label className="form-check-label" for="flexCheckDefault">
                     Voeg <b>een Giftle</b> toe aan uw bestelling{" "}
-                    <i>(+€ 3,95)</i>
+                    <i>(+€ 0,99)</i>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
