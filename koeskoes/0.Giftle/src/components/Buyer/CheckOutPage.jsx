@@ -204,7 +204,7 @@ function CheckOutPage() {
               </span>
               <input
                 type="email"
-                id="email"
+                id="emailBuyer"
                 className="form-control"
                 onChange={(e) => setEmailBuyer(e.target.value)}
                 placeholder="Uw eigen e-mailadres"
@@ -228,7 +228,7 @@ function CheckOutPage() {
               </span>
               <input
                 type="text"
-                id="firstname"
+                id="firstnameBuyer"
                 className="form-control"
                 onChange={(e) => setFirstNameBuyer(e.target.value)}
                 placeholder="Uw voornaam"
@@ -249,7 +249,7 @@ function CheckOutPage() {
               </span>
               <input
                 type="text"
-                id="lastname"
+                id="lastnameBuyer"
                 className="form-control"
                 onChange={(e) => setLastNameBuyer(e.target.value)}
                 placeholder="Uw achternaam"
@@ -294,7 +294,7 @@ function CheckOutPage() {
                 </svg>
               </span>
               <input
-                type="email"
+                type="emailReceiver"
                 id="email"
                 className="form-control"
                 onChange={(e) => setEmailReceiver(e.target.value)}
@@ -318,7 +318,7 @@ function CheckOutPage() {
               </span>
               <input
                 type="text"
-                id="firstname"
+                id="firstnameReceiver"
                 className="form-control"
                 onChange={(e) => setFirstNameReceiver(e.target.value)}
                 placeholder="Voornaam van de ontvanger"
@@ -339,7 +339,7 @@ function CheckOutPage() {
               </span>
               <input
                 type="text"
-                id="lastname"
+                id="lastnameReceiver"
                 className="form-control"
                 onChange={(e) => setLastNameReceiver(e.target.value)}
                 placeholder="Achternaam van de ontvanger"

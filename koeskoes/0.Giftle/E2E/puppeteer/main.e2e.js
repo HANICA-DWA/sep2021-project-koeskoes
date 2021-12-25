@@ -25,12 +25,16 @@ describe("Giftle tests", () => {
     test("Create new order (happy path)", async () => {
       await pageA.goto("http://localhost:3000/checkout");
 
-      await pageA.type("#email", "mail@mail.com");
+      // buyer information
+      await pageA.type("#emailBuyer", "buyer@mail.com");
+      await pageA.type("#firstnameBuyer", "firstnameBuyer");
+      await pageA.type("#lastnameBuyer", "lastnameBuyer");
 
-      await pageA.type("#firstname", "firstname");
-
-      await pageA.type("#lastname", "lastname");
-
+      // receiver information
+      await pageA.type("#emailReceiver", "receiver@mail.com");
+      await pageA.type("#firstnameReceiver", "firstnameReceiver");
+      await pageA.type("#lastnameReceiver", "lastnameReceiver");
+      
       const checkBoxGiftle = await pageA.$('input[id="checkBoxGiftle"]');
       expect(checkBoxGiftle).toBeDefined();
       await checkBoxGiftle.evaluate((b) => b.click());
@@ -48,9 +52,13 @@ describe("Giftle tests", () => {
     test("Create new order (no e-mail)", async () => {
       await pageA.goto("http://localhost:3000/checkout");
 
-      await pageA.type("#firstname", "firstname");
+      // buyer information without e-mail
+      await pageA.type("#firstnameBuyer", "firstname");
+      await pageA.type("#lastnameBuyer", "lastname");
 
-      await pageA.type("#lastname", "lastname");
+      // receiver information without e-mail
+      await pageA.type("#firstnameReceiver", "firstname");
+      await pageA.type("#lastnameReceiver", "lastname");
 
       const checkBoxGiftle = await pageA.$('input[id="checkBoxGiftle"]');
       expect(checkBoxGiftle).toBeDefined();
@@ -155,10 +163,12 @@ describe("Giftle tests", () => {
       await pageA.goto("http://localhost:3000/employee/checkorders");
       await pageB.goto("http://localhost:3000/employee/checkorders");
       const checkableTableData = [
-        "Voornaam Achternaam",
-        "mail@mail.com",
-        "Voornaam Achternaam",
-        "mail@mail.com",
+        "gifter@mail.com",
+        "VoornaamGifter",
+        "AchternaamGifter",
+        "receiver@mail.com",
+        "VoornaamReceiver",
+        "AchternaamReceiver",
       ];
 
       await pageA.waitForSelector("#checkOrdersTable");
