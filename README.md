@@ -140,17 +140,9 @@ npm test
 
 - Navigeer naar de volgende map:
 
-`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/E2E/`
 
-- Maak hier de map 'videos' aan als deze nog niet bestaat.
-
-- Plaats in deze map een .mp4 video naar keuze.
-
-- Open de `seed.js` in de Express map
-
-`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/seed.js`
-
-- Plaats in de `insertMany` functie, onder `videoName` de videonaam + extensie van de eerder geüploade video 
+- Plaats in deze map een `.webm` video naar keuze en geef deze de naam `testFile1`.
 
 - Navigeer naar de volgende map:
 

@@ -21,7 +21,7 @@ describe("Giftle E2E tests", () => {
     await browserB.close();
   });
 
-  describe("Order creation tests", () => {
+  describe.skip("Order creation tests", () => {
     test("Create new order (happy path)", async () => {
       await pageA.goto("http://localhost:3000/checkout");
 
@@ -77,17 +77,13 @@ describe("Giftle E2E tests", () => {
     });
   });
 
-  describe.skip("Buyer tests", () => {
-    test("Upload testFile1.mp4", async () => {
+  describe("Buyer tests", () => {
+    test("Upload testFile1.webm", async () => {
       await pageA.goto("http://localhost:3000/ordercontrol/abc123");
 
-      const uploadVideo = await pageA.$("#uploadVideo");
-      expect(uploadVideo).toBeDefined();
-      await uploadVideo.evaluate((b) => b.click());
-
-      const fileInput = await pageA.$("input[type=file]");
+      const fileInput = await pageA.$("#fileInput");
       expect(fileInput).toBeDefined();
-      await fileInput.uploadFile(path.join(__dirname, "testFile1.mp4"));
+      await fileInput.uploadFile(path.join(__dirname, "testFile1.webm"));
 
       const upload = await pageA.$("#upload");
       expect(upload).toBeDefined();
@@ -99,7 +95,7 @@ describe("Giftle E2E tests", () => {
         (el) => el.textContent,
         rewatchVideoComponent
       );
-      expect(value).toBe("Uw video terugkijken");
+      expect(value).toBe("Video terugkijken en geluid controleren");
 
       await pageA.waitForSelector("#fullscreen");
       const fullscreen = await pageA.$("#fullscreen");
@@ -123,29 +119,26 @@ describe("Giftle E2E tests", () => {
       await personalize.evaluate((b) => b.click());
 
       await pageA.waitForSelector("#personalizationForm");
-      const row = await pageA.$("#personalizationForm > div.row");
+      const row = await pageA.$("#personalizationForm > div");
+      console.log(row);
       const personalizeState = await pageA.evaluate(
         (el) => el.textContent,
-        row[0]
+        row
       );
-      expect(personalizeState).toBe("Video personaliseren");
-
-      await pageA.type("#nameReceiver", "Voornaam Achternaam");
-
-      await pageA.type("#emailReceiver", "mail@mail.com");
+      expect(personalizeState).toBe("Personaliseren");
 
       const sendVideoMessage = await pageA.$("#sendVideoMessage");
       expect(sendVideoMessage).toBeDefined();
       await sendVideoMessage.evaluate((b) => b.click());
 
-      await pageA.waitForSelector("h1");
-      const h1 = await pageA.$("h1");
+      await pageA.waitForSelector("#thankYouMessage");
+      const h1 = await pageA.$("#thankYouMessage > h1");
       const h1Value = await pageA.evaluate((el) => el.textContent, h1);
       expect(h1Value).toBe("Bedankt voor het versturen van je Giftle!");
     });
   });
 
-  describe("Employee tests", () => {
+  describe.skip("Employee tests", () => {
     beforeAll(async () => {
       browserB = await puppeteer.launch({
         headless: false,
@@ -234,7 +227,7 @@ describe("Giftle E2E tests", () => {
     });
   });
 
-  describe("Receiver tests", () => {
+  describe.skip("Receiver tests", () => {
     test("Switch to videoreaction", async () => {
       await pageA.goto("http://localhost:3000/receiver/watchvideo/abc123");
 

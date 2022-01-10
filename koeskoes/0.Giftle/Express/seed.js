@@ -33,7 +33,7 @@ async function seedE2ETests() {
       emailReceiver: "receiver@mail.com",
       firstNameReceiver: "VoornaamReceiver",
       lastNameReceiver: "AchternaamReceiver",
-      videoName: "recordedVideo1640083296162.mp4",
+      videoName: "",
       prePrinted: false,
       printed: false,
       textCode: "abc123",
