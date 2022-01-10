@@ -8,8 +8,7 @@ Meer informatie over de opdracht Giftle zelf vind je in het [hoofdstuk Context](
 
 In deze README is verder te vinden:
 - [Installatiegids Giftle voor developers](https://github.com/HANICA-DWA/sep2021-project-koeskoes#installatiegids-giftle-voor-developers)
-- [Beschikbare URL's](https://github.com/HANICA-DWA/sep2021-project-koeskoes#beschikbare-urls)
-- [Mailserver](https://github.com/HANICA-DWA/sep2021-project-koeskoes#mailserver-gebruiken)
+- [Mailserver gebruiken](https://github.com/HANICA-DWA/sep2021-project-koeskoes#mailserver-gebruiken)
 - [Runnen van de testen](https://github.com/HANICA-DWA/sep2021-project-koeskoes#runnen-van-de-testen)
 
 ## Installatiegids Giftle voor developers
@@ -73,7 +72,7 @@ Compiled successfully!
 
 - Deze pagina zal een 404 bericht moeten weergeven.
 
-## Beschikbare URL's
+### Beschikbare URL's
 
 Zodra de React applicatie is opgestart kan je naar de volgende URL's navigeren. 
 
