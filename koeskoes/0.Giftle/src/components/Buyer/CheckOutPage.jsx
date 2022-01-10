@@ -295,7 +295,7 @@ function CheckOutPage() {
               </span>
               <input
                 type="emailReceiver"
-                id="email"
+                id="emailReceiver"
                 className="form-control"
                 onChange={(e) => setEmailReceiver(e.target.value)}
                 placeholder="E-mailadres van de ontvanger"

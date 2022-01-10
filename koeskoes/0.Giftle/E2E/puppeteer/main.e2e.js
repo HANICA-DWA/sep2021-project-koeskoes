@@ -72,7 +72,7 @@ describe("Giftle E2E tests", () => {
       const alert = await pageA.$("div.alert > div");
       const value = await pageA.evaluate((el) => el.textContent, alert);
       expect(value).toBe(
-        "E-mailadres mag niet leeg zijn. Een e-mailadres moet minimaal 1 teken bevatten."
+        "Vul een geldig e-mailadres van uw zelf in. Een e-mailadres moet op dit formaat lijken: naam@domein.com"
       );
     });
   });
@@ -163,12 +163,10 @@ describe("Giftle E2E tests", () => {
       await pageA.goto("http://localhost:3000/employee/checkorders");
       await pageB.goto("http://localhost:3000/employee/checkorders");
       const checkableTableData = [
+        "VoornaamGifter AchternaamGifter",
         "gifter@mail.com",
-        "VoornaamGifter",
-        "AchternaamGifter",
+        "VoornaamReceiver AchternaamReceiver",
         "receiver@mail.com",
-        "VoornaamReceiver",
-        "AchternaamReceiver",
       ];
 
       await pageA.waitForSelector("#checkOrdersTable");
