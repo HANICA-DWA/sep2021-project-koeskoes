@@ -13,14 +13,14 @@ In deze README is verder te vinden:
 
 ## Installatiegids Giftle voor developers
 
-### Algemeen
+### Installatie: algemeen
 
 Om goed voorbereid te zijn op deze installatie en om de installatie helemaal goed te krijgen, is het van belang dat de meest recente versies van Node.js en MongoDB zijn geïnstalleerd:
 
 - [Node.js](https://nodejs.org/en/)
 - [MongoDB](https://www.mongodb.com/try/download/community)
 
-### FFmpeg
+### Installatie: FFmpeg
 
 Giftle maakt gebruik van FFmpeg, dit moet je lokaal op je computer installeren, zoals staat uitgelegd in de guides hieronder.
 
@@ -28,7 +28,7 @@ Giftle maakt gebruik van FFmpeg, dit moet je lokaal op je computer installeren, 
 - [FFmpeg installatie MacOS](https://trac.ffmpeg.org/wiki/CompilationGuide/macOS)
 - [FFmpeg installatie Linux - Ubuntu 18.04](https://linuxize.com/post/how-to-install-ffmpeg-on-ubuntu-18-04/)
 
-### Project Giftle
+### Installatie: Project Giftle
 
 Nu bovengenoemde software geïnstalleerd is, kun je verder met het installeren van het project Giftle. Om het project Giftle online te zetten klik je op de volgende link: [Giftle online zetten](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/11_deployment.md).
 
