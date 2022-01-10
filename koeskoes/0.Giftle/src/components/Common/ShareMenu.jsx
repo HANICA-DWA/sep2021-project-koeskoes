@@ -22,7 +22,7 @@ const ShareMenu = (props) => {
 
   if (props.isOpen) {
     return (
-      <span class="popuptext" id="myPopup">
+      <span className="popuptext" id="myPopup">
         <div className="icon-container">
           <div className="icon">
             <EmailShareButton url={url} subject="Giftle video" body={message}>
