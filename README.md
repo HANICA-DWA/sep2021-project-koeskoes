@@ -178,7 +178,7 @@ npm run e2e
 - Open het .env bestand en voeg de volgende regel toe
 
 ```
-
+ACCEPTEDVIDEOFORMATS="mp4 mov webm"
 ```
 
 - Voer het volgende commando uit:
