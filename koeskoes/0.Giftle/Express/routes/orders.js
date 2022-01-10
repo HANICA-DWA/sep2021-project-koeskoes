@@ -158,8 +158,6 @@ router.patch("/order/video/:textCode", async (req, res) => {
           ? metadata.format.format_name
           : null;
 
-      console.log(format);
-
       if (height !== 1080 && height !== 720) {
         fs.unlinkSync(uploadPath + video.name);
 
