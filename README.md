@@ -142,7 +142,14 @@ npm test
 
 `/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/E2E/`
 
-- Plaats in deze map een `.webm` video naar keuze en geef deze de naam `testFile1`.
+- Plaats in deze map een `.webm` video naar keuze met onderstaande specificaties en geef deze de naam `testFile1`.
+
+```
+Resolutie: 720p of 1080p
+Tijd:
+    720p: maximaal 2 minuten en 20 seconden
+    1080p: maximaal 1 minuut en 20 seconden
+```
 
 - Navigeer naar de volgende map:
 

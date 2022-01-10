@@ -21,7 +21,7 @@ describe("Giftle E2E tests", () => {
     await browserB.close();
   });
 
-  describe.skip("Order creation tests", () => {
+  describe("Order creation tests", () => {
     test("Create new order (happy path)", async () => {
       await pageA.goto("http://localhost:3000/checkout");
 
@@ -138,7 +138,7 @@ describe("Giftle E2E tests", () => {
     });
   });
 
-  describe.skip("Employee tests", () => {
+  describe("Employee tests", () => {
     beforeAll(async () => {
       browserB = await puppeteer.launch({
         headless: false,
@@ -227,7 +227,7 @@ describe("Giftle E2E tests", () => {
     });
   });
 
-  describe.skip("Receiver tests", () => {
+  describe("Receiver tests", () => {
     test("Switch to videoreaction", async () => {
       await pageA.goto("http://localhost:3000/receiver/watchvideo/abc123");
 
