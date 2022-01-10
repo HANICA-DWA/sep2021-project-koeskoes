@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require('validator');
 
 /**
  * This schema is used to store all orders that want to send a Giftle videomessage.
@@ -7,6 +8,7 @@ const uploadSchema = new mongoose.Schema({
   emailGifter: {
     type: String,
     required: true,
+    validate: [validator.isEmail, 'Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)'],
   },
   firstNameGifter: {
     type: String,
@@ -18,6 +20,7 @@ const uploadSchema = new mongoose.Schema({
   },
   emailReceiver: {
     type: String,
+    validate: [validator.isEmail, 'Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)'],
   },
   firstNameReceiver: {
     type: String,

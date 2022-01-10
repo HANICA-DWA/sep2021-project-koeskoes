@@ -3,7 +3,7 @@ const path = require("path");
 
 jest.setTimeout(60000);
 
-describe("Giftle tests", () => {
+describe("Giftle E2E tests", () => {
   let browserA, pageA;
   let browserB, pageB;
 
