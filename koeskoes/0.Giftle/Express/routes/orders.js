@@ -9,8 +9,11 @@ const fs = require("fs");
 const ffmpeg = require("fluent-ffmpeg");
 const fileExtensionChecker = require("../commonFunctions/fileExtensionChecker");
 require("../model/uploadModel");
+const WebSocket = require("ws");
 
 const Uploads = mongoose.model("UploadSchema");
+
+const ws = new WebSocket(`ws://127.0.0.1:4000/`);
 
 /**
  * middleware for Express that provides easy way to handle file upload.
@@ -197,6 +200,8 @@ router.patch("/order/video/:textCode", async (req, res) => {
 
           await uploadRecord.save();
 
+          ws.send(JSON.stringify({ action: "getReceived" }));
+
           return res.json(uploadRecord);
         } else {
           ffmpeg(uploadPath + video.name)
@@ -216,6 +221,8 @@ router.patch("/order/video/:textCode", async (req, res) => {
               uploadRecord.videoName = finalFileName;
 
               await uploadRecord.save();
+
+              ws.send(JSON.stringify({ action: "getReceived" }));
 
               return res.json(uploadRecord);
             })

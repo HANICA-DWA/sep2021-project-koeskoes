@@ -10,7 +10,7 @@ describe("Giftle E2E tests", () => {
   beforeAll(async () => {
     browserA = await puppeteer.launch({
       headless: false,
-      slowMo: 50,
+      slowMo: 5,
       args: ["--window-size=700,800", "--window-position=0,0"],
     });
     pageA = await browserA.newPage();
