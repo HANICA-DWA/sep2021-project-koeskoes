@@ -162,7 +162,7 @@ const ReceivedOrders = (props) => {
             <th scope="col">E-mail koper</th>
             <th scope="col">Naam ontvanger</th>
             <th scope="col">E-mail ontvanger</th>
-            <th scope="col">QR-code</th>
+            <th scope="col">Code versturen</th>
           </tr>
         </thead>
         <tbody>{updateOrderList()}</tbody>

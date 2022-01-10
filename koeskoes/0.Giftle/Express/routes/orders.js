@@ -200,8 +200,6 @@ router.patch("/order/video/:textCode", async (req, res) => {
 
           await uploadRecord.save();
 
-          ws.send(JSON.stringify({ action: "getReceived" }));
-
           return res.json(uploadRecord);
         } else {
           ffmpeg(uploadPath + video.name)
@@ -221,8 +219,6 @@ router.patch("/order/video/:textCode", async (req, res) => {
               uploadRecord.videoName = finalFileName;
 
               await uploadRecord.save();
-
-              ws.send(JSON.stringify({ action: "getReceived" }));
 
               return res.json(uploadRecord);
             })
@@ -267,6 +263,8 @@ router.patch("/new/:textCode/", async (req, res) => {
   }
 
   await order.save();
+
+  ws.send(JSON.stringify({ action: "getReceived" }));
 
   res.json({ status: "success", message: "Receiver data added to order" });
 });

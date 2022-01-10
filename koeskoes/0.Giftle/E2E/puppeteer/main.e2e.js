@@ -93,8 +93,22 @@ describe("Giftle E2E tests", () => {
   });
 
   describe("Buyer tests", () => {
+    beforeAll(async () => {
+      browserB = await puppeteer.launch({
+        headless: false,
+        slowMo: 5,
+        args: ["--window-size=1100,800", "--window-position=350,0"],
+      });
+      pageB = await browserB.newPage();
+    });
+
+    afterAll(async () => {
+      await browserB.close();
+    });
+
     test("Upload testFile1.webm", async () => {
       await pageA.goto("http://localhost:3000/ordercontrol/abc123");
+      await pageB.goto("http://localhost:3000/employee/checkorders");
 
       const fileInput = await pageA.$("#fileInput");
       expect(fileInput).toBeDefined();
@@ -142,6 +156,16 @@ describe("Giftle E2E tests", () => {
       );
       expect(personalizeState).toBe("Personaliseren");
 
+      await pageB.waitForSelector("#checkOrdersTable");
+      const pageBResult = await pageB.$$eval("#checkOrdersTable tr", (rows) => {
+        return Array.from(rows, (row) => {
+          const columns = row.querySelectorAll("td");
+          return Array.from(columns, (column) => column.innerText);
+        });
+      });
+
+      expect(pageBResult[1]).toEqual([]);
+
       const sendVideoMessage = await pageA.$("#sendVideoMessage");
       expect(sendVideoMessage).toBeDefined();
       await sendVideoMessage.evaluate((b) => b.click());
@@ -150,6 +174,27 @@ describe("Giftle E2E tests", () => {
       const h1 = await pageA.$("#thankYouMessage > h1");
       const h1Value = await pageA.evaluate((el) => el.textContent, h1);
       expect(h1Value).toBe("Bedankt voor het versturen van je Giftle!");
+
+      const checkableTableData = [
+        "VoornaamGifter AchternaamGifter",
+        "gifter@mail.com",
+        "VoornaamReceiver AchternaamReceiver",
+        "receiver@mail.com",
+      ];
+
+      const pageBResultAfter = await pageB.$$eval(
+        "#checkOrdersTable tr",
+        (rows) => {
+          return Array.from(rows, (row) => {
+            const columns = row.querySelectorAll("td");
+            return Array.from(columns, (column) => column.innerText);
+          });
+        }
+      );
+
+      pageBResultAfter[1].pop();
+
+      expect(pageBResultAfter[1]).toEqual(checkableTableData);
     });
   });
 
