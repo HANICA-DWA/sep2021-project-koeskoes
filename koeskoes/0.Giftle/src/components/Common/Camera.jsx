@@ -6,13 +6,16 @@ import Webcam from "react-webcam";
 import Spinner from "../Common/Spinner";
 import { ReactComponent as RecButton } from "../../assets/rec-button.svg";
 import { ReactComponent as PauseButton } from "../../assets/pause.svg";
-import { setVideo } from "../../redux/actions/videoActions";
+import {
+  setVideo,
+  setSelectedCamera,
+  setSelectedRecordingQuality,
+} from "../../redux/actions/videoActions";
 
 const Camera = (props) => {
   const dispatch = useDispatch();
   const webcamRef = useRef(null);
   const mediaRecorderRef = useRef(null);
-  const [resolution, setResolution] = useState("720");
   const [progress, setProgress] = useState("0");
   const [barColor, setBarColor] = useState("bg-info");
   const [isDevicesChecked, setIsDevicesChecked] = useState(false);
@@ -21,7 +24,6 @@ const Camera = (props) => {
   const [capturing, setCapturing] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
-  const [cameraPosition, setCameraPosition] = useState(null);
   const [availableCameras, setAvailableCameras] = useState([]);
   const [pressed, setPressed] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -30,6 +32,10 @@ const Camera = (props) => {
   const [minutes, setMinutes] = useState(null);
   const [seconds, setSeconds] = useState(null);
   const textCode = useSelector((state) => state.orders.textCode);
+  const selectedCamera = useSelector((state) => state.videos.selectedCamera);
+  const selectedRecordingQuality = useSelector(
+    (state) => state.videos.selectedRecordingQuality
+  );
 
   /**
    *
@@ -74,12 +80,24 @@ const Camera = (props) => {
         });
 
         if (videoAccess.getVideoTracks().length > 0) {
-          setIsWebcamAvailable(true);
+          if (!isWebcamAvailable) {
+            setIsWebcamAvailable(true);
+          }
           const devices = await navigator.mediaDevices.enumerateDevices();
           const videoDevices = devices.filter(
             (device) => device.kind === "videoinput"
           );
-          setCameraPosition(videoDevices[0].deviceId);
+          if (!selectedCamera) {
+            dispatch(setSelectedCamera(videoDevices[0].deviceId));
+          } else {
+            if (
+              !videoDevices.filter(
+                (videoDevice) => videoDevice.deviceId === selectedCamera
+              ).length
+            ) {
+              dispatch(setSelectedCamera(videoDevices[0].deviceId));
+            }
+          }
           setAvailableCameras(videoDevices);
         } else {
           setIsWebcamAvailable(false);
@@ -168,9 +186,7 @@ const Camera = (props) => {
           setUploading(false);
           return props.setError
             ? props.setError(
-                Message(uploadResponse.data.message, () =>
-                  props.setError(null)
-                )
+                Message(uploadResponse.data.message, () => props.setError(null))
               )
             : null;
         } else {
@@ -201,7 +217,7 @@ const Camera = (props) => {
    * 1080p = 60 seconds + 20 seconds
    */
   useEffect(() => {
-    switch (resolution) {
+    switch (selectedRecordingQuality) {
       case "720":
         setTotalTime((prevTotal) => (prevTotal = 140));
         break;
@@ -211,7 +227,7 @@ const Camera = (props) => {
       default:
         return setTotalTime((prevTotal) => (prevTotal = 140));
     }
-  }, [resolution]);
+  }, [selectedRecordingQuality]);
 
   /**
    * UseEffect activates when currentTime, totalTime, timer or handleStopCaptureClick changes.
@@ -317,10 +333,12 @@ const Camera = (props) => {
               <p className="text-start mb-1">Opnameduur en kwaliteit: </p>
               <select
                 className="form-select"
-                defaultValue="720"
+                value={selectedRecordingQuality}
                 disabled={pressed}
                 onChange={(e) =>
-                  !pressed ? setResolution(e.target.value) : null
+                  !pressed
+                    ? dispatch(setSelectedRecordingQuality(e.target.value))
+                    : null
                 }
               >
                 <option key="720" value="720">
@@ -336,14 +354,18 @@ const Camera = (props) => {
                 <p className="text-start mb-1">Camera: </p>
                 <select
                   className="form-select"
-                  value={cameraPosition}
+                  value={selectedCamera}
                   disabled={pressed}
                   onChange={(e) =>
-                    !pressed ? setCameraPosition(e.target.value) : null
+                    !pressed
+                      ? dispatch(setSelectedCamera(e.target.value))
+                      : null
                   }
                 >
                   {availableCameras.map((camera) => (
-                    <option key={camera.deviceId} value={camera.deviceId}>{camera.label}</option>
+                    <option key={camera.deviceId} value={camera.deviceId}>
+                      {camera.label}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -356,9 +378,9 @@ const Camera = (props) => {
               ref={webcamRef}
               forceScreenshotSourceSize
               videoConstraints={{
-                height: resolution,
-                width: (resolution / 9) * 16,
-                deviceId: cameraPosition,
+                height: selectedRecordingQuality,
+                width: (selectedRecordingQuality / 9) * 16,
+                deviceId: selectedCamera,
               }}
               width={"100%"}
             />

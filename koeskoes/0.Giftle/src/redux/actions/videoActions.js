@@ -21,6 +21,20 @@ export const setVideoWatched = () => {
   };
 };
 
+export const setSelectedCamera = (cameraId) => {
+  return {
+    type: "setSelectedCamera",
+    payload: cameraId,
+  };
+};
+
+export const setSelectedRecordingQuality = (cameraQuality) => {
+  return {
+    type: "setSelectedRecordingQuality",
+    payload: cameraQuality,
+  };
+};
+
 export const sendVideoWatchedMail = (textCode) => {
   return (dispatch) => {
     axios.post(`http://localhost:4000/api/mails/notification/video/${textCode}/watched`);
