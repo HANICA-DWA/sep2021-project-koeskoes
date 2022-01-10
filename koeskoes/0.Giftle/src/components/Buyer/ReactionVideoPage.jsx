@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getReaction } from "../../redux/actions/reactionActions";
+import {
+  getVideoReaction,
+  getTextReaction,
+} from "../../redux/actions/reactionActions";
 
 // Reused Common components
 import VideoPlayer from "../Common/VideoPlayer";
@@ -21,7 +24,8 @@ function ReactionVideoPage() {
    * A useEffect to collect all video data from the database using Redux State
    */
   useEffect(() => {
-    dispatch(getReaction(textCode));
+    dispatch(getTextReaction(textCode));
+    dispatch(getVideoReaction(textCode));
   }, [textCode, dispatch]);
 
   /**
@@ -40,7 +44,7 @@ function ReactionVideoPage() {
           videoData={reaction.answerVideo}
           setFullScreen={() =>
             setFullScreen(
-              (prevScreenState) => (prevScreenState = !prevScreenState),
+              (prevScreenState) => (prevScreenState = !prevScreenState)
             )
           }
         />
@@ -48,17 +52,47 @@ function ReactionVideoPage() {
     );
   };
 
-  return (
-    <div className="vertical-center colored-background">
-      <div
-        className={`${
-          fullScreen ? `container-flex` : `container`
-        } text-center rounded p-3 bg-light`}
-      >
-        {videoPlayer()}
+  /**
+   *
+   * Box to show the text reaction.
+   *
+   * @returns box with text reaction
+   *
+   */
+  const textReaction = () => {
+    return (
+      <>
+        <div className="">
+          <h1 className="mb-5">
+            Reactie van {reaction.firstNameReceiver} {reaction.lastNameReceiver}
+          </h1>
+          <p className="h4 mb-5">{reaction.answerText}</p>
+        </div>
+      </>
+    );
+  };
+
+  if (reaction.answerVideo !== "" && reaction.answerVideo !== "null") {
+    return (
+      <div className="vertical-center colored-background">
+        <div
+          className={`${
+            fullScreen ? `container-flex` : `container`
+          } text-center rounded p-3 bg-light`}
+        >
+          {videoPlayer()}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else if (reaction.answerText !== "" && reaction.answerText !== "null") {
+    return (
+      <div className="vertical-center colored-background ">
+        <div className="container container-w50 container-w80 text-center rounded p-4 bg-light">
+          {textReaction()}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default ReactionVideoPage;

@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Message from "../Common/CreateMessage";
-
-import { sendReaction } from "../../redux/actions/uploadActions";
+import { addTextReaction } from "../../redux/actions/reactionActions";
 import { getVideoInOrder } from "../../redux/actions/orderActions";
 
 // import SVG as ReactComponent for easier use
@@ -57,7 +56,7 @@ function TextReactionPage() {
       return setError(Message(checkedMessage.message, () => setError(null)));
     }
 
-    dispatch(sendReaction(textCode, "text", message));
+    return dispatch(addTextReaction(textCode, message));
   };
 
   /**

@@ -84,7 +84,7 @@ const TextCodePage = () => {
           <div className="col-lg-8 col-md-8 col-sm-8">
             <input
               type="textcode"
-              class="form-control"
+              className="form-control"
               id="givenTextcode"
               name="givenTextcode"
               onChange={(e) => setGivenTextCode(e.target.value)}

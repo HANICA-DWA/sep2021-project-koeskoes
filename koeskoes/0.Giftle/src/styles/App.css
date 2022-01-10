@@ -28,9 +28,16 @@ body {
       width: 45% !important;
     }
 
+    .container-w80{
+      width: 80% !important;
+    }
+
     @media (min-width: 1400px) {
       .container {
         width: 30% !important;
+      }
+      .container-w50{
+        width: 50% !important;
       }
       .container-w40 {
         width: 40% !important;
@@ -345,4 +352,10 @@ input[type="file"]::-webkit-file-upload-button {
 
 .loading-text {
   margin-top: -1em;
+}
+
+.textReactionBox{
+  min-height: 20em;
+  max-width: 30%;
+  margin-right: auto;
 }

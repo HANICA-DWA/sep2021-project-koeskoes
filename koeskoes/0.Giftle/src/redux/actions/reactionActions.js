@@ -1,4 +1,5 @@
 import axios from "axios";
+import { sendReaction } from "../../redux/actions/uploadActions";
 
 export const setReactionCreationPath = (reactionCreationPath) => {
   return {
@@ -27,11 +28,35 @@ export const setReaction = (reaction) => {
   };
 };
 
-export const getReaction = (textCode) => {
+export const getVideoReaction = (textCode) => {
   return async (dispatch) => {
-    const reaction = await axios.get("http://localhost:4000/api/videos/" + textCode);
+    const reaction = await axios.get(
+      "http://localhost:4000/api/videos/" + textCode
+    );
 
     return dispatch(setReaction(reaction.data));
+  };
+};
+
+export const getTextReaction = (textCode) => {
+  return async (dispatch) => {
+    const reaction = await axios.get(
+      "http://localhost:4000/api/orders/reaction/text/" + textCode
+    );
+
+    return dispatch(setReaction(reaction.data));
+  };
+};
+
+export const addTextReaction = (textCode, message) => {
+  return async (dispatch) => {
+    const formData = new FormData();
+    formData.append("text", message);
+    await axios.patch(
+      `http://localhost:4000/api/orders/reaction/text/${textCode}`,
+      formData
+    );
+    return dispatch(sendReaction(textCode, "text"));
   };
 };
 

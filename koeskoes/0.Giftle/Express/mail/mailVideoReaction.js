@@ -67,11 +67,11 @@ const mailVideoReaction = (firstNameBuyer, lastNameBuyer, firstNameReceiver, las
           </p>
         </div>
         <div class="row">
-          <a href="http://localhost:3000/buyer/watchvideo/${textCode}" class="btn" style="color: #fffffe !important;">Bekijk de reactie!</a>
+          <a href="http://localhost:3000/buyer/reaction/${textCode}" class="btn" style="color: #fffffe !important;">Bekijk de reactie!</a>
         </div>
         <div class="row note">
           <p>Werkt de knop niet? Dan kun je de reactie ook bekijken door op deze link te klikken:</p>
-          <a href="http://localhost:3000/buyer/watchvideo/${textCode}" class="link">https://www.giftle.nl/watchvideo/${textCode}</a>
+          <a href="http://localhost:3000/buyer/reaction/${textCode}" class="link">https://www.giftle.nl/watchvideo/${textCode}</a>
         </div>
         <div>
           <p>Met vriendelijke groet,</p>
