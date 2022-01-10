@@ -158,6 +158,8 @@ router.patch("/order/video/:textCode", async (req, res) => {
           ? metadata.format.format_name
           : null;
 
+      console.log(format);
+
       if (height !== 1080 && height !== 720) {
         fs.unlinkSync(uploadPath + video.name);
 
@@ -181,7 +183,8 @@ router.patch("/order/video/:textCode", async (req, res) => {
           }.`,
         });
       } else {
-        if (!!format.split(",").filter(fileExtensionChecker).length) {
+        const formatCheck = format.split(",").filter(fileExtensionChecker);
+        if (!!formatCheck.length) {
           const uploadRecord = await Uploads.findOne({
             textCode: req.params.textCode,
           }).exec();
@@ -355,18 +358,19 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
           } is`,
         });
       } else {
-        if (!!format.split(",").filter(fileExtensionChecker).length) {
+        const formatCheck = format.split(",").filter(fileExtensionChecker);
+        if (!!formatCheck.length) {
           const uploadRecord = await Uploads.findOne({
             textCode: req.params.textCode,
           }).exec();
 
           try {
-            if (uploadRecord.videoName) {
-              fs.unlinkSync(uploadPath + uploadRecord.videoName);
+            if (uploadRecord.answerVideo) {
+              fs.unlinkSync(uploadPath + uploadRecord.answerVideo);
             }
           } catch (e) {}
 
-          uploadRecord.videoName = video.name;
+          uploadRecord.answerVideo = video.name;
 
           await uploadRecord.save();
 

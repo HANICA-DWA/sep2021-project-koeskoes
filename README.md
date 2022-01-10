@@ -7,6 +7,7 @@
 Meer informatie over de opdracht Giftle zelf vind je in het [hoofdstuk Context](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/01_context.md) van het [Software Guidebook](https://github.com/HANICA-DWA/sep2021-project-koeskoes/tree/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook).
 
 In deze README is verder te vinden:
+
 - [Installatiegids Giftle voor developers](https://github.com/HANICA-DWA/sep2021-project-koeskoes#installatiegids-giftle-voor-developers)
 - [Mailserver gebruiken](https://github.com/HANICA-DWA/sep2021-project-koeskoes#mailserver-gebruiken)
 - [Runnen van de testen](https://github.com/HANICA-DWA/sep2021-project-koeskoes#runnen-van-de-testen)
@@ -179,7 +180,7 @@ npm run e2e
 - Open het .env bestand en voeg de volgende regel toe
 
 ```
-ACCEPTEDVIDEOFORMATS="mp4 mov webm"
+ACCEPTEDVIDEOFORMATS="3gp f4v mkv mov mp4 ogg ogv webm m4v"
 ```
 
 - Voer het volgende commando uit:

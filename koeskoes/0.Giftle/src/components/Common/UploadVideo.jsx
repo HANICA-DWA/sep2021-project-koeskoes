@@ -23,9 +23,8 @@ const UploadVideo = (props) => {
     if (uploadedVideo === null) {
       return props.setError
         ? props.setError(
-            Message(
-              "Kies een geldige videoformaat bestand (.mp4, .mov).",
-              () => props.setError(null)
+            Message("Kies een geldige videoformaat bestand (.mp4, .mov).", () =>
+              props.setError(null)
             )
           )
         : null;
@@ -34,35 +33,21 @@ const UploadVideo = (props) => {
 
     setUploading(true);
 
-    if (sourceVideoFile.type.split("/")[0] === "video") {
-      const formData = new FormData();
+    const formData = new FormData();
 
-      formData.append("video", sourceVideoFile, sourceVideoFile.name);
+    formData.append("video", sourceVideoFile, sourceVideoFile.name);
 
-      const uploadResponse = await axios.patch(props.uploadPath, formData);
+    const uploadResponse = await axios.patch(props.uploadPath, formData);
 
-      if (uploadResponse.data.status === "error") {
-        setUploading(false);
-        return props.setError
-          ? props.setError(
-              Message(uploadResponse.data.message, () =>
-                props.setError(null)
-              )
-            )
-          : null;
-      } else {
-        return dispatch(setVideo(uploadResponse.data));
-      }
-    } else {
+    if (uploadResponse.data.status === "error") {
       setUploading(false);
       return props.setError
         ? props.setError(
-            Message(
-              "Kies een geldige videoformaat bestand. Andere formaten zijn niet toegestaan.",
-              () => props.setError(null)
-            )
+            Message(uploadResponse.data.message, () => props.setError(null))
           )
         : null;
+    } else {
+      return dispatch(setVideo(uploadResponse.data));
     }
   };
 
