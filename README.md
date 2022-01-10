@@ -110,7 +110,7 @@ http://localhost:3000/employee/checkorders
 
 - Maak een `.env` bestand in de volgende locatie:
 
-`/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
 
 - Maak vervolgens 2 variabelen aan in dit bestand:
 
@@ -127,7 +127,7 @@ Om alle testen goed te kunnen runnen moet de mailserver ingesteld zijn en moet d
 
 - Navigeer naar de volgende map:
 
-`/sep2021-project-koeskoes/koeskoes/0.Giftle/`
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/`
 
 - Voer het volgende commando uit:
 
@@ -139,7 +139,7 @@ npm test
 
 - Navigeer naar de volgende map:
 
-`/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
 
 - Maak hier de map 'videos' aan als deze nog niet bestaat.
 
@@ -147,13 +147,13 @@ npm test
 
 - Open de `seed.js` in de Express map
 
-`/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/seed.js`
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/seed.js`
 
 - Plaats in de `insertMany` functie, onder `videoName` de videonaam + extensie van de eerder geüploade video 
 
 - Navigeer naar de volgende map:
 
-`/sep2021-project-koeskoes/koeskoes/0.Giftle/`
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/`
 
 - Voer de volgende commando's uit:
 
@@ -174,7 +174,7 @@ npm run e2e
 
 - Navigeer naar de volgende map:
 
-`/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
 
 - Open het .env bestand en voeg de volgende regel toe
 
