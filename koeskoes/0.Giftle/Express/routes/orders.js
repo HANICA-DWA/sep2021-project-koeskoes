@@ -417,4 +417,39 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
   }
 });
 
+/**
+ * return text reaction if textCode exists.
+ */
+
+router.get("/reaction/text/:textCode", async (req, res) => {
+    const order = await Uploads.findOne({
+      textCode: req.params.textCode,
+    }).exec();
+
+    res.json(order.answerText);
+});
+
+/**
+ * This post request will save the text reaction.
+ */
+router.patch("/reaction/text/:textCode", async (req, res) => {
+  if (req.body.text === "null") {
+    return res.json({ status: "error", message: "No reaction entered" });
+  }
+
+  const order = await Uploads.findOne({
+    textCode: req.params.textCode,
+  }).exec();
+
+  order.answerText = req.body.text;
+
+  if (req.body.text !== "null" && req.body.text !== "") {
+    order.emailReceiver = req.body.emailReceiver;
+  }
+
+  await order.save();
+
+  res.json({ status: "success", message: "Text reaction data added to order" });
+});
+
 module.exports = router;

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const validator = require('validator');
+const validator = require("validator");
 
 /**
  * This schema is used to store all orders that want to send a Giftle videomessage.
@@ -8,7 +8,10 @@ const uploadSchema = new mongoose.Schema({
   emailGifter: {
     type: String,
     required: true,
-    validate: [validator.isEmail, 'Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)'],
+    validate: [
+      validator.isEmail,
+      "Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)",
+    ],
   },
   firstNameGifter: {
     type: String,
@@ -20,7 +23,10 @@ const uploadSchema = new mongoose.Schema({
   },
   emailReceiver: {
     type: String,
-    validate: [validator.isEmail, 'Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)'],
+    validate: [
+      validator.isEmail,
+      "Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)",
+    ],
   },
   firstNameReceiver: {
     type: String,
@@ -57,16 +63,19 @@ const uploadSchema = new mongoose.Schema({
   answerVideo: {
     type: String,
   },
+  answerText: {
+    type: String,
+    default: "",
+    max: 280,
+  },
   answerSent: {
     type: Boolean,
     required: true,
     default: false,
-  }
+  },
 });
 
 /**
- *
- *
  * SetCode is a function to set the text code in the database
  * The code is randomly generated and doesn't yet exist.
  * NOTE: Don't change this function to an arrow function. Thank you <3

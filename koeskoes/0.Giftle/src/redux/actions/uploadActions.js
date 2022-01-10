@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const setVideoCreationPath = (videoCreationPath) => {
   return {
@@ -33,18 +33,19 @@ export const setReaction = (mailInfo) => {
   };
 };
 
-export const sendReaction = (textCode, type, message) => {
+export const sendReaction = (textCode, type) => {
   return async (dispatch) => {
     const mailInfo = await axios.post(
-      `http://localhost:4000/api/mails/reaction/${type}/${textCode}`,
-      { message: message }
+      `http://localhost:4000/api/mails/reaction/${type}/${textCode}`
     );
 
-    if (mailInfo.data.status === 'success') {
+    if (mailInfo.data.status === "success") {
       dispatch(setReaction(mailInfo.data));
       await axios.patch(
         `http://localhost:4000/api/mails/reaction/sent/${textCode}`
       );
+    } else {
+      console.log(mailInfo.data);
     }
   };
 };

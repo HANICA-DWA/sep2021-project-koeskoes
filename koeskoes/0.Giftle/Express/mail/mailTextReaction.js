@@ -6,48 +6,85 @@
  * @param {string} textReaction
  * @returns Mail preset
  */
-const mailTextReaction = (firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver, textReaction) => {
+const mailTextReaction = (
+  firstNameBuyer,
+  lastNameBuyer,
+  firstNameReceiver,
+  lastNameReceiver,
+  textCode
+) => {
   return `<html>
     <head>
       <style>
-        body {
-          margin: 0rem;
-        }
-        p {
-          font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        .container {
-          background-color: #e8e8e8;
-          padding: 1rem 5rem 1rem 5rem;
-        }
-        .row {
-          margin-bottom: 2rem;
-        }
-        .row > p {
-          margin-bottom: 0rem;
-        }
+      body {
+        margin: 0rem;
+      }
+      p {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      .container {
+        background-color: #e8e8e8;
+        padding: 1rem 5rem 1rem 5rem;
+      }
+      .row {
+        margin-bottom: 2rem;
+      }
+      .row > p {
+        margin-bottom: 0rem;
+      }
+      .mb {
+        margin-bottom: 3rem;
+      }
+      .btn {
+        background-color: #0d6efd;
+        border-radius: 0.25rem;
+        margin-bottom: 2rem;
+        padding: 0.575rem 1.5rem;
+      }
+      .btn:hover {
+        opacity: 0.8;
+      }
+      .note > p, .note > a {
+        font-size: 12px;
+      }
+      .link {
+        color: #1c0dfd;
+        font-style: italic;
+      }
+      .link:hover {
+        text-decoration: underline;
+      }
       </style>
     </head>
     <body>
-      <div class="container">
-        <div class="row">
-          <p>Beste ${firstNameBuyer} ${lastNameBuyer},</p>
-        </div>
-        <div class="row">
-          <p>
-            ${firstNameReceiver} ${lastNameReceiver} heeft gereageerd op de Giftle die je hebt gestuurd!
-            <br><br>
-            Lees hieronder de tekstreactie die ${firstNameReceiver} ${lastNameReceiver} heeft gegeven:
-            <br><br>
-            <i>${textReaction}</i>
-          </p>
-        </div>
-        <div>
-          <p>Met vriendelijke groet,</p>
-          <p>Giftle</p>
-        </div>
+    <div class="container">
+      <div class="row">
+        <p>Beste ${firstNameBuyer} ${lastNameBuyer},</p>
       </div>
-    </body>
+      <div class="row mb">
+        <p>
+          ${firstNameReceiver} ${lastNameReceiver} heeft gereageerd op de Giftle die je hebt gestuurd!
+          <br><br>
+          Klik op de knop hieronder om de textreactie van ${firstNameReceiver} ${lastNameReceiver} te bekijken.
+        </p>
+      </div>
+      <div class="row">
+        <a href="http://localhost:3000/buyer/reaction/${textCode}" class="btn" style="color: #fffffe !important;">Bekijk de reactie!</a>
+      </div>
+      <div class="row note">
+        <p>Werkt de knop niet? Dan kun je de reactie ook bekijken door op deze link te klikken:</p>
+        <a href="http://localhost:3000/buyer/reaction/${textCode}" class="link">https://www.giftle.nl/reaction/${textCode}</a>
+      </div>
+      <div>
+        <p>Met vriendelijke groet,</p>
+        <p>Giftle</p>
+      </div>
+    </div>
+  </body>
   </html>`;
 };
 

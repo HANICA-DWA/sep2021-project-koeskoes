@@ -91,7 +91,7 @@ router.post("/reaction/text/:textCode", async (req, res) => {
     order.lastNameGifter,
     order.firstNameReceiver,
     order.lastNameReceiver,
-    req.body.message
+    order.textCode
   );
 
   res.send(mailInfo);

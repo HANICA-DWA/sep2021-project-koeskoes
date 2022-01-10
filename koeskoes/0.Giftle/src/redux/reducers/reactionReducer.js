@@ -25,7 +25,7 @@ export function reactionReducer(state = initialReactionState, action) {
         reactionUploadVisualState: action.payload,
       };
 
-      case "setReaction":
+    case "setReaction":
       return {
         ...state,
         reaction: action.payload,
@@ -35,6 +35,11 @@ export function reactionReducer(state = initialReactionState, action) {
       return {
         ...state,
         reaction: "",
+      };
+
+    case "addTextReaction":
+      return {
+        ...state,
       };
 
     default:

@@ -63,7 +63,7 @@ function App() {
           <Route path="/buyer/create" exact element={<CreateVideoPage />} />
           <Route path="/buyer/thankyou" exact element={<FinalPage />} />
           <Route
-            path="/buyer/watchvideo/:textCode"
+            path="/buyer/reaction/:textCode"
             element={<ReactionVideoPage />}
           />
           {/* Receiver Router */}
