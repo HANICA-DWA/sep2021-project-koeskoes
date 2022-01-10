@@ -1,12 +1,18 @@
-# [sep2021-project-koeskoes](https://en.wikipedia.org/wiki/Spilocuscus)
+# sep2021-project-koeskoes
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Cuscus1.jpg" alt="koeskoes" width="200"/>
 
-## Opdracht
+## Giftle
 
-[Giftle](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/01_context.md)
+Meer informatie over de opdracht Giftle zelf vind je in het [hoofdstuk Context](https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/01_context.md) van het [Software Guidebook](https://github.com/HANICA-DWA/sep2021-project-koeskoes/tree/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook).
 
-## Installatie Giftle voor developers
+In deze README is verder te vinden:
+- [Installatiegids Giftle voor developers](https://github.com/HANICA-DWA/sep2021-project-koeskoes#installatiegids-giftle-voor-developers)
+- [Beschikbare URL's](https://github.com/HANICA-DWA/sep2021-project-koeskoes#beschikbare-urls)
+- [Mailserver](https://github.com/HANICA-DWA/sep2021-project-koeskoes#mailserver-gebruiken)
+- [Runnen van de testen](https://github.com/HANICA-DWA/sep2021-project-koeskoes#runnen-van-de-testen)
+
+## Installatiegids Giftle voor developers
 
 ### Algemeen
 
@@ -97,7 +103,7 @@ http://localhost:3000/receiver/reaction-already-sent
 http://localhost:3000/employee/checkorders
 ```
 
-## Werkende mail server
+## Mailserver gebruiken
 
 - Omdat deze applicatie gebruik maakt van de Google SMTP server moet je een Google account hebben met een Google mail.
 
@@ -105,7 +111,7 @@ http://localhost:3000/employee/checkorders
 
 - Maak een `.env` bestand in de volgende locatie:
 
-`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+`/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
 
 - Maak vervolgens 2 variabelen aan in dit bestand:
 
@@ -182,7 +188,3 @@ ACCEPTEDVIDEOFORMATS="mp4 mov webm"
 ```
 npm test
 ```
-
-## Software Guidebook
-
-[Software Guidebook](https://github.com/HANICA-DWA/sep2021-project-koeskoes/tree/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook)
