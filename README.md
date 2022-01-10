@@ -120,6 +120,8 @@ EMAILPASSWORD=<Google App Password>
 
 ## Runnen van de testen
 
+> Voor het runnen van de testen gaan wij ervan uit dat de mailserver is ingesteld en deze volledig werkt, ook gaan wij ervan uit dat het .env bestand correct is ingesteld volgens bovenstaande stappen.
+
 #### React testen
 
 - Navigeer naar de map `0.Giftle` als je dat nog niet hebt gedaan:
@@ -172,6 +174,12 @@ npm run e2e
 - Navigeer naar de map `Express` als je dat nog niet hebt gedaan:
 
 `/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
+
+- Open het .env bestand en voeg de volgende regel toe
+
+```
+
+```
 
 - Voer het volgende commando uit:
 

@@ -7,6 +7,7 @@ const MailModule = require("../commonFunctions/sendMails");
 const mail = new MailModule();
 const fs = require("fs");
 const ffmpeg = require("fluent-ffmpeg");
+const fileExtensionChecker = require("../commonFunctions/fileExtensionChecker");
 require("../model/uploadModel");
 
 const Uploads = mongoose.model("UploadSchema");
@@ -37,7 +38,7 @@ router.get("/all/", async (req, res) => {
       emailGifter: 1,
       firstNameGifter: 1,
       lastNameGifter: 1,
-      emailReceiver: 1,    
+      emailReceiver: 1,
       firstNameReceiver: 1,
       lastNameReceiver: 1,
       videoName: 1,
@@ -142,6 +143,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
      */
     ffmpeg.ffprobe(uploadPath + video.name, async (err, metadata) => {
       let height, duration;
+
       metadata.streams.forEach((stream) => {
         if (!height && stream.height) {
           height = stream.height;
@@ -150,6 +152,11 @@ router.patch("/order/video/:textCode", async (req, res) => {
           duration = stream.duration;
         }
       });
+
+      const format =
+        metadata && metadata.format && metadata.format.format_name
+          ? metadata.format.format_name
+          : null;
 
       if (height !== 1080 && height !== 720) {
         fs.unlinkSync(uploadPath + video.name);
@@ -174,27 +181,45 @@ router.patch("/order/video/:textCode", async (req, res) => {
           }.`,
         });
       } else {
-        ffmpeg(uploadPath + video.name)
-          .on("end", async () => {
-            fs.unlinkSync(uploadPath + video.name);
+        if (!!format.split(",").filter(fileExtensionChecker).length) {
+          const uploadRecord = await Uploads.findOne({
+            textCode: req.params.textCode,
+          }).exec();
 
-            const uploadRecord = await Uploads.findOne({
-              textCode: req.params.textCode,
-            }).exec();
+          try {
+            if (uploadRecord.videoName) {
+              fs.unlinkSync(uploadPath + uploadRecord.videoName);
+            }
+          } catch (e) {}
 
-            try {
-              if (uploadRecord.videoName) {
-                fs.unlinkSync(uploadPath + uploadRecord.videoName);
-              }
-            } catch (e) {}
+          uploadRecord.videoName = video.name;
 
-            uploadRecord.videoName = finalFileName;
+          await uploadRecord.save();
 
-            await uploadRecord.save();
+          return res.json(uploadRecord);
+        } else {
+          ffmpeg(uploadPath + video.name)
+            .on("end", async () => {
+              fs.unlinkSync(uploadPath + video.name);
 
-            return res.json(uploadRecord);
-          })
-          .save(uploadPath + finalFileName);
+              const uploadRecord = await Uploads.findOne({
+                textCode: req.params.textCode,
+              }).exec();
+
+              try {
+                if (uploadRecord.videoName) {
+                  fs.unlinkSync(uploadPath + uploadRecord.videoName);
+                }
+              } catch (e) {}
+
+              uploadRecord.videoName = finalFileName;
+
+              await uploadRecord.save();
+
+              return res.json(uploadRecord);
+            })
+            .save(uploadPath + finalFileName);
+        }
       }
     });
   } catch (e) {
@@ -213,7 +238,12 @@ router.patch("/order/video/:textCode", async (req, res) => {
  * if name receiver exists, find textCode in DB and update both name receiver and name email
  */
 router.patch("/new/:textCode/", async (req, res) => {
-  if (req.body.firstNameReceiver === "null" || req.body.firstNameReceiver === "" || req.body.lastNameReceiver === "null" || req.body.lastNameReceiver === "") {
+  if (
+    req.body.firstNameReceiver === "null" ||
+    req.body.firstNameReceiver === "" ||
+    req.body.lastNameReceiver === "null" ||
+    req.body.lastNameReceiver === ""
+  ) {
     return res.json({ status: "error", message: "No name entered" });
   }
 
@@ -296,6 +326,11 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
         }
       });
 
+      const format =
+        metadata && metadata.format && metadata.format.format_name
+          ? metadata.format.format_name
+          : null;
+
       if (height !== 1080 && height !== 720) {
         fs.unlinkSync(uploadPath + video.name);
 
@@ -320,27 +355,45 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
           } is`,
         });
       } else {
-        ffmpeg(uploadPath + video.name)
-          .on("end", async () => {
-            fs.unlinkSync(uploadPath + video.name);
+        if (!!format.split(",").filter(fileExtensionChecker).length) {
+          const uploadRecord = await Uploads.findOne({
+            textCode: req.params.textCode,
+          }).exec();
 
-            const uploadRecord = await Uploads.findOne({
-              textCode: req.params.textCode,
-            }).exec();
+          try {
+            if (uploadRecord.videoName) {
+              fs.unlinkSync(uploadPath + uploadRecord.videoName);
+            }
+          } catch (e) {}
 
-            try {
-              if (uploadRecord.answerVideo) {
-                fs.unlinkSync(uploadPath + uploadRecord.answerVideo);
-              }
-            } catch (e) {}
+          uploadRecord.videoName = video.name;
 
-            uploadRecord.answerVideo = finalFileName;
+          await uploadRecord.save();
 
-            await uploadRecord.save();
+          return res.json(uploadRecord);
+        } else {
+          ffmpeg(uploadPath + video.name)
+            .on("end", async () => {
+              fs.unlinkSync(uploadPath + video.name);
 
-            return res.json(uploadRecord);
-          })
-          .save(uploadPath + finalFileName);
+              const uploadRecord = await Uploads.findOne({
+                textCode: req.params.textCode,
+              }).exec();
+
+              try {
+                if (uploadRecord.answerVideo) {
+                  fs.unlinkSync(uploadPath + uploadRecord.answerVideo);
+                }
+              } catch (e) {}
+
+              uploadRecord.answerVideo = finalFileName;
+
+              await uploadRecord.save();
+
+              return res.json(uploadRecord);
+            })
+            .save(uploadPath + finalFileName);
+        }
       }
     });
   } catch (e) {
