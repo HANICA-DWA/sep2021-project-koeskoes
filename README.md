@@ -22,7 +22,7 @@ Om goed voorbereid te zijn op deze installatie en om de installatie helemaal goe
 
 ### Installatie: FFmpeg
 
-Giftle maakt gebruik van FFmpeg, dit moet je lokaal op je computer installeren, zoals staat uitgelegd in de guides hieronder.
+Giftle maakt voor het verwerken van videos gebruik van FFmpeg, wat lokaal op je computer geïnstalleerd moet worden. Verdere uitleg staat in de guides hieronder.
 
 - [FFmpeg installatie Windows](https://www.wikihow.com/Install-FFmpeg-on-Windows)
 - [FFmpeg installatie MacOS](https://trac.ffmpeg.org/wiki/CompilationGuide/macOS)
