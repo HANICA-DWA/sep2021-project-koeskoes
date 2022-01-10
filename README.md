@@ -140,7 +140,7 @@ npm test
 
 - Navigeer naar de volgende map:
 
-`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/E2E/`
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/E2E/puppeteer/`
 
 - Plaats in deze map een `.webm` video naar keuze met onderstaande specificaties en geef deze de naam `testFile1`.
 
