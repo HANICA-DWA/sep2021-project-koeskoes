@@ -53,12 +53,12 @@ describe("Giftle E2E tests", () => {
       await pageA.goto("http://localhost:3000/checkout");
 
       // buyer information without e-mail
-      await pageA.type("#firstnameBuyer", "firstname");
-      await pageA.type("#lastnameBuyer", "lastname");
+      await pageA.type("#firstnameBuyer", "firstnameBuyer");
+      await pageA.type("#lastnameBuyer", "lastnameBuyer");
 
       // receiver information without e-mail
-      await pageA.type("#firstnameReceiver", "firstname");
-      await pageA.type("#lastnameReceiver", "lastname");
+      await pageA.type("#firstnameReceiver", "firstnameReceiver");
+      await pageA.type("#lastnameReceiver", "lastnameReceiver");
 
       const checkBoxGiftle = await pageA.$('input[id="checkBoxGiftle"]');
       expect(checkBoxGiftle).toBeDefined();
@@ -70,10 +70,25 @@ describe("Giftle E2E tests", () => {
 
       await pageA.waitForSelector("div.alert");
       const alert = await pageA.$("div.alert > div");
-      const value = await pageA.evaluate((el) => el.textContent, alert);
+      let value = await pageA.evaluate((el) => el.textContent, alert);
       expect(value).toBe(
         "Vul een geldig e-mailadres van uw zelf in. Een e-mailadres moet op dit formaat lijken: naam@domein.com"
       );
+
+      // After error message comes happy path again
+      await pageA.type("#emailBuyer", "buyer@mail.com");
+      await pageA.type("#emailReceiver", "receiver@mail.com");
+
+      expect(checkBoxGiftle).toBeDefined();
+      await checkBoxGiftle.evaluate((b) => b.click());
+
+      expect(createOrder).toBeDefined();
+      await createOrder.evaluate((b) => b.click());
+
+      await pageA.waitForSelector("h1");
+      const h1 = await pageA.$("h1");
+      value = await pageA.evaluate((el) => el.textContent, h1);
+      expect(value).toBe("Bedankt voor het plaatsen van een bestelling bij onze webshop!");
     });
   });
 
