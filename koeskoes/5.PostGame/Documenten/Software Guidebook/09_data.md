@@ -81,6 +81,15 @@ De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op h
     },
     });
 
+## Data opslaan
+Hieronder staat vermeld hoe bepaalde data die wij hebben opgeslagen wordt.
+
+### Opslaan video's
+Wij slaan de videobestanden op in de ```Express``` map onder de map ```videos```. Dit is de meest gebruikelijke manier voor het opslaan van de video's.
+
+### Ingebouwde validatie met Mongoose
+Op het moment valideren wij alleen de e-mailadressen met Mongoose. Uiteraard is het goed om te zorgen voor extra beveiliging dat Mongoose alle velden controleert wanneer dit nodig is.
+
 <!--
 Intent
 
