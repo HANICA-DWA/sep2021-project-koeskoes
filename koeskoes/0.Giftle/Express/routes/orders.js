@@ -183,7 +183,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
         });
       } else {
         const formatCheck = format.split(",").filter(fileExtensionChecker);
-        if (!!formatCheck.length) {
+        if (formatCheck) {
           const uploadRecord = await Uploads.findOne({
             textCode: req.params.textCode,
           }).exec();
@@ -360,7 +360,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
         });
       } else {
         const formatCheck = format.split(",").filter(fileExtensionChecker);
-        if (!!formatCheck.length) {
+        if (formatCheck) {
           const uploadRecord = await Uploads.findOne({
             textCode: req.params.textCode,
           }).exec();
