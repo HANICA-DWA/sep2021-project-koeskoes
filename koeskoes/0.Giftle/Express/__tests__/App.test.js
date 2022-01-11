@@ -4,7 +4,7 @@ const generateRandomFileName = require("../commonFunctions/generateRandomFileNam
 const MailModule = require("../commonFunctions/sendMails");
 require("../model/uploadModel");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const Uploads = mongoose.model("UploadSchema");
 
@@ -324,6 +324,7 @@ describe("Database tests", () => {
         textCode: 1,
         textcodeSent: 1,
         answerSent: 1,
+        answerText: 1,
         __v: 1,
       }
     ).lean();
@@ -358,10 +359,11 @@ describe("Database tests", () => {
         textCode: 1,
         textcodeSent: 1,
         answerSent: 1,
+        answerText: 1,
         __v: 1,
       }
     ).lean();
-
+  
     expect(prePrintedOrders).toEqual([newOrder.toObject()]);
   });
 
@@ -387,6 +389,63 @@ describe("Database tests", () => {
     await setCodeTest.setCode();
 
     expect(setCodeTest).not.toEqual(order);
+  });
+
+  test("order is less than 280 characters", async () => {
+    const newOrder = await new Uploads({
+      ...order,
+      _id: "619b7c66d79dad758c1e5522",
+      textCode: "456def",
+      videoName: "newVideo.mp4",
+      answerText:
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    });
+
+    await newOrder.save();
+
+    const answeredOrders = await Uploads.findOne({
+      _id: newOrder._id,
+    }).lean();
+
+    expect(answeredOrders).toEqual(newOrder.toObject());
+  });
+
+  test("order is more than 280 characters", async () => {
+    const newOrder = await new Uploads({
+      ...order,
+      _id: "619b7c66d79dad758c1e5522",
+      textCode: "456def",
+      videoName: "newVideo.mp4",
+      answerText:
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    });
+
+    await newOrder.save();
+
+    const answeredOrders = await Uploads.find(
+      {
+        answerText:
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      },
+      {
+        _id: 1,
+        emailGifter: 1,
+        firstNameGifter: 1,
+        lastNameGifter: 1,
+        firstNameReceiver: 1,
+        lastNameReceiver: 1,
+        videoName: 1,
+        prePrinted: 1,
+        printed: 1,
+        textCode: 1,
+        textcodeSent: 1,
+        answerSent: 1,
+        answerText: 1,
+        __v: 1,
+      }
+    ).lean();
+
+    expect(answeredOrders.answerText).not.toEqual([newOrder.toObject()]);
   });
 });
 
@@ -614,8 +673,8 @@ describe("Mail tests", () => {
     });
     test("send mail (no buyer mail)", async () => {
       const noBuyerMailPath = await mail.sendReminderUploadVideo(
-        "", 
-        "firstNameBuyer", 
+        "",
+        "firstNameBuyer",
         "lastNameBuyer",
         "123abc"
       );
@@ -712,7 +771,7 @@ describe("Mail tests", () => {
     });
   });
 
-  describe("Send mail with text reaction", () => {
+  describe("Send text reaction mail", () => {
     test("send mail (happy path)", async () => {
       const happyMailPath = await mail.sendTextReaction(
         "mail@mail.com",
@@ -720,7 +779,7 @@ describe("Mail tests", () => {
         "lastNameBuyer",
         "firstNameReceiver",
         "lastNameReceiver",
-        "text reaction"
+        "123abc"
       );
 
       const checkableData = convertMailData(happyMailPath);
@@ -741,7 +800,7 @@ describe("Mail tests", () => {
         "lastNameBuyer",
         "firstNameReceiver",
         "lastNameReceiver",
-        "text reaction"
+        "123abc"
       );
 
       const checkableData = convertMailData(noBuyerMailPath);
@@ -758,7 +817,7 @@ describe("Mail tests", () => {
         "",
         "firstNameReceiver",
         "lastNameReceiver",
-        "text reaction"
+        "123abc"
       );
 
       const checkableData = convertMailData(noBuyerNamePath);
@@ -775,7 +834,7 @@ describe("Mail tests", () => {
         "lastNameBuyer",
         "",
         "",
-        "text reaction"
+        "123abc"
       );
 
       const checkableData = convertMailData(noReceiverNamePath);
@@ -785,7 +844,7 @@ describe("Mail tests", () => {
         message: "Firstname receiver not included",
       });
     });
-    test("send mail (no text reaction)", async () => {
+    test("send mail (no textCode)", async () => {
       const noTextReactionPath = await mail.sendTextReaction(
         "mail@mail.com",
         "firstNameBuyer",
@@ -799,7 +858,7 @@ describe("Mail tests", () => {
 
       expect(checkableData).toEqual({
         status: "error",
-        message: "Reaction not included",
+        message: "Textcode not included",
       });
     });
   });
