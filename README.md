@@ -88,7 +88,7 @@ http://localhost:3000/buyer/noTextCode  - Alleen bereikbaar via de orderControl 
 http://localhost:3000/buyer             - Alleen bereikbaar via de orderControl pagina
 http://localhost:3000/buyer/create      - Alleen bereikbaar via de orderControl pagina
 http://localhost:3000/buyer/thankyou
-http://localhost:3000/buyer/watchvideo/:textCode
+http://localhost:3000/buyer/reaction/:textCode
 http://localhost:3000/receiver
 http://localhost:3000/receiver/qr-code
 http://localhost:3000/receiver/scan
