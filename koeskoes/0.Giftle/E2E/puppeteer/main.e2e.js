@@ -34,7 +34,7 @@ describe("Giftle E2E tests", () => {
       await pageA.type("#emailReceiver", "receiver@mail.com");
       await pageA.type("#firstnameReceiver", "firstnameReceiver");
       await pageA.type("#lastnameReceiver", "lastnameReceiver");
-      
+
       const checkBoxGiftle = await pageA.$('input[id="checkBoxGiftle"]');
       expect(checkBoxGiftle).toBeDefined();
       await checkBoxGiftle.evaluate((b) => b.click());
@@ -88,7 +88,9 @@ describe("Giftle E2E tests", () => {
       await pageA.waitForSelector("h1");
       const h1 = await pageA.$("h1");
       value = await pageA.evaluate((el) => el.textContent, h1);
-      expect(value).toBe("Bedankt voor het plaatsen van een bestelling bij onze webshop!");
+      expect(value).toBe(
+        "Bedankt voor het plaatsen van een bestelling bij onze webshop!"
+      );
     });
   });
 

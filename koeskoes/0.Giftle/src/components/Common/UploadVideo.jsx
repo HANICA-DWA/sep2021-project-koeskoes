@@ -23,7 +23,7 @@ const UploadVideo = (props) => {
     if (uploadedVideo === null) {
       return props.setError
         ? props.setError(
-            Message("Kies een geldige videoformaat bestand (.mp4, .mov).", () =>
+            Message("Kies een geldige videoformaat bestand (bijvoorbeeld .mp4 of .mov).", () =>
               props.setError(null)
             )
           )
