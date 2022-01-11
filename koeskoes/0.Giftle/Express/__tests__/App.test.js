@@ -1,5 +1,6 @@
 const axios = require("axios");
 const mongoose = require("mongoose");
+const fileExtensionChecker = require("../commonFunctions/fileExtensionChecker");
 const generateRandomFileName = require("../commonFunctions/generateRandomFileName");
 const MailModule = require("../commonFunctions/sendMails");
 require("../model/uploadModel");
@@ -363,7 +364,7 @@ describe("Database tests", () => {
         __v: 1,
       }
     ).lean();
-  
+
     expect(prePrintedOrders).toEqual([newOrder.toObject()]);
   });
 
@@ -450,6 +451,16 @@ describe("Database tests", () => {
 });
 
 describe("CommonFunctions tests", () => {
+  test("check extension (allowed extension)", () => {
+    const checkedExtension = fileExtensionChecker("mp4");
+    expect(checkedExtension).toEqual(true);
+  });
+
+  test("check extension (not allowed extension)", () => {
+    const checkedExtension = fileExtensionChecker("avi");
+    expect(checkedExtension).toEqual(false);
+  });
+
   test("generate filename", () => {
     const files = generateRandomFileName(
       "videoname.mp4.mp3.avi",

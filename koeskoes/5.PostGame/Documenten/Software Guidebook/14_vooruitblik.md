@@ -13,13 +13,11 @@ Om aan te tonen hoe Giftle uiteindelijk gebruikt kan gaan worden binnen een wink
 In de originele opdrachtomschrijving stond ook vermeld dat het Giftle-proces gemakkelijk aangepast moet worden aan de huisstijl en uitstraling van de webshop/retailer. In het prototype hebben we dit deels kunnen realiseren. De uitstraling van Giftle kan nu aangepast worden door te wisselen tussen verschillende CSS-bestanden. Om deze functionaliteit dus volledig te kunnen realiseren, is het van belang dat er een omgeving wordt gemaakt voor de webshopbeheerder waardoor dit CSS-bestand aangepast kan worden zonder dat de webshopbeheerder daadwerkelijk in de code van dit bestand hoeft te duiken. 
 
 ## Database in de cloud
-De gegevens van alle Giftle bestellingen worden nu opgeslagen in een database. Deze database staat voor elk webshop apart en is een prima manier om de database te gebruiken.
-
-Echter hebben de webshopbeheerders en Giftle meer baat bij een optie om de database in de cloud op te slaan. De beste optie, en ook nog een mogelijk winstgevende optie, is om Giftle als cloud-database te laten fungeren voor alle Giftle plug-ins. Dit zorgt ervoor dat de webshopbeheerders hier zelf minder werk aan hebben en zodat alle videos hoe dan ook op een veilige plek staan opgeslagen.
+De gegevens van alle Giftle bestellingen worden nu opgeslagen in een database. De webshopbeheerders en Giftle hebben meer baat bij een optie om de database in de cloud op te slaan. De beste optie, en ook nog een mogelijk winstgevende optie, is om Giftle als cloud-database te laten fungeren voor alle Giftle plug-ins. Dit zorgt ervoor dat de webshopbeheerders hier zelf minder werk aan hebben en zodat alle videos hoe dan ook op een veilige plek staan opgeslagen.
 
 ### Architectuur werking database in de cloud
 
-> Hier komt architectuurafbeelding van hoe het er voor de websitebeheerder uitziet
+![Cloud infrastructure architecture](assets/infrastructure_architecture/Cloud_infrastructure_architecture.png "Cloud infrastructure architecture")
 
 ## Proces van het meesturen van een QR-code
 
