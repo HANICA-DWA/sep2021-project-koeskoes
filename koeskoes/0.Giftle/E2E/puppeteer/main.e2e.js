@@ -49,7 +49,7 @@ describe("Giftle E2E tests", () => {
       expect(value).toBe("Bedankt voor het kopen van een Giftle!");
     });
 
-    test("Create new order (no e-mail)", async () => {
+    test("Create new order without an e-mail (alternate path), when error is fixed create happy path", async () => {
       await pageA.goto("http://localhost:3000/checkout");
 
       // buyer information without e-mail
