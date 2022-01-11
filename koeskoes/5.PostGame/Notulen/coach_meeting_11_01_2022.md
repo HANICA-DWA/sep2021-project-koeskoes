@@ -7,7 +7,7 @@
 - [ ] check alle UseEffects() op code die er niet in hoort te staan
 
 ## Overdracht
-- [ ] aanpassen van URL tesktreactie
+- [x] aanpassen van URL tesktreactie
 
 ## Software Guidebook
 - [x] ```Hoofdstuk Code:```         --> filteren in tabel gebeurt op front-end (is niet beste oplossing)
