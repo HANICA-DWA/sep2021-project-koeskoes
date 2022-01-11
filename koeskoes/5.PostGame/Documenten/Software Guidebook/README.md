@@ -6,10 +6,10 @@
 
 | Studenten          | E-mail                        | Student nr. |
 | ------------------ | ----------------------------- | ----------- |
-| Sjoerd de Bruin    | swl.debruin@student.han.nl    | 650151      |
-| Ilse van de Peppel | i.vandepeppel1@student.han.nl | 629494      |
-| Sven van Ee        | s.vanee1@student.han.nl       | 645999      |
+| Sjoerd de Bruin    | SWL.deBruin@student.han.nl    | 650151      |
+| Sven van Ee        | S.vanEe1@student.han.nl       | 645999      |
 | Jordi Obermeier    | CJA.Obermeier@student.han.nl  | 652615      |
+| Ilse van de Peppel | I.vandePeppel1@student.han.nl | 629494      |
 
 ## Inhoud
 
@@ -26,3 +26,4 @@
 1. [Deployment](11_deployment.md)
 1. [Operation and Support](12_operation_and_support.md)
 1. [Decision Log](13_decision_log.md)
+1. [Vooruitblik](14_vooruitblik.md)
