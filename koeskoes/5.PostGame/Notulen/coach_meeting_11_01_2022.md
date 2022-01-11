@@ -2,20 +2,21 @@
 
 ## Belangrijk
 
-* Verzin iets goeds voor de plaats van het vooruitblik
 * Beschouw alle E2E tests ook als US voor de review
-* Check nog de UseEffects()
 * Presentatie is een review, een code review en cijfer bespreken
+- [ ] check alle UseEffects() op code die er niet in hoort te staan
 
 ## Overdracht
-* Aanpassen van URL tesktreactie
+- [ ] aanpassen van URL tesktreactie
 
 ## Software Guidebook
-* Filter op front-end in Code Hoofdstuk
-* Data hoofdstuk aanpassen
-* Manier van opslaan videos (in hoofdstuk Data)
-* Wat valideren we wel en niet? (in hoofdstuk Data)
-* Maak een architectuur plaatje van de database oplossing
+- [ ] ```Hoofdstuk Code:```         --> filteren in tabel gebeurt op front-end (is niet beste oplossing)
+- [ ] ```Hoofdstuk Data:```         --> manier van opslaan videos (hoe video's opslaan)
+- [ ] ```Hoofdstuk Data:```         --> eventuele andere data benoemen (mocht deze er zijn)
+- [ ] ```Hoofdstuk Data:```         --> wat valideren we wel en niet
+- [ ] ```Hoofdstuk Vooruitblik:```  --> een vooruitblik op wat er nog afgemaakt moet worden
+- [ ] maak een architectuur plaatje van de ```cloud database``` oplossing
+
 
 ## Mongoose Validating
-* Validator mag, maar hoeft niet getest te worden.
+* NPM module ```Validator``` is goed gekeurd door Lars. Dit hoeft niet getest te worden als er maar 1 functie aanroep gedaan wordt van ```Validator```. Bij meerdere aanroepen van de functies moet er wel getest worden i.v.m. de samenhang van beide functies (dit kan niet goed gaan).
