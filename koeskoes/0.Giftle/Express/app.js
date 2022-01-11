@@ -1,9 +1,9 @@
 const express = require("express");
 const http = require("http");
-const ws = require("ws");
 const cors = require("cors");
 const path = require("path");
 const mongoose = require("mongoose");
+const { websocketServer } = require("./commonFunctions/webSocketServer");
 require("./model/uploadModel");
 
 require('dotenv').config();
@@ -36,35 +36,9 @@ app.use("/*", (req, res, next) => {
 
 const httpServer = http.createServer(app);
 
-const websocketServer = new ws.Server({ noServer: true });
-
 httpServer.on("upgrade", (req, networkSocket, head) => {
   websocketServer.handleUpgrade(req, networkSocket, head, (newWebSocket) => {
     websocketServer.emit("connection", newWebSocket, req);
-  });
-});
-
-websocketServer.on("connection", (socket, req) => {
-  socket.on("message", (message) => {
-
-      const parsedMessage = JSON.parse(message);
-
-      switch (parsedMessage.action) {
-        case "getOrders":
-          websocketServer.clients.forEach(client => {
-            client.send(JSON.stringify({action:"getOrders"}));
-          });
-          break;
-
-        case "getReceived":
-          websocketServer.clients.forEach(client => {
-            client.send(JSON.stringify({action:"getReceived"}));
-          });
-          break;
-
-        default:
-          break;
-      }
   });
 });
 

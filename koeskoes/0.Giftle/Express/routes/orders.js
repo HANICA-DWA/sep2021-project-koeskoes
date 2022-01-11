@@ -9,11 +9,9 @@ const fs = require("fs");
 const ffmpeg = require("fluent-ffmpeg");
 const fileExtensionChecker = require("../commonFunctions/fileExtensionChecker");
 require("../model/uploadModel");
-const WebSocket = require("ws");
+const { sendWebsocketGetReceived } = require("../commonFunctions/webSocketServer");
 
 const Uploads = mongoose.model("UploadSchema");
-
-const ws = new WebSocket(`ws://127.0.0.1:4000/`);
 
 /**
  * middleware for Express that provides easy way to handle file upload.
@@ -264,7 +262,7 @@ router.patch("/new/:textCode/", async (req, res) => {
 
   await order.save();
 
-  ws.send(JSON.stringify({ action: "getReceived" }));
+  sendWebsocketGetReceived();
 
   res.json({ status: "success", message: "Receiver data added to order" });
 });

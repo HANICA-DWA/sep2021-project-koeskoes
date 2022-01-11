@@ -1,10 +1,10 @@
 const nodemailer = require("nodemailer");
-const mailTextCode = require("../mail/mailTextCode");
-const mailVideoWatched = require("../mail/mailVideoWatched");
-const mailUploadReminder = require("../mail/mailUploadReminder");
-const mailOrderPlaced = require("../mail/mailOrderPlaced");
-const mailTextReaction = require("../mail/mailTextReaction");
-const mailVideoReaction = require("../mail/mailVideoReaction");
+const mailTextCode = require("../mailTemplates/mailTextCode");
+const mailVideoWatched = require("../mailTemplates/mailVideoWatched");
+const mailUploadReminder = require("../mailTemplates/mailUploadReminder");
+const mailOrderPlaced = require("../mailTemplates/mailOrderPlaced");
+const mailTextReaction = require("../mailTemplates/mailTextReaction");
+const mailVideoReaction = require("../mailTemplates/mailVideoReaction");
 
 /**
  * This class adds the ability to send mails via an SMTP server.
