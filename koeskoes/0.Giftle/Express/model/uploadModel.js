@@ -16,10 +16,12 @@ const uploadSchema = new mongoose.Schema({
   firstNameGifter: {
     type: String,
     required: true,
+    max: 300,
   },
   lastNameGifter: {
     type: String,
     required: true,
+    max: 300,
   },
   emailReceiver: {
     type: String,
@@ -31,10 +33,12 @@ const uploadSchema = new mongoose.Schema({
   firstNameReceiver: {
     type: String,
     required: true,
+    max: 300,
   },
   lastNameReceiver: {
     type: String,
     required: true,
+    max: 300,
   },
   videoName: {
     type: String,
@@ -44,6 +48,8 @@ const uploadSchema = new mongoose.Schema({
   textCode: {
     type: String,
     unique: true,
+    min: 6,
+    max: 6,
   },
   prePrinted: {
     type: Boolean,
