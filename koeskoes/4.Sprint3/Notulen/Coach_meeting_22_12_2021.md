@@ -10,7 +10,7 @@
 
 - [x] Aan het einde van de readme een link naar het software guidebook
 
-- [ ] Plaats validatie in het mongoose schema. Zo dicht mogelijk bij de database. En test deze validatie
+- [x] Plaats validatie in het mongoose schema. Zo dicht mogelijk bij de database. En test deze validatie
 
 ## Installatie: done
 
@@ -48,9 +48,9 @@
 
 - [x] Geef een console log als de seed lukt
 
-- [ ] E2E testen zijn goedgekeurd jammer van het uploaden (probeer dit op te lossen)
+- [x] E2E testen zijn goedgekeurd jammer van het uploaden (probeer dit op te lossen)
 
-- [ ] Extra E2E test, na een validatie error daarna het veld goed invullen en versturen.
+- [x] Extra E2E test, na een validatie error daarna het veld goed invullen en versturen.
 
 - [x] Jest testen zijn netjes.
 
