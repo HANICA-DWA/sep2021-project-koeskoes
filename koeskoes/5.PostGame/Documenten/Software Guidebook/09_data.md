@@ -11,45 +11,74 @@ De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op h
     const mongoose = require("mongoose");
 
     const uploadSchema = new mongoose.Schema({
-      nameGifter: {
-        type: String,
-        required: true,
-      },
-      emailGifter: {
-        type: String,
-        required: true,
-      },
-      nameReceiver: {
-        type: String,
-      },
-      emailReceiver: {
-        type: String,
-      },
-      videoName: {
-        type: String,
-        default: undefined,
-        unique: true,
-        sparse: true,
-      },
-      textCode: {
-        type: String,
-        unique: true,
-      },
-      prePrinted: {
-        type: Boolean,
-      },
-      printed: {
-        type: Boolean,
-        required: true,
-      },
-      textCodeSend: {
-        type: Boolean,
-        required: true,
-        default: false,
-      },
-      answerVideo: {
-        type: String,
-      },
+    emailGifter: {
+      type: String,
+      required: true,
+      validate: [
+        validator.isEmail,
+       "Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)",
+      ],
+    },
+    firstNameGifter: {
+      type: String,
+     required: true,
+    },
+    lastNameGifter: {
+     type: String,
+      required: true,
+    },
+    emailReceiver: {
+     type: String,
+     validate: [
+       validator.isEmail,
+       "Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)",
+     ],
+    },
+    firstNameReceiver: {
+     type: String,
+      required: true,
+    },
+    lastNameReceiver: {
+     type: String,
+     required: true,
+    },
+    videoName: {
+     type: String,
+     default: undefined,
+     sparse: true,
+    },
+    textCode: {
+     type: String,
+     unique: true,
+    },
+    prePrinted: {
+     type: Boolean,
+     required: true,
+      default: false,
+    },
+    printed: {
+     type: Boolean,
+     required: true,
+     default: false,
+    },
+    textcodeSent: {
+     type: Boolean,
+     required: true,
+     default: false,
+    },
+    answerVideo: {
+     type: String,
+    },
+    answerText: {
+     type: String,
+     default: "",
+     max: 280,
+    },
+    answerSent: {
+     type: Boolean,
+     required: true,
+     default: false,
+    },
     });
 
 <!--
