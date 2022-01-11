@@ -15,7 +15,7 @@
 - ```Hoofdstuk Data:```         --> eventuele andere data benoemen (mocht deze er zijn)
 - [x] ```Hoofdstuk Data:```         --> wat valideren we wel en niet
 - [x] ```Hoofdstuk Vooruitblik:```  --> een vooruitblik op wat er nog afgemaakt moet worden
-- [ ] maak een architectuur plaatje van de ```cloud database``` oplossing
+- [x] maak een architectuur plaatje van de ```cloud database``` oplossing
 
 
 ## Mongoose Validating
