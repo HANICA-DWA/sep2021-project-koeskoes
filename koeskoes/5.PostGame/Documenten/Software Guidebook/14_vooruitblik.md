@@ -19,7 +19,7 @@ Echter hebben de webshopbeheerders en Giftle meer baat bij een optie om de datab
 
 ### Architectuur werking database in de cloud
 
-> Hier komt architectuurafbeelding van hoe het er voor de websitebeheerder uitziet
+![Cloud infrastructure architecture](assets/infrastructure_architecture/Cloud_infrastructure_architecture.png "Cloud infrastructure architecture")
 
 ## Proces van het meesturen van een QR-code
 
