@@ -11,9 +11,9 @@
 
 ## Software Guidebook
 - [x] ```Hoofdstuk Code:```         --> filteren in tabel gebeurt op front-end (is niet beste oplossing)
-- [ ] ```Hoofdstuk Data:```         --> manier van opslaan videos (hoe video's opslaan)
-- [ ] ```Hoofdstuk Data:```         --> eventuele andere data benoemen (mocht deze er zijn)
-- [ ] ```Hoofdstuk Data:```         --> wat valideren we wel en niet
+- [x] ```Hoofdstuk Data:```         --> manier van opslaan videos (hoe video's opslaan)
+- ```Hoofdstuk Data:```         --> eventuele andere data benoemen (mocht deze er zijn)
+- [x] ```Hoofdstuk Data:```         --> wat valideren we wel en niet
 - [ ] ```Hoofdstuk Vooruitblik:```  --> een vooruitblik op wat er nog afgemaakt moet worden
 - [ ] maak een architectuur plaatje van de ```cloud database``` oplossing
 
