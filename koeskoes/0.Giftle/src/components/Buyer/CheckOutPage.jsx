@@ -81,7 +81,7 @@ function CheckOutPage() {
       return {
         status: "error",
         message:
-          "Vul een geldig e-mailadres van uw zelf in. Een e-mailadres moet op dit formaat lijken: naam@domein.com",
+          "Uw e-mailadres is helaas niet geldig. Een e-mailadres moet op dit formaat lijken: naam@domein.com",
       };
     }
 
@@ -110,7 +110,7 @@ function CheckOutPage() {
       return {
         status: "error",
         message:
-          "Een voornaam van u mag niet leeg zijn. Een voornaam moet minimaal 1 teken bevatten.",
+          "Uw voornaam mag niet leeg zijn. Een voornaam moet minimaal 1 teken bevatten.",
       };
     }
 
@@ -119,7 +119,7 @@ function CheckOutPage() {
       return {
         status: "error",
         message:
-          "De achternaam van u mag niet leeg zijn. Een achternaam moet minimaal 1 teken bevatten.",
+          "Uw achternaam mag niet leeg zijn. Een achternaam moet minimaal 1 teken bevatten.",
       };
     }
 
@@ -127,7 +127,7 @@ function CheckOutPage() {
     if (firstNameBuyer.length > maxLength) {
       return {
         status: "error",
-        message: `De voornaam van u is te lang. De voornaam mag maximaal ${maxLength} karakters lang zijn.`,
+        message: `Uw voornaam is te lang. De voornaam mag maximaal ${maxLength} karakters lang zijn.`,
       };
     }
 
@@ -135,7 +135,7 @@ function CheckOutPage() {
     if (lastNameBuyer.length > maxLength) {
       return {
         status: "error",
-        message: `De achternaam van u is te lang. De achternaam mag maximaal ${maxLength} karakters lang zijn.`,
+        message: `Uw achternaam is te lang. De achternaam mag maximaal ${maxLength} karakters lang zijn.`,
       };
     }
 
