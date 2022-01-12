@@ -120,6 +120,22 @@ EMAILUSERNAME=<Google E-mail>
 EMAILPASSWORD=<Google App Password>
 ```
 
+## Maximum bestandsgrootte
+
+- Navigeer naar de volgende map:
+
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express`
+
+- Maak een `.env` bestand aan als deze nog niet bestaat.
+
+- Voeg in dit bestand de volgende regel toe
+
+```
+MAXUPLOADSIZE=<Bestandsgrootte in bytes>
+```
+
+
+
 ## Runnen van de testen
 
 Om alle testen goed te kunnen runnen moet de mailserver ingesteld zijn en moet deze volledig werken. Ook moet het .env bestand correct ingesteld zijn volgens bovenstaande stappen.
