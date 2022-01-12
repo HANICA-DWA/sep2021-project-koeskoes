@@ -72,7 +72,7 @@ describe("Giftle E2E tests", () => {
       const alert = await pageA.$("div.alert > div");
       let value = await pageA.evaluate((el) => el.textContent, alert);
       expect(value).toBe(
-        "Vul een geldig e-mailadres van uw zelf in. Een e-mailadres moet op dit formaat lijken: naam@domein.com"
+        "Uw e-mailadres is helaas niet geldig. Een e-mailadres moet op dit formaat lijken: naam@domein.com"
       );
 
       // After error message comes happy path again

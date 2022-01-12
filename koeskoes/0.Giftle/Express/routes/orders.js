@@ -146,7 +146,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
       });
     }
 
-    const uploadStatus = await video.mv(uploadPath + video.name);
+    const uploadStatus = await video.mv(uploadPath + finalFileName);
 
     if (uploadStatus && uploadStatus.err) {
       return res.json({ status: "error", message: "File not uploaded" });
@@ -155,7 +155,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
     /**
      * ffprobe HAS to be a callback because this function doesn't return a promise.
      */
-    ffmpeg.ffprobe(uploadPath + video.name, async (err, metadata) => {
+    ffmpeg.ffprobe(uploadPath + finalFileName, async (err, metadata) => {
       let height, duration;
       
       metadata.streams.forEach((stream) => {
@@ -173,7 +173,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
           : null;
 
       if (height !== 1080 && height !== 720) {
-        fs.unlinkSync(uploadPath + video.name);
+        fs.unlinkSync(uploadPath + finalFileName);
 
         return res.json({
           status: "error",
@@ -185,7 +185,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
         (height === 1080 && duration > 80) ||
         (height === 720 && duration > 140)
       ) {
-        fs.unlinkSync(uploadPath + video.name);
+        fs.unlinkSync(uploadPath + finalFileName);
         return res.json({
           status: "error",
           message: `De video die u heeft gekozen is te lang. Selecteer een video met een tijd minder dan ${
@@ -207,7 +207,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
             }
           } catch (e) {}
 
-          uploadRecord.videoName = video.name;
+          uploadRecord.videoName = finalFileName;
           if (req.body.videoDuration) {
             uploadRecord.videoDuration = req.body.videoDuration;
           }
@@ -216,9 +216,9 @@ router.patch("/order/video/:textCode", async (req, res) => {
 
           return res.json(uploadRecord);
         } else {
-          ffmpeg(uploadPath + video.name)
+          ffmpeg(uploadPath + finalFileName)
             .on("end", async () => {
-              fs.unlinkSync(uploadPath + video.name);
+              fs.unlinkSync(uploadPath + finalFileName);
 
               const uploadRecord = await Uploads.findOne({
                 textCode: req.params.textCode,
@@ -230,7 +230,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
                 }
               } catch (e) {}
 
-              uploadRecord.videoName = finalFileName;
+              uploadRecord.videoName = "convert" + finalFileName;
               if (req.body.videoDuration) {
                 uploadRecord.videoDuration = req.body.videoDuration;
               }
@@ -239,7 +239,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
 
               return res.json(uploadRecord);
             })
-            .save(uploadPath + finalFileName);
+            .save(uploadPath + "convert" + finalFileName);
         }
       }
     });
@@ -338,7 +338,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
       });
     }
 
-    const uploadStatus = await video.mv(uploadPath + video.name);
+    const uploadStatus = await video.mv(uploadPath + finalFileName);
 
     if (uploadStatus && uploadStatus.err) {
       return res.json({ status: "error", message: "File not uploaded" });
@@ -347,7 +347,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
     /**
      * ffprobe HAS to be a callback because this function doesn't return a promise.
      */
-    ffmpeg.ffprobe(uploadPath + video.name, async (err, metadata) => {
+    ffmpeg.ffprobe(uploadPath + finalFileName, async (err, metadata) => {
       let height, duration;
 
       console.log(metadata);
@@ -367,7 +367,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
           : null;
 
       if (height !== 1080 && height !== 720) {
-        fs.unlinkSync(uploadPath + video.name);
+        fs.unlinkSync(uploadPath + finalFileName);
 
         return res.json({
           status: "error",
@@ -379,7 +379,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
         (height === 1080 && duration > 80) ||
         (height === 720 && duration > 140)
       ) {
-        fs.unlinkSync(uploadPath + video.name);
+        fs.unlinkSync(uploadPath + finalFileName);
 
         return res.json({
           status: "error",
@@ -402,7 +402,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
             }
           } catch (e) {}
 
-          uploadRecord.answerVideo = video.name;
+          uploadRecord.answerVideo = finalFileName;
           if (req.body.videoDuration) {
             uploadRecord.answerVideoDuration = req.body.videoDuration;
           }
@@ -411,9 +411,9 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 
           return res.json(uploadRecord);
         } else {
-          ffmpeg(uploadPath + video.name)
+          ffmpeg(uploadPath + finalFileName)
             .on("end", async () => {
-              fs.unlinkSync(uploadPath + video.name);
+              fs.unlinkSync(uploadPath + finalFileName);
 
               const uploadRecord = await Uploads.findOne({
                 textCode: req.params.textCode,
@@ -434,7 +434,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 
               return res.json(uploadRecord);
             })
-            .save(uploadPath + finalFileName);
+            .save(uploadPath + "convert" + finalFileName);
         }
       }
     });
