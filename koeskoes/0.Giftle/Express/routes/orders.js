@@ -316,7 +316,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 
   try {
     if (process.env.MAXUPLOADSIZE && video.size > process.env.MAXUPLOADSIZE) {
-      return res.json({ status: "error", message: `Het bestand die u heeft gekozen is te groot, wij staan een maximum van ${fileSizeToStringConverter(process.env.MAXUPLOADSIZE)}` });
+      return res.json({ status: "error", message: `Het bestand die u heeft gekozen is te groot, wij staan een maximum van ${fileSizeToStringConverter(process.env.MAXUPLOADSIZE)} toe.` });
     }
 
     const uploadStatus = await video.mv(uploadPath + video.name);
