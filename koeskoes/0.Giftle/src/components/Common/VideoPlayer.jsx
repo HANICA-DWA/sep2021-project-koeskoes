@@ -50,6 +50,7 @@ const VideoPlayer = (props) => {
     if (loading) {
       return <Spinner />;
     } else {
+      console.log(videoTime);
       return (
         <>
           <PlayerPlayPauseButtons
@@ -57,6 +58,7 @@ const VideoPlayer = (props) => {
             state={videoState}
             setVideoState={setVideoState}
           />
+
           <ProgressBar current={videoWatchedTime} max={videoTime} />
           <TimeComponent time={videoWatchedTime} />
         </>
