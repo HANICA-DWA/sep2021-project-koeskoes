@@ -29,16 +29,19 @@ router.post("/:textCode", async (req, res) => {
       order.textCode
     );
 
-    if (mailInfo.status === 'error') {
+    if (mailInfo.status === "error") {
       order.textcodeSent = false;
-    
+
       await order.save();
     }
 
     return res.json(mailInfo);
   }
 
-  return res.json({status: 'error', message:'Tekstcode is niet verstuurd, probeer het later opnieuw'});
+  return res.json({
+    status: "error",
+    message: "Tekstcode is niet verstuurd, probeer het later opnieuw",
+  });
 });
 
 /**
@@ -96,7 +99,9 @@ router.post("/reaction/text/:textCode", async (req, res) => {
 
   res.send(mailInfo);
 });
-
+/**
+ * This post request will send a mail to the buyer when they received a video reaction.
+ */
 router.post("/reaction/video/:textCode", async (req, res) => {
   const order = await Uploads.findOne({
     textCode: req.params.textCode,
@@ -113,7 +118,9 @@ router.post("/reaction/video/:textCode", async (req, res) => {
 
   res.send(mailInfo);
 });
-
+/**
+ * This patch will change answerSent to true
+ */
 router.patch("/reaction/sent/:textCode", async (req, res) => {
   const order = await Uploads.findOne({
     textCode: req.params.textCode,
