@@ -17,7 +17,7 @@ const VideoPlayer = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [videoTime, setVideoTime] = useState(null);
   const [warningVideoDuration, setWarningVideoDuration] = useState(null);
-  const [isVideoWatchedTime, setIsVideoWatchedTime] = useState(null);
+  const [videoWatchedTime, setVideoWatchedTime] = useState(null);
 
   useEffect(() => {
     if (
@@ -32,8 +32,8 @@ const VideoPlayer = (props) => {
           Message(
             "De video die u heeft geupload is korter dan 2 seconden. Weet u zeker dat dit correct is?",
             () => props.setError(null),
-            "warning",
-          ),
+            "warning"
+          )
         );
       }
     }
@@ -57,8 +57,8 @@ const VideoPlayer = (props) => {
             state={videoState}
             setVideoState={setVideoState}
           />
-          <ProgressBar current={isVideoWatchedTime} max={videoTime} />
-          <TimeComponent time={isVideoWatchedTime} />
+          <ProgressBar current={videoWatchedTime} max={videoTime} />
+          <TimeComponent time={videoWatchedTime} />
         </>
       );
     }
@@ -82,9 +82,9 @@ const VideoPlayer = (props) => {
             progressInterval={100}
             onReady={() => setIsLoading(false)}
             onEnded={() => setVideoState(3)}
-            onDuration={(time) => setVideoTime(time)} // value: Infinity -> miss time elke keer op nul zetten werkt?
+            onDuration={(time) => setVideoTime(time)}
             onProgress={({ playedSeconds }) =>
-              setIsVideoWatchedTime(playedSeconds)
+              setVideoWatchedTime(playedSeconds)
             }
             fullscreen={true}
           />
