@@ -43,7 +43,7 @@ function ReactionVideoPage() {
           videoData={reaction.answerVideo}
           setFullScreen={() =>
             setFullScreen(
-              (prevScreenState) => (prevScreenState = !prevScreenState),
+              (prevScreenState) => (prevScreenState = !prevScreenState)
             )
           }
         />
@@ -60,11 +60,11 @@ function ReactionVideoPage() {
   const textReaction = () => {
     return (
       <>
-        <div className="">
+        <div>
           <h1 className="mb-5">
             Reactie van {reaction.firstNameReceiver} {reaction.lastNameReceiver}
           </h1>
-          <p className="h4 mb-5">{reaction.answerText}</p>
+          <p className="h4">{reaction.answerText}</p>
         </div>
       </>
     );

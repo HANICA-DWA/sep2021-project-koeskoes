@@ -54,12 +54,12 @@ function CheckOutPage() {
 
       const createOrder = await axios.post(
         `http://localhost:4000/api/orders/newOrder`,
-        formData,
+        formData
       );
 
       if (createOrder.data.status === "error") {
         return setError(
-          Message(createOrder.data.message, () => setError(null)),
+          Message(createOrder.data.message, () => setError(null))
         );
       } else {
         return navigate("/checked-out");
