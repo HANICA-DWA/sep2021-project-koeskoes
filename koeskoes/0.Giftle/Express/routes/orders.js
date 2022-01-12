@@ -8,7 +8,9 @@ const mail = new MailModule();
 const fs = require("fs");
 const ffmpeg = require("fluent-ffmpeg");
 const fileExtensionChecker = require("../commonFunctions/fileExtensionChecker");
+const fileSizeToStringConverter = require("../commonFunctions/fileSizeToStringConverter");
 require("../model/uploadModel");
+require("dotenv").config();
 const { sendWebsocketGetReceived } = require("../commonFunctions/webSocketServer");
 
 const Uploads = mongoose.model("UploadSchema");
@@ -133,6 +135,10 @@ router.patch("/order/video/:textCode", async (req, res) => {
   );
 
   try {
+    if (process.env.MAXUPLOADSIZE && video.size > process.env.MAXUPLOADSIZE) {
+      return res.json({ status: "error", message: `Het bestand die u heeft gekozen is te groot, wij staan een maximum van ${fileSizeToStringConverter(process.env.MAXUPLOADSIZE)}` });
+    }
+
     const uploadStatus = await video.mv(uploadPath + video.name);
 
     if (uploadStatus && uploadStatus.err) {
@@ -144,7 +150,6 @@ router.patch("/order/video/:textCode", async (req, res) => {
      */
     ffmpeg.ffprobe(uploadPath + video.name, async (err, metadata) => {
       let height, duration;
-
       metadata.streams.forEach((stream) => {
         if (!height && stream.height) {
           height = stream.height;
@@ -310,6 +315,10 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
   );
 
   try {
+    if (process.env.MAXUPLOADSIZE && video.size > process.env.MAXUPLOADSIZE) {
+      return res.json({ status: "error", message: `Het bestand die u heeft gekozen is te groot, wij staan een maximum van ${fileSizeToStringConverter(process.env.MAXUPLOADSIZE)}` });
+    }
+
     const uploadStatus = await video.mv(uploadPath + video.name);
 
     if (uploadStatus && uploadStatus.err) {
