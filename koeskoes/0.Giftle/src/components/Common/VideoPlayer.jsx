@@ -65,6 +65,7 @@ const VideoPlayer = (props) => {
       );
     }
   };
+  console.log(props.videoData);
 
   return (
     <>
@@ -77,14 +78,14 @@ const VideoPlayer = (props) => {
           <Spinner />
         ) : (
           <ReactPlayer
-            url={props.url + (props.videoData ? props.videoData : null)}
+            url={props.url + (props.videoData ? props.videoData.videoName : null)}
             width="100%"
             height="100%"
             playing={videoState === 2 ? true : false}
             progressInterval={100}
             onReady={() => setIsLoading(false)}
             onEnded={() => setVideoState(3)}
-            onDuration={(time) => setVideoTime(time)}
+            onDuration={(time) => setVideoTime((props.videoData.videoDuration ? props.videoData.videoDuration : time))}
             onProgress={({ playedSeconds }) =>
               setVideoWatchedTime(playedSeconds)
             }

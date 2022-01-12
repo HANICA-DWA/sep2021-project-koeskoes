@@ -157,6 +157,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
      */
     ffmpeg.ffprobe(uploadPath + video.name, async (err, metadata) => {
       let height, duration;
+      
       metadata.streams.forEach((stream) => {
         if (!height && stream.height) {
           height = stream.height;
@@ -207,6 +208,9 @@ router.patch("/order/video/:textCode", async (req, res) => {
           } catch (e) {}
 
           uploadRecord.videoName = video.name;
+          if (req.body.videoDuration) {
+            uploadRecord.videoDuration = req.body.videoDuration;
+          }
 
           await uploadRecord.save();
 
@@ -227,6 +231,9 @@ router.patch("/order/video/:textCode", async (req, res) => {
               } catch (e) {}
 
               uploadRecord.videoName = finalFileName;
+              if (req.body.videoDuration) {
+                uploadRecord.videoDuration = req.body.videoDuration;
+              }
 
               await uploadRecord.save();
 
@@ -329,7 +336,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
           process.env.MAXUPLOADSIZE
         )}`,
       });
-    }4
+    }
 
     const uploadStatus = await video.mv(uploadPath + video.name);
 
@@ -342,6 +349,9 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
      */
     ffmpeg.ffprobe(uploadPath + video.name, async (err, metadata) => {
       let height, duration;
+
+      console.log(metadata);
+
       metadata.streams.forEach((stream) => {
         if (!height && stream.height) {
           height = stream.height;
@@ -393,6 +403,9 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
           } catch (e) {}
 
           uploadRecord.answerVideo = video.name;
+          if (req.body.answerVideoDuration) {
+            uploadRecord.answerVideoDuration = req.body.answerVideoDuration;
+          }
 
           await uploadRecord.save();
 
@@ -413,6 +426,9 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
               } catch (e) {}
 
               uploadRecord.answerVideo = finalFileName;
+              if (req.body.answerVideoDuration) {
+                uploadRecord.answerVideoDuration = req.body.answerVideoDuration;
+              }
 
               await uploadRecord.save();
 

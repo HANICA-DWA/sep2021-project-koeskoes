@@ -178,6 +178,8 @@ const Camera = (props) => {
         const formData = new FormData();
 
         formData.append("video", blob, "recordedVideo.webm");
+        formData.append("videoDuration", currentTime);
+        console.log(formData);
         const uploadResponse = await axios.patch(props.uploadPath, formData);
 
         setRecordedChunks([]);
@@ -197,7 +199,7 @@ const Camera = (props) => {
     };
 
     handleUpload();
-  }, [recordedChunks, textCode, props, dispatch]);
+  }, [recordedChunks, currentTime, textCode, props, dispatch]);
 
   /**
    *
