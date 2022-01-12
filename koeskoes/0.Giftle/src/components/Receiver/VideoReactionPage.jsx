@@ -201,6 +201,7 @@ function VideoReactionPage() {
                       (prevScreenState) => (prevScreenState = !prevScreenState),
                     )
                   }
+                  setError={setError}
                 />
 
                 <div

@@ -11,7 +11,9 @@ const fileExtensionChecker = require("../commonFunctions/fileExtensionChecker");
 const fileSizeToStringConverter = require("../commonFunctions/fileSizeToStringConverter");
 require("../model/uploadModel");
 require("dotenv").config();
-const { sendWebsocketGetReceived } = require("../commonFunctions/webSocketServer");
+const {
+  sendWebsocketGetReceived,
+} = require("../commonFunctions/webSocketServer");
 
 const Uploads = mongoose.model("UploadSchema");
 
@@ -136,7 +138,12 @@ router.patch("/order/video/:textCode", async (req, res) => {
 
   try {
     if (process.env.MAXUPLOADSIZE && video.size > process.env.MAXUPLOADSIZE) {
-      return res.json({ status: "error", message: `Het bestand die u heeft gekozen is te groot, wij staan een maximum van ${fileSizeToStringConverter(process.env.MAXUPLOADSIZE)}` });
+      return res.json({
+        status: "error",
+        message: `Het bestand die u heeft gekozen is te groot, wij staan een maximum van ${fileSizeToStringConverter(
+          process.env.MAXUPLOADSIZE
+        )}`,
+      });
     }
 
     const uploadStatus = await video.mv(uploadPath + video.name);
@@ -316,7 +323,12 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 
   try {
     if (process.env.MAXUPLOADSIZE && video.size > process.env.MAXUPLOADSIZE) {
-      return res.json({ status: "error", message: `Het bestand die u heeft gekozen is te groot, wij staan een maximum van ${fileSizeToStringConverter(process.env.MAXUPLOADSIZE)}` });
+      return res.json({
+        status: "error",
+        message: `Het bestand die u heeft gekozen is te groot, wij staan een maximum van ${fileSizeToStringConverter(
+          process.env.MAXUPLOADSIZE
+        )}`,
+      });
     }
 
     const uploadStatus = await video.mv(uploadPath + video.name);
@@ -427,11 +439,11 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
  */
 
 router.get("/reaction/text/:textCode", async (req, res) => {
-    const order = await Uploads.findOne({
-      textCode: req.params.textCode,
-    }).exec();
+  const order = await Uploads.findOne({
+    textCode: req.params.textCode,
+  }).exec();
 
-    res.json(order.answerText);
+  res.json(order.answerText);
 });
 
 /**

@@ -16,18 +16,18 @@ import Message from "./CreateMessage";
 const VideoPlayer = (props) => {
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [isVideoTime, setIsVideoTime] = useState(null);
+  const [videoTime, setVideoTime] = useState(null);
   const [warningVideoDuration, setWarningVideoDuration] = useState(null);
   const [isVideoWatchedTime, setIsVideoWatchedTime] = useState(null);
 
   useEffect(() => {
     if (
-      isVideoTime < 2 &&
-      isVideoTime !== null &&
-      warningVideoDuration !== isVideoTime &&
+      videoTime < 2 &&
+      videoTime !== null &&
+      warningVideoDuration !== videoTime &&
       props.created
     ) {
-      setWarningVideoDuration(isVideoTime);
+      setWarningVideoDuration(videoTime);
       if (props.setError) {
         props.setError(
           Message(
@@ -38,7 +38,7 @@ const VideoPlayer = (props) => {
         );
       }
     }
-  }, [isVideoTime, warningVideoDuration, props]);
+  }, [videoTime, warningVideoDuration, props]);
 
   /**
    *
@@ -58,7 +58,7 @@ const VideoPlayer = (props) => {
             state={videoState}
             setVideoState={setVideoState}
           />
-          <ProgressBar current={isVideoWatchedTime} max={isVideoTime} />
+          <ProgressBar current={isVideoWatchedTime} max={videoTime} />
           <TimeComponent time={isVideoWatchedTime} />
         </>
       );
@@ -83,7 +83,7 @@ const VideoPlayer = (props) => {
             progressInterval={100}
             onReady={() => setIsLoading(false)}
             onEnded={() => setVideoState(3)}
-            onDuration={(time) => setIsVideoTime(time)}
+            onDuration={(time) => setVideoTime(time)}
             onProgress={({ playedSeconds }) =>
               setIsVideoWatchedTime(playedSeconds)
             }
