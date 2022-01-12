@@ -403,8 +403,8 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
           } catch (e) {}
 
           uploadRecord.answerVideo = video.name;
-          if (req.body.answerVideoDuration) {
-            uploadRecord.answerVideoDuration = req.body.answerVideoDuration;
+          if (req.body.videoDuration) {
+            uploadRecord.answerVideoDuration = req.body.videoDuration;
           }
 
           await uploadRecord.save();
@@ -426,8 +426,8 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
               } catch (e) {}
 
               uploadRecord.answerVideo = finalFileName;
-              if (req.body.answerVideoDuration) {
-                uploadRecord.answerVideoDuration = req.body.answerVideoDuration;
+              if (req.body.videoDuration) {
+                uploadRecord.answerVideoDuration = req.body.videoDuration;
               }
 
               await uploadRecord.save();
