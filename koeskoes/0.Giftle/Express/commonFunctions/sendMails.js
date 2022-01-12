@@ -26,10 +26,11 @@ class MailModule {
   /**
    *
    * @param {string} to
-   * @param {string} receiver
-   * @param {string} buyer
+   * @param {string} firstNameBuyer
+   * @param {string} lastNameBuyer
+   * @param {string} firstNameReceiver
+   * @param {string} lastNameReceiver
    * @param {string} textCode
-   * @returns
    */
   sendTextCode = async (
     to,
@@ -74,9 +75,10 @@ class MailModule {
   /**
    *
    * @param {string} to
-   * @param {string} buyer
-   * @param {string} receiver
-   * @returns
+   * @param {string} firstNameBuyer
+   * @param {string} lastNameBuyer
+   * @param {string} firstNameReceiver
+   * @param {string} lastNameReceiver
    */
   sendReminderVideoWatched = async (
     to,
@@ -117,9 +119,9 @@ class MailModule {
   /**
    *
    * @param {string} to
-   * @param {string} buyer
+   * @param {string} firstNameBuyer
+   * @param {string} lastNameBuyer
    * @param {string} textCode
-   * @returns
    */
   sendReminderUploadVideo = async (
     to,
@@ -152,8 +154,9 @@ class MailModule {
   /**
    *
    * @param {string} to
-   * @param {string} buyer
-   * @returns
+   * @param {string} firstNameBuyer
+   * @param {string} lastNameBuyer
+   * @param {string} textCode
    */
   sendMailOrderPlaced = async (to, firstNameBuyer, lastNameBuyer, textCode) => {
     if (!to) return { status: "error", message: "Mail not included" };
@@ -179,9 +182,11 @@ class MailModule {
   /**
    *
    * @param {string} to
-   * @param {string} buyer
-   * @param {string} receiver
-   * @returns
+   * @param {string} firstNameBuyer
+   * @param {string} lastNameBuyer
+   * @param {string} firstNameReceiver
+   * @param {string} lastNameReceiver
+   * @param {string} textCode
    */
   sendTextReaction = async (
     to,
@@ -226,10 +231,11 @@ class MailModule {
   /**
    *
    * @param {string} to
-   * @param {string} buyer
-   * @param {string} receiver
+   * @param {string} firstNameBuyer
+   * @param {string} lastNameBuyer
+   * @param {string} firstNameReceiver
+   * @param {string} lastNameReceiver
    * @param {string} textCode
-   * @returns
    */
   sendVideoReaction = async (
     to,

@@ -8,7 +8,7 @@ require("../model/uploadModel");
 const Uploads = mongoose.model("UploadSchema");
 
 /**
- * This post request will send a mail to the receiver of a specific order.
+ * This post request will send a mail with a textCode to the receiver of a specific order.
  */
 router.post("/:textCode", async (req, res) => {
   const order = await Uploads.findOne({
@@ -81,7 +81,7 @@ router.post("/notification/video/:textCode/upload", async (req, res) => {
 });
 
 /**
- * This post request will send a mail to the buyer when they received a text reaction.
+ * This post request will send a mail to the buyer when they received a textCode.
  */
 router.post("/reaction/text/:textCode", async (req, res) => {
   const order = await Uploads.findOne({
@@ -99,8 +99,9 @@ router.post("/reaction/text/:textCode", async (req, res) => {
 
   res.send(mailInfo);
 });
+
 /**
- * This post request will send a mail to the buyer when they received a video reaction.
+ * This post request will send a mail to the buyer with a link to the videoReactonPage.
  */
 router.post("/reaction/video/:textCode", async (req, res) => {
   const order = await Uploads.findOne({
@@ -118,8 +119,9 @@ router.post("/reaction/video/:textCode", async (req, res) => {
 
   res.send(mailInfo);
 });
+
 /**
- * This patch will change answerSent to true
+ * This patch request will send a mail to the buyer with a link to the textReactonPage.
  */
 router.patch("/reaction/sent/:textCode", async (req, res) => {
   const order = await Uploads.findOne({

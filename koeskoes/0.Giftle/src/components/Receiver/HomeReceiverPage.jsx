@@ -6,6 +6,7 @@ import { ReactComponent as QRCode } from "../../assets/qr-code.svg";
 import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
 
 /**
+ *
  * Functional component start the watch video proces.
  *
  * @return the front-end for the receiver homepage.

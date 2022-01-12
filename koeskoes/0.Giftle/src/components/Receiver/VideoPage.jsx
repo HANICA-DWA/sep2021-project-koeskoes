@@ -13,6 +13,7 @@ import VideoPlayer from "../Common/VideoPlayer";
 import { useDispatch, useSelector } from "react-redux";
 
 /**
+ *
  * Page showing the video (by textCode) for the receiver
  *
  * @return the front-end for the VideoPage
@@ -26,7 +27,7 @@ function VideoPage() {
   const videoData = useSelector((state) => state.videos.video);
 
   /**
-   * A useEffect to collect all video data from the database using Redux State
+   *  useEffect to collect all video data from the database using Redux State
    */
   useEffect(() => {
     dispatch(getVideo(textCode));
@@ -37,7 +38,6 @@ function VideoPage() {
    * Videoplayer to show the video.
    *
    * @returns video by textCode if fetching from DB succeeds or error message if fetching from DB fails
-   *
    */
   const videoPlayer = () => {
     return (

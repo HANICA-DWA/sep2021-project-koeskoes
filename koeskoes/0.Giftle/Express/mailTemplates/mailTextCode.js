@@ -2,8 +2,10 @@
  * Mail template for the receiver when an order is placed
  * containing the textcode
  *
- * @param {string} receiver
- * @param {string} buyer
+ * @param {string} firstNameBuyer
+ * @param {string} lastNameBuyer
+ * @param {string} firstNameReceiver
+ * @param {string} lastNameReceiver
  * @param {string} textCode
  * @returns Mail preset
  */

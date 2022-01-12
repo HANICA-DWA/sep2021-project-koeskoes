@@ -10,31 +10,31 @@ import PrintOrders from "./PrintOrders";
 import ReceivedOrders from "./ReceivedOrders";
 
 /**
+ *
  * CheckOrdersPage component has a list of orders within a table, for the employee to work with.
  * It has (valuable) data if exists, does have a feature to create a QR-code and has a feature
  * to search for specific data.
  *
  * @return List of mapped orders and QR-code if exists, otherwise returns nothing
- *
  */
 const CheckOrdersPage = () => {
   // Local variables
   const dispatch = useDispatch();
   const totalReceived = useSelector((state) =>
-    state.employee.received.map((received) => received.printed === true)
+    state.employee.received.map((received) => received.printed === true),
   );
   const totalOrders = useSelector((state) =>
-    state.employee.orders.map((order) => order.printed === false)
+    state.employee.orders.map((order) => order.printed === false),
   );
   const orders = useSelector((state) =>
     state.employee.searchParams
       ? state.employee.filteredOrders
-      : state.employee.orders
+      : state.employee.orders,
   );
   const received = useSelector((state) =>
     state.employee.searchParams
       ? state.employee.filteredReceived
-      : state.employee.received
+      : state.employee.received,
   );
   const searchParams = useSelector((state) => state.employee.searchParams);
   const webSocket = useSelector((state) => state.employee.webSocket);
@@ -65,7 +65,7 @@ const CheckOrdersPage = () => {
       };
       ws.onclose = () => {
         dispatch(setWebSocket());
-      }
+      };
     } else {
       dispatch(setWebSocket());
     }

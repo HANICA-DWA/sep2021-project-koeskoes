@@ -1,4 +1,5 @@
 /**
+ *
  * This component has no special functionality.
  * @returns the front-end after an reaction has been send.
  */

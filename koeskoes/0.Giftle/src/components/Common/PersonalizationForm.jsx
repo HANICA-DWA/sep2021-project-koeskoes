@@ -11,7 +11,6 @@ import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
  * React component to rewatch a video.
  *
  * @return the front-end for the personalization page
- *
  */
 function PersonalizationForm(props) {
   const textCode = useSelector((state) => state.orders.textCode);

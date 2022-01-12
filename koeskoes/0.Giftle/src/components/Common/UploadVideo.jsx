@@ -8,6 +8,12 @@ import Spinner from "./Spinner";
 // import SVG as ReactComponent for easier use
 import { ReactComponent as FileUpload } from "../../assets/file-upload.svg";
 
+/**
+ *
+ * React component for video upload.
+ *
+ * @return a component to upload a video
+ */
 const UploadVideo = (props) => {
   const dispatch = useDispatch();
   const [uploadedVideo, setUploadedVideo] = useState(null);
@@ -23,9 +29,10 @@ const UploadVideo = (props) => {
     if (uploadedVideo === null) {
       return props.setError
         ? props.setError(
-            Message("Kies een geldige videoformaat bestand (bijvoorbeeld .mp4 of .mov).", () =>
-              props.setError(null)
-            )
+            Message(
+              "Kies een geldige videoformaat bestand (bijvoorbeeld .mp4 of .mov).",
+              () => props.setError(null),
+            ),
           )
         : null;
     }
@@ -43,7 +50,7 @@ const UploadVideo = (props) => {
       setUploading(false);
       return props.setError
         ? props.setError(
-            Message(uploadResponse.data.message, () => props.setError(null))
+            Message(uploadResponse.data.message, () => props.setError(null)),
           )
         : null;
     } else {

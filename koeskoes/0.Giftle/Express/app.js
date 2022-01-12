@@ -36,12 +36,14 @@ app.use("/*", (req, res, next) => {
 
 const httpServer = http.createServer(app);
 
+// Handshake upgrade for use with websockets
 httpServer.on("upgrade", (req, networkSocket, head) => {
   websocketServer.handleUpgrade(req, networkSocket, head, (newWebSocket) => {
     websocketServer.emit("connection", newWebSocket, req);
   });
 });
 
+// Express server
 const port = process.env.PORT || 4000;
 httpServer.listen(port, () => {
   mongoose.connect(

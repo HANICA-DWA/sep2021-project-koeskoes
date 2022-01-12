@@ -6,14 +6,12 @@ import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
 import { ReactComponent as QRCodeScan } from "../../assets/qr-code-scan.svg";
 
 /**
+ *
  * Functional component for letting the user know that they are about to scan a QR-code
  *
  * @return the front-end for the QR page
  */
-
 function QRPage() {
-  // Creates the state for checking if the button is clicked.
-  // Flips to true if clicked and then navigates to the corresponding url/ component
   const navigate = useNavigate();
 
   return (

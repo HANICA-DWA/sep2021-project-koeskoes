@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NotFoundPage from "./NotFoundPage";
 
-// Buyer components
 // Temp components
 import CheckOutPage from "./Buyer/CheckOutPage";
 import CheckOutPageDone from "./Buyer/CheckOutPageDone";
 import CheckOutPageDoneMagento from "./Buyer/CheckOutPageDoneMagento";
 
-//Perm components
+// Buyer components
 import ControlOrderPage from "./Buyer/ControlOrderPage";
 import NoTextCodePage from "./Buyer/NoTextCodePage";
 import HomeBuyerPage from "./Buyer/HomeBuyerPage";
@@ -32,7 +30,10 @@ import ReactionAlreadySentPage from "./Receiver/ReactionAlreadySentPage";
 // Employee components
 import CheckOrdersPage from "./Employee/CheckOrdersPage";
 
-// Styling
+// Error 404 not found component
+import NotFoundPage from "./NotFoundPage";
+
+// Styling for different theme's
 import "../styles/App.css";
 // import "../styles/themes/Rituals.css";
 // import "../styles/themes/GameMania.css";

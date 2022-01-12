@@ -8,10 +8,9 @@ import Message from "./CreateMessage";
 
 /**
  *
- * React component to rewatch a video before uploading it to the database.
+ * React component for the video player
  *
- * @return the front-end for the RewatchVideo page.
- *
+ * @return video player component
  */
 const VideoPlayer = (props) => {
   const [videoState, setVideoState] = useState(1);
@@ -83,7 +82,7 @@ const VideoPlayer = (props) => {
             progressInterval={100}
             onReady={() => setIsLoading(false)}
             onEnded={() => setVideoState(3)}
-            onDuration={(time) => setVideoTime(time)}
+            onDuration={(time) => setVideoTime(time)} // value: Infinity -> miss time elke keer op nul zetten werkt?
             onProgress={({ playedSeconds }) =>
               setIsVideoWatchedTime(playedSeconds)
             }

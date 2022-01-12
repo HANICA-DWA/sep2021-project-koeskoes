@@ -1,3 +1,9 @@
+/**
+ *
+ * React component to get and set the progress bar.
+ *
+ * @return the progress bar with calculations
+ */
 const ProgressBar = (props) => {
   return (
     <div className="progress">

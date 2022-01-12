@@ -12,6 +12,12 @@ import axios from "axios";
 import { ReactComponent as QRCode } from "../../assets/qr-code.svg";
 import { ReactComponent as Printer } from "../../assets/printer.svg";
 
+/**
+ *
+ * React component for printing orders.
+ *
+ * @return front-end component for PrintOrders
+ */
 const PrintOrders = (props) => {
   const dispatch = useDispatch();
   const orderPageNumber = useSelector(
@@ -22,10 +28,10 @@ const PrintOrders = (props) => {
   );
   const webSocket = useSelector((state) => state.employee.webSocket);
   /**
+   *
    * This function will create the pagination for the table so employees can move through different pages of props.orders.
    *
    * @return Table with orders and pagination if exists
-   *
    */
   const pagination = () => {
     const pages = [];
@@ -75,11 +81,11 @@ const PrintOrders = (props) => {
   };
 
   /**
+   *
    * This function will update the list of orders to a usable list of props.orders.
    * This list can be used in a table that employees use before sending out props.orders.
    *
    * @returns List of mapped orders if exists, otherwise returns nothing
-   *
    */
   const updateOrderList = (items) => {
     if (props.orders.length !== 0) {
@@ -130,11 +136,11 @@ const PrintOrders = (props) => {
   };
 
   /**
+   *
    * This function will create a QR-code with a data string.
    * This QR-code will be downloaded to the local machine.
    *
    * @param {String} orderNumber Puts the orderNumber in the orders URL
-   *
    */
   const createQRCode = async (textCode) => {
     try {
@@ -160,13 +166,13 @@ const PrintOrders = (props) => {
   };
 
   /**
+   *
    * This function makes it that the buttons linked to an order get rendered and updated on click
    * Employees get an extra check with printing, so that they won't missclick
    *
    * @param {Object} order this is the specific order, so that the click interaction and the id go to a specific single order
    * @returns the button that creates a qrcode and prints it if prePrinted is true
    *          else it will return the button that makes clear where to click.
-   *
    */
   const buttonUpdate = (order) => {
     if (order.prePrinted) {

@@ -10,6 +10,7 @@ import { ReactComponent as QRCode } from "../../assets/qr-code.svg";
 import { ReactComponent as PersonVideo } from "../../assets/person-video.svg";
 
 /**
+ *
  * Functional component for receiving a textCode
  *
  * @returns the front-end for the TextCodePage
@@ -28,8 +29,8 @@ const TextCodePage = () => {
         return setError(
           Message(
             "Je hebt geen geldige tekstcode ingevuld. Vul de tekstcode opnieuw in.",
-            () => setError(null)
-          )
+            () => setError(null),
+          ),
         );
       }
 
@@ -38,9 +39,7 @@ const TextCodePage = () => {
   }, [video, navigate, dispatch]);
 
   /**
-   *
    * Red border on input clarification for the error message(s)
-   *
    */
   useEffect(() => {
     const redTextcodeError = document.getElementById("givenTextcode");
@@ -52,18 +51,16 @@ const TextCodePage = () => {
   });
 
   /**
-   *
    * This function will redirect the user to the video page.
    * If the textcode isn't recognized or if the textcode field is empty, an error will be displayed.
-   *
    */
   const checkTextcode = () => {
     if (givenTextCode === null || givenTextCode === "") {
       return setError(
         Message(
           "Voer een tekstcode in. Een tekstcode bestaat uit een 6-cijferige code.",
-          () => setError(null)
-        )
+          () => setError(null),
+        ),
       );
     } else {
       dispatch(getVideo(givenTextCode));

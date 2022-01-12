@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getVideo } from "../../redux/actions/videoActions";
 
-// Reused Common components
+// Re-used common components
 import VideoPlayer from "../Common/VideoPlayer";
 
 /**
+ *
  * Page showing the video (by textCode) for the receiver
  *
  * @return the front-end for the shared video page
@@ -27,7 +28,6 @@ function SharedVideoPage() {
    * Videoplayer to show the video.
    *
    * @returns video by textCode if fetching from DB succeeds or error message if fetching from DB fails
-   *
    */
   const videoPlayer = () => {
     return (
@@ -38,7 +38,7 @@ function SharedVideoPage() {
           videoData={video.videoName}
           setFullScreen={() =>
             setFullScreen(
-              (prevScreenState) => (prevScreenState = !prevScreenState)
+              (prevScreenState) => (prevScreenState = !prevScreenState),
             )
           }
         />

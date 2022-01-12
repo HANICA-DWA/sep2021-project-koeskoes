@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 
 /**
- * This schema is used to store all orders that want to send a Giftle videomessage.
+ * This schema is used to store all orders that has been sended from Giftle
  */
 const uploadSchema = new mongoose.Schema({
   emailGifter: {
@@ -83,10 +83,11 @@ const uploadSchema = new mongoose.Schema({
 
 /**
  * SetCode is a function to set the text code in the database
- * The code is randomly generated and doesn't yet exist.
+ * The code is randomly generated and doesn't yet exist
+ * 
  * NOTE: Don't change this function to an arrow function. Thank you <3
  *
- * @returns database save command
+ * @returns a random textCode that is saved in the database 
  */
 uploadSchema.methods.setCode = async function () {
   const Uploads = mongoose.model("UploadSchema", uploadSchema);
@@ -123,7 +124,7 @@ uploadSchema.methods.setCode = async function () {
 /**
  * SetPrinted is a function to set the printed value to true in the database
  *
- * @returns database save command
+ * @returns printed on true that is saved in the database 
  */
 uploadSchema.methods.setPrinted = async function () {
   this.printed = true;
@@ -134,7 +135,7 @@ uploadSchema.methods.setPrinted = async function () {
 /**
  * SetPrePrinted is a function to set the prePrinted value to true in the database
  *
- * @returns database save command
+ * @returns prePrinted on true that is saved in the database 
  */
 
 uploadSchema.methods.setPrePrinted = async function () {

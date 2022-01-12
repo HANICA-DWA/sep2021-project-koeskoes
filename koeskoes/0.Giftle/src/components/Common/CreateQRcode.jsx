@@ -6,7 +6,6 @@ import logo from "../../assets/favicon.png";
  *
  * @param {String} data Callback to run a function
  * @return QR-code with the correct URL and styling
- *
  */
 const qrcode = (data) => {
   return new QRCodeStyling({

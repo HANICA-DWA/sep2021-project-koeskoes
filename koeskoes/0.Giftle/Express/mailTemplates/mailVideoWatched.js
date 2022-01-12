@@ -2,8 +2,10 @@
  * Mail template for the mail when a video is watched
  * mail will be send to the buyer.
  *
- * @param {string} buyer
- * @param {string} receiver
+ * @param {string} firstNameBuyer
+ * @param {string} lastNameBuyer
+ * @param {string} firstNameReceiver
+ * @param {string} lastNameReceiver
  * @returns Mail preset
  */
 const mailVideoWatched = (firstNameBuyer, lastNameBuyer, firstNameReceiver, lastNameReceiver) => {

@@ -10,6 +10,7 @@ import { ReactComponent as PencilSquare } from "../../assets/pencil-square.svg";
 import { ReactComponent as CameraVideo } from "../../assets/camera-video.svg";
 
 /**
+ *
  * Functional component start the watch video proces.
  *
  * @return the front-end for the receiver homepage.
@@ -21,7 +22,7 @@ function ReactionHomePage() {
   const video = useSelector((state) => state.videos.video);
 
   /**
-   * Useeffect activates when the textCode changes.
+   * useEffect activates when the textCode changes.
    * Converts the textCode in the URL to a textCode in the state.
    */
   useEffect(() => {

@@ -10,6 +10,7 @@ import {
 } from "react-share";
 
 /**
+ *
  * Function with code containing share options
  * Right now the options for sharing are: E-mail, Twitter, Whatsapp, Facebook
  * NOTE: Facebook won't work with localhost, but will work with other domains like www.giftle.nl

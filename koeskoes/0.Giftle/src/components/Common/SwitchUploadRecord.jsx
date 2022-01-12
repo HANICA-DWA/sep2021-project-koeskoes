@@ -2,10 +2,16 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setVideoCreationPath } from "../../redux/actions/uploadActions";
 
-function SwitchUploadRecord(props) {
+/**
+ *
+ * React component to switch between different states
+ *
+ * @return a switch component for upload/record pages
+ */
+function SwitchUploadRecord() {
   const dispatch = useDispatch();
   const videoCreationPath = useSelector(
-    (state) => state.uploads.videoCreationPath
+    (state) => state.uploads.videoCreationPath,
   );
 
   return (
@@ -19,8 +25,8 @@ function SwitchUploadRecord(props) {
           onChange={() =>
             dispatch(
               setVideoCreationPath(
-                videoCreationPath === "upload" ? "record" : "upload"
-              )
+                videoCreationPath === "upload" ? "record" : "upload",
+              ),
             )
           }
         />

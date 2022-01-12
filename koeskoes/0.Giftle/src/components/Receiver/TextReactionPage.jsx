@@ -9,6 +9,12 @@ import { getVideoInOrder } from "../../redux/actions/orderActions";
 // import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
 import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
 
+/**
+ *
+ * Functional component for text reaction page
+ *
+ * @returns the front-end for the TextReactionPage
+ */
 function TextReactionPage() {
   const { textCode } = useParams();
   const navigate = useNavigate();
@@ -19,7 +25,7 @@ function TextReactionPage() {
   const video = useSelector((state) => state.videos.video);
 
   /**
-   * Useeffect activates when the textCode changes.
+   * useEffect activates when the textCode changes.
    * Converts the textCode in the URL to a textCode in the state.
    */
   useEffect(() => {

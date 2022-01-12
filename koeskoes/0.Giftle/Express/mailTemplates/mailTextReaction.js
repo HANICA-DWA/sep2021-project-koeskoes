@@ -1,9 +1,11 @@
 /**
  * Mail template for the buyer when the receiver sent a text reaction
  *
- * @param {string} buyer
- * @param {string} receiver
- * @param {string} textReaction
+ * @param {string} firstNameBuyer
+ * @param {string} lastNameBuyer
+ * @param {string} firstNameReceiver
+ * @param {string} lastNameReceiver
+ * @param {string} textCode
  * @returns Mail preset
  */
 const mailTextReaction = (

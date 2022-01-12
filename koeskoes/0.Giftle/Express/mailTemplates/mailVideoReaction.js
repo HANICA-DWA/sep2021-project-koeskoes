@@ -1,8 +1,10 @@
 /**
  * Mail template for the buyer when the receiver sent a video reaction
  *
- * @param {string} buyer
- * @param {string} receiver
+ * @param {string} firstNameBuyer
+ * @param {string} lastNameBuyer
+ * @param {string} firstNameReceiver
+ * @param {string} lastNameReceiver
  * @param {string} textCode
  * @returns Mail preset
  */

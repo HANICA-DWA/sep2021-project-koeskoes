@@ -9,6 +9,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { ReactComponent as TextCode } from "../../assets/textcode.svg";
 import axios from "axios";
 
+/**
+ *
+ * React component for receiving orders.
+ *
+ * @return front-end component for ReceivedOrders
+ */
 const ReceivedOrders = (props) => {
   const dispatch = useDispatch();
   const receivedPageNumber = useSelector(
@@ -20,10 +26,10 @@ const ReceivedOrders = (props) => {
   const webSocket = useSelector((state) => state.employee.webSocket);
 
   /**
+   *
    * This function will create the pagination for the table so employees can move through different pages of props.orders.
    *
    * @return Table with orders and pagination if exists
-   *
    */
   const pagination = () => {
     const pages = [];
@@ -90,11 +96,11 @@ const ReceivedOrders = (props) => {
   };
 
   /**
+   *
    * This function will update the list of orders to a usable list of props.orders.
    * This list can be used in a table that employees use before sending out props.orders.
    *
    * @returns List of mapped orders if exists, otherwise returns nothing
-   *
    */
   const updateOrderList = () => {
     if (props.orders.length !== 0) {

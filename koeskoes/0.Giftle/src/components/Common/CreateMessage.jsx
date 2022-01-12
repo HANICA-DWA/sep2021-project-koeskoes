@@ -3,12 +3,15 @@
  *
  * @param {String} message Text to describe the message
  * @param cb Callback to run a function
+ * @param color has default value of danger for styling
  * @return Message with text and a callback function
- *
  */
 const Message = (message, cb, color = "danger") => {
   return (
-    <div className={`alert alert-${color} d-flex align-items-center`} role="alert">
+    <div
+      className={`alert alert-${color} d-flex align-items-center`}
+      role="alert"
+    >
       <div>{message}</div>
       <button
         type="button"

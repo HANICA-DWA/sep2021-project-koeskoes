@@ -21,7 +21,6 @@ import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
  * React component to record video's from the webcam.
  *
  * @return the front-end for the recording page
- *
  */
 function CreateVideoPage() {
   const navigate = useNavigate();

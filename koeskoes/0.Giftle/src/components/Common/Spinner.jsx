@@ -1,3 +1,9 @@
+/**
+ *
+ * React component for the spinner loader or text loader.
+ *
+ * @return the spinner in text or icon
+ */
 const Spinner = () => {
   return (
     <>

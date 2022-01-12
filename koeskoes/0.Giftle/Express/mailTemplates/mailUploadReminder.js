@@ -2,7 +2,8 @@
  * Mail template for the mail when a buyer
  * forgets to upload a video (a remindermail)
  *
- * @param {string} buyer
+ * @param {string} firstNameBuyer
+ * @param {string} lastNameBuyer
  * @param {string} textCode
  * @returns Mail preset
  */

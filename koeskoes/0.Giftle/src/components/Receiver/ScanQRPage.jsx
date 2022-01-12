@@ -8,6 +8,7 @@ import Message from "../Common/CreateMessage";
 import { ReactComponent as LeftArrow } from "../../assets/arrow-left.svg";
 
 /**
+ *
  * Functional component for scanning the QR-code
  *
  * @return the front-end for the scanning page
@@ -22,9 +23,7 @@ function ScanQRPage() {
   const [error, setError] = useState(null);
 
   /**
-   *
    * UseEffect to check if  video is available for the webcam module.
-   *
    */
   useEffect(() => {
     const checkCamera = async () => {
@@ -36,16 +35,16 @@ function ScanQRPage() {
           setError(
             Message(
               "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
-              () => setError(null)
-            )
+              () => setError(null),
+            ),
           );
         }
       } catch (e) {
         setError(
           Message(
             "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
-            () => setError(null)
-          )
+            () => setError(null),
+          ),
         );
       }
       setIsDevicesChecked(true);
@@ -65,16 +64,15 @@ function ScanQRPage() {
             delay={delay}
             style={previewStyle}
             onError={Message("Fout met de camera of het scannen!", () =>
-              setError(null)
+              setError(null),
             )}
             onScan={(data) => {
               if (data) {
                 if (!data.includes("localhost")) {
                   setError(
-                    Message(
-                      "De QR-code verwijst niet naar deze site!",
-                      () => setError(null)
-                    )
+                    Message("De QR-code verwijst niet naar deze site!", () =>
+                      setError(null),
+                    ),
                   );
                 } else {
                   window.location.href = data;
