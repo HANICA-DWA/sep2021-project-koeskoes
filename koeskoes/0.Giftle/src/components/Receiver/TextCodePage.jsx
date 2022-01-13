@@ -29,26 +29,14 @@ const TextCodePage = () => {
         return setError(
           Message(
             "Je hebt geen geldige tekstcode ingevuld. Vul de tekstcode opnieuw in.",
-            () => setError(null)
-          )
+            () => setError(null),
+          ),
         );
       }
 
       navigate("/receiver/watchvideo/" + video.textCode);
     }
   }, [video, navigate, dispatch]);
-
-  /**
-   * Red border on input clarification for the error message(s)
-   */
-  useEffect(() => {
-    const redTextcodeError = document.getElementById("givenTextcode");
-    if (givenTextCode === "" || givenTextCode === null) {
-      redTextcodeError.classList.add("errorInput");
-    } else {
-      redTextcodeError.classList.remove("errorInput");
-    }
-  });
 
   /**
    * This function will redirect the user to the video page.
@@ -59,8 +47,8 @@ const TextCodePage = () => {
       return setError(
         Message(
           "Voer een tekstcode in. Een tekstcode bestaat uit een 6-cijferige code.",
-          () => setError(null)
-        )
+          () => setError(null),
+        ),
       );
     } else {
       dispatch(getVideo(givenTextCode));
