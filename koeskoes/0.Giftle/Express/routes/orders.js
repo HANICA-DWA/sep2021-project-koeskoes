@@ -167,6 +167,10 @@ router.patch("/order/video/:textCode", async (req, res) => {
         }
       });
 
+      if (metadata.format.duration !== "N/A") {
+        req.body.videoDuration = metadata.format.duration;
+      }
+
       const format =
         metadata && metadata.format && metadata.format.format_name
           ? metadata.format.format_name
@@ -360,6 +364,10 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
           duration = stream.duration;
         }
       });
+      
+      if (metadata.format.duration !== "N/A") {
+        req.body.videoDuration = metadata.format.duration;
+      }
 
       const format =
         metadata && metadata.format && metadata.format.format_name
