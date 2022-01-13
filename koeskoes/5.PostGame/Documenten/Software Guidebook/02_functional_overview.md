@@ -63,13 +63,3 @@ Een ontvanger kan een tekstreactie sturen naar de persoon die de Giftle gestuurd
 Een ontvanger kan een videoreactie sturen naar de persoon die de Giftle gestuurd heeft. Deze videoreactie wordt via de mail gestuurd en ook opgeslagen in de database.\
 <br />
 <img src="https://github.com/HANICA-DWA/sep2021-project-koeskoes/blob/main/koeskoes/4.Sprint3/Documentatie/Software%20Guidebook/assets/screenshots_giftle/1_video_reaction.png" width="1000"/>
-
-<!--
-Oude tekst
-
-Ten eerste moet het systeem makkelijk gekoppeld kunnen worden aan bestaande webshops. Bovendien moeten er vanuit de browser ook video's geüpload en opgenomen kunnen worden. Ook moeten de QR-codes, die van de plug-in afkomen, gescand kunnen worden en moeten video's bekeken kunnen worden.
-
-Voor het ontwikkelen van het prototype is het belangrijk dat er video's, na een aankoop, opgenomen of geüpload kunnen worden op de website. Ook is het belangrijk dat deze video's teruggekeken kunnen worden door de ontvanger en dat deze video's geopend kunnen worden d.m.v. een QR-code of tekstcode. Tot slot moeten de magazijnmedewerkers, die het cadeau opsturen, de mogelijkheid hebben om deze video's te beheren zodat de correcte QR-code bij het correcte pakketje verpakt wordt.
-
-De belangrijkste gebruikers zijn de koper en de ontvanger van het cadeau. Wegens COVID-19 is het samenkomen een stuk lastiger geworden, wat het sturen van een videoboodschap en het geven van een cadeau een stuk persoonlijker maakt.
--->
