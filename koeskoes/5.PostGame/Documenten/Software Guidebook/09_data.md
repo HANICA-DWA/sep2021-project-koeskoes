@@ -8,77 +8,91 @@ De data wordt opgeslagen in MongoDB onder de databasenaam 'Giftle' en heeft op h
 
 [Wat is een Schema?](https://docs.mongodb.com/realm/schemas/)
 
-    const mongoose = require("mongoose");
-
     const uploadSchema = new mongoose.Schema({
-    emailGifter: {
-      type: String,
-      required: true,
-      validate: [
-        validator.isEmail,
-       "Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)",
-      ],
-    },
-    firstNameGifter: {
-      type: String,
-     required: true,
-    },
-    lastNameGifter: {
-     type: String,
-      required: true,
-    },
-    emailReceiver: {
-     type: String,
-     validate: [
-       validator.isEmail,
-       "Het e-mailadres is niet in het juiste formaat. Gebruik een @ met een domein (b.v. @hotmail.com)",
-     ],
-    },
-    firstNameReceiver: {
-     type: String,
-      required: true,
-    },
-    lastNameReceiver: {
-     type: String,
-     required: true,
-    },
-    videoName: {
-     type: String,
-     default: undefined,
-     sparse: true,
-    },
-    textCode: {
-     type: String,
-     unique: true,
-    },
-    prePrinted: {
-     type: Boolean,
-     required: true,
-      default: false,
-    },
-    printed: {
-     type: Boolean,
-     required: true,
-     default: false,
-    },
-    textcodeSent: {
-     type: Boolean,
-     required: true,
-     default: false,
-    },
-    answerVideo: {
-     type: String,
-    },
-    answerText: {
-     type: String,
-     default: "",
-     max: 280,
-    },
-    answerSent: {
-     type: Boolean,
-     required: true,
-     default: false,
-    },
+      emailGifter: {
+        type: String,
+        required: true,
+        validate: [
+          validator.isEmail,
+          "Het e-mailadres is niet in het juiste formaat. 
+           Gebruik een @ met een domein (b.v. @hotmail.com)",
+        ],
+      },
+      firstNameGifter: {
+        type: String,
+        required: true,
+        max: 300,
+      },
+      lastNameGifter: {
+        type: String,
+        required: true,
+        max: 300,
+      },
+      emailReceiver: {
+        type: String,
+        validate: [
+         validator.isEmail,
+         "Het e-mailadres is niet in het juiste formaat. 
+         Gebruik een @ met een domein (b.v. @hotmail.com)",
+        ],
+      },
+      firstNameReceiver: {
+        type: String,
+        required: true,
+        max: 300,
+      },
+      lastNameReceiver: {
+        type: String,
+        required: true,
+        max: 300,
+      },
+      videoName: {
+        type: String,
+        default: undefined,
+        sparse: true,
+      },
+      videoDuration: {
+        type: String,
+        default: 0,
+        sparse: true,
+      },
+      textCode: {
+        type: String,
+        unique: true,
+        min: 6,
+        max: 6,
+      },
+      prePrinted: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
+      printed: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
+      textcodeSent: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
+      answerVideo: {
+        type: String,
+      },
+      answerVideoDuration: {
+        type: String,
+      },
+      answerText: {
+        type: String,
+        default: "",
+        max: 280,
+      },
+      answerSent: {
+        type: Boolean,
+        required: true,
+        default: false,
+      },
     });
 
 ## Data opslaan
