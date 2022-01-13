@@ -12,7 +12,7 @@ Voor het unit- & integratie testen van de applicatie is er gebruikgemaakt van [j
 Hieronder staan voor developers belangrijke informatie waarmee zij rekening moeten houden. Deze informatie moet uiteindelijk wel aangepast worden, omdat dit niet de juiste manier is om het te doen en dus alleen iets tijdelijks is.
 
 ### Employee tabel filteren
-Bij de url ```/employee/checkorders``` is er een tabel te vinden met alle bestellingen van Giftle. Deze bestellingen worden nu alleen op de frontend aangepast, wat niet de bedoeling is en dus iets tijdelijks is. Dit moet dus verandert worden en hiervoor moet een betere (backend) oplossing voor komen.
+Bij de url ```/employee/checkorders``` is er een tabel te vinden met alle bestellingen van Giftle. Deze bestellingen worden nu alleen op de frontend gefilterd, wat niet de bedoeling is en dus iets tijdelijks is. Dit moet dus verandert worden en hiervoor moet een betere (backend) oplossing voor komen.
 
 <!--
 • Generating/rendering HTML: a short description of an in-house framework that was created for generating HTML, including the major classes and concepts.
