@@ -32,15 +32,4 @@ Er is onderzoek gedaan naar hoe goed een QR-code leesbaar is als deze "gestyled"
 
 Er is onderzoek gedaan naar de beste manier om snel en gemakkelijk te laten zien om van thema te veranderen zonder een backend systeem te hebben. Er waren drie mogelijkheden hiervoor, maar custom CSS was toch het meest eenvoudig om te gebruiken. Daarom hebben wij drie extra thema bestanden, zodat wij kunnen laten zien dat er van thema veranderd kan worden van de plug-in voor de webshops.
 
-<!--
-Intent
 
-The purpose of this section is to simply record the major decisions that have been made, including both the technology choices (e.g. products, frameworks, etc) and the overall architecture (e.g. the structure of the software, architectural style, decomposition, patterns, etc). For example:
-
-• Why did you choose technology or framework “X” over “Y” and “Z”?
-• How did you do this? Product evaluation or proof of concept?
-• Were you forced into making a decision about “X” based upon corporate policy or enterprise architecture strategies?
-• Why did you choose the selected software architecture? What other options did you consider?
-• How do you know that the solution satisfies the major non-functional requirements?
-• etc
--->
