@@ -35,8 +35,4 @@ Voor dit product moeten wij gebruik maken van React-Redux. Hierdoor is onze keuz
 
 Voor dit product moeten wij gebruik maken van Jest. Hierdoor is onze keuze in JavaScript test frameworks gelimiteerd.
 
-<!--
-Intent
 
-Constraints are typically imposed upon you but they aren’t necessarily “bad”, as reducing the number of available options often makes your job designing software easier. This section allows you to explicitly summarise the constraints that you’re working within and the decisions that have already been made for you.
--->
