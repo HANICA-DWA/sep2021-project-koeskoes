@@ -29,8 +29,8 @@ const TextCodePage = () => {
         return setError(
           Message(
             "Je hebt geen geldige tekstcode ingevuld. Vul de tekstcode opnieuw in.",
-            () => setError(null),
-          ),
+            () => setError(null)
+          )
         );
       }
 
@@ -59,8 +59,8 @@ const TextCodePage = () => {
       return setError(
         Message(
           "Voer een tekstcode in. Een tekstcode bestaat uit een 6-cijferige code.",
-          () => setError(null),
-        ),
+          () => setError(null)
+        )
       );
     } else {
       dispatch(getVideo(givenTextCode));

@@ -33,13 +33,13 @@ function VideoReactionPage() {
   const [error, setError] = useState(null);
   const [fullScreen, setFullScreen] = useState(false);
   const reactionCreationPath = useSelector(
-    (state) => state.reaction.reactionCreationPath,
+    (state) => state.reaction.reactionCreationPath
   );
   const reactionUploaded = useSelector(
-    (state) => state.reaction.reactionUploaded,
+    (state) => state.reaction.reactionUploaded
   );
   const reactionUploadVisualState = useSelector(
-    (state) => state.reaction.reactionUploadVisualState,
+    (state) => state.reaction.reactionUploadVisualState
   );
   const reaction = useSelector((state) => state.uploads.reaction);
   const reactionVideo = useSelector((state) => state.videos.video.answerVideo);
@@ -146,8 +146,8 @@ function VideoReactionPage() {
                         setReactionCreationPath(
                           reactionCreationPath === "upload"
                             ? "record"
-                            : "upload",
-                        ),
+                            : "upload"
+                        )
                       );
                     }}
                   />
@@ -204,7 +204,7 @@ function VideoReactionPage() {
                   created={true}
                   setFullScreen={() =>
                     setFullScreen(
-                      (prevScreenState) => (prevScreenState = !prevScreenState),
+                      (prevScreenState) => (prevScreenState = !prevScreenState)
                     )
                   }
                   setError={setError}

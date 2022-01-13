@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const { websocketServer } = require("./commonFunctions/webSocketServer");
 require("./model/uploadModel");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
 // const uploads = mongoose.model("UploadSchema");

@@ -11,7 +11,7 @@ import { setVideoCreationPath } from "../../redux/actions/uploadActions";
 function SwitchUploadRecord() {
   const dispatch = useDispatch();
   const videoCreationPath = useSelector(
-    (state) => state.uploads.videoCreationPath,
+    (state) => state.uploads.videoCreationPath
   );
 
   return (
@@ -25,8 +25,8 @@ function SwitchUploadRecord() {
           onChange={() =>
             dispatch(
               setVideoCreationPath(
-                videoCreationPath === "upload" ? "record" : "upload",
-              ),
+                videoCreationPath === "upload" ? "record" : "upload"
+              )
             )
           }
         />

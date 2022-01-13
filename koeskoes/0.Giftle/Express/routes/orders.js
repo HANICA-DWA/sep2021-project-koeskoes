@@ -157,7 +157,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
      */
     ffmpeg.ffprobe(uploadPath + finalFileName, async (err, metadata) => {
       let height, duration;
-      
+
       metadata.streams.forEach((stream) => {
         if (!height && stream.height) {
           height = stream.height;

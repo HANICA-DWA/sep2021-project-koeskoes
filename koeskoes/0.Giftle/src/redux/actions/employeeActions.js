@@ -9,7 +9,9 @@ export const setOrders = (orders) => {
 
 export const getOrders = () => {
   return async (dispatch) => {
-    const orders = await axios.get("http://localhost:4000/api/orders/all/?printed=false");
+    const orders = await axios.get(
+      "http://localhost:4000/api/orders/all/?printed=false"
+    );
 
     return dispatch(setOrders(orders.data));
   };
@@ -24,7 +26,9 @@ export const setReceived = (orders) => {
 
 export const getReceived = () => {
   return async (dispatch) => {
-    const orders = await axios.get("http://localhost:4000/api/orders/all/?printed=true&textcodeSent=false");
+    const orders = await axios.get(
+      "http://localhost:4000/api/orders/all/?printed=true&textcodeSent=false"
+    );
 
     return dispatch(setReceived(orders.data));
   };
@@ -67,7 +71,7 @@ export const setReceivedPageNumbers = (receivedPageNumbers) => {
 
 export const setWebSocket = () => {
   const port = process.env.PORT || 4000;
-  const serverHostname = `${window.location.hostname}:${port}`
+  const serverHostname = `${window.location.hostname}:${port}`;
   return {
     type: "setWebSocket",
     payload: new WebSocket(`ws://${serverHostname}`),

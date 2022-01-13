@@ -134,8 +134,7 @@ class MailModule {
       return { status: "error", message: "Buyer firstname not included" };
     if (!lastNameBuyer)
       return { status: "error", message: "Buyer lastname not included" };
-    if (!textCode)
-      return { status: "error", message: "Textcode not included" };
+    if (!textCode) return { status: "error", message: "Textcode not included" };
 
     try {
       const mailInfo = await this.transport.sendMail({
@@ -205,8 +204,7 @@ class MailModule {
       return { status: "error", message: "Firstname receiver not included" };
     if (!lastNameReceiver)
       return { status: "error", message: "Lastname receiver not included" };
-    if (!textCode)
-      return { status: "error", message: "Textcode not included" };
+    if (!textCode) return { status: "error", message: "Textcode not included" };
 
     try {
       const mailInfo = await this.transport.sendMail({

@@ -17,7 +17,7 @@ const composeEnhancers =
   (typeof window !== "undefined" &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   Redux.compose;
-  
+
 export const theStore = Redux.createStore(
   mainReducer,
   composeEnhancers(Redux.applyMiddleware(logger, thunkMiddleware))

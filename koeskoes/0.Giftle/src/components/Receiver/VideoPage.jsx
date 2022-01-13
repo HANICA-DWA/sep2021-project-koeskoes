@@ -52,7 +52,7 @@ function VideoPage() {
           videoData={videoData}
           setFullScreen={() =>
             setFullScreen(
-              (prevScreenState) => (prevScreenState = !prevScreenState),
+              (prevScreenState) => (prevScreenState = !prevScreenState)
             )
           }
         />

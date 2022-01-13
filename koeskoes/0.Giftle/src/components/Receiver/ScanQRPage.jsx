@@ -35,16 +35,16 @@ function ScanQRPage() {
           setError(
             Message(
               "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
-              () => setError(null),
-            ),
+              () => setError(null)
+            )
           );
         }
       } catch (e) {
         setError(
           Message(
             "Er is geen webcam gevonden. Controleer of er een webcam aangesloten is.",
-            () => setError(null),
-          ),
+            () => setError(null)
+          )
         );
       }
       setIsDevicesChecked(true);
@@ -64,15 +64,15 @@ function ScanQRPage() {
             delay={delay}
             style={previewStyle}
             onError={Message("Fout met de camera of het scannen!", () =>
-              setError(null),
+              setError(null)
             )}
             onScan={(data) => {
               if (data) {
                 if (!data.includes("localhost")) {
                   setError(
                     Message("De QR-code verwijst niet naar deze site!", () =>
-                      setError(null),
-                    ),
+                      setError(null)
+                    )
                   );
                 } else {
                   window.location.href = data;

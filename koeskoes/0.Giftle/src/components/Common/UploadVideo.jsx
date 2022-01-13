@@ -31,8 +31,8 @@ const UploadVideo = (props) => {
         ? props.setError(
             Message(
               "Kies een geldige videoformaat bestand (bijvoorbeeld .mp4 of .mov).",
-              () => props.setError(null),
-            ),
+              () => props.setError(null)
+            )
           )
         : null;
     }
@@ -50,7 +50,7 @@ const UploadVideo = (props) => {
       setUploading(false);
       return props.setError
         ? props.setError(
-            Message(uploadResponse.data.message, () => props.setError(null)),
+            Message(uploadResponse.data.message, () => props.setError(null))
           )
         : null;
     } else {

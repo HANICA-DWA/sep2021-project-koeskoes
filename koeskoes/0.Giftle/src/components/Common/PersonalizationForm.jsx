@@ -15,19 +15,19 @@ import { ReactComponent as RightArrow } from "../../assets/arrow-right.svg";
 function PersonalizationForm(props) {
   const textCode = useSelector((state) => state.orders.textCode);
   const firstNameAlreadyReceived = useSelector(
-    (state) => state.videos.video.firstNameReceiver,
+    (state) => state.videos.video.firstNameReceiver
   );
   const lastNameAlreadyReceived = useSelector(
-    (state) => state.videos.video.lastNameReceiver,
+    (state) => state.videos.video.lastNameReceiver
   );
   const emailAlreadyReceived = useSelector(
-    (state) => state.videos.video.emailReceiver,
+    (state) => state.videos.video.emailReceiver
   );
   const [firstNameReceiver, setFirstNameReceiver] = useState(
-    firstNameAlreadyReceived,
+    firstNameAlreadyReceived
   );
   const [lastNameReceiver, setLastNameReceiver] = useState(
-    lastNameAlreadyReceived,
+    lastNameAlreadyReceived
   );
   const [emailReceiver, setEmailReceiver] = useState(emailAlreadyReceived);
 
@@ -40,7 +40,7 @@ function PersonalizationForm(props) {
     if (validatedInputs.status === "error") {
       return props.setError
         ? props.setError(
-            Message(validatedInputs.message, () => props.setError(null)),
+            Message(validatedInputs.message, () => props.setError(null))
           )
         : null;
     }
@@ -53,13 +53,13 @@ function PersonalizationForm(props) {
 
     const uploadResponse = await axios.patch(
       `http://localhost:4000/api/orders/new/` + textCode,
-      formData,
+      formData
     );
 
     if (uploadResponse.data.status === "error") {
       return props.setError
         ? props.setError(
-            Message(uploadResponse.data.message, () => props.setError(null)),
+            Message(uploadResponse.data.message, () => props.setError(null))
           )
         : null;
     } else {

@@ -9,7 +9,9 @@ export const setVideo = (video) => {
 
 export const getVideo = (textCode) => {
   return async (dispatch) => {
-    const video = await axios.get("http://localhost:4000/api/videos/" + textCode);
+    const video = await axios.get(
+      "http://localhost:4000/api/videos/" + textCode
+    );
 
     return dispatch(setVideo(video.data));
   };
@@ -17,7 +19,7 @@ export const getVideo = (textCode) => {
 
 export const setVideoWatched = () => {
   return {
-    type: "setVideoWatched"
+    type: "setVideoWatched",
   };
 };
 
@@ -37,7 +39,9 @@ export const setSelectedRecordingQuality = (cameraQuality) => {
 
 export const sendVideoWatchedMail = (textCode) => {
   return (dispatch) => {
-    axios.post(`http://localhost:4000/api/mails/notification/video/${textCode}/watched`);
+    axios.post(
+      `http://localhost:4000/api/mails/notification/video/${textCode}/watched`
+    );
 
     return dispatch(setVideoWatched());
   };

@@ -1,4 +1,4 @@
-const fileExtensionChecker = require('./fileExtensionChecker');
+const fileExtensionChecker = require("./fileExtensionChecker");
 
 /**
  *
@@ -8,11 +8,17 @@ const fileExtensionChecker = require('./fileExtensionChecker');
  * @param {string} random random string
  * @returns the final filename and the upload path
  */
-const generateRandomFileName = (originalFileName, random, finalExtension = "mp4") => {
+const generateRandomFileName = (
+  originalFileName,
+  random,
+  finalExtension = "mp4"
+) => {
   const originalFileNameArray = originalFileName.split(".");
   const extension = originalFileNameArray.pop();
   const fileNameWithoutExtension = originalFileNameArray.join(".");
-  const finalFileName = `${fileNameWithoutExtension}${random}.${(fileExtensionChecker(extension) ? extension : finalExtension)}`;
+  const finalFileName = `${fileNameWithoutExtension}${random}.${
+    fileExtensionChecker(extension) ? extension : finalExtension
+  }`;
   const uploadPath = "videos/";
 
   return { finalFileName, uploadPath };

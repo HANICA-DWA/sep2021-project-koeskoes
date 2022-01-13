@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { setVideo } from './videoActions';
+import axios from "axios";
+import { setVideo } from "./videoActions";
 
 export const setTextCode = (textCode) => {
   return {
@@ -13,7 +13,7 @@ export const getVideoInOrder = (textCode) => {
     const videoExists = await axios.get(
       "http://localhost:4000/api/videos/" + textCode
     );
-  
+
     if (!videoExists.data.status) {
       dispatch(setVideo(videoExists.data));
       dispatch(setTextCode(textCode));

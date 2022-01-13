@@ -21,20 +21,20 @@ const CheckOrdersPage = () => {
   // Local variables
   const dispatch = useDispatch();
   const totalReceived = useSelector((state) =>
-    state.employee.received.map((received) => received.printed === true),
+    state.employee.received.map((received) => received.printed === true)
   );
   const totalOrders = useSelector((state) =>
-    state.employee.orders.map((order) => order.printed === false),
+    state.employee.orders.map((order) => order.printed === false)
   );
   const orders = useSelector((state) =>
     state.employee.searchParams
       ? state.employee.filteredOrders
-      : state.employee.orders,
+      : state.employee.orders
   );
   const received = useSelector((state) =>
     state.employee.searchParams
       ? state.employee.filteredReceived
-      : state.employee.received,
+      : state.employee.received
   );
   const searchParams = useSelector((state) => state.employee.searchParams);
   const webSocket = useSelector((state) => state.employee.webSocket);

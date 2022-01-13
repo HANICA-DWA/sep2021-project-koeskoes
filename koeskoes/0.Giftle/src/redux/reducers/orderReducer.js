@@ -1,5 +1,5 @@
 const initialOrderState = {
-  textCode: '',
+  textCode: "",
 };
 
 export function orderReducer(state = initialOrderState, action) {
