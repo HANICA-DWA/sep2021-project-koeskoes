@@ -43,9 +43,11 @@ const VideoPlayer = (props) => {
   }, [videoTime, warningVideoDuration, props]);
 
   useEffect(() => {
+    console.log(props, videoWatchedTime, videoTime);
     if (!props.created) {
-      if (props.videoName === props.videoData.answerVideo) {
-        if (videoWatchedTime === Math.floor(videoTime / 2)) {
+      if (props.videoName === props.videoData.videoName) {
+        if (videoWatchedTime === Math.floor(parseInt(videoTime) / 2)) {
+          console.log('hi');
           dispatch(sendVideoWatchedMail(props.videoData.textCode));
         }
       }
