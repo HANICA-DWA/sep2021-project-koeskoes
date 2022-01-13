@@ -4,7 +4,7 @@
 
 * Beschouw alle E2E tests ook als US voor de review
 * Presentatie is een review, een code review en cijfer bespreken
-- [ ] check alle UseEffects() op code die er niet in hoort te staan
+- [x] check alle UseEffects() op code die er niet in hoort te staan
 
 ## Overdracht
 - [x] aanpassen van URL tesktreactie
