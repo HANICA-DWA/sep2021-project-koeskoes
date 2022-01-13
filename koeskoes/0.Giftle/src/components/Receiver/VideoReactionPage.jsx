@@ -42,7 +42,7 @@ function VideoReactionPage() {
     (state) => state.reaction.reactionUploadVisualState
   );
   const reaction = useSelector((state) => state.uploads.reaction);
-  const reactionVideo = useSelector((state) => state.videos.video.answerVideo);
+  const reactionVideo = useSelector((state) => state.videos.video);
   const video = useSelector((state) => state.videos.video);
 
   /**
@@ -77,7 +77,7 @@ function VideoReactionPage() {
    * These useEffects are used for correctly uploading the videofile.
    */
   useEffect(() => {
-    if (reactionVideo !== "" && reactionVideo !== undefined) {
+    if (reactionVideo.answerVideo !== "" && reactionVideo.answerVideo !== undefined) {
       dispatch(setReactionUploaded());
       dispatch(changeReactionUploadVisualState(2));
     }
@@ -201,6 +201,8 @@ function VideoReactionPage() {
                   title="Video terugkijken"
                   url={"http://localhost:4000/api/videos/video/"}
                   videoData={reactionVideo}
+                  videoName={reactionVideo.answerVideo}
+                  videoDuration={reactionVideo.answerVideoDuration}
                   created={true}
                   setFullScreen={() =>
                     setFullScreen(

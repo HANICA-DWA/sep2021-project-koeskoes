@@ -5,6 +5,8 @@ import ProgressBar from "./ProgressBar";
 import TimeComponent from "./TimerComponent";
 import PlayerPlayPauseButtons from "./PlayerPlayPauseButtons";
 import Message from "./CreateMessage";
+import { useDispatch } from "react-redux";
+import { sendVideoWatchedMail } from "../../redux/actions/videoActions";
 
 /**
  *
@@ -13,6 +15,7 @@ import Message from "./CreateMessage";
  * @return video player component
  */
 const VideoPlayer = (props) => {
+  const dispatch = useDispatch();
   const [videoState, setVideoState] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [videoTime, setVideoTime] = useState(null);
@@ -39,6 +42,16 @@ const VideoPlayer = (props) => {
     }
   }, [videoTime, warningVideoDuration, props]);
 
+  useEffect(() => {
+    if (!props.created) {
+      if (props.videoName === props.videoData.answerVideo) {
+        if (videoWatchedTime === Math.floor(videoTime / 2)) {
+          dispatch(sendVideoWatchedMail(props.videoData.textCode));
+        }
+      }
+    }
+  }, [videoWatchedTime, videoTime, props, dispatch]);
+
   /**
    *
    * If video is still loading it will render an spinner icon or text.
@@ -50,7 +63,6 @@ const VideoPlayer = (props) => {
     if (loading) {
       return <Spinner />;
     } else {
-      console.log(videoTime);
       return (
         <>
           <PlayerPlayPauseButtons
@@ -65,7 +77,6 @@ const VideoPlayer = (props) => {
       );
     }
   };
-  console.log(props.videoData);
 
   return (
     <>
@@ -74,28 +85,20 @@ const VideoPlayer = (props) => {
         <hr />
       </div>
       <div className="mb-5 rewatchVideoPlayer">
-        {props.videoData === null ? (
+        {!props.videoData ? (
           <Spinner />
         ) : (
           <ReactPlayer
-            url={
-              props.url + (props.videoData ? props.videoData.videoName : null)
-            }
+            url={props.url + (props.videoName ? props.videoName : null)}
             width="100%"
             height="100%"
             playing={videoState === 2 ? true : false}
             progressInterval={100}
             onReady={() => setIsLoading(false)}
             onEnded={() => setVideoState(3)}
-            onDuration={(time) =>
-              setVideoTime(
-                props.videoData.videoDuration
-                  ? props.videoData.videoDuration
-                  : time
-              )
-            }
+            onDuration={(time) => setVideoTime((props.videoDuration ? props.videoDuration : time))}
             onProgress={({ playedSeconds }) =>
-              setVideoWatchedTime(playedSeconds)
+              setVideoWatchedTime(Math.round(playedSeconds))
             }
             fullscreen={true}
           />

@@ -40,7 +40,9 @@ function ReactionVideoPage() {
         <VideoPlayer
           title={`Videoreactie van ${reaction.firstNameReceiver} ${reaction.lastNameReceiver}`}
           url="http://localhost:4000/api/videos/video/"
-          videoData={reaction.answerVideo}
+          videoData={reaction}
+          videoName={reaction.answerVideo}
+          videoDuration={reaction.answerVideoDuration}
           setFullScreen={() =>
             setFullScreen(
               (prevScreenState) => (prevScreenState = !prevScreenState)

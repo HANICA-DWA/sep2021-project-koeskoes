@@ -169,6 +169,8 @@ function CreateVideoPage() {
                 title="Video terugkijken en geluid controleren"
                 url={"http://localhost:4000/api/videos/video/"}
                 videoData={video}
+                videoName={video.videoName}
+                videoDuration={video.videoDuration}
                 created={true}
                 setFullScreen={() =>
                   setFullScreen(

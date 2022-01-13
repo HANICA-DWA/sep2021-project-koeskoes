@@ -50,6 +50,8 @@ function VideoPage() {
           }`}
           url="http://localhost:4000/api/videos/video/"
           videoData={videoData}
+          videoName={videoData.videoName}
+          videoDuration={videoData.videoDuration}
           setFullScreen={() =>
             setFullScreen(
               (prevScreenState) => (prevScreenState = !prevScreenState)

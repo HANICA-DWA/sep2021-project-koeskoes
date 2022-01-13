@@ -209,7 +209,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
 
           uploadRecord.videoName = finalFileName;
           if (req.body.videoDuration) {
-            uploadRecord.videoDuration = req.body.videoDuration;
+            uploadRecord.videoDuration = Math.round(req.body.videoDuration);
           }
 
           await uploadRecord.save();
@@ -232,7 +232,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
 
               uploadRecord.videoName = "convert" + finalFileName;
               if (req.body.videoDuration) {
-                uploadRecord.videoDuration = req.body.videoDuration;
+                uploadRecord.videoDuration = Math.round(req.body.videoDuration);
               }
 
               await uploadRecord.save();
@@ -404,7 +404,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 
           uploadRecord.answerVideo = finalFileName;
           if (req.body.videoDuration) {
-            uploadRecord.answerVideoDuration = req.body.videoDuration;
+            uploadRecord.answerVideoDuration = Math.round(req.body.videoDuration);
           }
 
           await uploadRecord.save();
@@ -427,7 +427,7 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 
               uploadRecord.answerVideo = finalFileName;
               if (req.body.videoDuration) {
-                uploadRecord.answerVideoDuration = req.body.videoDuration;
+                uploadRecord.answerVideoDuration = Math.round(req.body.videoDuration);
               }
 
               await uploadRecord.save();
