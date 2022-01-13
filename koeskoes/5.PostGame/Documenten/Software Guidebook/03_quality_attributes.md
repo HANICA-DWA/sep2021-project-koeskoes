@@ -77,15 +77,3 @@ Op dit moment hebben wij hier nog geen rekening mee gehouden, maar het is belang
 
 Hier houden wij ons niet mee bezig.
 
-<!--
-Intent
-
-This section is about summarising the key quality attributes and should answer the following types of questions:
-
-* Is there a clear understanding of the quality attributes that the architecture must satisfy?
-* Are the quality attributes SMART (specific, measurable, achievable, relevant and timely)?
-* Have quality attributes that are usually taken for granted been explicitly marked as out of scope if they are not needed? (b.v. “user interface elements will only be presented in English” to indicate that multi-language support is not explicitly catered for)
-* Are any of the quality attributes unrealistic? (b.v. true 24x7 availability is typically very costly to implement inside many organisations)
-
-In addition, if any of the quality attributes are deemed as “architecturally significant” and therefore influence the architecture, why not make a note of them so that you can refer back to them later in the document.
--->
