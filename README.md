@@ -156,22 +156,9 @@ npm test
 
 - Navigeer naar de volgende map:
 
-`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/E2E/puppeteer/`
-
-- Plaats in deze map een `.webm` bestand naar keuze met onderstaande specificaties en geef deze de naam `testFile1`.
-
-```
-Resolutie: 720p of 1080p
-Tijd:
-    720p: maximaal 2 minuten en 20 seconden
-    1080p: maximaal 1 minuut en 20 seconden
-```
-
-- Navigeer naar de volgende map:
-
 `/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/`
 
-- Voer de volgende commando's uit:
+- Voer het volgende commando uit:
 
 ```
 node ./Express/seed.js
