@@ -80,7 +80,7 @@ const mailTextCode = (firstNameBuyer, lastNameBuyer, firstNameReceiver, lastName
           <p>Werkt de knop niet? Dan kun je onze pagina ook vinden door op deze link te klikken:</p>
           <a href="http://localhost:3000/receiver/watchvideo/${textCode}" class="link">https://www.giftle.nl/receiver/watchvideo/${textCode}</a>
           <p>of ga naar de volgende link:</p>
-          <a href="http://localhost:3000/receiver/textcode" class="link">http://localhost:3000/receiver/textcode</a>
+          <a href="http://localhost:3000/receiver/textcode" class="link">https://www.giftle.nl/receiver/textcode</a>
         </div>
         <div>
           <p>Met vriendelijke groet,</p>

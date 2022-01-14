@@ -62,12 +62,10 @@ function ReactionVideoPage() {
   const textReaction = () => {
     return (
       <>
-        <div>
-          <h1 className="mb-5">
+          <h1 className="my-3">
             Reactie van {reaction.firstNameReceiver} {reaction.lastNameReceiver}
           </h1>
-          <p className="h4 pb-4">{reaction.answerText}</p>
-        </div>
+          <p className="h4 pt-4 pb-3">{reaction.answerText}</p>
       </>
     );
   };
@@ -87,7 +85,7 @@ function ReactionVideoPage() {
   } else if (reaction.answerText !== "" && reaction.answerText !== "null") {
     return (
       <div className="vertical-center colored-background">
-        <div className="container container-w50 container-w80 text-center rounded bg-light">
+        <div className="container text-center rounded bg-light">
           {textReaction()}
         </div>
       </div>

@@ -70,10 +70,9 @@ export const setReceivedPageNumbers = (receivedPageNumbers) => {
 };
 
 export const setWebSocket = () => {
-  const port = process.env.PORT || 4000;
-  const serverHostname = `${window.location.hostname}:${port}`;
+  const serverHostname = `${window.location.hostname}`;
   return {
     type: "setWebSocket",
-    payload: new WebSocket(`ws://${serverHostname}`),
+    payload: new WebSocket(`wss://${serverHostname}`),
   };
 };

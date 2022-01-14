@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5c2d2fcb.chunk.css",
+    "main.js": "/static/js/main.47e6d889.chunk.js",
+    "main.js.map": "/static/js/main.47e6d889.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.05930740.js",
+    "runtime-main.js.map": "/static/js/runtime-main.05930740.js.map",
+    "static/css/2.383c0125.chunk.css": "/static/css/2.383c0125.chunk.css",
+    "static/js/2.f2cc47bd.chunk.js": "/static/js/2.f2cc47bd.chunk.js",
+    "static/js/2.f2cc47bd.chunk.js.map": "/static/js/2.f2cc47bd.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.383c0125.chunk.css.map": "/static/css/2.383c0125.chunk.css.map",
+    "static/css/main.5c2d2fcb.chunk.css.map": "/static/css/main.5c2d2fcb.chunk.css.map",
+    "static/js/2.f2cc47bd.chunk.js.LICENSE.txt": "/static/js/2.f2cc47bd.chunk.js.LICENSE.txt",
+    "static/media/arrow-left.83aa775a.svg": "/static/media/arrow-left.83aa775a.svg",
+    "static/media/arrow-right.73edd4dd.svg": "/static/media/arrow-right.73edd4dd.svg",
+    "static/media/camera-video.5ab1d8ce.svg": "/static/media/camera-video.5ab1d8ce.svg",
+    "static/media/file-upload.c82b465f.svg": "/static/media/file-upload.c82b465f.svg",
+    "static/media/fullscreen.a3af9e92.svg": "/static/media/fullscreen.a3af9e92.svg",
+    "static/media/pause.f511f01f.svg": "/static/media/pause.f511f01f.svg",
+    "static/media/pencil-square.75d078b5.svg": "/static/media/pencil-square.75d078b5.svg",
+    "static/media/person-video.44f8a07c.svg": "/static/media/person-video.44f8a07c.svg",
+    "static/media/play-circle.af4c6fc2.svg": "/static/media/play-circle.af4c6fc2.svg",
+    "static/media/printer.55876064.svg": "/static/media/printer.55876064.svg",
+    "static/media/qr-code-scan.b99862ec.svg": "/static/media/qr-code-scan.b99862ec.svg",
+    "static/media/qr-code.979c0843.svg": "/static/media/qr-code.979c0843.svg",
+    "static/media/rec-button.ba50456f.svg": "/static/media/rec-button.ba50456f.svg",
+    "static/media/record-circle.518d93bc.svg": "/static/media/record-circle.518d93bc.svg",
+    "static/media/replay.2216a0a8.svg": "/static/media/replay.2216a0a8.svg",
+    "static/media/rugtas.478aed49.png": "/static/media/rugtas.478aed49.png",
+    "static/media/share-fill.6eb8501a.svg": "/static/media/share-fill.6eb8501a.svg",
+    "static/media/socks.eeeb1607.png": "/static/media/socks.eeeb1607.png",
+    "static/media/textcode.a3406d9f.svg": "/static/media/textcode.a3406d9f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.05930740.js",
+    "static/css/2.383c0125.chunk.css",
+    "static/js/2.f2cc47bd.chunk.js",
+    "static/css/main.5c2d2fcb.chunk.css",
+    "static/js/main.47e6d889.chunk.js"
+  ]
+}

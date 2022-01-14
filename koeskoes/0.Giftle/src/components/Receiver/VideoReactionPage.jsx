@@ -236,18 +236,6 @@ function VideoReactionPage() {
             )}
             {reactionUploadVisualState === 1 ? (
               <>
-                {/* <div className="row">
-                      <div className="col-4">
-                        <button
-                          className="btn btn-primary"
-                          onClick={() =>
-                            navigate(`/receiver/watchvideo/` + textCode)
-                          }
-                        >
-                          {<LeftArrow />}&nbsp; Bekijk video opnieuw
-                        </button>
-                      </div>
-                    </div> */}
                 <p className="mt-4">
                   Door een video{" "}
                   {reactionCreationPath === "upload"
