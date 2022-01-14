@@ -33,7 +33,7 @@ function SharedVideoPage() {
     return (
       <>
         <VideoPlayer
-          title={`Videoboodschap voor ${video.nameReceiver}`}
+          title={`Videoboodschap voor ${video.firstNameReceiver} ${video.lastNameReceiver}`}
           url="http://localhost:4000/api/videos/video/"
           videoData={video.videoName}
           setFullScreen={() =>
