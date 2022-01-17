@@ -13,6 +13,6 @@ Jordi: Beginnen met het gesprek + afgesproken user stories en taken benoemen
 - Afsluiting
 
 ## Sprint review
-Hieronder staan items van de sprint review die voor in de toekomst aangepast moeten worden. Deze moeten nog in het software guidebook gezet worden, zodat het volgende team hier weer verder mee kan.
+Hieronder staat de notulen van de sprint review die voor in de toekomst handig kan zijn voor eventuele volgende teams. De notulen items moeten nog in het software guidebook gezet worden, zodat het volgende team hier weer verder mee kan.
 
 ### Notulen
