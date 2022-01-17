@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const MailModule = require("../commonFunctions/sendMails");
 const mail = new MailModule();
 const fs = require("fs");
+const path = require("path");
 const ffmpeg = require("fluent-ffmpeg");
 const fileExtensionChecker = require("../commonFunctions/fileExtensionChecker");
 const fileSizeToStringConverter = require("../commonFunctions/fileSizeToStringConverter");
@@ -128,7 +129,7 @@ router.patch("/order/video/:textCode", async (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.json({ status: "error", message: "No file has been uploaded" });
   }
-
+  
   const video = req.files.video;
 
   const { finalFileName, uploadPath } = generateRandomFileName(
@@ -146,7 +147,8 @@ router.patch("/order/video/:textCode", async (req, res) => {
       });
     }
 
-    const uploadStatus = await video.mv(uploadPath + finalFileName);
+    const uploadStatus = await video.mv(path.join(uploadPath, finalFileName));
+    console.log(path.join(uploadPath, finalFileName))
 
     if (uploadStatus && uploadStatus.err) {
       return res.json({ status: "error", message: "File not uploaded" });

@@ -70,9 +70,9 @@ export const setReceivedPageNumbers = (receivedPageNumbers) => {
 };
 
 export const setWebSocket = () => {
-  const serverHostname = `${window.location.hostname}`;
+  const serverHostname = `${window.location.hostname}:4000`;
   return {
     type: "setWebSocket",
-    payload: new WebSocket(`wss://${serverHostname}`),
+    payload: new WebSocket(`ws://${serverHostname}`),
   };
 };
