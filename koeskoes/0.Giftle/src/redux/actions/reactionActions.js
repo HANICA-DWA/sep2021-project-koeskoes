@@ -28,20 +28,10 @@ export const setReaction = (reaction) => {
   };
 };
 
-export const getVideoReaction = (textCode) => {
+export const getReaction = (textCode) => {
   return async (dispatch) => {
     const reaction = await axios.get(
-      "http://localhost:4000/api/videos/" + textCode
-    );
-
-    return dispatch(setReaction(reaction.data));
-  };
-};
-
-export const getTextReaction = (textCode) => {
-  return async (dispatch) => {
-    const reaction = await axios.get(
-      "http://localhost:4000/api/orders/reaction/text/" + textCode
+      "http://localhost:4000/api/orders/reaction/" + textCode
     );
 
     return dispatch(setReaction(reaction.data));

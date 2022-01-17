@@ -459,15 +459,15 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
 });
 
 /**
- * return text reaction if textCode exists.
+ * return reaction if textCode exists.
  */
 
-router.get("/reaction/text/:textCode", async (req, res) => {
+router.get("/reaction/:textCode", async (req, res) => {
   const order = await Uploads.findOne({
     textCode: req.params.textCode,
   }).exec();
 
-  res.json(order.answerText);
+  res.json(order);
 });
 
 /**

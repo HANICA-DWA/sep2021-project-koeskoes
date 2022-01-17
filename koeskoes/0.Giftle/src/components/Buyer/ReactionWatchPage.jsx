@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {
-  getVideoReaction,
-  getTextReaction,
-} from "../../redux/actions/reactionActions";
+import { getReaction } from "../../redux/actions/reactionActions";
 
 // Re-used Common components
 import VideoPlayer from "../Common/VideoPlayer";
@@ -24,8 +21,7 @@ function ReactionVideoPage() {
    * A useEffect to collect all video data from the database using Redux State
    */
   useEffect(() => {
-    dispatch(getTextReaction(textCode));
-    dispatch(getVideoReaction(textCode));
+    dispatch(getReaction(textCode));
   }, [textCode, dispatch]);
 
   /**
@@ -62,34 +58,35 @@ function ReactionVideoPage() {
   const textReaction = () => {
     return (
       <>
-          <h1 className="my-3">
-            Reactie van {reaction.firstNameReceiver} {reaction.lastNameReceiver}
-          </h1>
-          <p className="h4 pt-4 pb-3">{reaction.answerText}</p>
+        <h1 className="my-3">
+          Reactie van {reaction.firstNameReceiver} {reaction.lastNameReceiver}
+        </h1>
+        <p className="h4 pt-4 pb-3">{reaction.answerText}</p>
       </>
     );
   };
-
-  if (reaction.answerVideo !== "" && reaction.answerVideo !== "null") {
-    return (
-      <div className="vertical-center colored-background">
-        <div
-          className={`${
-            fullScreen ? `container-flex` : `container`
-          } text-center rounded p-3 bg-light`}
-        >
-          {videoPlayer()}
+  if (reaction) {
+    if (reaction.answerVideo) {
+      return (
+        <div className="vertical-center colored-background">
+          <div
+            className={`${
+              fullScreen ? `container-flex` : `container`
+            } text-center rounded p-3 bg-light`}
+          >
+            {videoPlayer()} {console.log("HALLLLOOOO!!!")}
+          </div>
         </div>
-      </div>
-    );
-  } else if (reaction.answerText !== "" && reaction.answerText !== "null") {
-    return (
-      <div className="vertical-center colored-background">
-        <div className="container text-center rounded bg-light">
-          {textReaction()}
+      );
+    } else if (reaction.answerText) {
+      return (
+        <div className="vertical-center colored-background">
+          <div className="container text-center rounded bg-light">
+            {textReaction()}
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else return "";
   }
 }
 
