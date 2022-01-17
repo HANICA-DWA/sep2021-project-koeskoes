@@ -65,7 +65,6 @@ function ReactionVideoPage() {
       </>
     );
   };
-
   if (reaction.answerVideo) {
     return (
       <div className="vertical-center colored-background">
