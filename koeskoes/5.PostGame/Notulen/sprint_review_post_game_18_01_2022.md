@@ -3,7 +3,7 @@
 ## Rollen
 
 Sjoerd:\
-Sven: Notulen
+Sven: Notulen\
 Ilse:\
 Jordi: Beginnen met het gesprek + afgesproken user stories en taken benoemen
 
