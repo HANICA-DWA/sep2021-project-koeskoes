@@ -60,7 +60,7 @@ function VideoPage() {
         />
         <button
           className="btn btn-primary reactionButton"
-          onClick={() => navigate(`/receiver/reaction/` + textCode)}
+          onClick={() => navigate(`/receiver/reaction/${textCode}`)}
         >
           Verstuur een reactie&nbsp;
           <RightArrow />
