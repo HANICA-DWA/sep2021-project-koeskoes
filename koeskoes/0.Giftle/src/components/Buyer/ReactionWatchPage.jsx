@@ -65,28 +65,27 @@ function ReactionVideoPage() {
       </>
     );
   };
-  if (reaction) {
-    if (reaction.answerVideo) {
-      return (
-        <div className="vertical-center colored-background">
-          <div
-            className={`${
-              fullScreen ? `container-flex` : `container`
-            } text-center rounded p-3 bg-light`}
-          >
-            {videoPlayer()} {console.log("HALLLLOOOO!!!")}
-          </div>
+
+  if (reaction.answerVideo) {
+    return (
+      <div className="vertical-center colored-background">
+        <div
+          className={`${
+            fullScreen ? `container-flex` : `container`
+          } text-center rounded p-3 bg-light`}
+        >
+          {videoPlayer()}
         </div>
-      );
-    } else if (reaction.answerText) {
-      return (
-        <div className="vertical-center colored-background">
-          <div className="container text-center rounded bg-light">
-            {textReaction()}
-          </div>
+      </div>
+    );
+  } else if (reaction.answerText !== "" && reaction.answerText !== null) {
+    return (
+      <div className="vertical-center colored-background">
+        <div className="container text-center rounded bg-light">
+          {textReaction()}
         </div>
-      );
-    } else return "";
+      </div>
+    );
   }
 }
 
