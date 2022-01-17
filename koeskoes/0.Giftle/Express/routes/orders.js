@@ -356,8 +356,6 @@ router.patch("/reaction/video/:textCode", async (req, res) => {
     ffmpeg.ffprobe(uploadPath + finalFileName, async (err, metadata) => {
       let height, duration;
 
-      console.log(metadata);
-
       metadata.streams.forEach((stream) => {
         if (!height && stream.height) {
           height = stream.height;

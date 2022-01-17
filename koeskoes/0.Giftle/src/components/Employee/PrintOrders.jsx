@@ -115,7 +115,6 @@ const PrintOrders = (props) => {
       };
 
       return mappedOrders()[orderPageNumber - 1].map((order) => {
-        console.log(order);
         return (
           <tr key={order._id}>
             <th scope="row">{order._id}</th>

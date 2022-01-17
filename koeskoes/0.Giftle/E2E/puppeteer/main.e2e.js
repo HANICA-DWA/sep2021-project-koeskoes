@@ -180,7 +180,6 @@ describe("Giftle E2E tests", () => {
       // After clicking on the personalize button, it'll wait for the form to open up.
       await pageA.waitForSelector("#personalizationForm");
       const row = await pageA.$("#personalizationForm > div");
-      console.log(row);
       const personalizeState = await pageA.evaluate(
         (el) => el.textContent,
         row

@@ -130,7 +130,6 @@ const ReceivedOrders = (props) => {
       };
 
       return mappedOrders()[receivedPageNumber - 1].map((order) => {
-        console.log(order);
         return (
           <tr key={order._id}>
             <th scope="row">{order._id}</th>
