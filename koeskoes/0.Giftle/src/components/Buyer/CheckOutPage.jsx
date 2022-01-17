@@ -24,7 +24,7 @@ function CheckOutPage() {
   const [firstNameBuyer, setFirstNameBuyer] = useState(null);
   const [lastNameBuyer, setLastNameBuyer] = useState(null);
   // Receiver variables
-  const [emailReceiver, setEmailReceiver] = useState("");
+  const [emailReceiver, setEmailReceiver] = useState(null);
   const [firstNameReceiver, setFirstNameReceiver] = useState(null);
   const [lastNameReceiver, setLastNameReceiver] = useState(null);
 
@@ -54,12 +54,12 @@ function CheckOutPage() {
 
       const createOrder = await axios.post(
         `http://localhost:4000/api/orders/newOrder`,
-        formData
+        formData,
       );
 
       if (createOrder.data.status === "error") {
         return setError(
-          Message(createOrder.data.message, () => setError(null))
+          Message(createOrder.data.message, () => setError(null)),
         );
       } else {
         return navigate("/checked-out");
