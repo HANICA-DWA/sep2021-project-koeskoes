@@ -48,7 +48,7 @@ function VideoPage() {
               ? videoData.firstNameReceiver + " " + videoData.lastNameReceiver
               : "jou"
           }`}
-          url="http://localhost:4000/api/videos/video/"
+          url={`${process.env.REACT_APP_SERVERHOSTNAME}/api/videos/video/`}
           videoData={videoData}
           videoName={videoData.videoName}
           videoDuration={videoData.videoDuration}
@@ -77,7 +77,7 @@ function VideoPage() {
         </div>
         <div className="float-end shareButtonPlacement popup">
           <ShareMenu
-            url={`http://localhost:3000/receiver/watchSharedVideo/${textCode}`}
+            url={`${process.env.REACT_APP_CLIENTHOSTNAME}/receiver/watchSharedVideo/${textCode}`}
             message="Wow kijk, ik heb deze Giftle ontvangen! Klik op de link om de Giftle ook te bekijken."
             isOpen={isPopUp}
           />

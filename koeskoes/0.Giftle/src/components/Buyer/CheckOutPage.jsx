@@ -53,7 +53,7 @@ function CheckOutPage() {
       formData.append("lastNameReceiver", lastNameReceiver);
 
       const createOrder = await axios.post(
-        `http://localhost:4000/api/orders/newOrder`,
+        `${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/newOrder`,
         formData,
       );
 

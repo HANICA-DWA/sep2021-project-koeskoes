@@ -65,11 +65,11 @@ const mailOrderPlaced = (firstNameBuyer, lastNameBuyer, textCode) => {
           Hier kun je een video uploaden of opnemen. Vervolgens kan je een e-mailadres van de ontvanger invoeren mocht je dit nog niet gedaan hebben.</p>
         </div>
         <div class="row">
-          <a href="http://localhost:3000/ordercontrol/${textCode}" class="btn" style="color: #fffffe !important;">Ga naar Giftle!</a>
+          <a href="${process.env.CLIENTHOSTNAME}/ordercontrol/${textCode}" class="btn" style="color: #fffffe !important;">Ga naar Giftle!</a>
         </div>
         <div class="row note">
           <p>Werkt de knop niet? Dan kun je onze pagina ook vinden door op deze link te klikken:</p>
-          <a href="http://localhost:3000/ordercontrol/${textCode}" class="link">https://www.giftle.nl/ordercontrol/${textCode}</a>
+          <a href="${process.env.CLIENTHOSTNAME}/ordercontrol/${textCode}" class="link">${process.env.CLIENTHOSTNAME}/ordercontrol/${textCode}</a>
         </div>
         <div>
           <p>Met vriendelijke groet,</p>

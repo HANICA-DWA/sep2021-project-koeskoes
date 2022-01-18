@@ -52,7 +52,7 @@ function PersonalizationForm(props) {
     formData.append("emailReceiver", emailReceiver);
 
     const uploadResponse = await axios.patch(
-      `http://localhost:4000/api/orders/new/` + textCode,
+      `${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/new/` + textCode,
       formData
     );
 

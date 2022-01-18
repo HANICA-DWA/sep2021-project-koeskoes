@@ -35,7 +35,7 @@ function ReactionVideoPage() {
       <>
         <VideoPlayer
           title={`Videoreactie van ${reaction.firstNameReceiver} ${reaction.lastNameReceiver}`}
-          url="http://localhost:4000/api/videos/video/"
+          url={`${process.env.REACT_APP_SERVERHOSTNAME}/api/videos/video/`}
           videoData={reaction}
           videoName={reaction.answerVideo}
           videoDuration={reaction.answerVideoDuration}

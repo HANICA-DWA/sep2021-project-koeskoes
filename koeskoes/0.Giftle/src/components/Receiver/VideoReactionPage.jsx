@@ -183,14 +183,14 @@ function VideoReactionPage() {
                     </p>
                   </div>
                   <UploadVideo
-                    uploadPath={`http://localhost:4000/api/orders/reaction/video/${textCode}`}
+                    uploadPath={`${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/reaction/video/${textCode}`}
                     setError={setError}
                   />
                 </>
               ) : (
                 <>
                   <Camera
-                    uploadPath={`http://localhost:4000/api/orders/reaction/video/${textCode}`}
+                    uploadPath={`${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/reaction/video/${textCode}`}
                     setError={setError}
                   />
                 </>
@@ -199,7 +199,7 @@ function VideoReactionPage() {
               <div>
                 <VideoPlayer
                   title="Video terugkijken"
-                  url={"http://localhost:4000/api/videos/video/"}
+                  url={`${process.env.REACT_APP_SERVERHOSTNAME}/api/videos/video/`}
                   videoData={reactionVideo}
                   videoName={reactionVideo.answerVideo}
                   videoDuration={reactionVideo.answerVideoDuration}

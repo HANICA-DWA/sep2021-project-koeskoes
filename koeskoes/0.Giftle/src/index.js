@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import { mainReducer } from "./redux/reducers/mainReducer";
 import thunkMiddleware from "redux-thunk";
 
+require('dotenv').config();
+
 const logger = (store) => (next) => (action) => {
   let result = next(action);
   return result;

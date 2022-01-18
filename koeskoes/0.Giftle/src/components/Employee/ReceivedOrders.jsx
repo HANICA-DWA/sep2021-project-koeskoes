@@ -84,7 +84,7 @@ const ReceivedOrders = (props) => {
 
   const sendCode = async (textCode) => {
     const mailInfo = await axios.post(
-      `http://localhost:4000/api/mails/${textCode}`
+      `${process.env.REACT_APP_SERVERHOSTNAME}/api/mails/${textCode}`
     );
 
     if (mailInfo.data.status === "error") {

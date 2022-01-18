@@ -113,11 +113,12 @@ http://localhost:3000/employee/checkorders
 
 `/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express/`
 
-- Maak vervolgens 2 variabelen aan in dit bestand:
+- Maak vervolgens 3 variabelen aan in dit bestand:
 
 ```
 EMAILUSERNAME=<Google E-mail>
 EMAILPASSWORD=<Google App Password>
+MAILTIMEOUT=<Wachttijd in milliseconden>
 ```
 
 ## Maximum bestandsgrootte
@@ -132,6 +133,35 @@ EMAILPASSWORD=<Google App Password>
 
 ```
 MAXUPLOADSIZE=<Bestandsgrootte in bytes>
+```
+
+## Hostname en websocket verbinding
+
+- Navigeer naar de volgende map:
+
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle/Express`
+
+- Maak een `.env` bestand aan als deze nog niet bestaat.
+
+- Voeg in dit bestand de volgende regels toe
+
+```
+CLIENTHOSTNAME=<Bijvoorbeeld "http://localhost:3000">
+SERVERHOSTNAME=<Bijvoorbeeld "http://localhost:4000">
+```
+
+- Navigeer vervolgens naar de volgende map:
+
+`/locatie/van/de/repo/sep2021-project-koeskoes/koeskoes/0.Giftle`
+
+- Maak een `.env` bestand aan als deze nog niet bestaat.
+
+- Voeg in dit bestand de volgende regels toe
+
+```
+REACT_APP_CLIENTHOSTNAME=<Bijvoorbeeld "http://localhost:3000">
+REACT_APP_SERVERHOSTNAME=<Bijvoorbeeld "http://localhost:4000">
+REACT_APP_WEBSOCKETPROTOCOL=<"ws" of "wss">
 ```
 
 

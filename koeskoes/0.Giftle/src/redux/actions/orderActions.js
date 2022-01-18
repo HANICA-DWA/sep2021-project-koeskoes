@@ -11,7 +11,7 @@ export const setTextCode = (textCode) => {
 export const getVideoInOrder = (textCode) => {
   return async (dispatch) => {
     const videoExists = await axios.get(
-      "http://localhost:4000/api/videos/" + textCode
+      `${process.env.REACT_APP_SERVERHOSTNAME}/api/videos/${textCode}`
     );
 
     if (!videoExists.data.status) {

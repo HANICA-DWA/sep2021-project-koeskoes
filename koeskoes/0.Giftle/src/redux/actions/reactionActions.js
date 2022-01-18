@@ -31,7 +31,7 @@ export const setReaction = (reaction) => {
 export const getReaction = (textCode) => {
   return async (dispatch) => {
     const reaction = await axios.get(
-      "http://localhost:4000/api/orders/reaction/" + textCode
+      `${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/reaction/${textCode}`
     );
 
     return dispatch(setReaction(reaction.data));
@@ -43,7 +43,7 @@ export const addTextReaction = (textCode, message) => {
     const formData = new FormData();
     formData.append("text", message);
     await axios.patch(
-      `http://localhost:4000/api/orders/reaction/text/${textCode}`,
+      `${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/reaction/text/${textCode}`,
       formData
     );
     return dispatch(sendReaction(textCode, "text"));

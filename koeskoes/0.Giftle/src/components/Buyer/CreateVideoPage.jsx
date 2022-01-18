@@ -147,7 +147,7 @@ function CreateVideoPage() {
                     </p>
                   </div>
                   <UploadVideo
-                    uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`}
+                    uploadPath={`${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/order/video/${textCode}`}
                     setError={setError}
                   />
                 </>
@@ -159,7 +159,7 @@ function CreateVideoPage() {
                     </div>
                   </div>
                   <Camera
-                    uploadPath={`http://localhost:4000/api/orders/order/video/${textCode}`}
+                    uploadPath={`${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/order/video/${textCode}`}
                     setError={setError}
                   />
                 </>
@@ -167,7 +167,7 @@ function CreateVideoPage() {
             ) : (
               <VideoPlayer
                 title="Video terugkijken en geluid controleren"
-                url={"http://localhost:4000/api/videos/video/"}
+                url={`${process.env.REACT_APP_SERVERHOSTNAME}/api/videos/video/`}
                 videoData={video}
                 videoName={video.videoName}
                 videoDuration={video.videoDuration}

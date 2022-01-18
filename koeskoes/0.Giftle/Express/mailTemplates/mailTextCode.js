@@ -74,13 +74,13 @@ const mailTextCode = (firstNameBuyer, lastNameBuyer, firstNameReceiver, lastName
           <p>Jouw tekstcode is: <span><b><i>${textCode}</i></b></span></p>
         </div>
         <div class="row">
-          <a href="http://localhost:3000/receiver/watchvideo/${textCode}" class="btn" style="color: #fffffe !important;">Bekijk de Giftle!</a>
+          <a href="${process.env.CLIENTHOSTNAME}/receiver/watchvideo/${textCode}" class="btn" style="color: #fffffe !important;">Bekijk de Giftle!</a>
         </div>
         <div class="row note">
           <p>Werkt de knop niet? Dan kun je onze pagina ook vinden door op deze link te klikken:</p>
-          <a href="http://localhost:3000/receiver/watchvideo/${textCode}" class="link">https://www.giftle.nl/receiver/watchvideo/${textCode}</a>
+          <a href="${process.env.CLIENTHOSTNAME}/receiver/watchvideo/${textCode}" class="link">${process.env.CLIENTHOSTNAME}/receiver/watchvideo/${textCode}</a>
           <p>of ga naar de volgende link:</p>
-          <a href="http://localhost:3000/receiver/textcode" class="link">https://www.giftle.nl/receiver/textcode</a>
+          <a href="${process.env.CLIENTHOSTNAME}/receiver/textcode" class="link">${process.env.CLIENTHOSTNAME}/receiver/textcode</a>
         </div>
         <div>
           <p>Met vriendelijke groet,</p>

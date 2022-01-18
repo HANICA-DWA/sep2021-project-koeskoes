@@ -144,10 +144,10 @@ const PrintOrders = (props) => {
   const createQRCode = async (textCode) => {
     try {
       const qrCode = qrcode(
-        "http://localhost:3000/receiver/watchvideo/" + textCode
+        `${process.env.REACT_APP_CLIENTHOSTNAME}/receiver/watchvideo/${textCode}`
       );
 
-      await axios.patch("http://localhost:4000/api/orders/" + textCode);
+      await axios.patch(`${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/${textCode}`);
 
       webSocket.send(JSON.stringify({ action: "getReceived" }));
 
@@ -192,7 +192,7 @@ const PrintOrders = (props) => {
           id="prePrintOrder"
           onClick={async () => {
             await axios.patch(
-              `http://localhost:4000/api/orders/${order._id}/prePrint`
+              `${process.env.REACT_APP_SERVERHOSTNAME}/api/orders/${order._id}/prePrint`
             );
             webSocket.send(JSON.stringify({ action: "getOrders" }));
           }}

@@ -67,11 +67,11 @@ const mailUploadReminder = (firstNameBuyer, lastNameBuyer, textCode) => {
           <p>Je kan via de knop hieronder jouw video <b><i>uploaden</i></b> of <b><i>opnemen</i></b>, daarna kan je de naam en het e-mailadres van de ontvanger doorgeven.</p>
           </div>
         <div class="row">
-          <a href="http://localhost:3000/orderControl/${textCode}" class="btn" style="color: #fffffe !important;">Ga naar Giftle!</a>
+          <a href="${process.env.CLIENTHOSTNAME}/orderControl/${textCode}" class="btn" style="color: #fffffe !important;">Ga naar Giftle!</a>
         </div>
         <div class="row note">
           <p>Werkt de knop niet? Dan kun je onze pagina ook vinden door op deze link te klikken:</p>
-          <a href="http://localhost:3000/orderControl/${textCode}" class="link">https://www.giftle.nl/ordercontrol/${textCode}</a>
+          <a href="${process.env.CLIENTHOSTNAME}/orderControl/${textCode}" class="link">${process.env.CLIENTHOSTNAME}/ordercontrol/${textCode}</a>
         </div>
         <div>
           <p>Met vriendelijke groet,</p>

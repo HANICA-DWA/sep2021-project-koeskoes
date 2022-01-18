@@ -36,13 +36,13 @@ export const setReaction = (mailInfo) => {
 export const sendReaction = (textCode, type) => {
   return async (dispatch) => {
     const mailInfo = await axios.post(
-      `http://localhost:4000/api/mails/reaction/${type}/${textCode}`
+      `${process.env.REACT_APP_SERVERHOSTNAME}/api/mails/reaction/${type}/${textCode}`
     );
 
     if (mailInfo.data.status === "success") {
       dispatch(setReaction(mailInfo.data));
       await axios.patch(
-        `http://localhost:4000/api/mails/reaction/sent/${textCode}`
+        `${process.env.REACT_APP_SERVERHOSTNAME}/api/mails/reaction/sent/${textCode}`
       );
     } else {
       console.log(mailInfo.data);
