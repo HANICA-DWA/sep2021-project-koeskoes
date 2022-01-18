@@ -129,14 +129,6 @@ function TextReactionPage() {
           />
         </div>
         <div className="row mt-5 mb-3 justify-content-center">
-          {/* <div className="col-6 text-start">
-            <button
-              className="btn btn-primary"
-              onClick={() => navigate(`/receiver/watchvideo/` + textCode)}
-            >
-              {<LeftArrow />}&nbsp; Bekijk video opnieuw
-            </button>
-          </div> */}
           <div className="col-6 text-center" id="send-text-message">
             <button
               className="btn btn-primary"
